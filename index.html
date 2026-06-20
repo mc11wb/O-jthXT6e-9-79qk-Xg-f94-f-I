@@ -254,16 +254,14 @@
     width: clamp(70px, 10vw, 110px);
     opacity: 0;
     transform: translateY(0px) rotate(-6deg) scale(0.6);
-    animation: boosterPop 2.6s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+    animation: boosterPop 2.0s ease-out forwards;
     filter: drop-shadow(0 8px 40px rgba(232,24,60,0.7));
   }
   @keyframes boosterPop {
-    0%   { opacity: 0;   transform: translateY(0vh)   rotate(-5deg) scale(0.4);  filter: drop-shadow(0 0 10px rgba(232,24,60,0.3)); }
-    8%   { opacity: 1;   transform: translateY(-5vh)  rotate(2deg)  scale(0.8);  filter: drop-shadow(0 0 20px rgba(232,24,60,0.6)); }
-    40%  { opacity: 1;   transform: translateY(-15vh) rotate(-1deg) scale(2.5);  filter: drop-shadow(0 0 50px rgba(232,24,60,0.9)); }
-    70%  { opacity: 1;   transform: translateY(-20vh) rotate(0deg)  scale(7);    filter: drop-shadow(0 0 100px rgba(232,24,60,0.8)); }
-    88%  { opacity: 0.4; transform: translateY(-22vh) rotate(0deg)  scale(11);   filter: drop-shadow(0 0 180px rgba(232,24,60,0.3)); }
-    100% { opacity: 0;   transform: translateY(-23vh) rotate(0deg)  scale(14);   filter: drop-shadow(0 0 250px rgba(232,24,60,0)); }
+    0%   { opacity: 0; transform: translateY(20px); }
+    10%  { opacity: 1; transform: translateY(0px); }
+    70%  { opacity: 1; transform: translateY(-120px); }
+    100% { opacity: 0; transform: translateY(-150px); }
   }
 </style>
 </head>
