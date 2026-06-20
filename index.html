@@ -167,49 +167,11 @@
   .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-in.visible { opacity: 1; transform: none; }
   .form-success { display: none; background: var(--yellow-dim); border: 1px solid rgba(255,208,0,0.3); border-radius: var(--radius); padding: 20px 24px; font-size: 14px; color: var(--yellow); letter-spacing: 0.3px; }
-
-
-  /* MOBILE BOTTOM NAV */
-  .mobile-bottom-nav {
-    display: none;
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    z-index: 200;
-    background: rgba(18,15,42,0.97);
-    backdrop-filter: blur(16px);
-    border-top: 1px solid rgba(232,24,60,0.3);
-    padding: 8px 0 max(8px, env(safe-area-inset-bottom));
-    justify-content: space-around;
-    align-items: center;
-  }
-  .mobile-bottom-nav a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 9px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 4px 12px;
-    border-radius: 2px;
-    transition: color 0.2s;
-    flex: 1;
-  }
-  .mobile-bottom-nav a:hover,
-  .mobile-bottom-nav a.active { color: var(--red); }
-  .mobile-bottom-nav .nav-icon { font-size: 18px; line-height: 1; }
-
-  @media (max-width: 768px) {
-    .mobile-bottom-nav { display: flex; }
-    body { padding-bottom: 72px; }
-  }
-
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 18px 24px; }
     nav ul { display: none; }
+    body { padding-bottom: 68px; }
     .hero { grid-template-columns: 1fr; padding: 100px 24px 80px; gap: 0; }
     .hero-right { display: flex; margin-top: 32px; }
     .hero-machine-img.desktop-img { display: none; }
@@ -231,6 +193,48 @@
     footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
     .form-row { grid-template-columns: 1fr; }
   }
+
+  /* MOBILE BOTTOM NAV */
+  .mob-nav {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .mob-nav {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9000;
+      background: rgba(18,15,42,0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(232,24,60,0.4);
+      padding-top: 8px;
+      padding-bottom: env(safe-area-inset-bottom, 8px);
+      justify-content: space-around;
+      align-items: flex-start;
+    }
+  }
+  .mob-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    transition: color 0.2s;
+    flex: 1;
+    text-align: center;
+  }
+  .mob-nav a.active,
+  .mob-nav a:hover { color: var(--red); }
+  .mob-nav .m-icon { font-size: 20px; line-height: 1; display: block; }
+
 </style>
 </head>
 <body>
@@ -648,11 +652,6 @@ function setLang(lang) {
     else if (el.tagName === 'OPTION') { el.textContent = val; }
     else { el.innerHTML = val; }
   });
-  // Also update mobile nav labels
-  document.querySelectorAll('.mobile-bottom-nav [data-en]').forEach(el => {
-    const val = el.getAttribute('data-' + lang);
-    if (val) el.innerHTML = val;
-  });
   document.querySelector('#prenom').placeholder = lang === 'fr' ? 'Jean' : 'John';
   document.querySelector('#nom').placeholder = lang === 'fr' ? 'Dupont' : 'Smith';
   document.querySelector('#message').placeholder = lang === 'fr' ? 'Décrivez votre projet, emplacement ou question...' : 'Tell us about your project, location or question...';
@@ -681,45 +680,43 @@ form.addEventListener('submit', async function(e) {
 </script>
 
 
-<!-- MOBILE BOTTOM NAV -->
-<nav class="mobile-bottom-nav" id="mobileNav">
-  <a href="#concept" onclick="setMobileActive(this)">
-    <span class="nav-icon">🎴</span>
+
+
+<!-- MOBILE NAV -->
+<div class="mob-nav" id="mobNav">
+  <a href="#concept" class="mob-link">
+    <span class="m-icon">🎴</span>
     <span data-en="Concept" data-fr="Concept">Concept</span>
   </a>
-  <a href="#partner" onclick="setMobileActive(this)">
-    <span class="nav-icon">🤝</span>
+  <a href="#partner" class="mob-link">
+    <span class="m-icon">🤝</span>
     <span data-en="Partner" data-fr="Partenaire">Partner</span>
   </a>
-  <a href="#where" onclick="setMobileActive(this)">
-    <span class="nav-icon">📍</span>
+  <a href="#where" class="mob-link">
+    <span class="m-icon">📍</span>
     <span data-en="Locations" data-fr="Emplacements">Locations</span>
   </a>
-  <a href="#contact" onclick="setMobileActive(this)">
-    <span class="nav-icon">✉️</span>
+  <a href="#contact" class="mob-link">
+    <span class="m-icon">✉️</span>
     <span data-en="Contact" data-fr="Contact">Contact</span>
   </a>
-</nav>
-
+</div>
 <script>
-function setMobileActive(el) {
-  document.querySelectorAll('.mobile-bottom-nav a').forEach(a => a.classList.remove('active'));
-  el.classList.add('active');
-}
-
-// Highlight active section on scroll
-const sections = ['concept', 'partner', 'where', 'contact'];
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el && window.scrollY >= el.offsetTop - 120) current = id;
+// Mobile nav active on scroll
+(function() {
+  var ids = ['concept','partner','where','contact'];
+  var links = document.querySelectorAll('.mob-link');
+  window.addEventListener('scroll', function() {
+    var cur = '';
+    ids.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 140) cur = id;
+    });
+    links.forEach(function(a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+    });
   });
-  document.querySelectorAll('.mobile-bottom-nav a').forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-  });
-});
+})();
 </script>
-
 </body>
 </html>
