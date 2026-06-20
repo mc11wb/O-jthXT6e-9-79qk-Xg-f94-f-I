@@ -705,7 +705,7 @@ form.addEventListener('submit', async function(e) {
 
 <!-- BOOSTER ANIMATION -->
 <div class="booster-anim" id="boosterAnim">
-  <img src="booster.png" alt="Booster">
+  <img src="Booster.png" alt="Booster">
 </div>
 
 <script>
@@ -725,9 +725,17 @@ let gMapRef = null;
 let gMarkersRef = [];
 
 function openPopupByIndex(i) {
-  if (!gMapRef || !gMarkersRef[i]) return;
-  google.maps.event.trigger(gMarkersRef[i], 'click');
-  gMapRef.panTo(gMarkersRef[i].getPosition());
+  // Scroll to map section first
+  const mapSection = document.getElementById('where');
+  if (mapSection) {
+    mapSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  // Wait for scroll then open popup
+  setTimeout(function() {
+    if (!gMapRef || !gMarkersRef[i]) return;
+    google.maps.event.trigger(gMarkersRef[i], 'click');
+    gMapRef.panTo(gMarkersRef[i].getPosition());
+  }, 600);
 }
 
 // Override initMap to store refs
