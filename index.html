@@ -249,10 +249,8 @@
     justify-content: center;
   }
   .booster-anim img {
-    width: clamp(70px, 10vw, 110px);
+    width: clamp(62px, 8.5vw, 95px);
     opacity: 0;
-    transform: translateY(0px) rotate(-6deg) scale(0.6);
-    animation: boosterPop 2.2s cubic-bezier(0.4, 0, 1, 1) forwards;
     filter: drop-shadow(0 8px 40px rgba(232,24,60,0.7));
   }
   @keyframes boosterPop {
@@ -726,13 +724,24 @@ form.addEventListener('submit', async function(e) {
 <script>
 // Booster animation
 function fireBooster() {
-  const el = document.getElementById('boosterAnim');
-  el.style.display = 'flex';
-  const img = el.querySelector('img');
-  img.style.animation = 'none';
-  img.offsetHeight; // reflow
-  img.style.animation = 'boosterPop 2.2s cubic-bezier(0.22,1,0.36,1) forwards';
-  setTimeout(() => { el.style.display = 'none'; }, 2900);
+  // 1. Shake the machine
+  const machine = document.querySelector('.hero-machine-img');
+  if (machine) {
+    machine.classList.remove('machine-shaking');
+    machine.offsetHeight;
+    machine.classList.add('machine-shaking');
+    setTimeout(() => machine.classList.remove('machine-shaking'), 900);
+  }
+  // 2. Show booster after shake delay
+  setTimeout(() => {
+    const el = document.getElementById('boosterAnim');
+    el.style.display = 'flex';
+    const img = el.querySelector('img');
+    img.style.animation = 'none';
+    img.offsetHeight;
+    img.style.animation = 'boosterPop 2.2s cubic-bezier(0.4, 0, 1, 1) forwards';
+    setTimeout(() => { el.style.display = 'none'; }, 2300);
+  }, 800);
 }
 
 // Open popup from location list click
