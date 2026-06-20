@@ -483,40 +483,69 @@
 </footer>
 
 <!-- GOOGLE MAPS -->
+<style>
+  .gm-style .gm-style-iw-c { background: #111 !important; border: 1px solid #FFD000 !important; border-radius: 4px !important; padding: 0 !important; box-shadow: 0 4px 24px rgba(0,0,0,0.8) !important; }
+  .gm-style .gm-style-iw-d { overflow: hidden !important; }
+  .gm-style .gm-style-iw-t::after { background: #FFD000 !important; }
+  .gm-style .gm-ui-hover-effect img { filter: invert(1) !important; }
+  .bs-popup { padding: 14px 16px; min-width: 220px; font-family: "DM Sans", sans-serif; }
+  .bs-popup-badge { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #FFD000; background: rgba(255,208,0,0.1); border: 1px solid rgba(255,208,0,0.3); padding: 2px 8px; border-radius: 2px; display: inline-block; margin-bottom: 8px; }
+  .bs-popup-name { font-size: 13px; font-weight: 500; color: #f4f2ee; margin-bottom: 4px; }
+  .bs-popup-addr { font-size: 12px; color: #888; margin-bottom: 10px; }
+  .bs-popup-hours { font-size: 11px; color: #aaa; border-top: 1px solid #2e2e2e; padding-top: 8px; line-height: 1.7; }
+  .bs-popup-hours strong { color: #f4f2ee; }
+</style>
 <script>
 const darkStyles = [
-  { elementType: 'geometry', stylers: [{ color: '#1a1a1a' }] },
-  { elementType: 'labels.text.fill', stylers: [{ color: '#666' }] },
-  { elementType: 'labels.text.stroke', stylers: [{ color: '#1a1a1a' }] },
-  { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#333' }] },
-  { featureType: 'road', elementType: 'geometry', stylers: [{ color: '#222' }] },
-  { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#282828' }] },
-  { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0d0d0d' }] },
+  { elementType: 'geometry', stylers: [{ color: '#111111' }] },
+  { elementType: 'labels', stylers: [{ visibility: 'off' }] },
+  { featureType: 'administrative.locality', elementType: 'labels.text', stylers: [{ visibility: 'on' }] },
+  { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#777777' }] },
+  { featureType: 'administrative.locality', elementType: 'labels.text.stroke', stylers: [{ color: '#111111' }] },
+  { featureType: 'road.arterial', elementType: 'geometry', stylers: [{ color: '#1e1e1e' }] },
+  { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#252525' }] },
+  { featureType: 'road.local', elementType: 'geometry', stylers: [{ color: '#181818' }] },
+  { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0a0a0a' }] },
   { featureType: 'poi', stylers: [{ visibility: 'off' }] },
-  { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#141414' }] }
+  { featureType: 'transit', stylers: [{ visibility: 'off' }] },
+  { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#111111' }] },
+  { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#2a2a2a' }] }
 ];
 
-function mkMarker(map, lat, lng) {
-  return new google.maps.Marker({ position: { lat, lng }, map, icon: { path: google.maps.SymbolPath.CIRCLE, scale: 9, fillColor: '#FFD000', fillOpacity: 1, strokeColor: '#FFD000', strokeWeight: 2 } });
+const genevaLocations = [
+  { lat: 46.2008, lng: 6.1520, name: 'Poste Filiale — Genève 3 Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', hours: '<strong>Lun–Ven</strong> 08h00–18h30<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' },
+  { lat: 46.1997, lng: 6.1638, name: 'Poste Filiale — Genève 6 Les Eaux-Vives', addr: 'Rue du 31-Décembre 47, 1207 Genève', hours: '<strong>Lun–Ven</strong> 08h00–18h30<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' },
+  { lat: 46.1872, lng: 6.1214, name: 'Poste Filiale — Petit-Lancy 1', addr: 'Rue des Bossons 88B, 1213 Petit-Lancy', hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' }
+];
+
+let activeInfo = null;
+
+function mkMarker(map, loc) {
+  const marker = new google.maps.Marker({
+    position: { lat: loc.lat, lng: loc.lng }, map,
+    icon: { path: google.maps.SymbolPath.CIRCLE, scale: 10, fillColor: '#FFD000', fillOpacity: 1, strokeColor: '#ffffff', strokeWeight: 1.5 }
+  });
+  marker.addListener('click', () => {
+    if (activeInfo) activeInfo.close();
+    activeInfo = new google.maps.InfoWindow({
+      content: '<div class="bs-popup"><div class="bs-popup-badge">BoosterStop TCG</div><div class="bs-popup-name">' + loc.name + '</div><div class="bs-popup-addr">' + loc.addr + '</div><div class="bs-popup-hours">' + loc.hours + '</div></div>'
+    });
+    activeInfo.open(map, marker);
+  });
 }
 
 function initMap() {
-  // Geneva — 3 real locations
   const gMap = new google.maps.Map(document.getElementById('map-geneva'), {
-    zoom: 12, center: { lat: 46.1960, lng: 6.1430 },
+    zoom: 12, center: { lat: 46.1955, lng: 6.1430 },
     disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
   });
-  mkMarker(gMap, 46.2008, 6.1520); // Genève 3 Rive
-  mkMarker(gMap, 46.1997, 6.1638); // Eaux-Vives
-  mkMarker(gMap, 46.1872, 6.1214); // Petit-Lancy
+  genevaLocations.forEach(loc => mkMarker(gMap, loc));
 
-  // Belgium
   new google.maps.Map(document.getElementById('map-belgium'), {
     zoom: 7, center: { lat: 50.5, lng: 4.5 },
     disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
   });
 
-  // UAE
   new google.maps.Map(document.getElementById('map-uae'), {
     zoom: 7, center: { lat: 24.5, lng: 54.5 },
     disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
