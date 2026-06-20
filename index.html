@@ -189,7 +189,7 @@
     .map-section-inner { padding: 0 24px; }
     .map-tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .map-tabs::-webkit-scrollbar { display: none; }
-    .map-tab { font-size: 10px; padding: 10px 12px; white-space: nowrap; flex-shrink: 0; letter-spacing: 1px; }
+    .map-tab { font-size: 9px; padding: 8px 10px; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.5px; }
     footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
     .form-row { grid-template-columns: 1fr; }
   }
@@ -235,6 +235,30 @@
   .mob-nav a:hover { color: var(--red); }
   .mob-nav .m-icon { font-size: 20px; line-height: 1; display: block; }
 
+
+  /* BOOSTER ANIMATION */
+  .booster-anim {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 24px;
+    z-index: 8000;
+    pointer-events: none;
+  }
+  .booster-anim img {
+    width: 90px;
+    opacity: 0;
+    transform: translateY(60px) rotate(-8deg);
+    animation: boosterPop 2.2s cubic-bezier(0.22,1,0.36,1) forwards;
+    filter: drop-shadow(0 8px 32px rgba(232,24,60,0.6));
+  }
+  @keyframes boosterPop {
+    0%   { opacity: 0; transform: translateY(60px) rotate(-8deg) scale(0.7); }
+    15%  { opacity: 1; transform: translateY(-10px) rotate(3deg) scale(1.08); }
+    30%  { transform: translateY(0px) rotate(-2deg) scale(1); }
+    70%  { opacity: 1; transform: translateY(-4px) rotate(1deg) scale(1); }
+    100% { opacity: 0; transform: translateY(-40px) rotate(4deg) scale(0.9); }
+  }
 </style>
 </head>
 <body>
@@ -420,21 +444,21 @@
     <div class="map-panel active" id="tab-geneva">
       <div class="map-wrapper"><div id="map-geneva"></div></div>
       <div class="map-locations-list">
-        <div class="map-location-item">
+        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(0)">
           <div class="map-location-dot live"></div>
           <div>
             <div class="map-location-name">Poste Filiale — Genève 3 Rive</div>
             <div class="map-location-addr">Rue du Vieux-Collège 3, 1204 Genève</div>
           </div>
         </div>
-        <div class="map-location-item">
+        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(1)">
           <div class="map-location-dot live"></div>
           <div>
             <div class="map-location-name">Poste Filiale — Genève 6 Les Eaux-Vives</div>
             <div class="map-location-addr">Rue du 31-Décembre 47, 1207 Genève</div>
           </div>
         </div>
-        <div class="map-location-item">
+        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(2)">
           <div class="map-location-dot live"></div>
           <div>
             <div class="map-location-name">Poste Filiale — Petit-Lancy 1</div>
@@ -557,46 +581,6 @@ const darkStyles = [
   { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#2a2a2a' }] }
 ];
 
-const genevaLocations = [
-  { lat: 46.2008, lng: 6.1520, name: 'Poste Filiale — Genève 3 Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', hours: '<strong>Lun–Ven</strong> 08h00–18h30<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' },
-  { lat: 46.1997, lng: 6.1638, name: 'Poste Filiale — Genève 6 Les Eaux-Vives', addr: 'Rue du 31-Décembre 47, 1207 Genève', hours: '<strong>Lun–Ven</strong> 08h00–18h30<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' },
-  { lat: 46.1872, lng: 6.1214, name: 'Poste Filiale — Petit-Lancy 1', addr: 'Rue des Bossons 88B, 1213 Petit-Lancy', hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' }
-];
-
-let activeInfo = null;
-
-function mkMarker(map, loc) {
-  const marker = new google.maps.Marker({
-    position: { lat: loc.lat, lng: loc.lng }, map,
-    icon: { path: google.maps.SymbolPath.CIRCLE, scale: 10, fillColor: '#FFD000', fillOpacity: 1, strokeColor: '#ffffff', strokeWeight: 1.5 }
-  });
-  marker.addListener('click', () => {
-    if (activeInfo) activeInfo.close();
-    activeInfo = new google.maps.InfoWindow({
-      content: '<div class="bs-popup"><div class="bs-popup-badge">BoosterStop TCG</div><div class="bs-popup-name">' + loc.name + '</div><div class="bs-popup-addr">' + loc.addr + '</div><div class="bs-popup-hours">' + loc.hours + '</div></div>'
-    });
-    activeInfo.open(map, marker);
-  });
-}
-
-function initMap() {
-  const gMap = new google.maps.Map(document.getElementById('map-geneva'), {
-    zoom: 12, center: { lat: 46.1955, lng: 6.1430 },
-    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
-  });
-  genevaLocations.forEach(loc => mkMarker(gMap, loc));
-
-  new google.maps.Map(document.getElementById('map-belgium'), {
-    zoom: 7, center: { lat: 50.5, lng: 4.5 },
-    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
-  });
-
-  new google.maps.Map(document.getElementById('map-uae'), {
-    zoom: 7, center: { lat: 24.5, lng: 54.5 },
-    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
-  });
-}
-
 function switchTab(tab) {
   document.querySelectorAll('.map-tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.map-panel').forEach(p => p.classList.remove('active'));
@@ -717,6 +701,102 @@ form.addEventListener('submit', async function(e) {
     });
   });
 })();
+</script>
+
+<!-- BOOSTER ANIMATION -->
+<div class="booster-anim" id="boosterAnim">
+  <img src="booster.png" alt="Booster">
+</div>
+
+<script>
+// Booster animation
+function fireBooster() {
+  const el = document.getElementById('boosterAnim');
+  el.style.display = 'block';
+  const img = el.querySelector('img');
+  img.style.animation = 'none';
+  img.offsetHeight; // reflow
+  img.style.animation = 'boosterPop 2.2s cubic-bezier(0.22,1,0.36,1) forwards';
+  setTimeout(() => { el.style.display = 'none'; }, 2300);
+}
+
+// Open popup from location list click
+let gMapRef = null;
+let gMarkersRef = [];
+
+function openPopupByIndex(i) {
+  if (!gMapRef || !gMarkersRef[i]) return;
+  google.maps.event.trigger(gMarkersRef[i], 'click');
+  gMapRef.panTo(gMarkersRef[i].getPosition());
+}
+
+// Override initMap to store refs
+const _origInitMap = window.initMap;
+window.initMap = function() {
+  const darkStyles = [
+    { elementType: 'geometry', stylers: [{ color: '#111111' }] },
+    { elementType: 'labels', stylers: [{ visibility: 'off' }] },
+    { featureType: 'administrative.locality', elementType: 'labels.text', stylers: [{ visibility: 'on' }] },
+    { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#777777' }] },
+    { featureType: 'administrative.locality', elementType: 'labels.text.stroke', stylers: [{ color: '#111111' }] },
+    { featureType: 'road.arterial', elementType: 'geometry', stylers: [{ color: '#1e1e1e' }] },
+    { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#252525' }] },
+    { featureType: 'road.local', elementType: 'geometry', stylers: [{ color: '#181818' }] },
+    { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0a0a0a' }] },
+    { featureType: 'poi', stylers: [{ visibility: 'off' }] },
+    { featureType: 'transit', stylers: [{ visibility: 'off' }] },
+    { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#111111' }] },
+    { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#2a2a2a' }] }
+  ];
+
+  const genevaLocations = [
+    { lat: 46.2008, lng: 6.1520, name: 'Poste Filiale — Genève 3 Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', hours: '<strong>Lun–Ven</strong> 08h00–18h30<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' },
+    { lat: 46.1997, lng: 6.1638, name: 'Poste Filiale — Genève 6 Les Eaux-Vives', addr: 'Rue du 31-Décembre 47, 1207 Genève', hours: '<strong>Lun–Ven</strong> 08h00–18h30<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' },
+    { lat: 46.1872, lng: 6.1214, name: 'Poste Filiale — Petit-Lancy 1', addr: 'Rue des Bossons 88B, 1213 Petit-Lancy', hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' }
+  ];
+
+  let activeInfo = null;
+
+  gMapRef = new google.maps.Map(document.getElementById('map-geneva'), {
+    zoom: 12, center: { lat: 46.1955, lng: 6.1430 },
+    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
+  });
+
+  genevaLocations.forEach(function(loc, i) {
+    const marker = new google.maps.Marker({
+      position: { lat: loc.lat, lng: loc.lng },
+      map: gMapRef,
+      icon: { path: google.maps.SymbolPath.CIRCLE, scale: 10, fillColor: '#FFD000', fillOpacity: 1, strokeColor: '#ffffff', strokeWeight: 1.5 }
+    });
+    marker.addListener('click', function() {
+      if (activeInfo) activeInfo.close();
+      activeInfo = new google.maps.InfoWindow({
+        content: '<div class="bs-popup"><div class="bs-popup-badge">BoosterStop TCG</div><div class="bs-popup-name">' + loc.name + '</div><div class="bs-popup-addr">' + loc.addr + '</div><div class="bs-popup-hours">' + loc.hours + '</div></div>'
+      });
+      activeInfo.open(gMapRef, marker);
+    });
+    gMarkersRef[i] = marker;
+  });
+
+  new google.maps.Map(document.getElementById('map-belgium'), {
+    zoom: 7, center: { lat: 50.5, lng: 4.5 },
+    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
+  });
+
+  new google.maps.Map(document.getElementById('map-uae'), {
+    zoom: 7, center: { lat: 24.5, lng: 54.5 },
+    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
+  });
+}
+
+// PUSH button click — fire booster
+document.addEventListener('DOMContentLoaded', function() {
+  const machineImg = document.querySelector('.hero-machine-img');
+  if (machineImg) {
+    machineImg.style.cursor = 'pointer';
+    machineImg.addEventListener('click', fireBooster);
+  }
+});
 </script>
 </body>
 </html>
