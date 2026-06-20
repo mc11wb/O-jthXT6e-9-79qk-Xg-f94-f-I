@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,464 +9,186 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --black: #080808;
-    --white: #f4f2ee;
-    --yellow: #FFD000;
-    --yellow-dim: rgba(255, 208, 0, 0.12);
-    --gray: #1a1a1a;
-    --gray-mid: #2e2e2e;
-    --text-muted: #888;
-    --radius: 4px;
+    --black: #080808; --white: #f4f2ee; --yellow: #FFD000;
+    --yellow-dim: rgba(255,208,0,0.12); --gray: #1a1a1a;
+    --gray-mid: #2e2e2e; --text-muted: #888; --radius: 4px;
   }
-
   html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.6;
-    font-size: 16px;
-    overflow-x: hidden;
-  }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.6; font-size: 16px; overflow-x: hidden; }
 
   /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 22px 48px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    background: rgba(8,8,8,0.85);
-    backdrop-filter: blur(12px);
-  }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-  }
-  .nav-logo img {
-    height: 28px;
-    width: auto;
-  }
-
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 36px;
-  }
-  nav ul a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-    transition: color 0.2s;
-  }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(8,8,8,0.85); backdrop-filter: blur(12px); }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo img { height: 28px; width: auto; }
+  .nav-right { display: flex; align-items: center; gap: 36px; }
+  nav ul { list-style: none; display: flex; gap: 36px; }
+  nav ul a { color: var(--text-muted); text-decoration: none; font-size: 13px; letter-spacing: 0.5px; transition: color 0.2s; }
   nav ul a:hover { color: var(--white); }
 
+  /* LANG SWITCHER */
+  .lang-switcher { display: flex; gap: 4px; }
+  .lang-btn { background: none; border: 1px solid var(--gray-mid); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 2px; padding: 4px 10px; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
+  .lang-btn.active { border-color: var(--yellow); color: var(--yellow); background: rgba(255,208,0,0.06); }
+  .lang-btn:hover { border-color: var(--yellow); color: var(--yellow); }
+
   /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 72px 48px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -200px; right: -200px;
-    width: 600px; height: 600px;
-    background: radial-gradient(circle, rgba(255,208,0,0.07) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .hero-eyebrow {
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--yellow);
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    display: inline-block;
-    width: 32px; height: 1px;
-    background: var(--yellow);
-  }
-
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 100px 48px 80px; position: relative; overflow: hidden; gap: 40px; }
+  .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,208,0,0.07) 0%, transparent 70%); pointer-events: none; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 4px; color: var(--yellow); text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--yellow); }
   .hero-logo { margin-bottom: 40px; }
+  .hero-body { color: #aaa; font-size: 16px; line-height: 1.75; margin-bottom: 32px; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 0; }
+  .tag { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border: 1px solid var(--gray-mid); color: var(--text-muted); padding: 6px 16px; border-radius: 2px; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s; }
+  .tag:hover { border-color: var(--yellow); color: var(--yellow); background: rgba(255,208,0,0.06); transform: translateY(-2px); }
+  .hero-right { position: relative; display: flex; align-items: center; justify-content: center; height: 100%; }
+  .hero-machine-glow { position: absolute; width: 70%; height: 50%; background: radial-gradient(circle, rgba(255,40,80,0.15) 0%, rgba(100,0,200,0.08) 50%, transparent 70%); border-radius: 50%; filter: blur(50px); pointer-events: none; z-index: 0; }
+  .hero-machine-img { position: relative; z-index: 1; width: 100%; max-width: 480px; height: auto; object-fit: contain; filter: drop-shadow(0 30px 80px rgba(0,0,0,0.9)); animation: floatMachine 6s ease-in-out infinite; }
+  .hero-machine-img.mobile-img { display: none; }
+  @keyframes floatMachine { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  .hero-scroll { position: absolute; bottom: 40px; left: 48px; font-size: 11px; letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase; display: flex; align-items: center; gap: 12px; grid-column: 1/-1; }
+  .hero-scroll::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gray-mid); animation: scrollline 2s ease-in-out infinite; }
+  @keyframes scrollline { 0%,100% { width: 40px; opacity: 1; } 50% { width: 20px; opacity: 0.4; } }
 
-  .hero-body {
-    max-width: 520px;
-    color: #aaa;
-    font-size: 16px;
-    line-height: 1.75;
-    margin-bottom: 32px;
-  }
+  /* COUNTRIES BANNER */
+  .countries-banner { border-top: 1px solid var(--gray-mid); border-bottom: 1px solid var(--gray-mid); padding: 28px 48px; display: flex; align-items: center; gap: 48px; }
+  .countries-label { font-size: 10px; letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase; white-space: nowrap; flex-shrink: 0; }
+  .countries-list { display: flex; gap: 32px; flex-wrap: wrap; }
+  .country-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--white); }
+  .country-flag { font-size: 20px; }
+  .country-status { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; }
+  .country-status.live { background: rgba(255,208,0,0.12); color: var(--yellow); border: 1px solid rgba(255,208,0,0.3); }
+  .country-status.launching { background: rgba(255,255,255,0.04); color: var(--text-muted); border: 1px solid var(--gray-mid); }
 
-  /* HERO TAGS */
-  .hero-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 48px;
-  }
-  .tag {
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border: 1px solid var(--gray-mid);
-    color: var(--text-muted);
-    padding: 6px 16px;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s;
-  }
-  .tag:hover {
-    border-color: var(--yellow);
-    color: var(--yellow);
-    background: rgba(255, 208, 0, 0.06);
-    transform: translateY(-2px);
-  }
-
-  .hero-scroll {
-    position: absolute;
-    bottom: 40px; left: 48px;
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .hero-scroll::after {
-    content: '';
-    display: block;
-    width: 40px; height: 1px;
-    background: var(--gray-mid);
-    animation: scrollline 2s ease-in-out infinite;
-  }
-  @keyframes scrollline {
-    0%, 100% { width: 40px; opacity: 1; }
-    50% { width: 20px; opacity: 0.4; }
-  }
-
-  /* SECTION WRAPPER */
-  section {
-    padding: 100px 48px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--yellow);
-    text-transform: uppercase;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .section-label::before {
-    content: '';
-    display: inline-block;
-    width: 24px; height: 1px;
-    background: var(--yellow);
-  }
+  /* SECTION */
+  section { padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 11px; letter-spacing: 4px; color: var(--yellow); text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .section-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--yellow); }
 
   /* HOW IT WORKS */
-  .how-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-    margin-top: 56px;
-  }
-  .how-card {
-    background: var(--gray);
-    padding: 40px 32px;
-    border-top: 2px solid var(--yellow);
-    position: relative;
-  }
-  .how-number {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px;
-    color: rgba(255,208,0,0.15);
-    line-height: 1;
-    margin-bottom: 20px;
-  }
-  .how-card h3 {
-    font-size: 17px;
-    font-weight: 500;
-    margin-bottom: 12px;
-    color: var(--white);
-  }
-  .how-card p {
-    font-size: 14px;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
+  .how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 56px; }
+  .how-card { background: var(--gray); padding: 40px 32px; border-top: 2px solid var(--yellow); }
+  .how-number { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: rgba(255,208,0,0.15); line-height: 1; margin-bottom: 20px; }
+  .how-card h3 { font-size: 17px; font-weight: 500; margin-bottom: 12px; color: var(--white); }
+  .how-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
 
   /* GAMES */
-  .games-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 48px;
-  }
-  .game-pill {
-    background: var(--gray);
-    border: 1px solid var(--gray-mid);
-    color: #ccc;
-    padding: 10px 22px;
-    font-size: 13px;
-    letter-spacing: 0.5px;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s;
-  }
-  .game-pill:hover {
-    border-color: var(--yellow);
-    color: var(--yellow);
-    background: rgba(255, 208, 0, 0.06);
-    transform: translateY(-2px);
-  }
-  .game-pill.featured {
-    border-color: var(--yellow);
-    color: var(--yellow);
-  }
-  .game-pill.featured:hover {
-    background: rgba(255, 208, 0, 0.12);
-  }
-  .game-pill.more {
-    color: var(--text-muted);
-    border-style: dashed;
-  }
-  .game-pill.more:hover {
-    color: var(--yellow);
-    border-color: var(--yellow);
-    border-style: dashed;
-  }
+  .games-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 48px; }
+  .game-pill { background: var(--gray); border: 1px solid var(--gray-mid); color: #ccc; padding: 10px 22px; font-size: 13px; letter-spacing: 0.5px; border-radius: 2px; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s; }
+  .game-pill:hover { border-color: var(--yellow); color: var(--yellow); background: rgba(255,208,0,0.06); transform: translateY(-2px); }
+  .game-pill.featured { border-color: var(--yellow); color: var(--yellow); }
+  .game-pill.featured:hover { background: rgba(255,208,0,0.12); }
+  .game-pill.more { color: var(--text-muted); border-style: dashed; }
+  .game-pill.more:hover { color: var(--yellow); border-color: var(--yellow); border-style: dashed; }
+
+  /* PARTNER SECTION */
+  .partner-section { background: var(--gray); border-top: 1px solid var(--gray-mid); border-bottom: 1px solid var(--gray-mid); padding: 100px 48px; }
+  .partner-inner { max-width: 1100px; margin: 0 auto; }
+  .partner-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 80px; }
+  .partner-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px,5vw,62px); line-height: 0.95; color: var(--white); margin-bottom: 24px; margin-top: 16px; }
+  .partner-title-accent { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px,5vw,62px); line-height: 0.95; color: #ff3c6e; display: block; margin-bottom: 24px; }
+  .partner-intro { color: var(--text-muted); font-size: 15px; line-height: 1.8; }
+  .partner-benefits { display: flex; flex-direction: column; gap: 28px; }
+  .benefit-item { display: flex; gap: 20px; align-items: flex-start; }
+  .benefit-icon { width: 44px; height: 44px; border-radius: 50%; border: 1px solid #ff3c6e; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+  .benefit-text h4 { font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: #ff3c6e; margin-bottom: 4px; }
+  .benefit-text p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+  .why-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-bottom: 60px; }
+  .why-card { background: #111; padding: 32px 24px; border-top: 2px solid #ff3c6e; text-align: center; }
+  .why-card .why-icon { font-size: 28px; margin-bottom: 16px; }
+  .why-card h4 { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin-bottom: 8px; font-weight: 500; }
+  .why-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .partner-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .check-item { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #ccc; }
+  .check-item::before { content: '✓'; color: var(--yellow); font-weight: 500; flex-shrink: 0; }
 
   /* MAP SECTION */
-  .map-section {
-    padding: 0 0 100px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
+  .map-section { padding: 0 0 100px; max-width: 1100px; margin: 0 auto; }
   .map-section-inner { padding: 0 48px; }
-  .map-wrapper {
-    position: relative;
-    margin-top: 48px;
-    border: 1px solid var(--gray-mid);
-    border-radius: var(--radius);
-    overflow: hidden;
-    height: 480px;
-  }
-  .map-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    pointer-events: none;
-    background: rgba(8,8,8,0.45);
-  }
-  .map-overlay-label {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 52px;
-    letter-spacing: 8px;
-    color: var(--white);
-    opacity: 0.9;
-  }
-  .map-overlay-sub {
-    font-size: 11px;
-    letter-spacing: 5px;
-    color: var(--yellow);
-    text-transform: uppercase;
-    margin-top: 8px;
-  }
-  .map-overlay-dot {
-    width: 8px; height: 8px;
-    background: var(--yellow);
-    border-radius: 50%;
-    margin-top: 20px;
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(255,208,0,0.5); }
-    50% { box-shadow: 0 0 0 10px rgba(255,208,0,0); }
-  }
-  #map-geneva, #map-belgium, #map-uae { width: 100%; height: 100%; }
-
-  /* CONTACT */
-  .contact-section {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 48px 120px;
-  }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    margin-top: 56px;
-    align-items: start;
-  }
-  .contact-left h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 52px;
-    line-height: 1;
-    margin-bottom: 20px;
-    color: var(--white);
-  }
-  .contact-left h2 span { color: var(--yellow); }
-  .contact-left p {
-    color: var(--text-muted);
-    font-size: 14px;
-    line-height: 1.8;
-    margin-bottom: 32px;
-  }
-  .contact-info {
-    font-size: 13px;
-    color: #666;
-    border-top: 1px solid var(--gray-mid);
-    padding-top: 20px;
-  }
-
-  /* FORM */
-  .contact-form { display: flex; flex-direction: column; gap: 16px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .form-group { display: flex; flex-direction: column; gap: 6px; }
-  .form-group label {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-  }
-  .form-group input,
-  .form-group textarea,
-  .form-group select {
-    background: var(--gray);
-    border: 1px solid var(--gray-mid);
-    border-radius: var(--radius);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    padding: 14px 18px;
-    outline: none;
-    transition: border-color 0.2s;
-    appearance: none;
-  }
-  .form-group input:focus,
-  .form-group textarea:focus,
-  .form-group select:focus { border-color: var(--yellow); }
-  .form-group textarea { resize: vertical; min-height: 120px; }
-  .form-group input::placeholder,
-  .form-group textarea::placeholder { color: #555; }
-
-  .btn-submit {
-    background: var(--yellow);
-    color: var(--black);
-    border: none;
-    padding: 16px 36px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border-radius: var(--radius);
-    cursor: pointer;
-    align-self: flex-start;
-    transition: opacity 0.2s, transform 0.15s;
-  }
-  .btn-submit:hover { opacity: 0.88; transform: translateY(-1px); }
-  .btn-submit:active { transform: translateY(0); }
-  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--gray-mid);
-    padding: 32px 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  footer p { font-size: 12px; color: #444; letter-spacing: 0.5px; }
-
-  /* ANIMATIONS */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .fade-in.visible { opacity: 1; transform: none; }
 
   /* MAP TABS */
-  .map-tabs { display: flex; gap: 2px; margin-top: 48px; margin-bottom: 0; }
+  .map-tabs { display: flex; gap: 2px; margin-top: 48px; }
   .map-tab { background: var(--gray); border: 1px solid var(--gray-mid); border-bottom: none; color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 12px 24px; cursor: pointer; transition: all 0.2s; border-radius: 2px 2px 0 0; }
-  .map-tab:hover { color: var(--white); border-color: var(--gray-mid); }
+  .map-tab:hover { color: var(--white); }
   .map-tab.active { background: var(--black); border-color: var(--yellow); color: var(--yellow); border-bottom: 1px solid var(--black); position: relative; z-index: 1; }
   .map-panel { display: none; }
   .map-panel.active { display: block; }
-  .map-wrapper { position: relative; border: 1px solid var(--gray-mid); border-radius: 0 var(--radius) var(--radius) var(--radius); overflow: hidden; height: 380px; margin-top: 0; }
-  .map-locations-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--gray-mid); border-top: none; border-radius: 0 0 var(--radius) var(--radius); }
+  .map-wrapper { position: relative; border: 1px solid var(--gray-mid); border-radius: 0 var(--radius) var(--radius) var(--radius); overflow: hidden; height: 380px; }
+  .map-wrapper > div { width: 100%; height: 100%; }
+
+  /* MAP LOCATIONS LIST */
+  .map-locations-list { border: 1px solid var(--gray-mid); border-top: none; border-radius: 0 0 var(--radius) var(--radius); }
   .map-location-item { display: flex; align-items: center; gap: 16px; padding: 16px 24px; border-top: 1px solid var(--gray-mid); transition: background 0.2s; }
   .map-location-item:first-child { border-top: none; }
   .map-location-item:hover { background: rgba(255,255,255,0.02); }
-  .map-location-item.incoming { opacity: 0.6; }
+  .map-location-item.incoming { opacity: 0.65; }
   .map-location-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .map-location-dot.live { background: var(--yellow); box-shadow: 0 0 6px rgba(255,208,0,0.5); animation: pulse 2s ease-in-out infinite; }
-  .map-location-dot.incoming-dot { background: var(--gray-mid); border: 1px dashed var(--text-muted); }
+  .map-location-dot.live { background: var(--yellow); box-shadow: 0 0 6px rgba(255,208,0,0.6); animation: pulse 2s ease-in-out infinite; }
+  .map-location-dot.incoming-dot { background: transparent; border: 1px dashed var(--text-muted); }
   .map-location-name { font-size: 13px; color: var(--white); font-weight: 400; margin-bottom: 2px; }
   .map-location-addr { font-size: 12px; color: var(--text-muted); }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(255,208,0,0.5); } 50% { box-shadow: 0 0 0 8px rgba(255,208,0,0); } }
+
+  /* COMING SOON PANEL */
   .map-coming-soon-msg { border: 1px solid var(--gray-mid); border-top: none; border-radius: 0 0 var(--radius) var(--radius); padding: 48px 32px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
   .coming-soon-icon { font-size: 40px; }
   .coming-soon-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 3px; color: var(--white); }
   .coming-soon-sub { font-size: 14px; color: var(--text-muted); max-width: 400px; line-height: 1.7; }
 
+  /* CONTACT */
+  .contact-section { max-width: 1100px; margin: 0 auto; padding: 0 48px 120px; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 56px; align-items: start; }
+  .contact-left h2 { font-family: 'Bebas Neue', sans-serif; font-size: 52px; line-height: 1; margin-bottom: 20px; color: var(--white); }
+  .contact-left h2 span { color: var(--yellow); }
+  .contact-left p { color: var(--text-muted); font-size: 14px; line-height: 1.8; margin-bottom: 32px; }
+  .contact-info { font-size: 13px; color: #666; border-top: 1px solid var(--gray-mid); padding-top: 20px; }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 11px; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; }
+  .form-group input, .form-group textarea, .form-group select { background: var(--gray); border: 1px solid var(--gray-mid); border-radius: var(--radius); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; padding: 14px 18px; outline: none; transition: border-color 0.2s; appearance: none; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--yellow); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: #555; }
+  .btn-submit { background: var(--yellow); color: var(--black); border: none; padding: 16px 36px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; border-radius: var(--radius); cursor: pointer; align-self: flex-start; transition: opacity 0.2s, transform 0.15s; }
+  .btn-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-submit:active { transform: translateY(0); }
+  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--gray-mid); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; }
+  footer p { font-size: 12px; color: #444; letter-spacing: 0.5px; }
+
+  /* ANIMATIONS */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  .form-success { display: none; background: var(--yellow-dim); border: 1px solid rgba(255,208,0,0.3); border-radius: var(--radius); padding: 20px 24px; font-size: 14px; color: var(--yellow); letter-spacing: 0.3px; }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 18px 24px; }
     nav ul { display: none; }
-    .hero { padding: 90px 24px 80px; }
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 80px; gap: 0; }
+    .hero-right { display: flex; margin-top: 32px; }
+    .hero-machine-img.desktop-img { display: none; }
+    .hero-machine-img.mobile-img { display: block; max-width: 80vw; margin: 0 auto; }
+    .countries-banner { padding: 20px 24px; gap: 20px; flex-direction: column; align-items: flex-start; }
+    .countries-list { gap: 16px; }
     section { padding: 72px 24px; }
     .how-grid { grid-template-columns: 1fr; }
+    .partner-section { padding: 72px 24px; }
+    .partner-hero { grid-template-columns: 1fr; gap: 40px; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .partner-checklist { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; gap: 48px; }
     .contact-section { padding: 0 24px 80px; }
     .map-section-inner { padding: 0 24px; }
+    .map-tabs { flex-wrap: wrap; }
+    .map-tab { font-size: 11px; padding: 10px 14px; }
     footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
     .form-row { grid-template-columns: 1fr; }
-  }
-
-  .form-success {
-    display: none;
-    background: var(--yellow-dim);
-    border: 1px solid rgba(255,208,0,0.3);
-    border-radius: var(--radius);
-    padding: 20px 24px;
-    font-size: 14px;
-    color: var(--yellow);
-    letter-spacing: 0.3px;
   }
 </style>
 </head>
@@ -475,189 +197,168 @@
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo"><img src="logo.png" alt="BoosterStop"></a>
-  <ul>
-    <li><a href="#concept">Concept</a></li>
-    <li><a href="#where">Emplacements</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="nav-right">
+    <ul>
+      <li><a href="#concept" data-en="Concept" data-fr="Concept">Concept</a></li>
+      <li><a href="#partner" data-en="Partner" data-fr="Partenaire">Partner</a></li>
+      <li><a href="#where" data-en="Locations" data-fr="Emplacements">Locations</a></li>
+      <li><a href="#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow">TCG Vending Machine — Suisse Romande</div>
-  <div class="hero-logo">
-    <img src="logo.png" alt="BoosterStop" style="height: clamp(60px, 10vw, 130px); width: auto;">
-  </div>
-  <p class="hero-body">
-    Le premier réseau de distributeurs automatiques dédiés aux jeux de cartes à collectionner en Suisse.<br>
-    Boosters, displays, boîtes collector — disponibles 24h/24, sans attendre la prochaine sortie en boutique.
-  </p>
-  <div class="hero-tags">
-    <span class="tag">Pokémon</span>
-    <span class="tag">One Piece</span>
-    <span class="tag">Dragon Ball SCG</span>
-    <span class="tag">League of Legends TCG</span>
-    <span class="tag">& more</span>
-  </div>
-  <div class="hero-scroll">Scroll</div>
-</div>
-
-<!-- MACHINE SECTION -->
-<div class="machine-section fade-in">
-  <div class="machine-inner">
-    <div class="machine-text">
-      <div class="section-label">La Machine</div>
-      <h2 class="machine-title">Conçue pour<br><span>le TCG.</span></h2>
-      <p class="machine-desc">Un distributeur automatique entièrement dédié aux jeux de cartes à collectionner. Branding immersif, éclairage LED, jusqu'à 600 boosters et 9 displays par machine.</p>
-      <div class="machine-angles">
-        <button class="angle-btn active" data-img="front.png">Face</button>
-        <button class="angle-btn" data-img="side2.png">3/4 gauche</button>
-        <button class="angle-btn" data-img="side.png">3/4 droit</button>
-      </div>
+  <div class="hero-left">
+    <div class="hero-eyebrow" data-en="TCG Vending Machine Network" data-fr="Réseau de Distributeurs TCG">TCG Vending Machine Network</div>
+    <div class="hero-logo">
+      <img src="logo.png" alt="BoosterStop" style="height: clamp(40px, 6vw, 90px); width: auto;">
     </div>
-    <div class="machine-visual">
-      <div class="machine-glow"></div>
-      <img id="machineImg" src="front.png" alt="BoosterStop Machine">
+    <p class="hero-body" data-en="The first vending machine network dedicated to Trading Card Games.<br>Boosters, displays, collector boxes — available 24/7, right where you are." data-fr="Le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner.<br>Boosters, displays, boîtes collector — disponibles 24h/24, là où vous êtes.">The first vending machine network dedicated to Trading Card Games.<br>Boosters, displays, collector boxes — available 24/7, right where you are.</p>
+    <div class="hero-tags">
+      <span class="tag">Pokémon</span>
+      <span class="tag">One Piece</span>
+      <span class="tag">Dragon Ball SCG</span>
+      <span class="tag">League of Legends TCG</span>
+      <span class="tag" data-en="& more" data-fr="& more">& more</span>
     </div>
   </div>
+  <div class="hero-right">
+    <div class="hero-machine-glow"></div>
+    <img class="hero-machine-img desktop-img" src="front transparent.png" alt="BoosterStop Machine">
+    <img class="hero-machine-img mobile-img" src="front transparent.png" alt="BoosterStop Machine">
+  </div>
+  <div class="hero-scroll" data-en="Scroll" data-fr="Scroll">Scroll</div>
 </div>
 
-<style>
-  .machine-section {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 48px 80px;
-  }
-  .machine-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-  .machine-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(40px, 5vw, 64px);
-    line-height: 1;
-    color: var(--white);
-    margin-bottom: 20px;
-  }
-  .machine-title span { color: var(--yellow); }
-  .machine-desc {
-    color: var(--text-muted);
-    font-size: 14px;
-    line-height: 1.8;
-    margin-bottom: 36px;
-    max-width: 380px;
-  }
-  .machine-angles {
-    display: flex;
-    gap: 8px;
-  }
-  .angle-btn {
-    background: var(--gray);
-    border: 1px solid var(--gray-mid);
-    color: var(--text-muted);
-    padding: 8px 18px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: border-color 0.2s, color 0.2s, background 0.2s;
-  }
-  .angle-btn:hover, .angle-btn.active {
-    border-color: var(--yellow);
-    color: var(--yellow);
-    background: rgba(255, 208, 0, 0.06);
-  }
-  .machine-visual {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .machine-glow {
-    position: absolute;
-    width: 60%;
-    height: 60%;
-    background: radial-gradient(circle, rgba(255, 40, 80, 0.18) 0%, rgba(100, 0, 200, 0.1) 50%, transparent 70%);
-    border-radius: 50%;
-    filter: blur(40px);
-    z-index: 0;
-    pointer-events: none;
-  }
-  #machineImg {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 420px;
-    height: auto;
-    object-fit: contain;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    filter: drop-shadow(0 20px 60px rgba(0,0,0,0.8));
-  }
-  #machineImg.switching {
-    opacity: 0;
-    transform: scale(0.97);
-  }
-
-  @media (max-width: 768px) {
-    .machine-section { padding: 0 20px 64px; }
-    .machine-inner { grid-template-columns: 1fr; gap: 40px; }
-    .machine-visual { order: -1; }
-    #machineImg { max-width: 85vw; margin: 0 auto; display: block; }
-  }
-</style>
-
-<script>
-  document.querySelectorAll('.angle-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      document.querySelectorAll('.angle-btn').forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      const img = document.getElementById('machineImg');
-      img.classList.add('switching');
-      setTimeout(() => {
-        img.src = this.dataset.img;
-        img.classList.remove('switching');
-      }, 300);
-    });
-  });
-</script>
+<!-- COUNTRIES BANNER -->
+<div class="countries-banner fade-in">
+  <span class="countries-label" data-en="Now live &amp; launching" data-fr="En cours &amp; à venir">Now live &amp; launching</span>
+  <div class="countries-list">
+    <div class="country-item">
+      <span class="country-flag">🇨🇭</span>
+      <span data-en="Switzerland" data-fr="Suisse">Switzerland</span>
+      <span class="country-status live" data-en="Live — Geneva" data-fr="Actif — Genève">Live — Geneva</span>
+    </div>
+    <div class="country-item">
+      <span class="country-flag">🇧🇪</span>
+      <span data-en="Belgium" data-fr="Belgique">Belgium</span>
+      <span class="country-status launching" data-en="Launching Soon" data-fr="Bientôt disponible">Launching Soon</span>
+    </div>
+    <div class="country-item">
+      <span class="country-flag">🇦🇪</span>
+      <span data-en="UAE" data-fr="Émirats Arabes Unis">UAE</span>
+      <span class="country-status launching" data-en="Launching Soon" data-fr="Bientôt disponible">Launching Soon</span>
+    </div>
+  </div>
+</div>
 
 <!-- HOW IT WORKS -->
 <section id="concept" class="fade-in">
-  <div class="section-label">Comment ça marche</div>
+  <div class="section-label" data-en="How it works" data-fr="Comment ça marche">How it works</div>
   <div class="how-grid">
     <div class="how-card">
       <div class="how-number">01</div>
-      <h3>Trouve la machine</h3>
-      <p>Nos distributeurs sont installés dans des centres commerciaux, gares et espaces de loisirs en Suisse romande.</p>
+      <h3 data-en="Find the machine" data-fr="Trouve la machine">Find the machine</h3>
+      <p data-en="Our machines are installed in shopping malls, transit hubs, and entertainment venues across our active markets." data-fr="Nos distributeurs sont installés dans des centres commerciaux, gares et espaces de loisirs en Suisse, Belgique et aux Émirats Arabes Unis.">Our machines are installed in shopping malls, transit hubs, and entertainment venues across our active markets.</p>
     </div>
     <div class="how-card">
       <div class="how-number">02</div>
-      <h3>Choisis ton produit</h3>
-      <p>Boosters, displays ou boîtes collector — plusieurs licences TCG disponibles simultanément dans chaque machine.</p>
+      <h3 data-en="Pick your product" data-fr="Choisis ton produit">Pick your product</h3>
+      <p data-en="Boosters, displays or collector boxes — multiple TCG universes available simultaneously in every machine." data-fr="Boosters, displays ou boîtes collector — plusieurs licences TCG disponibles simultanément dans chaque machine.">Boosters, displays or collector boxes — multiple TCG universes available simultaneously in every machine.</p>
     </div>
     <div class="how-card">
       <div class="how-number">03</div>
-      <h3>Paie &amp; ouvre</h3>
-      <p>Paiement par carte ou smartphone. Le produit sort immédiatement. L'expérience du pack opening commence là, devant la machine.</p>
+      <h3 data-en="Pay &amp; open" data-fr="Paie &amp; ouvre">Pay &amp; open</h3>
+      <p data-en="Card or smartphone payment. Your product drops instantly. The pack opening experience starts right there." data-fr="Paiement par carte ou smartphone. Le produit sort immédiatement. L'expérience du pack opening commence là, devant la machine.">Card or smartphone payment. Your product drops instantly. The pack opening experience starts right there.</p>
     </div>
   </div>
 </section>
 
 <!-- GAMES -->
 <section id="games" class="fade-in" style="padding-top: 0;">
-  <div class="section-label">Univers disponibles</div>
+  <div class="section-label" data-en="Available universes" data-fr="Univers disponibles">Available universes</div>
   <div class="games-row">
     <div class="game-pill featured">Pokémon</div>
     <div class="game-pill">One Piece TCG</div>
     <div class="game-pill">Dragon Ball Super CG</div>
     <div class="game-pill">League of Legends TCG</div>
-    <div class="game-pill more">+ d'autres à venir</div>
+    <div class="game-pill more" data-en="+ more coming" data-fr="+ d'autres à venir">+ more coming</div>
   </div>
 </section>
+
+<!-- PARTNER SECTION -->
+<div class="partner-section fade-in" id="partner">
+  <div class="partner-inner">
+    <div class="section-label" data-en="For venue owners" data-fr="Pour les propriétaires d'espaces">For venue owners</div>
+    <div class="partner-hero">
+      <div>
+        <div class="partner-title" data-en="Add value to your space &" data-fr="Donnez plus de valeur à votre espace et">Add value to your space &</div>
+        <span class="partner-title-accent" data-en="Generate passive income!" data-fr="Générez un revenu passif !">Generate passive income!</span>
+        <p class="partner-intro" data-en="Install a BoosterStop TCG vending machine in your venue and earn a steady supplemental income — with zero effort on your end." data-fr="Installez un distributeur automatique BoosterStop de cartes TCG dans votre établissement et profitez d'un revenu complémentaire sans effort.">Install a BoosterStop TCG vending machine in your venue and earn a steady supplemental income — with zero effort on your end.</p>
+      </div>
+      <div class="partner-benefits">
+        <div class="benefit-item">
+          <div class="benefit-icon">💰</div>
+          <div class="benefit-text">
+            <h4 data-en="Passive income" data-fr="Revenu passif">Passive income</h4>
+            <p data-en="Generate regular revenue without any effort or investment." data-fr="Générez des revenus réguliers sans effort.">Generate regular revenue without any effort or investment.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">👥</div>
+          <div class="benefit-text">
+            <h4 data-en="New audience" data-fr="Nouvelle clientèle">New audience</h4>
+            <p data-en="Attract TCG enthusiasts and increase foot traffic in your venue." data-fr="Attirez des passionnés de TCG et augmentez le trafic dans votre établissement.">Attract TCG enthusiasts and increase foot traffic in your venue.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🔑</div>
+          <div class="benefit-text">
+            <h4 data-en="Fully turnkey" data-fr="Clé en main">Fully turnkey</h4>
+            <p data-en="We handle everything: installation, restocking, maintenance and customer service." data-fr="Nous nous occupons de tout : installation, remplissage, maintenance et service client.">We handle everything: installation, restocking, maintenance and customer service.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-label" style="margin-bottom: 32px;" data-en="Why partner with BoosterStop?" data-fr="Pourquoi s'associer à BoosterStop ?">Why partner with BoosterStop?</div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🛡️</div>
+        <h4 data-en="Zero investment" data-fr="Aucun investissement">Zero investment</h4>
+        <p data-en="Completely free and risk-free for your venue." data-fr="Totalement gratuit et sans risque.">Completely free and risk-free for your venue.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚙️</div>
+        <h4 data-en="Zero hassle" data-fr="Zéro contrainte">Zero hassle</h4>
+        <p data-en="We manage everything from A to Z." data-fr="Nous gérons tout de A à Z pour vous.">We manage everything from A to Z.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📈</div>
+        <h4 data-en="Recurring revenue" data-fr="Revenus récurrents">Recurring revenue</h4>
+        <p data-en="A stable and secure supplemental income stream." data-fr="Un complément de revenu stable et sécurisé.">A stable and secure supplemental income stream.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">😊</div>
+        <h4 data-en="Customer satisfaction" data-fr="Satisfaction client">Customer satisfaction</h4>
+        <p data-en="Popular products loved by all ages." data-fr="Des produits populaires qui plaisent à tous les âges !">Popular products loved by all ages.</p>
+      </div>
+    </div>
+    <div class="section-label" style="margin-bottom: 24px;" data-en="What we bring to the table" data-fr="Un espace disponible ? Parlons-en !">What we bring to the table</div>
+    <div class="partner-checklist">
+      <div class="check-item" data-en="Fast and discreet installation" data-fr="Installation rapide et discrète">Fast and discreet installation</div>
+      <div class="check-item" data-en="Modern, secure machines" data-fr="Machine moderne et sécurisée">Modern, secure machines</div>
+      <div class="check-item" data-en="Regular restocking" data-fr="Approvisionnement régulier">Regular restocking</div>
+      <div class="check-item" data-en="Responsive customer support" data-fr="Service client réactif">Responsive customer support</div>
+      <div class="check-item" data-en="Win-win partnership model" data-fr="Un partenariat gagnant-gagnant !">Win-win partnership model</div>
+      <div class="check-item" data-en="Simplicity, reliability and profitability" data-fr="Simplicité, fiabilité et rentabilité.">Simplicity, reliability and profitability</div>
+    </div>
+  </div>
+</div>
 
 <!-- MAP -->
 <div class="map-section fade-in" id="where">
@@ -729,47 +430,47 @@
 
 <!-- CONTACT -->
 <div class="contact-section fade-in" id="contact">
-  <div class="section-label">Nous contacter</div>
+  <div class="section-label" data-en="Get in touch" data-fr="Nous contacter">Get in touch</div>
   <div class="contact-grid">
     <div class="contact-left">
-      <h2>Travaillons<br><span>ensemble.</span></h2>
-      <p>Vous gérez un espace commercial, une salle de jeux, un centre culturel ou un lieu à fort passage ? Parlez-nous de votre emplacement — nous cherchons activement des partenaires pour nos distributeurs à Genève et en Suisse romande.</p>
+      <h2 data-en="Let's work<br><span>together.</span>" data-fr="Travaillons<br><span>ensemble.</span>">Let's work<br><span>together.</span></h2>
+      <p data-en="Do you manage a commercial space, game store, cultural venue or high-traffic location? Tell us about your spot — we're actively looking for partners across Switzerland, Belgium, and the UAE." data-fr="Vous gérez un espace commercial, une salle de jeux, un centre culturel ou un lieu à fort passage ? Parlez-nous de votre emplacement — nous cherchons activement des partenaires en Suisse, en Belgique et aux Émirats Arabes Unis.">Do you manage a commercial space, game store, cultural venue or high-traffic location? Tell us about your spot — we're actively looking for partners across Switzerland, Belgium, and the UAE.</p>
       <div class="contact-info">contact@boosterstop.ch</div>
     </div>
     <form class="contact-form" id="contactForm" method="post" action="https://formspree.io/f/mjgjwgzv">
       <div class="form-row">
         <div class="form-group">
-          <label for="prenom">Prénom</label>
-          <input type="text" id="prenom" name="prenom" placeholder="Jean" required>
+          <label for="prenom" data-en="First name" data-fr="Prénom">First name</label>
+          <input type="text" id="prenom" name="prenom" placeholder="John" required>
         </div>
         <div class="form-group">
-          <label for="nom">Nom</label>
-          <input type="text" id="nom" name="nom" placeholder="Dupont" required>
+          <label for="nom" data-en="Last name" data-fr="Nom">Last name</label>
+          <input type="text" id="nom" name="nom" placeholder="Smith" required>
         </div>
       </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="jean@exemple.ch" required>
+        <input type="email" id="email" name="email" placeholder="john@example.com" required>
       </div>
       <div class="form-group">
-        <label for="profil">Vous êtes</label>
+        <label for="profil" data-en="You are" data-fr="Vous êtes">You are</label>
         <select id="profil" name="profil" required>
-          <option value="" disabled selected>Sélectionnez...</option>
-          <option value="proprietaire_gestionnaire">Propriétaire / gestionnaire d'espace</option>
-          <option value="centre_commercial">Centre commercial</option>
-          <option value="joueur_tcg">Joueur / passionné TCG</option>
-          <option value="investisseur_partenaire">Investisseur / partenaire</option>
-          <option value="presse_media">Presse / média</option>
-          <option value="autre">Autre</option>
+          <option value="" disabled selected data-en="Select..." data-fr="Sélectionnez...">Select...</option>
+          <option value="venue_owner" data-en="Venue owner / manager" data-fr="Propriétaire / gestionnaire d'espace">Venue owner / manager</option>
+          <option value="shopping_mall" data-en="Shopping mall" data-fr="Centre commercial">Shopping mall</option>
+          <option value="tcg_player" data-en="TCG player / enthusiast" data-fr="Joueur / passionné TCG">TCG player / enthusiast</option>
+          <option value="investor_partner" data-en="Investor / partner" data-fr="Investisseur / partenaire">Investor / partner</option>
+          <option value="press_media" data-en="Press / media" data-fr="Presse / média">Press / media</option>
+          <option value="other" data-en="Other" data-fr="Autre">Other</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" placeholder="Décrivez votre projet, emplacement ou question..." required></textarea>
+        <label for="message" data-en="Message" data-fr="Message">Message</label>
+        <textarea id="message" name="message" placeholder="Tell us about your project, location or question..." required></textarea>
       </div>
-      <button type="submit" class="btn-submit">Envoyer →</button>
-      <div class="form-success" id="formSuccess">
-        Message envoyé — nous revenons vers vous sous 48h.
+      <button type="submit" class="btn-submit" data-en="Send →" data-fr="Envoyer →">Send →</button>
+      <div class="form-success" id="formSuccess" data-en="Message sent — we'll get back to you within 48h." data-fr="Message envoyé — nous revenons vers vous sous 48h.">
+        Message sent — we'll get back to you within 48h.
       </div>
     </form>
   </div>
@@ -795,24 +496,30 @@ const darkStyles = [
   { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#141414' }] }
 ];
 
-function makeMarker(map, lat, lng) {
-  return new google.maps.Marker({ position: { lat, lng }, map, icon: { path: google.maps.SymbolPath.CIRCLE, scale: 8, fillColor: '#FFD000', fillOpacity: 0.95, strokeColor: '#FFD000', strokeWeight: 2 } });
+function mkMarker(map, lat, lng) {
+  return new google.maps.Marker({ position: { lat, lng }, map, icon: { path: google.maps.SymbolPath.CIRCLE, scale: 9, fillColor: '#FFD000', fillOpacity: 1, strokeColor: '#FFD000', strokeWeight: 2 } });
 }
 
 function initMap() {
+  // Geneva — 3 real locations
   const gMap = new google.maps.Map(document.getElementById('map-geneva'), {
-    zoom: 12, center: { lat: 46.1960, lng: 6.1430 }, disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
+    zoom: 12, center: { lat: 46.1960, lng: 6.1430 },
+    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
   });
-  makeMarker(gMap, 46.2008, 6.1520);
-  makeMarker(gMap, 46.1997, 6.1638);
-  makeMarker(gMap, 46.1872, 6.1214);
+  mkMarker(gMap, 46.2008, 6.1520); // Genève 3 Rive
+  mkMarker(gMap, 46.1997, 6.1638); // Eaux-Vives
+  mkMarker(gMap, 46.1872, 6.1214); // Petit-Lancy
 
+  // Belgium
   new google.maps.Map(document.getElementById('map-belgium'), {
-    zoom: 7, center: { lat: 50.5, lng: 4.5 }, disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
+    zoom: 7, center: { lat: 50.5, lng: 4.5 },
+    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
   });
 
+  // UAE
   new google.maps.Map(document.getElementById('map-uae'), {
-    zoom: 7, center: { lat: 24.5, lng: 54.5 }, disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
+    zoom: 7, center: { lat: 24.5, lng: 54.5 },
+    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
   });
 }
 
@@ -828,118 +535,70 @@ function switchTab(tab) {
 <!-- MOUSE LIGHT -->
 <div id="mouse-light"></div>
 <style>
-  #mouse-light {
-    pointer-events: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    z-index: 9999;
-    transition: opacity 0.4s ease;
-    opacity: 0;
-  }
-  #mouse-light canvas {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-  }
+  #mouse-light { pointer-events: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; transition: opacity 0.4s ease; opacity: 0; }
+  #mouse-light canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 </style>
 <script>
   const lightEl = document.getElementById('mouse-light');
   const canvas = document.createElement('canvas');
   lightEl.appendChild(canvas);
   const ctx = canvas.getContext('2d');
-
-  let mx = -999, my = -999;
-  let tx = -999, ty = -999;
-  let visible = false;
-
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  document.addEventListener('mousemove', (e) => {
-    mx = e.clientX;
-    my = e.clientY;
-    if (!visible) {
-      tx = mx; ty = my;
-      visible = true;
-      lightEl.style.opacity = '1';
-    }
-  });
-
-  document.addEventListener('mouseleave', () => {
-    visible = false;
-    lightEl.style.opacity = '0';
-  });
-
-  function draw() {
-    tx += (mx - tx) * 0.1;
-    ty += (my - ty) * 0.1;
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    if (!visible) { requestAnimationFrame(draw); return; }
-
-    const x = tx, y = ty;
-
-    // Noyau — petit halo chaud intense au centre
-    const g2 = ctx.createRadialGradient(x, y, 0, x, y, 60);
-    g2.addColorStop(0,   'rgba(255, 230, 80, 0.18)');
-    g2.addColorStop(0.5, 'rgba(255, 208, 0, 0.07)');
-    g2.addColorStop(1,   'rgba(255, 180, 0, 0)');
-    ctx.beginPath();
-    ctx.arc(x, y, 60, 0, Math.PI * 2);
-    ctx.fillStyle = g2;
-    ctx.fill();
-
+  let mx=-999,my=-999,tx=-999,ty=-999,visible=false;
+  function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+  resize(); window.addEventListener('resize',resize);
+  document.addEventListener('mousemove',(e)=>{mx=e.clientX;my=e.clientY;if(!visible){tx=mx;ty=my;visible=true;lightEl.style.opacity='1';}});
+  document.addEventListener('mouseleave',()=>{visible=false;lightEl.style.opacity='0';});
+  function draw(){
+    tx+=(mx-tx)*0.1;ty+=(my-ty)*0.1;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    if(!visible){requestAnimationFrame(draw);return;}
+    const g=ctx.createRadialGradient(tx,ty,0,tx,ty,60);
+    g.addColorStop(0,'rgba(255,230,80,0.18)');g.addColorStop(0.5,'rgba(255,208,0,0.07)');g.addColorStop(1,'rgba(255,180,0,0)');
+    ctx.beginPath();ctx.arc(tx,ty,60,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
     requestAnimationFrame(draw);
   }
   draw();
 </script>
 
-<!-- SCROLL ANIMATIONS -->
+<!-- LANG + SCROLL + FORM -->
 <script>
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); }
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (!val) return;
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') { el.placeholder = val; }
+    else if (el.tagName === 'OPTION') { el.textContent = val; }
+    else { el.innerHTML = val; }
   });
+  document.querySelector('#prenom').placeholder = lang === 'fr' ? 'Jean' : 'John';
+  document.querySelector('#nom').placeholder = lang === 'fr' ? 'Dupont' : 'Smith';
+  document.querySelector('#message').placeholder = lang === 'fr' ? 'Décrivez votre projet, emplacement ou question...' : 'Tell us about your project, location or question...';
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
 
-<!-- FORMSPREE -->
-<script>
 const form = document.getElementById('contactForm');
 const successMessage = document.getElementById('formSuccess');
 const submitButton = form.querySelector('.btn-submit');
-
 form.addEventListener('submit', async function(e) {
   e.preventDefault();
   successMessage.style.display = 'none';
   submitButton.disabled = true;
-  submitButton.textContent = 'Envoi en cours...';
-
+  submitButton.textContent = currentLang === 'fr' ? 'Envoi en cours...' : 'Sending...';
   try {
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: new FormData(form),
-      headers: { Accept: 'application/json' }
-    });
-    if (response.ok) {
-      form.reset();
-      successMessage.style.display = 'block';
-    } else {
-      alert('Une erreur est survenue. Merci de réessayer.');
-    }
-  } catch (error) {
-    alert('Impossible d\'envoyer le formulaire pour le moment.');
-  } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = 'Envoyer →';
-  }
+    const response = await fetch(form.action, { method: form.method, body: new FormData(form), headers: { Accept: 'application/json' } });
+    if (response.ok) { form.reset(); successMessage.style.display = 'block'; }
+    else { alert(currentLang === 'fr' ? 'Une erreur est survenue. Merci de réessayer.' : 'An error occurred. Please try again.'); }
+  } catch { alert(currentLang === 'fr' ? "Impossible d'envoyer le formulaire pour le moment." : 'Unable to send the form.'); }
+  finally { submitButton.disabled = false; submitButton.textContent = currentLang === 'fr' ? 'Envoyer →' : 'Send →'; }
 });
 </script>
 
