@@ -242,12 +242,10 @@
     display: none;
     position: absolute;
     bottom: 18%;
-    left: 50%;
+    left: 25%;
     transform: translateX(-50%);
     z-index: 10;
     pointer-events: none;
-    width: 100%;
-    display: none;
     justify-content: center;
   }
   .booster-anim img {
@@ -258,10 +256,11 @@
     filter: drop-shadow(0 8px 40px rgba(232,24,60,0.7));
   }
   @keyframes boosterPop {
-    0%   { opacity: 0; transform: translateY(20px); }
-    10%  { opacity: 1; transform: translateY(0px); }
-    70%  { opacity: 1; transform: translateY(-120px); }
-    100% { opacity: 0; transform: translateY(-150px); }
+    0%   { opacity: 0; transform: scale(0.8); filter: drop-shadow(0 8px 24px rgba(232,24,60,0.5)); }
+    10%  { opacity: 1; transform: scale(1);   filter: drop-shadow(0 8px 24px rgba(232,24,60,0.5)); }
+    75%  { opacity: 1; transform: scale(1);   filter: drop-shadow(0 8px 24px rgba(232,24,60,0.5)); }
+    85%  { opacity: 1; transform: scale(1.15); filter: drop-shadow(0 0 40px rgba(232,24,60,1)) brightness(1.4); }
+    100% { opacity: 0; transform: scale(1.5); filter: drop-shadow(0 0 80px rgba(232,24,60,0)) brightness(2); }
   }
 </style>
 </head>
