@@ -237,27 +237,33 @@
 
 
   /* BOOSTER ANIMATION */
+  .hero-right { position: relative; }
   .booster-anim {
     display: none;
-    position: fixed;
-    bottom: 80px;
-    right: 24px;
-    z-index: 8000;
+    position: absolute;
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
     pointer-events: none;
+    width: 100%;
+    display: none;
+    justify-content: center;
   }
   .booster-anim img {
-    width: 90px;
+    width: clamp(70px, 10vw, 110px);
     opacity: 0;
-    transform: translateY(60px) rotate(-8deg);
-    animation: boosterPop 2.2s cubic-bezier(0.22,1,0.36,1) forwards;
-    filter: drop-shadow(0 8px 32px rgba(232,24,60,0.6));
+    transform: translateY(0px) rotate(-6deg) scale(0.6);
+    animation: boosterPop 2.4s cubic-bezier(0.22,1,0.36,1) forwards;
+    filter: drop-shadow(0 8px 40px rgba(232,24,60,0.7));
   }
   @keyframes boosterPop {
-    0%   { opacity: 0; transform: translateY(60px) rotate(-8deg) scale(0.7); }
-    15%  { opacity: 1; transform: translateY(-10px) rotate(3deg) scale(1.08); }
-    30%  { transform: translateY(0px) rotate(-2deg) scale(1); }
-    70%  { opacity: 1; transform: translateY(-4px) rotate(1deg) scale(1); }
-    100% { opacity: 0; transform: translateY(-40px) rotate(4deg) scale(0.9); }
+    0%   { opacity: 0; transform: translateY(0px) rotate(-6deg) scale(0.6); }
+    10%  { opacity: 1; transform: translateY(-20px) rotate(4deg) scale(1.1); }
+    25%  { transform: translateY(-80px) rotate(-3deg) scale(1.05); }
+    55%  { opacity: 1; transform: translateY(-140px) rotate(2deg) scale(1); }
+    80%  { opacity: 0.6; transform: translateY(-200px) rotate(-1deg) scale(0.95); }
+    100% { opacity: 0; transform: translateY(-260px) rotate(3deg) scale(0.85); }
   }
 </style>
 </head>
@@ -300,6 +306,9 @@
     <div class="hero-machine-glow"></div>
     <img class="hero-machine-img desktop-img" src="front transparent.png" alt="BoosterStop Machine">
     <img class="hero-machine-img mobile-img" src="front transparent.png" alt="BoosterStop Machine">
+    <div class="booster-anim" id="boosterAnim">
+      <img src="Booster.png" alt="Booster">
+    </div>
   </div>
   <div class="hero-scroll" data-en="Scroll" data-fr="Scroll">Scroll</div>
 </div>
@@ -703,16 +712,12 @@ form.addEventListener('submit', async function(e) {
 })();
 </script>
 
-<!-- BOOSTER ANIMATION -->
-<div class="booster-anim" id="boosterAnim">
-  <img src="Booster.png" alt="Booster">
-</div>
 
 <script>
 // Booster animation
 function fireBooster() {
   const el = document.getElementById('boosterAnim');
-  el.style.display = 'block';
+  el.style.display = 'flex';
   const img = el.querySelector('img');
   img.style.animation = 'none';
   img.offsetHeight; // reflow
