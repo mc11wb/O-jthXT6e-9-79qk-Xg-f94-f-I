@@ -173,9 +173,12 @@
     nav ul { display: none; }
     body { padding-bottom: 68px; }
     .hero { grid-template-columns: 1fr; padding: 100px 24px 80px; gap: 0; }
+    .hero-tags { gap: 8px; }
+    .tag { font-size: 10px; padding: 5px 12px; letter-spacing: 1px; }
     .hero-right { display: flex; margin-top: 32px; }
     .hero-machine-img.desktop-img { display: none; }
     .hero-machine-img.mobile-img { display: block; max-width: 80vw; margin: 0 auto; }
+    .booster-anim { bottom: 15%; left: 40%; }
     .countries-banner { padding: 20px 24px; gap: 20px; flex-direction: column; align-items: flex-start; }
     .countries-list { gap: 16px; }
     section { padding: 72px 24px; }
@@ -304,10 +307,14 @@
     <p class="hero-body" data-en="The first vending machine network dedicated to Trading Card Games.<br>Boosters, displays, collector boxes — available 24/7, right where you are." data-fr="Le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner.<br>Boosters, displays, boîtes collector — disponibles 24h/24, là où vous êtes.">The first vending machine network dedicated to Trading Card Games.<br>Boosters, displays, collector boxes — available 24/7, right where you are.</p>
     <div class="hero-tags">
       <span class="tag">Pokémon</span>
-      <span class="tag">One Piece</span>
-      <span class="tag">Dragon Ball SCG</span>
-      <span class="tag">League of Legends TCG</span>
-      <span class="tag" data-en="& more" data-fr="& more">& more</span>
+      <span class="tag">One Piece TCG</span>
+      <span class="tag">Dragon Ball Super</span>
+      <span class="tag">Riftbound: LoL TCG</span>
+      <span class="tag">Magic: The Gathering</span>
+      <span class="tag">Disney Lorcana</span>
+      <span class="tag">Yu-Gi-Oh!</span>
+      <span class="tag">Naruto TCG</span>
+      <span class="tag" data-en="& more" data-fr="& plus">& more</span>
     </div>
   </div>
   <div class="hero-right">
@@ -365,17 +372,74 @@
   </div>
 </section>
 
-<!-- GAMES -->
-<section id="games" class="fade-in" style="padding-top: 0;">
-  <div class="section-label" data-en="Available universes" data-fr="Univers disponibles">Available universes</div>
-  <div class="games-row">
-    <div class="game-pill featured">Pokémon</div>
-    <div class="game-pill">One Piece TCG</div>
-    <div class="game-pill">Dragon Ball Super CG</div>
-    <div class="game-pill">League of Legends TCG</div>
-    <div class="game-pill more" data-en="+ more coming" data-fr="+ d'autres à venir">+ more coming</div>
+
+<!-- MAP -->
+<div class="map-section fade-in" id="where">
+  <div class="map-section-inner">
+    <div class="section-label" data-en="Locations" data-fr="Emplacements">Locations</div>
+
+    <div class="map-tabs">
+      <button class="map-tab active" onclick="switchTab('geneva')" data-en="🇨🇭 Geneva — Live" data-fr="🇨🇭 Genève — Actif">🇨🇭 Geneva — Live</button>
+      <button class="map-tab" onclick="switchTab('belgium')" data-en="🇧🇪 Belgium — Soon" data-fr="🇧🇪 Belgique — Bientôt">🇧🇪 Belgium — Soon</button>
+      <button class="map-tab" onclick="switchTab('uae')" data-en="🇦🇪 UAE — Soon" data-fr="🇦🇪 Émirats — Bientôt">🇦🇪 UAE — Soon</button>
+    </div>
+
+    <!-- GENEVA -->
+    <div class="map-panel active" id="tab-geneva">
+      <div class="map-wrapper"><div id="map-geneva"></div></div>
+      <div class="map-locations-list">
+        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(0)">
+          <div class="map-location-dot live"></div>
+          <div>
+            <div class="map-location-name">Poste Filiale — Genève 3 Rive</div>
+            <div class="map-location-addr">Rue du Vieux-Collège 3, 1204 Genève</div>
+          </div>
+        </div>
+        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(1)">
+          <div class="map-location-dot live"></div>
+          <div>
+            <div class="map-location-name">Poste Filiale — Genève 6 Les Eaux-Vives</div>
+            <div class="map-location-addr">Rue du 31-Décembre 47, 1207 Genève</div>
+          </div>
+        </div>
+        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(2)">
+          <div class="map-location-dot live"></div>
+          <div>
+            <div class="map-location-name">Poste Filiale — Petit-Lancy 1</div>
+            <div class="map-location-addr">Rue des Bossons 88B, 1213 Petit-Lancy</div>
+          </div>
+        </div>
+        <div class="map-location-item incoming">
+          <div class="map-location-dot incoming-dot"></div>
+          <div>
+            <div class="map-location-name" data-en="+ 8 new locations coming very soon in Geneva" data-fr="+ 8 nouveaux emplacements très prochainement à Genève">+ 8 new locations coming very soon in Geneva</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BELGIUM -->
+    <div class="map-panel" id="tab-belgium">
+      <div class="map-wrapper"><div id="map-belgium"></div></div>
+      <div class="map-coming-soon-msg">
+        <div class="coming-soon-icon">🇧🇪</div>
+        <div class="coming-soon-title" data-en="Belgium — Launching Soon" data-fr="Belgique — Bientôt disponible">Belgium — Launching Soon</div>
+        <div class="coming-soon-sub" data-en="We're actively scouting locations across Belgium. Stay tuned." data-fr="Nous recherchons activement des emplacements en Belgique. Restez connectés.">We're actively scouting locations across Belgium. Stay tuned.</div>
+      </div>
+    </div>
+
+    <!-- UAE -->
+    <div class="map-panel" id="tab-uae">
+      <div class="map-wrapper"><div id="map-uae"></div></div>
+      <div class="map-coming-soon-msg">
+        <div class="coming-soon-icon">🇦🇪</div>
+        <div class="coming-soon-title" data-en="UAE — Launching Soon" data-fr="Émirats Arabes Unis — Bientôt disponible">UAE — Launching Soon</div>
+        <div class="coming-soon-sub" data-en="Dubai and Abu Dhabi on the roadmap. Announcements coming soon." data-fr="Dubaï et Abu Dhabi dans la feuille de route. Annonces à venir.">Dubai and Abu Dhabi on the roadmap. Announcements coming soon.</div>
+      </div>
+    </div>
+
   </div>
-</section>
+</div>
 
 <!-- PARTNER SECTION -->
 <div class="partner-section fade-in" id="partner">
@@ -446,73 +510,6 @@
   </div>
 </div>
 
-<!-- MAP -->
-<div class="map-section fade-in" id="where">
-  <div class="map-section-inner">
-    <div class="section-label" data-en="Locations" data-fr="Emplacements">Locations</div>
-
-    <div class="map-tabs">
-      <button class="map-tab active" onclick="switchTab('geneva')" data-en="🇨🇭 Geneva — Live" data-fr="🇨🇭 Genève — Actif">🇨🇭 Geneva — Live</button>
-      <button class="map-tab" onclick="switchTab('belgium')" data-en="🇧🇪 Belgium — Soon" data-fr="🇧🇪 Belgique — Bientôt">🇧🇪 Belgium — Soon</button>
-      <button class="map-tab" onclick="switchTab('uae')" data-en="🇦🇪 UAE — Soon" data-fr="🇦🇪 Émirats — Bientôt">🇦🇪 UAE — Soon</button>
-    </div>
-
-    <!-- GENEVA -->
-    <div class="map-panel active" id="tab-geneva">
-      <div class="map-wrapper"><div id="map-geneva"></div></div>
-      <div class="map-locations-list">
-        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(0)">
-          <div class="map-location-dot live"></div>
-          <div>
-            <div class="map-location-name">Poste Filiale — Genève 3 Rive</div>
-            <div class="map-location-addr">Rue du Vieux-Collège 3, 1204 Genève</div>
-          </div>
-        </div>
-        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(1)">
-          <div class="map-location-dot live"></div>
-          <div>
-            <div class="map-location-name">Poste Filiale — Genève 6 Les Eaux-Vives</div>
-            <div class="map-location-addr">Rue du 31-Décembre 47, 1207 Genève</div>
-          </div>
-        </div>
-        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(2)">
-          <div class="map-location-dot live"></div>
-          <div>
-            <div class="map-location-name">Poste Filiale — Petit-Lancy 1</div>
-            <div class="map-location-addr">Rue des Bossons 88B, 1213 Petit-Lancy</div>
-          </div>
-        </div>
-        <div class="map-location-item incoming">
-          <div class="map-location-dot incoming-dot"></div>
-          <div>
-            <div class="map-location-name" data-en="+ 8 new locations coming very soon in Geneva" data-fr="+ 8 nouveaux emplacements très prochainement à Genève">+ 8 new locations coming very soon in Geneva</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- BELGIUM -->
-    <div class="map-panel" id="tab-belgium">
-      <div class="map-wrapper"><div id="map-belgium"></div></div>
-      <div class="map-coming-soon-msg">
-        <div class="coming-soon-icon">🇧🇪</div>
-        <div class="coming-soon-title" data-en="Belgium — Launching Soon" data-fr="Belgique — Bientôt disponible">Belgium — Launching Soon</div>
-        <div class="coming-soon-sub" data-en="We're actively scouting locations across Belgium. Stay tuned." data-fr="Nous recherchons activement des emplacements en Belgique. Restez connectés.">We're actively scouting locations across Belgium. Stay tuned.</div>
-      </div>
-    </div>
-
-    <!-- UAE -->
-    <div class="map-panel" id="tab-uae">
-      <div class="map-wrapper"><div id="map-uae"></div></div>
-      <div class="map-coming-soon-msg">
-        <div class="coming-soon-icon">🇦🇪</div>
-        <div class="coming-soon-title" data-en="UAE — Launching Soon" data-fr="Émirats Arabes Unis — Bientôt disponible">UAE — Launching Soon</div>
-        <div class="coming-soon-sub" data-en="Dubai and Abu Dhabi on the roadmap. Announcements coming soon." data-fr="Dubaï et Abu Dhabi dans la feuille de route. Annonces à venir.">Dubai and Abu Dhabi on the roadmap. Announcements coming soon.</div>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 <!-- CONTACT -->
 <div class="contact-section fade-in" id="contact">
@@ -725,7 +722,7 @@ form.addEventListener('submit', async function(e) {
 // Booster animation
 function fireBooster() {
   // 1. Shake the machine
-  const machine = document.querySelector('.hero-machine-img');
+  const machine = document.querySelector('.hero-machine-img.mobile-img') && window.innerWidth <= 768 ? document.querySelector('.hero-machine-img.mobile-img') : document.querySelector('.hero-machine-img.desktop-img') || document.querySelector('.hero-machine-img');
   if (machine) {
     machine.classList.remove('machine-shaking');
     machine.offsetHeight;
@@ -823,11 +820,10 @@ window.initMap = function() {
 
 // PUSH button click — fire booster
 document.addEventListener('DOMContentLoaded', function() {
-  const machineImg = document.querySelector('.hero-machine-img');
-  if (machineImg) {
-    machineImg.style.cursor = 'pointer';
-    machineImg.addEventListener('click', fireBooster);
-  }
+  document.querySelectorAll('.hero-machine-img').forEach(function(img) {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', fireBooster);
+  });
 });
 </script>
 </body>
