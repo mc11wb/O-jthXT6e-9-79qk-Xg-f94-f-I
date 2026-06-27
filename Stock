@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BoosterStop — Live Stock</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#120F2A;--white:#f4f2ee;--yellow:#FFD000;
+  --gray:#1E1A3A;--gray-mid:#2e2a50;--text-muted:#8888aa;
+  --red:#E8183C;--green:#00e676;--radius:4px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;min-height:100vh;background-image:radial-gradient(ellipse at 80% 10%,rgba(232,24,60,0.07) 0%,transparent 50%),radial-gradient(ellipse at 20% 80%,rgba(42,31,94,0.25) 0%,transparent 60%);}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(18,15,42,0.97);position:sticky;top:0;z-index:200;backdrop-filter:blur(12px);}
+.nav-logo img{height:26px;}
+.nav-actions{display:flex;align-items:center;gap:16px;}
+.back-btn{color:var(--text-muted);text-decoration:none;font-size:12px;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;display:flex;align-items:center;gap:6px;}
+.back-btn:hover{color:var(--white);}
+.lang-switcher{display:flex;gap:4px;}
+.lang-btn{background:none;border:1px solid var(--gray-mid);color:var(--text-muted);font-family:'DM Sans';font-size:11px;letter-spacing:2px;padding:3px 10px;border-radius:2px;cursor:pointer;transition:all 0.2s;}
+.lang-btn.active{border-color:var(--red);color:var(--red);background:rgba(232,24,60,0.06);}
+
+/* HEADER */
+.page-header{padding:36px 48px 20px;max-width:1280px;margin:0 auto;}
+.section-label{font-size:10px;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--red);}
+.page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,60px);line-height:1;color:var(--white);margin-bottom:10px;}
+.page-title span{color:var(--red);}
+.live-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:livePulse 2s infinite;flex-shrink:0;}
+@keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(0,230,118,0.5);}50%{box-shadow:0 0 0 5px rgba(0,230,118,0);}}
+.live-text{font-size:12px;color:var(--text-muted);}
+.refresh-btn{background:none;border:1px solid var(--red);color:var(--red);font-family:'DM Sans';font-size:11px;letter-spacing:1px;padding:5px 14px;border-radius:2px;cursor:pointer;transition:all 0.2s;}
+.refresh-btn:hover{background:rgba(232,24,60,0.1);}
+
+/* COUNTRY TABS */
+.country-tabs-wrap{padding:0 48px;max-width:1280px;margin:20px auto 0;}
+.country-tabs{display:flex;gap:2px;}
+.country-tab{background:var(--gray);border:1px solid var(--gray-mid);border-bottom:none;color:var(--text-muted);font-family:'DM Sans';font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:10px 20px;cursor:pointer;transition:all 0.2s;border-radius:2px 2px 0 0;display:flex;align-items:center;gap:8px;user-select:none;}
+.country-tab.active{background:var(--black);border-color:var(--red);color:var(--white);border-bottom:1px solid var(--black);position:relative;z-index:1;}
+.country-tab:hover:not(.active){color:var(--white);}
+.tab-flag{font-size:17px;}
+.tab-badge{font-size:9px;padding:1px 6px;border-radius:2px;letter-spacing:1px;}
+.tab-badge.live{background:rgba(255,208,0,0.12);color:var(--yellow);border:1px solid rgba(255,208,0,0.3);}
+.tab-badge.soon{background:rgba(255,255,255,0.04);color:var(--text-muted);border:1px solid var(--gray-mid);}
+
+/* COUNTRY PANELS */
+.country-panel{display:none;border-top:1px solid var(--red);}
+.country-panel.active{display:block;}
+
+/* STATS BAR */
+.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1280px;margin:0 auto;padding:0 48px;}
+.stat-card{background:var(--gray);padding:18px 22px;border-bottom:2px solid rgba(232,24,60,0.3);}
+.stat-value{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--white);line-height:1;}
+.stat-value.green{color:var(--green);}
+.stat-value.yellow{color:var(--yellow);}
+.stat-value.red{color:var(--red);}
+.stat-label{font-size:10px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-top:3px;}
+
+/* MACHINE SELECTOR */
+.machine-selector{max-width:1280px;margin:28px auto 0;padding:0 48px;}
+.machine-select-label{font-size:10px;letter-spacing:3px;color:var(--text-muted);text-transform:uppercase;margin-bottom:10px;}
+.machine-tabs{display:flex;gap:8px;flex-wrap:wrap;}
+.machine-tab{background:var(--gray);border:1px solid var(--gray-mid);color:var(--text-muted);font-size:12px;padding:9px 18px;border-radius:2px;cursor:pointer;transition:all 0.2s;display:flex;flex-direction:column;gap:2px;}
+.machine-tab.active{border-color:var(--red);color:var(--white);background:rgba(232,24,60,0.06);}
+.machine-tab:hover:not(.active){color:var(--white);border-color:var(--gray-mid);}
+.machine-tab .m-addr{font-size:10px;color:var(--text-muted);letter-spacing:0;}
+
+/* MACHINE VIEW */
+.machine-view{max-width:1280px;margin:20px auto 0;padding:0 48px 60px;display:grid;grid-template-columns:320px 1fr;gap:28px;align-items:start;}
+
+/* 3D MACHINE VISUAL */
+.machine-3d-wrap{position:sticky;top:80px;}
+.machine-img-wrap{position:relative;user-select:none;}
+.machine-img-wrap img.machine-render{width:100%;display:block;filter:drop-shadow(0 16px 48px rgba(0,0,0,0.85));}
+
+/* SLOT GRID OVERLAY */
+/* Positioned over the glass/shelf area of the machine image */
+.slot-overlay{
+  position:absolute;
+  top:8%;left:7%;
+  width:60%;height:70%;
+  display:grid;
+  grid-template-rows:repeat(7,1fr);
+  grid-template-columns:repeat(5,1fr);
+  gap:2px;
+}
+.slot-cell{
+  border-radius:2px;cursor:pointer;
+  background:rgba(255,255,255,0.03);
+  border:1px solid transparent;
+  transition:all 0.15s;
+  display:flex;align-items:center;justify-content:center;
+}
+.slot-cell:hover{background:rgba(255,208,0,0.18);border-color:rgba(255,208,0,0.4);}
+.slot-cell.stocked{background:rgba(0,230,118,0.08);}
+.slot-cell.low{background:rgba(255,208,0,0.1);border-color:rgba(255,208,0,0.2);}
+.slot-cell.empty{background:rgba(232,24,60,0.1);border-color:rgba(232,24,60,0.2);}
+.slot-cell.active{border-color:var(--yellow)!important;background:rgba(255,208,0,0.2)!important;}
+.slot-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.slot-dot.green{background:var(--green);}
+.slot-dot.yellow{background:var(--yellow);}
+.slot-dot.red{background:var(--red);}
+.slot-dot.gray{background:var(--text-muted);}
+
+/* SLOT TOOLTIP (floating) */
+.slot-tooltip{
+  position:fixed;
+  background:#18143a;
+  border:1px solid var(--red);
+  border-radius:4px;
+  padding:12px 14px;
+  width:220px;
+  z-index:300;
+  box-shadow:0 8px 32px rgba(0,0,0,0.7);
+  pointer-events:none;
+  opacity:0;
+  transition:opacity 0.12s;
+  font-size:12px;
+}
+.slot-tooltip.visible{opacity:1;}
+.slot-tooltip-badge{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
+.slot-tooltip-name{font-size:13px;font-weight:500;color:var(--white);margin-bottom:8px;line-height:1.3;}
+.slot-tooltip-stock{display:flex;align-items:center;gap:8px;margin-bottom:4px;}
+.tt-bar{flex:1;height:3px;background:var(--gray-mid);border-radius:2px;overflow:hidden;}
+.tt-fill{height:100%;border-radius:2px;}
+.tt-fill.high{background:var(--green);}
+.tt-fill.mid{background:var(--yellow);}
+.tt-fill.low{background:var(--red);}
+.tt-count{font-size:11px;color:var(--text-muted);white-space:nowrap;}
+.tt-update{font-size:10px;color:#4a4868;margin-top:2px;}
+
+/* PRODUCT PANEL */
+.product-panel{}
+.product-panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.product-panel-title{font-size:10px;letter-spacing:3px;color:var(--text-muted);text-transform:uppercase;}
+.restock-all-btn{background:var(--red);color:var(--white);border:none;font-family:'DM Sans';font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 18px;border-radius:2px;cursor:pointer;transition:opacity 0.2s;display:flex;align-items:center;gap:6px;}
+.restock-all-btn:hover{opacity:0.85;}
+
+/* PRODUCT ROWS */
+.product-list{display:flex;flex-direction:column;gap:2px;}
+.product-row{
+  background:var(--gray);padding:12px 16px;
+  display:grid;grid-template-columns:28px 1fr auto 110px 32px;
+  align-items:center;gap:12px;
+  border-left:3px solid transparent;
+  transition:all 0.15s;cursor:pointer;
+}
+.product-row:hover{background:rgba(255,255,255,0.025);}
+.product-row.active-row{border-left-color:var(--yellow);background:rgba(255,208,0,0.04);}
+.product-row.low-row{border-left-color:var(--yellow);}
+.product-row.empty-row{border-left-color:var(--red);opacity:0.7;}
+.row-slot{font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--text-muted);letter-spacing:1px;text-align:center;}
+.row-name{font-size:13px;color:var(--white);}
+.row-sub{font-size:10px;color:var(--text-muted);margin-top:1px;}
+.row-price{font-size:12px;color:var(--text-muted);white-space:nowrap;}
+.row-stock{display:flex;align-items:center;gap:7px;}
+.row-bar{flex:1;height:3px;background:var(--gray-mid);border-radius:2px;overflow:hidden;}
+.row-fill{height:100%;border-radius:2px;transition:width 0.4s;}
+.row-fill.high{background:var(--green);}
+.row-fill.mid{background:var(--yellow);}
+.row-fill.low{background:var(--red);}
+.row-count{font-size:11px;color:var(--text-muted);white-space:nowrap;}
+.row-action{width:28px;height:28px;border:1px solid var(--gray-mid);border-radius:2px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;font-size:13px;color:var(--text-muted);}
+.row-action:hover{border-color:var(--red);color:var(--red);background:rgba(232,24,60,0.08);}
+
+/* DETAIL PANEL (right of product list) */
+.detail-panel{background:var(--gray);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:20px;margin-top:2px;display:none;}
+.detail-panel.open{display:block;}
+.detail-title{font-size:14px;font-weight:500;color:var(--white);margin-bottom:4px;}
+.detail-slot{font-size:10px;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:12px;}
+.detail-stock-big{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;color:var(--white);margin-bottom:4px;}
+.detail-stock-label{font-size:10px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-bottom:14px;}
+.detail-update{font-size:11px;color:var(--text-muted);margin-bottom:16px;}
+.detail-restock-btn{width:100%;background:none;border:1px solid var(--red);color:var(--red);font-family:'DM Sans';font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:9px;border-radius:2px;cursor:pointer;transition:all 0.2s;}
+.detail-restock-btn:hover{background:rgba(232,24,60,0.1);}
+
+/* COMING SOON */
+.coming-soon-country{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 48px;text-align:center;gap:16px;max-width:1280px;margin:0 auto;}
+.coming-soon-flag{font-size:52px;}
+.coming-soon-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:4px;color:var(--white);}
+.coming-soon-sub{font-size:14px;color:var(--text-muted);max-width:380px;line-height:1.7;}
+.notify-form{display:flex;gap:8px;margin-top:8px;}
+.notify-input{background:var(--gray);border:1px solid var(--gray-mid);border-radius:2px;color:var(--white);font-family:'DM Sans';font-size:13px;padding:10px 16px;outline:none;width:240px;transition:border-color 0.2s;}
+.notify-input:focus{border-color:var(--red);}
+.notify-btn{background:var(--red);color:var(--white);border:none;font-family:'DM Sans';font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:10px 18px;border-radius:2px;cursor:pointer;}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.modal-overlay.open{display:flex;}
+.modal{background:#1a1630;border:1px solid var(--red);border-radius:var(--radius);padding:28px;width:420px;max-width:92vw;}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--white);margin-bottom:4px;}
+.modal-sub{font-size:12px;color:var(--text-muted);margin-bottom:20px;}
+.modal-label{font-size:10px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-bottom:6px;}
+.modal-input{width:100%;background:var(--gray);border:1px solid var(--gray-mid);border-radius:2px;color:var(--white);font-family:'DM Sans';font-size:14px;padding:11px 14px;outline:none;margin-bottom:14px;transition:border-color 0.2s;}
+.modal-input:focus{border-color:var(--red);}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end;}
+.modal-cancel{background:none;border:1px solid var(--gray-mid);color:var(--text-muted);font-family:'DM Sans';font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:9px 18px;border-radius:2px;cursor:pointer;}
+.modal-submit{background:var(--red);color:var(--white);border:none;font-family:'DM Sans';font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:9px 18px;border-radius:2px;cursor:pointer;}
+
+/* STATE */
+.state-msg{text-align:center;padding:56px 24px;color:var(--text-muted);}
+.state-msg .icon{font-size:36px;margin-bottom:12px;}
+.state-msg h3{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);margin-bottom:6px;letter-spacing:2px;}
+.state-msg p{font-size:13px;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:14px 20px;}
+  .page-header,.country-tabs-wrap,.machine-selector{padding-left:20px;padding-right:20px;}
+  .stats-bar{padding:0 20px;grid-template-columns:1fr 1fr;}
+  .machine-view{padding:16px 20px 48px;grid-template-columns:1fr;}
+  .machine-3d-wrap{position:static;}
+  .slot-overlay{gap:1px;}
+  .coming-soon-country{padding:56px 20px;}
+  .notify-form{flex-direction:column;}
+  .notify-input{width:100%;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><img src="logo.png" alt="BoosterStop"></a>
+  <div class="nav-actions">
+    <a href="/" class="back-btn">← <span data-en="Back to site" data-fr="Retour au site">Back to site</span></a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="section-label" data-en="Live inventory" data-fr="Stock en temps réel">Live inventory</div>
+  <h1 class="page-title" data-en="Machine <span>Stock</span>" data-fr="Stock <span>Machines</span>">Machine <span>Stock</span></h1>
+  <div class="live-meta">
+    <span class="live-dot"></span>
+    <span class="live-text" id="lastUpdate">Connecting...</span>
+    <button class="refresh-btn" onclick="loadAll()" data-en="↻ Refresh" data-fr="↻ Actualiser">↻ Refresh</button>
+  </div>
+</div>
+
+<!-- COUNTRY TABS -->
+<div class="country-tabs-wrap">
+  <div class="country-tabs">
+    <div class="country-tab active" onclick="switchCountry('ch')">
+      <span class="tab-flag">🇨🇭</span>
+      <span data-en="Switzerland" data-fr="Suisse">Switzerland</span>
+      <span class="tab-badge live" data-en="Live" data-fr="Actif">Live</span>
+    </div>
+    <div class="country-tab" onclick="switchCountry('be')">
+      <span class="tab-flag">🇧🇪</span>
+      <span data-en="Belgium" data-fr="Belgique">Belgium</span>
+      <span class="tab-badge soon" data-en="Soon" data-fr="Bientôt">Soon</span>
+    </div>
+    <div class="country-tab" onclick="switchCountry('uae')">
+      <span class="tab-flag">🇦🇪</span>
+      <span data-en="UAE" data-fr="Émirats">UAE</span>
+      <span class="tab-badge soon" data-en="Soon" data-fr="Bientôt">Soon</span>
+    </div>
+  </div>
+</div>
+
+<!-- SWITZERLAND -->
+<div class="country-panel active" id="panel-ch">
+  <div class="stats-bar" style="margin-top:0;">
+    <div class="stat-card"><div class="stat-value" id="stat-machines">3</div><div class="stat-label" data-en="Machines" data-fr="Machines">Machines</div></div>
+    <div class="stat-card"><div class="stat-value green" id="stat-instock">—</div><div class="stat-label" data-en="In stock" data-fr="En stock">In stock</div></div>
+    <div class="stat-card"><div class="stat-value yellow" id="stat-low">—</div><div class="stat-label" data-en="Low stock" data-fr="Stock faible">Low stock</div></div>
+    <div class="stat-card"><div class="stat-value red" id="stat-empty">—</div><div class="stat-label" data-en="Empty slots" data-fr="Slots vides">Empty slots</div></div>
+  </div>
+
+  <div class="machine-selector">
+    <div class="machine-select-label" data-en="Select machine" data-fr="Sélectionner une machine">Select machine</div>
+    <div class="machine-tabs" id="machineTabs"></div>
+  </div>
+
+  <div class="machine-view">
+    <!-- 3D MACHINE -->
+    <div class="machine-3d-wrap">
+      <div class="machine-img-wrap" id="machineImgWrap">
+        <img class="machine-render" src="front transparent.png" alt="BoosterStop Machine">
+        <div class="slot-overlay" id="slotOverlay"></div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="product-panel">
+      <div class="product-panel-header">
+        <div class="product-panel-title" data-en="All slots" data-fr="Tous les slots">All slots</div>
+        <button class="restock-all-btn" onclick="openRestockAllModal()">
+          📦 <span data-en="Request full restock" data-fr="Réassort complet">Request full restock</span>
+        </button>
+      </div>
+      <div id="productList">
+        <div class="state-msg"><div class="icon">⏳</div><h3 data-en="Loading..." data-fr="Chargement...">Loading...</h3></div>
+      </div>
+      <div class="detail-panel" id="detailPanel">
+        <div class="detail-slot" id="detailSlot">A1</div>
+        <div class="detail-title" id="detailName">—</div>
+        <div class="detail-stock-big" id="detailStock">—</div>
+        <div class="detail-stock-label" data-en="units remaining" data-fr="unités restantes">units remaining</div>
+        <div class="detail-update" id="detailUpdate">—</div>
+        <button class="detail-restock-btn" id="detailRestockBtn" data-en="↺ Request restock for this slot" data-fr="↺ Demander réassort pour ce slot">↺ Request restock for this slot</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BELGIUM -->
+<div class="country-panel" id="panel-be">
+  <div class="coming-soon-country">
+    <div class="coming-soon-flag">🇧🇪</div>
+    <div class="coming-soon-title" data-en="Belgium — Coming Soon" data-fr="Belgique — Bientôt">Belgium — Coming Soon</div>
+    <div class="coming-soon-sub" data-en="We're actively scouting locations across Belgium. Be the first to know when we launch." data-fr="Nous recherchons activement des emplacements en Belgique. Soyez les premiers informés du lancement.">We're actively scouting locations across Belgium. Be the first to know when we launch.</div>
+    <div class="notify-form">
+      <input class="notify-input" type="email" id="notifyBE" placeholder="your@email.com">
+      <button class="notify-btn" onclick="notifyMe('be')" data-en="Notify me" data-fr="Me notifier">Notify me</button>
+    </div>
+  </div>
+</div>
+
+<!-- UAE -->
+<div class="country-panel" id="panel-uae">
+  <div class="coming-soon-country">
+    <div class="coming-soon-flag">🇦🇪</div>
+    <div class="coming-soon-title" data-en="UAE — Coming Soon" data-fr="Émirats — Bientôt">UAE — Coming Soon</div>
+    <div class="coming-soon-sub" data-en="Dubai and Abu Dhabi are on the roadmap. Announcements coming soon." data-fr="Dubaï et Abu Dhabi sont dans la feuille de route. Annonces à venir.">Dubai and Abu Dhabi are on the roadmap. Announcements coming soon.</div>
+    <div class="notify-form">
+      <input class="notify-input" type="email" id="notifyUAE" placeholder="your@email.com">
+      <button class="notify-btn" onclick="notifyMe('uae')" data-en="Notify me" data-fr="Me notifier">Notify me</button>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING SLOT TOOLTIP -->
+<div class="slot-tooltip" id="slotTooltip">
+  <div class="slot-tooltip-badge">Slot <span id="ttSlot"></span></div>
+  <div class="slot-tooltip-name" id="ttName"></div>
+  <div class="slot-tooltip-stock">
+    <div class="tt-bar"><div class="tt-fill" id="ttBar"></div></div>
+    <span class="tt-count" id="ttCount"></span>
+  </div>
+  <div class="tt-update" id="ttUpdate"></div>
+</div>
+
+<!-- RESTOCK MODAL -->
+<div class="modal-overlay" id="restockModal">
+  <div class="modal">
+    <div class="modal-title" data-en="Request Restock" data-fr="Demande de Réassort">Request Restock</div>
+    <div class="modal-sub" id="modalSub"></div>
+    <div class="modal-label" data-en="Collection / product name" data-fr="Nom de la collection / produit">Collection / product name</div>
+    <input class="modal-input" id="modalInput" type="text" placeholder="e.g. Pokémon Stellar Crown Boosters">
+    <div class="modal-label" data-en="Notes (optional)" data-fr="Notes (optionnel)">Notes (optional)</div>
+    <textarea class="modal-input" id="modalNotes" rows="2" style="resize:vertical" placeholder="Quantity, urgency..."></textarea>
+    <div class="modal-actions">
+      <button class="modal-cancel" onclick="closeModal()" data-en="Cancel" data-fr="Annuler">Cancel</button>
+      <button class="modal-submit" onclick="submitRestock()" data-en="Send →" data-fr="Envoyer →">Send →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const WORKER = 'https://boosterstop-stock.cold-water-7039.workers.dev';
+const RESTOCK_EMAIL = 'contact@boosterstop.ch';
+const ROWS = 7, COLS = 5;
+const ROW_LABELS = ['A','B','C','D','E','F','G'];
+
+const MACHINES = [
+  { name: 'Genève 3 Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', id: 'ch-01' },
+  { name: 'Les Eaux-Vives', addr: 'Rue du 31-Décembre 47, 1207 Genève', id: 'ch-02' },
+  { name: 'Petit-Lancy 1', addr: 'Rue des Bossons 88B, 1213 Petit-Lancy', id: 'ch-03' }
+];
+
+let currentLang = 'en';
+let currentMachine = 0;
+let activeSlot = -1;
+let allProducts = [];
+let modalContext = null;
+
+// ── LANG ──
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (!val) return;
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = val;
+    else el.innerHTML = val;
+  });
+}
+
+// ── COUNTRY ──
+function switchCountry(c) {
+  document.querySelectorAll('.country-tab').forEach((t,i) => t.classList.toggle('active', ['ch','be','uae'][i] === c));
+  document.querySelectorAll('.country-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + c).classList.add('active');
+}
+
+// ── MACHINE SELECTOR ──
+function buildMachineTabs() {
+  const wrap = document.getElementById('machineTabs');
+  wrap.innerHTML = MACHINES.map((m,i) => `
+    <div class="machine-tab ${i===0?'active':''}" onclick="selectMachine(${i})" id="mtab-${i}">
+      📍 <strong>${m.name}</strong>
+      <span class="m-addr">${m.addr}</span>
+    </div>`).join('');
+}
+
+function selectMachine(i) {
+  currentMachine = i;
+  document.querySelectorAll('.machine-tab').forEach((t,j) => t.classList.toggle('active', j === i));
+  activeSlot = -1;
+  document.getElementById('detailPanel').classList.remove('open');
+  renderSlotOverlay();
+  renderProductList();
+}
+
+// ── LOAD DATA ──
+async function loadAll() {
+  const el = document.getElementById('lastUpdate');
+  el.textContent = currentLang === 'fr' ? 'Actualisation...' : 'Refreshing...';
+  try {
+    const res = await fetch(WORKER + '/stock');
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error || 'Worker error');
+    allProducts = data.products || [];
+    updateStats();
+  } catch(e) {
+    el.textContent = (currentLang==='fr'?'Erreur : ':'Error: ') + e.message;
+    allProducts = [];
+  }
+  renderSlotOverlay();
+  renderProductList();
+  document.getElementById('lastUpdate').textContent =
+    (currentLang==='fr'?'Mis à jour : ':'Updated: ') + new Date().toLocaleTimeString();
+}
+
+// ── STATS ──
+function updateStats() {
+  const inStock = allProducts.filter(p=>(p.stock||p.num||0)>0).length;
+  const low = allProducts.filter(p=>{const s=p.stock||p.num||0;return s>0&&s<=5;}).length;
+  const empty = allProducts.filter(p=>(p.stock||p.num||0)===0).length;
+  document.getElementById('stat-instock').textContent = inStock;
+  document.getElementById('stat-low').textContent = low;
+  document.getElementById('stat-empty').textContent = empty;
+}
+
+// ── SLOT OVERLAY ──
+function renderSlotOverlay() {
+  const overlay = document.getElementById('slotOverlay');
+  overlay.innerHTML = '';
+  for (let r=0; r<ROWS; r++) {
+    for (let c=0; c<COLS; c++) {
+      const idx = r*COLS+c;
+      const prod = allProducts[idx];
+      const cell = document.createElement('div');
+      cell.className = 'slot-cell';
+
+      if (prod) {
+        const s = prod.stock||prod.num||0;
+        const max = prod.max_stock||prod.capacity||10;
+        const pct = s/max;
+        if (s===0) cell.classList.add('empty');
+        else if (pct<0.3) cell.classList.add('low');
+        else cell.classList.add('stocked');
+
+        const dot = document.createElement('div');
+        dot.className = 'slot-dot ' + (s===0?'red':pct<0.3?'yellow':'green');
+        cell.appendChild(dot);
+      } else {
+        const dot = document.createElement('div');
+        dot.className = 'slot-dot gray';
+        cell.appendChild(dot);
+      }
+
+      if (idx === activeSlot) cell.classList.add('active');
+
+      cell.addEventListener('mouseenter', (e) => showTooltip(idx, e));
+      cell.addEventListener('mousemove', (e) => moveTooltip(e));
+      cell.addEventListener('mouseleave', hideTooltip);
+      cell.addEventListener('click', () => selectSlot(idx));
+      overlay.appendChild(cell);
+    }
+  }
+}
+
+// ── TOOLTIP ──
+const tooltip = document.getElementById('slotTooltip');
+function showTooltip(idx, e) {
+  const r = Math.floor(idx/COLS), c = idx%COLS;
+  const slotId = ROW_LABELS[r]+(c+1);
+  const prod = allProducts[idx];
+  document.getElementById('ttSlot').textContent = slotId;
+  if (prod) {
+    const s = prod.stock||prod.num||0;
+    const max = prod.max_stock||prod.capacity||10;
+    const pct = Math.min(100,Math.round(s/max*100));
+    const bc = pct>50?'high':pct>20?'mid':'low';
+    document.getElementById('ttName').textContent = prod.name||prod.goods_name||'Product';
+    const bar = document.getElementById('ttBar');
+    bar.style.width = pct+'%'; bar.className='tt-fill '+bc;
+    document.getElementById('ttCount').textContent = s+' / '+max;
+    document.getElementById('ttUpdate').textContent = prod.updated_at ? new Date(prod.updated_at).toLocaleString() : '—';
+  } else {
+    document.getElementById('ttName').textContent = currentLang==='fr'?'Slot vide':'Empty slot';
+    document.getElementById('ttBar').style.width='0%';
+    document.getElementById('ttCount').textContent='—';
+    document.getElementById('ttUpdate').textContent='—';
+  }
+  tooltip.classList.add('visible');
+  moveTooltip(e);
+}
+function moveTooltip(e) {
+  const x = e.clientX + 14, y = e.clientY - 40;
+  tooltip.style.left = Math.min(x, window.innerWidth-240)+'px';
+  tooltip.style.top = Math.max(y,8)+'px';
+}
+function hideTooltip() { tooltip.classList.remove('visible'); }
+
+// ── SELECT SLOT ──
+function selectSlot(idx) {
+  activeSlot = idx;
+  renderSlotOverlay();
+
+  const r = Math.floor(idx/COLS), c = idx%COLS;
+  const slotId = ROW_LABELS[r]+(c+1);
+  const prod = allProducts[idx];
+  const panel = document.getElementById('detailPanel');
+
+  document.getElementById('detailSlot').textContent = 'Slot ' + slotId;
+  document.getElementById('detailName').textContent = prod ? (prod.name||prod.goods_name||'Product') : (currentLang==='fr'?'Slot vide':'Empty slot');
+  const s = prod ? (prod.stock||prod.num||0) : 0;
+  document.getElementById('detailStock').textContent = s;
+  document.getElementById('detailUpdate').textContent = (currentLang==='fr'?'Mis à jour : ':'Updated: ') + (prod&&prod.updated_at ? new Date(prod.updated_at).toLocaleString() : '—');
+
+  document.getElementById('detailRestockBtn').onclick = () => openRestockModal(idx);
+  panel.classList.add('open');
+
+  // highlight row
+  document.querySelectorAll('.product-row').forEach((row,i) => row.classList.toggle('active-row', i===idx));
+  const rows = document.querySelectorAll('.product-row');
+  if (rows[idx]) rows[idx].scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// ── PRODUCT LIST ──
+function renderProductList() {
+  const list = document.getElementById('productList');
+  if (allProducts.length === 0) {
+    list.innerHTML = `<div class="state-msg">
+      <div class="icon">📦</div>
+      <h3>${currentLang==='fr'?'Aucun produit':'No products yet'}</h3>
+      <p>${currentLang==='fr'?'Ajoutez des produits dans zhongdacloud pour les voir ici.':'Add products in your zhongdacloud dashboard to see them here.'}</p>
+    </div>`;
+    return;
+  }
+
+  list.innerHTML = '<div class="product-list">' + allProducts.map((p,idx) => {
+    const r=Math.floor(idx/COLS), c=idx%COLS;
+    const slotId=ROW_LABELS[r]+(c+1);
+    const s=p.stock||p.num||0;
+    const max=p.max_stock||p.capacity||10;
+    const pct=Math.min(100,Math.round(s/max*100));
+    const bc=pct>50?'high':pct>20?'mid':'low';
+    const rc=s===0?'empty-row':pct<30?'low-row':'';
+    const price=p.price?'CHF '+parseFloat(p.price).toFixed(2):'—';
+    return `<div class="product-row ${rc} ${idx===activeSlot?'active-row':''}" onclick="selectSlot(${idx})">
+      <div class="row-slot">${slotId}</div>
+      <div><div class="row-name">${p.name||p.goods_name||'Product'}</div></div>
+      <div class="row-price">${price}</div>
+      <div class="row-stock">
+        <div class="row-bar"><div class="row-fill ${bc}" style="width:${pct}%"></div></div>
+        <span class="row-count">${s}/${max}</span>
+      </div>
+      <div class="row-action" onclick="event.stopPropagation();openRestockModal(${idx})" title="Request restock">↺</div>
+    </div>`;
+  }).join('') + '</div>';
+}
+
+// ── MODALS ──
+function openRestockModal(idx) {
+  const prod = allProducts[idx];
+  const r=Math.floor(idx/COLS), c=idx%COLS;
+  const slotId=ROW_LABELS[r]+(c+1);
+  const name = prod?(prod.name||prod.goods_name||'Product'):(currentLang==='fr'?'Slot vide':'Empty slot');
+  modalContext = { idx, machine: MACHINES[currentMachine], slotId, name };
+  document.getElementById('modalSub').textContent = 'Slot '+slotId+' — '+name+' @ '+MACHINES[currentMachine].name;
+  document.getElementById('modalInput').value = prod?(prod.name||prod.goods_name||''):'';
+  document.getElementById('modalNotes').value = '';
+  document.getElementById('restockModal').classList.add('open');
+}
+
+function openRestockAllModal() {
+  modalContext = { idx:-1, machine:MACHINES[currentMachine], slotId:'ALL', name:'Full restock' };
+  document.getElementById('modalSub').textContent = MACHINES[currentMachine].name + (currentLang==='fr'?' — Réassort complet':' — Full restock request');
+  document.getElementById('modalInput').value = '';
+  document.getElementById('modalNotes').value = '';
+  document.getElementById('restockModal').classList.add('open');
+}
+
+function closeModal() { document.getElementById('restockModal').classList.remove('open'); }
+
+function submitRestock() {
+  if (!modalContext) return;
+  const product = document.getElementById('modalInput').value.trim();
+  const notes = document.getElementById('modalNotes').value.trim();
+  const m = modalContext.machine;
+  const subject = encodeURIComponent('[BoosterStop] Restock — '+m.name+' — Slot '+modalContext.slotId);
+  const body = encodeURIComponent(
+    'Machine: '+m.name+'\nAddress: '+m.addr+'\n\n'+
+    'Slot: '+modalContext.slotId+'\n'+
+    'Product: '+(product||'—')+'\n'+
+    'Notes: '+(notes||'—')+'\n\n'+
+    'Sent from BoosterStop Stock Dashboard'
+  );
+  window.location.href = 'mailto:'+RESTOCK_EMAIL+'?subject='+subject+'&body='+body;
+  closeModal();
+}
+
+// close modal on backdrop click
+document.getElementById('restockModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// ── NOTIFY ──
+function notifyMe(country) {
+  const input = document.getElementById('notify'+country.toUpperCase());
+  if (!input||!input.value) return;
+  const subject = encodeURIComponent('[BoosterStop] Launch notification — '+country.toUpperCase());
+  const body = encodeURIComponent('Please notify me when BoosterStop launches in '+country.toUpperCase()+'.\n\nEmail: '+input.value);
+  window.location.href = 'mailto:'+RESTOCK_EMAIL+'?subject='+subject+'&body='+body;
+  input.value='';
+}
+
+// ── INIT ──
+buildMachineTabs();
+loadAll();
+setInterval(loadAll, 5 * 60 * 1000);
+
+// Auto-select machine from URL param ?machine=0|1|2
+(function() {
+  const p = new URLSearchParams(window.location.search).get('machine');
+  if (p !== null && MACHINES[parseInt(p)]) {
+    selectMachine(parseInt(p));
+  }
+})();
+</script>
+</body>
+</html>
