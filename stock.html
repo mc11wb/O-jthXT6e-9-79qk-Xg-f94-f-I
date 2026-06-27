@@ -83,15 +83,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 
 /* SLOT GRID OVERLAY */
 /* Positioned over the glass/shelf area of the machine image */
-.slot-overlay{
-  position:absolute;
-  top:8%;left:7%;
-  width:60%;height:70%;
-  display:grid;
-  grid-template-rows:repeat(7,1fr);
-  grid-template-columns:repeat(5,1fr);
-  gap:2px;
-}
+.slot-overlay{ position:absolute; top:8%;left:7%; width:85%;height:82%; display:flex; flex-direction:column; gap:3px; overflow:hidden; }
 .slot-cell{
   border-radius:2px;cursor:pointer;
   background:rgba(255,255,255,0.03);
@@ -297,7 +289,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
       <div class="product-panel-header">
         <div class="product-panel-title" data-en="All slots" data-fr="Tous les slots">All slots</div>
         <button class="restock-all-btn" onclick="openRestockAllModal()">
-          📦 <span data-en="Request full restock" data-fr="Réassort complet">Request full restock</span>
+          📦 <span data-en="Request new product" data-fr="Demander un nouveau produit">Request new product</span>
         </button>
       </div>
       <div id="productList">
@@ -371,8 +363,26 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 <script>
 const WORKER = 'https://boosterstop-stock.cold-water-7039.workers.dev';
 const RESTOCK_EMAIL = 'contact@boosterstop.ch';
-const ROWS = 7, COLS = 5;
-const ROW_LABELS = ['A','B','C','D','E','F','G'];
+// Real machine structure from zhongdacloud
+const MACHINE_FLOORS = [
+  { floor: 1, label: 'Floor 1', slots: [10,11,12,13,14,15,16,17,18,19], cap: [25,25,25,25,25,25,25,25,25,25] },
+  { floor: 2, label: 'Floor 2', slots: [20,21,22,23,24,25,26,27,28,29], cap: [25,25,25,25,25,25,25,25,25,25] },
+  { floor: 3, label: 'Floor 3', slots: [30,31,32,33,34,35,36,37,38,39], cap: [25,25,25,25,25,25,25,25,25,25] },
+  { floor: 4, label: 'Floor 4', slots: [40,41,42,43,44,45,46,47,48,49], cap: [25,25,25,25,25,25,25,25,25,25] },
+  { floor: 5, label: 'Floor 5', slots: [50,51,52,53],                    cap: [8,8,15,15] },
+  { floor: 6, label: 'Floor 6', slots: [60,61,62],                       cap: [3,3,3] },
+];
+
+// Build flat slot index: slotNumber -> { floor, cap, idx }
+const SLOT_MAP = {};
+let _si = 0;
+MACHINE_FLOORS.forEach(f => {
+  f.slots.forEach((s, i) => {
+    SLOT_MAP[s] = { floor: f.floor, label: f.label, cap: f.cap[i], floorIdx: i };
+    _si++;
+  });
+});
+const TOTAL_SLOTS = _si; // 43
 
 const MACHINES = [
   { name: 'Genève 3 Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', id: 'ch-01' },
@@ -455,25 +465,42 @@ function updateStats() {
   document.getElementById('stat-empty').textContent = empty;
 }
 
-// ── SLOT OVERLAY ──
+// ── SLOT OVERLAY — floor-based ──
 function renderSlotOverlay() {
   const overlay = document.getElementById('slotOverlay');
   overlay.innerHTML = '';
-  for (let r=0; r<ROWS; r++) {
-    for (let c=0; c<COLS; c++) {
-      const idx = r*COLS+c;
-      const prod = allProducts[idx];
+
+  // Build a lookup: slotNumber -> product
+  const prodBySlot = {};
+  allProducts.forEach(p => {
+    const sn = parseInt(p.slot_num || p.slot || p.position || 0);
+    if (sn) prodBySlot[sn] = p;
+  });
+
+  MACHINE_FLOORS.forEach(floor => {
+    // Floor label row
+    const label = document.createElement('div');
+    label.className = 'slot-floor-label';
+    label.textContent = floor.label;
+    overlay.appendChild(label);
+
+    // Slot row
+    const row = document.createElement('div');
+    row.className = 'slot-floor-row';
+
+    floor.slots.forEach((slotNum, fi) => {
+      const prod = prodBySlot[slotNum] || null;
+      const cap = floor.cap[fi];
       const cell = document.createElement('div');
       cell.className = 'slot-cell';
+      cell.title = 'Slot ' + slotNum;
 
       if (prod) {
         const s = prod.stock||prod.num||0;
-        const max = prod.max_stock||prod.capacity||10;
-        const pct = s/max;
+        const pct = s / cap;
         if (s===0) cell.classList.add('empty');
         else if (pct<0.3) cell.classList.add('low');
         else cell.classList.add('stocked');
-
         const dot = document.createElement('div');
         dot.className = 'slot-dot ' + (s===0?'red':pct<0.3?'yellow':'green');
         cell.appendChild(dot);
@@ -483,38 +510,36 @@ function renderSlotOverlay() {
         cell.appendChild(dot);
       }
 
-      if (idx === activeSlot) cell.classList.add('active');
-
-      cell.addEventListener('mouseenter', (e) => showTooltip(idx, e));
+      const slotKey = slotNum;
+      if (slotKey === activeSlot) cell.classList.add('active');
+      cell.addEventListener('mouseenter', (e) => showTooltipSlot(slotNum, cap, prodBySlot[slotNum]||null, e));
       cell.addEventListener('mousemove', (e) => moveTooltip(e));
       cell.addEventListener('mouseleave', hideTooltip);
-      cell.addEventListener('click', () => selectSlot(idx));
-      overlay.appendChild(cell);
-    }
-  }
+      cell.addEventListener('click', () => selectSlotByNum(slotNum, cap, prodBySlot[slotNum]||null));
+      row.appendChild(cell);
+    });
+
+    overlay.appendChild(row);
+  });
 }
 
 // ── TOOLTIP ──
 const tooltip = document.getElementById('slotTooltip');
-function showTooltip(idx, e) {
-  const r = Math.floor(idx/COLS), c = idx%COLS;
-  const slotId = ROW_LABELS[r]+(c+1);
-  const prod = allProducts[idx];
-  document.getElementById('ttSlot').textContent = slotId;
+function showTooltipSlot(slotNum, cap, prod, e) {
+  document.getElementById('ttSlot').textContent = slotNum;
   if (prod) {
     const s = prod.stock||prod.num||0;
-    const max = prod.max_stock||prod.capacity||10;
-    const pct = Math.min(100,Math.round(s/max*100));
+    const pct = Math.min(100,Math.round(s/cap*100));
     const bc = pct>50?'high':pct>20?'mid':'low';
-    document.getElementById('ttName').textContent = prod.name||prod.goods_name||'Product';
+    document.getElementById('ttName').textContent = prod.name||prod.goods_name||(currentLang==='fr'?'Produit':'Product');
     const bar = document.getElementById('ttBar');
     bar.style.width = pct+'%'; bar.className='tt-fill '+bc;
-    document.getElementById('ttCount').textContent = s+' / '+max;
+    document.getElementById('ttCount').textContent = s+' / '+cap;
     document.getElementById('ttUpdate').textContent = prod.updated_at ? new Date(prod.updated_at).toLocaleString() : '—';
   } else {
-    document.getElementById('ttName').textContent = currentLang==='fr'?'Slot vide':'Empty slot';
+    document.getElementById('ttName').textContent = currentLang==='fr'?'Non configuré':'Not configured';
     document.getElementById('ttBar').style.width='0%';
-    document.getElementById('ttCount').textContent='—';
+    document.getElementById('ttCount').textContent='— / '+cap;
     document.getElementById('ttUpdate').textContent='—';
   }
   tooltip.classList.add('visible');
@@ -527,73 +552,78 @@ function moveTooltip(e) {
 }
 function hideTooltip() { tooltip.classList.remove('visible'); }
 
-// ── SELECT SLOT ──
-function selectSlot(idx) {
-  activeSlot = idx;
+// ── SELECT SLOT by slot number ──
+function selectSlotByNum(slotNum, cap, prod) {
+  activeSlot = slotNum;
   renderSlotOverlay();
 
-  const r = Math.floor(idx/COLS), c = idx%COLS;
-  const slotId = ROW_LABELS[r]+(c+1);
-  const prod = allProducts[idx];
   const panel = document.getElementById('detailPanel');
-
-  document.getElementById('detailSlot').textContent = 'Slot ' + slotId;
-  document.getElementById('detailName').textContent = prod ? (prod.name||prod.goods_name||'Product') : (currentLang==='fr'?'Slot vide':'Empty slot');
+  document.getElementById('detailSlot').textContent = 'Slot ' + slotNum;
+  document.getElementById('detailName').textContent = prod
+    ? (prod.name||prod.goods_name||(currentLang==='fr'?'Produit':'Product'))
+    : (currentLang==='fr'?'Non configuré':'Not configured');
   const s = prod ? (prod.stock||prod.num||0) : 0;
-  document.getElementById('detailStock').textContent = s;
+  document.getElementById('detailStock').textContent = s + ' / ' + cap;
   document.getElementById('detailUpdate').textContent = (currentLang==='fr'?'Mis à jour : ':'Updated: ') + (prod&&prod.updated_at ? new Date(prod.updated_at).toLocaleString() : '—');
-
-  document.getElementById('detailRestockBtn').onclick = () => openRestockModal(idx);
+  document.getElementById('detailRestockBtn').onclick = () => openRestockModalBySlot(slotNum, prod);
   panel.classList.add('open');
 
-  // highlight row
-  document.querySelectorAll('.product-row').forEach((row,i) => row.classList.toggle('active-row', i===idx));
-  const rows = document.querySelectorAll('.product-row');
-  if (rows[idx]) rows[idx].scrollIntoView({behavior:'smooth',block:'nearest'});
+  // highlight matching row
+  document.querySelectorAll('.product-row').forEach(row => {
+    row.classList.toggle('active-row', row.dataset.slot == slotNum);
+  });
+  const activeRow = document.querySelector('.product-row[data-slot="'+slotNum+'"]');
+  if (activeRow) activeRow.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-// ── PRODUCT LIST ──
+// ── PRODUCT LIST — floor grouped ──
 function renderProductList() {
   const list = document.getElementById('productList');
-  if (allProducts.length === 0) {
-    list.innerHTML = `<div class="state-msg">
-      <div class="icon">📦</div>
-      <h3>${currentLang==='fr'?'Aucun produit':'No products yet'}</h3>
-      <p>${currentLang==='fr'?'Ajoutez des produits dans zhongdacloud pour les voir ici.':'Add products in your zhongdacloud dashboard to see them here.'}</p>
-    </div>`;
-    return;
-  }
 
-  list.innerHTML = '<div class="product-list">' + allProducts.map((p,idx) => {
-    const r=Math.floor(idx/COLS), c=idx%COLS;
-    const slotId=ROW_LABELS[r]+(c+1);
-    const s=p.stock||p.num||0;
-    const max=p.max_stock||p.capacity||10;
-    const pct=Math.min(100,Math.round(s/max*100));
-    const bc=pct>50?'high':pct>20?'mid':'low';
-    const rc=s===0?'empty-row':pct<30?'low-row':'';
-    const price=p.price?'CHF '+parseFloat(p.price).toFixed(2):'—';
-    return `<div class="product-row ${rc} ${idx===activeSlot?'active-row':''}" onclick="selectSlot(${idx})">
-      <div class="row-slot">${slotId}</div>
-      <div><div class="row-name">${p.name||p.goods_name||'Product'}</div></div>
-      <div class="row-price">${price}</div>
-      <div class="row-stock">
-        <div class="row-bar"><div class="row-fill ${bc}" style="width:${pct}%"></div></div>
-        <span class="row-count">${s}/${max}</span>
-      </div>
-      <div class="row-action" onclick="event.stopPropagation();openRestockModal(${idx})" title="Request restock">↺</div>
-    </div>`;
-  }).join('') + '</div>';
+  // Build lookup
+  const prodBySlot = {};
+  allProducts.forEach(p => {
+    const sn = parseInt(p.slot_num||p.slot||p.position||0);
+    if (sn) prodBySlot[sn] = p;
+  });
+
+  let html = '<div class="product-list">';
+
+  MACHINE_FLOORS.forEach(floor => {
+    html += '<div class="product-floor-header">' + floor.label + '</div>';
+    floor.slots.forEach((slotNum, fi) => {
+      const cap = floor.cap[fi];
+      const p = prodBySlot[slotNum] || null;
+      const s = p ? (p.stock||p.num||0) : 0;
+      const pct = Math.min(100, Math.round(s/cap*100));
+      const bc = pct>50?'high':pct>20?'mid':'low';
+      const rc = !p?'uncfg-row':s===0?'empty-row':pct<30?'low-row':'';
+      const name = p ? (p.name||p.goods_name||(currentLang==='fr'?'Produit':'Product')) : (currentLang==='fr'?'Non configuré':'Not configured');
+      const price = p&&p.price ? 'CHF '+parseFloat(p.price).toFixed(2) : '—';
+      const isActive = activeSlot===slotNum?'active-row':'';
+      html += `<div class="product-row ${rc} ${isActive}" data-slot="${slotNum}" onclick="selectSlotByNum(${slotNum},${cap},${p?'prodBySlot['+slotNum+']':'null'})">
+        <div class="row-slot">${slotNum}</div>
+        <div><div class="row-name">${name}</div></div>
+        <div class="row-price">${price}</div>
+        <div class="row-stock">
+          <div class="row-bar"><div class="row-fill ${bc}" style="width:${pct}%"></div></div>
+          <span class="row-count">${s}/${cap}</span>
+        </div>
+        <div class="row-action" onclick="event.stopPropagation();openRestockModalBySlot(${slotNum},${p?'prodBySlot['+slotNum+']':'null'})" title="Request restock">↺</div>
+      </div>`;
+    });
+  });
+
+  html += '</div>';
+  list.innerHTML = html;
 }
 
 // ── MODALS ──
-function openRestockModal(idx) {
-  const prod = allProducts[idx];
-  const r=Math.floor(idx/COLS), c=idx%COLS;
-  const slotId=ROW_LABELS[r]+(c+1);
-  const name = prod?(prod.name||prod.goods_name||'Product'):(currentLang==='fr'?'Slot vide':'Empty slot');
-  modalContext = { idx, machine: MACHINES[currentMachine], slotId, name };
-  document.getElementById('modalSub').textContent = 'Slot '+slotId+' — '+name+' @ '+MACHINES[currentMachine].name;
+function openRestockModal(idx) { openRestockModalBySlot(idx, null); }
+function openRestockModalBySlot(slotNum, prod) {
+  const name = prod?(prod.name||prod.goods_name||(currentLang==='fr'?'Produit':'Product')):(currentLang==='fr'?'Non configuré':'Not configured');
+  modalContext = { idx: slotNum, machine: MACHINES[currentMachine], slotId: slotNum, name };
+  document.getElementById('modalSub').textContent = 'Slot '+slotNum+' — '+name+' @ '+MACHINES[currentMachine].name;
   document.getElementById('modalInput').value = prod?(prod.name||prod.goods_name||''):'';
   document.getElementById('modalNotes').value = '';
   document.getElementById('restockModal').classList.add('open');
@@ -601,7 +631,7 @@ function openRestockModal(idx) {
 
 function openRestockAllModal() {
   modalContext = { idx:-1, machine:MACHINES[currentMachine], slotId:'ALL', name:'Full restock' };
-  document.getElementById('modalSub').textContent = MACHINES[currentMachine].name + (currentLang==='fr'?' — Réassort complet':' — Full restock request');
+  document.getElementById('modalSub').textContent = MACHINES[currentMachine].name + (currentLang==='fr'?' — Nouveau produit':' — New product request');
   document.getElementById('modalInput').value = '';
   document.getElementById('modalNotes').value = '';
   document.getElementById('restockModal').classList.add('open');
