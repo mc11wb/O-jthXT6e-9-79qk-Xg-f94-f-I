@@ -88,9 +88,10 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 .floor-header::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,208,0,0.2),transparent);}
 .floor-row{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;}
 .floor-row.few{grid-template-columns:repeat(4,1fr);}
+.floor-row.few .slot{aspect-ratio:1/1;}
 
 /* SLOT CELL */
-.slot{background:var(--gray);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:8px 6px;cursor:pointer;transition:all 0.15s;display:flex;flex-direction:column;align-items:center;gap:5px;position:relative;min-height:80px;}
+.slot{background:var(--gray);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:8px 6px;cursor:pointer;transition:all 0.15s;display:flex;flex-direction:column;align-items:center;gap:5px;position:relative;aspect-ratio:3/4;}
 .slot:hover{border-color:var(--red);background:rgba(232,24,60,0.04);transform:translateY(-2px);}
 .slot.active{border-color:var(--yellow);background:rgba(255,208,0,0.06);}
 .slot.empty{opacity:0.55;}
@@ -102,7 +103,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 .slot-dot.yellow{background:var(--yellow);}
 .slot-dot.red{background:var(--red);}
 .slot-dot.gray{background:var(--gray-mid);}
-.slot-img{width:100%;flex:1;max-height:48px;object-fit:contain;border-radius:3px;}
+.slot-img{width:100%;flex:1;min-height:0;object-fit:contain;border-radius:3px;}
 .slot-bar{width:100%;height:3px;background:var(--gray-mid);border-radius:2px;overflow:hidden;margin-top:auto;}
 .slot-fill{height:100%;border-radius:2px;transition:width 0.4s;}
 .slot-fill.high{background:var(--green);}
@@ -183,6 +184,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
   .stats-bar{padding:0 20px;grid-template-columns:1fr 1fr;}
   .floor-row{grid-template-columns:repeat(5,1fr);}
   .floor-row.few{grid-template-columns:repeat(4,1fr);}
+.floor-row.few .slot{aspect-ratio:1/1;}
   .coming-soon-country{padding:56px 20px;}
   .notify-form{flex-direction:column;}
   .notify-input{width:100%;}
@@ -190,9 +192,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
   .back-btn{display:none;}
 }
 @media(max-width:560px){
-  .slot{min-height:72px;padding:7px 5px;gap:4px;}
+  .slot{padding:7px 5px;gap:4px;}
   .slot-num{font-size:15px;}
-  .slot-img{max-height:38px;}
   .slot-count{font-size:8px;}
 }
 </style>
