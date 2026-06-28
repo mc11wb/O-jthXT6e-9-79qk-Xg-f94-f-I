@@ -436,7 +436,7 @@ function initStockMap() {
   ];
   stockMap = new google.maps.Map(document.getElementById('stock-map'), {
     zoom: 12, center: { lat: 46.1955, lng: 6.1430 },
-    disableDefaultUI: true, gestureHandling: 'greedy', styles: darkStyles
+    disableDefaultUI: true, gestureHandling: 'none', zoomControl: false, draggable: false, scrollwheel: false, disableDoubleClickZoom: true, styles: darkStyles
   });
   MACHINES.forEach((m, i) => {
     const marker = new google.maps.Marker({
