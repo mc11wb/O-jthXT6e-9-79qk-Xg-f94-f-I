@@ -45,9 +45,12 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 .country-tabs{display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
 .country-tabs::-webkit-scrollbar{display:none;}
 @media(max-width:900px){
-  .country-tabs-wrap::after{content:'';position:absolute;top:0;right:20px;bottom:0;width:36px;background:linear-gradient(90deg,transparent,var(--black));pointer-events:none;z-index:2;}
+  .country-tabs-wrap::after{content:'›';position:absolute;top:50%;right:24px;transform:translateY(-50%);font-size:22px;color:var(--red);pointer-events:none;z-index:3;animation:swipeHint 1.4s ease-in-out infinite;}
+  .country-tabs-wrap::before{content:'';position:absolute;top:0;right:20px;bottom:0;width:50px;background:linear-gradient(90deg,transparent,var(--black));pointer-events:none;z-index:2;}
   .country-tab{padding:10px 16px;font-size:11px;}
+  .country-tab:first-child{min-width:62%;}
 }
+@keyframes swipeHint{0%,100%{transform:translateY(-50%) translateX(0);opacity:0.5;}50%{transform:translateY(-50%) translateX(4px);opacity:1;}}
 .country-tab{flex-shrink:0;white-space:nowrap;}
 .country-tab{background:var(--gray);border:1px solid var(--gray-mid);border-bottom:none;color:var(--text-muted);font-family:'DM Sans';font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:10px 20px;cursor:pointer;transition:all 0.2s;border-radius:2px 2px 0 0;display:flex;align-items:center;gap:8px;user-select:none;}
 .country-tab.active{background:var(--black);border-color:var(--red);color:var(--white);border-bottom:1px solid var(--black);position:relative;z-index:1;}
@@ -79,7 +82,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 .stock-map-wrapper{position:relative;border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;height:300px;margin-bottom:0;}
 #stock-map{width:100%;height:100%;}
 .selected-machine-card{display:flex;align-items:center;gap:14px;background:var(--gray);border:1px solid var(--red);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:16px 20px;}
-.sel-dot{width:9px;height:9px;border-radius:50%;background:var(--red);box-shadow:0 0 8px rgba(232,24,60,0.7);animation:livePulse 2s infinite;flex-shrink:0;}
+.sel-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(0,230,118,0.6);animation:livePulse 2s infinite;flex-shrink:0;}
 .sel-name{font-size:14px;font-weight:500;color:var(--white);margin-bottom:2px;}
 .sel-addr{font-size:12px;color:var(--text-muted);}
 /* Google popup dark style */
@@ -289,7 +292,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
   </div>
 
   <div class="machine-view">
-    <div class="view-header">
+    <div class="view-header" id="slotsByFloor">
       <div class="view-title" data-en="Slots by floor" data-fr="Slots par étage">Slots by floor</div>
       <button class="new-product-btn" onclick="openNewProductModal()">
         <span data-en="Request new product" data-fr="Demander un nouveau produit">Request new product</span>
@@ -440,7 +443,7 @@ function initStockMap() {
       position: { lat: m.lat, lng: m.lng }, map: stockMap,
       icon: markerIcon(i === currentMachine)
     });
-    marker.addListener('click', () => selectMachine(i));
+    marker.addListener('click', () => selectMachine(i, true));
     stockMarkers[i] = marker;
   });
   updateMarkerStyles();
@@ -461,7 +464,7 @@ function updateMarkerStyles() {
   stockMarkers.forEach((mk, i) => mk && mk.setIcon(markerIcon(i === currentMachine)));
 }
 
-function selectMachine(i) {
+function selectMachine(i, scroll) {
   currentMachine = i;
   activeSlot = null;
   closeSlotModal();
@@ -471,6 +474,16 @@ function selectMachine(i) {
   updateMarkerStyles();
   if (stockMap) stockMap.panTo({ lat: MACHINES[i].lat, lng: MACHINES[i].lng });
   loadAll();
+  // scroll to the selected machine card / floors
+  if (scroll !== false) {
+    setTimeout(() => {
+      const target = document.getElementById('selectedMachineCard');
+      if (target) {
+        const y = target.getBoundingClientRect().top + window.scrollY - 70;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }, 250);
+  }
 }
 
 // Google Maps callback
