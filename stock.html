@@ -20,7 +20,11 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 /* NAV */
 nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(18,15,42,0.97);position:sticky;top:0;z-index:200;backdrop-filter:blur(12px);}
 .nav-logo img{height:26px;}
-.nav-actions{display:flex;align-items:center;gap:16px;}
+.nav-actions{display:flex;align-items:center;gap:36px;}
+.nav-actions ul{list-style:none;display:flex;gap:36px;}
+.nav-actions ul a{color:var(--text-muted);text-decoration:none;font-size:13px;letter-spacing:0.5px;transition:color 0.2s;}
+.nav-actions ul a:hover{color:var(--white);}
+.nav-actions ul a.active{color:var(--red);}
 .back-btn{color:var(--text-muted);text-decoration:none;font-size:12px;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;display:flex;align-items:center;gap:6px;}
 .back-btn:hover{color:var(--white);}
 .lang-switcher{display:flex;gap:4px;}
@@ -218,6 +222,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
   .notify-input{width:100%;}
   body{padding-bottom:64px;}
   .back-btn{display:none;}
+  .nav-actions ul{display:none;}
   .slot-modal{padding:20px;}
 }
 @media(max-width:400px){
@@ -235,7 +240,12 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 <nav>
   <a href="/" class="nav-logo"><img src="logo.png" alt="BoosterStop"></a>
   <div class="nav-actions">
-    <a href="/" class="back-btn">← <span data-en="Back to site" data-fr="Retour au site">Back to site</span></a>
+    <ul>
+      <li><a href="/#where" data-en="Locations" data-fr="Emplacements">Locations</a></li>
+      <li><a href="/#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
+      <li><a href="/newsletter.html" data-en="🔔 Newsletter" data-fr="🔔 Newsletter">🔔 Newsletter</a></li>
+      <li><a href="/stock.html" class="active" style="color:var(--red);font-weight:500;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Live Stock</a></li>
+    </ul>
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('fr')">FR</button>
