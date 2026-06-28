@@ -42,7 +42,9 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 
 /* COUNTRY TABS */
 .country-tabs-wrap{padding:0 48px;max-width:1280px;margin:20px auto 0;}
-.country-tabs{display:flex;gap:2px;}
+.country-tabs{display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.country-tabs::-webkit-scrollbar{display:none;}
+.country-tab{flex-shrink:0;white-space:nowrap;}
 .country-tab{background:var(--gray);border:1px solid var(--gray-mid);border-bottom:none;color:var(--text-muted);font-family:'DM Sans';font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:10px 20px;cursor:pointer;transition:all 0.2s;border-radius:2px 2px 0 0;display:flex;align-items:center;gap:8px;user-select:none;}
 .country-tab.active{background:var(--black);border-color:var(--red);color:var(--white);border-bottom:1px solid var(--black);position:relative;z-index:1;}
 .country-tab:hover:not(.active){color:var(--white);}
@@ -85,10 +87,10 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 .floor-header{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--yellow);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
 .floor-header::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,208,0,0.2),transparent);}
 .floor-row{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;}
-.floor-row.few{grid-template-columns:repeat(10,1fr);}
+.floor-row.few{grid-template-columns:repeat(4,1fr);}
 
 /* SLOT CELL */
-.slot{background:var(--gray);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:10px 8px;cursor:pointer;transition:all 0.15s;display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;min-height:96px;}
+.slot{background:var(--gray);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:8px 6px;cursor:pointer;transition:all 0.15s;display:flex;flex-direction:column;align-items:center;gap:5px;position:relative;min-height:80px;}
 .slot:hover{border-color:var(--red);background:rgba(232,24,60,0.04);transform:translateY(-2px);}
 .slot.active{border-color:var(--yellow);background:rgba(255,208,0,0.06);}
 .slot.empty{opacity:0.55;}
@@ -100,7 +102,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 .slot-dot.yellow{background:var(--yellow);}
 .slot-dot.red{background:var(--red);}
 .slot-dot.gray{background:var(--gray-mid);}
-.slot-name{font-size:9px;color:var(--text-muted);text-align:center;line-height:1.2;height:22px;overflow:hidden;display:flex;align-items:center;}
+.slot-img{width:100%;flex:1;max-height:48px;object-fit:contain;border-radius:3px;}
 .slot-bar{width:100%;height:3px;background:var(--gray-mid);border-radius:2px;overflow:hidden;margin-top:auto;}
 .slot-fill{height:100%;border-radius:2px;transition:width 0.4s;}
 .slot-fill.high{background:var(--green);}
@@ -108,19 +110,6 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 .slot-fill.low{background:var(--red);}
 .slot-count{font-size:9px;color:var(--text-muted);}
 
-/* DETAIL PANEL */
-.detail-panel{background:var(--gray);border:1px solid var(--red);border-radius:var(--radius);padding:20px 24px;margin-top:8px;display:none;align-items:center;gap:28px;flex-wrap:wrap;}
-.detail-panel.open{display:flex;}
-.detail-img{width:60px;height:60px;border-radius:4px;object-fit:cover;background:var(--black);border:1px solid var(--gray-mid);}
-.detail-info{flex:1;min-width:180px;}
-.detail-slot{font-size:10px;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:3px;}
-.detail-name{font-size:16px;font-weight:500;color:var(--white);margin-bottom:4px;}
-.detail-meta{font-size:11px;color:var(--text-muted);}
-.detail-stock{text-align:center;}
-.detail-stock-big{font-family:'Bebas Neue',sans-serif;font-size:42px;line-height:1;color:var(--white);}
-.detail-stock-label{font-size:9px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;}
-.detail-restock-btn{background:none;border:1px solid var(--red);color:var(--red);font-family:'DM Sans';font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:10px 20px;border-radius:2px;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
-.detail-restock-btn:hover{background:rgba(232,24,60,0.1);}
 
 /* COMING SOON */
 .coming-soon-country{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 48px;text-align:center;gap:16px;max-width:1280px;margin:0 auto;}
@@ -145,6 +134,43 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 .modal-cancel{background:none;border:1px solid var(--gray-mid);color:var(--text-muted);font-family:'DM Sans';font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:9px 18px;border-radius:2px;cursor:pointer;}
 .modal-submit{background:var(--red);color:var(--white);border:none;font-family:'DM Sans';font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:9px 18px;border-radius:2px;cursor:pointer;}
 
+
+/* SLOT DETAIL MODAL */
+.slot-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:450;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);padding:20px;}
+.slot-modal-overlay.open{display:flex;}
+.slot-modal{background:#1a1630;border:1px solid var(--red);border-radius:var(--radius);padding:24px;width:380px;max-width:92vw;position:relative;}
+.slot-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--text-muted);font-size:22px;cursor:pointer;line-height:1;}
+.slot-modal-close:hover{color:var(--white);}
+.slot-modal-img{width:80px;height:80px;border-radius:6px;object-fit:cover;background:var(--black);border:1px solid var(--gray-mid);margin-bottom:14px;}
+.slot-modal-slot{font-size:10px;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:4px;}
+.slot-modal-name{font-size:20px;font-weight:500;color:var(--white);margin-bottom:6px;line-height:1.2;}
+.slot-modal-meta{font-size:12px;color:var(--text-muted);margin-bottom:18px;}
+.slot-modal-stockrow{display:flex;align-items:flex-end;gap:16px;margin-bottom:18px;}
+.slot-modal-stock-big{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:0.9;color:var(--white);}
+.slot-modal-stock-label{font-size:9px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;padding-bottom:6px;}
+.slot-modal-bar{height:5px;background:var(--gray-mid);border-radius:3px;overflow:hidden;margin-bottom:18px;}
+.slot-modal-fill{height:100%;border-radius:3px;}
+.slot-modal-fill.high{background:var(--green);}
+.slot-modal-fill.mid{background:var(--yellow);}
+.slot-modal-fill.low{background:var(--red);}
+.slot-modal-restock{width:100%;background:none;border:1px solid var(--red);color:var(--red);font-family:'DM Sans';font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:11px;border-radius:2px;cursor:pointer;transition:all 0.2s;}
+.slot-modal-restock:hover{background:rgba(232,24,60,0.1);}
+
+
+/* MOBILE BOTTOM NAV */
+.mob-nav{display:none;}
+@media(max-width:900px){
+  .mob-nav{
+    display:flex;position:fixed;bottom:0;left:0;right:0;z-index:400;
+    background:rgba(18,15,42,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border-top:1px solid rgba(232,24,60,0.4);padding-top:8px;padding-bottom:env(safe-area-inset-bottom,8px);
+    justify-content:space-around;align-items:flex-start;
+  }
+}
+.mob-nav a{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text-muted);text-decoration:none;font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:4px 8px;flex:1;text-align:center;transition:color 0.2s;}
+.mob-nav a:hover,.mob-nav a.active{color:var(--red);}
+.mob-nav .m-icon{font-size:19px;line-height:1;}
+
 /* STATE */
 .state-msg{text-align:center;padding:56px 24px;color:var(--text-muted);}
 .state-msg .icon{font-size:36px;margin-bottom:12px;}
@@ -156,13 +182,18 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
   .page-header,.country-tabs-wrap,.machine-selector,.machine-view{padding-left:20px;padding-right:20px;}
   .stats-bar{padding:0 20px;grid-template-columns:1fr 1fr;}
   .floor-row{grid-template-columns:repeat(5,1fr);}
+  .floor-row.few{grid-template-columns:repeat(4,1fr);}
   .coming-soon-country{padding:56px 20px;}
   .notify-form{flex-direction:column;}
   .notify-input{width:100%;}
-  .detail-panel{gap:16px;}
+  body{padding-bottom:64px;}
+  .back-btn{display:none;}
 }
 @media(max-width:560px){
-  .floor-row{grid-template-columns:repeat(3,1fr);}
+  .slot{min-height:72px;padding:7px 5px;gap:4px;}
+  .slot-num{font-size:15px;}
+  .slot-img{max-height:38px;}
+  .slot-count{font-size:8px;}
 }
 </style>
 </head>
@@ -230,19 +261,6 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
     <div id="floorsContainer">
       <div class="state-msg"><div class="icon">⏳</div><h3 data-en="Loading..." data-fr="Chargement...">Loading...</h3></div>
     </div>
-    <div class="detail-panel" id="detailPanel">
-      <img class="detail-img" id="detailImg" src="" alt="" style="display:none;">
-      <div class="detail-info">
-        <div class="detail-slot" id="detailSlot">Slot 10</div>
-        <div class="detail-name" id="detailName">—</div>
-        <div class="detail-meta" id="detailMeta">—</div>
-      </div>
-      <div class="detail-stock">
-        <div class="detail-stock-big" id="detailStock">—</div>
-        <div class="detail-stock-label" data-en="in stock" data-fr="en stock">in stock</div>
-      </div>
-      <button class="detail-restock-btn" id="detailRestockBtn" data-en="↺ Request restock" data-fr="↺ Demander réassort">↺ Request restock</button>
-    </div>
   </div>
 </div>
 
@@ -269,6 +287,32 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
       <input class="notify-input" type="email" id="notifyUAE" placeholder="your@email.com">
       <button class="notify-btn" onclick="notifyMe('uae')" data-en="Notify me" data-fr="Me notifier">Notify me</button>
     </div>
+  </div>
+</div>
+
+
+<!-- MOBILE BOTTOM NAV -->
+<div class="mob-nav">
+  <a href="/" class="m-icon-link"><span class="m-icon">🏠</span><span data-en="Home" data-fr="Accueil">Home</span></a>
+  <a href="/#where"><span class="m-icon">📍</span><span data-en="Locations" data-fr="Emplacements">Locations</span></a>
+  <a href="/stock.html" class="active"><span class="m-icon">📦</span><span data-en="Stock" data-fr="Stock">Stock</span></a>
+  <a href="/#contact"><span class="m-icon">✉️</span><span data-en="Contact" data-fr="Contact">Contact</span></a>
+</div>
+
+
+<!-- SLOT DETAIL MODAL -->
+<div class="slot-modal-overlay" id="slotModal">
+  <div class="slot-modal">
+    <button class="slot-modal-close" onclick="closeSlotModal()">&times;</button>
+    <img class="slot-modal-img" id="smImg" src="" alt="" style="display:none;">
+    <div class="slot-modal-name" id="smName">—</div>
+    <div class="slot-modal-meta" id="smMeta">—</div>
+    <div class="slot-modal-stockrow">
+      <span class="slot-modal-stock-big" id="smStock">—</span>
+      <span class="slot-modal-stock-label" data-en="in stock" data-fr="en stock">in stock</span>
+    </div>
+    <div class="slot-modal-bar"><div class="slot-modal-fill" id="smFill"></div></div>
+    <button class="slot-modal-restock" id="smRestock" data-en="↺ Request restock" data-fr="↺ Demander réassort">↺ Request restock</button>
   </div>
 </div>
 
@@ -343,7 +387,7 @@ function selectMachine(i) {
   currentMachine = i;
   document.querySelectorAll('.machine-tab').forEach((t,j) => t.classList.toggle('active', j === i));
   activeSlot = null;
-  document.getElementById('detailPanel').classList.remove('open');
+  closeSlotModal();
   loadAll();
 }
 
@@ -373,7 +417,9 @@ function renderFloors() {
 
   let html = '';
   FLOORS.forEach(floor => {
-    html += `<div class="floor-block"><div class="floor-header">${floor.label}</div><div class="floor-row${floor.slots.length<10?' few':''}">`;
+    const isFew = floor.slots.length < 10;
+    const colStyle = isFew ? ` style="grid-template-columns:repeat(${floor.slots.length},1fr)"` : '';
+    html += `<div class="floor-block"><div class="floor-header">${floor.label}</div><div class="floor-row${isFew?' few':''}"${colStyle}>`;
     floor.slots.forEach(sn => {
       const s = slotsBy[sn] || null;
       if (s) {
@@ -383,11 +429,13 @@ function renderFloors() {
         const configured = s.configured;
         const dotClass = !configured?'gray':stock===0?'red':pct<30?'yellow':'green';
         const cls = !configured?'uncfg':stock===0?'empty':'stocked';
-        const name = configured ? (s.goods_name||'Product') : '';
+        const hasImg = configured && s.image && s.image !== 'https://eu.zhongdacloud.com/';
+        const visual = hasImg
+          ? `<img class="slot-img" src="${s.image}" alt="" loading="lazy">`
+          : `<div class="slot-num">${sn}</div>`;
         html += `<div class="slot ${cls} ${activeSlot===sn?'active':''}" onclick="selectSlot('${sn}')">
           <div class="slot-dot ${dotClass}"></div>
-          <div class="slot-num">${sn}</div>
-          <div class="slot-name">${name}</div>
+          ${visual}
           <div class="slot-bar"><div class="slot-fill ${bc}" style="width:${pct}%"></div></div>
           <div class="slot-count">${stock}/${vol}</div>
         </div>`;
@@ -395,7 +443,6 @@ function renderFloors() {
         html += `<div class="slot uncfg" onclick="selectSlot('${sn}')">
           <div class="slot-dot gray"></div>
           <div class="slot-num">${sn}</div>
-          <div class="slot-name"></div>
           <div class="slot-bar"><div class="slot-fill low" style="width:0%"></div></div>
           <div class="slot-count">—</div>
         </div>`;
@@ -411,26 +458,36 @@ function selectSlot(sn) {
   activeSlot = sn;
   renderFloors();
   const s = slotsBy[sn] || null;
-  const panel = document.getElementById('detailPanel');
-  document.getElementById('detailSlot').textContent = 'Slot ' + sn;
 
-  const img = document.getElementById('detailImg');
+  const img = document.getElementById('smImg');
   if (s && s.configured && s.image && s.image !== 'https://eu.zhongdacloud.com/') {
     img.src = s.image; img.style.display = 'block';
   } else { img.style.display = 'none'; }
 
+  const stock = s ? (s.stock||0) : 0;
+  const vol = s ? (s.volume||1) : 1;
+  const pct = Math.min(100, Math.round(stock/vol*100));
+  const bc = pct>50?'high':pct>20?'mid':'low';
+
   if (s && s.configured) {
-    document.getElementById('detailName').textContent = s.goods_name || 'Product';
-    document.getElementById('detailMeta').textContent = (s.price?'CHF '+parseFloat(s.price).toFixed(2):'—') + ' · ' + (currentLang==='fr'?'Capacité ':'Capacity ') + s.volume;
-    document.getElementById('detailStock').textContent = s.stock;
+    document.getElementById('smName').textContent = s.goods_name || 'Product';
+    document.getElementById('smMeta').textContent = (s.price?'CHF '+parseFloat(s.price).toFixed(2):'—') + ' · ' + (currentLang==='fr'?'Capacité ':'Capacity ') + vol;
   } else {
-    document.getElementById('detailName').textContent = currentLang==='fr'?'Non configuré':'Not configured';
-    document.getElementById('detailMeta').textContent = s ? ((currentLang==='fr'?'Capacité ':'Capacity ')+s.volume) : '—';
-    document.getElementById('detailStock').textContent = s ? s.stock : '—';
+    document.getElementById('smName').textContent = currentLang==='fr'?'Non configuré':'Not configured';
+    document.getElementById('smMeta').textContent = s ? ((currentLang==='fr'?'Capacité ':'Capacity ')+vol) : '—';
   }
-  document.getElementById('detailRestockBtn').onclick = () => openRestockModal(sn);
-  panel.classList.add('open');
-  panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+  document.getElementById('smStock').textContent = stock;
+  const fill = document.getElementById('smFill');
+  fill.style.width = pct + '%';
+  fill.className = 'slot-modal-fill ' + bc;
+  document.getElementById('smRestock').onclick = () => { closeSlotModal(); openRestockModal(sn); };
+
+  document.getElementById('slotModal').classList.add('open');
+}
+function closeSlotModal() {
+  document.getElementById('slotModal').classList.remove('open');
+  activeSlot = null;
+  renderFloors();
 }
 
 function openRestockModal(sn) {
@@ -455,6 +512,7 @@ function openNewProductModal() {
 
 function closeModal() { document.getElementById('restockModal').classList.remove('open'); }
 document.getElementById('restockModal').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+document.getElementById('slotModal').addEventListener('click', function(e){ if(e.target===this) closeSlotModal(); });
 
 function submitRestock() {
   if (!modalContext) return;
