@@ -163,13 +163,13 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 .slot-modal{background:#1a1630;border:1px solid var(--red);border-radius:var(--radius);padding:24px;width:380px;max-width:92vw;position:relative;}
 .slot-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--text-muted);font-size:22px;cursor:pointer;line-height:1;}
 .slot-modal-close:hover{color:var(--white);}
-.slot-modal-img{width:80px;height:80px;border-radius:6px;object-fit:cover;background:var(--black);border:1px solid var(--gray-mid);margin-bottom:14px;}
+.slot-modal-img{width:100%;max-width:200px;height:auto;max-height:240px;border-radius:8px;object-fit:contain;background:var(--black);border:1px solid var(--gray-mid);margin:0 auto 18px;display:block;padding:10px;}
 .slot-modal-slot{font-size:10px;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:4px;}
 .slot-modal-name{font-size:20px;font-weight:500;color:var(--white);margin-bottom:6px;line-height:1.2;}
 .slot-modal-meta{font-size:12px;color:var(--text-muted);margin-bottom:18px;}
-.slot-modal-stockrow{display:flex;align-items:flex-end;gap:16px;margin-bottom:18px;}
-.slot-modal-stock-big{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:0.9;color:var(--white);}
-.slot-modal-stock-label{font-size:9px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;padding-bottom:6px;}
+.slot-modal-stockrow{display:flex;align-items:baseline;gap:8px;margin-bottom:14px;}
+.slot-modal-stock-big{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;color:var(--white);}
+.slot-modal-stock-label{font-size:9px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;}
 .slot-modal-bar{height:5px;background:var(--gray-mid);border-radius:3px;overflow:hidden;margin-bottom:18px;}
 .slot-modal-fill{height:100%;border-radius:3px;}
 .slot-modal-fill.high{background:var(--green);}
@@ -363,11 +363,14 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
     <div class="modal-sub" id="modalSub"></div>
     <div class="modal-label" data-en="Collection / product name" data-fr="Nom de la collection / produit">Collection / product name</div>
     <input class="modal-input" id="modalInput" type="text" placeholder="e.g. Pokémon Stellar Crown Boosters">
+    <div class="modal-label" data-en="Your email" data-fr="Votre email">Your email</div>
+    <input class="modal-input" id="modalEmail" type="email" placeholder="you@example.com">
     <div class="modal-label" data-en="Notes (optional)" data-fr="Notes (optionnel)">Notes (optional)</div>
     <textarea class="modal-input" id="modalNotes" rows="2" style="resize:vertical" placeholder="Quantity, urgency..."></textarea>
+    <div class="modal-success" id="modalSuccess" style="display:none;background:rgba(0,230,118,0.1);border:1px solid rgba(0,230,118,0.3);color:var(--green);font-size:13px;padding:12px 14px;border-radius:2px;margin-bottom:14px;" data-en="✓ Request sent — thank you!" data-fr="✓ Demande envoyée — merci !">✓ Request sent — thank you!</div>
     <div class="modal-actions">
       <button class="modal-cancel" onclick="closeModal()" data-en="Cancel" data-fr="Annuler">Cancel</button>
-      <button class="modal-submit" onclick="submitRestock()" data-en="Send →" data-fr="Envoyer →">Send →</button>
+      <button class="modal-submit" id="modalSubmitBtn" onclick="submitRestock()" data-en="Send →" data-fr="Envoyer →">Send →</button>
     </div>
   </div>
 </div>
@@ -375,6 +378,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 <script>
 const WORKER = 'https://boosterstop-stock.cold-water-7039.workers.dev';
 const RESTOCK_EMAIL = 'contact@boosterstop.ch';
+const FORMSPREE = {
+  restock_ch: 'https://formspree.io/f/mvzjrldj',
+  notify_be:  'https://formspree.io/f/xdarzbye',
+  notify_uae: 'https://formspree.io/f/mqevbnwb'
+};
 
 const MACHINES = [
   { name: 'Poste Filiale — Genève 3 Rive', short: 'Genève 3 Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', lat: 46.2008, lng: 6.1520 },
@@ -559,7 +567,7 @@ function selectSlot(sn) {
 
   const img = document.getElementById('smImg');
   if (s && s.configured && s.image && s.image !== 'https://eu.zhongdacloud.com/') {
-    img.src = s.image; img.style.display = 'block';
+    img.src = s.image; img.style.display = 'block'; img.style.margin = '0 auto 18px';
   } else { img.style.display = 'none'; }
 
   const stock = s ? (s.stock||0) : 0;
@@ -595,7 +603,9 @@ function openRestockModal(sn) {
   document.getElementById('modalTitle').textContent = currentLang==='fr'?'Demande de Réassort':'Request Restock';
   document.getElementById('modalSub').textContent = 'Slot '+sn+' — '+name+' @ '+MACHINES[currentMachine].name;
   document.getElementById('modalInput').value = s&&s.configured ? (s.goods_name||'') : '';
+  document.getElementById('modalEmail').value = '';
   document.getElementById('modalNotes').value = '';
+  resetModalState();
   document.getElementById('restockModal').classList.add('open');
 }
 
@@ -604,38 +614,102 @@ function openNewProductModal() {
   document.getElementById('modalTitle').textContent = currentLang==='fr'?'Nouveau Produit':'New Product';
   document.getElementById('modalSub').textContent = MACHINES[currentMachine].name + (currentLang==='fr'?' — Nouveau produit':' — New product request');
   document.getElementById('modalInput').value = '';
+  document.getElementById('modalEmail').value = '';
   document.getElementById('modalNotes').value = '';
+  resetModalState();
   document.getElementById('restockModal').classList.add('open');
+}
+
+function resetModalState() {
+  document.getElementById('modalSuccess').style.display = 'none';
+  const btn = document.getElementById('modalSubmitBtn');
+  btn.disabled = false;
+  btn.textContent = currentLang==='fr'?'Envoyer →':'Send →';
 }
 
 function closeModal() { document.getElementById('restockModal').classList.remove('open'); }
 document.getElementById('restockModal').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
 document.getElementById('slotModal').addEventListener('click', function(e){ if(e.target===this) closeSlotModal(); });
 
-function submitRestock() {
+async function submitRestock() {
   if (!modalContext) return;
   const product = document.getElementById('modalInput').value.trim();
+  const email = document.getElementById('modalEmail').value.trim();
   const notes = document.getElementById('modalNotes').value.trim();
   const m = modalContext.machine;
   const isNew = modalContext.type === 'new';
-  const subject = encodeURIComponent('[BoosterStop] ' + (isNew?'New product':'Restock') + ' — ' + m.name + (modalContext.slot?' — Slot '+modalContext.slot:''));
-  const body = encodeURIComponent(
-    'Machine: '+m.name+'\nAddress: '+m.addr+'\n\n'+
-    (modalContext.slot?'Slot: '+modalContext.slot+'\n':'')+
-    'Product / Collection: '+(product||'—')+'\n'+
-    'Notes: '+(notes||'—')+'\n\nSent from BoosterStop Stock Dashboard'
-  );
-  window.location.href = 'mailto:'+RESTOCK_EMAIL+'?subject='+subject+'&body='+body;
-  closeModal();
+
+  if (!email) {
+    document.getElementById('modalEmail').focus();
+    document.getElementById('modalEmail').style.borderColor = 'var(--red)';
+    return;
+  }
+
+  const btn = document.getElementById('modalSubmitBtn');
+  btn.disabled = true;
+  btn.textContent = currentLang==='fr'?'Envoi...':'Sending...';
+
+  const payload = {
+    type: isNew ? 'New product request' : 'Restock request',
+    machine: m.name,
+    machine_address: m.addr,
+    slot: modalContext.slot || 'N/A',
+    product: product || '—',
+    email: email,
+    notes: notes || '—',
+    _subject: '[BoosterStop] ' + (isNew?'New product':'Restock') + ' — ' + m.name + (modalContext.slot?' — Slot '+modalContext.slot:'')
+  };
+
+  try {
+    const res = await fetch(FORMSPREE.restock_ch, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (res.ok) {
+      document.getElementById('modalSuccess').style.display = 'block';
+      btn.style.display = 'none';
+      setTimeout(closeModal, 1800);
+    } else {
+      btn.disabled = false;
+      btn.textContent = currentLang==='fr'?'Réessayer':'Try again';
+    }
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = currentLang==='fr'?'Réessayer':'Try again';
+  }
 }
 
-function notifyMe(country) {
+async function notifyMe(country) {
   const input = document.getElementById('notify'+country.toUpperCase());
-  if (!input||!input.value) return;
-  const subject = encodeURIComponent('[BoosterStop] Launch notification — '+country.toUpperCase());
-  const body = encodeURIComponent('Please notify me when BoosterStop launches in '+country.toUpperCase()+'.\n\nEmail: '+input.value);
-  window.location.href = 'mailto:'+RESTOCK_EMAIL+'?subject='+subject+'&body='+body;
-  input.value='';
+  if (!input||!input.value) { input.style.borderColor='var(--red)'; return; }
+  const endpoint = country==='be' ? FORMSPREE.notify_be : FORMSPREE.notify_uae;
+  const btn = input.nextElementSibling;
+  const orig = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = currentLang==='fr'?'Envoi...':'Sending...';
+  try {
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        email: input.value,
+        country: country.toUpperCase(),
+        _subject: '[BoosterStop] Launch notification — ' + country.toUpperCase()
+      })
+    });
+    if (res.ok) {
+      input.value = '';
+      btn.textContent = currentLang==='fr'?'✓ Inscrit !':'✓ Subscribed!';
+      setTimeout(()=>{ btn.textContent = orig; btn.disabled = false; }, 2500);
+    } else {
+      btn.textContent = currentLang==='fr'?'Réessayer':'Try again';
+      btn.disabled = false;
+    }
+  } catch(e) {
+    btn.textContent = currentLang==='fr'?'Réessayer':'Try again';
+    btn.disabled = false;
+  }
 }
 
 // INIT
