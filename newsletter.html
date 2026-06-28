@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BoosterStop — Newsletter</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#120F2A;--white:#f4f2ee;--yellow:#FFD000;
+  --gray:#1E1A3A;--gray-mid:#2e2a50;--text-muted:#8888aa;
+  --red:#E8183C;--green:#00e676;--violet:#2A1F5E;--radius:4px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;min-height:100vh;background-image:radial-gradient(ellipse at 80% 10%,rgba(232,24,60,0.08) 0%,transparent 50%),radial-gradient(ellipse at 20% 80%,rgba(42,31,94,0.3) 0%,transparent 60%);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:22px 48px;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(18,15,42,0.92);backdrop-filter:blur(12px);}
+.nav-logo img{height:28px;}
+.nav-right{display:flex;align-items:center;gap:36px;}
+nav ul{list-style:none;display:flex;gap:36px;}
+nav ul a{color:var(--text-muted);text-decoration:none;font-size:13px;letter-spacing:0.5px;transition:color 0.2s;}
+nav ul a:hover{color:var(--white);}
+nav ul a.active{color:var(--red);}
+.lang-switcher{display:flex;gap:4px;}
+.lang-btn{background:none;border:1px solid var(--gray-mid);color:var(--text-muted);font-family:'DM Sans';font-size:11px;letter-spacing:2px;padding:4px 10px;border-radius:2px;cursor:pointer;transition:all 0.2s;}
+.lang-btn.active{border-color:var(--red);color:var(--red);background:rgba(232,24,60,0.06);}
+.lang-btn:hover{border-color:var(--red);color:var(--red);}
+
+/* HERO */
+.nl-hero{max-width:760px;margin:0 auto;padding:160px 48px 40px;text-align:center;}
+.nl-eyebrow{font-size:11px;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px;justify-content:center;}
+.nl-eyebrow::before,.nl-eyebrow::after{content:'';display:inline-block;width:28px;height:1px;background:var(--red);}
+.nl-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(42px,7vw,76px);line-height:0.95;margin-bottom:20px;}
+.nl-title span{color:var(--red);}
+.nl-sub{color:var(--text-muted);font-size:16px;line-height:1.7;max-width:560px;margin:0 auto;}
+
+/* FORM CARD */
+.nl-card{max-width:760px;margin:0 auto 100px;padding:0 48px;}
+.nl-form{background:var(--gray);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:40px;margin-top:40px;}
+.nl-section{margin-bottom:36px;}
+.nl-section:last-of-type{margin-bottom:0;}
+.nl-label{font-size:11px;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+.nl-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--red);}
+.nl-hint{font-size:13px;color:var(--text-muted);margin-bottom:18px;}
+
+/* COUNTRY CHIPS */
+.chip-grid{display:flex;flex-wrap:wrap;gap:10px;}
+.chip{display:flex;align-items:center;gap:8px;background:var(--black);border:1px solid var(--gray-mid);color:var(--text-muted);font-size:13px;padding:10px 18px;border-radius:40px;cursor:pointer;transition:all 0.18s;user-select:none;}
+.chip:hover{border-color:var(--red);color:var(--white);}
+.chip.selected{border-color:var(--red);background:rgba(232,24,60,0.1);color:var(--white);}
+.chip .chk{width:16px;height:16px;border:1px solid var(--gray-mid);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;color:transparent;transition:all 0.18s;flex-shrink:0;}
+.chip.selected .chk{background:var(--red);border-color:var(--red);color:#fff;}
+.chip .flag{font-size:17px;}
+
+/* TCG GRID */
+.tcg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.tcg-chip{display:flex;align-items:center;gap:10px;background:var(--black);border:1px solid var(--gray-mid);color:var(--text-muted);font-size:13px;padding:14px 16px;border-radius:var(--radius);cursor:pointer;transition:all 0.18s;user-select:none;}
+.tcg-chip:hover{border-color:var(--red);color:var(--white);}
+.tcg-chip.selected{border-color:var(--red);background:rgba(232,24,60,0.08);color:var(--white);}
+.tcg-chip .chk{width:16px;height:16px;border:1px solid var(--gray-mid);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:11px;color:transparent;transition:all 0.18s;flex-shrink:0;}
+.tcg-chip.selected .chk{background:var(--red);border-color:var(--red);color:#fff;}
+.tcg-all{margin-bottom:12px;}
+.tcg-chip.all-chip{background:rgba(255,208,0,0.06);border-color:rgba(255,208,0,0.3);color:var(--yellow);font-weight:500;}
+.tcg-chip.all-chip.selected{background:rgba(255,208,0,0.14);border-color:var(--yellow);}
+.tcg-chip.all-chip .chk{border-color:rgba(255,208,0,0.4);}
+.tcg-chip.all-chip.selected .chk{background:var(--yellow);border-color:var(--yellow);color:var(--black);}
+
+/* EMAIL */
+.nl-email-row{display:flex;flex-direction:column;gap:6px;}
+.nl-input{background:var(--black);border:1px solid var(--gray-mid);border-radius:var(--radius);color:var(--white);font-family:'DM Sans';font-size:15px;padding:15px 18px;outline:none;transition:border-color 0.2s;}
+.nl-input:focus{border-color:var(--red);}
+.nl-input::placeholder{color:#555;}
+
+/* SUBMIT */
+.nl-submit{background:var(--yellow);color:var(--black);border:none;padding:16px 40px;font-family:'DM Sans';font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;border-radius:var(--radius);cursor:pointer;transition:opacity 0.2s,transform 0.15s;margin-top:8px;width:100%;}
+.nl-submit:hover{opacity:0.9;transform:translateY(-1px);}
+.nl-submit:disabled{opacity:0.5;cursor:not-allowed;}
+.nl-success{display:none;background:rgba(0,230,118,0.1);border:1px solid rgba(0,230,118,0.3);color:var(--green);font-size:14px;padding:16px 20px;border-radius:var(--radius);margin-top:18px;text-align:center;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--gray-mid);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;}
+footer p{font-size:12px;color:#444;letter-spacing:0.5px;}
+
+/* MOBILE NAV */
+.mob-nav{display:none;}
+@media(max-width:768px){
+  .mob-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:9000;background:rgba(18,15,42,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(232,24,60,0.4);padding-top:8px;padding-bottom:env(safe-area-inset-bottom,8px);justify-content:space-around;align-items:flex-start;}
+  body{padding-bottom:68px;}
+  nav ul{display:none;}
+}
+.mob-nav a{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text-muted);text-decoration:none;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 6px;transition:color 0.2s;flex:1;text-align:center;}
+.mob-nav a.active,.mob-nav a:hover{color:var(--red);}
+.mob-nav .m-icon{font-size:18px;line-height:1;display:block;}
+
+@media(max-width:768px){
+  nav{padding:18px 24px;}
+  .nl-hero{padding:120px 24px 30px;}
+  .nl-card{padding:0 24px;}
+  .nl-form{padding:28px 20px;}
+  .tcg-grid{grid-template-columns:1fr 1fr;}
+  footer{padding:24px;flex-direction:column;gap:12px;text-align:center;}
+}
+@media(max-width:420px){
+  .tcg-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo"><img src="logo.png" alt="BoosterStop"></a>
+  <div class="nav-right">
+    <ul>
+      <li><a href="/" data-en="Home" data-fr="Accueil">Home</a></li>
+      <li><a href="/stock.html" data-en="Live Stock" data-fr="Stock Live">Live Stock</a></li>
+      <li><a href="/newsletter.html" class="active" data-en="Newsletter" data-fr="Newsletter">Newsletter</a></li>
+      <li><a href="/#partner" data-en="Partner" data-fr="Partenaire">Partner</a></li>
+      <li><a href="/#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="nl-hero">
+  <div class="nl-eyebrow" data-en="Restock alerts" data-fr="Alertes de réassort">Restock alerts</div>
+  <h1 class="nl-title" data-en="Never miss a <span>drop.</span>" data-fr="Ne ratez plus aucune <span>sortie.</span>">Never miss a <span>drop.</span></h1>
+  <p class="nl-sub" data-en="Get notified the moment your favourite TCG sets land in our machines. Choose your countries and the games you care about — we'll email you when they're in stock." data-fr="Soyez prévenu dès que vos sets TCG préférés arrivent dans nos machines. Choisissez vos pays et les jeux qui vous intéressent — on vous écrit dès qu'ils sont en stock.">Get notified the moment your favourite TCG sets land in our machines. Choose your countries and the games you care about — we'll email you when they're in stock.</p>
+</div>
+
+<!-- FORM -->
+<div class="nl-card">
+  <div class="nl-form">
+    <!-- COUNTRIES -->
+    <div class="nl-section">
+      <div class="nl-label" data-en="Countries" data-fr="Pays">Countries</div>
+      <div class="nl-hint" data-en="Where do you want restock alerts? (select one or more)" data-fr="Où voulez-vous des alertes ? (un ou plusieurs)">Where do you want restock alerts? (select one or more)</div>
+      <div class="chip-grid" id="countryGrid">
+        <div class="chip" data-value="Switzerland" onclick="toggleChip(this)"><span class="chk">✓</span><span class="flag">🇨🇭</span><span data-en="Switzerland" data-fr="Suisse">Switzerland</span></div>
+        <div class="chip" data-value="Belgium" onclick="toggleChip(this)"><span class="chk">✓</span><span class="flag">🇧🇪</span><span data-en="Belgium" data-fr="Belgique">Belgium</span></div>
+        <div class="chip" data-value="UAE" onclick="toggleChip(this)"><span class="chk">✓</span><span class="flag">🇦🇪</span><span data-en="UAE" data-fr="Émirats">UAE</span></div>
+      </div>
+    </div>
+
+    <!-- TCG -->
+    <div class="nl-section">
+      <div class="nl-label" data-en="Trading card games" data-fr="Jeux de cartes">Trading card games</div>
+      <div class="nl-hint" data-en="Which universes are you into? (select all you like)" data-fr="Quels univers vous intéressent ? (autant que vous voulez)">Which universes are you into? (select all you like)</div>
+      <div class="tcg-all">
+        <div class="tcg-chip all-chip" data-value="__ALL__" onclick="toggleAll(this)"><span class="chk">✓</span><span data-en="✨ All TCGs — notify me for everything" data-fr="✨ Tous les TCG — préviens-moi pour tout">✨ All TCGs — notify me for everything</span></div>
+      </div>
+      <div class="tcg-grid" id="tcgGrid">
+        <div class="tcg-chip" data-value="Pokémon" onclick="toggleChip(this)"><span class="chk">✓</span>Pokémon</div>
+        <div class="tcg-chip" data-value="One Piece TCG" onclick="toggleChip(this)"><span class="chk">✓</span>One Piece TCG</div>
+        <div class="tcg-chip" data-value="Dragon Ball Super" onclick="toggleChip(this)"><span class="chk">✓</span>Dragon Ball Super</div>
+        <div class="tcg-chip" data-value="Riftbound: LoL TCG" onclick="toggleChip(this)"><span class="chk">✓</span>Riftbound: LoL</div>
+        <div class="tcg-chip" data-value="Magic: The Gathering" onclick="toggleChip(this)"><span class="chk">✓</span>Magic: The Gathering</div>
+        <div class="tcg-chip" data-value="Disney Lorcana" onclick="toggleChip(this)"><span class="chk">✓</span>Disney Lorcana</div>
+        <div class="tcg-chip" data-value="Yu-Gi-Oh!" onclick="toggleChip(this)"><span class="chk">✓</span>Yu-Gi-Oh!</div>
+        <div class="tcg-chip" data-value="Naruto TCG" onclick="toggleChip(this)"><span class="chk">✓</span>Naruto TCG</div>
+        <div class="tcg-chip" data-value="Other" onclick="toggleChip(this)"><span class="chk">✓</span><span data-en="Other" data-fr="Autre">Other</span></div>
+      </div>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="nl-section">
+      <div class="nl-label" data-en="Your email" data-fr="Votre email">Your email</div>
+      <div class="nl-email-row">
+        <input class="nl-input" id="nlEmail" type="email" placeholder="you@example.com">
+      </div>
+    </div>
+
+    <button class="nl-submit" id="nlSubmit" onclick="submitNewsletter()" data-en="🔔 Subscribe to restock alerts" data-fr="🔔 M'abonner aux alertes">🔔 Subscribe to restock alerts</button>
+    <div class="nl-success" id="nlSuccess" data-en="✓ You're in! We'll email you when your selected products hit the machines." data-fr="✓ C'est fait ! On vous écrit dès que vos produits arrivent dans les machines.">✓ You're in! We'll email you when your selected products hit the machines.</div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="logo.png" alt="BoosterStop" style="height:22px;opacity:0.6;"></div>
+  <p>© 2020-2026 BoosterStop — 247 Distribution SNC</p>
+</footer>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav">
+  <a href="/"><span class="m-icon">🏠</span><span data-en="Home" data-fr="Accueil">Home</span></a>
+  <a href="/stock.html"><span class="m-icon">📦</span><span data-en="Stock" data-fr="Stock">Stock</span></a>
+  <a href="/newsletter.html" class="active"><span class="m-icon">🔔</span><span data-en="Newsletter" data-fr="Newsletter">Newsletter</span></a>
+  <a href="/#partner"><span class="m-icon">🤝</span><span data-en="Partner" data-fr="Partenaire">Partner</span></a>
+  <a href="/#contact"><span class="m-icon">✉️</span><span data-en="Contact" data-fr="Contact">Contact</span></a>
+</div>
+
+<script>
+const FORMSPREE_NEWSLETTER = 'https://formspree.io/f/xdarzbye'; // placeholder — replace with dedicated newsletter endpoint
+let currentLang = 'en';
+
+function setLang(lang){
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===lang));
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    const v = el.getAttribute('data-'+lang);
+    if(!v) return;
+    if(el.tagName==='INPUT') el.placeholder=v;
+    else el.innerHTML=v;
+  });
+}
+
+function toggleChip(el){
+  el.classList.toggle('selected');
+  // if a normal TCG chip is toggled, unselect "all"
+  if(el.parentElement.id==='tcgGrid'){
+    const all=document.querySelector('.all-chip');
+    if(all) all.classList.remove('selected');
+  }
+}
+
+function toggleAll(el){
+  const on = !el.classList.contains('selected');
+  el.classList.toggle('selected', on);
+  // selecting "all" clears individual selections (they're covered)
+  if(on){
+    document.querySelectorAll('#tcgGrid .tcg-chip').forEach(c=>c.classList.remove('selected'));
+  }
+}
+
+function getSelected(containerId){
+  return Array.from(document.querySelectorAll('#'+containerId+' .selected'))
+    .map(e=>e.getAttribute('data-value'));
+}
+
+async function submitNewsletter(){
+  const email = document.getElementById('nlEmail').value.trim();
+  const countries = getSelected('countryGrid');
+  const allSelected = document.querySelector('.all-chip').classList.contains('selected');
+  let tcgs = getSelected('tcgGrid');
+  if(allSelected) tcgs = ['All TCGs'];
+
+  const emailEl = document.getElementById('nlEmail');
+  if(!email){ emailEl.style.borderColor='var(--red)'; emailEl.focus(); return; }
+  if(countries.length===0){ alert(currentLang==='fr'?'Choisissez au moins un pays.':'Please select at least one country.'); return; }
+  if(tcgs.length===0){ alert(currentLang==='fr'?'Choisissez au moins un TCG.':'Please select at least one TCG.'); return; }
+
+  const btn=document.getElementById('nlSubmit');
+  btn.disabled=true;
+  btn.textContent=currentLang==='fr'?'Envoi...':'Subscribing...';
+
+  try{
+    const res=await fetch(FORMSPREE_NEWSLETTER,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        email:email,
+        countries:countries.join(', '),
+        tcgs:tcgs.join(', '),
+        _subject:'[BoosterStop] Newsletter signup — '+countries.join('/')
+      })
+    });
+    if(res.ok){
+      document.getElementById('nlSuccess').style.display='block';
+      btn.style.display='none';
+      document.getElementById('nlSuccess').scrollIntoView({behavior:'smooth',block:'center'});
+    }else{
+      btn.disabled=false;
+      btn.textContent=currentLang==='fr'?'Réessayer':'Try again';
+    }
+  }catch(e){
+    btn.disabled=false;
+    btn.textContent=currentLang==='fr'?'Réessayer':'Try again';
+  }
+}
+</script>
+</body>
+</html>
