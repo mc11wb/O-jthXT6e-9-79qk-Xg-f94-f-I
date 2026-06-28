@@ -41,9 +41,13 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 .refresh-btn:hover{background:rgba(232,24,60,0.1);}
 
 /* COUNTRY TABS */
-.country-tabs-wrap{padding:0 48px;max-width:1280px;margin:20px auto 0;}
+.country-tabs-wrap{padding:0 48px;max-width:1280px;margin:20px auto 0;position:relative;}
 .country-tabs{display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
 .country-tabs::-webkit-scrollbar{display:none;}
+@media(max-width:900px){
+  .country-tabs-wrap::after{content:'';position:absolute;top:0;right:20px;bottom:0;width:36px;background:linear-gradient(90deg,transparent,var(--black));pointer-events:none;z-index:2;}
+  .country-tab{padding:10px 16px;font-size:11px;}
+}
 .country-tab{flex-shrink:0;white-space:nowrap;}
 .country-tab{background:var(--gray);border:1px solid var(--gray-mid);border-bottom:none;color:var(--text-muted);font-family:'DM Sans';font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:10px 20px;cursor:pointer;transition:all 0.2s;border-radius:2px 2px 0 0;display:flex;align-items:center;gap:8px;user-select:none;}
 .country-tab.active{background:var(--black);border-color:var(--red);color:var(--white);border-bottom:1px solid var(--black);position:relative;z-index:1;}
@@ -69,11 +73,25 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 /* MACHINE SELECTOR */
 .machine-selector{max-width:1280px;margin:28px auto 0;padding:0 48px;}
 .machine-select-label{font-size:10px;letter-spacing:3px;color:var(--text-muted);text-transform:uppercase;margin-bottom:10px;}
-.machine-tabs{display:flex;gap:8px;flex-wrap:wrap;}
-.machine-tab{background:var(--gray);border:1px solid var(--gray-mid);color:var(--text-muted);font-size:12px;padding:9px 18px;border-radius:2px;cursor:pointer;transition:all 0.2s;display:flex;flex-direction:column;gap:2px;}
-.machine-tab.active{border-color:var(--red);color:var(--white);background:rgba(232,24,60,0.06);}
-.machine-tab:hover:not(.active){color:var(--white);}
-.machine-tab .m-addr{font-size:10px;color:var(--text-muted);letter-spacing:0;}
+
+
+/* STOCK MAP */
+.stock-map-wrapper{position:relative;border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;height:300px;margin-bottom:0;}
+#stock-map{width:100%;height:100%;}
+.selected-machine-card{display:flex;align-items:center;gap:14px;background:var(--gray);border:1px solid var(--red);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:16px 20px;}
+.sel-dot{width:9px;height:9px;border-radius:50%;background:var(--red);box-shadow:0 0 8px rgba(232,24,60,0.7);animation:livePulse 2s infinite;flex-shrink:0;}
+.sel-name{font-size:14px;font-weight:500;color:var(--white);margin-bottom:2px;}
+.sel-addr{font-size:12px;color:var(--text-muted);}
+/* Google popup dark style */
+.gm-style .gm-style-iw-c{background:#1E1A3A!important;border:1px solid var(--red)!important;border-radius:4px!important;padding:0!important;box-shadow:0 4px 24px rgba(0,0,0,0.8)!important;top:0!important;}
+.gm-style .gm-style-iw-d{overflow:hidden!important;}
+.gm-style-iw-chr{display:none!important;}
+.gm-style .gm-ui-hover-effect img{filter:invert(1)!important;}
+.sm-popup{padding:12px 14px;min-width:180px;font-family:'DM Sans',sans-serif;}
+.sm-popup-name{font-size:13px;font-weight:500;color:#f4f2ee;margin-bottom:3px;}
+.sm-popup-addr{font-size:11px;color:#888;margin-bottom:8px;}
+.sm-popup-btn{display:block;background:rgba(232,24,60,0.1);border:1px solid rgba(232,24,60,0.4);color:#E8183C;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;border-radius:2px;text-align:center;cursor:pointer;}
+.sm-popup-btn:hover{background:rgba(232,24,60,0.2);}
 
 /* MAIN VIEW */
 .machine-view{max-width:1280px;margin:20px auto 0;padding:0 48px 60px;}
@@ -180,16 +198,27 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 
 @media(max-width:900px){
   nav{padding:14px 20px;}
+  .nav-logo img{height:22px;}
   .page-header,.country-tabs-wrap,.machine-selector,.machine-view{padding-left:20px;padding-right:20px;}
+  .page-header{padding-top:24px;}
   .stats-bar{padding:0 20px;grid-template-columns:1fr 1fr;}
+  .stat-card{padding:14px 16px;}
+  .stat-value{font-size:30px;}
   .floor-row{grid-template-columns:repeat(5,1fr);}
   .floor-row.few{grid-template-columns:repeat(4,1fr);}
-.floor-row.few .slot{aspect-ratio:1/1;}
+  .floor-row.few .slot{aspect-ratio:1/1;}
+  .stock-map-wrapper{height:240px;}
+  .view-header{flex-direction:column;align-items:stretch;gap:10px;}
+  .new-product-btn{width:100%;text-align:center;}
   .coming-soon-country{padding:56px 20px;}
   .notify-form{flex-direction:column;}
   .notify-input{width:100%;}
   body{padding-bottom:64px;}
   .back-btn{display:none;}
+  .slot-modal{padding:20px;}
+}
+@media(max-width:400px){
+  .floor-row{grid-template-columns:repeat(4,1fr);}
 }
 @media(max-width:560px){
   .slot{padding:7px 5px;gap:4px;}
@@ -248,8 +277,15 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
   </div>
 
   <div class="machine-selector">
-    <div class="machine-select-label" data-en="Select machine" data-fr="Sélectionner une machine">Select machine</div>
-    <div class="machine-tabs" id="machineTabs"></div>
+    <div class="machine-select-label" data-en="Select a machine on the map" data-fr="Sélectionnez une machine sur la carte">Select a machine on the map</div>
+    <div class="stock-map-wrapper"><div id="stock-map"></div></div>
+    <div class="selected-machine-card" id="selectedMachineCard">
+      <div class="sel-dot"></div>
+      <div>
+        <div class="sel-name" id="selMachineName">Poste Filiale — Genève 3 Rive</div>
+        <div class="sel-addr" id="selMachineAddr">Rue du Vieux-Collège 3, 1204 Genève</div>
+      </div>
+    </div>
   </div>
 
   <div class="machine-view">
@@ -338,9 +374,9 @@ const WORKER = 'https://boosterstop-stock.cold-water-7039.workers.dev';
 const RESTOCK_EMAIL = 'contact@boosterstop.ch';
 
 const MACHINES = [
-  { name: 'Genève 3 Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève' },
-  { name: 'Les Eaux-Vives', addr: 'Rue du 31-Décembre 47, 1207 Genève' },
-  { name: 'Petit-Lancy 1', addr: 'Rue des Bossons 88B, 1213 Petit-Lancy' }
+  { name: 'Poste Filiale — Genève 3 Rive', short: 'Genève 3 Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', lat: 46.2008, lng: 6.1520 },
+  { name: 'Poste Filiale — Genève 6 Les Eaux-Vives', short: 'Les Eaux-Vives', addr: 'Rue du 31-Décembre 47, 1207 Genève', lat: 46.1997, lng: 6.1638 },
+  { name: 'Poste Filiale — Petit-Lancy 1', short: 'Petit-Lancy 1', addr: 'Rue des Bossons 88B, 1213 Petit-Lancy', lat: 46.1872, lng: 6.1214 }
 ];
 
 // Floor structure (display_code based)
@@ -377,20 +413,68 @@ function switchCountry(c) {
   document.getElementById('panel-' + c).classList.add('active');
 }
 
-function buildMachineTabs() {
-  document.getElementById('machineTabs').innerHTML = MACHINES.map((m,i) => `
-    <div class="machine-tab ${i===0?'active':''}" onclick="selectMachine(${i})" id="mtab-${i}">
-      📍 <strong>${m.name}</strong><span class="m-addr">${m.addr}</span>
-    </div>`).join('');
+let stockMap = null, stockMarkers = [], stockInfo = null;
+
+function initStockMap() {
+  const darkStyles = [
+    { elementType: 'geometry', stylers: [{ color: '#111111' }] },
+    { elementType: 'labels', stylers: [{ visibility: 'off' }] },
+    { featureType: 'administrative.locality', elementType: 'labels.text', stylers: [{ visibility: 'on' }] },
+    { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#777777' }] },
+    { featureType: 'administrative.locality', elementType: 'labels.text.stroke', stylers: [{ color: '#111111' }] },
+    { featureType: 'road.arterial', elementType: 'geometry', stylers: [{ color: '#1e1e1e' }] },
+    { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#252525' }] },
+    { featureType: 'road.local', elementType: 'geometry', stylers: [{ color: '#181818' }] },
+    { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0a0a0a' }] },
+    { featureType: 'poi', stylers: [{ visibility: 'off' }] },
+    { featureType: 'transit', stylers: [{ visibility: 'off' }] },
+    { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#111111' }] },
+    { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#2a2a2a' }] }
+  ];
+  stockMap = new google.maps.Map(document.getElementById('stock-map'), {
+    zoom: 12, center: { lat: 46.1955, lng: 6.1430 },
+    disableDefaultUI: true, gestureHandling: 'greedy', styles: darkStyles
+  });
+  MACHINES.forEach((m, i) => {
+    const marker = new google.maps.Marker({
+      position: { lat: m.lat, lng: m.lng }, map: stockMap,
+      icon: markerIcon(i === currentMachine)
+    });
+    marker.addListener('click', () => selectMachine(i));
+    stockMarkers[i] = marker;
+  });
+  updateMarkerStyles();
+}
+
+function markerIcon(active) {
+  return {
+    path: google.maps.SymbolPath.CIRCLE,
+    scale: active ? 11 : 8,
+    fillColor: active ? '#E8183C' : '#FFD000',
+    fillOpacity: 1,
+    strokeColor: '#ffffff',
+    strokeWeight: active ? 2 : 1.5
+  };
+}
+
+function updateMarkerStyles() {
+  stockMarkers.forEach((mk, i) => mk && mk.setIcon(markerIcon(i === currentMachine)));
 }
 
 function selectMachine(i) {
   currentMachine = i;
-  document.querySelectorAll('.machine-tab').forEach((t,j) => t.classList.toggle('active', j === i));
   activeSlot = null;
   closeSlotModal();
+  // update selected card
+  document.getElementById('selMachineName').textContent = MACHINES[i].name;
+  document.getElementById('selMachineAddr').textContent = MACHINES[i].addr;
+  updateMarkerStyles();
+  if (stockMap) stockMap.panTo({ lat: MACHINES[i].lat, lng: MACHINES[i].lng });
   loadAll();
 }
+
+// Google Maps callback
+window.initStockMap = initStockMap;
 
 async function loadAll() {
   const el = document.getElementById('lastUpdate');
@@ -542,14 +626,15 @@ function notifyMe(country) {
 }
 
 // INIT
-buildMachineTabs();
 (function() {
   const p = new URLSearchParams(window.location.search).get('machine');
   if (p !== null && MACHINES[parseInt(p)]) currentMachine = parseInt(p);
-  document.querySelectorAll('.machine-tab').forEach((t,j) => t.classList.toggle('active', j === currentMachine));
+  document.getElementById('selMachineName').textContent = MACHINES[currentMachine].name;
+  document.getElementById('selMachineAddr').textContent = MACHINES[currentMachine].addr;
 })();
 loadAll();
 setInterval(loadAll, 5 * 60 * 1000);
 </script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-uxCBr3OvNOAgHTklOsATNImLuPrmn0g&callback=initStockMap"></script>
 </body>
 </html>
