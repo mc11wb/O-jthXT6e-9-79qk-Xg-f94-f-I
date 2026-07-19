@@ -25,6 +25,7 @@ nav ul{list-style:none;display:flex;gap:36px;}
 nav ul a{color:var(--text-muted);text-decoration:none;font-size:13px;letter-spacing:0.5px;transition:color 0.2s;}
 nav ul a:hover{color:var(--white);}
 nav ul a.active{color:var(--red);}
+.nl-badge{display:inline-block;background:var(--yellow);color:var(--black);font-size:8px;font-weight:600;letter-spacing:0.5px;padding:1px 5px;border-radius:3px;margin-left:5px;vertical-align:middle;}
 .lang-switcher{display:flex;gap:4px;}
 .lang-btn{background:none;border:1px solid var(--gray-mid);color:var(--text-muted);font-family:'DM Sans';font-size:11px;letter-spacing:2px;padding:4px 10px;border-radius:2px;cursor:pointer;transition:all 0.2s;}
 .lang-btn.active{border-color:var(--red);color:var(--red);background:rgba(232,24,60,0.06);}
@@ -37,6 +38,12 @@ nav ul a.active{color:var(--red);}
 .nl-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,6.5vw,68px);line-height:0.95;margin-bottom:16px;}
 .nl-title span{color:var(--red);}
 .nl-sub{color:var(--text-muted);font-size:16px;line-height:1.7;max-width:560px;margin:0 auto;}
+
+
+.nl-offer{display:flex;align-items:center;gap:14px;background:rgba(255,208,0,0.08);border:1px solid rgba(255,208,0,0.35);border-radius:var(--radius);padding:16px 20px;margin-top:24px;text-align:left;}
+.nl-offer-badge{flex-shrink:0;background:var(--yellow);color:var(--black);font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;padding:6px 12px;border-radius:4px;line-height:1;}
+.nl-offer-text{font-size:14px;color:var(--white);line-height:1.5;}
+.nl-offer-text strong{color:var(--yellow);font-weight:500;}
 
 /* FORM CARD */
 .nl-card{max-width:760px;margin:0 auto 70px;padding:0 48px;}
@@ -76,7 +83,14 @@ nav ul a.active{color:var(--red);}
 .nl-input::placeholder{color:#555;}
 
 /* SUBMIT */
-.nl-submit{background:var(--yellow);color:var(--black);border:none;padding:16px 40px;font-family:'DM Sans';font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;border-radius:var(--radius);cursor:pointer;transition:opacity 0.2s,transform 0.15s;margin-top:8px;width:100%;}
+/* CONSENT */
+.nl-consent{display:flex;align-items:flex-start;gap:12px;margin-top:20px;cursor:pointer;user-select:none;}
+.nl-consent input{position:absolute;opacity:0;width:0;height:0;}
+.nl-consent-box{flex-shrink:0;width:20px;height:20px;border:1px solid var(--gray-mid);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;color:transparent;background:var(--black);transition:all 0.18s;margin-top:1px;}
+.nl-consent input:checked + .nl-consent-box{background:var(--red);border-color:var(--red);color:#fff;}
+.nl-consent.error .nl-consent-box{border-color:var(--red);box-shadow:0 0 0 3px rgba(232,24,60,0.15);}
+.nl-consent-text{font-size:12.5px;color:var(--text-muted);line-height:1.6;}
+.nl-submit{background:var(--yellow);color:var(--black);border:none;padding:16px 40px;font-family:'DM Sans';font-size:13px;font-weight:500;letter-spacing:2px;text-transform:uppercase;border-radius:var(--radius);cursor:pointer;transition:opacity 0.2s,transform 0.15s;margin-top:20px;width:100%;}
 .nl-submit:hover{opacity:0.9;transform:translateY(-1px);}
 .nl-submit:disabled{opacity:0.5;cursor:not-allowed;}
 .nl-success{display:none;background:rgba(0,230,118,0.1);border:1px solid rgba(0,230,118,0.3);color:var(--green);font-size:14px;padding:16px 20px;border-radius:var(--radius);margin-top:18px;text-align:center;}
@@ -95,12 +109,17 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;}
 .mob-nav a{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text-muted);text-decoration:none;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 6px;transition:color 0.2s;flex:1;text-align:center;}
 .mob-nav a.active,.mob-nav a:hover{color:var(--red);}
 .mob-nav .m-icon{font-size:18px;line-height:1;display:block;}
+.mob-nav a{position:relative;}
+.mob-nav a .m-badge{position:absolute;top:0;left:50%;margin-left:6px;background:var(--yellow);color:var(--black);font-size:7px;font-weight:700;letter-spacing:0.2px;padding:1px 4px;border-radius:3px;line-height:1.3;}
 
 @media(max-width:768px){
   nav{padding:18px 24px;}
   .nl-hero{padding:100px 24px 20px;}
   .nl-card{padding:0 24px;}
   .nl-form{padding:24px 18px;}
+  .nl-offer{flex-direction:row;padding:14px 16px;gap:12px;}
+  .nl-offer-badge{font-size:20px;padding:5px 9px;}
+  .nl-offer-text{font-size:13px;}
   .tcg-grid{grid-template-columns:1fr 1fr;}
   footer{padding:24px;flex-direction:column;gap:12px;text-align:center;}
 }
@@ -133,6 +152,10 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;}
   <div class="nl-eyebrow" data-en="Restocks · Releases · Promos" data-fr="Réassorts · Sorties · Promos">Restocks · Releases · Promos</div>
   <h1 class="nl-title" data-en="Never miss a <span>drop.</span>" data-fr="Ne ratez plus <span>rien.</span>">Never miss a <span>drop.</span></h1>
   <p class="nl-sub" data-en="New releases, restocks and exclusive discount codes — straight to your inbox. Pick your countries and the games you care about, and we'll only email you about what matters to you." data-fr="Nouvelles sorties, réassorts et codes promo exclusifs — directement dans votre boîte mail. Choisissez vos pays et vos jeux préférés, et on ne vous écrit que pour ce qui vous concerne.">New releases, restocks and exclusive discount codes — straight to your inbox. Pick your countries and the games you care about, and we'll only email you about what matters to you.</p>
+  <div class="nl-offer">
+    <span class="nl-offer-badge">-10%</span>
+    <span class="nl-offer-text" data-en="Sign up now and get a <strong>10% discount code</strong> on your first purchase — plus restock alerts, new releases & exclusive promos." data-fr="Inscrivez-vous et recevez un <strong>code promo de 10%</strong> sur votre premier achat — en plus des alertes de réassort, des sorties et des promos exclusives.">Sign up now and get a <strong>10% discount code</strong> on your first purchase — plus restock alerts, new releases & exclusive promos.</span>
+  </div>
 </div>
 
 <!-- FORM -->
@@ -177,6 +200,13 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;}
       </div>
     </div>
 
+    <!-- CONSENT -->
+    <label class="nl-consent" id="nlConsentRow">
+      <input type="checkbox" id="nlConsent">
+      <span class="nl-consent-box">✓</span>
+      <span class="nl-consent-text" data-en="I agree to receive restock alerts, new-release news and promotional emails from BoosterStop. I can unsubscribe at any time." data-fr="J'accepte de recevoir les alertes de réassort, les nouveautés et les emails promotionnels de BoosterStop. Je peux me désinscrire à tout moment.">I agree to receive restock alerts, new-release news and promotional emails from BoosterStop. I can unsubscribe at any time.</span>
+    </label>
+
     <button class="nl-submit" id="nlSubmit" onclick="submitNewsletter()" data-en="🔔 Subscribe" data-fr="🔔 Je m'abonne">🔔 Subscribe</button>
     <div class="nl-success" id="nlSuccess" data-en="✓ You're in! Expect restock alerts, new release news and exclusive promo codes." data-fr="✓ C'est fait ! Vous recevrez les alertes de réassort, les nouveautés et des codes promo exclusifs.">✓ You're in! Expect restock alerts, new release news and exclusive promo codes.</div>
   </div>
@@ -192,7 +222,7 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;}
 <div class="mob-nav">
   <a href="/"><span class="m-icon">🏠</span><span data-en="Home" data-fr="Accueil">Home</span></a>
   <a href="/stock.html"><span class="m-icon">📦</span><span data-en="Stock" data-fr="Stock">Stock</span></a>
-  <a href="/newsletter.html" class="active"><span class="m-icon">🔔</span><span data-en="Newsletter" data-fr="Newsletter">Newsletter</span></a>
+  <a href="/newsletter.html" class="active"><span class="m-icon">🔔</span><span class="m-badge">-10%</span><span data-en="Newsletter" data-fr="Newsletter">Newsletter</span></a>
   <a href="/#partner"><span class="m-icon">🤝</span><span data-en="Partner" data-fr="Partenaire">Partner</span></a>
   <a href="/#contact"><span class="m-icon">✉️</span><span data-en="Contact" data-fr="Contact">Contact</span></a>
 </div>
@@ -236,6 +266,10 @@ function getSelected(containerId){
     .map(e=>e.getAttribute('data-value'));
 }
 
+document.getElementById('nlConsent').addEventListener('change',function(){
+  if(this.checked) document.getElementById('nlConsentRow').classList.remove('error');
+});
+
 async function submitNewsletter(){
   const email = document.getElementById('nlEmail').value.trim();
   const countries = getSelected('countryGrid');
@@ -244,9 +278,17 @@ async function submitNewsletter(){
   if(allSelected) tcgs = ['All TCGs'];
 
   const emailEl = document.getElementById('nlEmail');
+  const consent = document.getElementById('nlConsent');
+  const consentRow = document.getElementById('nlConsentRow');
   if(!email){ emailEl.style.borderColor='var(--red)'; emailEl.focus(); return; }
   if(countries.length===0){ alert(currentLang==='fr'?'Choisissez au moins un pays.':'Please select at least one country.'); return; }
   if(tcgs.length===0){ alert(currentLang==='fr'?'Choisissez au moins un TCG.':'Please select at least one TCG.'); return; }
+  if(!consent.checked){
+    consentRow.classList.add('error');
+    consentRow.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  consentRow.classList.remove('error');
 
   const btn=document.getElementById('nlSubmit');
   btn.disabled=true;
@@ -260,6 +302,8 @@ async function submitNewsletter(){
         email:email,
         countries:countries.join(', '),
         tcgs:tcgs.join(', '),
+        consent:'Yes — opted in to marketing emails',
+        consent_timestamp:new Date().toISOString(),
         _subject:'[BoosterStop] Newsletter signup ('+countries.join('/')+') — '+tcgs.join(', ')
       })
     });
