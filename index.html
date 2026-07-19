@@ -27,6 +27,7 @@
   nav ul { list-style: none; display: flex; gap: 36px; }
   nav ul a { color: var(--text-muted); text-decoration: none; font-size: 13px; letter-spacing: 0.5px; transition: color 0.2s; }
   nav ul a:hover { color: var(--white); }
+  .nl-badge{display:inline-block;background:var(--yellow);color:var(--black);font-size:8px;font-weight:600;letter-spacing:0.5px;padding:1px 5px;border-radius:3px;margin-left:5px;vertical-align:middle;}
 
   /* LANG SWITCHER */
   .lang-switcher { display: flex; gap: 4px; }
@@ -161,6 +162,33 @@
   .btn-submit:active { transform: translateY(0); }
   .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
+
+  /* TRUST & FAQ */
+  .trust-section { max-width: 1100px; margin: 0 auto; padding: 100px 48px; }
+  .trust-head { max-width: 640px; margin-bottom: 48px; }
+  .trust-head h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px,4.5vw,52px); line-height: 1; color: var(--white); margin: 14px 0 18px; }
+  .trust-head h2 span { color: var(--red); }
+  .trust-head p { color: var(--text-muted); font-size: 15px; line-height: 1.8; }
+  .trust-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-bottom: 60px; }
+  .trust-card { background: var(--gray); padding: 32px 26px; border-top: 2px solid var(--red); }
+  .trust-card .t-icon { font-size: 26px; margin-bottom: 14px; }
+  .trust-card h3 { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white); margin-bottom: 10px; font-weight: 500; }
+  .trust-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+  .faq-list { display: flex; flex-direction: column; gap: 2px; }
+  .faq-item { background: var(--gray); border-left: 2px solid var(--gray-mid); transition: border-color 0.2s; }
+  .faq-item[open] { border-left-color: var(--red); }
+  .faq-item summary { list-style: none; cursor: pointer; padding: 20px 24px; font-size: 15px; color: var(--white); font-weight: 400; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-family: 'Bebas Neue',sans-serif; font-size: 24px; color: var(--red); line-height: 1; flex-shrink: 0; transition: transform 0.2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item .faq-a { padding: 0 24px 22px; font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+  @media (max-width: 768px) {
+    .trust-section { padding: 72px 24px; }
+    .trust-cards { grid-template-columns: 1fr; }
+    .faq-item summary { font-size: 14px; padding: 16px 18px; }
+    .faq-item .faq-a { padding: 0 18px 18px; font-size: 13.5px; }
+  }
+
   /* FOOTER */
   footer { border-top: 1px solid var(--gray-mid); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; }
   footer p { font-size: 12px; color: #444; letter-spacing: 0.5px; }
@@ -239,6 +267,8 @@
   .mob-nav a.active,
   .mob-nav a:hover { color: var(--red); }
   .mob-nav .m-icon { font-size: 20px; line-height: 1; display: block; }
+  .mob-nav a { position: relative; }
+  .mob-nav a .m-badge{position:absolute;top:0;left:50%;margin-left:6px;background:var(--yellow);color:var(--black);font-size:7px;font-weight:700;letter-spacing:0.2px;padding:1px 4px;border-radius:3px;line-height:1.3;}
 
 
   /* BOOSTER ANIMATION */
@@ -289,7 +319,7 @@
     <ul>
       <li><a href="#where" data-en="Locations" data-fr="Emplacements">Locations</a></li>
       <li><a href="#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
-      <li><a href="/newsletter.html" data-en="🔔 Newsletter" data-fr="🔔 Newsletter">🔔 Newsletter</a></li>
+      <li><a href="/newsletter.html" data-en="🔔 Newsletter <span class='nl-badge'>-10%</span>" data-fr="🔔 Newsletter <span class='nl-badge'>-10%</span>">🔔 Newsletter <span class="nl-badge">-10%</span></a></li>
       <li><a href="/stock.html" style="color:var(--red);font-weight:500;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Live Stock</a></li>
     </ul>
     <div class="lang-switcher">
@@ -370,7 +400,7 @@
     <div class="how-card">
       <div class="how-number">03</div>
       <h3 data-en="Pay &amp; open" data-fr="Paie &amp; ouvre">Pay &amp; open</h3>
-      <p data-en="Card or smartphone payment. Your product drops instantly. The pack opening experience starts right there." data-fr="Paiement par carte ou smartphone. Le produit sort immédiatement. L'expérience du pack opening commence là, devant la machine.">Card or smartphone payment. Your product drops instantly. The pack opening experience starts right there.</p>
+      <p data-en="Pay by cash — with change returned in coins and notes — or contactless card &amp; smartphone. Your product drops instantly, and the pack-opening experience starts right there." data-fr="Payez en espèces — monnaie rendue en pièces et billets — ou en sans contact carte &amp; smartphone. Le produit sort immédiatement, et l'expérience du pack opening commence là, devant la machine.">Pay by cash — with change returned in coins and notes — or contactless card &amp; smartphone. Your product drops instantly, and the pack-opening experience starts right there.</p>
     </div>
   </div>
 </section>
@@ -394,7 +424,7 @@
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(0)">
           <div class="map-location-dot live"></div>
           <div>
-            <div class="map-location-name">Poste Filiale — Genève 3 Rive</div>
+            <div class="map-location-name">La Poste de Rive</div>
             <div class="map-location-addr">Rue du Vieux-Collège 3, 1204 Genève</div>
             <a href="/stock.html?machine=0" class="map-stock-link" data-en="📦 Check stock" data-fr="📦 Voir le stock">📦 Check stock</a>
           </div>
@@ -402,16 +432,16 @@
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(1)">
           <div class="map-location-dot live"></div>
           <div>
-            <div class="map-location-name">Poste Filiale — Genève 6 Les Eaux-Vives</div>
-            <div class="map-location-addr">Rue du 31-Décembre 47, 1207 Genève</div>
+            <div class="map-location-name">La Poste des Charmilles</div>
+            <div class="map-location-addr">Promenade de l'Europe 11, 1203 Genève</div>
             <a href="/stock.html?machine=1" class="map-stock-link" data-en="📦 Check stock" data-fr="📦 Voir le stock">📦 Check stock</a>
           </div>
         </div>
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(2)">
           <div class="map-location-dot live"></div>
           <div>
-            <div class="map-location-name">Poste Filiale — Petit-Lancy 1</div>
-            <div class="map-location-addr">Rue des Bossons 88B, 1213 Petit-Lancy</div>
+            <div class="map-location-name">La Poste du Petit-Lancy</div>
+            <div class="map-location-addr">Rue des Bossons 88b, 1213 Petit-Lancy</div>
             <a href="/stock.html?machine=2" class="map-stock-link" data-en="📦 Check stock" data-fr="📦 Voir le stock">📦 Check stock</a>
           </div>
         </div>
@@ -516,6 +546,56 @@
   </div>
 </div>
 
+
+<!-- TRUST & FAQ -->
+<div class="trust-section fade-in" id="faq">
+  <div class="trust-head">
+    <div class="section-label" data-en="Trust &amp; transparency" data-fr="Confiance &amp; transparence">Trust &amp; transparency</div>
+    <h2 data-en="Sealed, official, <span>no surprises.</span>" data-fr="Scellé, officiel, <span>sans surprise.</span>">Sealed, official, <span>no surprises.</span></h2>
+    <p data-en="Buying from a machine shouldn't mean buying blind. Here's exactly how we operate — and why we built BoosterStop the way we did." data-fr="Acheter dans une machine ne devrait pas rimer avec acheter à l'aveugle. Voici exactement comment nous fonctionnons — et pourquoi nous avons créé BoosterStop ainsi.">Buying from a machine shouldn't mean buying blind. Here's exactly how we operate — and why we built BoosterStop the way we did.</p>
+  </div>
+
+  <div class="trust-cards">
+    <div class="trust-card">
+      <div class="t-icon">🔒</div>
+      <h3 data-en="100% sealed" data-fr="100% scellé">100% sealed</h3>
+      <p data-en="Every booster, display and box is factory-sealed. Nothing is ever weighed, searched, opened or altered — products go straight from our distributors into the machine." data-fr="Chaque booster, display et boîte est scellé d'usine. Rien n'est jamais pesé, fouillé, ouvert ni altéré — les produits passent directement de nos distributeurs à la machine.">Every booster, display and box is factory-sealed. Nothing is ever weighed, searched, opened or altered — products go straight from our distributors into the machine.</p>
+    </div>
+    <div class="trust-card">
+      <div class="t-icon">📦</div>
+      <h3 data-en="Official sourcing" data-fr="Sources officielles">Official sourcing</h3>
+      <p data-en="We source exclusively from the official distributors and authorized suppliers of each TCG. No grey market, no resealed product — ever." data-fr="Nous nous approvisionnons exclusivement auprès des distributeurs officiels et fournisseurs agréés de chaque TCG. Jamais de marché gris ni de produit rescellé.">We source exclusively from the official distributors and authorized suppliers of each TCG. No grey market, no resealed product — ever.</p>
+    </div>
+    <div class="trust-card">
+      <div class="t-icon">🎥</div>
+      <h3 data-en="Full transparency" data-fr="Transparence totale">Full transparency</h3>
+      <p data-en="We show as much as we can on our socials: restocking, sourcing, deliveries and openings. What you see online is what lands in the machine." data-fr="Nous montrons un maximum sur nos réseaux : réassorts, approvisionnement, livraisons et ouvertures. Ce que vous voyez en ligne est ce qui arrive dans la machine.">We show as much as we can on our socials: restocking, sourcing, deliveries and openings. What you see online is what lands in the machine.</p>
+    </div>
+  </div>
+
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary><span data-en="Are the products really authentic and untouched?" data-fr="Les produits sont-ils vraiment authentiques et intacts ?">Are the products really authentic and untouched?</span></summary>
+      <div class="faq-a" data-en="Yes — absolutely. Everything is 100% sealed and comes directly from official distributors. We never weigh, search, tamper with or hand-pick packs. What goes in the machine is exactly as it left the manufacturer." data-fr="Oui — absolument. Tout est 100% scellé et provient directement de distributeurs officiels. Nous ne pesons jamais, ne fouillons pas, n'altérons rien et ne trions pas les paquets. Ce qui entre dans la machine est exactement tel qu'il a quitté le fabricant.">Yes — absolutely. Everything is 100% sealed and comes directly from official distributors. We never weigh, search, tamper with or hand-pick packs. What goes in the machine is exactly as it left the manufacturer.</div>
+    </details>
+    <details class="faq-item">
+      <summary><span data-en="Why vending machines instead of a regular shop?" data-fr="Pourquoi des distributeurs plutôt qu'une boutique classique ?">Why vending machines instead of a regular shop?</span></summary>
+      <div class="faq-a" data-en="Convenience and 24/7 access matter, but that's not the whole point. Our real goal is visibility: we want to give as many TCG licenses as possible a place in front of players — including the ones you rarely find on shelves — right where people already are." data-fr="La praticité et l'accès 24h/24 comptent, mais ce n'est pas l'essentiel. Notre vrai objectif, c'est la visibilité : offrir une place à un maximum de licences TCG devant les joueurs — y compris celles qu'on trouve rarement en rayon — là où les gens sont déjà.">Convenience and 24/7 access matter, but that's not the whole point. Our real goal is visibility: we want to give as many TCG licenses as possible a place in front of players — including the ones you rarely find on shelves — right where people already are.</div>
+    </details>
+    <details class="faq-item">
+      <summary><span data-en="Which games can I find in the machines?" data-fr="Quels jeux puis-je trouver dans les machines ?">Which games can I find in the machines?</span></summary>
+      <div class="faq-a" data-en="Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more — with several universes available in each machine at the same time. The line-up evolves with new releases and demand." data-fr="Pokémon, One Piece, Dragon Ball Super, Riftbound : LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto et plus — avec plusieurs univers disponibles simultanément dans chaque machine. La sélection évolue selon les sorties et la demande.">Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more — with several universes available in each machine at the same time. The line-up evolves with new releases and demand.</div>
+    </details>
+    <details class="faq-item">
+      <summary><span data-en="How do I pay?" data-fr="Comment payer ?">How do I pay?</span></summary>
+      <div class="faq-a" data-en="We accept cash — with change returned in both coins and notes — as well as contactless card and smartphone payments. Choose your product, pay, and it drops instantly; the pack-opening experience starts right there at the machine." data-fr="Nous acceptons les espèces — avec monnaie rendue en pièces et en billets — ainsi que les paiements sans contact par carte et smartphone. Choisissez votre produit, payez, et il sort immédiatement ; l'expérience du pack opening commence là, devant la machine.">We accept cash — with change returned in both coins and notes — as well as contactless card and smartphone payments. Choose your product, pay, and it drops instantly; the pack-opening experience starts right there at the machine.</div>
+    </details>
+    <details class="faq-item">
+      <summary><span data-en="Can I check stock before going?" data-fr="Puis-je vérifier le stock avant de me déplacer ?">Can I check stock before going?</span></summary>
+      <div class="faq-a" data-en="Yes. Our Live Stock page shows real-time inventory for each machine. If something you want is missing, you can request a restock or a new product directly — we adjust our selection based on what you ask for." data-fr="Oui. Notre page Stock Live affiche l'inventaire en temps réel de chaque machine. Si un produit manque, vous pouvez demander un réassort ou un nouveau produit directement — nous adaptons notre sélection selon vos demandes.">Yes. Our Live Stock page shows real-time inventory for each machine. If something you want is missing, you can request a restock or a new product directly — we adjust our selection based on what you ask for.</div>
+    </details>
+  </div>
+</div>
 
 <!-- CONTACT -->
 <div class="contact-section fade-in" id="contact">
@@ -705,6 +785,7 @@ form.addEventListener('submit', async function(e) {
   </a>
   <a href="/newsletter.html" class="mob-link">
     <span class="m-icon">🔔</span>
+    <span class="m-badge">-10%</span>
     <span data-en="Newsletter" data-fr="Newsletter">Newsletter</span>
   </a>
   <a href="#partner" class="mob-link">
@@ -807,9 +888,9 @@ window.initMap = function() {
   ];
 
   const genevaLocations = [
-    { lat: 46.2008, lng: 6.1520, name: 'Poste Filiale — Genève 3 Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', hours: '<strong>Lun–Ven</strong> 08h00–18h30<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' },
-    { lat: 46.1997, lng: 6.1638, name: 'Poste Filiale — Genève 6 Les Eaux-Vives', addr: 'Rue du 31-Décembre 47, 1207 Genève', hours: '<strong>Lun–Ven</strong> 08h00–18h30<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' },
-    { lat: 46.1872, lng: 6.1214, name: 'Poste Filiale — Petit-Lancy 1', addr: 'Rue des Bossons 88B, 1213 Petit-Lancy', hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' }
+    { lat: 46.2008, lng: 6.1520, name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', hours: '<strong>Lun–Ven</strong> 08h00–18h30<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' },
+    { lat: 46.2112, lng: 6.1268, name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", hours: '<strong>Lun–Ven</strong> 08h00–18h30<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' },
+    { lat: 46.1872, lng: 6.1214, name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' }
   ];
 
   let activeInfo = null;
