@@ -25,6 +25,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 .nav-actions ul a{color:var(--text-muted);text-decoration:none;font-size:13px;letter-spacing:0.5px;transition:color 0.2s;}
 .nav-actions ul a:hover{color:var(--white);}
 .nav-actions ul a.active{color:var(--red);}
+.nl-badge{display:inline-block;background:var(--yellow);color:var(--black);font-size:8px;font-weight:600;letter-spacing:0.5px;padding:1px 5px;border-radius:3px;margin-left:5px;vertical-align:middle;}
 .back-btn{color:var(--text-muted);text-decoration:none;font-size:12px;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;display:flex;align-items:center;gap:6px;}
 .back-btn:hover{color:var(--white);}
 .lang-switcher{display:flex;gap:4px;}
@@ -196,6 +197,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 .mob-nav a{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text-muted);text-decoration:none;font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:4px 8px;flex:1;text-align:center;transition:color 0.2s;}
 .mob-nav a:hover,.mob-nav a.active{color:var(--red);}
 .mob-nav .m-icon{font-size:19px;line-height:1;}
+.mob-nav a{position:relative;}
+.mob-nav a .m-badge{position:absolute;top:0;left:50%;margin-left:6px;background:var(--yellow);color:var(--black);font-size:7px;font-weight:700;letter-spacing:0.2px;padding:1px 4px;border-radius:3px;line-height:1.3;}
 
 /* STATE */
 .state-msg{text-align:center;padding:56px 24px;color:var(--text-muted);}
@@ -243,7 +246,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
     <ul>
       <li><a href="/#where" data-en="Locations" data-fr="Emplacements">Locations</a></li>
       <li><a href="/#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
-      <li><a href="/newsletter.html" data-en="🔔 Newsletter" data-fr="🔔 Newsletter">🔔 Newsletter</a></li>
+      <li><a href="/newsletter.html" data-en="🔔 Newsletter <span class='nl-badge'>-10%</span>" data-fr="🔔 Newsletter <span class='nl-badge'>-10%</span>">🔔 Newsletter <span class="nl-badge">-10%</span></a></li>
       <li><a href="/stock.html" class="active" style="color:var(--red);font-weight:500;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Live Stock</a></li>
     </ul>
     <div class="lang-switcher">
@@ -295,7 +298,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
     <div class="selected-machine-card" id="selectedMachineCard">
       <div class="sel-dot"></div>
       <div>
-        <div class="sel-name" id="selMachineName">Poste Filiale — Genève 3 Rive</div>
+        <div class="sel-name" id="selMachineName">La Poste de Rive</div>
         <div class="sel-addr" id="selMachineAddr">Rue du Vieux-Collège 3, 1204 Genève</div>
       </div>
     </div>
@@ -345,7 +348,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
 <div class="mob-nav">
   <a href="/"><span class="m-icon">🏠</span><span data-en="Home" data-fr="Accueil">Home</span></a>
   <a href="/stock.html" class="active"><span class="m-icon">📦</span><span data-en="Stock" data-fr="Stock">Stock</span></a>
-  <a href="/newsletter.html"><span class="m-icon">🔔</span><span data-en="Newsletter" data-fr="Newsletter">Newsletter</span></a>
+  <a href="/newsletter.html"><span class="m-icon">🔔</span><span class="m-badge">-10%</span><span data-en="Newsletter" data-fr="Newsletter">Newsletter</span></a>
   <a href="/#partner"><span class="m-icon">🤝</span><span data-en="Partner" data-fr="Partenaire">Partner</span></a>
   <a href="/#contact"><span class="m-icon">✉️</span><span data-en="Contact" data-fr="Contact">Contact</span></a>
 </div>
@@ -396,9 +399,9 @@ const FORMSPREE = {
 };
 
 const MACHINES = [
-  { name: 'Poste Filiale — Genève 3 Rive', short: 'Genève 3 Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', lat: 46.2008, lng: 6.1520 },
-  { name: 'Poste Filiale — Genève 6 Les Eaux-Vives', short: 'Les Eaux-Vives', addr: 'Rue du 31-Décembre 47, 1207 Genève', lat: 46.1997, lng: 6.1638 },
-  { name: 'Poste Filiale — Petit-Lancy 1', short: 'Petit-Lancy 1', addr: 'Rue des Bossons 88B, 1213 Petit-Lancy', lat: 46.1872, lng: 6.1214 }
+  { name: 'La Poste de Rive', short: 'Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', lat: 46.2008, lng: 6.1520 },
+  { name: 'La Poste des Charmilles', short: 'Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", lat: 46.2112, lng: 6.1268 },
+  { name: 'La Poste du Petit-Lancy', short: 'Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', lat: 46.1872, lng: 6.1214 }
 ];
 
 // Floor structure (display_code based)
