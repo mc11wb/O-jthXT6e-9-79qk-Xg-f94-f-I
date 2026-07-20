@@ -935,5 +935,48 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
+<style>
+/* COOKIE / RGPD BANNER */
+.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:9500;display:none;max-width:720px;margin:0 auto;background:rgba(18,15,42,0.98);border:1px solid var(--gray-mid);border-top:2px solid var(--red);border-radius:8px;padding:18px 22px;box-shadow:0 12px 48px rgba(0,0,0,0.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);align-items:center;gap:18px;}
+.cookie-banner.show{display:flex;}
+.cookie-text{flex:1;font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.6;color:var(--text-muted);}
+.cookie-text strong{color:var(--white);font-weight:500;}
+.cookie-actions{display:flex;gap:8px;flex-shrink:0;}
+.cookie-btn{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:10px 18px;border-radius:3px;cursor:pointer;border:1px solid var(--gray-mid);transition:all 0.2s;white-space:nowrap;}
+.cookie-btn.decline{background:none;color:var(--text-muted);}
+.cookie-btn.decline:hover{color:var(--white);border-color:var(--text-muted);}
+.cookie-btn.accept{background:var(--yellow);color:var(--black);border-color:var(--yellow);font-weight:600;}
+.cookie-btn.accept:hover{opacity:0.9;}
+@media(max-width:768px){
+  .cookie-banner{flex-direction:column;align-items:stretch;left:12px;right:12px;bottom:calc(68px + env(safe-area-inset-bottom,0px) + 8px);padding:16px 18px;gap:14px;}
+  .cookie-actions{gap:8px;}
+  .cookie-btn{flex:1;padding:11px;}
+}
+</style>
+<!-- COOKIE / RGPD BANNER -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite">
+  <div class="cookie-text" data-en="We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential." data-fr="Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel."><strong>🍪</strong> We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential.</div>
+  <div class="cookie-actions">
+    <button class="cookie-btn decline" onclick="setCookieConsent(false)" data-en="Essential only" data-fr="Essentiels">Essential only</button>
+    <button class="cookie-btn accept" onclick="setCookieConsent(true)" data-en="Accept all" data-fr="Tout accepter">Accept all</button>
+  </div>
+</div>
+<script>
+(function(){
+  try{
+    if(!localStorage.getItem('bs_cookie_consent')){
+      var b=document.getElementById('cookieBanner'); if(b) b.classList.add('show');
+    }
+  }catch(e){ var b=document.getElementById('cookieBanner'); if(b) b.classList.add('show'); }
+})();
+function setCookieConsent(accepted){
+  try{
+    localStorage.setItem('bs_cookie_consent', accepted?'accepted':'essential');
+    localStorage.setItem('bs_cookie_ts', new Date().toISOString());
+  }catch(e){}
+  var b=document.getElementById('cookieBanner'); if(b) b.classList.remove('show');
+}
+</script>
 </body>
 </html>
