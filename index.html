@@ -3,7 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BoosterStop — TCG Vending Machine</title>
+<title>BoosterStop — TCG Vending Machines in Geneva | Pokémon, One Piece, Magic &amp; more</title>
+<meta name="description" content="BoosterStop is the first vending-machine network for Trading Card Games. 100% sealed boosters, displays & collector boxes straight from official distributors — live 24/7 in Geneva (Rive, Charmilles, Petit-Lancy). Pokémon, One Piece, Magic, Lorcana, Yu-Gi-Oh! and more.">
+<meta name="keywords" content="TCG vending machine, Geneva, Pokémon boosters Geneva, One Piece card game, Magic the Gathering, Disney Lorcana, Yu-Gi-Oh, trading card games Switzerland, distributeur cartes Genève, sealed boosters">
+<link rel="canonical" href="https://boosterstop.com/">
+<meta name="robots" content="index, follow">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BoosterStop">
+<meta property="og:title" content="BoosterStop — TCG Vending Machines in Geneva">
+<meta property="og:description" content="100% sealed boosters, displays & collector boxes from official distributors — available 24/7 in Geneva. Pokémon, One Piece, Magic, Lorcana, Yu-Gi-Oh! and more.">
+<meta property="og:url" content="https://boosterstop.com/">
+<meta property="og:image" content="https://boosterstop.com/logo.png">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BoosterStop — TCG Vending Machines in Geneva">
+<meta name="twitter:description" content="Sealed TCG boosters from official distributors, 24/7 in Geneva. Pokémon, One Piece, Magic & more.">
+<meta name="twitter:image" content="https://boosterstop.com/logo.png">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -650,6 +668,7 @@
   <div class="footer-logo"><img src="logo.png" alt="BoosterStop" style="height: 22px; width: auto; opacity: 0.6;"></div>
   <div style="display:flex;align-items:center;gap:16px;">
     <a href="/stock.html" style="font-size:11px;color:var(--red);text-decoration:none;letter-spacing:1px;border:1px solid rgba(232,24,60,0.4);padding:5px 12px;border-radius:2px;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Live Stock</a>
+    <a href="/privacy.html" style="font-size:12px;color:#666;text-decoration:none;letter-spacing:0.5px;" data-en="Privacy &amp; Cookies" data-fr="Confidentialité">Privacy &amp; Cookies</a>
     <p>© 2020-2026 BoosterStop — 247 Distribution SNC</p>
   </div>
 </footer>
@@ -956,7 +975,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </style>
 <!-- COOKIE / RGPD BANNER -->
 <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite">
-  <div class="cookie-text" data-en="We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential." data-fr="Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel."><strong>🍪</strong> We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential.</div>
+  <div class="cookie-text" data-en="We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. <a href='/privacy.html' style='color:var(--red);'>Learn more</a>." data-fr="Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. <a href='/privacy.html' style='color:var(--red);'>En savoir plus</a>."><strong>🍪</strong> We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. <a href="/privacy.html" style="color:var(--red);">Learn more</a>.</div>
   <div class="cookie-actions">
     <button class="cookie-btn decline" onclick="setCookieConsent(false)" data-en="Essential only" data-fr="Essentiels">Essential only</button>
     <button class="cookie-btn accept" onclick="setCookieConsent(true)" data-en="Accept all" data-fr="Tout accepter">Accept all</button>
@@ -976,6 +995,125 @@ function setCookieConsent(accepted){
     localStorage.setItem('bs_cookie_ts', new Date().toISOString());
   }catch(e){}
   var b=document.getElementById('cookieBanner'); if(b) b.classList.remove('show');
+}
+</script>
+<!-- STRUCTURED DATA (SEO / AI search) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://boosterstop.com/#organization",
+      "name": "BoosterStop",
+      "legalName": "247 Distribution SNC",
+      "url": "https://boosterstop.com/",
+      "logo": "https://boosterstop.com/logo.png",
+      "description": "The first vending-machine network dedicated to Trading Card Games. 100% sealed products from official distributors, available 24/7.",
+      "email": "contact@boosterstop.ch",
+      "areaServed": ["Switzerland", "Belgium", "United Arab Emirates"],
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://boosterstop.com/#website",
+      "url": "https://boosterstop.com/",
+      "name": "BoosterStop",
+      "publisher": { "@id": "https://boosterstop.com/#organization" },
+      "inLanguage": ["en", "fr"]
+    },
+    {
+      "@type": "Store",
+      "@id": "https://boosterstop.com/#rive",
+      "name": "BoosterStop — La Poste de Rive",
+      "description": "BoosterStop TCG vending machine inside La Poste de Rive, Geneva. Sealed Pokémon, One Piece, Magic and more.",
+      "parentOrganization": { "@id": "https://boosterstop.com/#organization" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rue du Vieux-Collège 3",
+        "postalCode": "1204",
+        "addressLocality": "Genève",
+        "addressCountry": "CH"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 46.2008, "longitude": 6.1520 },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:30" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "12:00" }
+      ],
+      "url": "https://boosterstop.com/stock.html?machine=0"
+    },
+    {
+      "@type": "Store",
+      "@id": "https://boosterstop.com/#charmilles",
+      "name": "BoosterStop — La Poste des Charmilles",
+      "description": "BoosterStop TCG vending machine inside La Poste des Charmilles, Geneva. Sealed trading card game products from official distributors.",
+      "parentOrganization": { "@id": "https://boosterstop.com/#organization" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Promenade de l'Europe 11",
+        "postalCode": "1203",
+        "addressLocality": "Genève",
+        "addressCountry": "CH"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 46.2112, "longitude": 6.1268 },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:30" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "12:00" }
+      ],
+      "url": "https://boosterstop.com/stock.html?machine=1"
+    },
+    {
+      "@type": "Store",
+      "@id": "https://boosterstop.com/#petit-lancy",
+      "name": "BoosterStop — La Poste du Petit-Lancy",
+      "description": "BoosterStop TCG vending machine inside La Poste du Petit-Lancy, Geneva. Sealed boosters, displays and collector boxes.",
+      "parentOrganization": { "@id": "https://boosterstop.com/#organization" },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rue des Bossons 88b",
+        "postalCode": "1213",
+        "addressLocality": "Petit-Lancy",
+        "addressCountry": "CH"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 46.1872, "longitude": 6.1214 },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "12:00" }
+      ],
+      "url": "https://boosterstop.com/stock.html?machine=2"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://boosterstop.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are the products really authentic and untouched?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Everything is 100% sealed and comes directly from official distributors. We never weigh, search, tamper with or hand-pick packs. What goes in the machine is exactly as it left the manufacturer." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why vending machines instead of a regular shop?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Convenience and 24/7 access matter, but our real goal is visibility: giving as many TCG licenses as possible a place in front of players — including the ones you rarely find on shelves — right where people already are." }
+        },
+        {
+          "@type": "Question",
+          "name": "Which games can I find in the machines?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more — with several universes available in each machine at the same time." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I pay?",
+          "acceptedAnswer": { "@type": "Answer", "text": "We accept cash with change returned in both coins and notes, as well as contactless card and smartphone payments. Choose your product, pay, and it drops instantly." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I check stock before going?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our Live Stock page shows real-time inventory for each machine. If something you want is missing, you can request a restock or a new product directly." }
+        }
+      ]
+    }
+  ]
 }
 </script>
 </body>
