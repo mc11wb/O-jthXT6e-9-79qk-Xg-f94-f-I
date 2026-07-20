@@ -94,6 +94,9 @@ nav ul a.active{color:var(--red);}
 .nl-submit:hover{opacity:0.9;transform:translateY(-1px);}
 .nl-submit:disabled{opacity:0.5;cursor:not-allowed;}
 .nl-success{display:none;background:rgba(0,230,118,0.1);border:1px solid rgba(0,230,118,0.3);color:var(--green);font-size:14px;padding:16px 20px;border-radius:var(--radius);margin-top:18px;text-align:center;}
+.nl-stocknote{text-align:center;font-size:13px;color:var(--text-muted);margin-top:18px;}
+.nl-stocknote a{color:var(--red);text-decoration:none;border-bottom:1px solid rgba(232,24,60,0.4);}
+.nl-stocknote a:hover{color:var(--white);}
 
 /* FOOTER */
 footer{border-top:1px solid var(--gray-mid);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;}
@@ -149,12 +152,12 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;}
 
 <!-- HERO -->
 <div class="nl-hero">
-  <div class="nl-eyebrow" data-en="Restocks · Releases · Promos" data-fr="Réassorts · Sorties · Promos">Restocks · Releases · Promos</div>
+  <div class="nl-eyebrow" data-en="New drops · Exclusive promos" data-fr="Nouveautés · Promos exclusives">New drops · Exclusive promos</div>
   <h1 class="nl-title" data-en="Never miss a <span>drop.</span>" data-fr="Ne ratez plus <span>rien.</span>">Never miss a <span>drop.</span></h1>
-  <p class="nl-sub" data-en="New releases, restocks and exclusive discount codes — straight to your inbox. Pick your countries and the games you care about, and we'll only email you about what matters to you." data-fr="Nouvelles sorties, réassorts et codes promo exclusifs — directement dans votre boîte mail. Choisissez vos pays et vos jeux préférés, et on ne vous écrit que pour ce qui vous concerne.">New releases, restocks and exclusive discount codes — straight to your inbox. Pick your countries and the games you care about, and we'll only email you about what matters to you.</p>
+  <p class="nl-sub" data-en="New releases and exclusive discount codes — straight to your inbox. Pick the games you care about and we'll only email you about what actually matters to you." data-fr="Nouvelles sorties et codes promo exclusifs — directement dans votre boîte mail. Choisissez vos jeux préférés et on ne vous écrit que pour ce qui vous concerne vraiment.">New releases and exclusive discount codes — straight to your inbox. Pick the games you care about and we'll only email you about what actually matters to you.</p>
   <div class="nl-offer">
     <span class="nl-offer-badge">-10%</span>
-    <span class="nl-offer-text" data-en="Sign up now and get a <strong>10% discount code</strong> on your first purchase — plus restock alerts, new releases & exclusive promos." data-fr="Inscrivez-vous et recevez un <strong>code promo de 10%</strong> sur votre premier achat — en plus des alertes de réassort, des sorties et des promos exclusives.">Sign up now and get a <strong>10% discount code</strong> on your first purchase — plus restock alerts, new releases & exclusive promos.</span>
+    <span class="nl-offer-text" data-en="Sign up and get a <strong>10% code</strong> on your first order — plus early access to new drops and exclusive promos." data-fr="Inscrivez-vous et recevez un <strong>code de 10%</strong> sur votre première commande — plus les nouveautés en avant-première et des promos exclusives.">Sign up and get a <strong>10% code</strong> on your first order — plus early access to new drops and exclusive promos.</span>
   </div>
 </div>
 
@@ -164,7 +167,7 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;}
     <!-- COUNTRIES -->
     <div class="nl-section">
       <div class="nl-label" data-en="Countries" data-fr="Pays">Countries</div>
-      <div class="nl-hint" data-en="Where do you want restock alerts? (select one or more)" data-fr="Où voulez-vous des alertes ? (un ou plusieurs)">Where do you want restock alerts? (select one or more)</div>
+      <div class="nl-hint" data-en="Which market are you in? (select one or more)" data-fr="Dans quel marché êtes-vous ? (un ou plusieurs)">Which market are you in? (select one or more)</div>
       <div class="chip-grid" id="countryGrid">
         <div class="chip" data-value="Switzerland" onclick="toggleChip(this)"><span class="chk">✓</span><span class="flag">🇨🇭</span><span data-en="Switzerland" data-fr="Suisse">Switzerland</span></div>
         <div class="chip" data-value="Belgium" onclick="toggleChip(this)"><span class="chk">✓</span><span class="flag">🇧🇪</span><span data-en="Belgium" data-fr="Belgique">Belgium</span></div>
@@ -177,7 +180,7 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;}
       <div class="nl-label" data-en="Trading card games" data-fr="Jeux de cartes">Trading card games</div>
       <div class="nl-hint" data-en="Which universes are you into? (select all you like)" data-fr="Quels univers vous intéressent ? (autant que vous voulez)">Which universes are you into? (select all you like)</div>
       <div class="tcg-all">
-        <div class="tcg-chip all-chip" data-value="__ALL__" onclick="toggleAll(this)"><span class="chk">✓</span><span data-en="✨ All TCGs — notify me for everything" data-fr="✨ Tous les TCG — préviens-moi pour tout">✨ All TCGs — notify me for everything</span></div>
+        <div class="tcg-chip all-chip" data-value="__ALL__" onclick="toggleAll(this)"><span class="chk">✓</span><span data-en="✨ All TCGs — keep me posted on everything" data-fr="✨ Tous les TCG — tenez-moi au courant de tout">✨ All TCGs — keep me posted on everything</span></div>
       </div>
       <div class="tcg-grid" id="tcgGrid">
         <div class="tcg-chip" data-value="Pokémon" onclick="toggleChip(this)"><span class="chk">✓</span>Pokémon</div>
@@ -204,12 +207,13 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;}
     <label class="nl-consent" id="nlConsentRow">
       <input type="checkbox" id="nlConsent">
       <span class="nl-consent-box">✓</span>
-      <span class="nl-consent-text" data-en="I agree to receive restock alerts, new-release news and promotional emails from BoosterStop. I can unsubscribe at any time." data-fr="J'accepte de recevoir les alertes de réassort, les nouveautés et les emails promotionnels de BoosterStop. Je peux me désinscrire à tout moment.">I agree to receive restock alerts, new-release news and promotional emails from BoosterStop. I can unsubscribe at any time.</span>
+      <span class="nl-consent-text" data-en="I agree to receive new-release news and promotional emails from BoosterStop. I can unsubscribe at any time." data-fr="J'accepte de recevoir les nouveautés et les emails promotionnels de BoosterStop. Je peux me désinscrire à tout moment.">I agree to receive new-release news and promotional emails from BoosterStop. I can unsubscribe at any time.</span>
     </label>
 
     <button class="nl-submit" id="nlSubmit" onclick="submitNewsletter()" data-en="🔔 Subscribe" data-fr="🔔 Je m'abonne">🔔 Subscribe</button>
-    <div class="nl-success" id="nlSuccess" data-en="✓ You're in! Expect restock alerts, new release news and exclusive promo codes." data-fr="✓ C'est fait ! Vous recevrez les alertes de réassort, les nouveautés et des codes promo exclusifs.">✓ You're in! Expect restock alerts, new release news and exclusive promo codes.</div>
+    <div class="nl-success" id="nlSuccess" data-en="✓ You're in! Expect new-drop news and exclusive promo codes." data-fr="✓ C'est fait ! Vous recevrez les nouveautés et des codes promo exclusifs.">✓ You're in! Expect new-drop news and exclusive promo codes.</div>
   </div>
+  <p class="nl-stocknote" data-en="Looking for live stock? Check real-time availability on the <a href='/stock.html'>Live Stock</a> page." data-fr="Vous cherchez le stock en temps réel ? Consultez la disponibilité sur la page <a href='/stock.html'>Stock Live</a>.">Looking for live stock? Check real-time availability on the <a href="/stock.html">Live Stock</a> page.</p>
 </div>
 
 <!-- FOOTER -->
