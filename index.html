@@ -4,15 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BoosterStop — TCG Vending Machines in Geneva | Pokémon, One Piece, Magic &amp; more</title>
-<meta name="description" content="BoosterStop is the first vending-machine network for Trading Card Games. 100% sealed boosters, displays & collector boxes straight from official distributors — live 24/7 in Geneva (Rive, Charmilles, Petit-Lancy). Pokémon, One Piece, Magic, Lorcana, Yu-Gi-Oh! and more.">
-<meta name="keywords" content="TCG vending machine, Geneva, Pokémon boosters Geneva, One Piece card game, Magic the Gathering, Disney Lorcana, Yu-Gi-Oh, trading card games Switzerland, distributeur cartes Genève, sealed boosters">
+<meta name="description" content="BoosterStop is the first vending-machine network for Trading Card Games. 100% sealed boosters, displays & collector boxes from official distributors, in French, English, Japanese, Chinese and more — live 24/7 in Geneva. Pokémon, One Piece, Magic, Lorcana, Yu-Gi-Oh! and more.">
+<meta name="keywords" content="TCG vending machine, Geneva, Pokémon boosters Geneva, Japanese Pokémon cards Geneva, Chinese Pokémon cards, One Piece card game, Magic the Gathering, Disney Lorcana, Yu-Gi-Oh, trading card games Switzerland, distributeur cartes Genève, cartes japonaises Genève, sealed boosters">
 <link rel="canonical" href="https://boosterstop.com/">
 <meta name="robots" content="index, follow">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
 <meta property="og:title" content="BoosterStop — TCG Vending Machines in Geneva">
-<meta property="og:description" content="100% sealed boosters, displays & collector boxes from official distributors — available 24/7 in Geneva. Pokémon, One Piece, Magic, Lorcana, Yu-Gi-Oh! and more.">
+<meta property="og:description" content="100% sealed boosters, displays & collector boxes from official distributors — in French, English, Japanese, Chinese and more. Available 24/7 in Geneva.">
 <meta property="og:url" content="https://boosterstop.com/">
 <meta property="og:image" content="https://boosterstop.com/logo.png">
 <meta property="og:locale" content="en_US">
@@ -205,6 +205,31 @@
     .trust-cards { grid-template-columns: 1fr; }
     .faq-item summary { font-size: 14px; padding: 16px 18px; }
     .faq-item .faq-a { padding: 0 18px 18px; font-size: 13.5px; }
+  }
+
+
+  /* LANGUAGES */
+  .lang-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px,4.5vw,52px); line-height: 1; color: var(--white); margin: 14px 0 18px; }
+  .lang-title span { color: var(--red); }
+  .lang-intro { color: var(--text-muted); font-size: 15px; line-height: 1.8; max-width: 660px; }
+  .lang-chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 36px 0 14px; }
+  .lang-chip { display: flex; align-items: center; gap: 9px; background: var(--gray); border: 1px solid var(--gray-mid); color: #ddd; padding: 10px 18px; font-size: 13px; letter-spacing: 0.3px; border-radius: 2px; transition: border-color 0.2s, color 0.2s, transform 0.15s; }
+  .lang-chip:hover { border-color: var(--red); color: var(--white); transform: translateY(-2px); }
+  .lang-chip .lc-flag { font-size: 18px; line-height: 1; }
+  .lang-chip .lc-native { color: var(--text-muted); font-size: 12px; }
+  .lang-chip.more { border-style: dashed; color: var(--text-muted); }
+  .lang-examples { font-size: 13px; color: var(--text-muted); line-height: 1.8; padding: 16px 20px; background: rgba(232,24,60,0.05); border-left: 2px solid var(--red); border-radius: 0 var(--radius) var(--radius) 0; margin-bottom: 48px; }
+  .lang-examples strong { color: var(--white); font-weight: 500; }
+  .lang-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+  .lang-card { background: var(--gray); padding: 32px 26px; border-top: 2px solid var(--red); }
+  .lang-card .l-icon { font-size: 26px; margin-bottom: 14px; }
+  .lang-card h3 { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white); margin-bottom: 10px; font-weight: 500; }
+  .lang-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+  @media (max-width: 768px) {
+    .lang-cards { grid-template-columns: 1fr; }
+    .lang-chips { gap: 8px; margin: 28px 0 14px; }
+    .lang-chip { padding: 8px 14px; font-size: 12px; }
+    .lang-examples { margin-bottom: 36px; }
   }
 
   /* FOOTER */
@@ -413,7 +438,7 @@
     <div class="how-card">
       <div class="how-number">02</div>
       <h3 data-en="Pick your product" data-fr="Choisis ton produit">Pick your product</h3>
-      <p data-en="Boosters, displays or collector boxes — multiple TCG universes available simultaneously in every machine." data-fr="Boosters, displays ou boîtes collector — plusieurs licences TCG disponibles simultanément dans chaque machine.">Boosters, displays or collector boxes — multiple TCG universes available simultaneously in every machine.</p>
+      <p data-en="Boosters, displays or collector boxes — multiple TCG universes in every machine, and several languages to choose from: French, English, Japanese, Chinese and more." data-fr="Boosters, displays ou boîtes collector — plusieurs licences TCG dans chaque machine, et plusieurs langues au choix : français, anglais, japonais, chinois et plus.">Boosters, displays or collector boxes — multiple TCG universes in every machine, and several languages to choose from: French, English, Japanese, Chinese and more.</p>
     </div>
     <div class="how-card">
       <div class="how-number">03</div>
@@ -423,6 +448,44 @@
   </div>
 </section>
 
+
+<!-- LANGUAGES -->
+<section id="languages" class="fade-in">
+  <div class="section-label" data-en="Multilingual range" data-fr="Gamme multilingue">Multilingual range</div>
+  <h2 class="lang-title" data-en="Cards in <span>your language.</span>" data-fr="Des cartes dans <span>votre langue.</span>">Cards in <span>your language.</span></h2>
+  <p class="lang-intro" data-en="Geneva is one of the most international cities in the world — and collectors don't all start in the same language. That's why our machines stock the same games across several languages, so you can find the version that actually matters to you." data-fr="Genève est l'une des villes les plus internationales au monde — et les collectionneurs ne commencent pas tous dans la même langue. C'est pourquoi nos machines proposent les mêmes jeux en plusieurs langues, pour que vous trouviez la version qui compte vraiment pour vous.">Geneva is one of the most international cities in the world — and collectors don't all start in the same language. That's why our machines stock the same games across several languages, so you can find the version that actually matters to you.</p>
+
+  <div class="lang-chips">
+    <span class="lang-chip"><span class="lc-flag">🇫🇷</span> Français</span>
+    <span class="lang-chip"><span class="lc-flag">🇬🇧</span> English</span>
+    <span class="lang-chip"><span class="lc-flag">🇯🇵</span> <span class="lc-native">日本語</span> <span data-en="Japanese" data-fr="Japonais">Japanese</span></span>
+    <span class="lang-chip"><span class="lc-flag">🇨🇳</span> <span class="lc-native">中文</span> <span data-en="Chinese" data-fr="Chinois">Chinese</span></span>
+    <span class="lang-chip"><span class="lc-flag">🇩🇪</span> Deutsch</span>
+    <span class="lang-chip"><span class="lc-flag">🇪🇸</span> Español</span>
+    <span class="lang-chip"><span class="lc-flag">🇵🇹</span> Português</span>
+    <span class="lang-chip more" data-en="&amp; more depending on the set" data-fr="&amp; plus selon les sets">&amp; more depending on the set</span>
+  </div>
+
+  <div class="lang-examples" data-en="For example: <strong>Pokémon</strong> in Japanese, Chinese or French · <strong>One Piece</strong> in English · and more across our other licences. Available languages vary by set and by machine — check the <a href='/stock.html' style='color:var(--red);'>Live Stock</a> page to see what's in each one right now." data-fr="Par exemple : du <strong>Pokémon</strong> en japonais, chinois ou français · du <strong>One Piece</strong> en anglais · et d'autres selon nos licences. Les langues disponibles varient selon les sets et les machines — consultez la page <a href='/stock.html' style='color:var(--red);'>Stock Live</a> pour voir ce qu'il y a dans chacune en temps réel.">For example: <strong>Pokémon</strong> in Japanese, Chinese or French · <strong>One Piece</strong> in English · and more across our other licences. Available languages vary by set and by machine — check the <a href="/stock.html" style="color:var(--red);">Live Stock</a> page to see what's in each one right now.</div>
+
+  <div class="lang-cards">
+    <div class="lang-card">
+      <div class="l-icon">🧩</div>
+      <h3 data-en="Keep your collection consistent" data-fr="Gardez une collection cohérente">Keep your collection consistent</h3>
+      <p data-en="Started your collection in Japanese? Kept every card in English since day one? You shouldn't have to switch language halfway through. We stock across languages so your binder stays coherent." data-fr="Vous avez commencé votre collection en japonais ? Vous gardez tout en anglais depuis le début ? Vous ne devriez pas avoir à changer de langue en cours de route. Nous proposons plusieurs langues pour que votre classeur reste cohérent.">Started your collection in Japanese? Kept every card in English since day one? You shouldn't have to switch language halfway through. We stock across languages so your binder stays coherent.</p>
+    </div>
+    <div class="lang-card">
+      <div class="l-icon">🌏</div>
+      <h3 data-en="Read the cards you play" data-fr="Lisez les cartes que vous jouez">Read the cards you play</h3>
+      <p data-en="Whether you speak French, Mandarin, English, German, Spanish or Portuguese, playing is simply better when you can read your own cards — especially for younger players just getting into a game." data-fr="Que vous parliez français, mandarin, anglais, allemand, espagnol ou portugais, jouer est bien plus agréable quand on peut lire ses propres cartes — surtout pour les plus jeunes qui découvrent un jeu.">Whether you speak French, Mandarin, English, German, Spanish or Portuguese, playing is simply better when you can read your own cards — especially for younger players just getting into a game.</p>
+    </div>
+    <div class="lang-card">
+      <div class="l-icon">✨</div>
+      <h3 data-en="Access sets you can't find locally" data-fr="Accédez à des sets introuvables ici">Access sets you can't find locally</h3>
+      <p data-en="Some sets, arts and print runs only ever release in certain markets. Stocking Japanese and Chinese product means you can reach releases that never make it to Swiss shelves." data-fr="Certains sets, illustrations et tirages ne sortent que sur certains marchés. En proposant du produit japonais et chinois, nous vous donnons accès à des sorties qui n'arrivent jamais dans les rayons suisses.">Some sets, arts and print runs only ever release in certain markets. Stocking Japanese and Chinese product means you can reach releases that never make it to Swiss shelves.</p>
+    </div>
+  </div>
+</section>
 
 <!-- MAP -->
 <div class="map-section fade-in" id="where">
@@ -603,6 +666,10 @@
     <details class="faq-item">
       <summary><span data-en="Which games can I find in the machines?" data-fr="Quels jeux puis-je trouver dans les machines ?">Which games can I find in the machines?</span></summary>
       <div class="faq-a" data-en="Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more — with several universes available in each machine at the same time. The line-up evolves with new releases and demand." data-fr="Pokémon, One Piece, Dragon Ball Super, Riftbound : LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto et plus — avec plusieurs univers disponibles simultanément dans chaque machine. La sélection évolue selon les sorties et la demande.">Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more — with several universes available in each machine at the same time. The line-up evolves with new releases and demand.</div>
+    </details>
+    <details class="faq-item">
+      <summary><span data-en="In which languages are the cards available?" data-fr="Dans quelles langues les cartes sont-elles disponibles ?">In which languages are the cards available?</span></summary>
+      <div class="faq-a" data-en="Several. We stock the same games across multiple languages — French, English, Japanese, Chinese, German, Spanish and Portuguese among others — for example Pokémon in Japanese, Chinese or French, and One Piece in English. This lets you keep a collection consistent in the language you started with, read the cards you actually play, and reach sets that only release in certain markets. Available languages vary by set and by machine, so check the Live Stock page to see what's in each one right now." data-fr="Plusieurs. Nous proposons les mêmes jeux en plusieurs langues — français, anglais, japonais, chinois, allemand, espagnol et portugais notamment — par exemple du Pokémon en japonais, chinois ou français, et du One Piece en anglais. Cela vous permet de garder une collection cohérente dans la langue où vous avez commencé, de lire les cartes que vous jouez, et d'accéder à des sets qui ne sortent que sur certains marchés. Les langues varient selon les sets et les machines : consultez la page Stock Live pour voir ce qu'il y a dans chacune en temps réel.">Several. We stock the same games across multiple languages — French, English, Japanese, Chinese, German, Spanish and Portuguese among others — for example Pokémon in Japanese, Chinese or French, and One Piece in English. This lets you keep a collection consistent in the language you started with, read the cards you actually play, and reach sets that only release in certain markets. Available languages vary by set and by machine, so check the Live Stock page to see what's in each one right now.</div>
     </details>
     <details class="faq-item">
       <summary><span data-en="How do I pay?" data-fr="Comment payer ?">How do I pay?</span></summary>
@@ -1011,7 +1078,11 @@ function setCookieConsent(accepted){
       "logo": "https://boosterstop.com/logo.png",
       "description": "The first vending-machine network dedicated to Trading Card Games. 100% sealed products from official distributors, available 24/7.",
       "email": "contact@boosterstop.ch",
-      "areaServed": ["Switzerland", "Belgium", "United Arab Emirates"],
+      "areaServed": [
+        "Switzerland",
+        "Belgium",
+        "United Arab Emirates"
+      ],
       "sameAs": []
     },
     {
@@ -1019,15 +1090,22 @@ function setCookieConsent(accepted){
       "@id": "https://boosterstop.com/#website",
       "url": "https://boosterstop.com/",
       "name": "BoosterStop",
-      "publisher": { "@id": "https://boosterstop.com/#organization" },
-      "inLanguage": ["en", "fr"]
+      "publisher": {
+        "@id": "https://boosterstop.com/#organization"
+      },
+      "inLanguage": [
+        "en",
+        "fr"
+      ]
     },
     {
       "@type": "Store",
       "@id": "https://boosterstop.com/#rive",
       "name": "BoosterStop — La Poste de Rive",
       "description": "BoosterStop TCG vending machine inside La Poste de Rive, Geneva. Sealed Pokémon, One Piece, Magic and more.",
-      "parentOrganization": { "@id": "https://boosterstop.com/#organization" },
+      "parentOrganization": {
+        "@id": "https://boosterstop.com/#organization"
+      },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Rue du Vieux-Collège 3",
@@ -1035,10 +1113,30 @@ function setCookieConsent(accepted){
         "addressLocality": "Genève",
         "addressCountry": "CH"
       },
-      "geo": { "@type": "GeoCoordinates", "latitude": 46.2008, "longitude": 6.1520 },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 46.2008,
+        "longitude": 6.152
+      },
       "openingHoursSpecification": [
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:30" },
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "12:00" }
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:30",
+          "closes": "12:00"
+        }
       ],
       "url": "https://boosterstop.com/stock.html?machine=0"
     },
@@ -1047,7 +1145,9 @@ function setCookieConsent(accepted){
       "@id": "https://boosterstop.com/#charmilles",
       "name": "BoosterStop — La Poste des Charmilles",
       "description": "BoosterStop TCG vending machine inside La Poste des Charmilles, Geneva. Sealed trading card game products from official distributors.",
-      "parentOrganization": { "@id": "https://boosterstop.com/#organization" },
+      "parentOrganization": {
+        "@id": "https://boosterstop.com/#organization"
+      },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Promenade de l'Europe 11",
@@ -1055,10 +1155,30 @@ function setCookieConsent(accepted){
         "addressLocality": "Genève",
         "addressCountry": "CH"
       },
-      "geo": { "@type": "GeoCoordinates", "latitude": 46.2112, "longitude": 6.1268 },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 46.2112,
+        "longitude": 6.1268
+      },
       "openingHoursSpecification": [
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:30" },
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "12:00" }
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:30",
+          "closes": "12:00"
+        }
       ],
       "url": "https://boosterstop.com/stock.html?machine=1"
     },
@@ -1067,7 +1187,9 @@ function setCookieConsent(accepted){
       "@id": "https://boosterstop.com/#petit-lancy",
       "name": "BoosterStop — La Poste du Petit-Lancy",
       "description": "BoosterStop TCG vending machine inside La Poste du Petit-Lancy, Geneva. Sealed boosters, displays and collector boxes.",
-      "parentOrganization": { "@id": "https://boosterstop.com/#organization" },
+      "parentOrganization": {
+        "@id": "https://boosterstop.com/#organization"
+      },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Rue des Bossons 88b",
@@ -1075,10 +1197,30 @@ function setCookieConsent(accepted){
         "addressLocality": "Petit-Lancy",
         "addressCountry": "CH"
       },
-      "geo": { "@type": "GeoCoordinates", "latitude": 46.1872, "longitude": 6.1214 },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 46.1872,
+        "longitude": 6.1214
+      },
       "openingHoursSpecification": [
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
-        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "12:00" }
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:30",
+          "closes": "12:00"
+        }
       ],
       "url": "https://boosterstop.com/stock.html?machine=2"
     },
@@ -1089,27 +1231,50 @@ function setCookieConsent(accepted){
         {
           "@type": "Question",
           "name": "Are the products really authentic and untouched?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Everything is 100% sealed and comes directly from official distributors. We never weigh, search, tamper with or hand-pick packs. What goes in the machine is exactly as it left the manufacturer." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Everything is 100% sealed and comes directly from official distributors. We never weigh, search, tamper with or hand-pick packs. What goes in the machine is exactly as it left the manufacturer."
+          }
         },
         {
           "@type": "Question",
           "name": "Why vending machines instead of a regular shop?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Convenience and 24/7 access matter, but our real goal is visibility: giving as many TCG licenses as possible a place in front of players — including the ones you rarely find on shelves — right where people already are." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Convenience and 24/7 access matter, but our real goal is visibility: giving as many TCG licenses as possible a place in front of players — including the ones you rarely find on shelves — right where people already are."
+          }
         },
         {
           "@type": "Question",
           "name": "Which games can I find in the machines?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more — with several universes available in each machine at the same time." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more — with several universes available in each machine at the same time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "In which languages are the cards available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Several. BoosterStop stocks the same games across multiple languages — French, English, Japanese, Chinese, German, Spanish and Portuguese among others — for example Pokémon in Japanese, Chinese or French, and One Piece in English. This lets collectors keep a collection consistent in the language they started with, read the cards they play, and access sets that only release in certain markets. Available languages vary by set and by machine."
+          }
         },
         {
           "@type": "Question",
           "name": "How do I pay?",
-          "acceptedAnswer": { "@type": "Answer", "text": "We accept cash with change returned in both coins and notes, as well as contactless card and smartphone payments. Choose your product, pay, and it drops instantly." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We accept cash with change returned in both coins and notes, as well as contactless card and smartphone payments. Choose your product, pay, and it drops instantly."
+          }
         },
         {
           "@type": "Question",
           "name": "Can I check stock before going?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our Live Stock page shows real-time inventory for each machine. If something you want is missing, you can request a restock or a new product directly." }
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Our Live Stock page shows real-time inventory for each machine. If something you want is missing, you can request a restock or a new product directly."
+          }
         }
       ]
     }
