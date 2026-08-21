@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BoosterStop — Distributeurs TCG à Genève | Pokémon, One Piece, Magic &amp; plus</title>
+<meta name="description" content="BoosterStop est le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner. Boosters, displays & boîtes collector 100% scellés, en français, anglais, japonais, chinois — 24h/24 à Genève.">
+<meta name="keywords" content="TCG vending machine, Geneva, Pokémon boosters Geneva, Japanese Pokémon cards Geneva, Chinese Pokémon cards, One Piece card game, Magic the Gathering, Disney Lorcana, Yu-Gi-Oh, trading card games Switzerland, distributeur cartes Genève, cartes japonaises Genève, sealed boosters">
+<link rel="canonical" href="https://boosterstop.com/fr/">
+<link rel="alternate" hreflang="en" href="https://boosterstop.com/">
+<link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/">
+<link rel="alternate" hreflang="x-default" href="https://boosterstop.com/">
+<meta name="robots" content="index, follow">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BoosterStop">
+<meta property="og:title" content="BoosterStop — Distributeurs TCG à Genève">
+<meta property="og:description" content="Boosters, displays & boîtes collector 100% scellés, de distributeurs officiels — en français, anglais, japonais, chinois et plus. Disponible 24h/24 à Genève.">
+<meta property="og:url" content="https://boosterstop.com/fr/">
+<meta property="og:image" content="https://boosterstop.com/logo.png">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BoosterStop — Distributeurs TCG à Genève">
+<meta name="twitter:description" content="Boosters TCG scellés de distributeurs officiels, 24h/24 à Genève. Pokémon, One Piece, Magic & plus.">
+<meta name="twitter:image" content="https://boosterstop.com/logo.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #120F2A; --white: #f4f2ee; --yellow: #FFD000;
+    --yellow-dim: rgba(255,208,0,0.12); --gray: #1E1A3A;
+    --gray-mid: #2e2a50; --text-muted: #8888aa; --radius: 4px;
+    --red: #E8183C; --red-dim: rgba(232,24,60,0.12);
+    --violet: #2A1F5E;
+  }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.6; font-size: 16px; overflow-x: hidden; background-image: radial-gradient(ellipse at 80% 10%, rgba(232,24,60,0.08) 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(42,31,94,0.3) 0%, transparent 60%); }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(18,15,42,0.92); backdrop-filter: blur(12px); }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo img { height: 28px; width: auto; }
+  .nav-right { display: flex; align-items: center; gap: 36px; }
+  nav ul { list-style: none; display: flex; gap: 36px; }
+  nav ul a { color: var(--text-muted); text-decoration: none; font-size: 13px; letter-spacing: 0.5px; transition: color 0.2s; }
+  nav ul a:hover { color: var(--white); }
+  .nl-badge{display:inline-block;background:var(--yellow);color:var(--black);font-size:8px;font-weight:600;letter-spacing:0.5px;padding:1px 5px;border-radius:3px;margin-left:5px;vertical-align:middle;}
+
+  /* LANG SWITCHER */
+  .lang-switcher { display: flex; gap: 4px; }
+  .lang-btn { background: none; border: 1px solid var(--gray-mid); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 2px; padding: 4px 10px; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
+  .lang-btn.active { border-color: var(--red); color: var(--red); background: rgba(232,24,60,0.06); }
+  .lang-btn:hover { border-color: var(--red); color: var(--red); }
+.lang-switcher a{text-decoration:none;display:inline-block;}
+
+  /* HERO */
+  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 100px 48px 80px; position: relative; overflow: hidden; gap: 40px; }
+  .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(232,24,60,0.08) 0%, transparent 65%); pointer-events: none; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 4px; color: var(--red); text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--red); }
+  .hero-logo { margin-bottom: 40px; }
+  .hero-body { color: #aaa; font-size: 16px; line-height: 1.75; margin-bottom: 32px; }
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 0; }
+  .tag { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border: 1px solid var(--gray-mid); color: var(--text-muted); text-decoration: none; padding: 6px 16px; border-radius: 2px; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s; }
+  .tag:hover { border-color: var(--red); color: var(--red); background: rgba(232,24,60,0.06); transform: translateY(-2px); }
+  .hero-right { position: relative; display: flex; align-items: center; justify-content: center; height: 100%; }
+  .hero-machine-glow { position: absolute; width: 70%; height: 50%; background: radial-gradient(circle, rgba(232,24,60,0.25) 0%, rgba(42,31,94,0.2) 50%, transparent 70%); border-radius: 50%; filter: blur(50px); pointer-events: none; z-index: 0; }
+  .hero-machine-img { position: relative; z-index: 1; width: 100%; max-width: 480px; height: auto; object-fit: contain; filter: drop-shadow(0 30px 80px rgba(0,0,0,0.9)); animation: floatMachine 6s ease-in-out infinite; }
+  .hero-machine-img.mobile-img { display: none; }
+  @keyframes floatMachine { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  .hero-scroll { position: absolute; bottom: 40px; left: 48px; font-size: 11px; letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase; display: flex; align-items: center; gap: 12px; grid-column: 1/-1; }
+  .hero-scroll::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gray-mid); animation: scrollline 2s ease-in-out infinite; }
+  @keyframes scrollline { 0%,100% { width: 40px; opacity: 1; } 50% { width: 20px; opacity: 0.4; } }
+
+  /* COUNTRIES BANNER */
+  .countries-banner { border-top: 1px solid var(--gray-mid); border-bottom: 1px solid var(--gray-mid); padding: 28px 48px; display: flex; align-items: center; gap: 48px; }
+  .countries-label { font-size: 10px; letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase; white-space: nowrap; flex-shrink: 0; }
+  .countries-list { display: flex; gap: 32px; flex-wrap: wrap; }
+  .country-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--white); }
+  .country-flag { font-size: 20px; }
+  .country-status { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; }
+  .country-status.live { background: rgba(255,208,0,0.12); color: var(--yellow); border: 1px solid rgba(255,208,0,0.3); }
+  .country-status.launching { background: rgba(255,255,255,0.04); color: var(--text-muted); border: 1px solid var(--gray-mid); }
+
+  /* SECTION */
+  section { padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 11px; letter-spacing: 4px; color: var(--red); text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .section-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--red); }
+
+  /* HOW IT WORKS */
+  .how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 56px; }
+  .how-card { background: var(--gray); padding: 40px 32px; border-top: 2px solid var(--red); }
+  .how-number { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: rgba(232,24,60,0.2); line-height: 1; margin-bottom: 20px; }
+  .how-card h3 { font-size: 17px; font-weight: 500; margin-bottom: 12px; color: var(--white); }
+  .how-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+  /* GAMES */
+  .games-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 48px; }
+  .game-pill { background: var(--gray); border: 1px solid var(--gray-mid); color: #ccc; padding: 10px 22px; font-size: 13px; letter-spacing: 0.5px; border-radius: 2px; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s; }
+  .game-pill:hover { border-color: var(--red); color: var(--red); background: rgba(232,24,60,0.06); transform: translateY(-2px); }
+  .game-pill.featured { border-color: var(--red); color: var(--red); }
+  .game-pill.featured:hover { background: rgba(232,24,60,0.12); }
+  .game-pill.more { color: var(--text-muted); border-style: dashed; }
+  .game-pill.more:hover { color: var(--red); border-color: var(--red); border-style: dashed; }
+
+  /* PARTNER SECTION */
+  .partner-section { background: linear-gradient(135deg, #1E1A3A 0%, #2A1F5E 100%); border-top: 1px solid var(--gray-mid); border-bottom: 1px solid var(--gray-mid); padding: 100px 48px; }
+  .partner-inner { max-width: 1100px; margin: 0 auto; }
+  .partner-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 80px; }
+  .partner-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px,5vw,62px); line-height: 0.95; color: var(--white); margin-bottom: 24px; margin-top: 16px; }
+  .partner-title-accent { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px,5vw,62px); line-height: 0.95; color: var(--red); display: block; margin-bottom: 24px; }
+  .partner-intro { color: var(--text-muted); font-size: 15px; line-height: 1.8; }
+  .partner-benefits { display: flex; flex-direction: column; gap: 28px; }
+  .benefit-item { display: flex; gap: 20px; align-items: flex-start; }
+  .benefit-icon { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--red); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
+  .benefit-text h4 { font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 4px; }
+  .benefit-text p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+  .why-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; margin-bottom: 60px; }
+  .why-card { background: rgba(18,15,42,0.8); padding: 32px 24px; border-top: 2px solid var(--red); text-align: center; }
+  .why-card .why-icon { font-size: 28px; margin-bottom: 16px; }
+  .why-card h4 { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--white); margin-bottom: 8px; font-weight: 500; }
+  .why-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+  .partner-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .check-item { display: flex; align-items: center; gap: 12px; font-size: 14px; color: #ccc; }
+  .check-item::before { content: '✓'; color: var(--red); font-weight: 500; flex-shrink: 0; }
+
+  /* MAP SECTION */
+  .map-section { padding: 0 0 100px; max-width: 1100px; margin: 0 auto; }
+  .map-section-inner { padding: 0 48px; }
+
+  /* MAP TABS */
+  .map-tabs { display: flex; gap: 2px; margin-top: 48px; }
+  .map-tab { background: var(--gray); border: 1px solid var(--gray-mid); border-bottom: none; color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; padding: 12px 24px; cursor: pointer; transition: all 0.2s; border-radius: 2px 2px 0 0; }
+  .map-tab:hover { color: var(--white); }
+  .map-tab.active { background: var(--black); border-color: var(--red); color: var(--red); border-bottom: 1px solid var(--black); position: relative; z-index: 1; }
+  .map-panel { display: none; }
+  .map-panel.active { display: block; }
+  .map-wrapper { position: relative; border: 1px solid var(--gray-mid); border-radius: 0 var(--radius) var(--radius) var(--radius); overflow: hidden; height: 380px; }
+  .map-wrapper > div { width: 100%; height: 100%; }
+
+  /* MAP LOCATIONS LIST */
+  .map-locations-list { border: 1px solid var(--gray-mid); border-top: none; border-radius: 0 0 var(--radius) var(--radius); }
+  .map-location-item { display: flex; align-items: center; gap: 16px; padding: 16px 24px; border-top: 1px solid var(--gray-mid); transition: background 0.2s; }
+  .map-location-item:first-child { border-top: none; }
+  .map-location-item:hover { background: rgba(255,255,255,0.02); }
+  .map-location-item.incoming { opacity: 0.65; }
+  .map-location-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .map-location-dot.live { background: var(--red); box-shadow: 0 0 6px rgba(232,24,60,0.6); animation: pulse 2s ease-in-out infinite; }
+  .map-location-dot.incoming-dot { background: transparent; border: 1px dashed var(--text-muted); }
+  .map-location-name { font-size: 13px; color: var(--white); font-weight: 400; margin-bottom: 2px; }
+  .map-location-addr { font-size: 12px; color: var(--text-muted); }
+  .map-stock-link { display: inline-block; margin-top: 5px; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); text-decoration: none; border: 1px solid rgba(232,24,60,0.3); padding: 3px 10px; border-radius: 2px; transition: background 0.2s; }
+  .map-stock-link:hover { background: rgba(232,24,60,0.08); }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(232,24,60,0.5); } 50% { box-shadow: 0 0 0 8px rgba(232,24,60,0); } }
+
+  /* COMING SOON PANEL */
+  .map-coming-soon-msg { border: 1px solid var(--gray-mid); border-top: none; border-radius: 0 0 var(--radius) var(--radius); padding: 48px 32px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+  .coming-soon-icon { font-size: 40px; }
+  .coming-soon-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 3px; color: var(--white); }
+  .coming-soon-sub { font-size: 14px; color: var(--text-muted); max-width: 400px; line-height: 1.7; }
+
+  /* CONTACT */
+  .contact-section { max-width: 1100px; margin: 0 auto; padding: 80px 48px 120px; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 56px; align-items: start; }
+  .contact-left h2 { font-family: 'Bebas Neue', sans-serif; font-size: 52px; line-height: 1; margin-bottom: 20px; color: var(--white); }
+  .contact-left h2 span { color: var(--red); }
+  .contact-left p { color: var(--text-muted); font-size: 14px; line-height: 1.8; margin-bottom: 32px; }
+  .contact-info { font-size: 13px; color: #666; border-top: 1px solid var(--gray-mid); padding-top: 20px; }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 11px; letter-spacing: 2px; color: var(--text-muted); text-transform: uppercase; }
+  .form-group input, .form-group textarea, .form-group select { background: var(--gray); border: 1px solid var(--gray-mid); border-radius: var(--radius); color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; padding: 14px 18px; outline: none; transition: border-color 0.2s; appearance: none; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--red); }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: #555; }
+  .btn-submit { background: var(--yellow); color: var(--black); border: none; padding: 16px 36px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; border-radius: var(--radius); cursor: pointer; align-self: flex-start; transition: opacity 0.2s, transform 0.15s; }
+  .btn-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-submit:active { transform: translateY(0); }
+  .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+
+  /* TRUST & FAQ */
+  .trust-section { max-width: 1100px; margin: 0 auto; padding: 100px 48px; }
+  .trust-head { max-width: 640px; margin-bottom: 48px; }
+  .trust-head h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px,4.5vw,52px); line-height: 1; color: var(--white); margin: 14px 0 18px; }
+  .trust-head h2 span { color: var(--red); }
+  .trust-head p { color: var(--text-muted); font-size: 15px; line-height: 1.8; }
+  .trust-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-bottom: 60px; }
+  .trust-card { background: var(--gray); padding: 32px 26px; border-top: 2px solid var(--red); }
+  .trust-card .t-icon { font-size: 26px; margin-bottom: 14px; }
+  .trust-card h3 { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white); margin-bottom: 10px; font-weight: 500; }
+  .trust-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+  .faq-list { display: flex; flex-direction: column; gap: 2px; }
+  .faq-item { background: var(--gray); border-left: 2px solid var(--gray-mid); transition: border-color 0.2s; }
+  .faq-item[open] { border-left-color: var(--red); }
+  .faq-item summary { list-style: none; cursor: pointer; padding: 20px 24px; font-size: 15px; color: var(--white); font-weight: 400; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; font-family: 'Bebas Neue',sans-serif; font-size: 24px; color: var(--red); line-height: 1; flex-shrink: 0; transition: transform 0.2s; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item .faq-a { padding: 0 24px 22px; font-size: 14px; color: var(--text-muted); line-height: 1.75; }
+  @media (max-width: 768px) {
+    .trust-section { padding: 72px 24px; }
+    .trust-cards { grid-template-columns: 1fr; }
+    .faq-item summary { font-size: 14px; padding: 16px 18px; }
+    .faq-item .faq-a { padding: 0 18px 18px; font-size: 13.5px; }
+  }
+
+
+  /* LANGUAGES */
+  .lang-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px,4.5vw,52px); line-height: 1; color: var(--white); margin: 14px 0 18px; }
+  .lang-title span { color: var(--red); }
+  .lang-intro { color: var(--text-muted); font-size: 15px; line-height: 1.8; max-width: 660px; }
+  .lang-chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 36px 0 14px; }
+  .lang-chip { display: flex; align-items: center; gap: 9px; background: var(--gray); border: 1px solid var(--gray-mid); color: #ddd; padding: 10px 18px; font-size: 13px; letter-spacing: 0.3px; border-radius: 2px; transition: border-color 0.2s, color 0.2s, transform 0.15s; }
+  .lang-chip:hover { border-color: var(--red); color: var(--white); transform: translateY(-2px); }
+  .lang-chip .lc-flag { font-size: 18px; line-height: 1; }
+  .lang-chip .lc-native { color: var(--text-muted); font-size: 12px; }
+  .lang-chip.more { border-style: dashed; color: var(--text-muted); }
+  .lang-examples { font-size: 13px; color: var(--text-muted); line-height: 1.8; padding: 16px 20px; background: rgba(232,24,60,0.05); border-left: 2px solid var(--red); border-radius: 0 var(--radius) var(--radius) 0; margin-bottom: 48px; }
+  .lang-examples strong { color: var(--white); font-weight: 500; }
+  .lang-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+  .lang-card { background: var(--gray); padding: 32px 26px; border-top: 2px solid var(--red); }
+  .lang-card .l-icon { font-size: 26px; margin-bottom: 14px; }
+  .lang-card h3 { font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white); margin-bottom: 10px; font-weight: 500; }
+  .lang-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.7; }
+  @media (max-width: 768px) {
+    .lang-cards { grid-template-columns: 1fr; }
+    .lang-chips { gap: 8px; margin: 28px 0 14px; }
+    .lang-chip { padding: 8px 14px; font-size: 12px; }
+    .lang-examples { margin-bottom: 36px; }
+  }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--gray-mid); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; }
+  footer p { font-size: 12px; color: #444; letter-spacing: 0.5px; }
+
+  /* ANIMATIONS */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+  .form-success { display: none; background: var(--yellow-dim); border: 1px solid rgba(255,208,0,0.3); border-radius: var(--radius); padding: 20px 24px; font-size: 14px; color: var(--yellow); letter-spacing: 0.3px; }
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 18px 24px; }
+    nav ul { display: none; }
+    body { padding-bottom: 68px; }
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 80px; gap: 0; }
+    .hero-tags { gap: 8px; }
+    .tag { font-size: 10px; padding: 5px 12px; letter-spacing: 1px; }
+    .hero-right { display: flex; margin-top: 32px; }
+    .hero-machine-img.desktop-img { display: none; }
+    .hero-machine-img.mobile-img { display: block; max-width: 80vw; margin: 0 auto; }
+    .booster-anim { bottom: 15%; left: 40%; }
+    .countries-banner { padding: 20px 24px; gap: 20px; flex-direction: column; align-items: flex-start; }
+    .countries-list { gap: 16px; }
+    section { padding: 72px 24px; }
+    .how-grid { grid-template-columns: 1fr; }
+    .partner-section { padding: 72px 24px; }
+    .partner-hero { grid-template-columns: 1fr; gap: 40px; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .partner-checklist { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .contact-section { padding: 0 24px 80px; }
+    .map-section-inner { padding: 0 24px; }
+    .map-tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .map-tabs::-webkit-scrollbar { display: none; }
+    .map-tab { font-size: 9px; padding: 8px 10px; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.5px; }
+    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  /* MOBILE BOTTOM NAV */
+  .mob-nav {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    .mob-nav {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9000;
+      background: rgba(18,15,42,0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(232,24,60,0.4);
+      padding-top: 8px;
+      padding-bottom: env(safe-area-inset-bottom, 8px);
+      justify-content: space-around;
+      align-items: flex-start;
+    }
+  }
+  .mob-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 4px 2px;
+    transition: color 0.2s;
+    flex: 1;
+    text-align: center;
+  }
+  .mob-nav a.active,
+  .mob-nav a:hover { color: var(--red); }
+  .mob-nav .m-icon { font-size: 20px; line-height: 1; display: block; }
+  .mob-nav a { position: relative; }
+  .mob-nav a .m-badge{position:absolute;top:0;left:50%;margin-left:6px;background:var(--yellow);color:var(--black);font-size:7px;font-weight:700;letter-spacing:0.2px;padding:1px 4px;border-radius:3px;line-height:1.3;}
+
+
+  /* BOOSTER ANIMATION */
+  .hero-right { position: relative; }
+  .booster-anim {
+    display: none;
+    position: absolute;
+    bottom: 18%;
+    left: 38%;
+    transform: translateX(-50%);
+    z-index: 10;
+    pointer-events: none;
+    justify-content: center;
+  }
+  .booster-anim img {
+    width: clamp(62px, 8.5vw, 95px);
+    opacity: 0;
+    filter: drop-shadow(0 8px 40px rgba(232,24,60,0.7));
+  }
+  @keyframes boosterPop {
+    0%   { opacity: 0; transform: scale(0.8); filter: drop-shadow(0 4px 12px rgba(232,24,60,0.2)); }
+    8%   { opacity: 1; transform: scale(1);   filter: drop-shadow(0 8px 20px rgba(232,24,60,0.5)); }
+    65%  { opacity: 1; transform: scale(1);   filter: drop-shadow(0 8px 20px rgba(232,24,60,0.5)); }
+    100% { opacity: 0; transform: scale(2.8); filter: drop-shadow(0 0 120px rgba(232,24,60,0)) brightness(4); }
+  }
+
+  /* MACHINE SHAKE */
+  @keyframes machineShake {
+    0%,100% { transform: translateX(0) rotate(0deg); }
+    15%      { transform: translateX(-3px) rotate(-0.3deg); }
+    30%      { transform: translateX(3px) rotate(0.3deg); }
+    45%      { transform: translateX(-2px) rotate(-0.2deg); }
+    60%      { transform: translateX(2px) rotate(0.2deg); }
+    75%      { transform: translateX(-1px) rotate(-0.1deg); }
+    90%      { transform: translateX(1px) rotate(0.1deg); }
+  }
+  .machine-shaking {
+    animation: machineShake 0.4s ease-in-out 2 !important;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo"><img src="/logo.png" alt="BoosterStop"></a>
+  <div class="nav-right">
+    <ul>
+      <li><a href="#where" data-en="Locations" data-fr="Emplacements">Emplacements</a></li>
+      <li><a href="/fr/licences-geneve.html" data-en="🃏 Licenses" data-fr="🃏 Licences">🃏 Licences</a></li>
+      <li><a href="#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
+      <li><a href="/fr/newsletter.html" data-en="🔔 Newsletter &lt;span class='nl-badge'&gt;-10%&lt;/span&gt;" data-fr="🔔 Newsletter &lt;span class='nl-badge'&gt;-10%&lt;/span&gt;">🔔 Newsletter <span class="nl-badge">-10%</span></a></li>
+      <li><a href="/fr/stock.html" style="color:var(--red);font-weight:500;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Stock Live</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <a class="lang-btn" href="/">EN</a>
+      <a class="lang-btn active" href="/fr/">FR</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow" data-en="TCG Vending Machine Network" data-fr="Réseau de Distributeurs TCG">Réseau de Distributeurs TCG</div>
+    <div class="hero-logo">
+      <img src="/logo.png" alt="BoosterStop" style="height: clamp(40px, 6vw, 90px); width: auto;">
+    </div>
+    <p class="hero-body" data-en="The first vending machine network dedicated to Trading Card Games.&lt;br&gt;Boosters, displays, collector boxes — available 24/7, right where you are." data-fr="Le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner.&lt;br&gt;Boosters, displays, boîtes collector — disponibles 24h/24, là où vous êtes.">Le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner.<br>Boosters, displays, boîtes collector — disponibles 24h/24, là où vous êtes.</p>
+    <div class="hero-tags">
+      <a class="tag" href="/fr/licences-geneve.html#pokemon">Pokémon</a>
+      <a class="tag" href="/fr/licences-geneve.html#one-piece">One Piece TCG</a>
+      <a class="tag" href="/fr/licences-geneve.html#dragon-ball">Dragon Ball Super</a>
+      <a class="tag" href="/fr/licences-geneve.html#riftbound">Riftbound: LoL TCG</a>
+      <a class="tag" href="/fr/licences-geneve.html#mtg">Magic: The Gathering</a>
+      <a class="tag" href="/fr/licences-geneve.html#lorcana">Disney Lorcana</a>
+      <a class="tag" href="/fr/licences-geneve.html">Yu-Gi-Oh!</a>
+      <a class="tag" href="/fr/licences-geneve.html#naruto">Naruto TCG</a>
+      <a class="tag" href="/fr/licences-geneve.html" data-en="&amp; more" data-fr="&amp; plus">&amp; plus</a>
+    </div>
+  </div>
+  <div class="hero-right">
+  <span id="machine" style="position:absolute;top:50%;left:0;width:1px;height:1px;"></span>
+    <div class="hero-machine-glow"></div>
+    <img class="hero-machine-img desktop-img" src="/front%20transparent.png" alt="BoosterStop Machine">
+    <img class="hero-machine-img mobile-img" src="/front%20transparent.png" alt="BoosterStop Machine">
+    <div class="booster-anim" id="boosterAnim">
+      <img src="/Booster.png" alt="Booster">
+    </div>
+  </div>
+  <div class="hero-scroll" data-en="Scroll" data-fr="Scroll">Scroll</div>
+</div>
+
+<!-- COUNTRIES BANNER -->
+<div class="countries-banner fade-in">
+  <span class="countries-label" data-en="Now live &amp; launching" data-fr="En cours &amp; à venir">En cours &amp; à venir</span>
+  <div class="countries-list">
+    <div class="country-item">
+      <span class="country-flag">🇨🇭</span>
+      <span data-en="Switzerland" data-fr="Suisse">Suisse</span>
+      <span class="country-status live" data-en="Live — Geneva" data-fr="Actif — Genève">Actif — Genève</span>
+    </div>
+    <div class="country-item">
+      <span class="country-flag">🇧🇪</span>
+      <span data-en="Belgium" data-fr="Belgique">Belgique</span>
+      <span class="country-status launching" data-en="Launching Soon" data-fr="Bientôt disponible">Bientôt disponible</span>
+    </div>
+    <div class="country-item">
+      <span class="country-flag">🇦🇪</span>
+      <span data-en="UAE" data-fr="Émirats Arabes Unis">Émirats Arabes Unis</span>
+      <span class="country-status launching" data-en="Launching Soon" data-fr="Bientôt disponible">Bientôt disponible</span>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section id="concept" class="fade-in">
+  <div class="section-label" data-en="How it works" data-fr="Comment ça marche">Comment ça marche</div>
+  <div class="how-grid">
+    <div class="how-card">
+      <div class="how-number">01</div>
+      <h3 data-en="Find the machine" data-fr="Trouve la machine">Trouve la machine</h3>
+      <p data-en="Our machines are installed in shopping malls, transit hubs, and entertainment venues across our active markets." data-fr="Nos distributeurs sont installés dans des centres commerciaux, gares et espaces de loisirs en Suisse, Belgique et aux Émirats Arabes Unis.">Nos distributeurs sont installés dans des centres commerciaux, gares et espaces de loisirs en Suisse, Belgique et aux Émirats Arabes Unis.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-number">02</div>
+      <h3 data-en="Pick your product" data-fr="Choisis ton produit">Choisis ton produit</h3>
+      <p data-en="Boosters, displays or collector boxes — multiple TCG universes in every machine, and several languages to choose from: French, English, Japanese, Chinese and more." data-fr="Boosters, displays ou boîtes collector — plusieurs licences TCG dans chaque machine, et plusieurs langues au choix : français, anglais, japonais, chinois et plus.">Boosters, displays ou boîtes collector — plusieurs licences TCG dans chaque machine, et plusieurs langues au choix : français, anglais, japonais, chinois et plus.</p>
+    </div>
+    <div class="how-card">
+      <div class="how-number">03</div>
+      <h3 data-en="Pay &amp; open" data-fr="Paie &amp; ouvre">Paie &amp; ouvre</h3>
+      <p data-en="Pay by cash — with change returned in coins and notes — or contactless card &amp; smartphone. Your product drops instantly, and the pack-opening experience starts right there." data-fr="Payez en espèces — monnaie rendue en pièces et billets — ou en sans contact carte &amp; smartphone. Le produit sort immédiatement, et l'expérience du pack opening commence là, devant la machine.">Payez en espèces — monnaie rendue en pièces et billets — ou en sans contact carte &amp; smartphone. Le produit sort immédiatement, et l'expérience du pack opening commence là, devant la machine.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- LANGUAGES -->
+<section id="languages" class="fade-in">
+  <div class="section-label" data-en="Multilingual range" data-fr="Gamme multilingue">Gamme multilingue</div>
+  <h2 class="lang-title" data-en="Cards in &lt;span&gt;your language.&lt;/span&gt;" data-fr="Des cartes dans &lt;span&gt;votre langue.&lt;/span&gt;">Des cartes dans <span>votre langue.</span></h2>
+  <p class="lang-intro" data-en="Geneva is one of the most international cities in the world — and collectors don't all start in the same language. That's why our machines stock the same games across several languages, so you can find the version that actually matters to you." data-fr="Genève est l'une des villes les plus internationales au monde — et les collectionneurs ne commencent pas tous dans la même langue. C'est pourquoi nos machines proposent les mêmes jeux en plusieurs langues, pour que vous trouviez la version qui compte vraiment pour vous.">Genève est l'une des villes les plus internationales au monde — et les collectionneurs ne commencent pas tous dans la même langue. C'est pourquoi nos machines proposent les mêmes jeux en plusieurs langues, pour que vous trouviez la version qui compte vraiment pour vous.</p>
+
+  <div class="lang-chips">
+    <span class="lang-chip"><span class="lc-flag">🇫🇷</span> Français</span>
+    <span class="lang-chip"><span class="lc-flag">🇬🇧</span> English</span>
+    <span class="lang-chip"><span class="lc-flag">🇯🇵</span> <span class="lc-native">日本語</span> <span data-en="Japanese" data-fr="Japonais">Japonais</span></span>
+    <span class="lang-chip"><span class="lc-flag">🇨🇳</span> <span class="lc-native">中文</span> <span data-en="Chinese" data-fr="Chinois">Chinois</span></span>
+    <span class="lang-chip"><span class="lc-flag">🇩🇪</span> Deutsch</span>
+    <span class="lang-chip"><span class="lc-flag">🇪🇸</span> Español</span>
+    <span class="lang-chip"><span class="lc-flag">🇵🇹</span> Português</span>
+    <span class="lang-chip more" data-en="&amp; more depending on the set" data-fr="&amp; plus selon les sets">&amp; plus selon les sets</span>
+  </div>
+
+  <div class="lang-examples" data-en="For example: &lt;strong&gt;Pokémon&lt;/strong&gt; in Japanese, Chinese or French · &lt;strong&gt;One Piece&lt;/strong&gt; in English · and more across our other licences. Available languages vary by set and by machine — check the &lt;a href='/fr/stock.html' style='color:var(--red);'&gt;Live Stock&lt;/a&gt; page to see what's in each one right now." data-fr="Par exemple : du &lt;strong&gt;Pokémon&lt;/strong&gt; en japonais, chinois ou français · du &lt;strong&gt;One Piece&lt;/strong&gt; en anglais · et d'autres selon nos licences. Les langues disponibles varient selon les sets et les machines — consultez la page &lt;a href='/fr/stock.html' style='color:var(--red);'&gt;Stock Live&lt;/a&gt; pour voir ce qu'il y a dans chacune en temps réel.">Par exemple : du <strong>Pokémon</strong> en japonais, chinois ou français · du <strong>One Piece</strong> en anglais · et d'autres selon nos licences. Les langues disponibles varient selon les sets et les machines — consultez la page <a href="/fr/stock.html" style="color:var(--red);">Stock Live</a> pour voir ce qu'il y a dans chacune en temps réel.</div>
+
+  <div class="lang-cards">
+    <div class="lang-card">
+      <div class="l-icon">🧩</div>
+      <h3 data-en="Keep your collection consistent" data-fr="Gardez une collection cohérente">Gardez une collection cohérente</h3>
+      <p data-en="Started your collection in Japanese? Kept every card in English since day one? You shouldn't have to switch language halfway through. We stock across languages so your binder stays coherent." data-fr="Vous avez commencé votre collection en japonais ? Vous gardez tout en anglais depuis le début ? Vous ne devriez pas avoir à changer de langue en cours de route. Nous proposons plusieurs langues pour que votre classeur reste cohérent.">Vous avez commencé votre collection en japonais ? Vous gardez tout en anglais depuis le début ? Vous ne devriez pas avoir à changer de langue en cours de route. Nous proposons plusieurs langues pour que votre classeur reste cohérent.</p>
+    </div>
+    <div class="lang-card">
+      <div class="l-icon">🌏</div>
+      <h3 data-en="Read the cards you play" data-fr="Lisez les cartes que vous jouez">Lisez les cartes que vous jouez</h3>
+      <p data-en="Whether you speak French, Mandarin, English, German, Spanish or Portuguese, playing is simply better when you can read your own cards — especially for younger players just getting into a game." data-fr="Que vous parliez français, mandarin, anglais, allemand, espagnol ou portugais, jouer est bien plus agréable quand on peut lire ses propres cartes — surtout pour les plus jeunes qui découvrent un jeu.">Que vous parliez français, mandarin, anglais, allemand, espagnol ou portugais, jouer est bien plus agréable quand on peut lire ses propres cartes — surtout pour les plus jeunes qui découvrent un jeu.</p>
+    </div>
+    <div class="lang-card">
+      <div class="l-icon">✨</div>
+      <h3 data-en="Access sets you can't find locally" data-fr="Accédez à des sets introuvables ici">Accédez à des sets introuvables ici</h3>
+      <p data-en="Some sets, arts and print runs only ever release in certain markets. Stocking Japanese and Chinese product means you can reach releases that never make it to Swiss shelves." data-fr="Certains sets, illustrations et tirages ne sortent que sur certains marchés. En proposant du produit japonais et chinois, nous vous donnons accès à des sorties qui n'arrivent jamais dans les rayons suisses.">Certains sets, illustrations et tirages ne sortent que sur certains marchés. En proposant du produit japonais et chinois, nous vous donnons accès à des sorties qui n'arrivent jamais dans les rayons suisses.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<div class="map-section fade-in" id="where">
+  <div class="map-section-inner">
+    <div class="section-label" data-en="Locations" data-fr="Emplacements">Emplacements</div>
+
+    <div class="map-tabs">
+      <button class="map-tab active" onclick="switchTab('geneva')" data-en="🇨🇭 Geneva — Live" data-fr="🇨🇭 Genève — Actif">🇨🇭 Genève — Actif</button>
+      <button class="map-tab" onclick="switchTab('belgium')" data-en="🇧🇪 Belgium — Soon" data-fr="🇧🇪 Belgique — Bientôt">🇧🇪 Belgique — Bientôt</button>
+      <button class="map-tab" onclick="switchTab('uae')" data-en="🇦🇪 UAE — Soon" data-fr="🇦🇪 Émirats — Bientôt">🇦🇪 Émirats — Bientôt</button>
+    </div>
+
+    <!-- GENEVA -->
+    <div class="map-panel active" id="tab-geneva">
+      <div class="map-wrapper"><div id="map-geneva"></div></div>
+      <div class="map-locations-list">
+        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(0)">
+          <div class="map-location-dot live"></div>
+          <div>
+            <div class="map-location-name">La Poste de Rive</div>
+            <div class="map-location-addr">Rue du Vieux-Collège 3, 1204 Genève</div>
+            <a href="/fr/stock.html?machine=0" class="map-stock-link" data-en="📦 Check stock" data-fr="📦 Voir le stock">📦 Voir le stock</a>
+          </div>
+        </div>
+        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(1)">
+          <div class="map-location-dot live"></div>
+          <div>
+            <div class="map-location-name">La Poste des Charmilles</div>
+            <div class="map-location-addr">Promenade de l'Europe 11, 1203 Genève</div>
+            <a href="/fr/stock.html?machine=1" class="map-stock-link" data-en="📦 Check stock" data-fr="📦 Voir le stock">📦 Voir le stock</a>
+          </div>
+        </div>
+        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(2)">
+          <div class="map-location-dot live"></div>
+          <div>
+            <div class="map-location-name">La Poste du Petit-Lancy</div>
+            <div class="map-location-addr">Rue des Bossons 88b, 1213 Petit-Lancy</div>
+            <a href="/fr/stock.html?machine=2" class="map-stock-link" data-en="📦 Check stock" data-fr="📦 Voir le stock">📦 Voir le stock</a>
+          </div>
+        </div>
+        <div class="map-location-item incoming">
+          <div class="map-location-dot incoming-dot"></div>
+          <div>
+            <div class="map-location-name" data-en="+ 5 new locations coming very soon in Geneva" data-fr="+ 5 nouveaux emplacements très prochainement à Genève">+ 5 nouveaux emplacements très prochainement à Genève</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BELGIUM -->
+    <div class="map-panel" id="tab-belgium">
+      <div class="map-wrapper"><div id="map-belgium"></div></div>
+      <div class="map-coming-soon-msg">
+        <div class="coming-soon-icon">🇧🇪</div>
+        <div class="coming-soon-title" data-en="Belgium — Launching Soon" data-fr="Belgique — Bientôt disponible">Belgique — Bientôt disponible</div>
+        <div class="coming-soon-sub" data-en="We're actively scouting locations across Belgium. Stay tuned." data-fr="Nous recherchons activement des emplacements en Belgique. Restez connectés.">Nous recherchons activement des emplacements en Belgique. Restez connectés.</div>
+      </div>
+    </div>
+
+    <!-- UAE -->
+    <div class="map-panel" id="tab-uae">
+      <div class="map-wrapper"><div id="map-uae"></div></div>
+      <div class="map-coming-soon-msg">
+        <div class="coming-soon-icon">🇦🇪</div>
+        <div class="coming-soon-title" data-en="UAE — Launching Soon" data-fr="Émirats Arabes Unis — Bientôt disponible">Émirats Arabes Unis — Bientôt disponible</div>
+        <div class="coming-soon-sub" data-en="Dubai and Abu Dhabi on the roadmap. Announcements coming soon." data-fr="Dubaï et Abu Dhabi dans la feuille de route. Annonces à venir.">Dubaï et Abu Dhabi dans la feuille de route. Annonces à venir.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PARTNER SECTION -->
+<div class="partner-section fade-in" id="partner">
+  <div class="partner-inner">
+    <div class="section-label" data-en="For venue owners" data-fr="Pour les propriétaires d'espaces">Pour les propriétaires d'espaces</div>
+    <div class="partner-hero">
+      <div>
+        <div class="partner-title" data-en="Add value to your space &amp;" data-fr="Donnez plus de valeur à votre espace et">Donnez plus de valeur à votre espace et</div>
+        <span class="partner-title-accent" data-en="Generate passive income!" data-fr="Générez un revenu passif !">Générez un revenu passif !</span>
+        <p class="partner-intro" data-en="Install a BoosterStop TCG vending machine in your venue and earn a steady supplemental income — with zero effort on your end." data-fr="Installez un distributeur automatique BoosterStop de cartes TCG dans votre établissement et profitez d'un revenu complémentaire sans effort.">Installez un distributeur automatique BoosterStop de cartes TCG dans votre établissement et profitez d'un revenu complémentaire sans effort.</p>
+      </div>
+      <div class="partner-benefits">
+        <div class="benefit-item">
+          <div class="benefit-icon">💰</div>
+          <div class="benefit-text">
+            <h4 data-en="Passive income" data-fr="Revenu passif">Revenu passif</h4>
+            <p data-en="Generate regular revenue without any effort or investment." data-fr="Générez des revenus réguliers sans effort.">Générez des revenus réguliers sans effort.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">👥</div>
+          <div class="benefit-text">
+            <h4 data-en="New audience" data-fr="Nouvelle clientèle">Nouvelle clientèle</h4>
+            <p data-en="Attract TCG enthusiasts and increase foot traffic in your venue." data-fr="Attirez des passionnés de TCG et augmentez le trafic dans votre établissement.">Attirez des passionnés de TCG et augmentez le trafic dans votre établissement.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🔑</div>
+          <div class="benefit-text">
+            <h4 data-en="Fully turnkey" data-fr="Clé en main">Clé en main</h4>
+            <p data-en="We handle everything: installation, restocking, maintenance and customer service." data-fr="Nous nous occupons de tout : installation, remplissage, maintenance et service client.">Nous nous occupons de tout : installation, remplissage, maintenance et service client.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section-label" style="margin-bottom: 32px;" data-en="Why partner with BoosterStop?" data-fr="Pourquoi s'associer à BoosterStop ?">Pourquoi s'associer à BoosterStop ?</div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🛡️</div>
+        <h4 data-en="Zero investment" data-fr="Aucun investissement">Aucun investissement</h4>
+        <p data-en="Completely free and risk-free for your venue." data-fr="Totalement gratuit et sans risque.">Totalement gratuit et sans risque.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">⚙️</div>
+        <h4 data-en="Zero hassle" data-fr="Zéro contrainte">Zéro contrainte</h4>
+        <p data-en="We manage everything from A to Z." data-fr="Nous gérons tout de A à Z pour vous.">Nous gérons tout de A à Z pour vous.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📈</div>
+        <h4 data-en="Recurring revenue" data-fr="Revenus récurrents">Revenus récurrents</h4>
+        <p data-en="A stable and secure supplemental income stream." data-fr="Un complément de revenu stable et sécurisé.">Un complément de revenu stable et sécurisé.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">😊</div>
+        <h4 data-en="Customer satisfaction" data-fr="Satisfaction client">Satisfaction client</h4>
+        <p data-en="Popular products loved by all ages." data-fr="Des produits populaires qui plaisent à tous les âges !">Des produits populaires qui plaisent à tous les âges !</p>
+      </div>
+    </div>
+    <div class="section-label" style="margin-bottom: 24px;" data-en="What we bring to the table" data-fr="Un espace disponible ? Parlons-en !">Un espace disponible ? Parlons-en !</div>
+    <div class="partner-checklist">
+      <div class="check-item" data-en="Fast and discreet installation" data-fr="Installation rapide et discrète">Installation rapide et discrète</div>
+      <div class="check-item" data-en="Modern, secure machines" data-fr="Machine moderne et sécurisée">Machine moderne et sécurisée</div>
+      <div class="check-item" data-en="Regular restocking" data-fr="Approvisionnement régulier">Approvisionnement régulier</div>
+      <div class="check-item" data-en="Responsive customer support" data-fr="Service client réactif">Service client réactif</div>
+      <div class="check-item" data-en="Win-win partnership model" data-fr="Un partenariat gagnant-gagnant !">Un partenariat gagnant-gagnant !</div>
+      <div class="check-item" data-en="Simplicity, reliability and profitability" data-fr="Simplicité, fiabilité et rentabilité.">Simplicité, fiabilité et rentabilité.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- TRUST & FAQ -->
+<div class="trust-section fade-in" id="faq">
+  <div class="trust-head">
+    <div class="section-label" data-en="Trust &amp; transparency" data-fr="Confiance &amp; transparence">Confiance &amp; transparence</div>
+    <h2 data-en="Sealed, official, &lt;span&gt;no bad surprises.&lt;/span&gt;" data-fr="Scellé, officiel, &lt;span&gt;sans mauvaise surprise.&lt;/span&gt;">Scellé, officiel, <span>sans mauvaise surprise.</span></h2>
+    <p data-en="Buying from a machine shouldn't mean buying blind. Here's exactly how we operate — and why we built BoosterStop the way we did." data-fr="Acheter dans une machine ne devrait pas rimer avec acheter à l'aveugle. Voici exactement comment nous fonctionnons — et pourquoi nous avons créé BoosterStop ainsi.">Acheter dans une machine ne devrait pas rimer avec acheter à l'aveugle. Voici exactement comment nous fonctionnons — et pourquoi nous avons créé BoosterStop ainsi.</p>
+  </div>
+
+  <div class="trust-cards">
+    <div class="trust-card">
+      <div class="t-icon">🔒</div>
+      <h3 data-en="100% sealed" data-fr="100% scellé">100% scellé</h3>
+      <p data-en="Every booster, display and box is factory-sealed. Nothing is ever weighed, searched, opened or altered — products go straight from our distributors into the machine." data-fr="Chaque booster, display et boîte est scellé d'usine. Rien n'est jamais pesé, fouillé, ouvert ni altéré — les produits passent directement de nos distributeurs à la machine.">Chaque booster, display et boîte est scellé d'usine. Rien n'est jamais pesé, fouillé, ouvert ni altéré — les produits passent directement de nos distributeurs à la machine.</p>
+    </div>
+    <div class="trust-card">
+      <div class="t-icon">📦</div>
+      <h3 data-en="Official sourcing" data-fr="Sources officielles">Sources officielles</h3>
+      <p data-en="We source exclusively from the official distributors and authorized suppliers of each TCG. No grey market, no resealed product — ever." data-fr="Nous nous approvisionnons exclusivement auprès des distributeurs officiels et fournisseurs agréés de chaque TCG. Jamais de marché gris ni de produit rescellé.">Nous nous approvisionnons exclusivement auprès des distributeurs officiels et fournisseurs agréés de chaque TCG. Jamais de marché gris ni de produit rescellé.</p>
+    </div>
+    <div class="trust-card">
+      <div class="t-icon">🎥</div>
+      <h3 data-en="Full transparency" data-fr="Transparence totale">Transparence totale</h3>
+      <p data-en="We show as much as we can on our socials: restocking, sourcing, deliveries and openings. What you see online is what lands in the machine." data-fr="Nous montrons un maximum sur nos réseaux : réassorts, approvisionnement, livraisons et ouvertures. Ce que vous voyez en ligne est ce qui arrive dans la machine.">Nous montrons un maximum sur nos réseaux : réassorts, approvisionnement, livraisons et ouvertures. Ce que vous voyez en ligne est ce qui arrive dans la machine.</p>
+    </div>
+  </div>
+
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary><span data-en="Are the products really authentic and untouched?" data-fr="Les produits sont-ils vraiment authentiques et intacts ?">Les produits sont-ils vraiment authentiques et intacts ?</span></summary>
+      <div class="faq-a" data-en="Yes — absolutely. Everything is 100% sealed and comes directly from official distributors. We never weigh, search, tamper with or hand-pick packs. What goes in the machine is exactly as it left the manufacturer." data-fr="Oui — absolument. Tout est 100% scellé et provient directement de distributeurs officiels. Nous ne pesons jamais, ne fouillons pas, n'altérons rien et ne trions pas les paquets. Ce qui entre dans la machine est exactement tel qu'il a quitté le fabricant.">Oui — absolument. Tout est 100% scellé et provient directement de distributeurs officiels. Nous ne pesons jamais, ne fouillons pas, n'altérons rien et ne trions pas les paquets. Ce qui entre dans la machine est exactement tel qu'il a quitté le fabricant.</div>
+    </details>
+    <details class="faq-item">
+      <summary><span data-en="Why vending machines instead of a regular shop?" data-fr="Pourquoi des distributeurs plutôt qu'une boutique classique ?">Pourquoi des distributeurs plutôt qu'une boutique classique ?</span></summary>
+      <div class="faq-a" data-en="Convenience and 24/7 access matter, but that's not the whole point. Our real goal is visibility: we want to give as many TCG licenses as possible a place in front of players — including the ones you rarely find on shelves — right where people already are." data-fr="La praticité et l'accès 24h/24 comptent, mais ce n'est pas l'essentiel. Notre vrai objectif, c'est la visibilité : offrir une place à un maximum de licences TCG devant les joueurs — y compris celles qu'on trouve rarement en rayon — là où les gens sont déjà.">La praticité et l'accès 24h/24 comptent, mais ce n'est pas l'essentiel. Notre vrai objectif, c'est la visibilité : offrir une place à un maximum de licences TCG devant les joueurs — y compris celles qu'on trouve rarement en rayon — là où les gens sont déjà.</div>
+    </details>
+    <details class="faq-item">
+      <summary><span data-en="Which games can I find in the machines?" data-fr="Quels jeux puis-je trouver dans les machines ?">Quels jeux puis-je trouver dans les machines ?</span></summary>
+      <div class="faq-a" data-en="Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more — with several universes available in each machine at the same time. The line-up evolves with new releases and demand." data-fr="Pokémon, One Piece, Dragon Ball Super, Riftbound : LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto et plus — avec plusieurs univers disponibles simultanément dans chaque machine. La sélection évolue selon les sorties et la demande.">Pokémon, One Piece, Dragon Ball Super, Riftbound : LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto et plus — avec plusieurs univers disponibles simultanément dans chaque machine. La sélection évolue selon les sorties et la demande.</div>
+    </details>
+    <details class="faq-item">
+      <summary><span data-en="In which languages are the cards available?" data-fr="Dans quelles langues les cartes sont-elles disponibles ?">Dans quelles langues les cartes sont-elles disponibles ?</span></summary>
+      <div class="faq-a" data-en="Several. We stock the same games across multiple languages — French, English, Japanese, Chinese, German, Spanish and Portuguese among others — for example Pokémon in Japanese, Chinese or French, and One Piece in English. This lets you keep a collection consistent in the language you started with, read the cards you actually play, and reach sets that only release in certain markets. Available languages vary by set and by machine, so check the Live Stock page to see what's in each one right now." data-fr="Plusieurs. Nous proposons les mêmes jeux en plusieurs langues — français, anglais, japonais, chinois, allemand, espagnol et portugais notamment — par exemple du Pokémon en japonais, chinois ou français, et du One Piece en anglais. Cela vous permet de garder une collection cohérente dans la langue où vous avez commencé, de lire les cartes que vous jouez, et d'accéder à des sets qui ne sortent que sur certains marchés. Les langues varient selon les sets et les machines : consultez la page Stock Live pour voir ce qu'il y a dans chacune en temps réel.">Plusieurs. Nous proposons les mêmes jeux en plusieurs langues — français, anglais, japonais, chinois, allemand, espagnol et portugais notamment — par exemple du Pokémon en japonais, chinois ou français, et du One Piece en anglais. Cela vous permet de garder une collection cohérente dans la langue où vous avez commencé, de lire les cartes que vous jouez, et d'accéder à des sets qui ne sortent que sur certains marchés. Les langues varient selon les sets et les machines : consultez la page Stock Live pour voir ce qu'il y a dans chacune en temps réel.</div>
+    </details>
+    <details class="faq-item">
+      <summary><span data-en="How do I pay?" data-fr="Comment payer ?">Comment payer ?</span></summary>
+      <div class="faq-a" data-en="We accept cash — with change returned in both coins and notes — as well as contactless card and smartphone payments. Choose your product, pay, and it drops instantly; the pack-opening experience starts right there at the machine." data-fr="Nous acceptons les espèces — avec monnaie rendue en pièces et en billets — ainsi que les paiements sans contact par carte et smartphone. Choisissez votre produit, payez, et il sort immédiatement ; l'expérience du pack opening commence là, devant la machine.">Nous acceptons les espèces — avec monnaie rendue en pièces et en billets — ainsi que les paiements sans contact par carte et smartphone. Choisissez votre produit, payez, et il sort immédiatement ; l'expérience du pack opening commence là, devant la machine.</div>
+    </details>
+    <details class="faq-item">
+      <summary><span data-en="Can I check stock before going?" data-fr="Puis-je vérifier le stock avant de me déplacer ?">Puis-je vérifier le stock avant de me déplacer ?</span></summary>
+      <div class="faq-a" data-en="Yes. Our Live Stock page shows real-time inventory for each machine. If something you want is missing, you can request a restock or a new product directly — we adjust our selection based on what you ask for." data-fr="Oui. Notre page Stock Live affiche l'inventaire en temps réel de chaque machine. Si un produit manque, vous pouvez demander un réassort ou un nouveau produit directement — nous adaptons notre sélection selon vos demandes.">Oui. Notre page Stock Live affiche l'inventaire en temps réel de chaque machine. Si un produit manque, vous pouvez demander un réassort ou un nouveau produit directement — nous adaptons notre sélection selon vos demandes.</div>
+    </details>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section fade-in" id="contact">
+  <div class="section-label" data-en="Get in touch" data-fr="Nous contacter">Nous contacter</div>
+  <div class="contact-grid">
+    <div class="contact-left">
+      <h2 data-en="Let's work&lt;br&gt;&lt;span&gt;together.&lt;/span&gt;" data-fr="Travaillons&lt;br&gt;&lt;span&gt;ensemble.&lt;/span&gt;">Travaillons<br><span>ensemble.</span></h2>
+      <p data-en="Do you manage a commercial space, game store, cultural venue or high-traffic location? Tell us about your spot — we're actively looking for partners across Switzerland, Belgium, and the UAE." data-fr="Vous gérez un espace commercial, une salle de jeux, un centre culturel ou un lieu à fort passage ? Parlez-nous de votre emplacement — nous cherchons activement des partenaires en Suisse, en Belgique et aux Émirats Arabes Unis.">Vous gérez un espace commercial, une salle de jeux, un centre culturel ou un lieu à fort passage ? Parlez-nous de votre emplacement — nous cherchons activement des partenaires en Suisse, en Belgique et aux Émirats Arabes Unis.</p>
+      <div class="contact-info">contact@boosterstop.ch</div>
+    </div>
+    <form class="contact-form" id="contactForm" method="post" action="https://formspree.io/f/xkjwpvgy">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="prenom" data-en="First name" data-fr="Prénom">Prénom</label>
+          <input type="text" id="prenom" name="prenom" placeholder="Jean" required>
+        </div>
+        <div class="form-group">
+          <label for="nom" data-en="Last name" data-fr="Nom">Nom</label>
+          <input type="text" id="nom" name="nom" placeholder="Dupont" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+      </div>
+      <div class="form-group">
+        <label for="profil" data-en="You are" data-fr="Vous êtes">Vous êtes</label>
+        <select id="profil" name="profil" required>
+          <option value="" disabled selected data-en="Select..." data-fr="Sélectionnez...">Sélectionnez...</option>
+          <option value="venue_owner" data-en="Venue owner / manager" data-fr="Propriétaire / gestionnaire d'espace">Propriétaire / gestionnaire d'espace</option>
+          <option value="shopping_mall" data-en="Shopping mall" data-fr="Centre commercial">Centre commercial</option>
+          <option value="tcg_player" data-en="TCG player / enthusiast" data-fr="Joueur / passionné TCG">Joueur / passionné TCG</option>
+          <option value="investor_partner" data-en="Investor / partner" data-fr="Investisseur / partenaire">Investisseur / partenaire</option>
+          <option value="press_media" data-en="Press / media" data-fr="Presse / média">Presse / média</option>
+          <option value="other" data-en="Other" data-fr="Autre">Autre</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message" data-en="Message" data-fr="Message">Message</label>
+        <textarea id="message" name="message" placeholder="Décrivez votre projet, emplacement ou question..." required></textarea>
+      </div>
+      <button type="submit" class="btn-submit" data-en="Send →" data-fr="Envoyer →">Envoyer →</button>
+      <div class="form-success" id="formSuccess" data-en="Message sent — we'll get back to you within 48h." data-fr="Message envoyé — nous revenons vers vous sous 48h.">Message envoyé — nous revenons vers vous sous 48h.</div>
+    </form>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="/logo.png" alt="BoosterStop" style="height: 22px; width: auto; opacity: 0.6;"></div>
+  <div style="display:flex;align-items:center;gap:16px;">
+    <a href="/fr/stock.html" style="font-size:11px;color:var(--red);text-decoration:none;letter-spacing:1px;border:1px solid rgba(232,24,60,0.4);padding:5px 12px;border-radius:2px;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Stock Live</a>
+    <a href="/fr/privacy.html" style="font-size:12px;color:#666;text-decoration:none;letter-spacing:0.5px;" data-en="Privacy &amp; Cookies" data-fr="Confidentialité">Confidentialité</a>
+    <p>© 2020-2026 BoosterStop — 247 Distribution SNC</p>
+  </div>
+</footer>
+
+<!-- GOOGLE MAPS -->
+<style>
+  .gm-style .gm-style-iw-c { background: #1E1A3A !important; border: 1px solid var(--red) !important; border-radius: 4px !important; padding: 0 !important; box-shadow: 0 4px 24px rgba(0,0,0,0.8) !important; top: 0 !important; }
+  .gm-style .gm-style-iw-c button.gm-ui-hover-effect { top: 4px !important; right: 4px !important; }
+  .gm-style-iw-chr { display: none !important; }
+  .gm-style .gm-style-iw-d { overflow: hidden !important; }
+  .gm-style .gm-style-iw-t::after { background: #FFD000 !important; }
+  .gm-style .gm-ui-hover-effect img { filter: invert(1) !important; }
+  .bs-popup { padding: 10px 14px; min-width: 200px; font-family: "DM Sans", sans-serif; }
+  .bs-popup-badge { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--red); background: rgba(232,24,60,0.1); border: 1px solid rgba(232,24,60,0.4); padding: 2px 6px; border-radius: 2px; display: inline-block; margin-bottom: 6px; }
+  .bs-popup-name { font-size: 12px; font-weight: 500; color: #f4f2ee; margin-bottom: 3px; }
+  .bs-popup-addr { font-size: 11px; color: #888; margin-bottom: 6px; }
+  .bs-popup-hours { font-size: 10px; color: #aaa; border-top: 1px solid #2e2e2e; padding-top: 6px; line-height: 1.5; }
+  .bs-popup-hours strong { color: #f4f2ee; }
+  .bs-popup-stock-btn { display: block; margin-top: 8px; background: rgba(232,24,60,0.1); border: 1px solid rgba(232,24,60,0.4); color: #E8183C; text-decoration: none; font-family: "DM Sans", sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 10px; border-radius: 2px; text-align: center; transition: background 0.2s; }
+  .bs-popup-stock-btn:hover { background: rgba(232,24,60,0.2); }
+</style>
+<script>
+const darkStyles = [
+  { elementType: 'geometry', stylers: [{ color: '#111111' }] },
+  { elementType: 'labels', stylers: [{ visibility: 'off' }] },
+  { featureType: 'administrative.locality', elementType: 'labels.text', stylers: [{ visibility: 'on' }] },
+  { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#777777' }] },
+  { featureType: 'administrative.locality', elementType: 'labels.text.stroke', stylers: [{ color: '#111111' }] },
+  { featureType: 'road.arterial', elementType: 'geometry', stylers: [{ color: '#1e1e1e' }] },
+  { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#252525' }] },
+  { featureType: 'road.local', elementType: 'geometry', stylers: [{ color: '#181818' }] },
+  { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0a0a0a' }] },
+  { featureType: 'poi', stylers: [{ visibility: 'off' }] },
+  { featureType: 'transit', stylers: [{ visibility: 'off' }] },
+  { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#111111' }] },
+  { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#2a2a2a' }] }
+];
+
+function switchTab(tab) {
+  document.querySelectorAll('.map-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.map-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector('[onclick="switchTab(\'' + tab + '\')"]').classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-uxCBr3OvNOAgHTklOsATNImLuPrmn0g&amp;callback=initMap"></script>
+
+<!-- MOUSE LIGHT -->
+<div id="mouse-light"></div>
+<style>
+  #mouse-light { pointer-events: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; transition: opacity 0.4s ease; opacity: 0; }
+  #mouse-light canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+</style>
+<script>
+  const lightEl = document.getElementById('mouse-light');
+  const canvas = document.createElement('canvas');
+  lightEl.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+  let mx=-999,my=-999,tx=-999,ty=-999,visible=false;
+  function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+  resize(); window.addEventListener('resize',resize);
+  document.addEventListener('mousemove',(e)=>{mx=e.clientX;my=e.clientY;if(!visible){tx=mx;ty=my;visible=true;lightEl.style.opacity='1';}});
+  document.addEventListener('mouseleave',()=>{visible=false;lightEl.style.opacity='0';});
+  function draw(){
+    tx+=(mx-tx)*0.1;ty+=(my-ty)*0.1;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    if(!visible){requestAnimationFrame(draw);return;}
+    const isMobile = window.innerWidth <= 768;
+    const radius = isMobile ? 0 : 60;
+    if (radius === 0) { requestAnimationFrame(draw); return; }
+    const g=ctx.createRadialGradient(tx,ty,0,tx,ty,radius);
+    g.addColorStop(0,'rgba(255,230,80,0.12)');g.addColorStop(0.5,'rgba(255,208,0,0.05)');g.addColorStop(1,'rgba(255,180,0,0)');
+    ctx.beginPath();ctx.arc(tx,ty,radius,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
+    requestAnimationFrame(draw);
+  }
+  draw();
+</script>
+
+<!-- LANG + SCROLL + FORM -->
+<script>
+let currentLang = 'fr';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (!val) return;
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') { el.placeholder = val; }
+    else if (el.tagName === 'OPTION') { el.textContent = val; }
+    else { el.innerHTML = val; }
+  });
+  document.querySelector('#prenom').placeholder = lang === 'fr' ? 'Jean' : 'John';
+  document.querySelector('#nom').placeholder = lang === 'fr' ? 'Dupont' : 'Smith';
+  document.querySelector('#message').placeholder = lang === 'fr' ? 'Décrivez votre projet, emplacement ou question...' : 'Tell us about your project, location or question...';
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+const form = document.getElementById('contactForm');
+const successMessage = document.getElementById('formSuccess');
+const submitButton = form.querySelector('.btn-submit');
+form.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  successMessage.style.display = 'none';
+  submitButton.disabled = true;
+  submitButton.textContent = currentLang === 'fr' ? 'Envoi en cours...' : 'Sending...';
+  try {
+    const response = await fetch(form.action, { method: form.method, body: new FormData(form), headers: { Accept: 'application/json' } });
+    if (response.ok) { form.reset(); successMessage.style.display = 'block'; }
+    else { alert(currentLang === 'fr' ? 'Une erreur est survenue. Merci de réessayer.' : 'An error occurred. Please try again.'); }
+  } catch { alert(currentLang === 'fr' ? "Impossible d'envoyer le formulaire pour le moment." : 'Unable to send the form.'); }
+  finally { submitButton.disabled = false; submitButton.textContent = currentLang === 'fr' ? 'Envoyer →' : 'Send →'; }
+});
+</script>
+
+
+
+
+<!-- MOBILE NAV -->
+<div class="mob-nav" id="mobNav">
+  <a href="/fr/" class="mob-link active">
+    <span class="m-icon">🏠</span>
+    <span data-en="Home" data-fr="Accueil">Accueil</span>
+  </a>
+  <a href="/fr/stock.html" class="mob-link">
+    <span class="m-icon">📦</span>
+    <span data-en="Stock" data-fr="Stock">Stock</span>
+  </a>
+  <a href="/fr/licences-geneve.html" class="mob-link">
+    <span class="m-icon">🃏</span>
+    <span data-en="TCG" data-fr="TCG">TCG</span>
+  </a>
+  <a href="/fr/newsletter.html" class="mob-link">
+    <span class="m-icon">🔔</span>
+    <span class="m-badge">-10%</span>
+    <span data-en="Newsletter" data-fr="Newsletter">Newsletter</span>
+  </a>
+  <a href="#partner" class="mob-link">
+    <span class="m-icon">🤝</span>
+    <span data-en="Partner" data-fr="Partenaire">Partenaire</span>
+  </a>
+  <a href="#contact" class="mob-link">
+    <span class="m-icon">✉️</span>
+    <span data-en="Contact" data-fr="Contact">Contact</span>
+  </a>
+</div>
+<script>
+// Mobile nav active on scroll (only for in-page anchors)
+(function() {
+  var ids = ['partner','contact'];
+  var links = document.querySelectorAll('.mob-link');
+  window.addEventListener('scroll', function() {
+    var cur = '';
+    ids.forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 140) cur = id;
+    });
+    // Only toggle anchor links; keep Home active by default at top
+    links.forEach(function(a) {
+      var href = a.getAttribute('href');
+      if (href && href.charAt(0) === '#') {
+        a.classList.toggle('active', href === '#' + cur);
+      } else {
+        a.classList.remove('active');
+      }
+    });
+    if (!cur && window.scrollY < 200) {
+      links.forEach(l => l.classList.remove('active'));
+      var home = document.querySelector('.mob-link[href="/fr/"]');
+      if (home) home.classList.add('active');
+    }
+  });
+})();
+</script>
+
+
+<script>
+// Booster animation
+function fireBooster() {
+  // 1. Shake the machine
+  const machine = document.querySelector('.hero-machine-img.mobile-img') && window.innerWidth <= 768 ? document.querySelector('.hero-machine-img.mobile-img') : document.querySelector('.hero-machine-img.desktop-img') || document.querySelector('.hero-machine-img');
+  if (machine) {
+    machine.classList.remove('machine-shaking');
+    machine.offsetHeight;
+    machine.classList.add('machine-shaking');
+    setTimeout(() => machine.classList.remove('machine-shaking'), 900);
+  }
+  // 2. Show booster after shake delay
+  setTimeout(() => {
+    const el = document.getElementById('boosterAnim');
+    el.style.display = 'flex';
+    const img = el.querySelector('img');
+    img.style.animation = 'none';
+    img.offsetHeight;
+    img.style.animation = 'boosterPop 2.2s cubic-bezier(0.4, 0, 1, 1) forwards';
+    setTimeout(() => { el.style.display = 'none'; }, 2300);
+  }, 800);
+}
+
+// Open popup from location list click
+let gMapRef = null;
+let gMarkersRef = [];
+
+function openPopupByIndex(i) {
+  // Scroll to map section first
+  const mapSection = document.getElementById('where');
+  if (mapSection) {
+    mapSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  // Wait for scroll then open popup
+  setTimeout(function() {
+    if (!gMapRef || !gMarkersRef[i]) return;
+    google.maps.event.trigger(gMarkersRef[i], 'click');
+    gMapRef.panTo(gMarkersRef[i].getPosition());
+  }, 600);
+}
+
+// Override initMap to store refs
+const _origInitMap = window.initMap;
+window.initMap = function() {
+  const darkStyles = [
+    { elementType: 'geometry', stylers: [{ color: '#111111' }] },
+    { elementType: 'labels', stylers: [{ visibility: 'off' }] },
+    { featureType: 'administrative.locality', elementType: 'labels.text', stylers: [{ visibility: 'on' }] },
+    { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#777777' }] },
+    { featureType: 'administrative.locality', elementType: 'labels.text.stroke', stylers: [{ color: '#111111' }] },
+    { featureType: 'road.arterial', elementType: 'geometry', stylers: [{ color: '#1e1e1e' }] },
+    { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#252525' }] },
+    { featureType: 'road.local', elementType: 'geometry', stylers: [{ color: '#181818' }] },
+    { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0a0a0a' }] },
+    { featureType: 'poi', stylers: [{ visibility: 'off' }] },
+    { featureType: 'transit', stylers: [{ visibility: 'off' }] },
+    { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#111111' }] },
+    { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#2a2a2a' }] }
+  ];
+
+  const genevaLocations = [
+    { lat: 46.2008, lng: 6.1520, name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', hours: '<strong>Lun–Ven</strong> 08h00–18h30<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' },
+    { lat: 46.2112, lng: 6.1268, name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", hours: '<strong>Lun–Ven</strong> 08h00–18h30<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' },
+    { lat: 46.1872, lng: 6.1214, name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' }
+  ];
+
+  let activeInfo = null;
+
+  gMapRef = new google.maps.Map(document.getElementById('map-geneva'), {
+    zoom: 12, center: { lat: 46.1955, lng: 6.1430 },
+    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
+  });
+
+  genevaLocations.forEach(function(loc, i) {
+    const marker = new google.maps.Marker({
+      position: { lat: loc.lat, lng: loc.lng },
+      map: gMapRef,
+      icon: { path: google.maps.SymbolPath.CIRCLE, scale: 10, fillColor: '#FFD000', fillOpacity: 1, strokeColor: '#ffffff', strokeWeight: 1.5 }
+    });
+    marker.addListener('click', function() {
+      if (activeInfo) activeInfo.close();
+      activeInfo = new google.maps.InfoWindow({
+        content: '<div class="bs-popup"><div class="bs-popup-badge">BoosterStop TCG</div><div class="bs-popup-name">' + loc.name + '</div><div class="bs-popup-addr">' + loc.addr + '</div><div class="bs-popup-hours">' + loc.hours + '</div><a href="/fr/stock.html?machine=' + i + '" class="bs-popup-stock-btn" target="_self">📦 ' + (currentLang==='fr'?'Voir le stock':'Check stock') + ' →</a></div>'
+      });
+      activeInfo.open(gMapRef, marker);
+    });
+    gMarkersRef[i] = marker;
+  });
+
+  new google.maps.Map(document.getElementById('map-belgium'), {
+    zoom: 7, center: { lat: 50.5, lng: 4.5 },
+    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
+  });
+
+  new google.maps.Map(document.getElementById('map-uae'), {
+    zoom: 7, center: { lat: 24.5, lng: 54.5 },
+    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
+  });
+}
+
+// PUSH button click — fire booster
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.hero-machine-img').forEach(function(img) {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', fireBooster);
+  });
+});
+</script>
+
+<style>
+/* COOKIE / RGPD BANNER */
+.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:9500;display:none;max-width:720px;margin:0 auto;background:rgba(18,15,42,0.98);border:1px solid var(--gray-mid);border-top:2px solid var(--red);border-radius:8px;padding:18px 22px;box-shadow:0 12px 48px rgba(0,0,0,0.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);align-items:center;gap:18px;}
+.cookie-banner.show{display:flex;}
+.cookie-text{flex:1;font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.6;color:var(--text-muted);}
+.cookie-text strong{color:var(--white);font-weight:500;}
+.cookie-actions{display:flex;gap:8px;flex-shrink:0;}
+.cookie-btn{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:10px 18px;border-radius:3px;cursor:pointer;border:1px solid var(--gray-mid);transition:all 0.2s;white-space:nowrap;}
+.cookie-btn.decline{background:none;color:var(--text-muted);}
+.cookie-btn.decline:hover{color:var(--white);border-color:var(--text-muted);}
+.cookie-btn.accept{background:var(--yellow);color:var(--black);border-color:var(--yellow);font-weight:600;}
+.cookie-btn.accept:hover{opacity:0.9;}
+@media(max-width:768px){
+  .cookie-banner{flex-direction:column;align-items:stretch;left:12px;right:12px;bottom:calc(68px + env(safe-area-inset-bottom,0px) + 8px);padding:16px 18px;gap:14px;}
+  .cookie-actions{gap:8px;}
+  .cookie-btn{flex:1;padding:11px;}
+}
+</style>
+<!-- COOKIE / RGPD BANNER -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite">
+  <div class="cookie-text" data-en="We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. &lt;a href='/fr/privacy.html' style='color:var(--red);'&gt;Learn more&lt;/a&gt;." data-fr="Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. &lt;a href='/fr/privacy.html' style='color:var(--red);'&gt;En savoir plus&lt;/a&gt;.">Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. <a href="/fr/privacy.html" style="color:var(--red);">En savoir plus</a>.</div>
+  <div class="cookie-actions">
+    <button class="cookie-btn decline" onclick="setCookieConsent(false)" data-en="Essential only" data-fr="Essentiels">Essentiels</button>
+    <button class="cookie-btn accept" onclick="setCookieConsent(true)" data-en="Accept all" data-fr="Tout accepter">Tout accepter</button>
+  </div>
+</div>
+<script>
+(function(){
+  try{
+    if(!localStorage.getItem('bs_cookie_consent')){
+      var b=document.getElementById('cookieBanner'); if(b) b.classList.add('show');
+    }
+  }catch(e){ var b=document.getElementById('cookieBanner'); if(b) b.classList.add('show'); }
+})();
+function setCookieConsent(accepted){
+  try{
+    localStorage.setItem('bs_cookie_consent', accepted?'accepted':'essential');
+    localStorage.setItem('bs_cookie_ts', new Date().toISOString());
+  }catch(e){}
+  var b=document.getElementById('cookieBanner'); if(b) b.classList.remove('show');
+}
+</script>
+<!-- STRUCTURED DATA (SEO / AI search) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://boosterstop.com/#organization",
+      "name": "BoosterStop",
+      "legalName": "247 Distribution SNC",
+      "url": "https://boosterstop.com/",
+      "logo": "https://boosterstop.com/logo.png",
+      "description": "The first vending-machine network dedicated to Trading Card Games. 100% sealed products from official distributors, available 24/7.",
+      "email": "contact@boosterstop.ch",
+      "areaServed": [
+        "Switzerland",
+        "Belgium",
+        "United Arab Emirates"
+      ],
+      "sameAs": []
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://boosterstop.com/#website",
+      "url": "https://boosterstop.com/",
+      "name": "BoosterStop",
+      "publisher": {
+        "@id": "https://boosterstop.com/#organization"
+      },
+      "inLanguage": [
+        "en",
+        "fr"
+      ]
+    },
+    {
+      "@type": "Store",
+      "@id": "https://boosterstop.com/#rive",
+      "name": "BoosterStop — La Poste de Rive",
+      "description": "BoosterStop TCG vending machine inside La Poste de Rive, Geneva. Sealed Pokémon, One Piece, Magic and more.",
+      "parentOrganization": {
+        "@id": "https://boosterstop.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rue du Vieux-Collège 3",
+        "postalCode": "1204",
+        "addressLocality": "Genève",
+        "addressCountry": "CH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 46.2008,
+        "longitude": 6.152
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:30",
+          "closes": "12:00"
+        }
+      ],
+      "url": "https://boosterstop.com/stock.html?machine=0"
+    },
+    {
+      "@type": "Store",
+      "@id": "https://boosterstop.com/#charmilles",
+      "name": "BoosterStop — La Poste des Charmilles",
+      "description": "BoosterStop TCG vending machine inside La Poste des Charmilles, Geneva. Sealed trading card game products from official distributors.",
+      "parentOrganization": {
+        "@id": "https://boosterstop.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Promenade de l'Europe 11",
+        "postalCode": "1203",
+        "addressLocality": "Genève",
+        "addressCountry": "CH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 46.2112,
+        "longitude": 6.1268
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:30",
+          "closes": "12:00"
+        }
+      ],
+      "url": "https://boosterstop.com/stock.html?machine=1"
+    },
+    {
+      "@type": "Store",
+      "@id": "https://boosterstop.com/#petit-lancy",
+      "name": "BoosterStop — La Poste du Petit-Lancy",
+      "description": "BoosterStop TCG vending machine inside La Poste du Petit-Lancy, Geneva. Sealed boosters, displays and collector boxes.",
+      "parentOrganization": {
+        "@id": "https://boosterstop.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rue des Bossons 88b",
+        "postalCode": "1213",
+        "addressLocality": "Petit-Lancy",
+        "addressCountry": "CH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 46.1872,
+        "longitude": 6.1214
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:30",
+          "closes": "12:00"
+        }
+      ],
+      "url": "https://boosterstop.com/stock.html?machine=2"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://boosterstop.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are the products really authentic and untouched?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Everything is 100% sealed and comes directly from official distributors. We never weigh, search, tamper with or hand-pick packs. What goes in the machine is exactly as it left the manufacturer."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why vending machines instead of a regular shop?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Convenience and 24/7 access matter, but our real goal is visibility: giving as many TCG licenses as possible a place in front of players — including the ones you rarely find on shelves — right where people already are."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which games can I find in the machines?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more — with several universes available in each machine at the same time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "In which languages are the cards available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Several. BoosterStop stocks the same games across multiple languages — French, English, Japanese, Chinese, German, Spanish and Portuguese among others — for example Pokémon in Japanese, Chinese or French, and One Piece in English. This lets collectors keep a collection consistent in the language they started with, read the cards they play, and access sets that only release in certain markets. Available languages vary by set and by machine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I pay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We accept cash with change returned in both coins and notes, as well as contactless card and smartphone payments. Choose your product, pay, and it drops instantly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I check stock before going?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Our Live Stock page shows real-time inventory for each machine. If something you want is missing, you can request a restock or a new product directly."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>
