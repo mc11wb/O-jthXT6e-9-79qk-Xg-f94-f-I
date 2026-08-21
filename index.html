@@ -62,7 +62,7 @@
   .hero-logo { margin-bottom: 40px; }
   .hero-body { color: #aaa; font-size: 16px; line-height: 1.75; margin-bottom: 32px; }
   .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 0; }
-  .tag { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border: 1px solid var(--gray-mid); color: var(--text-muted); padding: 6px 16px; border-radius: 2px; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s; }
+  .tag { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border: 1px solid var(--gray-mid); color: var(--text-muted); text-decoration: none; padding: 6px 16px; border-radius: 2px; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s; }
   .tag:hover { border-color: var(--red); color: var(--red); background: rgba(232,24,60,0.06); transform: translateY(-2px); }
   .hero-right { position: relative; display: flex; align-items: center; justify-content: center; height: 100%; }
   .hero-machine-glow { position: absolute; width: 70%; height: 50%; background: radial-gradient(circle, rgba(232,24,60,0.25) 0%, rgba(42,31,94,0.2) 50%, transparent 70%); border-radius: 50%; filter: blur(50px); pointer-events: none; z-index: 0; }
@@ -300,9 +300,9 @@
     color: var(--text-muted);
     text-decoration: none;
     font-size: 9px;
-    letter-spacing: 1.5px;
+    letter-spacing: 0.5px;
     text-transform: uppercase;
-    padding: 4px 8px;
+    padding: 4px 2px;
     transition: color 0.2s;
     flex: 1;
     text-align: center;
@@ -361,6 +361,7 @@
   <div class="nav-right">
     <ul>
       <li><a href="#where" data-en="Locations" data-fr="Emplacements">Locations</a></li>
+      <li><a href="/licences-geneve.html" data-en="🃏 Licenses" data-fr="🃏 Licences">🃏 Licenses</a></li>
       <li><a href="#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
       <li><a href="/newsletter.html" data-en="🔔 Newsletter <span class='nl-badge'>-10%</span>" data-fr="🔔 Newsletter <span class='nl-badge'>-10%</span>">🔔 Newsletter <span class="nl-badge">-10%</span></a></li>
       <li><a href="/stock.html" style="color:var(--red);font-weight:500;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Live Stock</a></li>
@@ -381,15 +382,15 @@
     </div>
     <p class="hero-body" data-en="The first vending machine network dedicated to Trading Card Games.<br>Boosters, displays, collector boxes — available 24/7, right where you are." data-fr="Le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner.<br>Boosters, displays, boîtes collector — disponibles 24h/24, là où vous êtes.">The first vending machine network dedicated to Trading Card Games.<br>Boosters, displays, collector boxes — available 24/7, right where you are.</p>
     <div class="hero-tags">
-      <span class="tag">Pokémon</span>
-      <span class="tag">One Piece TCG</span>
-      <span class="tag">Dragon Ball Super</span>
-      <span class="tag">Riftbound: LoL TCG</span>
-      <span class="tag">Magic: The Gathering</span>
-      <span class="tag">Disney Lorcana</span>
-      <span class="tag">Yu-Gi-Oh!</span>
-      <span class="tag">Naruto TCG</span>
-      <span class="tag" data-en="& more" data-fr="& plus">& more</span>
+      <a class="tag" href="/licences-geneve.html#pokemon">Pokémon</a>
+      <a class="tag" href="/licences-geneve.html#one-piece">One Piece TCG</a>
+      <a class="tag" href="/licences-geneve.html#dragon-ball">Dragon Ball Super</a>
+      <a class="tag" href="/licences-geneve.html#riftbound">Riftbound: LoL TCG</a>
+      <a class="tag" href="/licences-geneve.html#mtg">Magic: The Gathering</a>
+      <a class="tag" href="/licences-geneve.html#lorcana">Disney Lorcana</a>
+      <a class="tag" href="/licences-geneve.html">Yu-Gi-Oh!</a>
+      <a class="tag" href="/licences-geneve.html#naruto">Naruto TCG</a>
+      <a class="tag" href="/licences-geneve.html" data-en="& more" data-fr="& plus">& more</a>
     </div>
   </div>
   <div class="hero-right">
@@ -487,211 +488,204 @@
   </div>
 </section>
 
-<!-- MAP -->
+<!-- MAP SECTION WITH TABS -->
 <div class="map-section fade-in" id="where">
   <div class="map-section-inner">
-    <div class="section-label" data-en="Locations" data-fr="Emplacements">Locations</div>
+    <div class="section-label" data-en="Where to find us" data-fr="Où nous trouver">Where to find us</div>
 
     <div class="map-tabs">
-      <button class="map-tab active" onclick="switchTab('geneva')" data-en="🇨🇭 Geneva — Live" data-fr="🇨🇭 Genève — Actif">🇨🇭 Geneva — Live</button>
-      <button class="map-tab" onclick="switchTab('belgium')" data-en="🇧🇪 Belgium — Soon" data-fr="🇧🇪 Belgique — Bientôt">🇧🇪 Belgium — Soon</button>
-      <button class="map-tab" onclick="switchTab('uae')" data-en="🇦🇪 UAE — Soon" data-fr="🇦🇪 Émirats — Bientôt">🇦🇪 UAE — Soon</button>
+      <button class="map-tab active" onclick="switchTab('geneva', this)" data-en="🇨🇭 Geneva" data-fr="🇨🇭 Genève">🇨🇭 Geneva</button>
+      <button class="map-tab" onclick="switchTab('belgium', this)" data-en="🇧🇪 Belgium" data-fr="🇧🇪 Belgique">🇧🇪 Belgium</button>
+      <button class="map-tab" onclick="switchTab('uae', this)" data-en="🇦🇪 UAE" data-fr="🇦🇪 Émirats">🇦🇪 UAE</button>
     </div>
 
-    <!-- GENEVA -->
-    <div class="map-panel active" id="tab-geneva">
+    <!-- GENEVA PANEL -->
+    <div class="map-panel active" id="panel-geneva">
       <div class="map-wrapper"><div id="map-geneva"></div></div>
       <div class="map-locations-list">
-        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(0)">
-          <div class="map-location-dot live"></div>
+        <div class="map-location-item">
+          <span class="map-location-dot live"></span>
           <div>
             <div class="map-location-name">La Poste de Rive</div>
             <div class="map-location-addr">Rue du Vieux-Collège 3, 1204 Genève</div>
-            <a href="/stock.html?machine=0" class="map-stock-link" data-en="📦 Check stock" data-fr="📦 Voir le stock">📦 Check stock</a>
+            <a class="map-stock-link" href="/stock.html?machine=0" data-en="📦 View live stock" data-fr="📦 Voir le stock">📦 View live stock</a>
           </div>
         </div>
-        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(1)">
-          <div class="map-location-dot live"></div>
+        <div class="map-location-item">
+          <span class="map-location-dot live"></span>
           <div>
             <div class="map-location-name">La Poste des Charmilles</div>
             <div class="map-location-addr">Promenade de l'Europe 11, 1203 Genève</div>
-            <a href="/stock.html?machine=1" class="map-stock-link" data-en="📦 Check stock" data-fr="📦 Voir le stock">📦 Check stock</a>
+            <a class="map-stock-link" href="/stock.html?machine=1" data-en="📦 View live stock" data-fr="📦 Voir le stock">📦 View live stock</a>
           </div>
         </div>
-        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(2)">
-          <div class="map-location-dot live"></div>
+        <div class="map-location-item">
+          <span class="map-location-dot live"></span>
           <div>
             <div class="map-location-name">La Poste du Petit-Lancy</div>
             <div class="map-location-addr">Rue des Bossons 88b, 1213 Petit-Lancy</div>
-            <a href="/stock.html?machine=2" class="map-stock-link" data-en="📦 Check stock" data-fr="📦 Voir le stock">📦 Check stock</a>
-          </div>
-        </div>
-        <div class="map-location-item incoming">
-          <div class="map-location-dot incoming-dot"></div>
-          <div>
-            <div class="map-location-name" data-en="+ 5 new locations coming very soon in Geneva" data-fr="+ 5 nouveaux emplacements très prochainement à Genève">+ 5 new locations coming very soon in Geneva</div>
+            <a class="map-stock-link" href="/stock.html?machine=2" data-en="📦 View live stock" data-fr="📦 Voir le stock">📦 View live stock</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- BELGIUM -->
-    <div class="map-panel" id="tab-belgium">
+    <!-- BELGIUM PANEL -->
+    <div class="map-panel" id="panel-belgium">
       <div class="map-wrapper"><div id="map-belgium"></div></div>
       <div class="map-coming-soon-msg">
         <div class="coming-soon-icon">🇧🇪</div>
-        <div class="coming-soon-title" data-en="Belgium — Launching Soon" data-fr="Belgique — Bientôt disponible">Belgium — Launching Soon</div>
-        <div class="coming-soon-sub" data-en="We're actively scouting locations across Belgium. Stay tuned." data-fr="Nous recherchons activement des emplacements en Belgique. Restez connectés.">We're actively scouting locations across Belgium. Stay tuned.</div>
+        <div class="coming-soon-title" data-en="Launching Soon" data-fr="Bientôt disponible">Launching Soon</div>
+        <div class="coming-soon-sub" data-en="Our first Belgian machines are on the way. Exact locations will be announced here — stay tuned!" data-fr="Nos premiers distributeurs belges arrivent. Les emplacements exacts seront annoncés ici — restez connectés !">Our first Belgian machines are on the way. Exact locations will be announced here — stay tuned!</div>
       </div>
     </div>
 
-    <!-- UAE -->
-    <div class="map-panel" id="tab-uae">
+    <!-- UAE PANEL -->
+    <div class="map-panel" id="panel-uae">
       <div class="map-wrapper"><div id="map-uae"></div></div>
       <div class="map-coming-soon-msg">
         <div class="coming-soon-icon">🇦🇪</div>
-        <div class="coming-soon-title" data-en="UAE — Launching Soon" data-fr="Émirats Arabes Unis — Bientôt disponible">UAE — Launching Soon</div>
-        <div class="coming-soon-sub" data-en="Dubai and Abu Dhabi on the roadmap. Announcements coming soon." data-fr="Dubaï et Abu Dhabi dans la feuille de route. Annonces à venir.">Dubai and Abu Dhabi on the roadmap. Announcements coming soon.</div>
+        <div class="coming-soon-title" data-en="Launching Soon" data-fr="Bientôt disponible">Launching Soon</div>
+        <div class="coming-soon-sub" data-en="BoosterStop is coming to the Emirates. Exact locations will be announced here — stay tuned!" data-fr="BoosterStop arrive aux Émirats. Les emplacements exacts seront annoncés ici — restez connectés !">BoosterStop is coming to the Emirates. Exact locations will be announced here — stay tuned!</div>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- PARTNER SECTION -->
+<!-- PARTNER / INSTALL SECTION -->
 <div class="partner-section fade-in" id="partner">
   <div class="partner-inner">
-    <div class="section-label" data-en="For venue owners" data-fr="Pour les propriétaires d'espaces">For venue owners</div>
     <div class="partner-hero">
       <div>
-        <div class="partner-title" data-en="Add value to your space &" data-fr="Donnez plus de valeur à votre espace et">Add value to your space &</div>
-        <span class="partner-title-accent" data-en="Generate passive income!" data-fr="Générez un revenu passif !">Generate passive income!</span>
-        <p class="partner-intro" data-en="Install a BoosterStop TCG vending machine in your venue and earn a steady supplemental income — with zero effort on your end." data-fr="Installez un distributeur automatique BoosterStop de cartes TCG dans votre établissement et profitez d'un revenu complémentaire sans effort.">Install a BoosterStop TCG vending machine in your venue and earn a steady supplemental income — with zero effort on your end.</p>
+        <div class="section-label" data-en="For businesses" data-fr="Pour les entreprises">For businesses</div>
+        <h2 class="partner-title" data-en="Host a machine." data-fr="Accueillez un distributeur.">Host a machine.</h2>
+        <span class="partner-title-accent" data-en="Zero effort. Real revenue." data-fr="Zéro effort. Revenus réels.">Zero effort. Real revenue.</span>
+        <p class="partner-intro" data-en="Shopping mall, station, gaming venue, cinema, or high-traffic retail space? Install a BoosterStop machine and turn unused square meters into a new revenue stream — we handle everything." data-fr="Centre commercial, gare, salle de jeux, cinéma ou espace à fort passage ? Installez un distributeur BoosterStop et transformez vos mètres carrés inutilisés en source de revenus — on s'occupe de tout.">Shopping mall, station, gaming venue, cinema, or high-traffic retail space? Install a BoosterStop machine and turn unused square meters into a new revenue stream — we handle everything.</p>
       </div>
       <div class="partner-benefits">
         <div class="benefit-item">
           <div class="benefit-icon">💰</div>
           <div class="benefit-text">
-            <h4 data-en="Passive income" data-fr="Revenu passif">Passive income</h4>
-            <p data-en="Generate regular revenue without any effort or investment." data-fr="Générez des revenus réguliers sans effort.">Generate regular revenue without any effort or investment.</p>
+            <h4 data-en="Revenue share" data-fr="Partage des revenus">Revenue share</h4>
+            <p data-en="Earn a commission on every sale, or a fixed monthly rent — your choice, no investment needed." data-fr="Touchez une commission sur chaque vente, ou un loyer mensuel fixe — au choix, sans aucun investissement.">Earn a commission on every sale, or a fixed monthly rent — your choice, no investment needed.</p>
           </div>
         </div>
         <div class="benefit-item">
-          <div class="benefit-icon">👥</div>
+          <div class="benefit-icon">🔧</div>
           <div class="benefit-text">
-            <h4 data-en="New audience" data-fr="Nouvelle clientèle">New audience</h4>
-            <p data-en="Attract TCG enthusiasts and increase foot traffic in your venue." data-fr="Attirez des passionnés de TCG et augmentez le trafic dans votre établissement.">Attract TCG enthusiasts and increase foot traffic in your venue.</p>
+            <h4 data-en="Full service" data-fr="Service complet">Full service</h4>
+            <p data-en="Installation, restocking, maintenance, payment systems — our team handles 100% of operations." data-fr="Installation, réassort, maintenance, systèmes de paiement — notre équipe gère 100% des opérations.">Installation, restocking, maintenance, payment systems — our team handles 100% of operations.</p>
           </div>
         </div>
         <div class="benefit-item">
-          <div class="benefit-icon">🔑</div>
+          <div class="benefit-icon">🧲</div>
           <div class="benefit-text">
-            <h4 data-en="Fully turnkey" data-fr="Clé en main">Fully turnkey</h4>
-            <p data-en="We handle everything: installation, restocking, maintenance and customer service." data-fr="Nous nous occupons de tout : installation, remplissage, maintenance et service client.">We handle everything: installation, restocking, maintenance and customer service.</p>
+            <h4 data-en="Traffic magnet" data-fr="Aimant à trafic">Traffic magnet</h4>
+            <p data-en="TCG collectors are loyal and mobile — a machine brings new recurring visitors to your location." data-fr="Les collectionneurs TCG sont fidèles et mobiles — un distributeur attire de nouveaux visiteurs récurrents chez vous.">TCG collectors are loyal and mobile — a machine brings new recurring visitors to your location.</p>
           </div>
         </div>
       </div>
     </div>
-    <div class="section-label" style="margin-bottom: 32px;" data-en="Why partner with BoosterStop?" data-fr="Pourquoi s'associer à BoosterStop ?">Why partner with BoosterStop?</div>
+
     <div class="why-grid">
       <div class="why-card">
-        <div class="why-icon">🛡️</div>
-        <h4 data-en="Zero investment" data-fr="Aucun investissement">Zero investment</h4>
-        <p data-en="Completely free and risk-free for your venue." data-fr="Totalement gratuit et sans risque.">Completely free and risk-free for your venue.</p>
-      </div>
-      <div class="why-card">
-        <div class="why-icon">⚙️</div>
-        <h4 data-en="Zero hassle" data-fr="Zéro contrainte">Zero hassle</h4>
-        <p data-en="We manage everything from A to Z." data-fr="Nous gérons tout de A à Z pour vous.">We manage everything from A to Z.</p>
-      </div>
-      <div class="why-card">
         <div class="why-icon">📈</div>
-        <h4 data-en="Recurring revenue" data-fr="Revenus récurrents">Recurring revenue</h4>
-        <p data-en="A stable and secure supplemental income stream." data-fr="Un complément de revenu stable et sécurisé.">A stable and secure supplemental income stream.</p>
+        <h4 data-en="Booming market" data-fr="Marché en plein boom">Booming market</h4>
+        <p data-en="The TCG market keeps breaking records year after year, driven by collectors and players worldwide." data-fr="Le marché TCG bat des records année après année, porté par les collectionneurs et joueurs du monde entier.">The TCG market keeps breaking records year after year, driven by collectors and players worldwide.</p>
       </div>
       <div class="why-card">
-        <div class="why-icon">😊</div>
-        <h4 data-en="Customer satisfaction" data-fr="Satisfaction client">Customer satisfaction</h4>
-        <p data-en="Popular products loved by all ages." data-fr="Des produits populaires qui plaisent à tous les âges !">Popular products loved by all ages.</p>
+        <div class="why-icon">⏰</div>
+        <h4 data-en="24/7 sales" data-fr="Ventes 24h/24">24/7 sales</h4>
+        <p data-en="A machine never closes. It sells while your staff sleeps, without any extra workload." data-fr="Un distributeur ne ferme jamais. Il vend pendant que votre équipe dort, sans charge de travail supplémentaire.">A machine never closes. It sells while your staff sleeps, without any extra workload.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📦</div>
+        <h4 data-en="Compact footprint" data-fr="Encombrement réduit">Compact footprint</h4>
+        <p data-en="Less than 1 m² of floor space needed. Fits entrances, hallways, and waiting areas." data-fr="Moins de 1 m² au sol suffit. S'intègre dans les entrées, couloirs et zones d'attente.">Less than 1 m² of floor space needed. Fits entrances, hallways, and waiting areas.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛡️</div>
+        <h4 data-en="Secure &amp; insured" data-fr="Sécurisé &amp; assuré">Secure &amp; insured</h4>
+        <p data-en="Reinforced machines, remote monitoring, and full insurance coverage — zero risk for your venue." data-fr="Machines renforcées, surveillance à distance et couverture d'assurance complète — zéro risque pour votre établissement.">Reinforced machines, remote monitoring, and full insurance coverage — zero risk for your venue.</p>
       </div>
     </div>
-    <div class="section-label" style="margin-bottom: 24px;" data-en="What we bring to the table" data-fr="Un espace disponible ? Parlons-en !">What we bring to the table</div>
+
     <div class="partner-checklist">
-      <div class="check-item" data-en="Fast and discreet installation" data-fr="Installation rapide et discrète">Fast and discreet installation</div>
-      <div class="check-item" data-en="Modern, secure machines" data-fr="Machine moderne et sécurisée">Modern, secure machines</div>
-      <div class="check-item" data-en="Regular restocking" data-fr="Approvisionnement régulier">Regular restocking</div>
-      <div class="check-item" data-en="Responsive customer support" data-fr="Service client réactif">Responsive customer support</div>
-      <div class="check-item" data-en="Win-win partnership model" data-fr="Un partenariat gagnant-gagnant !">Win-win partnership model</div>
-      <div class="check-item" data-en="Simplicity, reliability and profitability" data-fr="Simplicité, fiabilité et rentabilité.">Simplicity, reliability and profitability</div>
+      <div class="check-item" data-en="High foot-traffic location (mall, station, cinema...)" data-fr="Emplacement à fort passage (centre commercial, gare, cinéma...)">High foot-traffic location (mall, station, cinema...)</div>
+      <div class="check-item" data-en="1 m² of available floor space" data-fr="1 m² d'espace au sol disponible">1 m² of available floor space</div>
+      <div class="check-item" data-en="Standard power outlet nearby" data-fr="Prise électrique standard à proximité">Standard power outlet nearby</div>
+      <div class="check-item" data-en="That's it — we handle the rest" data-fr="C'est tout — on gère le reste">That's it — we handle the rest</div>
     </div>
   </div>
 </div>
 
-
 <!-- TRUST & FAQ -->
-<div class="trust-section fade-in" id="faq">
+<div class="trust-section fade-in" id="trust">
+  <div class="section-label" data-en="Trust &amp; transparency" data-fr="Confiance &amp; transparence">Trust &amp; transparency</div>
   <div class="trust-head">
-    <div class="section-label" data-en="Trust &amp; transparency" data-fr="Confiance &amp; transparence">Trust &amp; transparency</div>
-    <h2 data-en="Sealed, official, <span>no bad surprises.</span>" data-fr="Scellé, officiel, <span>sans mauvaise surprise.</span>">Sealed, official, <span>no bad surprises.</span></h2>
-    <p data-en="Buying from a machine shouldn't mean buying blind. Here's exactly how we operate — and why we built BoosterStop the way we did." data-fr="Acheter dans une machine ne devrait pas rimer avec acheter à l'aveugle. Voici exactement comment nous fonctionnons — et pourquoi nous avons créé BoosterStop ainsi.">Buying from a machine shouldn't mean buying blind. Here's exactly how we operate — and why we built BoosterStop the way we did.</p>
+    <h2 data-en="100% sealed. <span>0% tampered.</span>" data-fr="100% scellé. <span>0% trafiqué.</span>">100% sealed. <span>0% tampered.</span></h2>
+    <p data-en="We know the TCG community's biggest fear: weighed, searched or resealed product. Here's exactly how BoosterStop works — no grey areas." data-fr="On connaît la plus grande crainte de la communauté TCG : des produits pesés, fouillés ou rescellés. Voici exactement comment BoosterStop fonctionne — sans zone grise.">We know the TCG community's biggest fear: weighed, searched or resealed product. Here's exactly how BoosterStop works — no grey areas.</p>
   </div>
 
   <div class="trust-cards">
     <div class="trust-card">
+      <div class="t-icon">🏭</div>
+      <h3 data-en="Official distributors only" data-fr="Distributeurs officiels uniquement">Official distributors only</h3>
+      <p data-en="Every product comes directly from official, authorized distributors. No secondary market, no loose packs, no resealed boxes — ever." data-fr="Chaque produit provient directement de distributeurs officiels et agréés. Pas de marché secondaire, pas de boosters à l'unité douteux, pas de boîtes rescellées — jamais.">Every product comes directly from official, authorized distributors. No secondary market, no loose packs, no resealed boxes — ever.</p>
+    </div>
+    <div class="trust-card">
       <div class="t-icon">🔒</div>
-      <h3 data-en="100% sealed" data-fr="100% scellé">100% sealed</h3>
-      <p data-en="Every booster, display and box is factory-sealed. Nothing is ever weighed, searched, opened or altered — products go straight from our distributors into the machine." data-fr="Chaque booster, display et boîte est scellé d'usine. Rien n'est jamais pesé, fouillé, ouvert ni altéré — les produits passent directement de nos distributeurs à la machine.">Every booster, display and box is factory-sealed. Nothing is ever weighed, searched, opened or altered — products go straight from our distributors into the machine.</p>
+      <h3 data-en="Untouched, factory sealed" data-fr="Intacts, scellés d'usine">Untouched, factory sealed</h3>
+      <p data-en="We never weigh, scan, search or hand-pick packs. What goes into the machine is exactly what left the factory — your odds are the real odds." data-fr="Nous ne pesons, scannons, fouillons ni trions jamais les boosters. Ce qui entre dans la machine est exactement ce qui est sorti de l'usine — vos probabilités sont les vraies.">We never weigh, scan, search or hand-pick packs. What goes into the machine is exactly what left the factory — your odds are the real odds.</p>
     </div>
     <div class="trust-card">
-      <div class="t-icon">📦</div>
-      <h3 data-en="Official sourcing" data-fr="Sources officielles">Official sourcing</h3>
-      <p data-en="We source exclusively from the official distributors and authorized suppliers of each TCG. No grey market, no resealed product — ever." data-fr="Nous nous approvisionnons exclusivement auprès des distributeurs officiels et fournisseurs agréés de chaque TCG. Jamais de marché gris ni de produit rescellé.">We source exclusively from the official distributors and authorized suppliers of each TCG. No grey market, no resealed product — ever.</p>
-    </div>
-    <div class="trust-card">
-      <div class="t-icon">🎥</div>
-      <h3 data-en="Full transparency" data-fr="Transparence totale">Full transparency</h3>
-      <p data-en="We show as much as we can on our socials: restocking, sourcing, deliveries and openings. What you see online is what lands in the machine." data-fr="Nous montrons un maximum sur nos réseaux : réassorts, approvisionnement, livraisons et ouvertures. Ce que vous voyez en ligne est ce qui arrive dans la machine.">We show as much as we can on our socials: restocking, sourcing, deliveries and openings. What you see online is what lands in the machine.</p>
+      <div class="t-icon">🧾</div>
+      <h3 data-en="Traceable stock" data-fr="Stock traçable">Traceable stock</h3>
+      <p data-en="Our live stock system shows what's inside every machine in real time. What you see online is what's physically in the slots." data-fr="Notre système de stock en direct montre le contenu de chaque machine en temps réel. Ce que vous voyez en ligne est ce qui se trouve physiquement dans les rails.">Our live stock system shows what's inside every machine in real time. What you see online is what's physically in the slots.</p>
     </div>
   </div>
 
   <div class="faq-list">
     <details class="faq-item">
       <summary><span data-en="Are the products really authentic and untouched?" data-fr="Les produits sont-ils vraiment authentiques et intacts ?">Are the products really authentic and untouched?</span></summary>
-      <div class="faq-a" data-en="Yes — absolutely. Everything is 100% sealed and comes directly from official distributors. We never weigh, search, tamper with or hand-pick packs. What goes in the machine is exactly as it left the manufacturer." data-fr="Oui — absolument. Tout est 100% scellé et provient directement de distributeurs officiels. Nous ne pesons jamais, ne fouillons pas, n'altérons rien et ne trions pas les paquets. Ce qui entre dans la machine est exactement tel qu'il a quitté le fabricant.">Yes — absolutely. Everything is 100% sealed and comes directly from official distributors. We never weigh, search, tamper with or hand-pick packs. What goes in the machine is exactly as it left the manufacturer.</div>
+      <div class="faq-a" data-en="Yes. Everything is 100% sealed and comes directly from official distributors. We never weigh, search, tamper with or hand-pick packs. What goes in the machine is exactly as it left the manufacturer." data-fr="Oui. Tout est 100% scellé et provient directement de distributeurs officiels. Nous ne pesons, fouillons, trafiquons ni trions jamais les boosters. Ce qui entre dans la machine est exactement tel que sorti de l'usine.">Yes. Everything is 100% sealed and comes directly from official distributors. We never weigh, search, tamper with or hand-pick packs. What goes in the machine is exactly as it left the manufacturer.</div>
     </details>
     <details class="faq-item">
       <summary><span data-en="Why vending machines instead of a regular shop?" data-fr="Pourquoi des distributeurs plutôt qu'une boutique classique ?">Why vending machines instead of a regular shop?</span></summary>
-      <div class="faq-a" data-en="Convenience and 24/7 access matter, but that's not the whole point. Our real goal is visibility: we want to give as many TCG licenses as possible a place in front of players — including the ones you rarely find on shelves — right where people already are." data-fr="La praticité et l'accès 24h/24 comptent, mais ce n'est pas l'essentiel. Notre vrai objectif, c'est la visibilité : offrir une place à un maximum de licences TCG devant les joueurs — y compris celles qu'on trouve rarement en rayon — là où les gens sont déjà.">Convenience and 24/7 access matter, but that's not the whole point. Our real goal is visibility: we want to give as many TCG licenses as possible a place in front of players — including the ones you rarely find on shelves — right where people already are.</div>
+      <div class="faq-a" data-en="Convenience and 24/7 access matter, but our real goal is visibility: giving as many TCG licenses as possible a place in front of players — including the ones you rarely find on shelves — right where people already are." data-fr="La praticité et l'accès 24h/24 comptent, mais notre vrai objectif est la visibilité : donner une place à un maximum de licences TCG devant les joueurs — y compris celles qu'on trouve rarement en rayon — là où les gens passent déjà.">Convenience and 24/7 access matter, but our real goal is visibility: giving as many TCG licenses as possible a place in front of players — including the ones you rarely find on shelves — right where people already are.</div>
     </details>
     <details class="faq-item">
       <summary><span data-en="Which games can I find in the machines?" data-fr="Quels jeux puis-je trouver dans les machines ?">Which games can I find in the machines?</span></summary>
-      <div class="faq-a" data-en="Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more — with several universes available in each machine at the same time. The line-up evolves with new releases and demand." data-fr="Pokémon, One Piece, Dragon Ball Super, Riftbound : LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto et plus — avec plusieurs univers disponibles simultanément dans chaque machine. La sélection évolue selon les sorties et la demande.">Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more — with several universes available in each machine at the same time. The line-up evolves with new releases and demand.</div>
+      <div class="faq-a" data-en="Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more. The exact selection varies by machine — check the Live Stock page to see what's inside each one right now." data-fr="Pokémon, One Piece, Dragon Ball Super, Riftbound : LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto et plus. La sélection exacte varie selon les machines — consultez la page Stock Live pour voir le contenu de chacune en temps réel.">Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more. The exact selection varies by machine — check the Live Stock page to see what's inside each one right now.</div>
     </details>
     <details class="faq-item">
-      <summary><span data-en="In which languages are the cards available?" data-fr="Dans quelles langues les cartes sont-elles disponibles ?">In which languages are the cards available?</span></summary>
-      <div class="faq-a" data-en="Several. We stock the same games across multiple languages — French, English, Japanese, Chinese, German, Spanish and Portuguese among others — for example Pokémon in Japanese, Chinese or French, and One Piece in English. This lets you keep a collection consistent in the language you started with, read the cards you actually play, and reach sets that only release in certain markets. Available languages vary by set and by machine, so check the Live Stock page to see what's in each one right now." data-fr="Plusieurs. Nous proposons les mêmes jeux en plusieurs langues — français, anglais, japonais, chinois, allemand, espagnol et portugais notamment — par exemple du Pokémon en japonais, chinois ou français, et du One Piece en anglais. Cela vous permet de garder une collection cohérente dans la langue où vous avez commencé, de lire les cartes que vous jouez, et d'accéder à des sets qui ne sortent que sur certains marchés. Les langues varient selon les sets et les machines : consultez la page Stock Live pour voir ce qu'il y a dans chacune en temps réel.">Several. We stock the same games across multiple languages — French, English, Japanese, Chinese, German, Spanish and Portuguese among others — for example Pokémon in Japanese, Chinese or French, and One Piece in English. This lets you keep a collection consistent in the language you started with, read the cards you actually play, and reach sets that only release in certain markets. Available languages vary by set and by machine, so check the Live Stock page to see what's in each one right now.</div>
+      <summary><span data-en="What languages are the cards in?" data-fr="En quelles langues sont les cartes ?">What languages are the cards in?</span></summary>
+      <div class="faq-a" data-en="French, English, Japanese, Chinese, German, Spanish and Portuguese depending on the set and the machine. Collectors can keep their collection consistent in one language, or hunt market-exclusive sets from Japan and China." data-fr="Français, anglais, japonais, chinois, allemand, espagnol et portugais selon les sets et les machines. Les collectionneurs peuvent garder une collection cohérente dans une langue, ou chasser des sets exclusifs venus du Japon et de Chine.">French, English, Japanese, Chinese, German, Spanish and Portuguese depending on the set and the machine. Collectors can keep their collection consistent in one language, or hunt market-exclusive sets from Japan and China.</div>
     </details>
     <details class="faq-item">
-      <summary><span data-en="How do I pay?" data-fr="Comment payer ?">How do I pay?</span></summary>
-      <div class="faq-a" data-en="We accept cash — with change returned in both coins and notes — as well as contactless card and smartphone payments. Choose your product, pay, and it drops instantly; the pack-opening experience starts right there at the machine." data-fr="Nous acceptons les espèces — avec monnaie rendue en pièces et en billets — ainsi que les paiements sans contact par carte et smartphone. Choisissez votre produit, payez, et il sort immédiatement ; l'expérience du pack opening commence là, devant la machine.">We accept cash — with change returned in both coins and notes — as well as contactless card and smartphone payments. Choose your product, pay, and it drops instantly; the pack-opening experience starts right there at the machine.</div>
+      <summary><span data-en="What payment methods are accepted?" data-fr="Quels moyens de paiement sont acceptés ?">What payment methods are accepted?</span></summary>
+      <div class="faq-a" data-en="Cash (with change returned in coins and notes) and contactless payment by card or smartphone. Simple, fast, no app required." data-fr="Espèces (avec monnaie rendue en pièces et billets) et paiement sans contact par carte ou smartphone. Simple, rapide, sans application.">Cash (with change returned in coins and notes) and contactless payment by card or smartphone. Simple, fast, no app required.</div>
     </details>
     <details class="faq-item">
-      <summary><span data-en="Can I check stock before going?" data-fr="Puis-je vérifier le stock avant de me déplacer ?">Can I check stock before going?</span></summary>
-      <div class="faq-a" data-en="Yes. Our Live Stock page shows real-time inventory for each machine. If something you want is missing, you can request a restock or a new product directly — we adjust our selection based on what you ask for." data-fr="Oui. Notre page Stock Live affiche l'inventaire en temps réel de chaque machine. Si un produit manque, vous pouvez demander un réassort ou un nouveau produit directement — nous adaptons notre sélection selon vos demandes.">Yes. Our Live Stock page shows real-time inventory for each machine. If something you want is missing, you can request a restock or a new product directly — we adjust our selection based on what you ask for.</div>
+      <summary><span data-en="A machine ate my money or a product is stuck — what do I do?" data-fr="La machine a avalé mon argent ou un produit est coincé — que faire ?">A machine ate my money or a product is stuck — what do I do?</span></summary>
+      <div class="faq-a" data-en="Contact us through the form below or by email with the machine location and approximate time — we monitor every machine remotely and will make it right quickly." data-fr="Contactez-nous via le formulaire ci-dessous ou par e-mail avec l'emplacement de la machine et l'heure approximative — nous surveillons chaque machine à distance et réglerons le problème rapidement.">Contact us through the form below or by email with the machine location and approximate time — we monitor every machine remotely and will make it right quickly.</div>
     </details>
   </div>
 </div>
 
 <!-- CONTACT -->
 <div class="contact-section fade-in" id="contact">
-  <div class="section-label" data-en="Get in touch" data-fr="Nous contacter">Get in touch</div>
   <div class="contact-grid">
     <div class="contact-left">
-      <h2 data-en="Let's work<br><span>together.</span>" data-fr="Travaillons<br><span>ensemble.</span>">Let's work<br><span>together.</span></h2>
-      <p data-en="Do you manage a commercial space, game store, cultural venue or high-traffic location? Tell us about your spot — we're actively looking for partners across Switzerland, Belgium, and the UAE." data-fr="Vous gérez un espace commercial, une salle de jeux, un centre culturel ou un lieu à fort passage ? Parlez-nous de votre emplacement — nous cherchons activement des partenaires en Suisse, en Belgique et aux Émirats Arabes Unis.">Do you manage a commercial space, game store, cultural venue or high-traffic location? Tell us about your spot — we're actively looking for partners across Switzerland, Belgium, and the UAE.</p>
-      <div class="contact-info">contact@boosterstop.ch</div>
+      <h2 data-en="Let's<br><span>talk.</span>" data-fr="Parlons-<br><span>en.</span>">Let's<br><span>talk.</span></h2>
+      <p data-en="A question, a partnership idea, or a location to suggest for a machine? Drop us a line — we answer fast." data-fr="Une question, une idée de partenariat, ou un emplacement à suggérer pour un distributeur ? Écrivez-nous — on répond vite.">A question, a partnership idea, or a location to suggest for a machine? Drop us a line — we answer fast.</p>
+      <div class="contact-info">
+        contact@boosterstop.ch<br>
+        Geneva, Switzerland
+      </div>
     </div>
-    <form class="contact-form" id="contactForm" method="post" action="https://formspree.io/f/xkjwpvgy">
+    <form class="contact-form" id="contactForm" action="https://formspree.io/f/xkjwpvgy" method="POST">
       <div class="form-row">
         <div class="form-group">
           <label for="prenom" data-en="First name" data-fr="Prénom">First name</label>
@@ -699,169 +693,158 @@
         </div>
         <div class="form-group">
           <label for="nom" data-en="Last name" data-fr="Nom">Last name</label>
-          <input type="text" id="nom" name="nom" placeholder="Smith" required>
+          <input type="text" id="nom" name="nom" placeholder="Doe" required>
         </div>
       </div>
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+        <input type="email" id="email" name="email" placeholder="john@email.com" required>
       </div>
       <div class="form-group">
-        <label for="profil" data-en="You are" data-fr="Vous êtes">You are</label>
-        <select id="profil" name="profil" required>
-          <option value="" disabled selected data-en="Select..." data-fr="Sélectionnez...">Select...</option>
-          <option value="venue_owner" data-en="Venue owner / manager" data-fr="Propriétaire / gestionnaire d'espace">Venue owner / manager</option>
-          <option value="shopping_mall" data-en="Shopping mall" data-fr="Centre commercial">Shopping mall</option>
-          <option value="tcg_player" data-en="TCG player / enthusiast" data-fr="Joueur / passionné TCG">TCG player / enthusiast</option>
-          <option value="investor_partner" data-en="Investor / partner" data-fr="Investisseur / partenaire">Investor / partner</option>
-          <option value="press_media" data-en="Press / media" data-fr="Presse / média">Press / media</option>
-          <option value="other" data-en="Other" data-fr="Autre">Other</option>
+        <label for="sujet" data-en="Subject" data-fr="Sujet">Subject</label>
+        <select id="sujet" name="sujet" required>
+          <option value="" data-en="Choose a subject..." data-fr="Choisissez un sujet...">Choose a subject...</option>
+          <option value="question" data-en="General question" data-fr="Question générale">General question</option>
+          <option value="partenariat" data-en="Partnership / Host a machine" data-fr="Partenariat / Accueillir un distributeur">Partnership / Host a machine</option>
+          <option value="probleme" data-en="Problem with a machine" data-fr="Problème avec un distributeur">Problem with a machine</option>
+          <option value="autre" data-en="Other" data-fr="Autre">Other</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="message" data-en="Message" data-fr="Message">Message</label>
-        <textarea id="message" name="message" placeholder="Tell us about your project, location or question..." required></textarea>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Your message..." required></textarea>
       </div>
-      <button type="submit" class="btn-submit" data-en="Send →" data-fr="Envoyer →">Send →</button>
-      <div class="form-success" id="formSuccess" data-en="Message sent — we'll get back to you within 48h." data-fr="Message envoyé — nous revenons vers vous sous 48h.">
-        Message sent — we'll get back to you within 48h.
-      </div>
+      <div class="form-success" id="formSuccess" data-en="✓ Message sent! We'll get back to you soon." data-fr="✓ Message envoyé ! On revient vers vous rapidement.">✓ Message sent! We'll get back to you soon.</div>
+      <button type="submit" class="btn-submit" id="submitBtn" data-en="Send message" data-fr="Envoyer le message">Send message</button>
     </form>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><img src="logo.png" alt="BoosterStop" style="height: 22px; width: auto; opacity: 0.6;"></div>
-  <div style="display:flex;align-items:center;gap:16px;">
-    <a href="/stock.html" style="font-size:11px;color:var(--red);text-decoration:none;letter-spacing:1px;border:1px solid rgba(232,24,60,0.4);padding:5px 12px;border-radius:2px;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Live Stock</a>
-    <a href="/privacy.html" style="font-size:12px;color:#666;text-decoration:none;letter-spacing:0.5px;" data-en="Privacy &amp; Cookies" data-fr="Confidentialité">Privacy &amp; Cookies</a>
-    <p>© 2020-2026 BoosterStop — 247 Distribution SNC</p>
-  </div>
+  <p>© 2020-2026 BoosterStop — 247 Distribution SNC</p>
+  <p><a href="/privacy.html" style="color:var(--text-muted);text-decoration:none;" data-en="Privacy & Cookies" data-fr="Confidentialité & Cookies">Privacy & Cookies</a></p>
 </footer>
 
 <!-- GOOGLE MAPS -->
 <style>
-  .gm-style .gm-style-iw-c { background: #1E1A3A !important; border: 1px solid var(--red) !important; border-radius: 4px !important; padding: 0 !important; box-shadow: 0 4px 24px rgba(0,0,0,0.8) !important; top: 0 !important; }
-  .gm-style .gm-style-iw-c button.gm-ui-hover-effect { top: 4px !important; right: 4px !important; }
-  .gm-style-iw-chr { display: none !important; }
-  .gm-style .gm-style-iw-d { overflow: hidden !important; }
-  .gm-style .gm-style-iw-t::after { background: #FFD000 !important; }
-  .gm-style .gm-ui-hover-effect img { filter: invert(1) !important; }
-  .bs-popup { padding: 10px 14px; min-width: 200px; font-family: "DM Sans", sans-serif; }
-  .bs-popup-badge { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--red); background: rgba(232,24,60,0.1); border: 1px solid rgba(232,24,60,0.4); padding: 2px 6px; border-radius: 2px; display: inline-block; margin-bottom: 6px; }
-  .bs-popup-name { font-size: 12px; font-weight: 500; color: #f4f2ee; margin-bottom: 3px; }
-  .bs-popup-addr { font-size: 11px; color: #888; margin-bottom: 6px; }
-  .bs-popup-hours { font-size: 10px; color: #aaa; border-top: 1px solid #2e2e2e; padding-top: 6px; line-height: 1.5; }
-  .bs-popup-hours strong { color: #f4f2ee; }
-  .bs-popup-stock-btn { display: block; margin-top: 8px; background: rgba(232,24,60,0.1); border: 1px solid rgba(232,24,60,0.4); color: #E8183C; text-decoration: none; font-family: "DM Sans", sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 10px; border-radius: 2px; text-align: center; transition: background 0.2s; }
-  .bs-popup-stock-btn:hover { background: rgba(232,24,60,0.2); }
+  .map-wrapper iframe, .map-wrapper > div { filter: grayscale(0.2); }
 </style>
 <script>
-const darkStyles = [
-  { elementType: 'geometry', stylers: [{ color: '#111111' }] },
-  { elementType: 'labels', stylers: [{ visibility: 'off' }] },
-  { featureType: 'administrative.locality', elementType: 'labels.text', stylers: [{ visibility: 'on' }] },
-  { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#777777' }] },
-  { featureType: 'administrative.locality', elementType: 'labels.text.stroke', stylers: [{ color: '#111111' }] },
-  { featureType: 'road.arterial', elementType: 'geometry', stylers: [{ color: '#1e1e1e' }] },
-  { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#252525' }] },
-  { featureType: 'road.local', elementType: 'geometry', stylers: [{ color: '#181818' }] },
-  { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0a0a0a' }] },
-  { featureType: 'poi', stylers: [{ visibility: 'off' }] },
-  { featureType: 'transit', stylers: [{ visibility: 'off' }] },
-  { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#111111' }] },
-  { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#2a2a2a' }] }
-];
+  const darkStyles = [
+    { elementType: "geometry", stylers: [{ color: "#1E1A3A" }] },
+    { elementType: "labels.text.stroke", stylers: [{ color: "#120F2A" }] },
+    { elementType: "labels.text.fill", stylers: [{ color: "#8888aa" }] },
+    { featureType: "poi", stylers: [{ visibility: "off" }] },
+    { featureType: "transit", stylers: [{ visibility: "off" }] },
+    { featureType: "road", elementType: "geometry", stylers: [{ color: "#2e2a50" }] },
+    { featureType: "road", elementType: "labels.text.fill", stylers: [{ color: "#8888aa" }] },
+    { featureType: "water", stylers: [{ color: "#0d0b1f" }] }
+  ];
 
-function switchTab(tab) {
-  document.querySelectorAll('.map-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.map-panel').forEach(p => p.classList.remove('active'));
-  document.querySelector('[onclick="switchTab(\'' + tab + '\')"]').classList.add('active');
-  document.getElementById('tab-' + tab).classList.add('active');
-}
+  function switchTab(country, btn) {
+    document.querySelectorAll('.map-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.map-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + country).classList.add('active');
+  }
+
+  function initMap() {
+    // Geneva map with 3 machines
+    const geneva = new google.maps.Map(document.getElementById('map-geneva'), {
+      center: { lat: 46.1990, lng: 6.1400 }, zoom: 13, styles: darkStyles,
+      disableDefaultUI: true, zoomControl: true
+    });
+    const machines = [
+      { pos: { lat: 46.2008, lng: 6.1520 }, title: "La Poste de Rive" },
+      { pos: { lat: 46.2112, lng: 6.1268 }, title: "La Poste des Charmilles" },
+      { pos: { lat: 46.1872, lng: 6.1214 }, title: "La Poste du Petit-Lancy" }
+    ];
+    machines.forEach(m => new google.maps.Marker({
+      position: m.pos, map: geneva, title: m.title,
+      icon: { path: google.maps.SymbolPath.CIRCLE, scale: 9, fillColor: "#E8183C", fillOpacity: 1, strokeColor: "#fff", strokeWeight: 2 }
+    }));
+
+    // Belgium map (country view, no markers)
+    new google.maps.Map(document.getElementById('map-belgium'), {
+      center: { lat: 50.6, lng: 4.5 }, zoom: 7, styles: darkStyles,
+      disableDefaultUI: true, zoomControl: true
+    });
+
+    // UAE map (country view, no markers)
+    new google.maps.Map(document.getElementById('map-uae'), {
+      center: { lat: 24.5, lng: 54.4 }, zoom: 7, styles: darkStyles,
+      disableDefaultUI: true, zoomControl: true
+    });
+  }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-uxCBr3OvNOAgHTklOsATNImLuPrmn0g&callback=initMap"></script>
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ8HDMPjbLbFbTLDiZbwn9GpXCa9dBSZM&callback=initMap"></script>
 
 <!-- MOUSE LIGHT -->
-<div id="mouse-light"></div>
-<style>
-  #mouse-light { pointer-events: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999; transition: opacity 0.4s ease; opacity: 0; }
-  #mouse-light canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-</style>
+<div id="mouseLight" style="position:fixed;top:0;left:0;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle, rgba(232,24,60,0.05) 0%, transparent 60%);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity 0.3s;opacity:0;"></div>
 <script>
-  const lightEl = document.getElementById('mouse-light');
-  const canvas = document.createElement('canvas');
-  lightEl.appendChild(canvas);
-  const ctx = canvas.getContext('2d');
-  let mx=-999,my=-999,tx=-999,ty=-999,visible=false;
-  function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
-  resize(); window.addEventListener('resize',resize);
-  document.addEventListener('mousemove',(e)=>{mx=e.clientX;my=e.clientY;if(!visible){tx=mx;ty=my;visible=true;lightEl.style.opacity='1';}});
-  document.addEventListener('mouseleave',()=>{visible=false;lightEl.style.opacity='0';});
-  function draw(){
-    tx+=(mx-tx)*0.1;ty+=(my-ty)*0.1;
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    if(!visible){requestAnimationFrame(draw);return;}
-    const isMobile = window.innerWidth <= 768;
-    const radius = isMobile ? 0 : 60;
-    if (radius === 0) { requestAnimationFrame(draw); return; }
-    const g=ctx.createRadialGradient(tx,ty,0,tx,ty,radius);
-    g.addColorStop(0,'rgba(255,230,80,0.12)');g.addColorStop(0.5,'rgba(255,208,0,0.05)');g.addColorStop(1,'rgba(255,180,0,0)');
-    ctx.beginPath();ctx.arc(tx,ty,radius,0,Math.PI*2);ctx.fillStyle=g;ctx.fill();
-    requestAnimationFrame(draw);
-  }
-  draw();
-</script>
-
-<!-- LANG + SCROLL + FORM -->
-<script>
-let currentLang = 'en';
-
-function setLang(lang) {
-  currentLang = lang;
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
-  document.documentElement.lang = lang;
-  document.querySelectorAll('[data-en]').forEach(el => {
-    const val = el.getAttribute('data-' + lang);
-    if (!val) return;
-    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') { el.placeholder = val; }
-    else if (el.tagName === 'OPTION') { el.textContent = val; }
-    else { el.innerHTML = val; }
+  const light = document.getElementById('mouseLight');
+  document.addEventListener('mousemove', e => {
+    light.style.opacity = '1';
+    light.style.left = e.clientX + 'px';
+    light.style.top = e.clientY + 'px';
   });
-  document.querySelector('#prenom').placeholder = lang === 'fr' ? 'Jean' : 'John';
-  document.querySelector('#nom').placeholder = lang === 'fr' ? 'Dupont' : 'Smith';
-  document.querySelector('#message').placeholder = lang === 'fr' ? 'Décrivez votre projet, emplacement ou question...' : 'Tell us about your project, location or question...';
-}
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-const form = document.getElementById('contactForm');
-const successMessage = document.getElementById('formSuccess');
-const submitButton = form.querySelector('.btn-submit');
-form.addEventListener('submit', async function(e) {
-  e.preventDefault();
-  successMessage.style.display = 'none';
-  submitButton.disabled = true;
-  submitButton.textContent = currentLang === 'fr' ? 'Envoi en cours...' : 'Sending...';
-  try {
-    const response = await fetch(form.action, { method: form.method, body: new FormData(form), headers: { Accept: 'application/json' } });
-    if (response.ok) { form.reset(); successMessage.style.display = 'block'; }
-    else { alert(currentLang === 'fr' ? 'Une erreur est survenue. Merci de réessayer.' : 'An error occurred. Please try again.'); }
-  } catch { alert(currentLang === 'fr' ? "Impossible d'envoyer le formulaire pour le moment." : 'Unable to send the form.'); }
-  finally { submitButton.disabled = false; submitButton.textContent = currentLang === 'fr' ? 'Envoyer →' : 'Send →'; }
-});
+  document.addEventListener('mouseleave', () => light.style.opacity = '0');
 </script>
 
+<script>
+  // LANG SWITCHER
+  let currentLang = 'en';
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (!val) return;
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') { el.placeholder = val; }
+      else if (el.tagName === 'OPTION') { el.textContent = val; }
+      else { el.innerHTML = val; }
+    });
+    document.querySelector('#prenom').placeholder = lang === 'fr' ? 'Jean' : 'John';
+    document.querySelector('#nom').placeholder = lang === 'fr' ? 'Dupont' : 'Doe';
+    document.querySelector('#message').placeholder = lang === 'fr' ? 'Votre message...' : 'Your message...';
+  }
 
+  // SCROLL FADE-IN
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
+  // CONTACT FORM (AJAX to Formspree)
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true;
+    btn.textContent = currentLang === 'fr' ? 'Envoi...' : 'Sending...';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.reset();
+        document.getElementById('formSuccess').style.display = 'block';
+        btn.style.display = 'none';
+      } else { throw new Error(); }
+    } catch {
+      btn.disabled = false;
+      btn.textContent = currentLang === 'fr' ? 'Erreur — réessayer' : 'Error — try again';
+    }
+  });
+</script>
 
-<!-- MOBILE NAV -->
+<!-- MOBILE BOTTOM NAV -->
 <div class="mob-nav" id="mobNav">
-  <a href="/" class="mob-link active">
+  <a href="#" class="mob-link active" data-target="top">
     <span class="m-icon">🏠</span>
     <span data-en="Home" data-fr="Accueil">Home</span>
   </a>
@@ -869,201 +852,98 @@ form.addEventListener('submit', async function(e) {
     <span class="m-icon">📦</span>
     <span data-en="Stock" data-fr="Stock">Stock</span>
   </a>
+  <a href="/licences-geneve.html" class="mob-link">
+    <span class="m-icon">🃏</span>
+    <span data-en="TCG" data-fr="TCG">TCG</span>
+  </a>
   <a href="/newsletter.html" class="mob-link">
     <span class="m-icon">🔔</span>
     <span class="m-badge">-10%</span>
     <span data-en="Newsletter" data-fr="Newsletter">Newsletter</span>
   </a>
-  <a href="#partner" class="mob-link">
+  <a href="#partner" class="mob-link" data-target="partner">
     <span class="m-icon">🤝</span>
     <span data-en="Partner" data-fr="Partenaire">Partner</span>
   </a>
-  <a href="#contact" class="mob-link">
+  <a href="#contact" class="mob-link" data-target="contact">
     <span class="m-icon">✉️</span>
     <span data-en="Contact" data-fr="Contact">Contact</span>
   </a>
 </div>
+
 <script>
-// Mobile nav active on scroll (only for in-page anchors)
-(function() {
-  var ids = ['partner','contact'];
-  var links = document.querySelectorAll('.mob-link');
-  window.addEventListener('scroll', function() {
-    var cur = '';
-    ids.forEach(function(id) {
-      var el = document.getElementById(id);
-      if (el && window.scrollY >= el.offsetTop - 140) cur = id;
-    });
-    // Only toggle anchor links; keep Home active by default at top
-    links.forEach(function(a) {
-      var href = a.getAttribute('href');
-      if (href && href.charAt(0) === '#') {
-        a.classList.toggle('active', href === '#' + cur);
-      } else {
-        a.classList.remove('active');
-      }
-    });
-    if (!cur && window.scrollY < 200) {
-      links.forEach(l => l.classList.remove('active'));
-      var home = document.querySelector('.mob-link[href="/"]');
-      if (home) home.classList.add('active');
-    }
+  // Mobile nav active state on scroll
+  const mobLinks = document.querySelectorAll('.mob-link[data-target]');
+  const mobSections = { top: 0, partner: document.getElementById('partner'), contact: document.getElementById('contact') };
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY + 200;
+    let active = 'top';
+    if (mobSections.partner && y >= mobSections.partner.offsetTop) active = 'partner';
+    if (mobSections.contact && y >= mobSections.contact.offsetTop) active = 'contact';
+    document.querySelectorAll('.mob-link').forEach(l => l.classList.remove('active'));
+    const activeLink = document.querySelector('.mob-link[data-target="' + active + '"]');
+    if (activeLink) activeLink.classList.add('active');
   });
+  document.querySelector('.mob-link[data-target="top"]').addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+<script>
+(function () {
+  const anim = document.getElementById('boosterAnim');
+  const img  = anim.querySelector('img');
+  const machineImgs = document.querySelectorAll('.hero-machine-img');
+
+  function playBooster() {
+    machineImgs.forEach(m => m.classList.add('machine-shaking'));
+    setTimeout(() => {
+      machineImgs.forEach(m => m.classList.remove('machine-shaking'));
+      anim.style.display = 'flex';
+      img.style.animation = 'none';
+      void img.offsetWidth;
+      img.style.animation = 'boosterPop 3.2s cubic-bezier(0.22, 1, 0.36, 1) forwards';
+      setTimeout(() => { anim.style.display = 'none'; }, 3300);
+    }, 800);
+  }
+
+  setTimeout(playBooster, 2000);
+  setInterval(playBooster, 10000);
 })();
 </script>
 
-
-<script>
-// Booster animation
-function fireBooster() {
-  // 1. Shake the machine
-  const machine = document.querySelector('.hero-machine-img.mobile-img') && window.innerWidth <= 768 ? document.querySelector('.hero-machine-img.mobile-img') : document.querySelector('.hero-machine-img.desktop-img') || document.querySelector('.hero-machine-img');
-  if (machine) {
-    machine.classList.remove('machine-shaking');
-    machine.offsetHeight;
-    machine.classList.add('machine-shaking');
-    setTimeout(() => machine.classList.remove('machine-shaking'), 900);
-  }
-  // 2. Show booster after shake delay
-  setTimeout(() => {
-    const el = document.getElementById('boosterAnim');
-    el.style.display = 'flex';
-    const img = el.querySelector('img');
-    img.style.animation = 'none';
-    img.offsetHeight;
-    img.style.animation = 'boosterPop 2.2s cubic-bezier(0.4, 0, 1, 1) forwards';
-    setTimeout(() => { el.style.display = 'none'; }, 2300);
-  }, 800);
-}
-
-// Open popup from location list click
-let gMapRef = null;
-let gMarkersRef = [];
-
-function openPopupByIndex(i) {
-  // Scroll to map section first
-  const mapSection = document.getElementById('where');
-  if (mapSection) {
-    mapSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-  // Wait for scroll then open popup
-  setTimeout(function() {
-    if (!gMapRef || !gMarkersRef[i]) return;
-    google.maps.event.trigger(gMarkersRef[i], 'click');
-    gMapRef.panTo(gMarkersRef[i].getPosition());
-  }, 600);
-}
-
-// Override initMap to store refs
-const _origInitMap = window.initMap;
-window.initMap = function() {
-  const darkStyles = [
-    { elementType: 'geometry', stylers: [{ color: '#111111' }] },
-    { elementType: 'labels', stylers: [{ visibility: 'off' }] },
-    { featureType: 'administrative.locality', elementType: 'labels.text', stylers: [{ visibility: 'on' }] },
-    { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#777777' }] },
-    { featureType: 'administrative.locality', elementType: 'labels.text.stroke', stylers: [{ color: '#111111' }] },
-    { featureType: 'road.arterial', elementType: 'geometry', stylers: [{ color: '#1e1e1e' }] },
-    { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#252525' }] },
-    { featureType: 'road.local', elementType: 'geometry', stylers: [{ color: '#181818' }] },
-    { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0a0a0a' }] },
-    { featureType: 'poi', stylers: [{ visibility: 'off' }] },
-    { featureType: 'transit', stylers: [{ visibility: 'off' }] },
-    { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#111111' }] },
-    { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#2a2a2a' }] }
-  ];
-
-  const genevaLocations = [
-    { lat: 46.2008, lng: 6.1520, name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', hours: '<strong>Lun–Ven</strong> 08h00–18h30<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' },
-    { lat: 46.2112, lng: 6.1268, name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", hours: '<strong>Lun–Ven</strong> 08h00–18h30<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' },
-    { lat: 46.1872, lng: 6.1214, name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' }
-  ];
-
-  let activeInfo = null;
-
-  gMapRef = new google.maps.Map(document.getElementById('map-geneva'), {
-    zoom: 12, center: { lat: 46.1955, lng: 6.1430 },
-    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
-  });
-
-  genevaLocations.forEach(function(loc, i) {
-    const marker = new google.maps.Marker({
-      position: { lat: loc.lat, lng: loc.lng },
-      map: gMapRef,
-      icon: { path: google.maps.SymbolPath.CIRCLE, scale: 10, fillColor: '#FFD000', fillOpacity: 1, strokeColor: '#ffffff', strokeWeight: 1.5 }
-    });
-    marker.addListener('click', function() {
-      if (activeInfo) activeInfo.close();
-      activeInfo = new google.maps.InfoWindow({
-        content: '<div class="bs-popup"><div class="bs-popup-badge">BoosterStop TCG</div><div class="bs-popup-name">' + loc.name + '</div><div class="bs-popup-addr">' + loc.addr + '</div><div class="bs-popup-hours">' + loc.hours + '</div><a href="/stock.html?machine=' + i + '" class="bs-popup-stock-btn" target="_self">📦 ' + (currentLang==='fr'?'Voir le stock':'Check stock') + ' →</a></div>'
-      });
-      activeInfo.open(gMapRef, marker);
-    });
-    gMarkersRef[i] = marker;
-  });
-
-  new google.maps.Map(document.getElementById('map-belgium'), {
-    zoom: 7, center: { lat: 50.5, lng: 4.5 },
-    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
-  });
-
-  new google.maps.Map(document.getElementById('map-uae'), {
-    zoom: 7, center: { lat: 24.5, lng: 54.5 },
-    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
-  });
-}
-
-// PUSH button click — fire booster
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.hero-machine-img').forEach(function(img) {
-    img.style.cursor = 'pointer';
-    img.addEventListener('click', fireBooster);
-  });
-});
-</script>
-
+<!-- COOKIE BANNER (RGPD / nLPD) -->
 <style>
-/* COOKIE / RGPD BANNER */
-.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:9500;display:none;max-width:720px;margin:0 auto;background:rgba(18,15,42,0.98);border:1px solid var(--gray-mid);border-top:2px solid var(--red);border-radius:8px;padding:18px 22px;box-shadow:0 12px 48px rgba(0,0,0,0.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);align-items:center;gap:18px;}
-.cookie-banner.show{display:flex;}
-.cookie-text{flex:1;font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.6;color:var(--text-muted);}
-.cookie-text strong{color:var(--white);font-weight:500;}
-.cookie-actions{display:flex;gap:8px;flex-shrink:0;}
-.cookie-btn{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:10px 18px;border-radius:3px;cursor:pointer;border:1px solid var(--gray-mid);transition:all 0.2s;white-space:nowrap;}
-.cookie-btn.decline{background:none;color:var(--text-muted);}
-.cookie-btn.decline:hover{color:var(--white);border-color:var(--text-muted);}
-.cookie-btn.accept{background:var(--yellow);color:var(--black);border-color:var(--yellow);font-weight:600;}
-.cookie-btn.accept:hover{opacity:0.9;}
-@media(max-width:768px){
-  .cookie-banner{flex-direction:column;align-items:stretch;left:12px;right:12px;bottom:calc(68px + env(safe-area-inset-bottom,0px) + 8px);padding:16px 18px;gap:14px;}
-  .cookie-actions{gap:8px;}
-  .cookie-btn{flex:1;padding:11px;}
-}
+  .cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9500;background:rgba(18,15,42,0.98);backdrop-filter:blur(16px);border-top:1px solid var(--gray-mid);padding:20px 24px;display:none;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;}
+  .cookie-banner.show{display:flex;}
+  .cookie-banner p{font-size:12.5px;color:var(--text-muted);max-width:560px;line-height:1.6;margin:0;}
+  .cookie-banner p a{color:var(--red);text-decoration:none;}
+  .cookie-actions{display:flex;gap:10px;flex-shrink:0;}
+  .cookie-btn{font-family:'DM Sans',sans-serif;font-size:12px;letter-spacing:1px;padding:10px 20px;border-radius:2px;cursor:pointer;transition:all 0.2s;}
+  .cookie-accept{background:var(--yellow);color:var(--black);border:none;font-weight:500;}
+  .cookie-accept:hover{opacity:0.85;}
+  .cookie-decline{background:none;color:var(--text-muted);border:1px solid var(--gray-mid);}
+  .cookie-decline:hover{color:var(--white);border-color:var(--text-muted);}
+  @media(max-width:768px){.cookie-banner{padding:16px;padding-bottom:calc(env(safe-area-inset-bottom,8px) + 76px);}}
 </style>
-<!-- COOKIE / RGPD BANNER -->
-<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite">
-  <div class="cookie-text" data-en="We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. <a href='/privacy.html' style='color:var(--red);'>Learn more</a>." data-fr="Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. <a href='/privacy.html' style='color:var(--red);'>En savoir plus</a>."><strong>🍪</strong> We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. <a href="/privacy.html" style="color:var(--red);">Learn more</a>.</div>
+<div class="cookie-banner" id="cookieBanner">
+  <p data-en="We use cookies only for anonymous traffic measurement (Google Maps also sets cookies when the map loads). No ads, no tracking across sites. See our <a href='/privacy.html'>Privacy Policy</a>." data-fr="Nous utilisons des cookies uniquement pour mesurer le trafic de façon anonyme (Google Maps dépose aussi des cookies au chargement de la carte). Pas de pub, pas de suivi entre sites. Voir notre <a href='/privacy.html'>Politique de confidentialité</a>.">We use cookies only for anonymous traffic measurement (Google Maps also sets cookies when the map loads). No ads, no tracking across sites. See our <a href='/privacy.html'>Privacy Policy</a>.</p>
   <div class="cookie-actions">
-    <button class="cookie-btn decline" onclick="setCookieConsent(false)" data-en="Essential only" data-fr="Essentiels">Essential only</button>
-    <button class="cookie-btn accept" onclick="setCookieConsent(true)" data-en="Accept all" data-fr="Tout accepter">Accept all</button>
+    <button class="cookie-btn cookie-decline" onclick="cookieChoice(false)" data-en="Decline" data-fr="Refuser">Decline</button>
+    <button class="cookie-btn cookie-accept" onclick="cookieChoice(true)" data-en="Accept" data-fr="Accepter">Accept</button>
   </div>
 </div>
 <script>
-(function(){
-  try{
-    if(!localStorage.getItem('bs_cookie_consent')){
-      var b=document.getElementById('cookieBanner'); if(b) b.classList.add('show');
-    }
-  }catch(e){ var b=document.getElementById('cookieBanner'); if(b) b.classList.add('show'); }
-})();
-function setCookieConsent(accepted){
-  try{
-    localStorage.setItem('bs_cookie_consent', accepted?'accepted':'essential');
-    localStorage.setItem('bs_cookie_ts', new Date().toISOString());
-  }catch(e){}
-  var b=document.getElementById('cookieBanner'); if(b) b.classList.remove('show');
-}
+  function cookieChoice(accepted){
+    localStorage.setItem('bs_cookie_choice', accepted ? 'accepted' : 'declined');
+    document.getElementById('cookieBanner').classList.remove('show');
+  }
+  if(!localStorage.getItem('bs_cookie_choice')){
+    document.getElementById('cookieBanner').classList.add('show');
+  }
 </script>
+
 <!-- STRUCTURED DATA (SEO / AI search) -->
 <script type="application/ld+json">
 {
@@ -1078,11 +958,7 @@ function setCookieConsent(accepted){
       "logo": "https://boosterstop.com/logo.png",
       "description": "The first vending-machine network dedicated to Trading Card Games. 100% sealed products from official distributors, available 24/7.",
       "email": "contact@boosterstop.ch",
-      "areaServed": [
-        "Switzerland",
-        "Belgium",
-        "United Arab Emirates"
-      ],
+      "areaServed": ["Switzerland", "Belgium", "United Arab Emirates"],
       "sameAs": []
     },
     {
@@ -1090,22 +966,15 @@ function setCookieConsent(accepted){
       "@id": "https://boosterstop.com/#website",
       "url": "https://boosterstop.com/",
       "name": "BoosterStop",
-      "publisher": {
-        "@id": "https://boosterstop.com/#organization"
-      },
-      "inLanguage": [
-        "en",
-        "fr"
-      ]
+      "publisher": { "@id": "https://boosterstop.com/#organization" },
+      "inLanguage": ["en", "fr"]
     },
     {
       "@type": "Store",
       "@id": "https://boosterstop.com/#rive",
       "name": "BoosterStop — La Poste de Rive",
       "description": "BoosterStop TCG vending machine inside La Poste de Rive, Geneva. Sealed Pokémon, One Piece, Magic and more.",
-      "parentOrganization": {
-        "@id": "https://boosterstop.com/#organization"
-      },
+      "parentOrganization": { "@id": "https://boosterstop.com/#organization" },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Rue du Vieux-Collège 3",
@@ -1113,30 +982,10 @@ function setCookieConsent(accepted){
         "addressLocality": "Genève",
         "addressCountry": "CH"
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 46.2008,
-        "longitude": 6.152
-      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 46.2008, "longitude": 6.1520 },
       "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday"
-          ],
-          "opens": "08:00",
-          "closes": "18:30"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "08:30",
-          "closes": "12:00"
-        }
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:30" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "12:00" }
       ],
       "url": "https://boosterstop.com/stock.html?machine=0"
     },
@@ -1145,9 +994,7 @@ function setCookieConsent(accepted){
       "@id": "https://boosterstop.com/#charmilles",
       "name": "BoosterStop — La Poste des Charmilles",
       "description": "BoosterStop TCG vending machine inside La Poste des Charmilles, Geneva. Sealed trading card game products from official distributors.",
-      "parentOrganization": {
-        "@id": "https://boosterstop.com/#organization"
-      },
+      "parentOrganization": { "@id": "https://boosterstop.com/#organization" },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Promenade de l'Europe 11",
@@ -1155,30 +1002,10 @@ function setCookieConsent(accepted){
         "addressLocality": "Genève",
         "addressCountry": "CH"
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 46.2112,
-        "longitude": 6.1268
-      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 46.2112, "longitude": 6.1268 },
       "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday"
-          ],
-          "opens": "08:00",
-          "closes": "18:30"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "08:30",
-          "closes": "12:00"
-        }
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:30" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "12:00" }
       ],
       "url": "https://boosterstop.com/stock.html?machine=1"
     },
@@ -1187,9 +1014,7 @@ function setCookieConsent(accepted){
       "@id": "https://boosterstop.com/#petit-lancy",
       "name": "BoosterStop — La Poste du Petit-Lancy",
       "description": "BoosterStop TCG vending machine inside La Poste du Petit-Lancy, Geneva. Sealed boosters, displays and collector boxes.",
-      "parentOrganization": {
-        "@id": "https://boosterstop.com/#organization"
-      },
+      "parentOrganization": { "@id": "https://boosterstop.com/#organization" },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Rue des Bossons 88b",
@@ -1197,30 +1022,10 @@ function setCookieConsent(accepted){
         "addressLocality": "Petit-Lancy",
         "addressCountry": "CH"
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 46.1872,
-        "longitude": 6.1214
-      },
+      "geo": { "@type": "GeoCoordinates", "latitude": 46.1872, "longitude": 6.1214 },
       "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday"
-          ],
-          "opens": "08:00",
-          "closes": "18:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "08:30",
-          "closes": "12:00"
-        }
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "18:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "08:30", "closes": "12:00" }
       ],
       "url": "https://boosterstop.com/stock.html?machine=2"
     },
@@ -1231,55 +1036,38 @@ function setCookieConsent(accepted){
         {
           "@type": "Question",
           "name": "Are the products really authentic and untouched?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Everything is 100% sealed and comes directly from official distributors. We never weigh, search, tamper with or hand-pick packs. What goes in the machine is exactly as it left the manufacturer."
-          }
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Everything is 100% sealed and comes directly from official distributors. We never weigh, search, tamper with or hand-pick packs. What goes in the machine is exactly as it left the manufacturer." }
         },
         {
           "@type": "Question",
           "name": "Why vending machines instead of a regular shop?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Convenience and 24/7 access matter, but our real goal is visibility: giving as many TCG licenses as possible a place in front of players — including the ones you rarely find on shelves — right where people already are."
-          }
+          "acceptedAnswer": { "@type": "Answer", "text": "Convenience and 24/7 access matter, but our real goal is visibility: giving as many TCG licenses as possible a place in front of players — including the ones you rarely find on shelves — right where people already are." }
         },
         {
           "@type": "Question",
           "name": "Which games can I find in the machines?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more — with several universes available in each machine at the same time."
-          }
+          "acceptedAnswer": { "@type": "Answer", "text": "Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more. The exact selection varies by machine — check the Live Stock page at boosterstop.com/stock.html to see what's inside each one in real time." }
         },
         {
           "@type": "Question",
-          "name": "In which languages are the cards available?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Several. BoosterStop stocks the same games across multiple languages — French, English, Japanese, Chinese, German, Spanish and Portuguese among others — for example Pokémon in Japanese, Chinese or French, and One Piece in English. This lets collectors keep a collection consistent in the language they started with, read the cards they play, and access sets that only release in certain markets. Available languages vary by set and by machine."
-          }
+          "name": "What languages are the cards in?",
+          "acceptedAnswer": { "@type": "Answer", "text": "French, English, Japanese, Chinese, German, Spanish and Portuguese depending on the set and the machine. Collectors can keep their collection consistent in one language, or hunt market-exclusive sets from Japan and China." }
         },
         {
           "@type": "Question",
-          "name": "How do I pay?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We accept cash with change returned in both coins and notes, as well as contactless card and smartphone payments. Choose your product, pay, and it drops instantly."
-          }
+          "name": "What payment methods are accepted?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Cash (with change returned in coins and notes) and contactless payment by card or smartphone. Simple, fast, no app required." }
         },
         {
           "@type": "Question",
-          "name": "Can I check stock before going?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Our Live Stock page shows real-time inventory for each machine. If something you want is missing, you can request a restock or a new product directly."
-          }
+          "name": "Where are BoosterStop machines located?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Currently live in Geneva, Switzerland at La Poste de Rive (Rue du Vieux-Collège 3), La Poste des Charmilles (Promenade de l'Europe 11) and La Poste du Petit-Lancy (Rue des Bossons 88b). Belgium and the UAE are launching soon." }
         }
       ]
     }
   ]
 }
 </script>
+
 </body>
 </html>
