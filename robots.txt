@@ -1,0 +1,7 @@
+# BoosterStop — robots.txt
+# Tous les crawlers bienvenus : Google, Bing, et crawlers IA (GPTBot, ClaudeBot, PerplexityBot, etc.)
+
+User-agent: *
+Allow: /
+
+Sitemap: https://boosterstop.com/sitemap.xml
