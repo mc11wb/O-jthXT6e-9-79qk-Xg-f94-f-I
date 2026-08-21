@@ -259,7 +259,7 @@
     .hero-right { display: flex; margin-top: 32px; }
     .hero-machine-img.desktop-img { display: none; }
     .hero-machine-img.mobile-img { display: block; max-width: 52vw; margin: 0 auto; }
-    .booster-anim { bottom: 15%; left: 40%; }
+    .booster-anim { bottom: calc(50% - 25vw); left: calc(50% - 5vw); }
     .countries-banner { padding: 20px 24px; gap: 20px; flex-direction: column; align-items: flex-start; }
     .countries-list { gap: 16px; }
     section { padding: 72px 24px; }
@@ -327,8 +327,8 @@
   .booster-anim {
     display: none;
     position: absolute;
-    bottom: 18%;
-    left: 38%;
+    bottom: calc(50% - 150px);
+    left: calc(50% - 31px);
     transform: translateX(-50%);
     z-index: 10;
     pointer-events: none;
@@ -336,6 +336,7 @@
   }
   .booster-anim img {
     width: clamp(40px, 5.5vw, 62px);
+    height: auto;
     opacity: 0;
     filter: drop-shadow(0 8px 40px rgba(232,24,60,0.7));
   }
@@ -408,7 +409,7 @@
     <img class="hero-machine-img desktop-img" src="/front%20transparent.png" alt="BoosterStop Machine" width="1431" height="1869" fetchpriority="high" decoding="async">
     <img class="hero-machine-img mobile-img" src="/front%20transparent.png" alt="BoosterStop Machine" width="1431" height="1869" fetchpriority="high" decoding="async">
     <div class="booster-anim" id="boosterAnim">
-      <img src="/Booster.png" alt="Booster" width="400" height="600" loading="lazy" decoding="async">
+      <img src="/Booster.png" alt="Booster" loading="lazy" decoding="async">
     </div>
   </div>
   <div class="hero-scroll" data-en="Scroll" data-fr="Scroll">Scroll</div>
