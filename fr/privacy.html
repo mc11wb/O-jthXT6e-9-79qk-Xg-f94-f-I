@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Confidentialité &amp; Cookies — BoosterStop</title>
+<meta name="description" content="Comment BoosterStop (247 Distribution SNC) collecte et utilise vos données : formulaires, newsletter, cookies et vos droits selon la nLPD suisse et le RGPD.">
+<link rel="canonical" href="https://boosterstop.com/fr/privacy.html">
+<link rel="alternate" hreflang="en" href="https://boosterstop.com/privacy.html">
+<link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://boosterstop.com/privacy.html">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#120F2A;--white:#f4f2ee;--yellow:#FFD000;
+  --gray:#1E1A3A;--gray-mid:#2e2a50;--text-muted:#8888aa;
+  --red:#E8183C;--violet:#2A1F5E;--radius:4px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;line-height:1.7;background-image:radial-gradient(ellipse at 80% 10%,rgba(232,24,60,0.06) 0%,transparent 50%),radial-gradient(ellipse at 20% 80%,rgba(42,31,94,0.25) 0%,transparent 60%);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:22px 48px;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(18,15,42,0.92);backdrop-filter:blur(12px);}
+.nav-logo img{height:28px;}
+.nav-right{display:flex;align-items:center;gap:36px;}
+nav ul{list-style:none;display:flex;gap:36px;}
+nav ul a{color:var(--text-muted);text-decoration:none;font-size:13px;letter-spacing:0.5px;transition:color 0.2s;}
+nav ul a:hover{color:var(--white);}
+.nl-badge{display:inline-block;background:var(--yellow);color:var(--black);font-size:8px;font-weight:600;letter-spacing:0.5px;padding:1px 5px;border-radius:3px;margin-left:5px;vertical-align:middle;}
+.lang-switcher{display:flex;gap:4px;}
+.lang-btn{background:none;border:1px solid var(--gray-mid);color:var(--text-muted);font-family:'DM Sans';font-size:11px;letter-spacing:2px;padding:4px 10px;border-radius:2px;cursor:pointer;transition:all 0.2s;}
+.lang-btn.active{border-color:var(--red);color:var(--red);background:rgba(232,24,60,0.06);}
+.lang-btn:hover{border-color:var(--red);color:var(--red);}
+.lang-switcher a{text-decoration:none;display:inline-block;}
+
+/* LEGAL CONTENT */
+.legal{max-width:820px;margin:0 auto;padding:140px 48px 100px;}
+.legal-eyebrow{font-size:11px;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.legal-eyebrow::before{content:'';display:inline-block;width:28px;height:1px;background:var(--red);}
+.legal h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5.5vw,58px);line-height:0.95;margin-bottom:10px;}
+.legal h1 span{color:var(--red);}
+.legal-updated{font-size:12.5px;color:var(--text-muted);margin-bottom:42px;}
+.legal h2{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;color:var(--white);margin:42px 0 14px;}
+.legal h2 span{color:var(--red);margin-right:8px;}
+.legal p{color:#b9b6d0;font-size:14.5px;margin-bottom:14px;}
+.legal ul{list-style:none;margin:0 0 14px;padding:0;}
+.legal li{color:#b9b6d0;font-size:14.5px;padding-left:20px;position:relative;margin-bottom:8px;}
+.legal li::before{content:'—';position:absolute;left:0;color:var(--red);}
+.legal a{color:var(--red);text-decoration:none;border-bottom:1px solid rgba(232,24,60,0.35);}
+.legal a:hover{color:var(--white);}
+.legal-box{background:var(--gray);border:1px solid var(--gray-mid);border-left:2px solid var(--red);border-radius:var(--radius);padding:18px 22px;margin:18px 0;font-size:13.5px;color:#b9b6d0;}
+.legal-box strong{color:var(--white);font-weight:500;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--gray-mid);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;}
+footer p{font-size:12px;color:#444;letter-spacing:0.5px;}
+
+/* MOBILE NAV */
+.mob-nav{display:none;}
+@media(max-width:768px){
+  .mob-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:9000;background:rgba(18,15,42,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(232,24,60,0.4);padding-top:8px;padding-bottom:env(safe-area-inset-bottom,8px);justify-content:space-around;align-items:flex-start;}
+  body{padding-bottom:68px;}
+  nav ul{display:none;}
+  nav{padding:18px 24px;}
+  .legal{padding:110px 24px 70px;}
+  footer{padding:24px;flex-direction:column;gap:12px;text-align:center;}
+}
+.mob-nav a{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text-muted);text-decoration:none;font-size:9px;letter-spacing:0.5px;text-transform:uppercase;padding:4px 2px;transition:color 0.2s;flex:1;text-align:center;position:relative;}
+.mob-nav a.active,.mob-nav a:hover{color:var(--red);}
+.mob-nav .m-icon{font-size:18px;line-height:1;display:block;}
+.mob-nav a .m-badge{position:absolute;top:0;left:50%;margin-left:6px;background:var(--yellow);color:var(--black);font-size:7px;font-weight:700;letter-spacing:0.2px;padding:1px 4px;border-radius:3px;line-height:1.3;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/fr/" class="nav-logo"><img src="/logo.png" alt="BoosterStop"></a>
+  <div class="nav-right">
+    <ul>
+      <li><a href="/fr/#where" data-en="Locations" data-fr="Emplacements">Emplacements</a></li>
+      <li><a href="/fr/licences-geneve.html" data-en="🃏 Licenses" data-fr="🃏 Licences">🃏 Licences</a></li>
+      <li><a href="/fr/#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
+      <li><a href="/fr/newsletter.html" data-en="🔔 Newsletter" data-fr="🔔 Newsletter">🔔 Newsletter</a></li>
+      <li><a href="/fr/stock.html" style="color:var(--red);font-weight:500;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Stock Live</a></li>
+    </ul>
+    <div class="lang-switcher">
+      <a class="lang-btn" href="/privacy.html">EN</a>
+      <a class="lang-btn active" href="/fr/privacy.html">FR</a>
+    </div>
+  </div>
+</nav>
+
+<div class="legal">
+  <div class="legal-eyebrow" data-en="Legal" data-fr="Mentions légales">Mentions légales</div>
+  <h1 data-en="Privacy &amp; &lt;span&gt;Cookies&lt;/span&gt;" data-fr="Confidentialité &amp; &lt;span&gt;Cookies&lt;/span&gt;">Confidentialité &amp; <span>Cookies</span></h1>
+  <p class="legal-updated" data-en="Last updated: 20 July 2026" data-fr="Dernière mise à jour : 20 juillet 2026">Dernière mise à jour : 20 juillet 2026</p>
+
+  <div class="legal-box" data-en="&lt;strong&gt;Who we are.&lt;/strong&gt; This website is operated by &lt;strong&gt;247 Distribution SNC&lt;/strong&gt; (BoosterStop), Geneva, Switzerland. Contact: &lt;a href='mailto:contact@boosterstop.ch'&gt;contact@boosterstop.ch&lt;/a&gt;." data-fr="&lt;strong&gt;Qui sommes-nous.&lt;/strong&gt; Ce site est exploité par &lt;strong&gt;247 Distribution SNC&lt;/strong&gt; (BoosterStop), Genève, Suisse. Contact : &lt;a href='mailto:contact@boosterstop.ch'&gt;contact@boosterstop.ch&lt;/a&gt;."><strong>Qui sommes-nous.</strong> Ce site est exploité par <strong>247 Distribution SNC</strong> (BoosterStop), Genève, Suisse. Contact : <a href="mailto:contact@boosterstop.ch">contact@boosterstop.ch</a>.</div>
+
+  <h2 data-en="&lt;span&gt;1.&lt;/span&gt; What we collect" data-fr="&lt;span&gt;1.&lt;/span&gt; Ce que nous collectons"><span>1.</span> Ce que nous collectons</h2>
+  <ul>
+    <li data-en="Contact form: first name, last name, email, profile and your message." data-fr="Formulaire de contact : prénom, nom, email, profil et votre message.">Formulaire de contact : prénom, nom, email, profil et votre message.</li>
+    <li data-en="Newsletter form: email address, selected countries and selected card games, and your marketing consent (with timestamp)." data-fr="Formulaire newsletter : adresse email, pays et jeux de cartes sélectionnés, et votre consentement marketing (horodaté).">Formulaire newsletter : adresse email, pays et jeux de cartes sélectionnés, et votre consentement marketing (horodaté).</li>
+    <li data-en="Technical data required to display the site (standard server logs of our hosting provider)." data-fr="Données techniques nécessaires à l'affichage du site (journaux serveur standards de notre hébergeur).">Données techniques nécessaires à l'affichage du site (journaux serveur standards de notre hébergeur).</li>
+  </ul>
+
+  <h2 data-en="&lt;span&gt;2.&lt;/span&gt; Why we use it" data-fr="&lt;span&gt;2.&lt;/span&gt; Pourquoi nous les utilisons"><span>2.</span> Pourquoi nous les utilisons</h2>
+  <ul>
+    <li data-en="To answer your messages (contact form)." data-fr="Pour répondre à vos messages (formulaire de contact).">Pour répondre à vos messages (formulaire de contact).</li>
+    <li data-en="To send you new-release news and promotional emails, only if you opted in. You can unsubscribe at any time via the link in each email or by writing to us." data-fr="Pour vous envoyer les nouveautés et des emails promotionnels, uniquement si vous avez accepté. Vous pouvez vous désinscrire à tout moment via le lien de chaque email ou en nous écrivant.">Pour vous envoyer les nouveautés et des emails promotionnels, uniquement si vous avez accepté. Vous pouvez vous désinscrire à tout moment via le lien de chaque email ou en nous écrivant.</li>
+  </ul>
+
+  <h2 data-en="&lt;span&gt;3.&lt;/span&gt; Cookies &amp; local storage" data-fr="&lt;span&gt;3.&lt;/span&gt; Cookies &amp; stockage local"><span>3.</span> Cookies &amp; stockage local</h2>
+  <p data-en="We do not use advertising or analytics cookies. We store your cookie choice locally in your browser (localStorage). Embedded Google Maps may set its own cookies — see Google's privacy policy." data-fr="Nous n'utilisons pas de cookies publicitaires ni d'analyse. Nous enregistrons votre choix de cookies localement dans votre navigateur (localStorage). Google Maps intégré peut déposer ses propres cookies — voir la politique de confidentialité de Google.">Nous n'utilisons pas de cookies publicitaires ni d'analyse. Nous enregistrons votre choix de cookies localement dans votre navigateur (localStorage). Google Maps intégré peut déposer ses propres cookies — voir la politique de confidentialité de Google.</p>
+
+  <h2 data-en="&lt;span&gt;4.&lt;/span&gt; Who we share it with" data-fr="&lt;span&gt;4.&lt;/span&gt; Avec qui nous les partageons"><span>4.</span> Avec qui nous les partageons</h2>
+  <ul>
+    <li data-en="Formspree (form processing) — receives what you submit via our forms." data-fr="Formspree (traitement des formulaires) — reçoit ce que vous envoyez via nos formulaires.">Formspree (traitement des formulaires) — reçoit ce que vous envoyez via nos formulaires.</li>
+    <li data-en="Google Maps (embedded maps)." data-fr="Google Maps (cartes intégrées).">Google Maps (cartes intégrées).</li>
+    <li data-en="Brevo (email marketing) — stores newsletter subscribers and sends our emails." data-fr="Brevo (email marketing) — héberge les abonnés newsletter et envoie nos emails.">Brevo (email marketing) — héberge les abonnés newsletter et envoie nos emails.</li>
+    <li data-en="Our hosting provider (site delivery)." data-fr="Notre hébergeur (diffusion du site).">Notre hébergeur (diffusion du site).</li>
+  </ul>
+  <p data-en="We never sell your data." data-fr="Nous ne vendons jamais vos données.">Nous ne vendons jamais vos données.</p>
+
+  <h2 data-en="&lt;span&gt;5.&lt;/span&gt; How long we keep it" data-fr="&lt;span&gt;5.&lt;/span&gt; Durée de conservation"><span>5.</span> Durée de conservation</h2>
+  <p data-en="Contact messages: up to 24 months. Newsletter data: until you unsubscribe or ask for deletion." data-fr="Messages de contact : jusqu'à 24 mois. Données newsletter : jusqu'à votre désinscription ou demande de suppression.">Messages de contact : jusqu'à 24 mois. Données newsletter : jusqu'à votre désinscription ou demande de suppression.</p>
+
+  <h2 data-en="&lt;span&gt;6.&lt;/span&gt; Your rights" data-fr="&lt;span&gt;6.&lt;/span&gt; Vos droits"><span>6.</span> Vos droits</h2>
+  <p data-en="Under the Swiss nFADP and, where applicable, the EU GDPR, you can request access, rectification, deletion, or a copy of your data, and withdraw your consent at any time. Just email &lt;a href='mailto:contact@boosterstop.ch'&gt;contact@boosterstop.ch&lt;/a&gt;." data-fr="Selon la nLPD suisse et, le cas échéant, le RGPD européen, vous pouvez demander l'accès, la rectification, la suppression ou une copie de vos données, et retirer votre consentement à tout moment. Écrivez simplement à &lt;a href='mailto:contact@boosterstop.ch'&gt;contact@boosterstop.ch&lt;/a&gt;.">Selon la nLPD suisse et, le cas échéant, le RGPD européen, vous pouvez demander l'accès, la rectification, la suppression ou une copie de vos données, et retirer votre consentement à tout moment. Écrivez simplement à <a href="mailto:contact@boosterstop.ch">contact@boosterstop.ch</a>.</p>
+
+  <h2 data-en="&lt;span&gt;7.&lt;/span&gt; Contact" data-fr="&lt;span&gt;7.&lt;/span&gt; Contact"><span>7.</span> Contact</h2>
+  <p data-en="247 Distribution SNC — Geneva, Switzerland — &lt;a href='mailto:contact@boosterstop.ch'&gt;contact@boosterstop.ch&lt;/a&gt;" data-fr="247 Distribution SNC — Genève, Suisse — &lt;a href='mailto:contact@boosterstop.ch'&gt;contact@boosterstop.ch&lt;/a&gt;">247 Distribution SNC — Genève, Suisse — <a href="mailto:contact@boosterstop.ch">contact@boosterstop.ch</a></p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="/logo.png" alt="BoosterStop" style="height:22px;opacity:0.6;"></div>
+  <p>© 2020-2026 BoosterStop — 247 Distribution SNC</p>
+</footer>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav">
+  <a href="/fr/"><span class="m-icon">🏠</span><span data-en="Home" data-fr="Accueil">Accueil</span></a>
+  <a href="/fr/stock.html"><span class="m-icon">📦</span><span data-en="Stock" data-fr="Stock">Stock</span></a>
+  <a href="/fr/licences-geneve.html"><span class="m-icon">🃏</span><span data-en="TCG" data-fr="TCG">TCG</span></a>
+  <a href="/fr/newsletter.html"><span class="m-icon">🔔</span><span data-en="Newsletter" data-fr="Newsletter">Newsletter</span></a>
+  <a href="/fr/#partner"><span class="m-icon">🤝</span><span data-en="Partner" data-fr="Partenaire">Partenaire</span></a>
+  <a href="/fr/#contact"><span class="m-icon">✉️</span><span data-en="Contact" data-fr="Contact">Contact</span></a>
+</div>
+
+<script>
+let currentLang = 'fr';
+function setLang(lang){
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase()===lang));
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    const v = el.getAttribute('data-'+lang);
+    if(v) el.innerHTML = v;
+  });
+}
+</script>
+</body>
+</html>
