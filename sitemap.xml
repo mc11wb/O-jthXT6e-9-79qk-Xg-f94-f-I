@@ -1,23 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://boosterstop.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boosterstop.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com/"/>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://boosterstop.com/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boosterstop.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com/"/>
     <lastmod>2026-08-21</lastmod>
   </url>
   <url>
     <loc>https://boosterstop.com/licences-geneve.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boosterstop.com/licences-geneve.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/licences-geneve.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com/licences-geneve.html"/>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://boosterstop.com/fr/licences-geneve.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boosterstop.com/licences-geneve.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/licences-geneve.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com/licences-geneve.html"/>
     <lastmod>2026-08-21</lastmod>
   </url>
   <url>
     <loc>https://boosterstop.com/stock.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boosterstop.com/stock.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/stock.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com/stock.html"/>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://boosterstop.com/fr/stock.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boosterstop.com/stock.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/stock.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com/stock.html"/>
     <lastmod>2026-08-21</lastmod>
   </url>
   <url>
     <loc>https://boosterstop.com/newsletter.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boosterstop.com/newsletter.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/newsletter.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com/newsletter.html"/>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://boosterstop.com/fr/newsletter.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boosterstop.com/newsletter.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/newsletter.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com/newsletter.html"/>
     <lastmod>2026-08-21</lastmod>
   </url>
   <url>
     <loc>https://boosterstop.com/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boosterstop.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com/privacy.html"/>
+    <lastmod>2026-08-21</lastmod>
+  </url>
+  <url>
+    <loc>https://boosterstop.com/fr/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boosterstop.com/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com/privacy.html"/>
     <lastmod>2026-08-21</lastmod>
   </url>
 </urlset>
