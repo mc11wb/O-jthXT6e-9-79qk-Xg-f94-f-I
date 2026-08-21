@@ -80,7 +80,18 @@
   .machine-select-zone { max-width: 1200px; margin: 0 auto; padding: 28px 48px 0; }
   .zone-label { font-size: 11px; letter-spacing: 4px; color: var(--red); text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
   .zone-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--red); }
-  .stock-map-wrap { border: 1px solid var(--gray-mid); border-radius: var(--radius); overflow: hidden; height: 300px; position: relative; }
+  .machine-tabs { display: flex; gap: 2px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin-bottom: 0; }
+  .machine-tabs::-webkit-scrollbar { display: none; }
+  .machine-tab { flex: 1; min-width: 150px; background: var(--gray); border: 1px solid var(--gray-mid); border-bottom: none; color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 12.5px; letter-spacing: 0.5px; padding: 13px 16px; cursor: pointer; transition: all 0.2s; border-radius: var(--radius) var(--radius) 0 0; display: flex; align-items: center; gap: 9px; white-space: nowrap; text-align: left; }
+  .machine-tab:hover:not(.active) { color: var(--white); border-color: rgba(232,24,60,0.4); }
+  .machine-tab.active { background: rgba(232,24,60,0.08); border-color: var(--red); color: var(--white); font-weight: 400; }
+  .mt-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gray-mid); flex-shrink: 0; transition: all 0.2s; }
+  .machine-tab.active .mt-dot { background: var(--red); box-shadow: 0 0 8px rgba(232,24,60,0.7); }
+  .mt-label { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+  .mt-name { font-size: 12.5px; line-height: 1.25; }
+  .mt-sub { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); }
+  .machine-tab.active .mt-sub { color: var(--red); }
+  .stock-map-wrap { border: 1px solid var(--gray-mid); border-radius: 0 0 0 0; overflow: hidden; height: 300px; position: relative; }
   #stockMap { width: 100%; height: 100%; }
   .selected-machine-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: var(--gray); border: 1px solid var(--gray-mid); border-top: none; border-radius: 0 0 var(--radius) var(--radius); padding: 14px 20px; }
   .smc-left { display: flex; align-items: center; gap: 12px; }
@@ -202,6 +213,9 @@
     .country-tabs::after { content: '›'; position: sticky; right: 0; align-self: center; color: var(--text-muted); font-size: 18px; padding-left: 6px; background: linear-gradient(to right, transparent, var(--black) 40%); }
     .stats-bar { padding: 18px 20px 0; grid-template-columns: 1fr 1fr; }
     .machine-select-zone { padding: 20px 20px 0; }
+    .machine-tab { min-width: 132px; padding: 11px 12px; font-size: 11.5px; gap: 7px; }
+    .mt-name { font-size: 11.5px; }
+    .mt-sub { font-size: 9px; }
     .stock-map-wrap { height: 220px; }
     .machine-view { padding: 20px 20px 50px; }
     .slots { grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); }
@@ -262,6 +276,20 @@
 
   <div class="machine-select-zone">
     <div class="zone-label" data-en="Pick a machine" data-fr="Choisissez une machine">Pick a machine</div>
+    <div class="machine-tabs" id="machineTabs">
+      <button class="machine-tab active" onclick="selectMachine(0)">
+        <span class="mt-dot"></span>
+        <span class="mt-label"><span class="mt-name">La Poste de Rive</span><span class="mt-sub">Rive · 1204</span></span>
+      </button>
+      <button class="machine-tab" onclick="selectMachine(1)">
+        <span class="mt-dot"></span>
+        <span class="mt-label"><span class="mt-name">La Poste des Charmilles</span><span class="mt-sub">Charmilles · 1203</span></span>
+      </button>
+      <button class="machine-tab" onclick="selectMachine(2)">
+        <span class="mt-dot"></span>
+        <span class="mt-label"><span class="mt-name">La Poste du Petit-Lancy</span><span class="mt-sub">Petit-Lancy · 1213</span></span>
+      </button>
+    </div>
     <div class="stock-map-wrap"><div id="stockMap"></div></div>
     <div class="selected-machine-card" id="selectedMachineCard">
       <div class="smc-left">
@@ -271,7 +299,7 @@
           <div class="smc-addr" id="smcAddr">Rue du Vieux-Collège 3, 1204 Genève</div>
         </div>
       </div>
-      <span class="smc-hint" data-en="Tap a pin on the map to switch machine" data-fr="Touchez un point sur la carte pour changer de machine">Tap a pin on the map to switch machine</span>
+      <span class="smc-hint" data-en="Switch with the tabs above or tap a pin on the map" data-fr="Changez via les onglets ci-dessus ou touchez un point sur la carte">Switch with the tabs above or tap a pin on the map</span>
     </div>
   </div>
 
@@ -463,14 +491,22 @@ function markerIcon(active) {
 function updateMarkerStyles() {
   stockMarkers.forEach(function(mk, i) { mk.setIcon(markerIcon(i === currentMachine)); });
 }
-function selectMachine(i) {
+function updateMachineTabs() {
+  document.querySelectorAll('.machine-tab').forEach(function(t, i) {
+    t.classList.toggle('active', i === currentMachine);
+  });
+}
+function selectMachine(i, scroll) {
   currentMachine = i;
   document.getElementById('smcName').textContent = MACHINES[i].name;
   document.getElementById('smcAddr').textContent = MACHINES[i].addr;
+  updateMachineTabs();
   updateMarkerStyles();
   renderFloors();
-  const mv = document.getElementById('machineView');
-  if (mv) mv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  if (scroll !== false) {
+    const mv = document.getElementById('machineView');
+    if (mv) mv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 
 /* ---------- DATA ---------- */
@@ -658,6 +694,7 @@ document.querySelectorAll('.modal-overlay').forEach(function(ov) {
     currentMachine = wanted;
     document.getElementById('smcName').textContent = MACHINES[wanted].name;
     document.getElementById('smcAddr').textContent = MACHINES[wanted].addr;
+    updateMachineTabs();
   }
 })();
 loadAll();
