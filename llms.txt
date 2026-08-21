@@ -1,0 +1,53 @@
+# BoosterStop
+
+> BoosterStop est le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner (TCG). Exploité par 247 Distribution SNC (Genève, Suisse), il propose des boosters, displays et boîtes collector 100% scellés, issus exclusivement de distributeurs officiels, accessibles 24h/24 dans des lieux à fort passage. Trois machines sont actives à Genève (dans des filiales de La Poste Suisse), cinq autres emplacements genevois arrivent prochainement, et le réseau se déploie vers la Suisse romande, la France, la Belgique et les Émirats Arabes Unis.
+
+Le site est bilingue : les pages en anglais sont à la racine, les pages en français sous `/fr/`. Les deux versions sont reliées par des balises hreflang et ont un contenu équivalent.
+
+## Informations clés
+
+- **Entité juridique** : 247 Distribution SNC, Genève, Suisse
+- **Contact** : contact@boosterstop.ch
+- **Marchés** : Suisse (actif), Belgique (lancement imminent), Émirats Arabes Unis (lancement imminent), France (à l'étude)
+- **Licences proposées** : 23 licences dont Pokémon, One Piece, Magic: The Gathering (y compris les crossovers Universes Beyond), Disney Lorcana, Dragon Ball Super Fusion World, Riftbound: League of Legends, Gundam Card Game, Digimon, Naruto, Star Wars Unlimited, Union Arena, Cyberpunk TCG, Azuki TCG, Vibes TCG, Safir Cards, ainsi que des cartes de sport (football, NBA, NFL, NHL, F1)
+- **Langues des cartes** : français, anglais, japonais, chinois, allemand, espagnol, portugais, selon les sets
+- **Moyens de paiement** : espèces (monnaie rendue en pièces et billets), carte sans contact, smartphone
+- **Garantie produit** : tous les produits sont scellés d'usine et proviennent de distributeurs officiels. Aucun produit n'est pesé, fouillé, ouvert, trié ou rescellé.
+
+## Emplacements actifs (Genève, Suisse)
+
+- La Poste de Rive — Rue du Vieux-Collège 3, 1204 Genève
+- La Poste des Charmilles — Promenade de l'Europe 11, 1203 Genève
+- La Poste du Petit-Lancy — Rue des Bossons 88b, 1213 Petit-Lancy
+
+Les machines sont accessibles pendant les heures d'ouverture des filiales.
+
+## Pages principales (anglais)
+
+- [Accueil](https://boosterstop.com/) : présentation du réseau, carte des emplacements, fonctionnement, garanties d'authenticité, formulaire de contact et section partenariat pour les propriétaires d'espaces.
+- [Licences TCG à Genève](https://boosterstop.com/licences-geneve.html) : catalogue détaillé des 23 licences disponibles, avec pour chacune une description, ses éditions populaires, son niveau de rareté et un formulaire de demande.
+- [Stock en direct](https://boosterstop.com/stock.html) : inventaire en temps réel de chaque machine, rail par rail, avec prix et quantités restantes. Permet de demander un réassort ou de suggérer un nouveau produit.
+- [Expansion du réseau](https://boosterstop.com/expansion.html) : villes et quartiers où BoosterStop est actif ou prévu, en Suisse romande, France, Belgique et aux Émirats. Formulaire de demande de ville.
+- [Newsletter](https://boosterstop.com/newsletter.html) : inscription aux nouveautés et promotions, avec code de bienvenue -10%.
+- [Confidentialité et cookies](https://boosterstop.com/privacy.html) : politique de protection des données (nLPD suisse et RGPD).
+
+## Pages principales (français)
+
+- [Accueil](https://boosterstop.com/fr/)
+- [Licences TCG à Genève](https://boosterstop.com/fr/licences-geneve.html)
+- [Stock en direct](https://boosterstop.com/fr/stock.html)
+- [Expansion du réseau](https://boosterstop.com/fr/expansion.html)
+- [Newsletter](https://boosterstop.com/fr/newsletter.html)
+- [Confidentialité et cookies](https://boosterstop.com/fr/privacy.html)
+
+## Questions fréquentes
+
+- **Les produits sont-ils authentiques ?** Oui. Tout est scellé d'usine et provient de distributeurs officiels. Rien n'est pesé, fouillé, altéré ni trié.
+- **Où sont les machines ?** Actuellement à Genève, dans trois filiales de La Poste (Rive, Charmilles, Petit-Lancy). Cinq emplacements genevois supplémentaires arrivent prochainement.
+- **Peut-on vérifier le stock avant de se déplacer ?** Oui, la page Stock en direct affiche l'inventaire en temps réel de chaque machine.
+- **Comment payer ?** Espèces avec monnaie rendue en pièces et billets, ou paiement sans contact par carte et smartphone.
+- **Peut-on accueillir une machine ?** Oui. BoosterStop cherche des partenaires (centres commerciaux, gares, cinémas, lieux à fort passage). L'installation, le réassort et la maintenance sont entièrement pris en charge, sans investissement pour l'hôte.
+
+## Optionnel
+
+- [Sitemap XML](https://boosterstop.com/sitemap.xml) : les 12 URLs du site avec leurs annotations hreflang.
