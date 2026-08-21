@@ -3,260 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Live Stock — BoosterStop TCG Machines in Geneva</title>
-<meta name="description" content="Check real-time availability in BoosterStop's TCG vending machines across Geneva (Rive, Charmilles, Petit-Lancy). See which Pokémon, One Piece, Magic and other sealed products are in stock right now.">
+<title>Live Stock — BoosterStop | What's in every machine right now</title>
+<meta name="description" content="See in real time what's inside every BoosterStop TCG vending machine in Geneva: boosters, displays and collector boxes, with prices and remaining quantities.">
 <link rel="canonical" href="https://boosterstop.com/stock.html">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="BoosterStop">
-<meta property="og:title" content="Live Stock — BoosterStop TCG Machines in Geneva">
-<meta property="og:description" content="Real-time inventory of BoosterStop's TCG vending machines in Geneva.">
-<meta property="og:url" content="https://boosterstop.com/stock.html">
-<meta property="og:image" content="https://boosterstop.com/logo.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --black:#120F2A;--white:#f4f2ee;--yellow:#FFD000;
-  --gray:#1E1A3A;--gray-mid:#2e2a50;--text-muted:#8888aa;
-  --red:#E8183C;--green:#00e676;--radius:4px;
-}
-html{scroll-behavior:smooth;}
-body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;font-size:15px;min-height:100vh;background-image:radial-gradient(ellipse at 80% 10%,rgba(232,24,60,0.07) 0%,transparent 50%),radial-gradient(ellipse at 20% 80%,rgba(42,31,94,0.25) 0%,transparent 60%);}
-
-/* NAV */
-nav{display:flex;align-items:center;justify-content:space-between;padding:18px 48px;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(18,15,42,0.97);position:sticky;top:0;z-index:200;backdrop-filter:blur(12px);}
-.nav-logo img{height:26px;}
-.nav-actions{display:flex;align-items:center;gap:36px;}
-.nav-actions ul{list-style:none;display:flex;gap:36px;}
-.nav-actions ul a{color:var(--text-muted);text-decoration:none;font-size:13px;letter-spacing:0.5px;transition:color 0.2s;}
-.nav-actions ul a:hover{color:var(--white);}
-.nav-actions ul a.active{color:var(--red);}
-.nl-badge{display:inline-block;background:var(--yellow);color:var(--black);font-size:8px;font-weight:600;letter-spacing:0.5px;padding:1px 5px;border-radius:3px;margin-left:5px;vertical-align:middle;}
-.back-btn{color:var(--text-muted);text-decoration:none;font-size:12px;letter-spacing:1px;text-transform:uppercase;transition:color 0.2s;display:flex;align-items:center;gap:6px;}
-.back-btn:hover{color:var(--white);}
-.lang-switcher{display:flex;gap:4px;}
-.lang-btn{background:none;border:1px solid var(--gray-mid);color:var(--text-muted);font-family:'DM Sans';font-size:11px;letter-spacing:2px;padding:3px 10px;border-radius:2px;cursor:pointer;transition:all 0.2s;}
-.lang-btn.active{border-color:var(--red);color:var(--red);background:rgba(232,24,60,0.06);}
-
-/* HEADER */
-.page-header{padding:36px 48px 20px;max-width:1280px;margin:0 auto;}
-.section-label{font-size:10px;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
-.section-label::before{content:'';display:inline-block;width:20px;height:1px;background:var(--red);}
-.page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,60px);line-height:1;color:var(--white);margin-bottom:10px;}
-.page-title span{color:var(--red);}
-.live-meta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
-.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:livePulse 2s infinite;flex-shrink:0;}
-@keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(0,230,118,0.5);}50%{box-shadow:0 0 0 5px rgba(0,230,118,0);}}
-.live-text{font-size:12px;color:var(--text-muted);}
-.refresh-btn{background:none;border:1px solid var(--red);color:var(--red);font-family:'DM Sans';font-size:11px;letter-spacing:1px;padding:5px 14px;border-radius:2px;cursor:pointer;transition:all 0.2s;}
-.refresh-btn:hover{background:rgba(232,24,60,0.1);}
-
-/* COUNTRY TABS */
-.country-tabs-wrap{padding:0 48px;max-width:1280px;margin:20px auto 0;position:relative;}
-.country-tabs{display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
-.country-tabs::-webkit-scrollbar{display:none;}
-@media(max-width:900px){
-  .country-tabs-wrap::after{content:'›';position:absolute;top:50%;right:24px;transform:translateY(-50%);font-size:22px;color:var(--red);pointer-events:none;z-index:3;animation:swipeHint 1.4s ease-in-out infinite;}
-  .country-tabs-wrap::before{content:'';position:absolute;top:0;right:20px;bottom:0;width:50px;background:linear-gradient(90deg,transparent,var(--black));pointer-events:none;z-index:2;}
-  .country-tab{padding:10px 16px;font-size:11px;}
-  .country-tab:first-child{min-width:62%;}
-}
-@keyframes swipeHint{0%,100%{transform:translateY(-50%) translateX(0);opacity:0.5;}50%{transform:translateY(-50%) translateX(4px);opacity:1;}}
-.country-tab{flex-shrink:0;white-space:nowrap;}
-.country-tab{background:var(--gray);border:1px solid var(--gray-mid);border-bottom:none;color:var(--text-muted);font-family:'DM Sans';font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:10px 20px;cursor:pointer;transition:all 0.2s;border-radius:2px 2px 0 0;display:flex;align-items:center;gap:8px;user-select:none;}
-.country-tab.active{background:var(--black);border-color:var(--red);color:var(--white);border-bottom:1px solid var(--black);position:relative;z-index:1;}
-.country-tab:hover:not(.active){color:var(--white);}
-.tab-flag{font-size:17px;}
-.tab-badge{font-size:9px;padding:1px 6px;border-radius:2px;letter-spacing:1px;}
-.tab-badge.live{background:rgba(255,208,0,0.12);color:var(--yellow);border:1px solid rgba(255,208,0,0.3);}
-.tab-badge.soon{background:rgba(255,255,255,0.04);color:var(--text-muted);border:1px solid var(--gray-mid);}
-
-/* PANELS */
-.country-panel{display:none;border-top:1px solid var(--red);}
-.country-panel.active{display:block;}
-
-/* STATS */
-.stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:1280px;margin:0 auto;padding:0 48px;}
-.stat-card{background:var(--gray);padding:18px 22px;border-bottom:2px solid rgba(232,24,60,0.3);}
-.stat-value{font-family:'Bebas Neue',sans-serif;font-size:34px;color:var(--white);line-height:1;}
-.stat-value.green{color:var(--green);}
-.stat-value.yellow{color:var(--yellow);}
-.stat-value.red{color:var(--red);}
-.stat-label{font-size:10px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-top:3px;}
-
-/* MACHINE SELECTOR */
-.machine-selector{max-width:1280px;margin:28px auto 0;padding:0 48px;}
-.machine-select-label{font-size:10px;letter-spacing:3px;color:var(--text-muted);text-transform:uppercase;margin-bottom:10px;}
-
-
-/* STOCK MAP */
-.stock-map-wrapper{position:relative;border:1px solid var(--gray-mid);border-radius:var(--radius);overflow:hidden;height:300px;margin-bottom:0;}
-#stock-map{width:100%;height:100%;}
-.selected-machine-card{display:flex;align-items:center;gap:14px;background:var(--gray);border:1px solid var(--red);border-top:none;border-radius:0 0 var(--radius) var(--radius);padding:16px 20px;}
-.sel-dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(0,230,118,0.6);animation:livePulse 2s infinite;flex-shrink:0;}
-.sel-name{font-size:14px;font-weight:500;color:var(--white);margin-bottom:2px;}
-.sel-addr{font-size:12px;color:var(--text-muted);}
-/* Google popup dark style */
-.gm-style .gm-style-iw-c{background:#1E1A3A!important;border:1px solid var(--red)!important;border-radius:4px!important;padding:0!important;box-shadow:0 4px 24px rgba(0,0,0,0.8)!important;top:0!important;}
-.gm-style .gm-style-iw-d{overflow:hidden!important;}
-.gm-style-iw-chr{display:none!important;}
-.gm-style .gm-ui-hover-effect img{filter:invert(1)!important;}
-.sm-popup{padding:12px 14px;min-width:180px;font-family:'DM Sans',sans-serif;}
-.sm-popup-name{font-size:13px;font-weight:500;color:#f4f2ee;margin-bottom:3px;}
-.sm-popup-addr{font-size:11px;color:#888;margin-bottom:8px;}
-.sm-popup-btn{display:block;background:rgba(232,24,60,0.1);border:1px solid rgba(232,24,60,0.4);color:#E8183C;font-size:10px;letter-spacing:1px;text-transform:uppercase;padding:5px 10px;border-radius:2px;text-align:center;cursor:pointer;}
-.sm-popup-btn:hover{background:rgba(232,24,60,0.2);}
-
-/* MAIN VIEW */
-.machine-view{max-width:1280px;margin:20px auto 0;padding:0 48px 60px;}
-.view-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:12px;}
-.view-title{font-size:11px;letter-spacing:3px;color:var(--text-muted);text-transform:uppercase;}
-.new-product-btn{background:var(--red);color:var(--white);border:none;font-family:'DM Sans';font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:9px 18px;border-radius:2px;cursor:pointer;transition:opacity 0.2s;}
-.new-product-btn:hover{opacity:0.85;}
-
-/* FLOORS — horizontal cells */
-.floor-block{margin-bottom:24px;}
-.floor-header{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--yellow);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
-.floor-header::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(255,208,0,0.2),transparent);}
-.floor-row{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;}
-.floor-row.few{grid-template-columns:repeat(4,1fr);}
-.floor-row.few .slot{aspect-ratio:1/1;}
-
-/* SLOT CELL */
-.slot{background:var(--gray);border:1px solid var(--gray-mid);border-radius:var(--radius);padding:8px 6px;cursor:pointer;transition:all 0.15s;display:flex;flex-direction:column;align-items:center;gap:5px;position:relative;aspect-ratio:3/4;}
-.slot:hover{border-color:var(--red);background:rgba(232,24,60,0.04);transform:translateY(-2px);}
-.slot.active{border-color:var(--yellow);background:rgba(255,208,0,0.06);}
-.slot.empty{opacity:0.55;}
-.slot.uncfg{border-style:dashed;opacity:0.5;}
-.slot-num{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--text-muted);line-height:1;letter-spacing:1px;}
-.slot.stocked .slot-num,.slot.active .slot-num{color:var(--white);}
-.slot-dot{position:absolute;top:6px;right:6px;width:6px;height:6px;border-radius:50%;}
-.slot-dot.green{background:var(--green);}
-.slot-dot.yellow{background:var(--yellow);}
-.slot-dot.red{background:var(--red);}
-.slot-dot.gray{background:var(--gray-mid);}
-.slot-img{width:100%;flex:1;min-height:0;object-fit:contain;border-radius:3px;}
-.slot-bar{width:100%;height:3px;background:var(--gray-mid);border-radius:2px;overflow:hidden;margin-top:auto;}
-.slot-fill{height:100%;border-radius:2px;transition:width 0.4s;}
-.slot-fill.high{background:var(--green);}
-.slot-fill.mid{background:var(--yellow);}
-.slot-fill.low{background:var(--red);}
-.slot-count{font-size:9px;color:var(--text-muted);}
-
-
-/* COMING SOON */
-.coming-soon-country{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 48px;text-align:center;gap:16px;max-width:1280px;margin:0 auto;}
-.coming-soon-flag{font-size:52px;}
-.coming-soon-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:4px;color:var(--white);}
-.coming-soon-sub{font-size:14px;color:var(--text-muted);max-width:380px;line-height:1.7;}
-.notify-form{display:flex;gap:8px;margin-top:8px;}
-.notify-input{background:var(--gray);border:1px solid var(--gray-mid);border-radius:2px;color:var(--white);font-family:'DM Sans';font-size:13px;padding:10px 16px;outline:none;width:240px;transition:border-color 0.2s;}
-.notify-input:focus{border-color:var(--red);}
-.notify-btn{background:var(--red);color:var(--white);border:none;font-family:'DM Sans';font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:10px 18px;border-radius:2px;cursor:pointer;white-space:nowrap;}
-
-/* MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
-.modal-overlay.open{display:flex;}
-.modal{background:#1a1630;border:1px solid var(--red);border-radius:var(--radius);padding:28px;width:420px;max-width:92vw;}
-.modal-title{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:var(--white);margin-bottom:4px;}
-.modal-sub{font-size:12px;color:var(--text-muted);margin-bottom:20px;}
-.modal-label{font-size:10px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;margin-bottom:6px;}
-.modal-input{width:100%;background:var(--gray);border:1px solid var(--gray-mid);border-radius:2px;color:var(--white);font-family:'DM Sans';font-size:14px;padding:11px 14px;outline:none;margin-bottom:14px;transition:border-color 0.2s;}
-.modal-input:focus{border-color:var(--red);}
-.modal-actions{display:flex;gap:8px;justify-content:flex-end;}
-.modal-cancel{background:none;border:1px solid var(--gray-mid);color:var(--text-muted);font-family:'DM Sans';font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:9px 18px;border-radius:2px;cursor:pointer;}
-.modal-submit{background:var(--red);color:var(--white);border:none;font-family:'DM Sans';font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:9px 18px;border-radius:2px;cursor:pointer;}
-
-
-/* SLOT DETAIL MODAL */
-.slot-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:450;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);padding:20px;}
-.slot-modal-overlay.open{display:flex;}
-.slot-modal{background:#1a1630;border:1px solid var(--red);border-radius:var(--radius);padding:24px;width:380px;max-width:92vw;position:relative;}
-.slot-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;color:var(--text-muted);font-size:22px;cursor:pointer;line-height:1;}
-.slot-modal-close:hover{color:var(--white);}
-.slot-modal-img{width:100%;max-width:200px;height:auto;max-height:240px;border-radius:8px;object-fit:contain;background:var(--black);border:1px solid var(--gray-mid);margin:0 auto 18px;display:block;padding:10px;}
-.slot-modal-slot{font-size:10px;letter-spacing:2px;color:var(--red);text-transform:uppercase;margin-bottom:4px;}
-.slot-modal-name{font-size:20px;font-weight:500;color:var(--white);margin-bottom:6px;line-height:1.2;}
-.slot-modal-meta{font-size:12px;color:var(--text-muted);margin-bottom:18px;}
-.slot-modal-stockrow{display:flex;align-items:baseline;gap:8px;margin-bottom:14px;}
-.slot-modal-stock-big{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;color:var(--white);}
-.slot-modal-stock-label{font-size:9px;letter-spacing:2px;color:var(--text-muted);text-transform:uppercase;}
-.slot-modal-bar{height:5px;background:var(--gray-mid);border-radius:3px;overflow:hidden;margin-bottom:18px;}
-.slot-modal-fill{height:100%;border-radius:3px;}
-.slot-modal-fill.high{background:var(--green);}
-.slot-modal-fill.mid{background:var(--yellow);}
-.slot-modal-fill.low{background:var(--red);}
-.slot-modal-restock{width:100%;background:none;border:1px solid var(--red);color:var(--red);font-family:'DM Sans';font-size:12px;letter-spacing:1.5px;text-transform:uppercase;padding:11px;border-radius:2px;cursor:pointer;transition:all 0.2s;}
-.slot-modal-restock:hover{background:rgba(232,24,60,0.1);}
-
-
-/* MOBILE BOTTOM NAV */
-.mob-nav{display:none;}
-@media(max-width:900px){
-  .mob-nav{
-    display:flex;position:fixed;bottom:0;left:0;right:0;z-index:400;
-    background:rgba(18,15,42,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-    border-top:1px solid rgba(232,24,60,0.4);padding-top:8px;padding-bottom:env(safe-area-inset-bottom,8px);
-    justify-content:space-around;align-items:flex-start;
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --black: #120F2A; --white: #f4f2ee; --yellow: #FFD000;
+    --yellow-dim: rgba(255,208,0,0.12); --gray: #1E1A3A;
+    --gray-mid: #2e2a50; --text-muted: #8888aa; --radius: 4px;
+    --red: #E8183C; --red-dim: rgba(232,24,60,0.12);
+    --green: #00e676;
   }
-}
-.mob-nav a{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text-muted);text-decoration:none;font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:4px 8px;flex:1;text-align:center;transition:color 0.2s;}
-.mob-nav a:hover,.mob-nav a.active{color:var(--red);}
-.mob-nav .m-icon{font-size:19px;line-height:1;}
-.mob-nav a{position:relative;}
-.mob-nav a .m-badge{position:absolute;top:0;left:50%;margin-left:6px;background:var(--yellow);color:var(--black);font-size:7px;font-weight:700;letter-spacing:0.2px;padding:1px 4px;border-radius:3px;line-height:1.3;}
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.6; font-size: 16px; overflow-x: hidden; background-image: radial-gradient(ellipse at 80% 10%, rgba(232,24,60,0.08) 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(42,31,94,0.3) 0%, transparent 60%); }
 
-/* STATE */
-.state-msg{text-align:center;padding:56px 24px;color:var(--text-muted);}
-.state-msg .icon{font-size:36px;margin-bottom:12px;}
-.state-msg h3{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);margin-bottom:6px;letter-spacing:2px;}
-.state-msg p{font-size:13px;}
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(18,15,42,0.92); backdrop-filter: blur(12px); }
+  .nav-logo { display: flex; align-items: center; text-decoration: none; }
+  .nav-logo img { height: 28px; width: auto; }
+  .nav-actions { display: flex; align-items: center; gap: 36px; }
+  nav ul { list-style: none; display: flex; gap: 36px; }
+  nav ul a { color: var(--text-muted); text-decoration: none; font-size: 13px; letter-spacing: 0.5px; transition: color 0.2s; }
+  nav ul a:hover { color: var(--white); }
+  nav ul a.active { color: var(--red); }
+  .nl-badge{display:inline-block;background:var(--yellow);color:var(--black);font-size:8px;font-weight:600;letter-spacing:0.5px;padding:1px 5px;border-radius:3px;margin-left:5px;vertical-align:middle;}
+  .lang-switcher { display: flex; gap: 4px; }
+  .lang-btn { background: none; border: 1px solid var(--gray-mid); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 2px; padding: 4px 10px; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
+  .lang-btn.active { border-color: var(--red); color: var(--red); background: rgba(232,24,60,0.06); }
+  .lang-btn:hover { border-color: var(--red); color: var(--red); }
 
-@media(max-width:900px){
-  nav{padding:14px 20px;}
-  .nav-logo img{height:22px;}
-  .page-header,.country-tabs-wrap,.machine-selector,.machine-view{padding-left:20px;padding-right:20px;}
-  .page-header{padding-top:24px;}
-  .stats-bar{padding:0 20px;grid-template-columns:1fr 1fr;}
-  .stat-card{padding:14px 16px;}
-  .stat-value{font-size:30px;}
-  .floor-row{grid-template-columns:repeat(5,1fr);}
-  .floor-row.few{grid-template-columns:repeat(4,1fr);}
-  .floor-row.few .slot{aspect-ratio:1/1;}
-  .stock-map-wrapper{height:240px;}
-  .view-header{flex-direction:column;align-items:stretch;gap:10px;}
-  .new-product-btn{width:100%;text-align:center;}
-  .coming-soon-country{padding:56px 20px;}
-  .notify-form{flex-direction:column;}
-  .notify-input{width:100%;}
-  body{padding-bottom:64px;}
-  .back-btn{display:none;}
-  .nav-actions ul{display:none;}
-  .slot-modal{padding:20px;}
-}
-@media(max-width:400px){
-  .floor-row{grid-template-columns:repeat(4,1fr);}
-}
-@media(max-width:560px){
-  .slot{padding:7px 5px;gap:4px;}
-  .slot-num{font-size:15px;}
-  .slot-count{font-size:8px;}
-}
+  /* PAGE HEAD */
+  .stock-head { max-width: 1100px; margin: 0 auto; padding: 130px 48px 20px; }
+  .page-label { font-size: 11px; letter-spacing: 4px; color: var(--red); text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 12px; }
+  .page-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--red); }
+  .stock-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px,6vw,58px); line-height: 1; color: var(--white); }
+  .stock-title span { color: var(--red); }
+  .stock-sub { color: var(--text-muted); font-size: 14.5px; margin-top: 14px; max-width: 560px; line-height: 1.75; }
+  .stock-meta { display: flex; align-items: center; gap: 10px; margin-top: 18px; font-size: 12px; color: var(--text-muted); }
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px rgba(0,230,118,0.7); animation: livePulse 2s ease-in-out infinite; }
+  @keyframes livePulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  /* MACHINE TABS */
+  .stock-wrap { max-width: 1100px; margin: 0 auto; padding: 30px 48px 110px; }
+  .machine-tabs { display: flex; gap: 2px; flex-wrap: wrap; }
+  .machine-tab { background: var(--gray); border: 1px solid var(--gray-mid); border-bottom: none; color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; padding: 12px 22px; cursor: pointer; transition: all 0.2s; border-radius: 2px 2px 0 0; }
+  .machine-tab:hover { color: var(--white); }
+  .machine-tab.active { background: var(--black); border-color: var(--red); color: var(--red); border-bottom: 1px solid var(--black); position: relative; z-index: 1; }
+
+  /* PRODUCT GRID */
+  .stock-panel { border: 1px solid var(--gray-mid); border-radius: 0 var(--radius) var(--radius) var(--radius); padding: 26px; min-height: 300px; }
+  .machine-info { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--gray-mid); }
+  .machine-name { font-size: 15px; color: var(--white); font-weight: 400; }
+  .machine-addr { font-size: 12.5px; color: var(--text-muted); margin-top: 2px; }
+  .refresh-btn { background: none; border: 1px solid var(--gray-mid); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 16px; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
+  .refresh-btn:hover { border-color: var(--red); color: var(--red); }
+  .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+  .product-card { background: var(--gray); border: 1px solid var(--gray-mid); border-radius: var(--radius); padding: 16px; display: flex; flex-direction: column; gap: 8px; transition: border-color 0.2s, transform 0.15s; }
+  .product-card:hover { border-color: rgba(232,24,60,0.5); transform: translateY(-2px); }
+  .product-img { width: 100%; height: 110px; object-fit: contain; background: rgba(0,0,0,0.25); border-radius: 2px; }
+  .product-name { font-size: 13px; color: var(--white); line-height: 1.4; min-height: 36px; }
+  .product-row { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+  .product-price { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: var(--yellow); letter-spacing: 1px; }
+  .product-qty { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; padding: 3px 9px; border-radius: 2px; }
+  .qty-ok { background: rgba(0,230,118,0.1); color: var(--green); border: 1px solid rgba(0,230,118,0.3); }
+  .qty-low { background: rgba(255,208,0,0.1); color: var(--yellow); border: 1px solid rgba(255,208,0,0.3); }
+  .qty-out { background: rgba(232,24,60,0.1); color: var(--red); border: 1px solid rgba(232,24,60,0.3); }
+  .stock-state { text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: 14px; }
+  .stock-state .spin { display: inline-block; width: 26px; height: 26px; border: 2px solid var(--gray-mid); border-top-color: var(--red); border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 14px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* MOBILE BOTTOM NAV */
+  .mob-nav{display:none;}
+  @media (max-width:768px){
+    nav{padding:18px 24px;}
+    nav ul{display:none;}
+    body{padding-bottom:68px;}
+    .stock-head{padding:110px 20px 10px;}
+    .stock-wrap{padding:24px 20px 90px;}
+    .stock-panel{padding:16px;}
+    .machine-tab{font-size:10px;padding:9px 12px;letter-spacing:0.5px;}
+    .product-grid{grid-template-columns:repeat(auto-fill, minmax(150px, 1fr));gap:10px;}
+    .mob-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:9000;background:rgba(18,15,42,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(232,24,60,0.4);padding-top:8px;padding-bottom:env(safe-area-inset-bottom, 8px);justify-content:space-around;align-items:flex-start;}
+  }
+  .mob-nav a{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text-muted);text-decoration:none;font-size:9px;letter-spacing:0.5px;text-transform:uppercase;padding:4px 2px;flex:1;text-align:center;transition:color 0.2s;position:relative;}
+  .mob-nav a.active, .mob-nav a:hover{color:var(--red);}
+  .mob-nav .m-icon{font-size:20px;line-height:1;display:block;}
+  .mob-nav a .m-badge{position:absolute;top:0;left:50%;margin-left:6px;background:var(--yellow);color:var(--black);font-size:7px;font-weight:700;letter-spacing:0.2px;padding:1px 4px;border-radius:3px;line-height:1.3;}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="/" class="nav-logo"><img src="logo.png" alt="BoosterStop"></a>
   <div class="nav-actions">
     <ul>
       <li><a href="/#where" data-en="Locations" data-fr="Emplacements">Locations</a></li>
+      <li><a href="/licences-geneve.html" data-en="🃏 Licenses" data-fr="🃏 Licences">🃏 Licenses</a></li>
       <li><a href="/#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
-      <li><a href="/newsletter.html" data-en="🔔 Newsletter <span class='nl-badge'>-10%</span>" data-fr="🔔 Newsletter <span class='nl-badge'>-10%</span>">🔔 Newsletter <span class="nl-badge">-10%</span></a></li>
-      <li><a href="/stock.html" class="active" style="color:var(--red);font-weight:500;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Live Stock</a></li>
+      <li><a href="/newsletter.html">🔔 Newsletter <span class="nl-badge">-10%</span></a></li>
+      <li><a href="/stock.html" class="active" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Live Stock</a></li>
     </ul>
     <div class="lang-switcher">
       <button class="lang-btn active" onclick="setLang('en')">EN</button>
@@ -265,539 +116,145 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:18px 4
   </div>
 </nav>
 
-<div class="page-header">
-  <div class="section-label" data-en="Live inventory" data-fr="Stock en temps réel">Live inventory</div>
-  <h1 class="page-title" data-en="Machine <span>Stock</span>" data-fr="Stock <span>Machines</span>">Machine <span>Stock</span></h1>
-  <div class="live-meta">
-    <span class="live-dot"></span>
-    <span class="live-text" id="lastUpdate">Connecting...</span>
-    <button class="refresh-btn" onclick="loadAll()" data-en="↻ Refresh" data-fr="↻ Actualiser">↻ Refresh</button>
-  </div>
+<!-- PAGE HEAD -->
+<div class="stock-head">
+  <div class="page-label" data-en="Live stock" data-fr="Stock en direct">Live stock</div>
+  <h1 class="stock-title" data-en="What's inside. <span>Right now.</span>" data-fr="Ce qu'il y a dedans. <span>En ce moment.</span>">What's inside. <span>Right now.</span></h1>
+  <p class="stock-sub" data-en="Connected directly to our machines — every product, price and remaining quantity, updated in real time. What you see here is what's physically in the slots." data-fr="Connecté directement à nos machines — chaque produit, prix et quantité restante, mis à jour en temps réel. Ce que vous voyez ici est ce qui se trouve physiquement dans les rails.">Connected directly to our machines — every product, price and remaining quantity, updated in real time. What you see here is what's physically in the slots.</p>
+  <div class="stock-meta"><span class="live-dot"></span><span data-en="Live connection to machines" data-fr="Connexion en direct aux machines">Live connection to machines</span></div>
 </div>
 
-<div class="country-tabs-wrap">
-  <div class="country-tabs">
-    <div class="country-tab active" onclick="switchCountry('ch')">
-      <span class="tab-flag">🇨🇭</span><span data-en="Switzerland" data-fr="Suisse">Switzerland</span>
-      <span class="tab-badge live" data-en="Live" data-fr="Actif">Live</span>
-    </div>
-    <div class="country-tab" onclick="switchCountry('be')">
-      <span class="tab-flag">🇧🇪</span><span data-en="Belgium" data-fr="Belgique">Belgium</span>
-      <span class="tab-badge soon" data-en="Soon" data-fr="Bientôt">Soon</span>
-    </div>
-    <div class="country-tab" onclick="switchCountry('uae')">
-      <span class="tab-flag">🇦🇪</span><span data-en="UAE" data-fr="Émirats">UAE</span>
-      <span class="tab-badge soon" data-en="Soon" data-fr="Bientôt">Soon</span>
-    </div>
-  </div>
-</div>
-
-<!-- SWITZERLAND -->
-<div class="country-panel active" id="panel-ch">
-  <div class="stats-bar">
-    <div class="stat-card"><div class="stat-value" id="stat-machines">3</div><div class="stat-label" data-en="Machines" data-fr="Machines">Machines</div></div>
-    <div class="stat-card"><div class="stat-value green" id="stat-instock">—</div><div class="stat-label" data-en="In stock" data-fr="En stock">In stock</div></div>
-    <div class="stat-card"><div class="stat-value yellow" id="stat-low">—</div><div class="stat-label" data-en="Low stock" data-fr="Stock faible">Low stock</div></div>
-    <div class="stat-card"><div class="stat-value red" id="stat-empty">—</div><div class="stat-label" data-en="Empty slots" data-fr="Slots vides">Empty slots</div></div>
-  </div>
-
-  <div class="machine-selector">
-    <div class="machine-select-label" data-en="Select a machine on the map" data-fr="Sélectionnez une machine sur la carte">Select a machine on the map</div>
-    <div class="stock-map-wrapper"><div id="stock-map"></div></div>
-    <div class="selected-machine-card" id="selectedMachineCard">
-      <div class="sel-dot"></div>
+<!-- STOCK -->
+<div class="stock-wrap">
+  <div class="machine-tabs" id="machineTabs"></div>
+  <div class="stock-panel">
+    <div class="machine-info" id="machineInfo" style="display:none;">
       <div>
-        <div class="sel-name" id="selMachineName">La Poste de Rive</div>
-        <div class="sel-addr" id="selMachineAddr">Rue du Vieux-Collège 3, 1204 Genève</div>
+        <div class="machine-name" id="machineName"></div>
+        <div class="machine-addr" id="machineAddr"></div>
       </div>
+      <button class="refresh-btn" onclick="loadStock(currentMachine)" data-en="↻ Refresh" data-fr="↻ Actualiser">↻ Refresh</button>
     </div>
-  </div>
-
-  <div class="machine-view">
-    <div class="view-header" id="slotsByFloor">
-      <div class="view-title" data-en="Slots by floor" data-fr="Slots par étage">Slots by floor</div>
-      <button class="new-product-btn" onclick="openNewProductModal()">
-        <span data-en="Request new product" data-fr="Demander un nouveau produit">Request new product</span>
-      </button>
-    </div>
-    <div id="floorsContainer">
-      <div class="state-msg"><div class="icon">⏳</div><h3 data-en="Loading..." data-fr="Chargement...">Loading...</h3></div>
+    <div id="stockContent">
+      <div class="stock-state"><span class="spin"></span><br><span data-en="Connecting to machines…" data-fr="Connexion aux machines…">Connecting to machines…</span></div>
     </div>
   </div>
 </div>
-
-<!-- BELGIUM -->
-<div class="country-panel" id="panel-be">
-  <div class="coming-soon-country">
-    <div class="coming-soon-flag">🇧🇪</div>
-    <div class="coming-soon-title" data-en="Belgium — Coming Soon" data-fr="Belgique — Bientôt">Belgium — Coming Soon</div>
-    <div class="coming-soon-sub" data-en="We're actively scouting locations across Belgium." data-fr="Nous recherchons activement des emplacements en Belgique.">We're actively scouting locations across Belgium.</div>
-    <div class="notify-form">
-      <input class="notify-input" type="email" id="notifyBE" placeholder="your@email.com">
-      <button class="notify-btn" onclick="notifyMe('be')" data-en="Notify me" data-fr="Me notifier">Notify me</button>
-    </div>
-  </div>
-</div>
-
-<!-- UAE -->
-<div class="country-panel" id="panel-uae">
-  <div class="coming-soon-country">
-    <div class="coming-soon-flag">🇦🇪</div>
-    <div class="coming-soon-title" data-en="UAE — Coming Soon" data-fr="Émirats — Bientôt">UAE — Coming Soon</div>
-    <div class="coming-soon-sub" data-en="Dubai and Abu Dhabi are on the roadmap." data-fr="Dubaï et Abu Dhabi sont dans la feuille de route.">Dubai and Abu Dhabi are on the roadmap.</div>
-    <div class="notify-form">
-      <input class="notify-input" type="email" id="notifyUAE" placeholder="your@email.com">
-      <button class="notify-btn" onclick="notifyMe('uae')" data-en="Notify me" data-fr="Me notifier">Notify me</button>
-    </div>
-  </div>
-</div>
-
-
-<!-- FOOTER -->
-<footer style="border-top:1px solid var(--gray-mid);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;max-width:1280px;margin:40px auto 0;flex-wrap:wrap;gap:12px;">
-  <img src="logo.png" alt="BoosterStop" style="height:20px;opacity:0.6;">
-  <div style="display:flex;align-items:center;gap:16px;">
-    <a href="/privacy.html" style="font-size:12px;color:#666;text-decoration:none;letter-spacing:0.5px;" data-en="Privacy &amp; Cookies" data-fr="Confidentialité">Privacy &amp; Cookies</a>
-    <span style="font-size:12px;color:#444;letter-spacing:0.5px;">© 2020-2026 BoosterStop — 247 Distribution SNC</span>
-  </div>
-</footer>
 
 <!-- MOBILE BOTTOM NAV -->
-<style>@media(max-width:900px){footer{padding:24px 20px 90px!important;flex-direction:column;text-align:center;}}</style>
-<div class="mob-nav">
+<div class="mob-nav" id="mobNav">
   <a href="/"><span class="m-icon">🏠</span><span data-en="Home" data-fr="Accueil">Home</span></a>
   <a href="/stock.html" class="active"><span class="m-icon">📦</span><span data-en="Stock" data-fr="Stock">Stock</span></a>
+  <a href="/licences-geneve.html"><span class="m-icon">🃏</span><span data-en="TCG" data-fr="TCG">TCG</span></a>
   <a href="/newsletter.html"><span class="m-icon">🔔</span><span class="m-badge">-10%</span><span data-en="Newsletter" data-fr="Newsletter">Newsletter</span></a>
   <a href="/#partner"><span class="m-icon">🤝</span><span data-en="Partner" data-fr="Partenaire">Partner</span></a>
   <a href="/#contact"><span class="m-icon">✉️</span><span data-en="Contact" data-fr="Contact">Contact</span></a>
 </div>
 
-
-<!-- SLOT DETAIL MODAL -->
-<div class="slot-modal-overlay" id="slotModal">
-  <div class="slot-modal">
-    <button class="slot-modal-close" onclick="closeSlotModal()">&times;</button>
-    <img class="slot-modal-img" id="smImg" src="" alt="" style="display:none;">
-    <div class="slot-modal-name" id="smName">—</div>
-    <div class="slot-modal-meta" id="smMeta">—</div>
-    <div class="slot-modal-stockrow">
-      <span class="slot-modal-stock-big" id="smStock">—</span>
-      <span class="slot-modal-stock-label" data-en="in stock" data-fr="en stock">in stock</span>
-    </div>
-    <div class="slot-modal-bar"><div class="slot-modal-fill" id="smFill"></div></div>
-    <button class="slot-modal-restock" id="smRestock" data-en="↺ Request restock" data-fr="↺ Demander réassort">↺ Request restock</button>
-  </div>
-</div>
-
-<!-- MODAL -->
-<div class="modal-overlay" id="restockModal">
-  <div class="modal">
-    <div class="modal-title" id="modalTitle" data-en="Request Restock" data-fr="Demande de Réassort">Request Restock</div>
-    <div class="modal-sub" id="modalSub"></div>
-    <div class="modal-label" data-en="Collection / product name" data-fr="Nom de la collection / produit">Collection / product name</div>
-    <input class="modal-input" id="modalInput" type="text" placeholder="e.g. Pokémon Stellar Crown Boosters">
-    <div class="modal-label" data-en="Your email" data-fr="Votre email">Your email</div>
-    <input class="modal-input" id="modalEmail" type="email" placeholder="you@example.com">
-    <div class="modal-label" data-en="Notes (optional)" data-fr="Notes (optionnel)">Notes (optional)</div>
-    <textarea class="modal-input" id="modalNotes" rows="2" style="resize:vertical" placeholder="Quantity, urgency..."></textarea>
-    <div class="modal-success" id="modalSuccess" style="display:none;background:rgba(0,230,118,0.1);border:1px solid rgba(0,230,118,0.3);color:var(--green);font-size:13px;padding:12px 14px;border-radius:2px;margin-bottom:14px;" data-en="✓ Request sent — thank you!" data-fr="✓ Demande envoyée — merci !">✓ Request sent — thank you!</div>
-    <div class="modal-actions">
-      <button class="modal-cancel" onclick="closeModal()" data-en="Cancel" data-fr="Annuler">Cancel</button>
-      <button class="modal-submit" id="modalSubmitBtn" onclick="submitRestock()" data-en="Send →" data-fr="Envoyer →">Send →</button>
-    </div>
-  </div>
-</div>
-
 <script>
-const WORKER = 'https://boosterstop-stock.cold-water-7039.workers.dev';
-const RESTOCK_EMAIL = 'contact@boosterstop.ch';
-const FORMSPREE = {
-  restock_ch: 'https://formspree.io/f/mvzjrldj',
-  notify_be:  'https://formspree.io/f/xdarzbye',
-  notify_uae: 'https://formspree.io/f/mqevbnwb'
-};
+  const WORKER_URL = 'https://boosterstop-stock.cold-water-7039.workers.dev';
 
-const MACHINES = [
-  { name: 'La Poste de Rive', short: 'Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', lat: 46.2008, lng: 6.1520 },
-  { name: 'La Poste des Charmilles', short: 'Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", lat: 46.2112, lng: 6.1268 },
-  { name: 'La Poste du Petit-Lancy', short: 'Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', lat: 46.1872, lng: 6.1214 }
-];
-
-// Floor structure (display_code based)
-const FLOORS = [
-  { label: 'Floor 1', slots: ['10','11','12','13','14','15','16','17','18','19'] },
-  { label: 'Floor 2', slots: ['20','21','22','23','24','25','26','27','28','29'] },
-  { label: 'Floor 3', slots: ['30','31','32','33','34','35','36','37','38','39'] },
-  { label: 'Floor 4', slots: ['40','41','42','43','44','45','46','47','48','49'] },
-  { label: 'Floor 5', slots: ['50','51','52','53'] },
-  { label: 'Floor 6', slots: ['60','61','62'] },
-];
-
-let currentLang = 'en';
-let currentMachine = 0;
-let activeSlot = null;
-let slotsBy = {};   // display_code -> slot object
-let modalContext = null;
-
-function setLang(lang) {
-  currentLang = lang;
-  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
-  document.documentElement.lang = lang;
-  document.querySelectorAll('[data-en]').forEach(el => {
-    const val = el.getAttribute('data-' + lang);
-    if (!val) return;
-    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = val;
-    else el.innerHTML = val;
-  });
-}
-
-function switchCountry(c) {
-  document.querySelectorAll('.country-tab').forEach((t,i) => t.classList.toggle('active', ['ch','be','uae'][i] === c));
-  document.querySelectorAll('.country-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('panel-' + c).classList.add('active');
-}
-
-let stockMap = null, stockMarkers = [], stockInfo = null;
-
-function initStockMap() {
-  const darkStyles = [
-    { elementType: 'geometry', stylers: [{ color: '#111111' }] },
-    { elementType: 'labels', stylers: [{ visibility: 'off' }] },
-    { featureType: 'administrative.locality', elementType: 'labels.text', stylers: [{ visibility: 'on' }] },
-    { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#777777' }] },
-    { featureType: 'administrative.locality', elementType: 'labels.text.stroke', stylers: [{ color: '#111111' }] },
-    { featureType: 'road.arterial', elementType: 'geometry', stylers: [{ color: '#1e1e1e' }] },
-    { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#252525' }] },
-    { featureType: 'road.local', elementType: 'geometry', stylers: [{ color: '#181818' }] },
-    { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0a0a0a' }] },
-    { featureType: 'poi', stylers: [{ visibility: 'off' }] },
-    { featureType: 'transit', stylers: [{ visibility: 'off' }] },
-    { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#111111' }] },
-    { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#2a2a2a' }] }
+  const MACHINES = [
+    { id: 0, name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève' },
+    { id: 1, name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève" },
+    { id: 2, name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy' }
   ];
-  stockMap = new google.maps.Map(document.getElementById('stock-map'), {
-    zoom: 12, center: { lat: 46.1955, lng: 6.1430 },
-    disableDefaultUI: true, gestureHandling: 'none', zoomControl: false, draggable: false, scrollwheel: false, disableDoubleClickZoom: true, styles: darkStyles
-  });
-  MACHINES.forEach((m, i) => {
-    const marker = new google.maps.Marker({
-      position: { lat: m.lat, lng: m.lng }, map: stockMap,
-      icon: markerIcon(i === currentMachine)
+
+  let currentLang = 'en';
+  let currentMachine = 0;
+  let allProducts = null;
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase() === lang));
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (!val) return;
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') { el.placeholder = val; }
+      else { el.innerHTML = val; }
     });
-    marker.addListener('click', () => selectMachine(i, true));
-    stockMarkers[i] = marker;
-  });
-  updateMarkerStyles();
-}
-
-function markerIcon(active) {
-  return {
-    path: google.maps.SymbolPath.CIRCLE,
-    scale: active ? 11 : 8,
-    fillColor: active ? '#E8183C' : '#FFD000',
-    fillOpacity: 1,
-    strokeColor: '#ffffff',
-    strokeWeight: active ? 2 : 1.5
-  };
-}
-
-function updateMarkerStyles() {
-  stockMarkers.forEach((mk, i) => mk && mk.setIcon(markerIcon(i === currentMachine)));
-}
-
-function selectMachine(i, scroll) {
-  currentMachine = i;
-  activeSlot = null;
-  closeSlotModal();
-  // update selected card
-  document.getElementById('selMachineName').textContent = MACHINES[i].name;
-  document.getElementById('selMachineAddr').textContent = MACHINES[i].addr;
-  updateMarkerStyles();
-  if (stockMap) stockMap.panTo({ lat: MACHINES[i].lat, lng: MACHINES[i].lng });
-  loadAll();
-  // scroll to the selected machine card / floors
-  if (scroll !== false) {
-    setTimeout(() => {
-      const target = document.getElementById('selectedMachineCard');
-      if (target) {
-        const y = target.getBoundingClientRect().top + window.scrollY - 70;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-      }
-    }, 250);
   }
-}
 
-// Google Maps callback
-window.initStockMap = initStockMap;
-
-async function loadAll() {
-  const el = document.getElementById('lastUpdate');
-  el.textContent = currentLang === 'fr' ? 'Actualisation...' : 'Refreshing...';
-  try {
-    const res = await fetch(WORKER + '/stock?machine=' + currentMachine);
-    const data = await res.json();
-    if (!data.ok) throw new Error(data.error || 'Worker error');
-    slotsBy = {};
-    (data.slots || []).forEach(s => { slotsBy[s.slot_num] = s; });
-    document.getElementById('stat-instock').textContent = data.in_stock ?? '—';
-    document.getElementById('stat-low').textContent = data.low_stock ?? '—';
-    document.getElementById('stat-empty').textContent = data.empty ?? '—';
-    el.textContent = (currentLang==='fr'?'Mis à jour : ':'Updated: ') + new Date().toLocaleTimeString();
-  } catch(e) {
-    el.textContent = (currentLang==='fr'?'Erreur : ':'Error: ') + e.message;
-    slotsBy = {};
-  }
-  renderFloors();
-}
-
-function renderFloors() {
-  const container = document.getElementById('floorsContainer');
-  const hasData = Object.keys(slotsBy).length > 0;
-
-  let html = '';
-  FLOORS.forEach(floor => {
-    const isFew = floor.slots.length < 10;
-    const colStyle = isFew ? ` style="grid-template-columns:repeat(${floor.slots.length},1fr)"` : '';
-    html += `<div class="floor-block"><div class="floor-header">${floor.label}</div><div class="floor-row${isFew?' few':''}"${colStyle}>`;
-    floor.slots.forEach(sn => {
-      const s = slotsBy[sn] || null;
-      if (s) {
-        const stock = s.stock||0, vol = s.volume||1;
-        const pct = Math.min(100, Math.round(stock/vol*100));
-        const bc = pct>50?'high':pct>20?'mid':'low';
-        const configured = s.configured;
-        const dotClass = !configured?'gray':stock===0?'red':pct<30?'yellow':'green';
-        const cls = !configured?'uncfg':stock===0?'empty':'stocked';
-        const hasImg = configured && s.image && s.image !== 'https://eu.zhongdacloud.com/';
-        const visual = hasImg
-          ? `<img class="slot-img" src="${s.image}" alt="" loading="lazy">`
-          : `<div class="slot-num">${sn}</div>`;
-        html += `<div class="slot ${cls} ${activeSlot===sn?'active':''}" onclick="selectSlot('${sn}')">
-          <div class="slot-dot ${dotClass}"></div>
-          ${visual}
-          <div class="slot-bar"><div class="slot-fill ${bc}" style="width:${pct}%"></div></div>
-          <div class="slot-count">${stock}/${vol}</div>
-        </div>`;
-      } else {
-        html += `<div class="slot uncfg" onclick="selectSlot('${sn}')">
-          <div class="slot-dot gray"></div>
-          <div class="slot-num">${sn}</div>
-          <div class="slot-bar"><div class="slot-fill low" style="width:0%"></div></div>
-          <div class="slot-count">—</div>
-        </div>`;
-      }
+  function buildTabs() {
+    const tabs = document.getElementById('machineTabs');
+    tabs.innerHTML = '';
+    MACHINES.forEach((m, i) => {
+      const b = document.createElement('button');
+      b.className = 'machine-tab' + (i === currentMachine ? ' active' : '');
+      b.textContent = '📍 ' + m.name;
+      b.onclick = () => { currentMachine = i; buildTabs(); loadStock(i); };
+      tabs.appendChild(b);
     });
-    html += `</div></div>`;
-  });
-
-  container.innerHTML = html;
-}
-
-function selectSlot(sn) {
-  activeSlot = sn;
-  renderFloors();
-  const s = slotsBy[sn] || null;
-
-  const img = document.getElementById('smImg');
-  if (s && s.configured && s.image && s.image !== 'https://eu.zhongdacloud.com/') {
-    img.src = s.image; img.style.display = 'block'; img.style.margin = '0 auto 18px';
-  } else { img.style.display = 'none'; }
-
-  const stock = s ? (s.stock||0) : 0;
-  const vol = s ? (s.volume||1) : 1;
-  const pct = Math.min(100, Math.round(stock/vol*100));
-  const bc = pct>50?'high':pct>20?'mid':'low';
-
-  if (s && s.configured) {
-    document.getElementById('smName').textContent = s.goods_name || 'Product';
-    document.getElementById('smMeta').textContent = (s.price?'CHF '+parseFloat(s.price).toFixed(2):'—') + ' · ' + (currentLang==='fr'?'Capacité ':'Capacity ') + vol;
-  } else {
-    document.getElementById('smName').textContent = currentLang==='fr'?'Non configuré':'Not configured';
-    document.getElementById('smMeta').textContent = s ? ((currentLang==='fr'?'Capacité ':'Capacity ')+vol) : '—';
-  }
-  document.getElementById('smStock').textContent = stock;
-  const fill = document.getElementById('smFill');
-  fill.style.width = pct + '%';
-  fill.className = 'slot-modal-fill ' + bc;
-  document.getElementById('smRestock').onclick = () => { closeSlotModal(); openRestockModal(sn); };
-
-  document.getElementById('slotModal').classList.add('open');
-}
-function closeSlotModal() {
-  document.getElementById('slotModal').classList.remove('open');
-  activeSlot = null;
-  renderFloors();
-}
-
-function openRestockModal(sn) {
-  const s = slotsBy[sn] || null;
-  const name = s&&s.configured ? (s.goods_name||'Product') : (currentLang==='fr'?'Non configuré':'Not configured');
-  modalContext = { slot: sn, machine: MACHINES[currentMachine], name, type:'restock' };
-  document.getElementById('modalTitle').textContent = currentLang==='fr'?'Demande de Réassort':'Request Restock';
-  document.getElementById('modalSub').textContent = 'Slot '+sn+' — '+name+' @ '+MACHINES[currentMachine].name;
-  document.getElementById('modalInput').value = s&&s.configured ? (s.goods_name||'') : '';
-  document.getElementById('modalEmail').value = '';
-  document.getElementById('modalNotes').value = '';
-  resetModalState();
-  document.getElementById('restockModal').classList.add('open');
-}
-
-function openNewProductModal() {
-  modalContext = { slot: null, machine: MACHINES[currentMachine], name:'New product', type:'new' };
-  document.getElementById('modalTitle').textContent = currentLang==='fr'?'Nouveau Produit':'New Product';
-  document.getElementById('modalSub').textContent = MACHINES[currentMachine].name + (currentLang==='fr'?' — Nouveau produit':' — New product request');
-  document.getElementById('modalInput').value = '';
-  document.getElementById('modalEmail').value = '';
-  document.getElementById('modalNotes').value = '';
-  resetModalState();
-  document.getElementById('restockModal').classList.add('open');
-}
-
-function resetModalState() {
-  document.getElementById('modalSuccess').style.display = 'none';
-  const btn = document.getElementById('modalSubmitBtn');
-  btn.disabled = false;
-  btn.textContent = currentLang==='fr'?'Envoyer →':'Send →';
-}
-
-function closeModal() { document.getElementById('restockModal').classList.remove('open'); }
-document.getElementById('restockModal').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
-document.getElementById('slotModal').addEventListener('click', function(e){ if(e.target===this) closeSlotModal(); });
-
-async function submitRestock() {
-  if (!modalContext) return;
-  const product = document.getElementById('modalInput').value.trim();
-  const email = document.getElementById('modalEmail').value.trim();
-  const notes = document.getElementById('modalNotes').value.trim();
-  const m = modalContext.machine;
-  const isNew = modalContext.type === 'new';
-
-  if (!email) {
-    document.getElementById('modalEmail').focus();
-    document.getElementById('modalEmail').style.borderColor = 'var(--red)';
-    return;
   }
 
-  const btn = document.getElementById('modalSubmitBtn');
-  btn.disabled = true;
-  btn.textContent = currentLang==='fr'?'Envoi...':'Sending...';
+  function qtyClass(q) {
+    if (q <= 0) return 'qty-out';
+    if (q <= 3) return 'qty-low';
+    return 'qty-ok';
+  }
+  function qtyLabel(q) {
+    if (q <= 0) return currentLang === 'fr' ? 'Épuisé' : 'Sold out';
+    if (q <= 3) return currentLang === 'fr' ? q + ' restant(s)' : q + ' left';
+    return currentLang === 'fr' ? q + ' en stock' : q + ' in stock';
+  }
 
-  const payload = {
-    type: isNew ? 'New product request' : 'Restock request',
-    machine: m.name,
-    machine_address: m.addr,
-    slot: modalContext.slot || 'N/A',
-    product: product || '—',
-    email: email,
-    notes: notes || '—',
-    _subject: '[BoosterStop] ' + (isNew?'New product':'Restock') + ' — ' + m.name + (modalContext.slot?' — Slot '+modalContext.slot:'')
-  };
-
-  try {
-    const res = await fetch(FORMSPREE.restock_ch, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    if (res.ok) {
-      document.getElementById('modalSuccess').style.display = 'block';
-      btn.style.display = 'none';
-      setTimeout(closeModal, 1800);
-    } else {
-      btn.disabled = false;
-      btn.textContent = currentLang==='fr'?'Réessayer':'Try again';
+  function renderProducts(products) {
+    const content = document.getElementById('stockContent');
+    if (!products || products.length === 0) {
+      content.innerHTML = '<div class="stock-state">' + (currentLang === 'fr' ? 'Aucun produit à afficher pour cette machine pour le moment.' : 'No products to display for this machine right now.') + '</div>';
+      return;
     }
-  } catch(e) {
-    btn.disabled = false;
-    btn.textContent = currentLang==='fr'?'Réessayer':'Try again';
-  }
-}
-
-async function notifyMe(country) {
-  const input = document.getElementById('notify'+country.toUpperCase());
-  if (!input||!input.value) { input.style.borderColor='var(--red)'; return; }
-  const endpoint = country==='be' ? FORMSPREE.notify_be : FORMSPREE.notify_uae;
-  const btn = input.nextElementSibling;
-  const orig = btn.textContent;
-  btn.disabled = true;
-  btn.textContent = currentLang==='fr'?'Envoi...':'Sending...';
-  try {
-    const res = await fetch(endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({
-        email: input.value,
-        country: country.toUpperCase(),
-        _subject: '[BoosterStop] Launch notification — ' + country.toUpperCase()
-      })
+    const grid = document.createElement('div');
+    grid.className = 'product-grid';
+    products.forEach(p => {
+      const name = p.name || p.goods_name || p.goodsName || p.title || '—';
+      const price = p.price || p.goods_price || p.sale_price || null;
+      const qty = parseInt(p.stock ?? p.qty ?? p.quantity ?? p.num ?? 0, 10) || 0;
+      const img = p.image || p.img || p.goods_image || p.pic || '';
+      const card = document.createElement('div');
+      card.className = 'product-card';
+      card.innerHTML =
+        (img ? '<img class="product-img" src="' + img + '" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '') +
+        '<div class="product-name">' + name + '</div>' +
+        '<div class="product-row">' +
+          (price !== null ? '<span class="product-price">CHF ' + price + '</span>' : '<span></span>') +
+          '<span class="product-qty ' + qtyClass(qty) + '">' + qtyLabel(qty) + '</span>' +
+        '</div>';
+      grid.appendChild(card);
     });
-    if (res.ok) {
-      input.value = '';
-      btn.textContent = currentLang==='fr'?'✓ Inscrit !':'✓ Subscribed!';
-      setTimeout(()=>{ btn.textContent = orig; btn.disabled = false; }, 2500);
-    } else {
-      btn.textContent = currentLang==='fr'?'Réessayer':'Try again';
-      btn.disabled = false;
-    }
-  } catch(e) {
-    btn.textContent = currentLang==='fr'?'Réessayer':'Try again';
-    btn.disabled = false;
+    content.innerHTML = '';
+    content.appendChild(grid);
   }
-}
 
-// INIT
-(function() {
-  const p = new URLSearchParams(window.location.search).get('machine');
-  if (p !== null && MACHINES[parseInt(p)]) currentMachine = parseInt(p);
-  document.getElementById('selMachineName').textContent = MACHINES[currentMachine].name;
-  document.getElementById('selMachineAddr').textContent = MACHINES[currentMachine].addr;
-})();
-loadAll();
-setInterval(loadAll, 5 * 60 * 1000);
+  async function loadStock(machineIndex) {
+    const m = MACHINES[machineIndex];
+    document.getElementById('machineInfo').style.display = 'flex';
+    document.getElementById('machineName').textContent = '📍 ' + m.name;
+    document.getElementById('machineAddr').textContent = m.addr;
+    const content = document.getElementById('stockContent');
+    content.innerHTML = '<div class="stock-state"><span class="spin"></span><br>' + (currentLang === 'fr' ? 'Chargement du stock…' : 'Loading stock…') + '</div>';
+    try {
+      const res = await fetch(WORKER_URL + '/stock');
+      const data = await res.json();
+      if (!data.ok) throw new Error(data.error || 'API error');
+      allProducts = data.products || [];
+      renderProducts(allProducts);
+    } catch (err) {
+      content.innerHTML = '<div class="stock-state">' + (currentLang === 'fr'
+        ? '⚠️ Impossible de charger le stock en direct pour le moment. Réessayez dans quelques minutes.'
+        : '⚠️ Unable to load live stock right now. Please try again in a few minutes.') + '</div>';
+    }
+  }
+
+  // Deep-link support: /stock.html?machine=N
+  const params = new URLSearchParams(window.location.search);
+  const wanted = parseInt(params.get('machine'), 10);
+  if (!isNaN(wanted) && wanted >= 0 && wanted < MACHINES.length) currentMachine = wanted;
+
+  buildTabs();
+  loadStock(currentMachine);
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-uxCBr3OvNOAgHTklOsATNImLuPrmn0g&callback=initStockMap"></script>
 
-<style>
-/* COOKIE / RGPD BANNER */
-.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:9500;display:none;max-width:720px;margin:0 auto;background:rgba(18,15,42,0.98);border:1px solid var(--gray-mid);border-top:2px solid var(--red);border-radius:8px;padding:18px 22px;box-shadow:0 12px 48px rgba(0,0,0,0.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);align-items:center;gap:18px;}
-.cookie-banner.show{display:flex;}
-.cookie-text{flex:1;font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.6;color:var(--text-muted);}
-.cookie-text strong{color:var(--white);font-weight:500;}
-.cookie-actions{display:flex;gap:8px;flex-shrink:0;}
-.cookie-btn{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:10px 18px;border-radius:3px;cursor:pointer;border:1px solid var(--gray-mid);transition:all 0.2s;white-space:nowrap;}
-.cookie-btn.decline{background:none;color:var(--text-muted);}
-.cookie-btn.decline:hover{color:var(--white);border-color:var(--text-muted);}
-.cookie-btn.accept{background:var(--yellow);color:var(--black);border-color:var(--yellow);font-weight:600;}
-.cookie-btn.accept:hover{opacity:0.9;}
-@media(max-width:900px){
-  .cookie-banner{flex-direction:column;align-items:stretch;left:12px;right:12px;bottom:calc(68px + env(safe-area-inset-bottom,0px) + 8px);padding:16px 18px;gap:14px;}
-  .cookie-actions{gap:8px;}
-  .cookie-btn{flex:1;padding:11px;}
-}
-</style>
-<!-- COOKIE / RGPD BANNER -->
-<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite">
-  <div class="cookie-text" data-en="We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. <a href='/privacy.html' style='color:var(--red);'>Learn more</a>." data-fr="Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. <a href='/privacy.html' style='color:var(--red);'>En savoir plus</a>."><strong>🍪</strong> We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. <a href="/privacy.html" style="color:var(--red);">Learn more</a>.</div>
-  <div class="cookie-actions">
-    <button class="cookie-btn decline" onclick="setCookieConsent(false)" data-en="Essential only" data-fr="Essentiels">Essential only</button>
-    <button class="cookie-btn accept" onclick="setCookieConsent(true)" data-en="Accept all" data-fr="Tout accepter">Accept all</button>
-  </div>
-</div>
-<script>
-(function(){
-  try{
-    if(!localStorage.getItem('bs_cookie_consent')){
-      var b=document.getElementById('cookieBanner'); if(b) b.classList.add('show');
-    }
-  }catch(e){ var b=document.getElementById('cookieBanner'); if(b) b.classList.add('show'); }
-})();
-function setCookieConsent(accepted){
-  try{
-    localStorage.setItem('bs_cookie_consent', accepted?'accepted':'essential');
-    localStorage.setItem('bs_cookie_ts', new Date().toISOString());
-  }catch(e){}
-  var b=document.getElementById('cookieBanner'); if(b) b.classList.remove('show');
-}
-</script>
 </body>
 </html>
