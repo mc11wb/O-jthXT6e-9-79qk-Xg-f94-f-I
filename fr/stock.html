@@ -18,7 +18,10 @@
 <meta property="og:image" content="https://boosterstop.com/logo.png">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@300;400;500&amp;display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet"></noscript>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -229,7 +232,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="/fr/" class="nav-logo"><img src="/logo.png" alt="BoosterStop"></a>
+  <a href="/fr/" class="nav-logo"><img src="/logo.png" alt="BoosterStop" width="225" height="28" fetchpriority="high"></a>
   <div class="nav-actions">
     <ul>
       <li><a href="/fr/#where" data-en="Locations" data-fr="Emplacements">Emplacements</a></li>
@@ -344,7 +347,7 @@
 
 <!-- FOOTER -->
 <footer style="border-top:1px solid var(--gray-mid);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;">
-  <div><img src="/logo.png" alt="BoosterStop" style="height:20px;opacity:0.6;"></div>
+  <div><img src="/logo.png" alt="BoosterStop" width="161" height="20" loading="lazy" style="height:20px;opacity:0.6;"></div>
   <div style="display:flex;align-items:center;gap:16px;">
     <a href="/fr/privacy.html" style="font-size:12px;color:#666;text-decoration:none;letter-spacing:0.5px;" data-en="Privacy &amp; Cookies" data-fr="Confidentialité">Confidentialité</a>
     <p style="font-size:12px;color:#444;letter-spacing:0.5px;">© 2020-2026 BoosterStop — 247 Distribution SNC</p>
@@ -366,7 +369,7 @@
 <div class="modal-overlay" id="slotModal">
   <div class="modal">
     <button class="modal-close" onclick="closeSlotModal()">✕</button>
-    <img class="sm-img" id="smImg" src="" alt="">
+    <img class="sm-img" id="smImg" src="" alt="" width="300" height="150" loading="lazy">
     <div class="sm-name" id="smName">—</div>
     <div class="sm-meta" id="smMeta">—</div>
     <div class="sm-stockline"><span data-en="Remaining stock" data-fr="Stock restant">Stock restant</span><b id="smStock">—</b></div>
@@ -566,7 +569,7 @@ function renderFloors() {
       const name = s.configured ? (s.goods_name || '—') : (currentLang === 'fr' ? 'Rail non configuré' : 'Slot not configured');
       html += `<div class="slot" onclick="selectSlot(${s.slot_num})">
         <div class="slot-top"><span class="slot-num">${String(s.slot_num).padStart(2, '0')}</span><span class="slot-dot ${state}"></span></div>
-        ${hasImg ? `<img class="slot-img" src="${s.image}" alt="" loading="lazy" onerror="this.style.display='none'">` : `<div class="slot-img ph">🃏</div>`}
+        ${hasImg ? `<img class="slot-img" src="${s.image}" alt="" width="120" height="72" loading="lazy" decoding="async" onerror="this.style.display='none'">` : `<div class="slot-img ph">🃏</div>`}
         <div class="slot-name ${s.configured ? '' : 'muted'}">${name}</div>
         ${s.configured ? `<div class="slot-bar"><i class="${state}" style="width:${pct}%"></i></div>
         <div class="slot-foot"><span class="slot-count"><b>${stock}</b>/${vol}</span>${s.price ? `<span class="slot-price">CHF ${s.price}</span>` : ''}</div>` : ''}
@@ -721,7 +724,7 @@ setInterval(loadAll, 5 * 60 * 1000);
 }
 </style>
 <!-- COOKIE / RGPD BANNER -->
-<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite">
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
   <div class="cookie-text" data-en="We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. &lt;a href='/fr/privacy.html' style='color:var(--red);'&gt;Learn more&lt;/a&gt;." data-fr="Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. &lt;a href='/fr/privacy.html' style='color:var(--red);'&gt;En savoir plus&lt;/a&gt;.">Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. <a href="/fr/privacy.html" style="color:var(--red);">En savoir plus</a>.</div>
   <div class="cookie-actions">
     <button class="cookie-btn decline" onclick="setCookieConsent(false)" data-en="Essential only" data-fr="Essentiels">Essentiels</button>
