@@ -26,8 +26,12 @@
 <meta name="twitter:description" content="Sealed TCG boosters from official distributors, 24/7 in Geneva. Pokémon, One Piece, Magic & more.">
 <meta name="twitter:image" content="https://boosterstop.com/logo.png">
 <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preload" as="image" href="/front%20transparent.png" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -70,7 +74,7 @@
   .tag:hover { border-color: var(--red); color: var(--red); background: rgba(232,24,60,0.06); transform: translateY(-2px); }
   .hero-right { position: relative; display: flex; align-items: center; justify-content: center; height: 100%; }
   .hero-machine-glow { position: absolute; width: 70%; height: 50%; background: radial-gradient(circle, rgba(232,24,60,0.25) 0%, rgba(42,31,94,0.2) 50%, transparent 70%); border-radius: 50%; filter: blur(50px); pointer-events: none; z-index: 0; }
-  .hero-machine-img { position: relative; z-index: 1; width: 100%; max-width: 480px; height: auto; object-fit: contain; filter: drop-shadow(0 30px 80px rgba(0,0,0,0.9)); animation: floatMachine 6s ease-in-out infinite; }
+  .hero-machine-img { position: relative; z-index: 1; width: 100%; max-width: 312px; height: auto; object-fit: contain; filter: drop-shadow(0 30px 80px rgba(0,0,0,0.9)); animation: floatMachine 6s ease-in-out infinite; }
   .hero-machine-img.mobile-img { display: none; }
   @keyframes floatMachine { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
   .hero-scroll { position: absolute; bottom: 40px; left: 48px; font-size: 11px; letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase; display: flex; align-items: center; gap: 12px; grid-column: 1/-1; }
@@ -254,7 +258,7 @@
     .tag { font-size: 10px; padding: 5px 12px; letter-spacing: 1px; }
     .hero-right { display: flex; margin-top: 32px; }
     .hero-machine-img.desktop-img { display: none; }
-    .hero-machine-img.mobile-img { display: block; max-width: 80vw; margin: 0 auto; }
+    .hero-machine-img.mobile-img { display: block; max-width: 52vw; margin: 0 auto; }
     .booster-anim { bottom: 15%; left: 40%; }
     .countries-banner { padding: 20px 24px; gap: 20px; flex-direction: column; align-items: flex-start; }
     .countries-list { gap: 16px; }
@@ -331,7 +335,7 @@
     justify-content: center;
   }
   .booster-anim img {
-    width: clamp(62px, 8.5vw, 95px);
+    width: clamp(40px, 5.5vw, 62px);
     opacity: 0;
     filter: drop-shadow(0 8px 40px rgba(232,24,60,0.7));
   }
@@ -361,7 +365,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo"><img src="logo.png" alt="BoosterStop"></a>
+  <a href="#" class="nav-logo"><img src="/logo.png" alt="BoosterStop" width="225" height="28" fetchpriority="high"></a>
   <div class="nav-right">
     <ul>
       <li><a href="#where" data-en="Locations" data-fr="Emplacements">Locations</a></li>
@@ -383,7 +387,7 @@
   <div class="hero-left">
     <div class="hero-eyebrow" data-en="TCG Vending Machine Network" data-fr="Réseau de Distributeurs TCG">TCG Vending Machine Network</div>
     <div class="hero-logo">
-      <img src="logo.png" alt="BoosterStop" style="height: clamp(40px, 6vw, 90px); width: auto;">
+      <img src="/logo.png" alt="BoosterStop" width="724" height="90" fetchpriority="high" style="height: clamp(40px, 6vw, 90px); width: auto;">
     </div>
     <p class="hero-body" data-en="The first vending machine network dedicated to Trading Card Games.<br>Boosters, displays, collector boxes — available 24/7, right where you are." data-fr="Le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner.<br>Boosters, displays, boîtes collector — disponibles 24h/24, là où vous êtes.">The first vending machine network dedicated to Trading Card Games.<br>Boosters, displays, collector boxes — available 24/7, right where you are.</p>
     <div class="hero-tags">
@@ -401,10 +405,10 @@
   <div class="hero-right">
   <span id="machine" style="position:absolute;top:50%;left:0;width:1px;height:1px;"></span>
     <div class="hero-machine-glow"></div>
-    <img class="hero-machine-img desktop-img" src="front transparent.png" alt="BoosterStop Machine">
-    <img class="hero-machine-img mobile-img" src="front transparent.png" alt="BoosterStop Machine">
+    <img class="hero-machine-img desktop-img" src="/front%20transparent.png" alt="BoosterStop Machine" width="1431" height="1869" fetchpriority="high" decoding="async">
+    <img class="hero-machine-img mobile-img" src="/front%20transparent.png" alt="BoosterStop Machine" width="1431" height="1869" fetchpriority="high" decoding="async">
     <div class="booster-anim" id="boosterAnim">
-      <img src="Booster.png" alt="Booster">
+      <img src="/Booster.png" alt="Booster" width="400" height="600" loading="lazy" decoding="async">
     </div>
   </div>
   <div class="hero-scroll" data-en="Scroll" data-fr="Scroll">Scroll</div>
@@ -741,7 +745,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><img src="logo.png" alt="BoosterStop" style="height: 22px; width: auto; opacity: 0.6;"></div>
+  <div class="footer-logo"><img src="/logo.png" alt="BoosterStop" width="177" height="22" loading="lazy" style="height: 22px; width: auto; opacity: 0.6;"></div>
   <div style="display:flex;align-items:center;gap:16px;">
     <a href="/stock.html" style="font-size:11px;color:var(--red);text-decoration:none;letter-spacing:1px;border:1px solid rgba(232,24,60,0.4);padding:5px 12px;border-radius:2px;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Live Stock</a>
     <a href="/privacy.html" style="font-size:12px;color:#666;text-decoration:none;letter-spacing:0.5px;" data-en="Privacy &amp; Cookies" data-fr="Confidentialité">Privacy &amp; Cookies</a>
@@ -1054,7 +1058,7 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 </style>
 <!-- COOKIE / RGPD BANNER -->
-<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite">
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
   <div class="cookie-text" data-en="We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. <a href='/privacy.html' style='color:var(--red);'>Learn more</a>." data-fr="Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. <a href='/privacy.html' style='color:var(--red);'>En savoir plus</a>."><strong>🍪</strong> We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. <a href="/privacy.html" style="color:var(--red);">Learn more</a>.</div>
   <div class="cookie-actions">
     <button class="cookie-btn decline" onclick="setCookieConsent(false)" data-en="Essential only" data-fr="Essentiels">Essential only</button>
