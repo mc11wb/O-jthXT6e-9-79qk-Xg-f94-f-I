@@ -6,6 +6,9 @@
 <title>Newsletter — BoosterStop | New drops & exclusive promos</title>
 <meta name="description" content="Join the BoosterStop newsletter: get a 10% welcome code plus early access to new TCG drops and exclusive promos. Pick the games you care about — Pokémon, One Piece, Magic and more.">
 <link rel="canonical" href="https://boosterstop.com/newsletter.html">
+<link rel="alternate" hreflang="en" href="https://boosterstop.com/newsletter.html">
+<link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/newsletter.html">
+<link rel="alternate" hreflang="x-default" href="https://boosterstop.com/newsletter.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
 <meta property="og:title" content="BoosterStop Newsletter — 10% welcome code">
@@ -39,6 +42,7 @@ nav ul a.active{color:var(--red);}
 .lang-btn{background:none;border:1px solid var(--gray-mid);color:var(--text-muted);font-family:'DM Sans';font-size:11px;letter-spacing:2px;padding:4px 10px;border-radius:2px;cursor:pointer;transition:all 0.2s;}
 .lang-btn.active{border-color:var(--red);color:var(--red);background:rgba(232,24,60,0.06);}
 .lang-btn:hover{border-color:var(--red);color:var(--red);}
+.lang-switcher a{text-decoration:none;display:inline-block;}
 
 /* HERO */
 .nl-hero{max-width:760px;margin:0 auto;padding:130px 48px 24px;text-align:center;}
@@ -154,8 +158,8 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;}
       <li><a href="/stock.html" style="color:var(--red);font-weight:500;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Live Stock</a></li>
     </ul>
     <div class="lang-switcher">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+      <a class="lang-btn active" href="/newsletter.html">EN</a>
+      <a class="lang-btn" href="/fr/newsletter.html">FR</a>
     </div>
   </div>
 </nav>
