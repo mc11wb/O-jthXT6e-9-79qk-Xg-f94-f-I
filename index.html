@@ -7,6 +7,9 @@
 <meta name="description" content="BoosterStop is the first vending-machine network for Trading Card Games. 100% sealed boosters, displays & collector boxes from official distributors, in French, English, Japanese, Chinese and more — live 24/7 in Geneva. Pokémon, One Piece, Magic, Lorcana, Yu-Gi-Oh! and more.">
 <meta name="keywords" content="TCG vending machine, Geneva, Pokémon boosters Geneva, Japanese Pokémon cards Geneva, Chinese Pokémon cards, One Piece card game, Magic the Gathering, Disney Lorcana, Yu-Gi-Oh, trading card games Switzerland, distributeur cartes Genève, cartes japonaises Genève, sealed boosters">
 <link rel="canonical" href="https://boosterstop.com/">
+<link rel="alternate" hreflang="en" href="https://boosterstop.com/">
+<link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/">
+<link rel="alternate" hreflang="x-default" href="https://boosterstop.com/">
 <meta name="robots" content="index, follow">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -52,6 +55,7 @@
   .lang-btn { background: none; border: 1px solid var(--gray-mid); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 2px; padding: 4px 10px; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
   .lang-btn.active { border-color: var(--red); color: var(--red); background: rgba(232,24,60,0.06); }
   .lang-btn:hover { border-color: var(--red); color: var(--red); }
+.lang-switcher a{text-decoration:none;display:inline-block;}
 
   /* HERO */
   .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 100px 48px 80px; position: relative; overflow: hidden; gap: 40px; }
@@ -367,8 +371,8 @@
       <li><a href="/stock.html" style="color:var(--red);font-weight:500;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Live Stock</a></li>
     </ul>
     <div class="lang-switcher">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+      <a class="lang-btn active" href="/">EN</a>
+      <a class="lang-btn" href="/fr/">FR</a>
     </div>
   </div>
 </nav>
