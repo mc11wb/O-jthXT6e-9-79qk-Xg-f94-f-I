@@ -6,6 +6,9 @@
 <title>Live Stock — BoosterStop | Real-time TCG vending machine inventory</title>
 <meta name="description" content="Check the real-time stock of every BoosterStop TCG vending machine in Geneva. See what's inside each machine, request a restock or suggest a new product.">
 <link rel="canonical" href="https://boosterstop.com/stock.html">
+<link rel="alternate" hreflang="en" href="https://boosterstop.com/stock.html">
+<link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/stock.html">
+<link rel="alternate" hreflang="x-default" href="https://boosterstop.com/stock.html">
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
@@ -42,6 +45,7 @@
   .lang-btn { background: none; border: 1px solid var(--gray-mid); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 2px; padding: 4px 10px; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
   .lang-btn.active { border-color: var(--red); color: var(--red); background: rgba(232,24,60,0.06); }
   .lang-btn:hover { border-color: var(--red); color: var(--red); }
+.lang-switcher a{text-decoration:none;display:inline-block;}
 
   /* PAGE HEADER */
   .page-header { max-width: 1200px; margin: 0 auto; padding: 48px 48px 24px; }
@@ -221,8 +225,8 @@
       <li><a href="/stock.html" class="active" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Live Stock</a></li>
     </ul>
     <div class="lang-switcher">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+      <a class="lang-btn active" href="/stock.html">EN</a>
+      <a class="lang-btn" href="/fr/stock.html">FR</a>
     </div>
   </div>
 </nav>
