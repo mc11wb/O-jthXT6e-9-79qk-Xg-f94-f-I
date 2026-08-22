@@ -19,9 +19,9 @@
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@300;400;500&amp;display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -213,7 +213,6 @@
     nav { padding: 14px 20px; }
     .page-header { padding: 32px 20px 16px; }
     .country-tabs-wrap { padding: 0 20px; }
-    .country-tabs::after { content: '›'; position: sticky; right: 0; align-self: center; color: var(--text-muted); font-size: 18px; padding-left: 6px; background: linear-gradient(to right, transparent, var(--black) 40%); }
     .stats-bar { padding: 18px 20px 0; grid-template-columns: 1fr 1fr; }
     .machine-select-zone { padding: 20px 20px 0; }
     .machine-tab { min-width: 132px; padding: 11px 12px; font-size: 11.5px; gap: 7px; }
@@ -239,7 +238,7 @@
       <li><a href="/fr/licences-geneve.html" data-en="🃏 Licenses" data-fr="🃏 Licences">🃏 Licences</a></li>
       <li><a href="/fr/expansion.html" data-en="🌍 Expansion" data-fr="🌍 Expansion">🌍 Expansion</a></li>
       <li><a href="/fr/#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
-      <li><a href="/fr/newsletter.html" data-en="🔔 Newsletter &lt;span class='nl-badge'&gt;-10%&lt;/span&gt;" data-fr="🔔 Newsletter &lt;span class='nl-badge'&gt;-10%&lt;/span&gt;">🔔 Newsletter <span class="nl-badge">-10%</span></a></li>
+      <li><a href="/fr/newsletter.html" data-en="🔔 Newsletter <span class='nl-badge'>-10%</span>" data-fr="🔔 Newsletter <span class='nl-badge'>-10%</span>">🔔 Newsletter <span class="nl-badge">-10%</span></a></li>
       <li><a href="/fr/stock.html" class="active" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Stock Live</a></li>
     </ul>
     <div class="lang-switcher">
@@ -251,7 +250,7 @@
 
 <!-- PAGE HEADER -->
 <div class="page-header">
-  <h1 class="page-title" data-en="Live &lt;span&gt;Stock&lt;/span&gt;" data-fr="Stock en &lt;span&gt;Direct&lt;/span&gt;">Stock en <span>Direct</span></h1>
+  <h1 class="page-title" data-en="Live <span>Stock</span>" data-fr="Stock en <span>Direct</span>">Stock en <span>Direct</span></h1>
   <p class="page-sub" data-en="Real-time inventory of every BoosterStop machine — pulled directly from the machines themselves. Spot something missing? Request a restock in one click." data-fr="Inventaire en temps réel de chaque distributeur BoosterStop — directement depuis les machines. Un produit manque ? Demandez un réassort en un clic.">Inventaire en temps réel de chaque distributeur BoosterStop — directement depuis les machines. Un produit manque ? Demandez un réassort en un clic.</p>
   <div class="header-meta">
     <span class="last-update" data-en="Last update: " data-fr="Dernière mise à jour : ">Dernière mise à jour : </span><b id="lastUpdate">—</b>
@@ -308,7 +307,7 @@
 
   <div class="machine-view" id="machineView">
     <div class="mv-head">
-      <div class="mv-title" data-en="Inside the machine — &lt;span&gt;live&lt;/span&gt;" data-fr="Dans la machine — &lt;span&gt;en direct&lt;/span&gt;">Dans la machine — <span>en direct</span></div>
+      <div class="mv-title" data-en="Inside the machine — <span>live</span>" data-fr="Dans la machine — <span>en direct</span>">Dans la machine — <span>en direct</span></div>
       <button class="new-product-btn" onclick="openNewProductModal()" data-en="💡 Suggest a new product" data-fr="💡 Suggérer un nouveau produit">💡 Suggérer un nouveau produit</button>
     </div>
     <div id="floorsContainer">
@@ -382,7 +381,7 @@
 <div class="modal-overlay" id="restockModal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
-    <h3 id="modalTitle" data-en="Request a &lt;span&gt;restock&lt;/span&gt;" data-fr="Demander un &lt;span&gt;réassort&lt;/span&gt;">Demander un <span>réassort</span></h3>
+    <h3 id="modalTitle" data-en="Request a <span>restock</span>" data-fr="Demander un <span>réassort</span>">Demander un <span>réassort</span></h3>
     <p class="m-sub" id="modalSub" data-en="Tell us what you'd like to see refilled — we prioritize restocks based on your requests." data-fr="Dites-nous ce que vous aimeriez voir réapprovisionné — nous priorisons les réassorts selon vos demandes.">Dites-nous ce que vous aimeriez voir réapprovisionné — nous priorisons les réassorts selon vos demandes.</p>
     <div class="m-field">
       <label id="modalInputLabel" data-en="Product" data-fr="Produit">Produit</label>
@@ -703,7 +702,7 @@ document.querySelectorAll('.modal-overlay').forEach(function(ov) {
 loadAll();
 setInterval(loadAll, 5 * 60 * 1000);
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-uxCBr3OvNOAgHTklOsATNImLuPrmn0g&amp;callback=initStockMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-uxCBr3OvNOAgHTklOsATNImLuPrmn0g&callback=initStockMap"></script>
 
 <style>
 /* COOKIE / RGPD BANNER */
@@ -725,7 +724,7 @@ setInterval(loadAll, 5 * 60 * 1000);
 </style>
 <!-- COOKIE / RGPD BANNER -->
 <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
-  <div class="cookie-text" data-en="We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. &lt;a href='/fr/privacy.html' style='color:var(--red);'&gt;Learn more&lt;/a&gt;." data-fr="Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. &lt;a href='/fr/privacy.html' style='color:var(--red);'&gt;En savoir plus&lt;/a&gt;.">Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. <a href="/fr/privacy.html" style="color:var(--red);">En savoir plus</a>.</div>
+  <div class="cookie-text" data-en="We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. <a href='/fr/privacy.html' style='color:var(--red);'>Learn more</a>." data-fr="Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. <a href='/fr/privacy.html' style='color:var(--red);'>En savoir plus</a>."><strong>🍪</strong> Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. <a href="/fr/privacy.html" style="color:var(--red);">En savoir plus</a>.</div>
   <div class="cookie-actions">
     <button class="cookie-btn decline" onclick="setCookieConsent(false)" data-en="Essential only" data-fr="Essentiels">Essentiels</button>
     <button class="cookie-btn accept" onclick="setCookieConsent(true)" data-en="Accept all" data-fr="Tout accepter">Tout accepter</button>
@@ -746,6 +745,154 @@ function setCookieConsent(accepted){
   }catch(e){}
   var b=document.getElementById('cookieBanner'); if(b) b.classList.remove('show');
 }
+</script>
+
+<!-- ============================================================
+     MOBILE UX PASS — dernier bloc du document, écrase les
+     media queries précédentes. Ne touche pas au desktop.
+     ============================================================ -->
+<style>
+/* ---------- GLOBAL / BUGFIX ---------- */
+body { overflow-x: clip; }
+button, a, .slot { -webkit-tap-highlight-color: transparent; }
+/* La mob-nav (9000) et le cookie banner (9500) passaient par-dessus les modales (500) */
+.modal-overlay { z-index: 9700; }
+#machineView { scroll-margin-top: 78px; }
+body.modal-lock { position: fixed; width: 100%; overflow: hidden; }
+
+/* ---------- < 900px ---------- */
+@media (max-width: 900px) {
+  nav { padding: 12px 18px; }
+  .nav-logo img { height: 21px; }
+  body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+  .slot:hover { transform: none; border-color: var(--gray-mid); }
+  .slot:active { border-color: var(--red); transform: scale(0.985); }
+  .mob-nav { padding-top: 7px; }
+  .mob-nav a { font-size: 8px; letter-spacing: 0.2px; gap: 2px; padding: 3px 1px; min-width: 0; }
+  .mob-nav .m-icon { font-size: 18px; }
+  .mob-nav a > span:last-child { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .mob-nav a.active::before { content: ''; position: absolute; top: -8px; left: 22%; right: 22%; height: 2px; background: var(--red); border-radius: 2px; }
+}
+
+/* ---------- < 768px ---------- */
+@media (max-width: 768px) {
+  .page-header { padding: 26px 18px 14px; }
+  .page-title { font-size: 34px; }
+  .page-sub { font-size: 13.5px; line-height: 1.55; }
+  .header-meta { margin-top: 14px; gap: 10px; justify-content: space-between; }
+  .refresh-btn { padding: 9px 15px; }
+
+  .country-tabs-wrap { padding: 0 18px; }
+  .country-tabs::after { content: none; }
+  .country-tabs { scroll-snap-type: x proximity; -webkit-mask-image: linear-gradient(to right, #000 86%, transparent 100%); mask-image: linear-gradient(to right, #000 86%, transparent 100%); }
+  .country-tab { scroll-snap-align: start; padding: 13px 14px; font-size: 12.5px; }
+
+  .stats-bar { padding: 16px 18px 0; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .stat { padding: 13px 15px; }
+  .stat-value { font-size: 29px; }
+  .stat-label { font-size: 9px; letter-spacing: 1.2px; margin-top: 4px; }
+
+  .machine-select-zone { padding: 20px 18px 0; }
+  .zone-label { font-size: 10px; letter-spacing: 3px; margin-bottom: 10px; }
+  .machine-tabs { gap: 6px; padding-bottom: 10px; scroll-snap-type: x mandatory; -webkit-mask-image: linear-gradient(to right, #000 90%, transparent 100%); mask-image: linear-gradient(to right, #000 90%, transparent 100%); }
+  .machine-tab { flex: 0 0 auto; width: 66%; max-width: 250px; min-width: 0; scroll-snap-align: start; white-space: normal; border: 1px solid var(--gray-mid); border-radius: var(--radius); padding: 12px 14px; }
+  .machine-tab.active { border-color: var(--red); }
+  .mt-name { font-size: 12.5px; white-space: normal; }
+  .mt-sub { font-size: 9.5px; letter-spacing: 0.8px; }
+
+  .stock-map-wrap { height: 185px; border-radius: var(--radius) var(--radius) 0 0; }
+  .selected-machine-card { padding: 13px 16px; gap: 10px; }
+  .smc-hint { display: none; }
+  .smc-name { font-size: 13.5px; }
+  .smc-addr { font-size: 11.5px; line-height: 1.4; }
+
+  .machine-view { padding: 22px 18px 46px; }
+  .mv-head { flex-direction: column; align-items: stretch; gap: 12px; margin-bottom: 16px; }
+  .mv-title { font-size: 23px; }
+  .new-product-btn { width: 100%; padding: 13px; font-size: 11.5px; }
+  .floor-label { font-size: 10px; letter-spacing: 2px; }
+
+  .slots { grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 8px; }
+  .slot { padding: 9px; }
+  .slot-img { height: 84px; }
+  .slot-name { font-size: 12px; min-height: 32px; }
+  .slot-count { font-size: 11.5px; }
+  .slot-price { font-size: 16px; }
+
+  /* Modales -> bottom sheets */
+  .modal-overlay { padding: 0; align-items: flex-end; }
+  .modal { max-width: none; width: 100%; border-left: none; border-right: none; border-bottom: none; border-radius: 14px 14px 0 0; padding: 20px 18px calc(20px + env(safe-area-inset-bottom, 0px)); max-height: 88vh; max-height: 88dvh; animation: bsSheetUp 0.22s ease-out; }
+  @keyframes bsSheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  .modal::before { content: ''; display: block; width: 38px; height: 4px; border-radius: 4px; background: var(--gray-mid); margin: -4px auto 16px; }
+  .modal-close { top: 8px; right: 10px; font-size: 22px; padding: 6px 8px; }
+  .m-field { margin-bottom: 12px; }
+  /* 16px = pas de zoom auto iOS au focus */
+  .m-field input, .m-field textarea, .notify-form input { font-size: 16px; padding: 13px 14px; }
+  .m-submit { padding: 15px; }
+  .sm-img { height: 130px; }
+
+  .coming-soon-country { padding: 36px 18px 60px; }
+  .csc-inner { padding: 40px 20px; }
+  .csc-title { font-size: 26px; }
+  .csc-sub { font-size: 13.5px; }
+  .notify-form button { padding: 14px 18px; }
+
+  .state-msg { padding: 44px 18px; }
+
+  .cookie-banner { bottom: calc(64px + env(safe-area-inset-bottom, 0px) + 10px); padding: 14px 16px; gap: 12px; }
+  .cookie-text { font-size: 12.5px; line-height: 1.5; }
+  .cookie-btn { padding: 12px; font-size: 10.5px; }
+}
+
+/* ---------- < 380px ---------- */
+@media (max-width: 380px) {
+  .page-title { font-size: 30px; }
+  .stat-value { font-size: 25px; }
+  .stat { padding: 11px 12px; }
+  .machine-tab { width: 74%; }
+  .slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mob-nav a { font-size: 7.5px; }
+}
+</style>
+<script>
+/* Verrou de scroll + Échap sur les modales */
+(function () {
+  var savedY = 0;
+  function sync() {
+    var open = document.querySelector('.modal-overlay.open');
+    var locked = document.body.classList.contains('modal-lock');
+    if (open && !locked) {
+      savedY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.top = (-savedY) + 'px';
+      document.body.classList.add('modal-lock');
+    } else if (!open && locked) {
+      document.body.classList.remove('modal-lock');
+      document.body.style.top = '';
+      window.scrollTo(0, savedY);
+    }
+  }
+  document.querySelectorAll('.modal-overlay').forEach(function (ov) {
+    new MutationObserver(sync).observe(ov, { attributes: true, attributeFilter: ['class'] });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(function (o) { o.classList.remove('open'); });
+    }
+  });
+})();
+
+/* L'onglet machine suit la sélection (pin carte incluse) */
+(function () {
+  if (typeof window.selectMachine !== 'function') return;
+  var orig = window.selectMachine;
+  window.selectMachine = function (i, scroll) {
+    orig(i, scroll);
+    var tab = document.querySelectorAll('.machine-tab')[i];
+    if (tab && tab.scrollIntoView) {
+      tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  };
+})();
 </script>
 </body>
 </html>
