@@ -213,7 +213,6 @@
     nav { padding: 14px 20px; }
     .page-header { padding: 32px 20px 16px; }
     .country-tabs-wrap { padding: 0 20px; }
-    .country-tabs::after { content: '›'; position: sticky; right: 0; align-self: center; color: var(--text-muted); font-size: 18px; padding-left: 6px; background: linear-gradient(to right, transparent, var(--black) 40%); }
     .stats-bar { padding: 18px 20px 0; grid-template-columns: 1fr 1fr; }
     .machine-select-zone { padding: 20px 20px 0; }
     .machine-tab { min-width: 132px; padding: 11px 12px; font-size: 11.5px; gap: 7px; }
@@ -746,6 +745,154 @@ function setCookieConsent(accepted){
   }catch(e){}
   var b=document.getElementById('cookieBanner'); if(b) b.classList.remove('show');
 }
+</script>
+
+<!-- ============================================================
+     MOBILE UX PASS — dernier bloc du document, écrase les
+     media queries précédentes. Ne touche pas au desktop.
+     ============================================================ -->
+<style>
+/* ---------- GLOBAL / BUGFIX ---------- */
+body { overflow-x: clip; }
+button, a, .slot { -webkit-tap-highlight-color: transparent; }
+/* La mob-nav (9000) et le cookie banner (9500) passaient par-dessus les modales (500) */
+.modal-overlay { z-index: 9700; }
+#machineView { scroll-margin-top: 78px; }
+body.modal-lock { position: fixed; width: 100%; overflow: hidden; }
+
+/* ---------- < 900px ---------- */
+@media (max-width: 900px) {
+  nav { padding: 12px 18px; }
+  .nav-logo img { height: 21px; }
+  body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+  .slot:hover { transform: none; border-color: var(--gray-mid); }
+  .slot:active { border-color: var(--red); transform: scale(0.985); }
+  .mob-nav { padding-top: 7px; }
+  .mob-nav a { font-size: 8px; letter-spacing: 0.2px; gap: 2px; padding: 3px 1px; min-width: 0; }
+  .mob-nav .m-icon { font-size: 18px; }
+  .mob-nav a > span:last-child { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .mob-nav a.active::before { content: ''; position: absolute; top: -8px; left: 22%; right: 22%; height: 2px; background: var(--red); border-radius: 2px; }
+}
+
+/* ---------- < 768px ---------- */
+@media (max-width: 768px) {
+  .page-header { padding: 26px 18px 14px; }
+  .page-title { font-size: 34px; }
+  .page-sub { font-size: 13.5px; line-height: 1.55; }
+  .header-meta { margin-top: 14px; gap: 10px; justify-content: space-between; }
+  .refresh-btn { padding: 9px 15px; }
+
+  .country-tabs-wrap { padding: 0 18px; }
+  .country-tabs::after { content: none; }
+  .country-tabs { scroll-snap-type: x proximity; -webkit-mask-image: linear-gradient(to right, #000 86%, transparent 100%); mask-image: linear-gradient(to right, #000 86%, transparent 100%); }
+  .country-tab { scroll-snap-align: start; padding: 13px 14px; font-size: 12.5px; }
+
+  .stats-bar { padding: 16px 18px 0; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .stat { padding: 13px 15px; }
+  .stat-value { font-size: 29px; }
+  .stat-label { font-size: 9px; letter-spacing: 1.2px; margin-top: 4px; }
+
+  .machine-select-zone { padding: 20px 18px 0; }
+  .zone-label { font-size: 10px; letter-spacing: 3px; margin-bottom: 10px; }
+  .machine-tabs { gap: 6px; padding-bottom: 10px; scroll-snap-type: x mandatory; -webkit-mask-image: linear-gradient(to right, #000 90%, transparent 100%); mask-image: linear-gradient(to right, #000 90%, transparent 100%); }
+  .machine-tab { flex: 0 0 auto; width: 66%; max-width: 250px; min-width: 0; scroll-snap-align: start; white-space: normal; border: 1px solid var(--gray-mid); border-radius: var(--radius); padding: 12px 14px; }
+  .machine-tab.active { border-color: var(--red); }
+  .mt-name { font-size: 12.5px; white-space: normal; }
+  .mt-sub { font-size: 9.5px; letter-spacing: 0.8px; }
+
+  .stock-map-wrap { height: 185px; border-radius: var(--radius) var(--radius) 0 0; }
+  .selected-machine-card { padding: 13px 16px; gap: 10px; }
+  .smc-hint { display: none; }
+  .smc-name { font-size: 13.5px; }
+  .smc-addr { font-size: 11.5px; line-height: 1.4; }
+
+  .machine-view { padding: 22px 18px 46px; }
+  .mv-head { flex-direction: column; align-items: stretch; gap: 12px; margin-bottom: 16px; }
+  .mv-title { font-size: 23px; }
+  .new-product-btn { width: 100%; padding: 13px; font-size: 11.5px; }
+  .floor-label { font-size: 10px; letter-spacing: 2px; }
+
+  .slots { grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 8px; }
+  .slot { padding: 9px; }
+  .slot-img { height: 84px; }
+  .slot-name { font-size: 12px; min-height: 32px; }
+  .slot-count { font-size: 11.5px; }
+  .slot-price { font-size: 16px; }
+
+  /* Modales -> bottom sheets */
+  .modal-overlay { padding: 0; align-items: flex-end; }
+  .modal { max-width: none; width: 100%; border-left: none; border-right: none; border-bottom: none; border-radius: 14px 14px 0 0; padding: 20px 18px calc(20px + env(safe-area-inset-bottom, 0px)); max-height: 88vh; max-height: 88dvh; animation: bsSheetUp 0.22s ease-out; }
+  @keyframes bsSheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+  .modal::before { content: ''; display: block; width: 38px; height: 4px; border-radius: 4px; background: var(--gray-mid); margin: -4px auto 16px; }
+  .modal-close { top: 8px; right: 10px; font-size: 22px; padding: 6px 8px; }
+  .m-field { margin-bottom: 12px; }
+  /* 16px = pas de zoom auto iOS au focus */
+  .m-field input, .m-field textarea, .notify-form input { font-size: 16px; padding: 13px 14px; }
+  .m-submit { padding: 15px; }
+  .sm-img { height: 130px; }
+
+  .coming-soon-country { padding: 36px 18px 60px; }
+  .csc-inner { padding: 40px 20px; }
+  .csc-title { font-size: 26px; }
+  .csc-sub { font-size: 13.5px; }
+  .notify-form button { padding: 14px 18px; }
+
+  .state-msg { padding: 44px 18px; }
+
+  .cookie-banner { bottom: calc(64px + env(safe-area-inset-bottom, 0px) + 10px); padding: 14px 16px; gap: 12px; }
+  .cookie-text { font-size: 12.5px; line-height: 1.5; }
+  .cookie-btn { padding: 12px; font-size: 10.5px; }
+}
+
+/* ---------- < 380px ---------- */
+@media (max-width: 380px) {
+  .page-title { font-size: 30px; }
+  .stat-value { font-size: 25px; }
+  .stat { padding: 11px 12px; }
+  .machine-tab { width: 74%; }
+  .slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mob-nav a { font-size: 7.5px; }
+}
+</style>
+<script>
+/* Verrou de scroll + Échap sur les modales */
+(function () {
+  var savedY = 0;
+  function sync() {
+    var open = document.querySelector('.modal-overlay.open');
+    var locked = document.body.classList.contains('modal-lock');
+    if (open && !locked) {
+      savedY = window.scrollY || window.pageYOffset || 0;
+      document.body.style.top = (-savedY) + 'px';
+      document.body.classList.add('modal-lock');
+    } else if (!open && locked) {
+      document.body.classList.remove('modal-lock');
+      document.body.style.top = '';
+      window.scrollTo(0, savedY);
+    }
+  }
+  document.querySelectorAll('.modal-overlay').forEach(function (ov) {
+    new MutationObserver(sync).observe(ov, { attributes: true, attributeFilter: ['class'] });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.open').forEach(function (o) { o.classList.remove('open'); });
+    }
+  });
+})();
+
+/* L'onglet machine suit la sélection (pin carte incluse) */
+(function () {
+  if (typeof window.selectMachine !== 'function') return;
+  var orig = window.selectMachine;
+  window.selectMachine = function (i, scroll) {
+    orig(i, scroll);
+    var tab = document.querySelectorAll('.machine-tab')[i];
+    if (tab && tab.scrollIntoView) {
+      tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  };
+})();
 </script>
 </body>
 </html>
