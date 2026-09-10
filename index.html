@@ -1,17 +1,11 @@
+---
+lang: en
+page: index
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RBKM1ZZN4Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  var c=null; try{ c=localStorage.getItem('bs_cookie_consent'); }catch(e){}
-  gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':c==='accepted'?'granted':'denied','wait_for_update':500});
-  gtag('js', new Date());
-  gtag('config', 'G-RBKM1ZZN4Z');
-</script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% include head.html %}
 <title>BoosterStop TCG - Vending Machines in Geneva | Pokémon, One Piece, Magic &amp; more</title>
 <meta name="description" content="BoosterStop TCG is the first vending-machine network for Trading Card Games. 100% sealed boosters, displays & collector boxes from official distributors, in French, English, Japanese, Chinese and more — live 24/7 in Geneva. Pokémon, One Piece, Magic, Lorcana, Yu-Gi-Oh! and more.">
 <meta name="keywords" content="TCG vending machine, Geneva, Pokémon boosters Geneva, Japanese Pokémon cards Geneva, Chinese Pokémon cards, One Piece card game, Magic the Gathering, Disney Lorcana, Yu-Gi-Oh, trading card games Switzerland, distributeur cartes Genève, cartes japonaises Genève, sealed boosters">
@@ -34,13 +28,7 @@
 <meta name="twitter:title" content="BoosterStop — TCG Vending Machines in Geneva">
 <meta name="twitter:description" content="Sealed TCG boosters from official distributors, 24/7 in Geneva. Pokémon, One Piece, Magic & more.">
 <meta name="twitter:image" content="https://boosterstop.com/logo.png">
-<link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preload" as="image" href="/front%20transparent.png" fetchpriority="high">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -52,23 +40,6 @@
   }
   html { scroll-behavior: smooth; }
   body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.6; font-size: 16px; overflow-x: hidden; background-image: radial-gradient(ellipse at 80% 10%, rgba(232,24,60,0.08) 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(42,31,94,0.3) 0%, transparent 60%); }
-
-  /* NAV */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 22px 48px; border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(18,15,42,0.92); backdrop-filter: blur(12px); }
-  .nav-logo { display: flex; align-items: center; text-decoration: none; }
-  .nav-logo img { height: 28px; width: auto; }
-  .nav-right { display: flex; align-items: center; gap: 26px; }
-  nav ul { list-style: none; display: flex; gap: 26px; }
-  nav ul a { color: var(--text-muted); text-decoration: none; font-size: 13px; letter-spacing: 0.5px; transition: color 0.2s; }
-  nav ul a:hover { color: var(--white); }
-  .nl-badge{display:inline-block;background:var(--yellow);color:var(--black);font-size:8px;font-weight:600;letter-spacing:0.5px;padding:1px 5px;border-radius:3px;margin-left:5px;vertical-align:middle;}
-
-  /* LANG SWITCHER */
-  .lang-switcher { display: flex; gap: 4px; }
-  .lang-btn { background: none; border: 1px solid var(--gray-mid); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 2px; padding: 4px 10px; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
-  .lang-btn.active { border-color: var(--red); color: var(--red); background: rgba(232,24,60,0.06); }
-  .lang-btn:hover { border-color: var(--red); color: var(--red); }
-.lang-switcher a{text-decoration:none;display:inline-block;}
 
   /* HERO */
   .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 100px 48px 80px; position: relative; overflow: hidden; gap: 40px; }
@@ -197,7 +168,6 @@
   .btn-submit:active { transform: translateY(0); }
   .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
-
   /* TRUST & FAQ */
   .trust-section { max-width: 1100px; margin: 0 auto; padding: 100px 48px; }
   .trust-head { max-width: 640px; margin-bottom: 48px; }
@@ -224,7 +194,6 @@
     .faq-item .faq-a { padding: 0 18px 18px; font-size: 13.5px; }
   }
 
-
   /* LANGUAGES */
   .lang-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px,4.5vw,52px); line-height: 1; color: var(--white); margin: 14px 0 18px; }
   .lang-title span { color: var(--red); }
@@ -249,19 +218,12 @@
     .lang-examples { margin-bottom: 36px; }
   }
 
-  /* FOOTER */
-  footer { border-top: 1px solid var(--gray-mid); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; max-width: 1100px; margin: 0 auto; }
-  footer p { font-size: 12px; color: #444; letter-spacing: 0.5px; }
-
   /* ANIMATIONS */
   .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .fade-in.visible { opacity: 1; transform: none; }
   .form-success { display: none; background: var(--yellow-dim); border: 1px solid rgba(255,208,0,0.3); border-radius: var(--radius); padding: 20px 24px; font-size: 14px; color: var(--yellow); letter-spacing: 0.3px; }
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    nav { padding: 18px 24px; }
-    nav ul { display: none; }
-    body { padding-bottom: 68px; }
     .hero { grid-template-columns: 1fr; padding: 100px 24px 80px; gap: 0; }
     .hero-tags { gap: 8px; }
     .tag { font-size: 10px; padding: 5px 12px; letter-spacing: 1px; }
@@ -283,53 +245,8 @@
     .map-tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .map-tabs::-webkit-scrollbar { display: none; }
     .map-tab { font-size: 9px; padding: 8px 10px; white-space: nowrap; flex-shrink: 0; letter-spacing: 0.5px; }
-    footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
     .form-row { grid-template-columns: 1fr; }
   }
-
-  /* MOBILE BOTTOM NAV */
-  .mob-nav {
-    display: none;
-  }
-  @media (max-width: 768px) {
-    .mob-nav {
-      display: flex;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 9000;
-      background: rgba(18,15,42,0.97);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-top: 1px solid rgba(232,24,60,0.4);
-      padding-top: 8px;
-      padding-bottom: env(safe-area-inset-bottom, 8px);
-      justify-content: space-around;
-      align-items: flex-start;
-    }
-  }
-  .mob-nav a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 9px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    padding: 4px 2px;
-    transition: color 0.2s;
-    flex: 1;
-    text-align: center;
-  }
-  .mob-nav a.active,
-  .mob-nav a:hover { color: var(--red); }
-  .mob-nav .m-icon { font-size: 20px; line-height: 1; display: block; }
-  .mob-nav a { position: relative; }
-  .mob-nav a .m-badge{position:absolute;top:0;left:50%;margin-left:6px;background:var(--yellow);color:var(--black);font-size:7px;font-weight:700;letter-spacing:0.2px;padding:1px 4px;border-radius:3px;line-height:1.3;}
-
 
   /* BOOSTER ANIMATION */
   .hero-right { position: relative; }
@@ -373,24 +290,8 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo"><img src="/logo.png" alt="BoosterStop" width="225" height="28" fetchpriority="high"></a>
-  <div class="nav-right">
-    <ul>
-      <li><a href="#where" data-en="Locations" data-fr="Emplacements">Locations</a></li>
-      <li><a href="/licences-geneve.html" data-en="🃏 Licenses" data-fr="🃏 Licences">🃏 Licenses</a></li>
-      <li><a href="/expansion.html" data-en="🌍 Expansion" data-fr="🌍 Expansion">🌍 Expansion</a></li>
-      <li><a href="#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
-      <li><a href="/newsletter.html" data-en="🔔 Newsletter <span class='nl-badge'>-10%</span>" data-fr="🔔 Newsletter <span class='nl-badge'>-10%</span>">🔔 Newsletter <span class="nl-badge">-10%</span></a></li>
-      <li><a href="/stock.html" style="color:var(--red);font-weight:500;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Live Stock</a></li>
-    </ul>
-    <div class="lang-switcher">
-      <a class="lang-btn active" href="/">EN</a>
-      <a class="lang-btn" href="/fr/">FR</a>
-    </div>
-  </div>
-</nav>
+{% include nav.html %}
+
 
 <!-- HERO -->
 <div class="hero">
@@ -753,15 +654,7 @@
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo"><img src="/logo.png" alt="BoosterStop" width="177" height="22" loading="lazy" style="height: 22px; width: auto; opacity: 0.6;"></div>
-  <div style="display:flex;align-items:center;gap:16px;">
-    <a href="/stock.html" style="font-size:11px;color:var(--red);text-decoration:none;letter-spacing:1px;border:1px solid rgba(232,24,60,0.4);padding:5px 12px;border-radius:2px;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Live Stock</a>
-    <a href="/privacy.html" style="font-size:12px;color:#666;text-decoration:none;letter-spacing:0.5px;" data-en="Privacy &amp; Cookies" data-fr="Confidentialité">Privacy &amp; Cookies</a>
-    <p>© 2026 BoosterStop — 247 Distribution SNC</p>
-  </div>
-</footer>
+{% include footer.html %}
 
 <!-- GOOGLE MAPS -->
 <style>
@@ -882,34 +775,6 @@ form.addEventListener('submit', async function(e) {
 
 
 
-<!-- MOBILE NAV -->
-<div class="mob-nav" id="mobNav">
-  <a href="/" class="mob-link active">
-    <span class="m-icon">🏠</span>
-    <span data-en="Home" data-fr="Accueil">Home</span>
-  </a>
-  <a href="/stock.html" class="mob-link">
-    <span class="m-icon">📦</span>
-    <span data-en="Stock" data-fr="Stock">Stock</span>
-  </a>
-  <a href="/licences-geneve.html" class="mob-link">
-    <span class="m-icon">🃏</span>
-    <span data-en="TCG" data-fr="TCG">TCG</span>
-  </a>
-  <a href="/newsletter.html" class="mob-link">
-    <span class="m-icon">🔔</span>
-    <span class="m-badge">-10%</span>
-    <span data-en="Newsletter" data-fr="Newsletter">Newsletter</span>
-  </a>
-  <a href="#partner" class="mob-link">
-    <span class="m-icon">🤝</span>
-    <span data-en="Partner" data-fr="Partenaire">Partner</span>
-  </a>
-  <a href="#contact" class="mob-link">
-    <span class="m-icon">✉️</span>
-    <span data-en="Contact" data-fr="Contact">Contact</span>
-  </a>
-</div>
 <script>
 // Mobile nav active on scroll (only for in-page anchors)
 (function() {
@@ -1049,48 +914,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<style>
-/* COOKIE / RGPD BANNER */
-.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:9500;display:none;max-width:720px;margin:0 auto;background:rgba(18,15,42,0.98);border:1px solid var(--gray-mid);border-top:2px solid var(--red);border-radius:8px;padding:18px 22px;box-shadow:0 12px 48px rgba(0,0,0,0.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);align-items:center;gap:18px;}
-.cookie-banner.show{display:flex;}
-.cookie-text{flex:1;font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.6;color:var(--text-muted);}
-.cookie-text strong{color:var(--white);font-weight:500;}
-.cookie-actions{display:flex;gap:8px;flex-shrink:0;}
-.cookie-btn{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:10px 18px;border-radius:3px;cursor:pointer;border:1px solid var(--gray-mid);transition:all 0.2s;white-space:nowrap;}
-.cookie-btn.decline{background:none;color:var(--text-muted);}
-.cookie-btn.decline:hover{color:var(--white);border-color:var(--text-muted);}
-.cookie-btn.accept{background:var(--yellow);color:var(--black);border-color:var(--yellow);font-weight:600;}
-.cookie-btn.accept:hover{opacity:0.9;}
-@media(max-width:768px){
-  .cookie-banner{flex-direction:column;align-items:stretch;left:12px;right:12px;bottom:calc(68px + env(safe-area-inset-bottom,0px) + 8px);padding:16px 18px;gap:14px;}
-  .cookie-actions{gap:8px;}
-  .cookie-btn{flex:1;padding:11px;}
-}
-</style>
-<!-- COOKIE / RGPD BANNER -->
-<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
-  <div class="cookie-text" data-en="We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. <a href='/privacy.html' style='color:var(--red);'>Learn more</a>." data-fr="Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. <a href='/privacy.html' style='color:var(--red);'>En savoir plus</a>."><strong>🍪</strong> We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. <a href="/privacy.html" style="color:var(--red);">Learn more</a>.</div>
-  <div class="cookie-actions">
-    <button class="cookie-btn decline" onclick="setCookieConsent(false)" data-en="Essential only" data-fr="Essentiels">Essential only</button>
-    <button class="cookie-btn accept" onclick="setCookieConsent(true)" data-en="Accept all" data-fr="Tout accepter">Accept all</button>
-  </div>
-</div>
-<script>
-(function(){
-  try{
-    if(!localStorage.getItem('bs_cookie_consent')){
-      var b=document.getElementById('cookieBanner'); if(b) b.classList.add('show');
-    }
-  }catch(e){ var b=document.getElementById('cookieBanner'); if(b) b.classList.add('show'); }
-})();
-function setCookieConsent(accepted){
-  try{
-    localStorage.setItem('bs_cookie_consent', accepted?'accepted':'essential');
-    localStorage.setItem('bs_cookie_ts', new Date().toISOString());
-  }catch(e){}
-  var b=document.getElementById('cookieBanner'); if(b) b.classList.remove('show');
-}
-</script>
 <!-- STRUCTURED DATA (SEO / AI search) -->
 <script type="application/ld+json">
 {

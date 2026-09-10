@@ -1,17 +1,11 @@
+---
+lang: fr
+page: stock
+---
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RBKM1ZZN4Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  var c=null; try{ c=localStorage.getItem('bs_cookie_consent'); }catch(e){}
-  gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':c==='accepted'?'granted':'denied','wait_for_update':500});
-  gtag('js', new Date());
-  gtag('config', 'G-RBKM1ZZN4Z');
-</script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% include head.html %}
 <title>Stock en Direct — BoosterStop | Inventaire temps réel des distributeurs</title>
 <meta name="description" content="Consultez en temps réel le stock de chaque distributeur TCG BoosterStop à Genève. Voyez ce qu'il y a dans chaque machine, demandez un réassort ou suggérez un nouveau produit.">
 <link rel="canonical" href="https://boosterstop.com/fr/stock.html">
@@ -25,12 +19,6 @@
 <meta property="og:description" content="Inventaire en temps réel de chaque distributeur TCG BoosterStop à Genève.">
 <meta property="og:url" content="https://boosterstop.com/fr/stock.html">
 <meta property="og:image" content="https://boosterstop.com/logo.png">
-<link rel="icon" type="image/png" href="/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -43,21 +31,15 @@
   html { scroll-behavior: smooth; }
   body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.6; font-size: 15px; background-image: radial-gradient(ellipse at 80% 10%, rgba(232,24,60,0.06) 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(42,31,94,0.3) 0%, transparent 60%); }
 
-  /* NAV */
-  nav { position: sticky; top: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 18px 48px; border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(18,15,42,0.95); backdrop-filter: blur(12px); }
+  /* NAV : surcharge du header commun (site.css) — nav collante propre à cette page */
+  nav { position: sticky; top: 0; left: auto; right: auto; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 18px 48px; border-bottom: 1px solid rgba(255,255,255,0.06); background: rgba(18,15,42,0.95); backdrop-filter: blur(12px); }
   .nav-logo { display: flex; align-items: center; text-decoration: none; }
   .nav-logo img { height: 26px; width: auto; }
-  .nav-actions { display: flex; align-items: center; gap: 24px; }
+  .nav-right { display: flex; align-items: center; gap: 24px; }
   nav ul { list-style: none; display: flex; gap: 24px; }
   nav ul a { color: var(--text-muted); text-decoration: none; font-size: 13px; letter-spacing: 0.5px; transition: color 0.2s; }
   nav ul a:hover { color: var(--white); }
   nav ul a.active { color: var(--red); }
-  .nl-badge{display:inline-block;background:var(--yellow);color:var(--black);font-size:8px;font-weight:600;letter-spacing:0.5px;padding:1px 5px;border-radius:3px;margin-left:5px;vertical-align:middle;}
-  .lang-switcher { display: flex; gap: 4px; }
-  .lang-btn { background: none; border: 1px solid var(--gray-mid); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 2px; padding: 4px 10px; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
-  .lang-btn.active { border-color: var(--red); color: var(--red); background: rgba(232,24,60,0.06); }
-  .lang-btn:hover { border-color: var(--red); color: var(--red); }
-.lang-switcher a{text-decoration:none;display:inline-block;}
 
   /* PAGE HEADER */
   .page-header { max-width: 1200px; margin: 0 auto; padding: 48px 48px 24px; }
@@ -205,21 +187,15 @@
   .sm-bar { height: 6px; background: rgba(255,255,255,0.07); border-radius: 6px; overflow: hidden; margin-bottom: 18px; }
   .sm-bar i { display: block; height: 100%; border-radius: 6px; background: var(--green); }
 
-  /* MOBILE NAV */
-  .mob-nav{display:none;}
+  /* NAV MOBILE : sur cette page la barre du bas apparaît dès 900px (768px ailleurs, cf. site.css) */
   @media (max-width:900px){
     nav ul{display:none;}
     body{padding-bottom:68px;}
-    .mob-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:9000;background:rgba(18,15,42,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(232,24,60,0.4);padding-top:8px;padding-bottom:env(safe-area-inset-bottom, 8px);justify-content:space-around;align-items:flex-start;}
+    .mob-nav{display:flex;}
   }
-  .mob-nav a{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text-muted);text-decoration:none;font-size:9px;letter-spacing:0.5px;text-transform:uppercase;padding:4px 2px;flex:1;text-align:center;transition:color 0.2s;position:relative;}
-  .mob-nav a.active, .mob-nav a:hover{color:var(--red);}
-  .mob-nav .m-icon{font-size:20px;line-height:1;display:block;}
-  .mob-nav a .m-badge{position:absolute;top:0;left:50%;margin-left:6px;background:var(--yellow);color:var(--black);font-size:7px;font-weight:700;letter-spacing:0.2px;padding:1px 4px;border-radius:3px;line-height:1.3;}
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    nav { padding: 14px 20px; }
     .page-header { padding: 32px 20px 16px; }
     .country-tabs-wrap { padding: 0 20px; }
     .stats-bar { padding: 18px 20px 0; grid-template-columns: 1fr 1fr; }
@@ -238,24 +214,8 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="/fr/" class="nav-logo"><img src="/logo.png" alt="BoosterStop" width="225" height="28" fetchpriority="high"></a>
-  <div class="nav-actions">
-    <ul>
-      <li><a href="/fr/#where" data-en="Locations" data-fr="Emplacements">Emplacements</a></li>
-      <li><a href="/fr/licences-geneve.html" data-en="🃏 Licenses" data-fr="🃏 Licences">🃏 Licences</a></li>
-      <li><a href="/fr/expansion.html" data-en="🌍 Expansion" data-fr="🌍 Expansion">🌍 Expansion</a></li>
-      <li><a href="/fr/#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
-      <li><a href="/fr/newsletter.html" data-en="🔔 Newsletter <span class='nl-badge'>-10%</span>" data-fr="🔔 Newsletter <span class='nl-badge'>-10%</span>">🔔 Newsletter <span class="nl-badge">-10%</span></a></li>
-      <li><a href="/fr/stock.html" class="active" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Stock Live</a></li>
-    </ul>
-    <div class="lang-switcher">
-      <a class="lang-btn" href="/stock.html">EN</a>
-      <a class="lang-btn active" href="/fr/stock.html">FR</a>
-    </div>
-  </div>
-</nav>
+{% include nav.html %}
+
 
 <!-- PAGE HEADER -->
 <div class="page-header">
@@ -353,25 +313,8 @@
   </div>
 </div>
 
-<!-- FOOTER -->
-<footer style="border-top:1px solid var(--gray-mid);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;">
-  <div><img src="/logo.png" alt="BoosterStop" width="161" height="20" loading="lazy" style="height:20px;opacity:0.6;"></div>
-  <div style="display:flex;align-items:center;gap:16px;">
-    <a href="/fr/privacy.html" style="font-size:12px;color:#666;text-decoration:none;letter-spacing:0.5px;" data-en="Privacy &amp; Cookies" data-fr="Confidentialité">Confidentialité</a>
-    <p style="font-size:12px;color:#444;letter-spacing:0.5px;">© 2020-2026 BoosterStop — 247 Distribution SNC</p>
-  </div>
-</footer>
-<style>@media(max-width:768px){footer{padding:24px 20px 90px !important;flex-direction:column;gap:12px;text-align:center;}}</style>
+{% include footer.html %}
 
-<!-- MOBILE NAV -->
-<div class="mob-nav">
-  <a href="/fr/"><span class="m-icon">🏠</span><span data-en="Home" data-fr="Accueil">Accueil</span></a>
-  <a href="/fr/stock.html" class="active"><span class="m-icon">📦</span><span data-en="Stock" data-fr="Stock">Stock</span></a>
-  <a href="/fr/licences-geneve.html"><span class="m-icon">🃏</span><span data-en="TCG" data-fr="TCG">TCG</span></a>
-  <a href="/fr/newsletter.html"><span class="m-icon">🔔</span><span class="m-badge">-10%</span><span data-en="Newsletter" data-fr="Newsletter">Newsletter</span></a>
-  <a href="/fr/#partner"><span class="m-icon">🤝</span><span data-en="Partner" data-fr="Partenaire">Partenaire</span></a>
-  <a href="/fr/#contact"><span class="m-icon">✉️</span><span data-en="Contact" data-fr="Contact">Contact</span></a>
-</div>
 
 <!-- SLOT DETAIL MODAL -->
 <div class="modal-overlay" id="slotModal">
@@ -713,48 +656,6 @@ setInterval(loadAll, 5 * 60 * 1000);
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-uxCBr3OvNOAgHTklOsATNImLuPrmn0g&callback=initStockMap"></script>
 
-<style>
-/* COOKIE / RGPD BANNER */
-.cookie-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:9500;display:none;max-width:720px;margin:0 auto;background:rgba(18,15,42,0.98);border:1px solid var(--gray-mid);border-top:2px solid var(--red);border-radius:8px;padding:18px 22px;box-shadow:0 12px 48px rgba(0,0,0,0.6);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);align-items:center;gap:18px;}
-.cookie-banner.show{display:flex;}
-.cookie-text{flex:1;font-family:'DM Sans',sans-serif;font-size:13px;line-height:1.6;color:var(--text-muted);}
-.cookie-text strong{color:var(--white);font-weight:500;}
-.cookie-actions{display:flex;gap:8px;flex-shrink:0;}
-.cookie-btn{font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:10px 18px;border-radius:3px;cursor:pointer;border:1px solid var(--gray-mid);transition:all 0.2s;white-space:nowrap;}
-.cookie-btn.decline{background:none;color:var(--text-muted);}
-.cookie-btn.decline:hover{color:var(--white);border-color:var(--text-muted);}
-.cookie-btn.accept{background:var(--yellow);color:var(--black);border-color:var(--yellow);font-weight:600;}
-.cookie-btn.accept:hover{opacity:0.9;}
-@media(max-width:768px){
-  .cookie-banner{flex-direction:column;align-items:stretch;left:12px;right:12px;bottom:calc(68px + env(safe-area-inset-bottom,0px) + 8px);padding:16px 18px;gap:14px;}
-  .cookie-actions{gap:8px;}
-  .cookie-btn{flex:1;padding:11px;}
-}
-</style>
-<!-- COOKIE / RGPD BANNER -->
-<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
-  <div class="cookie-text" data-en="We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. <a href='/fr/privacy.html' style='color:var(--red);'>Learn more</a>." data-fr="Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. <a href='/fr/privacy.html' style='color:var(--red);'>En savoir plus</a>."><strong>🍪</strong> Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. <a href="/fr/privacy.html" style="color:var(--red);">En savoir plus</a>.</div>
-  <div class="cookie-actions">
-    <button class="cookie-btn decline" onclick="setCookieConsent(false)" data-en="Essential only" data-fr="Essentiels">Essentiels</button>
-    <button class="cookie-btn accept" onclick="setCookieConsent(true)" data-en="Accept all" data-fr="Tout accepter">Tout accepter</button>
-  </div>
-</div>
-<script>
-(function(){
-  try{
-    if(!localStorage.getItem('bs_cookie_consent')){
-      var b=document.getElementById('cookieBanner'); if(b) b.classList.add('show');
-    }
-  }catch(e){ var b=document.getElementById('cookieBanner'); if(b) b.classList.add('show'); }
-})();
-function setCookieConsent(accepted){
-  try{
-    localStorage.setItem('bs_cookie_consent', accepted?'accepted':'essential');
-    localStorage.setItem('bs_cookie_ts', new Date().toISOString());
-  }catch(e){}
-  var b=document.getElementById('cookieBanner'); if(b) b.classList.remove('show');
-}
-</script>
 
 <!-- ============================================================
      MOBILE UX PASS — dernier bloc du document, écrase les

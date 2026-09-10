@@ -1,0 +1,17 @@
+# ============================================================
+# BoosterStop — configuration Jekyll (GitHub Pages)
+# GitHub Pages assemble le site à chaque push : les fichiers de
+# _includes/ sont injectés dans chaque page où ils sont appelés.
+# ============================================================
+title: BoosterStop
+url: https://boosterstop.com
+timezone: Europe/Zurich
+
+# Fichiers du dépôt à ne PAS publier sur le site
+exclude:
+  - "*.py"
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor

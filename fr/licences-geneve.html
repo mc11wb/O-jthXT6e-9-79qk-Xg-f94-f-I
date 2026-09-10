@@ -1,17 +1,11 @@
+---
+lang: fr
+page: licences-geneve
+---
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RBKM1ZZN4Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  var c=null; try{ c=localStorage.getItem('bs_cookie_consent'); }catch(e){}
-  gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':c==='accepted'?'granted':'denied','wait_for_update':500});
-  gtag('js', new Date());
-  gtag('config', 'G-RBKM1ZZN4Z');
-</script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% include head.html %}
 <title>Licences TCG à Genève : Pokémon, Gundam, Riftbound… | BoosterStop</title>
 <meta name="description" content="23 licences de jeux de cartes en distributeurs 24h/24 à Genève : Pokémon, One Piece, Magic, Gundam, Riftbound, Lorcana… Stock en direct et réassort à la demande.">
 <link rel="canonical" href="https://boosterstop.com/fr/licences-geneve.html">
@@ -31,13 +25,6 @@
 <meta name="twitter:title" content="23 licences TCG à Genève — Pokémon, Gundam, Riftbound…">
 <meta name="twitter:description" content="Stock en direct 24h/24 dans nos distributeurs à Genève. Des classiques aux licences les moins communes.">
 <meta name="twitter:image" content="https://boosterstop.com/logo.png">
-<link rel="icon" type="image/png" href="/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@400;500;700&amp;display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"></noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -361,35 +348,6 @@ img{max-width:100%; display:block;}
   *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
 }
 
-/* ---------- NAV (identique à la homepage) ---------- */
-nav{position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:22px 48px; border-bottom:1px solid rgba(255,255,255,0.06); background:rgba(18,15,42,0.92); backdrop-filter:blur(12px);}
-.nav-logo{display:flex; align-items:center; text-decoration:none;}
-.nav-logo img{height:28px; width:auto;}
-.nav-right{display:flex; align-items:center; gap:26px;}
-nav ul{list-style:none; display:flex; gap:26px; margin:0; padding:0;}
-nav ul a{color:var(--text-muted); text-decoration:none; font-size:13px; letter-spacing:0.5px; transition:color 0.2s;}
-nav ul a:hover{color:var(--white);}
-nav ul a.active{color:var(--red);}
-.nl-badge{display:inline-block;background:var(--yellow);color:var(--black);font-size:8px;font-weight:600;letter-spacing:0.5px;padding:1px 5px;border-radius:3px;margin-left:5px;vertical-align:middle;}
-.lang-switcher{display:flex; gap:4px;}
-.lang-btn{background:none; border:1px solid var(--gray-mid); color:var(--text-muted); font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:2px; padding:4px 10px; border-radius:2px; cursor:pointer; transition:all 0.2s;}
-.lang-btn.active{border-color:var(--red); color:var(--red); background:rgba(232,24,60,0.06);}
-.lang-btn:hover{border-color:var(--red); color:var(--red);}
-.lang-switcher a{text-decoration:none;display:inline-block;}
-
-/* ---------- NAV MOBILE (identique à la homepage) ---------- */
-.mob-nav{display:none;}
-@media (max-width:768px){
-  nav{padding:18px 24px;}
-  nav ul{display:none;}
-  body{padding-bottom:68px;}
-  .mob-nav{display:flex; position:fixed; bottom:0; left:0; right:0; z-index:9000; background:rgba(18,15,42,0.97); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-top:1px solid rgba(232,24,60,0.4); padding-top:8px; padding-bottom:env(safe-area-inset-bottom, 8px); justify-content:space-around; align-items:flex-start;}
-}
-.mob-nav a{display:flex; flex-direction:column; align-items:center; gap:3px; color:var(--text-muted); text-decoration:none; font-size:9px; letter-spacing:0.5px; text-transform:uppercase; padding:4px 2px; transition:color 0.2s; flex:1; text-align:center; position:relative;}
-.mob-nav a.active, .mob-nav a:hover{color:var(--red);}
-.mob-nav .m-icon{font-size:20px; line-height:1; display:block;}
-.mob-nav a .m-badge{position:absolute;top:0;left:50%;margin-left:6px;background:var(--yellow);color:var(--black);font-size:7px;font-weight:700;letter-spacing:0.2px;padding:1px 4px;border-radius:3px;line-height:1.3;}
-
 /* ---------- TICKER ---------- */
 .ticker-outer{
   margin-top:73px;
@@ -573,34 +531,13 @@ details.lic[open] .chev{transform:rotate(180deg); color:var(--red);}
 .btn-primary{background:var(--red); color:#fff;}
 .btn-secondary{background:transparent; border:1px solid rgba(255,255,255,.25); color:var(--white);}
 
-footer.site{border-top:1px solid rgba(255,255,255,.08); padding:34px 0; margin-top:20px;}
-.footer-row{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;}
-.footer-links{display:flex; gap:18px; flex-wrap:wrap; font-size:13px;}
-.footer-links a{text-decoration:none; color:var(--text-muted);}
-.footer-links a:hover{color:var(--white);}
-.copyright{font-size:12px; color:var(--text-muted);}
 </style>
 </head>
 <body>
 
+{% include nav.html %}
+
 <!-- NAV (identique à la homepage) -->
-<nav>
-  <a href="/fr/" class="nav-logo"><img src="/logo.png" alt="BoosterStop" width="225" height="28" fetchpriority="high"></a>
-  <div class="nav-right">
-    <ul>
-      <li><a href="/fr/#where" data-en="Locations" data-fr="Emplacements">Emplacements</a></li>
-      <li><a href="/fr/licences-geneve.html" class="active" data-en="🃏 Licenses" data-fr="🃏 Licences">🃏 Licences</a></li>
-      <li><a href="/fr/expansion.html" data-en="🌍 Expansion" data-fr="🌍 Expansion">🌍 Expansion</a></li>
-      <li><a href="/fr/#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
-      <li><a href="/fr/newsletter.html">🔔 Newsletter <span class="nl-badge">-10%</span></a></li>
-      <li><a href="/fr/stock.html" style="color:var(--red);font-weight:500;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Stock Live</a></li>
-    </ul>
-    <div class="lang-switcher">
-      <a class="lang-btn" href="/licences-geneve.html">EN</a>
-      <a class="lang-btn active" href="/fr/licences-geneve.html">FR</a>
-    </div>
-  </div>
-</nav>
 
 <div class="ticker-outer" aria-hidden="true">
   <div class="ticker-track"><span>POKÉMON   ///   ONE PIECE CARD GAME   ///   MAGIC: THE GATHERING   ///   MAGIC × FINAL FANTASY   ///   MAGIC × MARVEL   ///   MAGIC × LE SEIGNEUR DES ANNEAUX / THE HOBBIT   ///   NARUTO   ///   DRAGON BALL SUPER CARD GAME: FUSION WORLD   ///   DIGIMON CARD GAME   ///   DISNEY LORCANA   ///   GUNDAM CARD GAME   ///   CYBERPUNK TCG   ///   RIFTBOUND — LEAGUE OF LEGENDS TCG   ///   AZUKI TCG   ///   VIBES TCG   ///   SAFIR CARDS   ///   UNION ARENA   ///   STAR WARS: UNLIMITED   ///   FOOTBALL   ///   NBA   ///   NFL   ///   NHL   ///   FORMULA 1</span><span>POKÉMON   ///   ONE PIECE CARD GAME   ///   MAGIC: THE GATHERING   ///   MAGIC × FINAL FANTASY   ///   MAGIC × MARVEL   ///   MAGIC × LE SEIGNEUR DES ANNEAUX / THE HOBBIT   ///   NARUTO   ///   DRAGON BALL SUPER CARD GAME: FUSION WORLD   ///   DIGIMON CARD GAME   ///   DISNEY LORCANA   ///   GUNDAM CARD GAME   ///   CYBERPUNK TCG   ///   RIFTBOUND — LEAGUE OF LEGENDS TCG   ///   AZUKI TCG   ///   VIBES TCG   ///   SAFIR CARDS   ///   UNION ARENA   ///   STAR WARS: UNLIMITED   ///   FOOTBALL   ///   NBA   ///   NFL   ///   NHL   ///   FORMULA 1</span></div>
@@ -1473,46 +1410,9 @@ footer.site{border-top:1px solid rgba(255,255,255,.08); padding:34px 0; margin-t
   </div>
 </main>
 
-<footer class="site">
-  <div class="wrap footer-row">
-    <div class="footer-links">
-      <a href="/fr/index.html" data-fr="Accueil" data-en="Home">Accueil</a>
-      <a href="/fr/stock.html" data-fr="Stock en direct" data-en="Live stock">Stock en direct</a>
-      <a href="/fr/newsletter.html" data-fr="Newsletter" data-en="Newsletter">Newsletter</a>
-      <a href="/fr/privacy.html" data-fr="Confidentialité" data-en="Privacy">Confidentialité</a>
-    </div>
-    <span class="copyright">© 2020-2026 BoosterStop — 247 Distribution SNC</span>
-  </div>
-</footer>
+{% include footer.html %}
 
 <!-- NAV MOBILE (identique à la homepage) -->
-<div class="mob-nav" id="mobNav">
-  <a href="/fr/" class="mob-link">
-    <span class="m-icon">🏠</span>
-    <span data-en="Home" data-fr="Accueil">Accueil</span>
-  </a>
-  <a href="/fr/stock.html" class="mob-link">
-    <span class="m-icon">📦</span>
-    <span data-en="Stock" data-fr="Stock">Stock</span>
-  </a>
-  <a href="/fr/licences-geneve.html" class="mob-link active">
-    <span class="m-icon">🃏</span>
-    <span data-en="TCG" data-fr="TCG">TCG</span>
-  </a>
-  <a href="/fr/newsletter.html" class="mob-link">
-    <span class="m-icon">🔔</span>
-    <span class="m-badge">-10%</span>
-    <span data-en="Newsletter" data-fr="Newsletter">Newsletter</span>
-  </a>
-  <a href="/fr/#partner" class="mob-link">
-    <span class="m-icon">🤝</span>
-    <span data-en="Partner" data-fr="Partenaire">Partenaire</span>
-  </a>
-  <a href="/fr/#contact" class="mob-link">
-    <span class="m-icon">✉️</span>
-    <span data-en="Contact" data-fr="Contact">Contact</span>
-  </a>
-</div>
 
 <div class="modal-backdrop" id="modalBackdrop">
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">

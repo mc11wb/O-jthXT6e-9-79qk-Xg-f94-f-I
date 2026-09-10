@@ -1,17 +1,11 @@
+---
+lang: en
+page: expansion
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RBKM1ZZN4Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  var c=null; try{ c=localStorage.getItem('bs_cookie_consent'); }catch(e){}
-  gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':c==='accepted'?'granted':'denied','wait_for_update':500});
-  gtag('js', new Date());
-  gtag('config', 'G-RBKM1ZZN4Z');
-</script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% include head.html %}
 <title>TCG Vending Machines: Geneva, Lausanne, Brussels, Dubai… | BoosterStop</title>
 <meta name="description" content="Pokémon, One Piece and Magic vending machines. Live in Geneva — expanding across Suisse romande, border France, Brussels, Dubai &amp; Abu Dhabi. Request your city.">
 <link rel="canonical" href="https://boosterstop.com/expansion.html">
@@ -31,12 +25,6 @@
 <meta name="twitter:title" content="TCG Vending Machines — Geneva, Suisse romande, France, Belgium, UAE">
 <meta name="twitter:description" content="Live in Geneva. Launching in Brussels and Dubai. Which city is next? You decide.">
 <meta name="twitter:image" content="https://boosterstop.com/logo.png">
-<link rel="icon" type="image/png" href="/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@300;400;500&amp;display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:wght@300;400;500&amp;display=swap" rel="stylesheet"></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -46,22 +34,6 @@
 }
 html{scroll-behavior:smooth;}
 body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;font-size:15px;background-image:radial-gradient(ellipse at 80% 10%,rgba(232,24,60,0.08) 0%,transparent 50%),radial-gradient(ellipse at 20% 80%,rgba(42,31,94,0.3) 0%,transparent 60%);}
-
-/* NAV (identique au site) */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:22px 48px;border-bottom:1px solid rgba(255,255,255,0.06);background:rgba(18,15,42,0.92);backdrop-filter:blur(12px);}
-.nav-logo{display:flex;align-items:center;text-decoration:none;}
-.nav-logo img{height:28px;width:auto;}
-.nav-right{display:flex;align-items:center;gap:26px;}
-nav ul{list-style:none;display:flex;gap:26px;}
-nav ul a{color:var(--text-muted);text-decoration:none;font-size:13px;letter-spacing:0.5px;transition:color 0.2s;}
-nav ul a:hover{color:var(--white);}
-nav ul a.active{color:var(--red);}
-.nl-badge{display:inline-block;background:var(--yellow);color:var(--black);font-size:8px;font-weight:600;letter-spacing:0.5px;padding:1px 5px;border-radius:3px;margin-left:5px;vertical-align:middle;}
-.lang-switcher{display:flex;gap:4px;}
-.lang-btn{background:none;border:1px solid var(--gray-mid);color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;padding:4px 10px;border-radius:2px;cursor:pointer;transition:all 0.2s;}
-.lang-btn.active{border-color:var(--red);color:var(--red);background:rgba(232,24,60,0.06);}
-.lang-btn:hover{border-color:var(--red);color:var(--red);}
-.lang-switcher a{text-decoration:none;display:inline-block;}
 
 /* HERO */
 .hero{max-width:900px;margin:0 auto;padding:150px 48px 40px;text-align:center;}
@@ -129,47 +101,18 @@ h1 .accent{color:var(--red);}
 .also{max-width:900px;margin:0 auto;padding:0 48px 70px;display:flex;gap:10px;flex-wrap:wrap;}
 .also a{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--red);border:1px solid rgba(232,24,60,0.35);padding:10px 18px;border-radius:2px;transition:background 0.2s;}
 .also a:hover{background:rgba(232,24,60,0.08);}
-footer{border-top:1px solid var(--gray-mid);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;}
-footer p{font-size:12px;color:#444;letter-spacing:0.5px;}
 
-/* NAV MOBILE (identique au site) */
-.mob-nav{display:none;}
 @media(max-width:768px){
-  nav{padding:18px 24px;}
-  nav ul{display:none;}
-  body{padding-bottom:68px;}
   .hero{padding:120px 22px 30px;}
   .wrap,.ask,.faq,.also{padding-left:22px;padding-right:22px;}
   .ask-form{grid-template-columns:1fr;}
-  footer{padding:24px;flex-direction:column;gap:12px;text-align:center;}
-  .mob-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:9000;background:rgba(18,15,42,0.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(232,24,60,0.4);padding-top:8px;padding-bottom:env(safe-area-inset-bottom, 8px);justify-content:space-around;align-items:flex-start;}
 }
-.mob-nav a{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--text-muted);text-decoration:none;font-size:9px;letter-spacing:0.5px;text-transform:uppercase;padding:4px 2px;transition:color 0.2s;flex:1;text-align:center;position:relative;}
-.mob-nav a.active,.mob-nav a:hover{color:var(--red);}
-.mob-nav .m-icon{font-size:20px;line-height:1;display:block;}
-.mob-nav a .m-badge{position:absolute;top:0;left:50%;margin-left:6px;background:var(--yellow);color:var(--black);font-size:7px;font-weight:700;letter-spacing:0.2px;padding:1px 4px;border-radius:3px;line-height:1.3;}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="/" class="nav-logo"><img src="/logo.png" alt="BoosterStop" width="225" height="28" fetchpriority="high"></a>
-  <div class="nav-right">
-    <ul>
-      <li><a href="/#where" data-en="Locations" data-fr="Emplacements">Locations</a></li>
-      <li><a href="/licences-geneve.html" data-en="🃏 Licenses" data-fr="🃏 Licences">🃏 Licenses</a></li>
-      <li><a href="/expansion.html" class="active" data-en="🌍 Expansion" data-fr="🌍 Expansion">🌍 Expansion</a></li>
-      <li><a href="/#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
-      <li><a href="/newsletter.html">🔔 Newsletter <span class="nl-badge">-10%</span></a></li>
-      <li><a href="/stock.html" style="color:var(--red);font-weight:500;" data-en="📦 Live Stock" data-fr="📦 Stock Live">📦 Live Stock</a></li>
-    </ul>
-    <div class="lang-switcher">
-      <a class="lang-btn active" href="/expansion.html">EN</a>
-      <a class="lang-btn" href="/fr/expansion.html">FR</a>
-    </div>
-  </div>
-</nav>
+{% include nav.html %}
+
 
 <!-- HERO -->
 <div class="hero">
@@ -446,24 +389,9 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;}
   <a href="/newsletter.html" data-en="🔔 Newsletter -10%" data-fr="🔔 Newsletter -10%">🔔 Newsletter -10%</a>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo"><img src="/logo.png" alt="BoosterStop" width="177" height="22" loading="lazy" style="height:22px;opacity:0.6;"></div>
-  <div style="display:flex;align-items:center;gap:16px;">
-    <a href="/privacy.html" style="font-size:12px;color:#666;text-decoration:none;letter-spacing:0.5px;" data-en="Privacy &amp; Cookies" data-fr="Confidentialité">Privacy &amp; Cookies</a>
-    <p>© 2020-2026 BoosterStop — 247 Distribution SNC</p>
-  </div>
-</footer>
+{% include footer.html %}
 
 <!-- NAV MOBILE -->
-<div class="mob-nav">
-  <a href="/"><span class="m-icon">🏠</span><span data-en="Home" data-fr="Accueil">Home</span></a>
-  <a href="/stock.html"><span class="m-icon">📦</span><span data-en="Stock" data-fr="Stock">Stock</span></a>
-  <a href="/licences-geneve.html"><span class="m-icon">🃏</span><span data-en="TCG" data-fr="TCG">TCG</span></a>
-  <a href="/newsletter.html"><span class="m-icon">🔔</span><span class="m-badge">-10%</span><span data-en="Newsletter" data-fr="Newsletter">Newsletter</span></a>
-  <a href="/#partner"><span class="m-icon">🤝</span><span data-en="Partner" data-fr="Partenaire">Partner</span></a>
-  <a href="/#contact"><span class="m-icon">✉️</span><span data-en="Contact" data-fr="Contact">Contact</span></a>
-</div>
 
 <script>
 var currentLang = 'en';

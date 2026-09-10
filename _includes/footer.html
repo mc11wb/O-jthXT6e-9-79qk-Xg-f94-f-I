@@ -1,0 +1,40 @@
+{%- comment -%}
+  FOOTER COMMUN — inséré en bas de chaque page via la balise include footer.html
+  Contient : footer, nav mobile (barre du bas), bannière cookies, JS commun.
+  Lit le front matter de la page (lang, page) comme nav.html.
+{%- endcomment -%}
+{%- assign lang = page.lang | default: "en" -%}
+{%- assign pid = page.page | default: "index" -%}
+{%- if lang == "fr" -%}{%- assign fr = true -%}{%- assign base = "/fr/" -%}{%- else -%}{%- assign fr = false -%}{%- assign base = "/" -%}{%- endif -%}
+{%- if pid == "index" -%}{%- assign anchor = "" -%}{%- else -%}{%- assign anchor = base -%}{%- endif -%}
+<!-- FOOTER (commun : _includes/footer.html) -->
+<footer>
+  <div class="footer-logo"><img src="/logo.png" alt="BoosterStop" width="177" height="22" loading="lazy"></div>
+  <div class="footer-links">
+    {%- unless pid == "stock" %}
+    <a href="{{ base }}stock.html" class="footer-stock" data-en="📦 Live Stock" data-fr="📦 Stock Live">{% if fr %}📦 Stock Live{% else %}📦 Live Stock{% endif %}</a>
+    {%- endunless %}
+    <a href="{{ base }}privacy.html" class="footer-privacy" data-en="Privacy &amp; Cookies" data-fr="Confidentialité">{% if fr %}Confidentialité{% else %}Privacy &amp; Cookies{% endif %}</a>
+    <p>© {{ site.time | date: "%Y" }} BoosterStop — 247 Distribution SNC</p>
+  </div>
+</footer>
+
+<!-- NAV MOBILE (commun) -->
+<div class="mob-nav" id="mobNav">
+  <a href="{{ base }}" class="mob-link{% if pid == "index" %} active{% endif %}"><span class="m-icon">🏠</span><span data-en="Home" data-fr="Accueil">{% if fr %}Accueil{% else %}Home{% endif %}</span></a>
+  <a href="{{ base }}stock.html" class="mob-link{% if pid == "stock" %} active{% endif %}"><span class="m-icon">📦</span><span data-en="Stock" data-fr="Stock">Stock</span></a>
+  <a href="{{ base }}licences-geneve.html" class="mob-link{% if pid == "licences-geneve" %} active{% endif %}"><span class="m-icon">🃏</span><span data-en="TCG" data-fr="TCG">TCG</span></a>
+  <a href="{{ base }}newsletter.html" class="mob-link{% if pid == "newsletter" %} active{% endif %}"><span class="m-icon">🔔</span><span class="m-badge">-10%</span><span data-en="Newsletter" data-fr="Newsletter">Newsletter</span></a>
+  <a href="{{ anchor }}#partner" class="mob-link"><span class="m-icon">🤝</span><span data-en="Partner" data-fr="Partenaire">{% if fr %}Partenaire{% else %}Partner{% endif %}</span></a>
+  <a href="{{ anchor }}#contact" class="mob-link"><span class="m-icon">✉️</span><span data-en="Contact" data-fr="Contact">Contact</span></a>
+</div>
+
+<!-- BANNIÈRE COOKIES / RGPD (commun) -->
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <div class="cookie-text"><strong>🍪</strong> {% if fr %}Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. <a href="{{ base }}privacy.html">En savoir plus</a>.{% else %}We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. <a href="{{ base }}privacy.html">Learn more</a>.{% endif %}</div>
+  <div class="cookie-actions">
+    <button class="cookie-btn decline" onclick="setCookieConsent(false)" data-en="Essential only" data-fr="Essentiels">{% if fr %}Essentiels{% else %}Essential only{% endif %}</button>
+    <button class="cookie-btn accept" onclick="setCookieConsent(true)" data-en="Accept all" data-fr="Tout accepter">{% if fr %}Tout accepter{% else %}Accept all{% endif %}</button>
+  </div>
+</div>
+<script src="/assets/site.js"></script>
