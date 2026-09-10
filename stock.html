@@ -82,9 +82,17 @@ page: stock
   .mt-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gray-mid); flex-shrink: 0; transition: all 0.2s; }
   .machine-tab.active .mt-dot { background: var(--red); box-shadow: 0 0 8px rgba(232,24,60,0.7); }
   .mt-label { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
-  .mt-name { font-size: 12.5px; line-height: 1.25; }
+  .mt-name { font-size: 12.5px; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .mt-sub { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); }
   .machine-tab.active .mt-sub { color: var(--red); }
+  /* Machine installée mais stock live pas encore connecté */
+  .machine-tab.soon .mt-dot { background: transparent; border: 1px dashed var(--text-muted); }
+  .machine-tab.soon.active .mt-dot { background: var(--yellow); border: none; box-shadow: 0 0 8px rgba(255,208,0,0.6); }
+  .mt-soon { font-size: 8.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--yellow); }
+  .machine-soon-msg { border: 1px dashed var(--gray-mid); border-radius: var(--radius); padding: 44px 28px; text-align: center; }
+  .machine-soon-msg .msm-icon { font-size: 34px; margin-bottom: 10px; }
+  .machine-soon-msg .msm-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1.5px; color: var(--white); }
+  .machine-soon-msg .msm-sub { color: var(--text-muted); font-size: 13.5px; max-width: 440px; margin: 8px auto 0; line-height: 1.7; }
   .stock-map-wrap { border: 1px solid var(--gray-mid); border-radius: 0 0 0 0; overflow: hidden; height: 300px; position: relative; }
   #stockMap { width: 100%; height: 100%; }
   .selected-machine-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: var(--gray); border: 1px solid var(--gray-mid); border-top: none; border-radius: 0 0 var(--radius) var(--radius); padding: 14px 20px; }
@@ -231,7 +239,8 @@ page: stock
 <div class="country-tabs-wrap">
   <div class="country-tabs">
     <button class="country-tab active" onclick="switchCountry('ch', this)">🇨🇭 <span data-en="Switzerland — Geneva" data-fr="Suisse — Genève">Switzerland — Geneva</span></button>
-    <button class="country-tab" onclick="switchCountry('be', this)">🇧🇪 <span data-en="Belgium" data-fr="Belgique">Belgium</span> <span class="soon-pill" data-en="Soon" data-fr="Bientôt">Soon</span></button>
+    <button class="country-tab" onclick="switchCountry('be', this)">🇧🇪 <span data-en="Belgium" data-fr="Belgique">Belgium</span></button>
+    <button class="country-tab" onclick="switchCountry('fr', this)">🇫🇷 <span data-en="France" data-fr="France">France</span> <span class="soon-pill" data-en="Soon" data-fr="Bientôt">Soon</span></button>
     <button class="country-tab" onclick="switchCountry('uae', this)">🇦🇪 <span data-en="UAE" data-fr="Émirats">UAE</span> <span class="soon-pill" data-en="Soon" data-fr="Bientôt">Soon</span></button>
   </div>
 </div>
@@ -239,7 +248,7 @@ page: stock
 <!-- CH PANEL -->
 <div id="panel-ch">
   <div class="stats-bar">
-    <div class="stat"><div class="stat-value" id="stat-machines">3</div><div class="stat-label" data-en="Machines live" data-fr="Machines actives">Machines live</div></div>
+    <div class="stat"><div class="stat-value" id="stat-machines">7</div><div class="stat-label" data-en="Machines live" data-fr="Machines actives">Machines live</div></div>
     <div class="stat"><div class="stat-value green" id="stat-instock">—</div><div class="stat-label" data-en="Products in stock" data-fr="Produits en stock">Products in stock</div></div>
     <div class="stat"><div class="stat-value orange" id="stat-low">—</div><div class="stat-label" data-en="Running low" data-fr="Bientôt épuisés">Running low</div></div>
     <div class="stat"><div class="stat-value red" id="stat-empty">—</div><div class="stat-label" data-en="Sold out slots" data-fr="Rails épuisés">Sold out slots</div></div>
@@ -259,6 +268,22 @@ page: stock
       <button class="machine-tab" onclick="selectMachine(2)">
         <span class="mt-dot"></span>
         <span class="mt-label"><span class="mt-name">La Poste du Petit-Lancy</span><span class="mt-sub">Petit-Lancy · 1213</span></span>
+      </button>
+      <button class="machine-tab soon" onclick="selectMachine(3)">
+        <span class="mt-dot"></span>
+        <span class="mt-label"><span class="mt-name">La Poste de Plainpalais</span><span class="mt-sub">Plainpalais · 1205</span><span class="mt-soon" data-en="Live stock soon" data-fr="Stock live bientôt">Live stock soon</span></span>
+      </button>
+      <button class="machine-tab soon" onclick="selectMachine(4)">
+        <span class="mt-dot"></span>
+        <span class="mt-label"><span class="mt-name">La Poste de Meyrin</span><span class="mt-sub">Meyrin · 1217</span><span class="mt-soon" data-en="Live stock soon" data-fr="Stock live bientôt">Live stock soon</span></span>
+      </button>
+      <button class="machine-tab soon" onclick="selectMachine(5)">
+        <span class="mt-dot"></span>
+        <span class="mt-label"><span class="mt-name">La Poste de Thônex</span><span class="mt-sub">Thônex · 1226</span><span class="mt-soon" data-en="Live stock soon" data-fr="Stock live bientôt">Live stock soon</span></span>
+      </button>
+      <button class="machine-tab soon" onclick="selectMachine(6)">
+        <span class="mt-dot"></span>
+        <span class="mt-label"><span class="mt-name">La Poste de Carouge</span><span class="mt-sub">Carouge · 1227</span><span class="mt-soon" data-en="Live stock soon" data-fr="Stock live bientôt">Live stock soon</span></span>
       </button>
     </div>
     <div class="stock-map-wrap"><div id="stockMap"></div></div>
@@ -286,16 +311,60 @@ page: stock
 </div>
 
 <!-- BE PANEL -->
-<div class="coming-soon-country" id="panel-be">
-  <div class="csc-inner">
-    <div class="csc-flag">🇧🇪</div>
-    <div class="csc-title" data-en="Belgium — Launching Soon" data-fr="Belgique — Bientôt disponible">Belgium — Launching Soon</div>
-    <p class="csc-sub" data-en="Our first Belgian machines are on the way. Leave your email and be the first to know when we go live — plus get the launch promo." data-fr="Nos premières machines belges arrivent. Laissez votre email pour être prévenu du lancement — et recevoir la promo d'ouverture.">Our first Belgian machines are on the way. Leave your email and be the first to know when we go live — plus get the launch promo.</p>
-    <div class="notify-form">
-      <input type="email" id="notifyBE" placeholder="you@example.com">
-      <button onclick="notifyMe('be')" data-en="Notify me" data-fr="Prévenez-moi">Notify me</button>
+<div id="panel-be" style="display:none;">
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-value">5</div><div class="stat-label" data-en="Machines live" data-fr="Machines actives">Machines live</div></div>
+    <div class="stat"><div class="stat-value green">—</div><div class="stat-label" data-en="Products in stock" data-fr="Produits en stock">Products in stock</div></div>
+    <div class="stat"><div class="stat-value orange">—</div><div class="stat-label" data-en="Running low" data-fr="Bientôt épuisés">Running low</div></div>
+    <div class="stat"><div class="stat-value red">—</div><div class="stat-label" data-en="Sold out slots" data-fr="Rails épuisés">Sold out slots</div></div>
+  </div>
+
+  <div class="machine-select-zone">
+    <div class="zone-label" data-en="Our Belgian machines" data-fr="Nos machines belges">Our Belgian machines</div>
+    <div class="machine-tabs">
+      <button class="machine-tab soon active" onclick="selectBeMachine(this)">
+        <span class="mt-dot"></span>
+        <span class="mt-label"><span class="mt-name">Machine 1</span><span class="mt-sub" data-en="Belgium" data-fr="Belgique">Belgium</span><span class="mt-soon" data-en="Location soon" data-fr="Emplacement bientôt">Location soon</span></span>
+      </button>
+      <button class="machine-tab soon" onclick="selectBeMachine(this)">
+        <span class="mt-dot"></span>
+        <span class="mt-label"><span class="mt-name">Machine 2</span><span class="mt-sub" data-en="Belgium" data-fr="Belgique">Belgium</span><span class="mt-soon" data-en="Location soon" data-fr="Emplacement bientôt">Location soon</span></span>
+      </button>
+      <button class="machine-tab soon" onclick="selectBeMachine(this)">
+        <span class="mt-dot"></span>
+        <span class="mt-label"><span class="mt-name">Machine 3</span><span class="mt-sub" data-en="Belgium" data-fr="Belgique">Belgium</span><span class="mt-soon" data-en="Location soon" data-fr="Emplacement bientôt">Location soon</span></span>
+      </button>
+      <button class="machine-tab soon" onclick="selectBeMachine(this)">
+        <span class="mt-dot"></span>
+        <span class="mt-label"><span class="mt-name">Machine 4</span><span class="mt-sub" data-en="Belgium" data-fr="Belgique">Belgium</span><span class="mt-soon" data-en="Location soon" data-fr="Emplacement bientôt">Location soon</span></span>
+      </button>
+      <button class="machine-tab soon" onclick="selectBeMachine(this)">
+        <span class="mt-dot"></span>
+        <span class="mt-label"><span class="mt-name">Machine 5</span><span class="mt-sub" data-en="Belgium" data-fr="Belgique">Belgium</span><span class="mt-soon" data-en="Location soon" data-fr="Emplacement bientôt">Location soon</span></span>
+      </button>
     </div>
-    <div class="notify-ok" id="notifyOkBE" data-en="✓ Noted — you'll be the first to know!" data-fr="✓ C'est noté — vous serez prévenu en premier !">✓ Noted — you'll be the first to know!</div>
+  </div>
+
+  <div class="machine-view">
+    <div class="machine-soon-msg">
+      <div class="msm-icon">🇧🇪</div>
+      <div class="msm-title" data-en="Live stock coming soon" data-fr="Stock live bientôt disponible">Live stock coming soon</div>
+      <p class="msm-sub" data-en="Our 5 Belgian machines are live and stocked. Real-time inventory and the exact addresses will appear here as soon as they are connected." data-fr="Nos 5 machines belges sont actives et approvisionnées. L'inventaire en temps réel et les adresses exactes apparaîtront ici dès leur connexion.">Our 5 Belgian machines are live and stocked. Real-time inventory and the exact addresses will appear here as soon as they are connected.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FR PANEL -->
+<div class="coming-soon-country" id="panel-fr">
+  <div class="csc-inner">
+    <div class="csc-flag">🇫🇷</div>
+    <div class="csc-title" data-en="France — Launching Soon" data-fr="France — Bientôt disponible">France — Launching Soon</div>
+    <p class="csc-sub" data-en="Border towns first, then the major cities. Leave your email and be the first to know when we go live." data-fr="Les villes frontalières d'abord, puis les grandes villes. Laissez votre email pour être prévenu du lancement.">Border towns first, then the major cities. Leave your email and be the first to know when we go live.</p>
+    <div class="notify-form">
+      <input type="email" id="notifyFR" placeholder="you@example.com">
+      <button onclick="notifyMe('fr')" data-en="Notify me" data-fr="Prévenez-moi">Notify me</button>
+    </div>
+    <div class="notify-ok" id="notifyOkFR" data-en="✓ Noted — you'll be the first to know!" data-fr="✓ C'est noté — vous serez prévenu en premier !">✓ Noted — you'll be the first to know!</div>
   </div>
 </div>
 
@@ -356,14 +425,20 @@ page: stock
 const WORKER = 'https://boosterstop-stock.cold-water-7039.workers.dev';
 const FORMSPREE = {
   restock_ch: 'https://formspree.io/f/mvzjrldj',
-  notify_be: 'https://formspree.io/f/xdarzbye',
+  notify_fr: 'https://formspree.io/f/xdarzbye',   // ancien endpoint Belgique, réutilisé pour la France
   notify_uae: 'https://formspree.io/f/mqevbnwb'
 };
 const MACHINES = [
-  { name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', lat: 46.2008, lng: 6.1520 },
-  { name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", lat: 46.2112, lng: 6.1268 },
-  { name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', lat: 46.1872, lng: 6.1214 }
+  { name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', lat: 46.2008, lng: 6.152, worker: 0 },
+  { name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", lat: 46.2112, lng: 6.1268, worker: 1 },
+  { name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', lat: 46.1872, lng: 6.1214, worker: 2 },
+  { name: 'La Poste de Plainpalais', addr: 'Rue Pictet-de-Bock 6, 1205 Genève', lat: 46.1938, lng: 6.1427, worker: null },
+  { name: 'La Poste de Meyrin', addr: 'Avenue de Feuillasse 24, 1217 Meyrin', lat: 46.2323, lng: 6.0835, worker: null },
+  { name: 'La Poste de Thônex', addr: 'Rue de Genève 106, 1226 Thônex', lat: 46.1928, lng: 6.202, worker: null },
+  { name: 'La Poste de Carouge', addr: 'Boulevard des Promenades 16, 1227 Carouge', lat: 46.1835, lng: 6.1375, worker: null }
 ];
+// worker = index appelé sur le Cloudflare Worker. null = machine installée,
+// mais stock live pas encore connecté → message « bientôt » à la place des étages.
 const FLOORS = [
   { label: { en: 'Floor 1 — top', fr: 'Étage 1 — haut' }, min: 10, max: 19 },
   { label: { en: 'Floor 2', fr: 'Étage 2' }, min: 20, max: 29 },
@@ -375,7 +450,7 @@ const FLOORS = [
 
 let currentLang = 'en';
 let currentMachine = 0;
-let machineData = [null, null, null];
+let machineData = MACHINES.map(function() { return null; });
 let stockMapRef = null;
 let stockMarkers = [];
 let selectedSlot = null;
@@ -398,6 +473,7 @@ function switchCountry(code, btn) {
   btn.classList.add('active');
   document.getElementById('panel-ch').style.display = code === 'ch' ? 'block' : 'none';
   document.getElementById('panel-be').style.display = code === 'be' ? 'block' : 'none';
+  document.getElementById('panel-fr').style.display = code === 'fr' ? 'block' : 'none';
   document.getElementById('panel-uae').style.display = code === 'uae' ? 'block' : 'none';
 }
 
@@ -431,6 +507,11 @@ function initStockMap() {
     marker.addListener('click', function() { selectMachine(i); });
     stockMarkers.push(marker);
   });
+
+  // Cadrage automatique sur l'ensemble des machines
+  const bounds = new google.maps.LatLngBounds();
+  MACHINES.forEach(function(m) { bounds.extend({ lat: m.lat, lng: m.lng }); });
+  stockMapRef.fitBounds(bounds, 40);
 }
 function markerIcon(active) {
   return {
@@ -445,8 +526,13 @@ function markerIcon(active) {
 function updateMarkerStyles() {
   stockMarkers.forEach(function(mk, i) { mk.setIcon(markerIcon(i === currentMachine)); });
 }
+function selectBeMachine(btn) {
+  document.querySelectorAll('#panel-be .machine-tab').forEach(function(t) { t.classList.remove('active'); });
+  btn.classList.add('active');
+}
+
 function updateMachineTabs() {
-  document.querySelectorAll('.machine-tab').forEach(function(t, i) {
+  document.querySelectorAll('#panel-ch .machine-tab').forEach(function(t, i) {
     t.classList.toggle('active', i === currentMachine);
   });
 }
@@ -468,8 +554,9 @@ async function loadAll() {
   document.getElementById('floorsContainer').innerHTML = '<div class="state-msg"><span class="spin"></span><br><span>' + (currentLang === 'fr' ? 'Connexion à la machine…' : 'Connecting to the machine…') + '</span></div>';
   let totalIn = 0, totalLow = 0, totalEmpty = 0, anyOk = false;
   for (let i = 0; i < MACHINES.length; i++) {
+    if (MACHINES[i].worker === null) { machineData[i] = null; continue; }
     try {
-      const res = await fetch(WORKER + '/stock?machine=' + i);
+      const res = await fetch(WORKER + '/stock?machine=' + MACHINES[i].worker);
       const data = await res.json();
       if (data && data.ok) {
         machineData[i] = data;
@@ -491,6 +578,14 @@ async function loadAll() {
 function renderFloors() {
   const box = document.getElementById('floorsContainer');
   if (!box) return;
+  if (MACHINES[currentMachine].worker === null) {
+    box.innerHTML = '<div class="machine-soon-msg"><div class="msm-icon">📦</div>'
+      + '<div class="msm-title">' + (currentLang === 'fr' ? 'Stock live bientôt disponible' : 'Live stock coming soon') + '</div>'
+      + '<p class="msm-sub">' + (currentLang === 'fr'
+          ? 'Cette machine est installée et approvisionnée. Son inventaire en temps réel arrive ici très prochainement.'
+          : 'This machine is installed and stocked. Its real-time inventory will appear here very soon.') + '</p></div>';
+    return;
+  }
   const data = machineData[currentMachine];
   if (!data) {
     box.innerHTML = '<div class="state-msg">' + (currentLang === 'fr'
@@ -629,7 +724,7 @@ async function notifyMe(code) {
     const res = await fetch(code === 'be' ? FORMSPREE.notify_be : FORMSPREE.notify_uae, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email: email, country: code === 'be' ? 'Belgium' : 'UAE', _subject: '[BoosterStop] Launch notification — ' + (code === 'be' ? 'Belgium' : 'UAE') })
+      body: JSON.stringify({ email: email, country: code === 'fr' ? 'France' : 'UAE', _subject: '[BoosterStop] Launch notification — ' + (code === 'fr' ? 'France' : 'UAE') })
     });
     if (res.ok) { ok.style.display = 'block'; input.value = ''; }
   } catch (e) {}

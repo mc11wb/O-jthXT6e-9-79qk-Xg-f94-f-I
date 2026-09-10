@@ -332,11 +332,16 @@ page: index
     <div class="country-item">
       <span class="country-flag">🇨🇭</span>
       <span data-en="Switzerland" data-fr="Suisse">Suisse</span>
-      <span class="country-status live" data-en="Live — Geneva" data-fr="Actif — Genève">Actif — Genève</span>
+      <span class="country-status live" data-en="Live — 7 machines" data-fr="Actif — 7 machines">Actif — 7 machines</span>
     </div>
     <div class="country-item">
       <span class="country-flag">🇧🇪</span>
       <span data-en="Belgium" data-fr="Belgique">Belgique</span>
+      <span class="country-status live" data-en="Live — 5 machines" data-fr="Actif — 5 machines">Actif — 5 machines</span>
+    </div>
+    <div class="country-item">
+      <span class="country-flag">🇫🇷</span>
+      <span data-en="France" data-fr="France">France</span>
       <span class="country-status launching" data-en="Launching Soon" data-fr="Bientôt disponible">Bientôt disponible</span>
     </div>
     <div class="country-item">
@@ -415,7 +420,8 @@ page: index
 
     <div class="map-tabs">
       <button class="map-tab active" onclick="switchTab('geneva')" data-en="🇨🇭 Geneva — Live" data-fr="🇨🇭 Genève — Actif">🇨🇭 Genève — Actif</button>
-      <button class="map-tab" onclick="switchTab('belgium')" data-en="🇧🇪 Belgium — Soon" data-fr="🇧🇪 Belgique — Bientôt">🇧🇪 Belgique — Bientôt</button>
+      <button class="map-tab" onclick="switchTab('belgium')" data-en="🇧🇪 Belgium — Live" data-fr="🇧🇪 Belgique — Actif">🇧🇪 Belgique — Actif</button>
+      <button class="map-tab" onclick="switchTab('france')" data-en="🇫🇷 France — Soon" data-fr="🇫🇷 France — Bientôt">🇫🇷 France — Bientôt</button>
       <button class="map-tab" onclick="switchTab('uae')" data-en="🇦🇪 UAE — Soon" data-fr="🇦🇪 Émirats — Bientôt">🇦🇪 Émirats — Bientôt</button>
     </div>
 
@@ -447,10 +453,42 @@ page: index
             <a href="/fr/stock.html?machine=2" class="map-stock-link" data-en="📦 Check stock" data-fr="📦 Voir le stock">📦 Voir le stock</a>
           </div>
         </div>
+        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(3)">
+          <div class="map-location-dot live"></div>
+          <div>
+            <div class="map-location-name">La Poste de Plainpalais</div>
+            <div class="map-location-addr">Rue Pictet-de-Bock 6, 1205 Genève</div>
+            <a href="/fr/stock.html?machine=3" class="map-stock-link" data-en="📦 Check stock" data-fr="📦 Voir le stock">📦 Voir le stock</a>
+          </div>
+        </div>
+        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(4)">
+          <div class="map-location-dot live"></div>
+          <div>
+            <div class="map-location-name">La Poste de Meyrin</div>
+            <div class="map-location-addr">Avenue de Feuillasse 24, 1217 Meyrin</div>
+            <a href="/fr/stock.html?machine=4" class="map-stock-link" data-en="📦 Check stock" data-fr="📦 Voir le stock">📦 Voir le stock</a>
+          </div>
+        </div>
+        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(5)">
+          <div class="map-location-dot live"></div>
+          <div>
+            <div class="map-location-name">La Poste de Thônex</div>
+            <div class="map-location-addr">Rue de Genève 106, 1226 Thônex</div>
+            <a href="/fr/stock.html?machine=5" class="map-stock-link" data-en="📦 Check stock" data-fr="📦 Voir le stock">📦 Voir le stock</a>
+          </div>
+        </div>
+        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(6)">
+          <div class="map-location-dot live"></div>
+          <div>
+            <div class="map-location-name">La Poste de Carouge</div>
+            <div class="map-location-addr">Boulevard des Promenades 16, 1227 Carouge</div>
+            <a href="/fr/stock.html?machine=6" class="map-stock-link" data-en="📦 Check stock" data-fr="📦 Voir le stock">📦 Voir le stock</a>
+          </div>
+        </div>
         <div class="map-location-item incoming">
           <div class="map-location-dot incoming-dot"></div>
           <div>
-            <div class="map-location-name" data-en="+ 5 new locations coming very soon in Geneva" data-fr="+ 5 nouveaux emplacements très prochainement à Genève">+ 5 nouveaux emplacements très prochainement à Genève</div>
+            <div class="map-location-name" data-en="+ more locations coming soon in Geneva" data-fr="+ d'autres emplacements bientôt à Genève">+ d'autres emplacements bientôt à Genève</div>
             <a href="/fr/expansion.html" class="map-stock-link" data-en="🌍 See every planned city — Suisse romande, France, Belgium, UAE" data-fr="🌍 Voir toutes les villes prévues — Suisse romande, France, Belgique, UAE">🌍 Voir toutes les villes prévues — Suisse romande, France, Belgique, UAE</a>
           </div>
         </div>
@@ -462,9 +500,20 @@ page: index
       <div class="map-wrapper"><div id="map-belgium"></div></div>
       <div class="map-coming-soon-msg">
         <div class="coming-soon-icon">🇧🇪</div>
-        <div class="coming-soon-title" data-en="Belgium — Launching Soon" data-fr="Belgique — Bientôt disponible">Belgique — Bientôt disponible</div>
-        <div class="coming-soon-sub" data-en="We're actively scouting locations across Belgium. Stay tuned." data-fr="Nous recherchons activement des emplacements en Belgique. Restez connectés.">Nous recherchons activement des emplacements en Belgique. Restez connectés.</div>
+        <div class="coming-soon-title" data-en="Belgium — 5 machines live" data-fr="Belgique — 5 machines actives">Belgique — 5 machines actives</div>
+        <div class="coming-soon-sub" data-en="Our Belgian network is up and running with 5 machines. The exact addresses will be published here shortly." data-fr="Notre réseau belge est opérationnel avec 5 machines. Les adresses exactes seront publiées ici prochainement.">Notre réseau belge est opérationnel avec 5 machines. Les adresses exactes seront publiées ici prochainement.</div>
         <a href="/fr/expansion.html#belgique" class="map-stock-link" data-en="🌍 Brussels, Liège, Namur… see the plan" data-fr="🌍 Bruxelles, Liège, Namur… voir le plan">🌍 Bruxelles, Liège, Namur… voir le plan</a>
+      </div>
+    </div>
+
+    <!-- FRANCE -->
+    <div class="map-panel" id="tab-france">
+      <div class="map-wrapper"><div id="map-france"></div></div>
+      <div class="map-coming-soon-msg">
+        <div class="coming-soon-icon">🇫🇷</div>
+        <div class="coming-soon-title" data-en="France — Launching Soon" data-fr="France — Bientôt disponible">France — Bientôt disponible</div>
+        <div class="coming-soon-sub" data-en="Border towns first, then the major cities. Announcements coming soon." data-fr="Les villes frontalières d'abord, puis les grandes villes. Annonces à venir.">Les villes frontalières d'abord, puis les grandes villes. Annonces à venir.</div>
+        <a href="/fr/expansion.html#france" class="map-stock-link" data-en="🌍 Annemasse, Lyon, Montpellier… see the plan" data-fr="🌍 Annemasse, Lyon, Montpellier… voir le plan">🌍 Annemasse, Lyon, Montpellier… voir le plan</a>
       </div>
     </div>
 
@@ -866,7 +915,11 @@ window.initMap = function() {
   const genevaLocations = [
     { lat: 46.2008, lng: 6.1520, name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', hours: '<strong>Lun–Ven</strong> 09h00–18h00<br><strong>Sam</strong> 09h00–12h00<br><strong>Dim</strong> Fermé' },
     { lat: 46.2112, lng: 6.1268, name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", hours: '<strong>Lun–Ven</strong> 09h00–19h00<br><strong>Sam</strong> 09h00–17h00<br><strong>Dim</strong> Fermé' },
-    { lat: 46.1872, lng: 6.1214, name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 09h00–13h00<br><strong>Dim</strong> Fermé' }
+    { lat: 46.1872, lng: 6.1214, name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 09h00–13h00<br><strong>Dim</strong> Fermé' },
+    { lat: 46.1938, lng: 6.1427, name: 'La Poste de Plainpalais', addr: "Rue Pictet-de-Bock 6, 1205 Genève", hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 09h00–16h00<br><strong>Dim</strong> Fermé' },
+    { lat: 46.2323, lng: 6.0835, name: 'La Poste de Meyrin', addr: "Avenue de Feuillasse 24, 1217 Meyrin", hours: '<strong>Lun–Ven</strong> 08h30–18h00<br><strong>Sam</strong> 08h30–15h00<br><strong>Dim</strong> Fermé' },
+    { lat: 46.1928, lng: 6.202, name: 'La Poste de Thônex', addr: "Rue de Genève 106, 1226 Thônex", hours: '<strong>Lun–Ven</strong> 08h30–18h30<br><strong>Sam</strong> 09h00–15h00<br><strong>Dim</strong> Fermé' },
+    { lat: 46.1835, lng: 6.1375, name: 'La Poste de Carouge', addr: "Boulevard des Promenades 16, 1227 Carouge", hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé' }
   ];
 
   let activeInfo = null;
@@ -890,6 +943,16 @@ window.initMap = function() {
       activeInfo.open(gMapRef, marker);
     });
     gMarkersRef[i] = marker;
+  });
+
+  // Cadrage automatique sur l'ensemble des machines (s'adapte quand on en ajoute)
+  const gBounds = new google.maps.LatLngBounds();
+  genevaLocations.forEach(function(loc) { gBounds.extend({ lat: loc.lat, lng: loc.lng }); });
+  gMapRef.fitBounds(gBounds, 56);
+
+  new google.maps.Map(document.getElementById('map-france'), {
+    zoom: 5, center: { lat: 46.6, lng: 2.4 },
+    disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
   });
 
   new google.maps.Map(document.getElementById('map-belgium'), {
@@ -929,6 +992,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "areaServed": [
         "Switzerland",
         "Belgium",
+        "France",
         "United Arab Emirates"
       ],
       "sameAs": []
@@ -1071,6 +1135,174 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       ],
       "url": "https://boosterstop.com/stock.html?machine=2"
+    },
+    {
+      "@type": "Store",
+      "@id": "https://boosterstop.com/#plainpalais",
+      "name": "BoosterStop — La Poste de Plainpalais",
+      "description": "Distributeur automatique BoosterStop TCG dans La Poste de Plainpalais, Genève. Produits de jeux de cartes scellés issus de distributeurs officiels.",
+      "parentOrganization": {
+        "@id": "https://boosterstop.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rue Pictet-de-Bock 6",
+        "postalCode": "1205",
+        "addressLocality": "Genève",
+        "addressCountry": "CH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 46.1938,
+        "longitude": 6.1427
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "16:00"
+        }
+      ],
+      "url": "https://boosterstop.com/fr/stock.html?machine=3"
+    },
+    {
+      "@type": "Store",
+      "@id": "https://boosterstop.com/#meyrin",
+      "name": "BoosterStop — La Poste de Meyrin",
+      "description": "Distributeur automatique BoosterStop TCG dans La Poste de Meyrin, Meyrin. Produits de jeux de cartes scellés issus de distributeurs officiels.",
+      "parentOrganization": {
+        "@id": "https://boosterstop.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Avenue de Feuillasse 24",
+        "postalCode": "1217",
+        "addressLocality": "Meyrin",
+        "addressCountry": "CH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 46.2323,
+        "longitude": 6.0835
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:30",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:30",
+          "closes": "15:00"
+        }
+      ],
+      "url": "https://boosterstop.com/fr/stock.html?machine=4"
+    },
+    {
+      "@type": "Store",
+      "@id": "https://boosterstop.com/#thonex",
+      "name": "BoosterStop — La Poste de Thônex",
+      "description": "Distributeur automatique BoosterStop TCG dans La Poste de Thônex, Thônex. Produits de jeux de cartes scellés issus de distributeurs officiels.",
+      "parentOrganization": {
+        "@id": "https://boosterstop.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rue de Genève 106",
+        "postalCode": "1226",
+        "addressLocality": "Thônex",
+        "addressCountry": "CH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 46.1928,
+        "longitude": 6.202
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:30",
+          "closes": "18:30"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "15:00"
+        }
+      ],
+      "url": "https://boosterstop.com/fr/stock.html?machine=5"
+    },
+    {
+      "@type": "Store",
+      "@id": "https://boosterstop.com/#carouge",
+      "name": "BoosterStop — La Poste de Carouge",
+      "description": "Distributeur automatique BoosterStop TCG dans La Poste de Carouge, Carouge. Produits de jeux de cartes scellés issus de distributeurs officiels.",
+      "parentOrganization": {
+        "@id": "https://boosterstop.com/#organization"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Boulevard des Promenades 16",
+        "postalCode": "1227",
+        "addressLocality": "Carouge",
+        "addressCountry": "CH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 46.1835,
+        "longitude": 6.1375
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:30",
+          "closes": "12:00"
+        }
+      ],
+      "url": "https://boosterstop.com/fr/stock.html?machine=6"
     },
     {
       "@type": "FAQPage",

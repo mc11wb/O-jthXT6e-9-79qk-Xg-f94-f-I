@@ -18,7 +18,10 @@
 {%- endif -%}
 <!-- NAV (commun : _includes/nav.html) -->
 <nav>
-  <a href="{{ logo_href }}" class="nav-logo"><img src="/logo.png" alt="BoosterStop" width="225" height="28" fetchpriority="high"></a>
+  <div class="nav-left">
+    <a href="{{ logo_href }}" class="nav-logo"><img src="/logo.png" alt="BoosterStop" width="225" height="28" fetchpriority="high"></a>
+    <span class="swiss-badge" title="Made in Switzerland" aria-label="Made in Switzerland"><span class="sb-flag" aria-hidden="true">🇨🇭</span><span class="sb-text">Made in Switzerland</span></span>
+  </div>
   <div class="nav-right">
     <ul>
       <li><a href="{{ anchor }}#where" data-en="Locations" data-fr="Emplacements">{% if fr %}Emplacements{% else %}Locations{% endif %}</a></li>

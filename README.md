@@ -55,6 +55,23 @@ Les 4 premières lignes (`---` … `---`) sont **obligatoires** et doivent reste
 2. Copier dans `fr/` avec `lang: fr`.
 3. Ajouter le lien dans `_includes/nav.html` si elle doit apparaître au menu, et l'URL dans `sitemap.xml`.
 
+## Ajouter / connecter une machine
+
+Tout part du tableau `MACHINES` en haut du `<script>` de `stock.html` (et `fr/stock.html`) :
+
+```js
+{ name: 'La Poste de Carouge', addr: '…', lat: 46.1835, lng: 6.1375, worker: null }
+```
+
+`worker` est l'index appelé sur le Cloudflare Worker :
+
+- `worker: 0`, `1`, `2` → la machine est connectée, le stock live s'affiche
+- `worker: null` → la machine est installée mais pas encore branchée : le site affiche « Stock live bientôt » à la place des étages, et l'onglet porte un liseré jaune
+
+**Pour brancher Plainpalais, Meyrin, Thônex ou Carouge** : il suffit de remplacer `null` par l'index correspondant du Worker, dans les deux fichiers. Rien d'autre à toucher — les stats, la carte et le cadrage s'ajustent tout seuls.
+
+Ajouter une machine = une ligne dans `MACHINES` + un `<button class="machine-tab">` dans le panneau `#panel-ch`, + un bloc `Store` dans le JSON-LD de `index.html` pour le SEO local.
+
 ## Pièges à connaître
 
 - Jekyll interprète `{{ … }}` et `{% … %}` dans les pages. Si un jour du JavaScript en contient, entourer le `<script>` de `{% raw %}` … `{% endraw %}`.
