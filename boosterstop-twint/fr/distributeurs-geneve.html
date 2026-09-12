@@ -1,0 +1,228 @@
+---
+lang: fr
+page: distributeurs-geneve
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+{% include head.html %}
+<title>Distributeurs de cartes Pokémon à Genève — les 7 emplacements | BoosterStop</title>
+<meta name="description" content="Les 7 distributeurs automatiques BoosterStop du canton de Genève : Rive, Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex et Carouge. Adresses, horaires et stock en direct.">
+<link rel="canonical" href="https://boosterstop.com/fr/distributeurs-geneve.html">
+<link rel="alternate" hreflang="en" href="https://boosterstop.com/distributeurs-geneve.html">
+<link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/distributeurs-geneve.html">
+<link rel="alternate" hreflang="x-default" href="https://boosterstop.com/distributeurs-geneve.html">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BoosterStop">
+<meta property="og:title" content="Où trouver nos distributeurs à Genève">
+<meta property="og:description" content="Les 7 distributeurs automatiques BoosterStop du canton de Genève : Rive, Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex et Carouge. Adresses, horaires et stock en direct.">
+<meta property="og:url" content="https://boosterstop.com/fr/distributeurs-geneve.html">
+<meta property="og:locale" content="fr_CH">
+<meta property="og:image" content="https://boosterstop.com/front%20transparent.png">
+<meta name="geo.region" content="CH-GE">
+<meta name="geo.placename" content="Genève">
+<style>
+/* Pages distributeur.
+   site.css ne stylise pas body : chaque page le déclare, comme les autres
+   pages du site. Et attention, site.css cible l'ÉLÉMENT nav en
+   position:fixed — d'où les <div role="navigation"> plus bas. */
+body{
+  margin:0; background:var(--black); color:var(--white);
+  font-family:'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+/* préfixe bsm- pour ne rien heurter dans site.css */
+.bsm-wrap{max-width:980px;margin:0 auto;padding:0 24px}
+.bsm-head{padding:130px 0 44px;border-bottom:1px solid var(--gray-mid)}
+.bsm-crumbs{font-size:13px;color:var(--text-muted);margin-bottom:22px}
+.bsm-crumbs a{color:var(--text-muted);text-decoration:none}
+.bsm-crumbs a:hover{color:var(--white)}
+.bsm-now{display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1.2px;
+  color:var(--black);background:var(--yellow);padding:3px 11px;border-radius:2px;margin-bottom:16px}
+.bsm-now.shut{background:var(--red);color:#fff}
+.bsm-now:empty{display:none}
+.bsm-head h1{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:1px;line-height:1.02;
+  font-size:clamp(38px,6.5vw,68px);margin:0 0 14px}
+.bsm-where{color:var(--text-muted);font-size:17px;max-width:48ch;line-height:1.65;margin:0}
+.bsm-live{margin:40px 0;border:1px solid var(--gray-mid);border-left:3px solid var(--red);background:var(--gray)}
+.bsm-live-top{display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;
+  padding:18px 22px;border-bottom:1px solid var(--gray-mid)}
+.bsm-live-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.6px}
+.bsm-stamp{font-size:13px;color:var(--text-muted)}
+.bsm-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--text-muted);margin-right:8px}
+.bsm-dot.on{background:#31D07A}
+.bsm-rows{list-style:none;margin:0;padding:0}
+.bsm-rows li{display:flex;justify-content:space-between;gap:18px;align-items:center;
+  padding:14px 22px;border-bottom:1px solid var(--gray-mid)}
+.bsm-rows li:last-child{border-bottom:0}
+.bsm-nm{font-size:15px}
+.bsm-nm small{display:block;color:var(--text-muted);font-size:13px;margin-top:2px}
+.bsm-pr{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--yellow);white-space:nowrap}
+.bsm-msg{padding:22px;color:var(--text-muted);font-size:15px;line-height:1.6}
+.bsm-toggle{display:block;width:100%;padding:14px 22px;background:none;border:0;
+  border-top:1px solid var(--gray-mid);color:var(--text-muted);font-family:inherit;
+  font-size:14px;text-align:left;cursor:pointer}
+.bsm-toggle:hover{color:var(--white);background:rgba(255,255,255,.03)}
+.bsm-toggle::after{content:' \25BE'}
+.bsm-toggle[aria-expanded="true"]::after{content:' \25B4'}
+.bsm-all{display:block;padding:15px 22px;border-top:1px solid var(--gray-mid);
+  font-size:14px;color:var(--red);text-decoration:none}
+.bsm-all:hover{background:rgba(232,24,60,.06)}
+.bsm-facts{display:grid;gap:34px;padding:42px 0;border-top:1px solid var(--gray-mid);grid-template-columns:1fr}
+@media(min-width:720px){.bsm-facts{grid-template-columns:1fr 1fr}}
+.bsm-facts h2{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:22px;letter-spacing:.8px;
+  color:var(--yellow);margin:0 0 10px}
+.bsm-facts address{font-style:normal;line-height:1.7;margin:0}
+.bsm-tel{margin:10px 0 0;font-size:15px}
+.bsm-tel a{color:var(--yellow);text-decoration:none}
+.bsm-tel a:hover{text-decoration:underline}
+.bsm-hours{border-collapse:collapse;font-size:15px;width:100%;max-width:300px}
+.bsm-hours td{padding:5px 0;border-bottom:1px solid var(--gray-mid)}
+.bsm-hours td+td{text-align:right;color:var(--text-muted)}
+.bsm-hours tr.shut td+td{color:var(--red)}
+.bsm-holi{margin:12px 0 0;font-size:13px;line-height:1.6;color:var(--text-muted);max-width:34ch}
+.bsm-note{margin:0 0 10px;color:var(--text-muted);font-size:15px}
+.bsm-go{display:inline-block;background:var(--red);color:#fff;text-decoration:none;
+  font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.8px;padding:10px 24px;
+  border-radius:var(--radius);margin-top:16px}
+.bsm-go:hover{background:#ff2b4e}
+.bsm-sec{padding:42px 0;border-top:1px solid var(--gray-mid)}
+.bsm-sec h2{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:1px;
+  font-size:clamp(26px,4vw,38px);margin:0 0 16px}
+.bsm-sec p{max-width:62ch;line-height:1.7;color:#cfcce0}
+.bsm-near{list-style:none;padding:0;margin:16px 0 0}
+.bsm-near li{padding:10px 0;border-bottom:1px solid var(--gray-mid)}
+.bsm-near a{color:var(--yellow);text-decoration:none;font-size:16px}
+.bsm-near a:hover{text-decoration:underline}
+.bsm-near span{color:var(--text-muted);font-size:14px}
+.bsm-faq dt{font-weight:600;margin-top:24px}
+.bsm-faq dd{margin:6px 0 0;color:#cfcce0;max-width:62ch;line-height:1.7}
+/* hub */
+.bsm-grid{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.bsm-card{display:block;padding:20px;border:1px solid var(--gray-mid);border-radius:var(--radius);
+  text-decoration:none;color:inherit;background:var(--gray)}
+.bsm-card:hover{border-color:var(--yellow)}
+.bsm-card b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:24px;
+  letter-spacing:.6px;color:var(--white);margin-bottom:6px}
+.bsm-card span{display:block;color:var(--text-muted);font-size:14px;line-height:1.55}
+.bsm-card em{display:block;font-style:normal;color:var(--yellow);font-size:13px;margin-top:8px}
+</style>
+</head>
+<body>
+{% include nav.html %}
+
+<div class="bsm-wrap">
+
+<header class="bsm-head">
+  <div class="bsm-crumbs" role="navigation" aria-label="Fil d&apos;Ariane">
+    <a href="/fr/">BoosterStop</a> › Où trouver nos distributeurs à Genève
+  </div>
+  <h1>Où trouver nos distributeurs à Genève</h1>
+  <p class="bsm-where">Sept machines en libre-service dans le canton, toutes installées dans une agence La Poste. Chaque page donne l&#x27;adresse exacte, les horaires d&#x27;accès et, pour les machines connectées, le stock lu en direct dans les rails.</p>
+</header>
+
+<section class="bsm-sec" style="border-top:0;padding-top:28px">
+  <ul class="bsm-grid">
+    <li><a class="bsm-card" href="/fr/distributeur-geneve-rive.html"><b>Rive</b><span>Rue du Vieux-Collège 3<br>1204 Genève<br>09:00–18:00 · sam. 09:00–12:00</span><em>Stock en direct</em></a></li>
+    <li><a class="bsm-card" href="/fr/distributeur-geneve-charmilles.html"><b>Les Charmilles</b><span>Promenade de l&#x27;Europe 11<br>1203 Genève<br>09:00–19:00 · sam. 09:00–17:00</span><em>Stock en direct</em></a></li>
+    <li><a class="bsm-card" href="/fr/distributeur-petit-lancy.html"><b>Petit-Lancy</b><span>Rue des Bossons 88b<br>1213 Petit-Lancy<br>08:00–18:00 · sam. 09:00–13:00</span><em>Stock en direct</em></a></li>
+    <li><a class="bsm-card" href="/fr/distributeur-geneve-plainpalais.html"><b>Plainpalais</b><span>Rue Pictet-de-Bock 6<br>1205 Genève<br>08:00–18:00 · sam. 09:00–16:00</span><em>Stock en direct bientôt</em></a></li>
+    <li><a class="bsm-card" href="/fr/distributeur-meyrin.html"><b>Meyrin</b><span>Avenue de Feuillasse 24<br>1217 Meyrin<br>08:30–18:00 · sam. 08:30–15:00</span><em>Stock en direct bientôt</em></a></li>
+    <li><a class="bsm-card" href="/fr/distributeur-thonex.html"><b>Thônex</b><span>Rue de Genève 106<br>1226 Thônex<br>08:30–18:30 · sam. 09:00–15:00</span><em>Stock en direct bientôt</em></a></li>
+    <li><a class="bsm-card" href="/fr/distributeur-carouge.html"><b>Carouge</b><span>Boulevard des Promenades 16<br>1227 Carouge<br>08:00–18:00 · sam. 08:30–12:00</span><em>Stock en direct bientôt</em></a></li>
+  </ul>
+</section>
+
+<section class="bsm-sec">
+  <h2>Et ailleurs</h2>
+  <p>Le réseau s'étend au-delà de Genève. La page <a href="/fr/expansion.html">expansion</a> liste les villes où nous installons de nouvelles machines, et la page <a href="/fr/licences-geneve.html">licences</a> détaille les 23 jeux distribués.</p>
+</section>
+
+</div><!-- /bsm-wrap -->
+
+{% include footer.html %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://boosterstop.com/fr/distributeurs-geneve.html#page",
+      "url": "https://boosterstop.com/fr/distributeurs-geneve.html",
+      "name": "Distributeurs de cartes Pokémon à Genève — les 7 emplacements | BoosterStop",
+      "description": "Les 7 distributeurs automatiques BoosterStop du canton de Genève : Rive, Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex et Carouge. Adresses, horaires et stock en direct.",
+      "inLanguage": "fr"
+    },
+    {
+      "@type": "ItemList",
+      "name": "Où trouver nos distributeurs à Genève",
+      "numberOfItems": 7,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "BoosterStop — La Poste de Rive",
+          "item": "https://boosterstop.com/fr/distributeur-geneve-rive.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "BoosterStop — La Poste des Charmilles",
+          "item": "https://boosterstop.com/fr/distributeur-geneve-charmilles.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "BoosterStop — La Poste du Petit-Lancy",
+          "item": "https://boosterstop.com/fr/distributeur-petit-lancy.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "BoosterStop — La Poste de Plainpalais",
+          "item": "https://boosterstop.com/fr/distributeur-geneve-plainpalais.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "BoosterStop — La Poste de Meyrin",
+          "item": "https://boosterstop.com/fr/distributeur-meyrin.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "BoosterStop — La Poste de Thônex",
+          "item": "https://boosterstop.com/fr/distributeur-thonex.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "BoosterStop — La Poste de Carouge",
+          "item": "https://boosterstop.com/fr/distributeur-carouge.html"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "BoosterStop",
+          "item": "https://boosterstop.com/fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Où trouver nos distributeurs à Genève"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>
