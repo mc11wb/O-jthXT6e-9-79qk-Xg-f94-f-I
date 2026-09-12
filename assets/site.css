@@ -88,6 +88,12 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;margin:0;}
 }
 
 
+/* ---------- RESEAUX SOCIAUX EN PIED DE PAGE ---------- */
+.footer-social{display:flex;align-items:center;gap:16px;}
+.footer-social a{color:var(--text-muted);display:inline-flex;transition:color .2s;}
+.footer-social a:hover{color:var(--yellow);}
+@media(max-width:600px){.footer-social{order:-1;gap:22px;}}
+
 /* ---------- EMPLACEMENTS EN PIED DE PAGE ---------- */
 .footer-locs{display:flex;flex-direction:column;align-items:center;gap:10px;padding:28px 24px 30px;
   border-top:1px solid var(--gray-mid);margin:40px auto 0;max-width:900px;text-align:center;}
