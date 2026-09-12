@@ -7,7 +7,7 @@ page: distributeur-geneve-plainpalais
 <head>
 {% include head.html %}
 <title>Distributeur de cartes Pokémon à Genève Plainpalais | BoosterStop</title>
-<meta name="description" content="Boosters Pokémon en libre-service dans La Poste de Plainpalais, Rue Pictet-de-Bock 6, 1205 Genève. Stock en direct, paiement par carte, produits scellés de distributeurs officiels.">
+<meta name="description" content="Boosters Pokémon en libre-service dans La Poste de Plainpalais, Rue Pictet-de-Bock 6, 1205 Genève. Stock en direct, espèces ou sans contact, produits scellés de distributeurs officiels.">
 <link rel="canonical" href="https://boosterstop.com/fr/distributeur-geneve-plainpalais.html">
 <link rel="alternate" hreflang="en" href="https://boosterstop.com/distributeur-geneve-plainpalais.html">
 <link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/distributeur-geneve-plainpalais.html">
@@ -16,7 +16,7 @@ page: distributeur-geneve-plainpalais
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
 <meta property="og:title" content="Distributeur de cartes Pokémon à Genève Plainpalais">
-<meta property="og:description" content="Boosters Pokémon en libre-service dans La Poste de Plainpalais, Rue Pictet-de-Bock 6, 1205 Genève. Stock en direct, paiement par carte, produits scellés de distributeurs officiels.">
+<meta property="og:description" content="Boosters Pokémon en libre-service dans La Poste de Plainpalais, Rue Pictet-de-Bock 6, 1205 Genève. Stock en direct, espèces ou sans contact, produits scellés de distributeurs officiels.">
 <meta property="og:url" content="https://boosterstop.com/fr/distributeur-geneve-plainpalais.html">
 <meta property="og:locale" content="fr_CH">
 <meta property="og:image" content="https://boosterstop.com/front%20transparent.png">
@@ -76,6 +76,9 @@ body{
 .bsm-facts h2{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:22px;letter-spacing:.8px;
   color:var(--yellow);margin:0 0 10px}
 .bsm-facts address{font-style:normal;line-height:1.7;margin:0}
+.bsm-tel{margin:10px 0 0;font-size:15px}
+.bsm-tel a{color:var(--yellow);text-decoration:none}
+.bsm-tel a:hover{text-decoration:underline}
 .bsm-hours{border-collapse:collapse;font-size:15px;width:100%;max-width:300px}
 .bsm-hours td{padding:5px 0;border-bottom:1px solid var(--gray-mid)}
 .bsm-hours td+td{text-align:right;color:var(--text-muted)}
@@ -120,7 +123,7 @@ body{
   </div>
   <span class="bsm-now" id="bsmNow"></span>
   <h1>Distributeur de cartes Pokémon à Genève Plainpalais</h1>
-  <p class="bsm-where">Dans La Poste de Plainpalais, Rue Pictet-de-Bock 6, 1205 Genève. Libre-service, paiement par carte ou sans contact, sans attente au comptoir.</p>
+  <p class="bsm-where">Dans La Poste de Plainpalais, Rue Pictet-de-Bock 6, 1205 Genève. Libre-service, espèces ou sans contact, sans attente au comptoir.</p>
 </header>
 
 <div class="bsm-live">
@@ -142,6 +145,7 @@ body{
       Rue Pictet-de-Bock 6<br>
       1205 Genève, Suisse
     </address>
+    <p class="bsm-tel"><a href="tel:+41228860158">+41 22 886 01 58</a></p>
     <a class="bsm-go" href="https://www.google.com/maps/dir/?api=1&amp;destination=46.1938474,6.1426527" rel="noopener">Itinéraire</a>
   </div>
   <div>
@@ -181,13 +185,13 @@ body{
     <dt>Où acheter des cartes Pokémon à Genève ?</dt>
     <dd>BoosterStop exploite sept distributeurs dans le canton de Genève, dont celui de Genève Plainpalais, Rue Pictet-de-Bock 6. Ils fonctionnent en libre-service pendant les heures d&#x27;ouverture de l&#x27;agence qui les héberge.</dd>
     <dt>Comment payer ?</dt>
-    <dd>Carte bancaire, sans contact et paiement mobile. La machine ne prend pas les espèces.</dd>
+    <dd>En espèces, avec monnaie rendue en pièces et en billets, ou en sans contact par carte et smartphone. Le produit sort immédiatement.</dd>
     <dt>Les cartes sont-elles authentiques ?</dt>
     <dd>Oui. Tous les produits proviennent de distributeurs officiels, dans leur emballage d&#x27;origine scellé.</dd>
     <dt>Le stock affiché est-il fiable ?</dt>
     <dd>Il est lu directement dans la machine. Un produit peut malgré tout partir dans les minutes qui suivent votre consultation.</dd>
     <dt>La machine n&#x27;a pas délivré mon produit, que faire ?</dt>
-    <dd>Écrivez-nous en indiquant l&#x27;emplacement et l&#x27;heure. Nous remboursons ou remplaçons après vérification du journal de la machine.</dd>
+    <dd>Appelez-nous au +41 22 886 01 58 ou écrivez-nous, en indiquant l&#x27;emplacement et l&#x27;heure. Nous remboursons ou remplaçons après vérification du journal de la machine.</dd>
   </dl>
 </section>
 
@@ -220,8 +224,9 @@ body{
         "longitude": 6.1426527
       },
       "hasMap": "https://www.google.com/maps/dir/?api=1&destination=46.1938474,6.1426527",
+      "telephone": "+41 22 886 01 58",
       "currenciesAccepted": "CHF",
-      "paymentAccepted": "Credit card, contactless, mobile payment",
+      "paymentAccepted": "Cash, credit card, contactless, mobile payment",
       "publicAccess": true,
       "parentOrganization": {
         "@id": "https://boosterstop.com/#organization"
@@ -486,7 +491,7 @@ body{
           "name": "Comment payer ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Carte bancaire, sans contact et paiement mobile. La machine ne prend pas les espèces."
+            "text": "En espèces, avec monnaie rendue en pièces et en billets, ou en sans contact par carte et smartphone. Le produit sort immédiatement."
           }
         },
         {
@@ -510,7 +515,7 @@ body{
           "name": "La machine n'a pas délivré mon produit, que faire ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Écrivez-nous en indiquant l'emplacement et l'heure. Nous remboursons ou remplaçons après vérification du journal de la machine."
+            "text": "Appelez-nous au +41 22 886 01 58 ou écrivez-nous, en indiquant l'emplacement et l'heure. Nous remboursons ou remplaçons après vérification du journal de la machine."
           }
         }
       ]
