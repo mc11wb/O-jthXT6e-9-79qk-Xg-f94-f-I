@@ -592,7 +592,7 @@ body{
     if (!el) return;
     var now = new Date();
     if (isHoliday(now)) {
-      el.textContent = 'Closed — public holiday';
+      el.textContent = "Closed — public holiday";
       el.classList.add('shut');
       return;
     }
@@ -601,7 +601,7 @@ body{
       var t = now.getHours() * 60 + now.getMinutes();
       open = t >= mins(span[0]) && t < mins(span[1]);
     }
-    el.textContent = open ? 'Open now' : 'Closed now';
+    el.textContent = open ? "Open now" : "Closed now";
     el.classList.toggle('shut', !open);
   }
 
@@ -629,7 +629,7 @@ body{
       byName[key].qty += qty;
     });
     var items = Object.keys(byName).map(function (k) { return byName[k]; });
-    if (!items.length) { idle('The machine is empty right now. The next restock is due within a few days.', 'Sold out'); return; }
+    if (!items.length) { idle("The machine is empty right now. The next restock is due within a few days.", "Sold out"); return; }
     items.sort(function (a, b) { return b.qty - a.qty; });
     elMsg.hidden = true;
     elRows.hidden = false;
@@ -640,7 +640,7 @@ body{
       left.className = 'bsm-nm';
       left.appendChild(document.createTextNode(i.name));
       var sub = document.createElement('small');
-      sub.textContent = i.qty > 1 ? i.qty + ' units' : 'last one';
+      sub.textContent = i.qty > 1 ? i.qty + " units" : "last one";
       left.appendChild(sub);
       var right = document.createElement('span');
       right.className = 'bsm-pr';
@@ -650,18 +650,18 @@ body{
       elRows.appendChild(li);
     });
     elDot.classList.add('on');
-    elStamp.textContent = 'Updated at ' + new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    elStamp.textContent = "Updated at " + new Date().toLocaleTimeString("en-GB", { hour: '2-digit', minute: '2-digit' });
   }
 
   function load() {
-    if (WORKER_INDEX === null) { idle('This machine is installed and stocked. Its live inventory is coming very soon — in the meantime, the Live Stock page shows the whole network.', ''); return; }
+    if (WORKER_INDEX === null) { idle("This machine is installed and stocked. Its live inventory is coming very soon — in the meantime, the Live Stock page shows the whole network.", ''); return; }
     fetch(WORKER + '/stock?machine=' + WORKER_INDEX, { cache: 'no-store' })
       .then(function (r) { return r.json(); })
       .then(function (data) {
         if (!data || !data.ok) throw new Error('ko');
         render(data.slots || []);
       })
-      .catch(function () { idle('Live stock is unreachable right now. Please try again in a few minutes.', ''); });
+      .catch(function () { idle("Live stock is unreachable right now. Please try again in a few minutes.", ''); });
   }
 
   paintState();

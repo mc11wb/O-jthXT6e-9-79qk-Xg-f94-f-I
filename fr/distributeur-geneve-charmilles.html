@@ -592,7 +592,7 @@ body{
     if (!el) return;
     var now = new Date();
     if (isHoliday(now)) {
-      el.textContent = 'Fermé — jour férié';
+      el.textContent = "Fermé — jour férié";
       el.classList.add('shut');
       return;
     }
@@ -601,7 +601,7 @@ body{
       var t = now.getHours() * 60 + now.getMinutes();
       open = t >= mins(span[0]) && t < mins(span[1]);
     }
-    el.textContent = open ? 'Ouvert maintenant' : 'Fermé maintenant';
+    el.textContent = open ? "Ouvert maintenant" : "Fermé maintenant";
     el.classList.toggle('shut', !open);
   }
 
@@ -629,7 +629,7 @@ body{
       byName[key].qty += qty;
     });
     var items = Object.keys(byName).map(function (k) { return byName[k]; });
-    if (!items.length) { idle('La machine est vide pour le moment. Le prochain réassort est prévu sous quelques jours.', 'Stock épuisé'); return; }
+    if (!items.length) { idle("La machine est vide pour le moment. Le prochain réassort est prévu sous quelques jours.", "Stock épuisé"); return; }
     items.sort(function (a, b) { return b.qty - a.qty; });
     elMsg.hidden = true;
     elRows.hidden = false;
@@ -640,7 +640,7 @@ body{
       left.className = 'bsm-nm';
       left.appendChild(document.createTextNode(i.name));
       var sub = document.createElement('small');
-      sub.textContent = i.qty > 1 ? i.qty + ' exemplaires' : 'dernier exemplaire';
+      sub.textContent = i.qty > 1 ? i.qty + " exemplaires" : "dernier exemplaire";
       left.appendChild(sub);
       var right = document.createElement('span');
       right.className = 'bsm-pr';
@@ -650,18 +650,18 @@ body{
       elRows.appendChild(li);
     });
     elDot.classList.add('on');
-    elStamp.textContent = 'À jour à ' + new Date().toLocaleTimeString('fr-CH', { hour: '2-digit', minute: '2-digit' });
+    elStamp.textContent = "À jour à " + new Date().toLocaleTimeString("fr-CH", { hour: '2-digit', minute: '2-digit' });
   }
 
   function load() {
-    if (WORKER_INDEX === null) { idle('Cette machine est installée et approvisionnée. Son inventaire en direct arrive très prochainement — en attendant, la page Stock Live montre le réseau complet.', ''); return; }
+    if (WORKER_INDEX === null) { idle("Cette machine est installée et approvisionnée. Son inventaire en direct arrive très prochainement — en attendant, la page Stock Live montre le réseau complet.", ''); return; }
     fetch(WORKER + '/stock?machine=' + WORKER_INDEX, { cache: 'no-store' })
       .then(function (r) { return r.json(); })
       .then(function (data) {
         if (!data || !data.ok) throw new Error('ko');
         render(data.slots || []);
       })
-      .catch(function () { idle('Le stock en direct n'est pas joignable pour le moment. Réessayez dans quelques minutes.', ''); });
+      .catch(function () { idle("Le stock en direct n'est pas joignable pour le moment. Réessayez dans quelques minutes.", ''); });
   }
 
   paintState();

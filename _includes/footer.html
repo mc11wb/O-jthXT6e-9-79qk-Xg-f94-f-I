@@ -21,16 +21,17 @@
 
 
 <!-- EMPLACEMENTS — maillage interne vers les 7 pages distributeur -->
+<!-- div et non nav : site.css cible l'element nav en position:fixed -->
 <div class="footer-locs" role="navigation" aria-label="{% if fr %}Nos distributeurs{% else %}Our machines{% endif %}">
   <span class="fl-title">{% if fr %}Nos distributeurs à Genève{% else %}Our machines in Geneva{% endif %}</span>
   <span class="fl-links">
-    {% if fr %}<a href="/fr/distributeur-geneve-rive.html">Rive</a>{% else %}<a href="/distributeur-geneve-rive.html">Rive</a>{% endif %}
-    {% if fr %}<a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a>{% else %}<a href="/distributeur-geneve-charmilles.html">Les Charmilles</a>{% endif %}
-    {% if fr %}<a href="/fr/distributeur-petit-lancy.html">Petit-Lancy</a>{% else %}<a href="/distributeur-petit-lancy.html">Petit-Lancy</a>{% endif %}
-    {% if fr %}<a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a>{% else %}<a href="/distributeur-geneve-plainpalais.html">Plainpalais</a>{% endif %}
-    {% if fr %}<a href="/fr/distributeur-meyrin.html">Meyrin</a>{% else %}<a href="/distributeur-meyrin.html">Meyrin</a>{% endif %}
-    {% if fr %}<a href="/fr/distributeur-thonex.html">Thônex</a>{% else %}<a href="/distributeur-thonex.html">Thônex</a>{% endif %}
-    {% if fr %}<a href="/fr/distributeur-carouge.html">Carouge</a>{% else %}<a href="/distributeur-carouge.html">Carouge</a>{% endif %}
+    <a href="{{ base }}distributeur-geneve-rive.html">Rive</a>
+    <a href="{{ base }}distributeur-geneve-charmilles.html">Les Charmilles</a>
+    <a href="{{ base }}distributeur-petit-lancy.html">Petit-Lancy</a>
+    <a href="{{ base }}distributeur-geneve-plainpalais.html">Plainpalais</a>
+    <a href="{{ base }}distributeur-meyrin.html">Meyrin</a>
+    <a href="{{ base }}distributeur-thonex.html">Thônex</a>
+    <a href="{{ base }}distributeur-carouge.html">Carouge</a>
   </span>
   <a class="fl-all" href="{{ base }}distributeurs-geneve.html">{% if fr %}Tous les emplacements{% else %}All locations{% endif %} →</a>
 </div>
