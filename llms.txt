@@ -13,7 +13,7 @@ Le site est bilingue : les pages en anglais sont à la racine, les pages en fran
 - **Marchés** : Suisse (actif), Belgique (lancement imminent), Émirats Arabes Unis (lancement imminent), France (à l'étude)
 - **Licences proposées** : 23 licences dont Pokémon, One Piece, Magic: The Gathering (y compris les crossovers Universes Beyond), Disney Lorcana, Dragon Ball Super Fusion World, Riftbound: League of Legends, Gundam Card Game, Digimon, Naruto, Star Wars Unlimited, Union Arena, Cyberpunk TCG, Azuki TCG, Vibes TCG, Safir Cards, ainsi que des cartes de sport (football, NBA, NFL, NHL, F1)
 - **Langues des cartes** : français, anglais, japonais, chinois, allemand, espagnol, portugais, selon les sets
-- **Moyens de paiement** : espèces avec monnaie rendue en pièces et en billets, carte sans contact, smartphone
+- **Moyens de paiement** : espèces avec monnaie rendue en pièces et en billets, TWINT, carte sans contact, smartphone
 - **Garantie produit** : tous les produits sont scellés d'usine et proviennent de distributeurs officiels. Aucun produit n'est pesé, fouillé, ouvert, trié ou rescellé.
 
 ## Les sept distributeurs du canton de Genève
@@ -43,22 +43,23 @@ Vue d'ensemble : [tous les distributeurs de Genève](https://boosterstop.com/fr/
 - [Stock en direct](https://boosterstop.com/fr/stock.html) : inventaire en temps réel de chaque machine, rail par rail, avec prix et quantités restantes.
 - [Expansion du réseau](https://boosterstop.com/fr/expansion.html) : villes et quartiers où BoosterStop est actif ou prévu.
 - [Newsletter](https://boosterstop.com/fr/newsletter.html) : inscription aux nouveautés et promotions.
+- [Espace presse](https://boosterstop.com/fr/presse.html) : faits, chiffres et contact pour les rédactions.
 - [Confidentialité et cookies](https://boosterstop.com/fr/privacy.html) : politique de protection des données (nLPD suisse et RGPD).
 
 ## Pages principales (anglais)
 
-Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Distributeurs](https://boosterstop.com/distributeurs-geneve.html), [Licences](https://boosterstop.com/licences-geneve.html), [Stock](https://boosterstop.com/stock.html), [Expansion](https://boosterstop.com/expansion.html), [Newsletter](https://boosterstop.com/newsletter.html), [Confidentialité](https://boosterstop.com/privacy.html).
+Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Distributeurs](https://boosterstop.com/distributeurs-geneve.html), [Licences](https://boosterstop.com/licences-geneve.html), [Stock](https://boosterstop.com/stock.html), [Expansion](https://boosterstop.com/expansion.html), [Newsletter](https://boosterstop.com/newsletter.html), [Presse](https://boosterstop.com/presse.html), [Confidentialité](https://boosterstop.com/privacy.html).
 
 ## Questions fréquentes
 
 - **Où acheter des cartes Pokémon à Genève ?** BoosterStop exploite sept distributeurs automatiques dans le canton, tous situés dans une filiale de La Poste : Rive, Les Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex et Carouge.
 - **Les produits sont-ils authentiques ?** Oui. Tout est scellé d'usine et provient de distributeurs officiels. Rien n'est pesé, fouillé, altéré ni trié.
 - **Peut-on vérifier le stock avant de se déplacer ?** Oui. La page Stock en direct et chaque page d'emplacement affichent l'inventaire lu directement dans la machine.
-- **Comment payer ?** En espèces, avec monnaie rendue en pièces et en billets, ou en sans contact par carte et smartphone. Le produit sort immédiatement.
+- **Comment payer ?** En espèces, avec monnaie rendue en pièces et en billets, par TWINT, ou en sans contact par carte et smartphone. Le produit sort immédiatement.
 - **Quels sont les horaires ?** Ceux de la filiale La Poste qui héberge la machine, variables selon l'emplacement. Fermeture les jours fériés genevois.
 - **Un problème avec une machine ?** Téléphone +41 22 886 01 58, en indiquant l'emplacement et l'heure. Remboursement ou remplacement après vérification du journal de la machine.
 - **Peut-on accueillir une machine ?** Oui. BoosterStop cherche des partenaires (centres commerciaux, gares, cinémas, lieux à fort passage). L'installation, le réassort et la maintenance sont entièrement pris en charge, sans investissement pour l'hôte.
 
 ## Optionnel
 
-- [Sitemap XML](https://boosterstop.com/sitemap.xml) : les 28 URL du site avec leurs annotations hreflang.
+- [Sitemap XML](https://boosterstop.com/sitemap.xml) : les 30 URL du site avec leurs annotations hreflang.

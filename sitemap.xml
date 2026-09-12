@@ -197,4 +197,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com/distributeur-carouge.html"/>
     <lastmod>2026-09-12</lastmod>
   </url>
+  <url>
+    <loc>https://boosterstop.com/presse.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boosterstop.com/presse.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/presse.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com/presse.html"/>
+    <lastmod>2026-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://boosterstop.com/fr/presse.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boosterstop.com/presse.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/presse.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com/presse.html"/>
+    <lastmod>2026-09-13</lastmod>
+  </url>
 </urlset>

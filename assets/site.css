@@ -104,3 +104,6 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;margin:0;}
 .fl-all{font-size:12px;color:var(--red);text-decoration:none;letter-spacing:.6px;margin-top:2px;}
 .fl-all:hover{text-decoration:underline;}
 @media(max-width:600px){.footer-locs{padding:22px 20px 24px;margin-top:28px;}.fl-links{gap:6px 14px;}}
+
+.footer-press{font-size:12px;color:#444;letter-spacing:0.5px;text-decoration:none;}
+.footer-press:hover{color:var(--white);}

@@ -228,7 +228,7 @@ page: stock
 <!-- PAGE HEADER -->
 <div class="page-header">
   <h1 class="page-title" data-en="Live <span>Stock</span>" data-fr="Stock en <span>Direct</span>">Live <span>Stock</span></h1>
-  <p class="page-sub" data-en="Real-time inventory of every BoosterStop machine — pulled directly from the machines themselves. Spot something missing? Request a restock in one click." data-fr="Inventaire en temps réel de chaque distributeur BoosterStop — directement depuis les machines. Un produit manque ? Demandez un réassort en un clic.">Real-time inventory of every BoosterStop machine — pulled directly from the machines themselves. Spot something missing? Request a restock in one click.</p>
+  <p class="page-sub" data-en="Real-time inventory of every BoosterStop machine, pulled directly from the machines themselves. Spot something missing? Request a restock in one click." data-fr="Inventaire en temps réel de chaque distributeur BoosterStop, lu directement dans les machines. Un produit manque ? Demandez un réassort en un clic.">Real-time inventory of every BoosterStop machine, pulled directly from the machines themselves. Spot something missing? Request a restock in one click.</p>
   <div class="header-meta">
     <span class="last-update" data-en="Last update: " data-fr="Dernière mise à jour : ">Last update: </span><b id="lastUpdate">—</b>
     <button class="refresh-btn" onclick="loadAll()" data-en="↻ Refresh" data-fr="↻ Actualiser">↻ Refresh</button>
@@ -364,7 +364,7 @@ page: stock
       <input type="email" id="notifyFR" placeholder="you@example.com">
       <button onclick="notifyMe('fr')" data-en="Notify me" data-fr="Prévenez-moi">Notify me</button>
     </div>
-    <div class="notify-ok" id="notifyOkFR" data-en="✓ Noted — you'll be the first to know!" data-fr="✓ C'est noté — vous serez prévenu en premier !">✓ Noted — you'll be the first to know!</div>
+    <div class="notify-ok" id="notifyOkFR" data-en="✓ Noted, you'll be the first to know!" data-fr="✓ C'est noté, vous serez prévenu en premier !">✓ Noted, you'll be the first to know!</div>
   </div>
 </div>
 
@@ -378,7 +378,7 @@ page: stock
       <input type="email" id="notifyUAE" placeholder="you@example.com">
       <button onclick="notifyMe('uae')" data-en="Notify me" data-fr="Prévenez-moi">Notify me</button>
     </div>
-    <div class="notify-ok" id="notifyOkUAE" data-en="✓ Noted — you'll be the first to know!" data-fr="✓ C'est noté — vous serez prévenu en premier !">✓ Noted — you'll be the first to know!</div>
+    <div class="notify-ok" id="notifyOkUAE" data-en="✓ Noted, you'll be the first to know!" data-fr="✓ C'est noté, vous serez prévenu en premier !">✓ Noted, you'll be the first to know!</div>
   </div>
 </div>
 
@@ -403,13 +403,13 @@ page: stock
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
     <h3 id="modalTitle" data-en="Request a <span>restock</span>" data-fr="Demander un <span>réassort</span>">Request a <span>restock</span></h3>
-    <p class="m-sub" id="modalSub" data-en="Tell us what you'd like to see refilled — we prioritize restocks based on your requests." data-fr="Dites-nous ce que vous aimeriez voir réapprovisionné — nous priorisons les réassorts selon vos demandes.">Tell us what you'd like to see refilled — we prioritize restocks based on your requests.</p>
+    <p class="m-sub" id="modalSub" data-en="Tell us what you'd like to see refilled. We prioritize restocks based on your requests." data-fr="Dites-nous ce que vous aimeriez voir réapprovisionné. Nous priorisons les réassorts selon vos demandes.">Tell us what you'd like to see refilled. We prioritize restocks based on your requests.</p>
     <div class="m-field">
       <label id="modalInputLabel" data-en="Product" data-fr="Produit">Product</label>
       <input type="text" id="modalInput" placeholder="—">
     </div>
     <div class="m-field">
-      <label data-en="Your email (optional — to notify you)" data-fr="Votre email (facultatif — pour vous prévenir)">Your email (optional — to notify you)</label>
+      <label data-en="Your email (optional, to notify you)" data-fr="Votre email (facultatif, pour vous prévenir)">Your email (optional, to notify you)</label>
       <input type="email" id="modalEmail" placeholder="you@example.com">
     </div>
     <div class="m-field">
@@ -417,7 +417,7 @@ page: stock
       <textarea id="modalNotes" placeholder="..."></textarea>
     </div>
     <button class="m-submit" id="modalSubmit" onclick="submitRestock()" data-en="Send request" data-fr="Envoyer la demande">Send request</button>
-    <div class="m-ok" id="modalOk" data-en="✓ Request sent — thank you!" data-fr="✓ Demande envoyée — merci !">✓ Request sent — thank you!</div>
+    <div class="m-ok" id="modalOk" data-en="✓ Request sent, thank you!" data-fr="✓ Demande envoyée, merci !">✓ Request sent, thank you!</div>
   </div>
 </div>
 
@@ -659,7 +659,7 @@ let modalMode = 'restock';
 function openRestockModal(productName) {
   modalMode = 'restock';
   document.getElementById('modalTitle').innerHTML = currentLang === 'fr' ? 'Demander un <span>réassort</span>' : 'Request a <span>restock</span>';
-  document.getElementById('modalSub').textContent = currentLang === 'fr' ? 'Dites-nous ce que vous aimeriez voir réapprovisionné — nous priorisons les réassorts selon vos demandes.' : 'Tell us what you\'d like to see refilled — we prioritize restocks based on your requests.';
+  document.getElementById('modalSub').textContent = currentLang === 'fr' ? 'Dites-nous ce que vous aimeriez voir réapprovisionné. Nous priorisons les réassorts selon vos demandes.' : 'Tell us what you\'d like to see refilled. We prioritize restocks based on your requests.';
   document.getElementById('modalInputLabel').textContent = currentLang === 'fr' ? 'Produit' : 'Product';
   document.getElementById('modalInput').value = productName || '';
   resetModalState();

@@ -50,6 +50,7 @@
     {%- unless pid == "stock" %}
     <a href="{{ base }}stock.html" class="footer-stock" data-en="📦 Live Stock" data-fr="📦 Stock Live">{% if fr %}📦 Stock Live{% else %}📦 Live Stock{% endif %}</a>
     {%- endunless %}
+    <a href="{{ base }}presse.html" class="footer-press"{% if pid == "presse" %} style="color:var(--white)"{% endif %} data-en="Press" data-fr="Presse">{% if fr %}Presse{% else %}Press{% endif %}</a>
     <a href="{{ base }}privacy.html" class="footer-privacy" data-en="Privacy &amp; Cookies" data-fr="Confidentialité">{% if fr %}Confidentialité{% else %}Privacy &amp; Cookies{% endif %}</a>
     <p>© {{ site.time | date: "%Y" }} BoosterStop — 247 Distribution SNC</p>
   </div>
@@ -73,4 +74,4 @@
     <button class="cookie-btn accept" onclick="setCookieConsent(true)" data-en="Accept all" data-fr="Tout accepter">{% if fr %}Tout accepter{% else %}Accept all{% endif %}</button>
   </div>
 </div>
-<script src="/assets/site.js"></script>
+<script src="/assets/site.js?v={{ site.time | date: '%s' }}"></script>
