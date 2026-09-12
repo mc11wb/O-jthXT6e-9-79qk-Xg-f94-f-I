@@ -1,0 +1,64 @@
+# BoosterStop
+
+> BoosterStop est le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner (TCG). Exploité par 247 Distribution SNC (Genève, Suisse), il propose des boosters, displays et boîtes collector 100% scellés, issus exclusivement de distributeurs officiels. Sept machines sont installées dans le canton de Genève, toutes à l'intérieur de filiales de La Poste Suisse. Le réseau se déploie vers la Suisse romande, la France, la Belgique et les Émirats Arabes Unis.
+
+Le site est bilingue : les pages en anglais sont à la racine, les pages en français sous `/fr/`. Les deux versions sont reliées par des balises hreflang et ont un contenu équivalent.
+
+## Informations clés
+
+- **Entité juridique** : 247 Distribution SNC, Genève, Suisse
+- **Téléphone** : +41 22 886 01 58
+- **Courriel** : contact@boosterstop.ch
+- **Profils** : [Instagram](https://www.instagram.com/boosterstoptcg/), [TikTok](https://www.tiktok.com/@boosterstop_tcg), [LinkedIn](https://www.linkedin.com/company/boosterstop/)
+- **Marchés** : Suisse (actif), Belgique (lancement imminent), Émirats Arabes Unis (lancement imminent), France (à l'étude)
+- **Licences proposées** : 23 licences dont Pokémon, One Piece, Magic: The Gathering (y compris les crossovers Universes Beyond), Disney Lorcana, Dragon Ball Super Fusion World, Riftbound: League of Legends, Gundam Card Game, Digimon, Naruto, Star Wars Unlimited, Union Arena, Cyberpunk TCG, Azuki TCG, Vibes TCG, Safir Cards, ainsi que des cartes de sport (football, NBA, NFL, NHL, F1)
+- **Langues des cartes** : français, anglais, japonais, chinois, allemand, espagnol, portugais, selon les sets
+- **Moyens de paiement** : espèces avec monnaie rendue en pièces et en billets, carte sans contact, smartphone
+- **Garantie produit** : tous les produits sont scellés d'usine et proviennent de distributeurs officiels. Aucun produit n'est pesé, fouillé, ouvert, trié ou rescellé.
+
+## Les sept distributeurs du canton de Genève
+
+Chaque machine est accessible en libre-service pendant les heures d'ouverture de la filiale La Poste qui l'héberge. Fermeture les neuf jours fériés du canton de Genève, dont le Jeûne genevois et le 31 décembre.
+
+Machines dont l'inventaire est consultable en direct sur le site :
+
+- **La Poste de Rive** — Rue du Vieux-Collège 3, 1204 Genève · lun-ven 09:00-18:00, sam 09:00-12:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-rive.html)
+- **La Poste des Charmilles** — Promenade de l'Europe 11, 1203 Genève · lun-ven 09:00-19:00, sam 09:00-17:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-charmilles.html)
+- **La Poste du Petit-Lancy** — Rue des Bossons 88b, 1213 Petit-Lancy · lun-ven 08:00-18:00, sam 09:00-13:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-petit-lancy.html)
+
+Machines installées, inventaire en direct à venir :
+
+- **La Poste de Plainpalais** — Rue Pictet-de-Bock 6, 1205 Genève · lun-ven 08:00-18:00, sam 09:00-16:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-plainpalais.html)
+- **La Poste de Meyrin** — Avenue de Feuillasse 24, 1217 Meyrin · lun-ven 08:30-18:00, sam 08:30-15:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-meyrin.html)
+- **La Poste de Thônex** — Rue de Genève 106, 1226 Thônex · lun-ven 08:30-18:30, sam 09:00-15:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-thonex.html)
+- **La Poste de Carouge** — Boulevard des Promenades 16, 1227 Carouge · lun-ven 08:00-18:00, sam 08:30-12:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-carouge.html)
+
+Vue d'ensemble : [tous les distributeurs de Genève](https://boosterstop.com/fr/distributeurs-geneve.html) · [version anglaise](https://boosterstop.com/distributeurs-geneve.html)
+
+## Pages principales (français)
+
+- [Accueil](https://boosterstop.com/fr/) : présentation du réseau, carte des emplacements, fonctionnement, garanties d'authenticité, formulaire de contact et section partenariat pour les propriétaires d'espaces.
+- [Tous les distributeurs à Genève](https://boosterstop.com/fr/distributeurs-geneve.html) : les sept emplacements, avec adresse, horaires et état de la connexion au stock en direct.
+- [Licences TCG à Genève](https://boosterstop.com/fr/licences-geneve.html) : catalogue détaillé des 23 licences disponibles, avec pour chacune une description, ses éditions populaires et son niveau de rareté.
+- [Stock en direct](https://boosterstop.com/fr/stock.html) : inventaire en temps réel de chaque machine, rail par rail, avec prix et quantités restantes.
+- [Expansion du réseau](https://boosterstop.com/fr/expansion.html) : villes et quartiers où BoosterStop est actif ou prévu.
+- [Newsletter](https://boosterstop.com/fr/newsletter.html) : inscription aux nouveautés et promotions.
+- [Confidentialité et cookies](https://boosterstop.com/fr/privacy.html) : politique de protection des données (nLPD suisse et RGPD).
+
+## Pages principales (anglais)
+
+Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Distributeurs](https://boosterstop.com/distributeurs-geneve.html), [Licences](https://boosterstop.com/licences-geneve.html), [Stock](https://boosterstop.com/stock.html), [Expansion](https://boosterstop.com/expansion.html), [Newsletter](https://boosterstop.com/newsletter.html), [Confidentialité](https://boosterstop.com/privacy.html).
+
+## Questions fréquentes
+
+- **Où acheter des cartes Pokémon à Genève ?** BoosterStop exploite sept distributeurs automatiques dans le canton, tous situés dans une filiale de La Poste : Rive, Les Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex et Carouge.
+- **Les produits sont-ils authentiques ?** Oui. Tout est scellé d'usine et provient de distributeurs officiels. Rien n'est pesé, fouillé, altéré ni trié.
+- **Peut-on vérifier le stock avant de se déplacer ?** Oui. La page Stock en direct et chaque page d'emplacement affichent l'inventaire lu directement dans la machine.
+- **Comment payer ?** En espèces, avec monnaie rendue en pièces et en billets, ou en sans contact par carte et smartphone. Le produit sort immédiatement.
+- **Quels sont les horaires ?** Ceux de la filiale La Poste qui héberge la machine, variables selon l'emplacement. Fermeture les jours fériés genevois.
+- **Un problème avec une machine ?** Téléphone +41 22 886 01 58, en indiquant l'emplacement et l'heure. Remboursement ou remplacement après vérification du journal de la machine.
+- **Peut-on accueillir une machine ?** Oui. BoosterStop cherche des partenaires (centres commerciaux, gares, cinémas, lieux à fort passage). L'installation, le réassort et la maintenance sont entièrement pris en charge, sans investissement pour l'hôte.
+
+## Optionnel
+
+- [Sitemap XML](https://boosterstop.com/sitemap.xml) : les 28 URL du site avec leurs annotations hreflang.
