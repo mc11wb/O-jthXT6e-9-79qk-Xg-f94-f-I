@@ -3,6 +3,7 @@
   Lit le front matter de la page :
     lang : en | fr
     page : index | stock | licences-geneve | expansion | newsletter | privacy
+           | distributeurs-geneve | distributeur-<emplacement>
   Pour ajouter ou modifier un lien du menu : éditer CE fichier uniquement.
 {%- endcomment -%}
 {%- assign lang = page.lang | default: "en" -%}
@@ -24,7 +25,7 @@
   </div>
   <div class="nav-right">
     <ul>
-      <li><a href="{{ anchor }}#where" data-en="Locations" data-fr="Emplacements">{% if fr %}Emplacements{% else %}Locations{% endif %}</a></li>
+      <li><a href="{{ base }}distributeurs-geneve.html"{% if pid == "distributeurs-geneve" %} class="active"{% endif %} data-en="📍 Locations" data-fr="📍 Emplacements">{% if fr %}📍 Emplacements{% else %}📍 Locations{% endif %}</a></li>
       <li><a href="{{ base }}licences-geneve.html"{% if pid == "licences-geneve" %} class="active"{% endif %} data-en="🃏 Licenses" data-fr="🃏 Licences">{% if fr %}🃏 Licences{% else %}🃏 Licenses{% endif %}</a></li>
       <li><a href="{{ base }}expansion.html"{% if pid == "expansion" %} class="active"{% endif %} data-en="🌍 Expansion" data-fr="🌍 Expansion">🌍 Expansion</a></li>
       <li><a href="{{ anchor }}#contact" data-en="Contact" data-fr="Contact">Contact</a></li>

@@ -86,3 +86,15 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;margin:0;}
   .swiss-badge .sb-text{display:none;}
   .swiss-badge{padding:3px 6px;}
 }
+
+
+/* ---------- EMPLACEMENTS EN PIED DE PAGE ---------- */
+.footer-locs{display:flex;flex-direction:column;align-items:center;gap:10px;padding:26px 24px 0;
+  border-top:1px solid var(--gray-mid);margin:26px auto 0;max-width:900px;text-align:center;}
+.fl-title{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1.4px;color:var(--text-muted);}
+.fl-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;}
+.fl-links a{font-size:13px;color:#b9b5cf;text-decoration:none;}
+.fl-links a:hover{color:var(--yellow);}
+.fl-all{font-size:12px;color:var(--red);text-decoration:none;letter-spacing:.6px;margin-top:2px;}
+.fl-all:hover{text-decoration:underline;}
+@media(max-width:600px){.footer-locs{padding-top:20px;}.fl-links{gap:6px 14px;}}

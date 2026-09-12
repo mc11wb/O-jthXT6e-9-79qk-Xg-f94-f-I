@@ -19,6 +19,22 @@
   </div>
 </footer>
 
+
+<!-- EMPLACEMENTS — maillage interne vers les 7 pages distributeur -->
+<nav class="footer-locs" aria-label="{% if fr %}Nos distributeurs{% else %}Our machines{% endif %}">
+  <span class="fl-title">{% if fr %}Nos distributeurs à Genève{% else %}Our machines in Geneva{% endif %}</span>
+  <span class="fl-links">
+    {% if fr %}<a href="/fr/distributeur-geneve-rive.html">Rive</a>{% else %}<a href="/distributeur-geneve-rive.html">Rive</a>{% endif %}
+    {% if fr %}<a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a>{% else %}<a href="/distributeur-geneve-charmilles.html">Les Charmilles</a>{% endif %}
+    {% if fr %}<a href="/fr/distributeur-petit-lancy.html">Petit-Lancy</a>{% else %}<a href="/distributeur-petit-lancy.html">Petit-Lancy</a>{% endif %}
+    {% if fr %}<a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a>{% else %}<a href="/distributeur-geneve-plainpalais.html">Plainpalais</a>{% endif %}
+    {% if fr %}<a href="/fr/distributeur-meyrin.html">Meyrin</a>{% else %}<a href="/distributeur-meyrin.html">Meyrin</a>{% endif %}
+    {% if fr %}<a href="/fr/distributeur-thonex.html">Thônex</a>{% else %}<a href="/distributeur-thonex.html">Thônex</a>{% endif %}
+    {% if fr %}<a href="/fr/distributeur-carouge.html">Carouge</a>{% else %}<a href="/distributeur-carouge.html">Carouge</a>{% endif %}
+  </span>
+  <a class="fl-all" href="{{ base }}distributeurs-geneve.html">{% if fr %}Tous les emplacements{% else %}All locations{% endif %} →</a>
+</nav>
+
 <!-- NAV MOBILE (commun) -->
 <div class="mob-nav" id="mobNav">
   <a href="{{ base }}" class="mob-link{% if pid == "index" %} active{% endif %}"><span class="m-icon">🏠</span><span data-en="Home" data-fr="Accueil">{% if fr %}Accueil{% else %}Home{% endif %}</span></a>
