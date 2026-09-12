@@ -7,18 +7,6 @@
 {%- assign pid = page.page | default: "index" -%}
 {%- if lang == "fr" -%}{%- assign fr = true -%}{%- assign base = "/fr/" -%}{%- else -%}{%- assign fr = false -%}{%- assign base = "/" -%}{%- endif -%}
 {%- if pid == "index" -%}{%- assign anchor = "" -%}{%- else -%}{%- assign anchor = base -%}{%- endif -%}
-<!-- FOOTER (commun : _includes/footer.html) -->
-<footer>
-  <div class="footer-logo"><img src="/logo.png" alt="BoosterStop" width="177" height="22" loading="lazy"></div>
-  <div class="footer-links">
-    {%- unless pid == "stock" %}
-    <a href="{{ base }}stock.html" class="footer-stock" data-en="📦 Live Stock" data-fr="📦 Stock Live">{% if fr %}📦 Stock Live{% else %}📦 Live Stock{% endif %}</a>
-    {%- endunless %}
-    <a href="{{ base }}privacy.html" class="footer-privacy" data-en="Privacy &amp; Cookies" data-fr="Confidentialité">{% if fr %}Confidentialité{% else %}Privacy &amp; Cookies{% endif %}</a>
-    <p>© {{ site.time | date: "%Y" }} BoosterStop — 247 Distribution SNC</p>
-  </div>
-</footer>
-
 
 <!-- EMPLACEMENTS — maillage interne vers les 7 pages distributeur -->
 <!-- div et non nav : site.css cible l'element nav en position:fixed -->
@@ -35,6 +23,18 @@
   </span>
   <a class="fl-all" href="{{ base }}distributeurs-geneve.html">{% if fr %}Tous les emplacements{% else %}All locations{% endif %} →</a>
 </div>
+
+<!-- FOOTER (commun : _includes/footer.html) -->
+<footer>
+  <div class="footer-logo"><img src="/logo.png" alt="BoosterStop" width="177" height="22" loading="lazy"></div>
+  <div class="footer-links">
+    {%- unless pid == "stock" %}
+    <a href="{{ base }}stock.html" class="footer-stock" data-en="📦 Live Stock" data-fr="📦 Stock Live">{% if fr %}📦 Stock Live{% else %}📦 Live Stock{% endif %}</a>
+    {%- endunless %}
+    <a href="{{ base }}privacy.html" class="footer-privacy" data-en="Privacy &amp; Cookies" data-fr="Confidentialité">{% if fr %}Confidentialité{% else %}Privacy &amp; Cookies{% endif %}</a>
+    <p>© {{ site.time | date: "%Y" }} BoosterStop — 247 Distribution SNC</p>
+  </div>
+</footer>
 
 <!-- NAV MOBILE (commun) -->
 <div class="mob-nav" id="mobNav">
