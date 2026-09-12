@@ -1,0 +1,99 @@
+name: Remonter les fichiers a la racine
+
+# Se declenche uniquement a la main, depuis l'onglet Actions.
+# Ne tourne jamais tout seul.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  remonter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Recuperer le depot
+        uses: actions/checkout@v4
+
+      - name: Remonter le contenu et nettoyer
+        run: |
+          set -e
+
+          # Dossier de reference : le depot d'archive le plus recent.
+          # Si absent, on retombe sur l'ancien.
+          if [ -d boosterstop-a-deposer ]; then
+            SOURCE=boosterstop-a-deposer
+          elif [ -d boosterstop-distributeurs ]; then
+            SOURCE=boosterstop-distributeurs
+          else
+            echo "Aucun dossier a remonter. Rien a faire."
+            exit 0
+          fi
+
+          echo "Source retenue : $SOURCE"
+          ls -la "$SOURCE"
+
+          # le /. copie le CONTENU du dossier, sans recreer le dossier
+          cp -r "$SOURCE"/. .
+
+          # nettoyage des deux dossiers parasites et de la notice
+          rm -rf boosterstop-a-deposer
+          rm -rf boosterstop-distributeurs
+          rm -f LISEZ-MOI-upload.md
+
+          echo "Racine apres remontee :"
+          ls -la
+
+      - name: Verifier que les fichiers attendus sont en place
+        run: |
+          set -e
+          MANQUE=0
+
+          for F in \
+            fr/distributeur-geneve-rive.html \
+            fr/distributeurs-geneve.html \
+            distributeur-geneve-rive.html \
+            distributeurs-geneve.html \
+            sitemap.xml \
+            _includes/nav.html \
+            _includes/footer.html \
+            assets/site.css
+          do
+            if [ ! -f "$F" ]; then
+              echo "MANQUANT : $F"
+              MANQUE=1
+            fi
+          done
+
+          grep -q "distributeurs-geneve.html" _includes/nav.html || { echo "nav.html pas a jour"; MANQUE=1; }
+          grep -q "footer-locs" _includes/footer.html || { echo "footer.html pas a jour"; MANQUE=1; }
+          grep -q "fl-links" assets/site.css || { echo "site.css pas a jour"; MANQUE=1; }
+
+          # fichiers existants qui ne doivent surtout pas avoir disparu
+          for F in fr/stock.html fr/licences-geneve.html logo.png CNAME _config.yml
+          do
+            if [ ! -f "$F" ]; then
+              echo "PERDU : $F"
+              MANQUE=1
+            fi
+          done
+
+          if [ "$MANQUE" = "1" ]; then
+            echo "Verification echouee, rien ne sera committe."
+            exit 1
+          fi
+          echo "Verification OK."
+
+      - name: Committer et pousser
+        run: |
+          set -e
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Aucun changement a committer."
+          else
+            git commit -m "Remonte les pages distributeurs a la racine"
+            git push
+            echo "Termine."
+          fi
