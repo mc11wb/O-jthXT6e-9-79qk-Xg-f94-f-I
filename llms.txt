@@ -35,6 +35,24 @@ Machines installées, inventaire en direct à venir :
 
 Vue d'ensemble : [tous les distributeurs de Genève](https://boosterstop.com/fr/distributeurs-geneve.html) · [version anglaise](https://boosterstop.com/distributeurs-geneve.html)
 
+## Quartiers genevois sans machine
+
+Pour chaque quartier encore dépourvu de distributeur, une page indique la machine la plus proche, la distance et le temps de trajet à pied et à vélo. Les versions anglaises portent le même nom de fichier, sans le préfixe `/fr/`.
+
+- [Grand-Lancy](https://boosterstop.com/fr/cartes-pokemon-grand-lancy.html) — machine du Petit-Lancy, 0,3 km, 4 min à pied, 2 min à vélo
+- [Les Acacias](https://boosterstop.com/fr/cartes-pokemon-acacias.html) — machine de Plainpalais, 0,5 km, 6 min à pied, 2 min à vélo
+- [Chêne-Bourg](https://boosterstop.com/fr/cartes-pokemon-chene-bourg.html) — machine de Thônex, 0,6 km, 8 min à pied, 2 min à vélo
+- [La Servette](https://boosterstop.com/fr/cartes-pokemon-servette.html) — machine des Charmilles, 0,8 km, 10 min à pied, 3 min à vélo
+- [La Jonction](https://boosterstop.com/fr/cartes-pokemon-jonction.html) — machine des Charmilles, 1,0 km, 12 min à pied, 4 min à vélo
+- [Onex](https://boosterstop.com/fr/cartes-pokemon-onex.html) — machine du Petit-Lancy, 1,0 km, 12 min à pied, 4 min à vélo
+- [La gare Cornavin](https://boosterstop.com/fr/cartes-pokemon-cornavin.html) — machine de Rive, 1,1 km, 14 min à pied, 4 min à vélo
+- [Les Eaux-Vives](https://boosterstop.com/fr/cartes-pokemon-eaux-vives.html) — machine de Rive, 1,2 km, 15 min à pied, 5 min à vélo
+- [Les Pâquis](https://boosterstop.com/fr/cartes-pokemon-paquis.html) — machine de Rive, 1,2 km, 15 min à pied, 5 min à vélo
+- [Champel](https://boosterstop.com/fr/cartes-pokemon-champel.html) — machine de Plainpalais, 1,2 km, 15 min à pied, 5 min à vélo
+- [Chêne-Bougeries](https://boosterstop.com/fr/cartes-pokemon-chene-bougeries.html) — machine de Thônex, 1,4 km, 18 min à pied, 6 min à vélo
+- [Vernier](https://boosterstop.com/fr/cartes-pokemon-vernier.html) — machine des Charmilles, 1,5 km, 18 min à pied, 6 min à vélo
+- [Plan-les-Ouates](https://boosterstop.com/fr/cartes-pokemon-plan-les-ouates.html) — machine du Petit-Lancy, 2,5 km, 31 min à pied, 10 min à vélo
+
 ## Pages principales (français)
 
 - [Accueil](https://boosterstop.com/fr/) : présentation du réseau, carte des emplacements, fonctionnement, garanties d'authenticité, formulaire de contact et section partenariat pour les propriétaires d'espaces.
@@ -62,4 +80,4 @@ Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Di
 
 ## Optionnel
 
-- [Sitemap XML](https://boosterstop.com/sitemap.xml) : les 30 URL du site avec leurs annotations hreflang.
+- [Sitemap XML](https://boosterstop.com/sitemap.xml) : les 56 URL du site avec leurs annotations hreflang.
