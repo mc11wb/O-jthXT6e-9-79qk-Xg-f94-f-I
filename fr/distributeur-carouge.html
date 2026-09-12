@@ -25,7 +25,16 @@ page: distributeur-carouge
 <meta name="geo.position" content="46.1834815;6.1374843">
 <meta name="ICBM" content="46.1834815, 6.1374843">
 <style>
-/* Pages distributeur — préfixe bsm- pour ne rien heurter dans site.css */
+/* Pages distributeur.
+   site.css ne stylise pas body : chaque page le déclare, comme les autres
+   pages du site. Et attention, site.css cible l'ÉLÉMENT nav en
+   position:fixed — d'où les <div role="navigation"> plus bas. */
+body{
+  margin:0; background:var(--black); color:var(--white);
+  font-family:'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+/* préfixe bsm- pour ne rien heurter dans site.css */
 .bsm-wrap{max-width:980px;margin:0 auto;padding:0 24px}
 .bsm-head{padding:130px 0 44px;border-bottom:1px solid var(--gray-mid)}
 .bsm-crumbs{font-size:13px;color:var(--text-muted);margin-bottom:22px}
@@ -100,9 +109,9 @@ page: distributeur-carouge
 <div class="bsm-wrap">
 
 <header class="bsm-head">
-  <nav class="bsm-crumbs" aria-label="Fil d&apos;Ariane">
+  <div class="bsm-crumbs" role="navigation" aria-label="Fil d&apos;Ariane">
     <a href="/fr/">BoosterStop</a> › <a href="/fr/distributeurs-geneve.html">Distributeurs</a> › Carouge
-  </nav>
+  </div>
   <span class="bsm-now" id="bsmNow"></span>
   <h1>Distributeur de cartes Pokémon à Carouge</h1>
   <p class="bsm-where">Dans La Poste de Carouge, Boulevard des Promenades 16, 1227 Carouge. Libre-service, paiement par carte ou sans contact, sans attente au comptoir.</p>

@@ -23,7 +23,16 @@ page: distributeurs-geneve
 <meta name="geo.region" content="CH-GE">
 <meta name="geo.placename" content="Genève">
 <style>
-/* Pages distributeur — préfixe bsm- pour ne rien heurter dans site.css */
+/* Pages distributeur.
+   site.css ne stylise pas body : chaque page le déclare, comme les autres
+   pages du site. Et attention, site.css cible l'ÉLÉMENT nav en
+   position:fixed — d'où les <div role="navigation"> plus bas. */
+body{
+  margin:0; background:var(--black); color:var(--white);
+  font-family:'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+/* préfixe bsm- pour ne rien heurter dans site.css */
 .bsm-wrap{max-width:980px;margin:0 auto;padding:0 24px}
 .bsm-head{padding:130px 0 44px;border-bottom:1px solid var(--gray-mid)}
 .bsm-crumbs{font-size:13px;color:var(--text-muted);margin-bottom:22px}
@@ -98,9 +107,9 @@ page: distributeurs-geneve
 <div class="bsm-wrap">
 
 <header class="bsm-head">
-  <nav class="bsm-crumbs" aria-label="Breadcrumb">
+  <div class="bsm-crumbs" role="navigation" aria-label="Breadcrumb">
     <a href="/">BoosterStop</a> › Where to find our machines in Geneva
-  </nav>
+  </div>
   <h1>Where to find our machines in Geneva</h1>
   <p class="bsm-where">Seven self-service machines across the canton, each inside a Swiss Post branch. Every page gives the exact address, the access hours and, for connected machines, stock read live from the slots.</p>
 </header>

@@ -21,7 +21,7 @@
 
 
 <!-- EMPLACEMENTS — maillage interne vers les 7 pages distributeur -->
-<nav class="footer-locs" aria-label="{% if fr %}Nos distributeurs{% else %}Our machines{% endif %}">
+<div class="footer-locs" role="navigation" aria-label="{% if fr %}Nos distributeurs{% else %}Our machines{% endif %}">
   <span class="fl-title">{% if fr %}Nos distributeurs à Genève{% else %}Our machines in Geneva{% endif %}</span>
   <span class="fl-links">
     {% if fr %}<a href="/fr/distributeur-geneve-rive.html">Rive</a>{% else %}<a href="/distributeur-geneve-rive.html">Rive</a>{% endif %}
@@ -33,7 +33,7 @@
     {% if fr %}<a href="/fr/distributeur-carouge.html">Carouge</a>{% else %}<a href="/distributeur-carouge.html">Carouge</a>{% endif %}
   </span>
   <a class="fl-all" href="{{ base }}distributeurs-geneve.html">{% if fr %}Tous les emplacements{% else %}All locations{% endif %} →</a>
-</nav>
+</div>
 
 <!-- NAV MOBILE (commun) -->
 <div class="mob-nav" id="mobNav">
