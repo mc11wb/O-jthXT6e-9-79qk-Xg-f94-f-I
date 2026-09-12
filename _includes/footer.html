@@ -27,6 +27,25 @@
 <!-- FOOTER (commun : _includes/footer.html) -->
 <footer>
   <div class="footer-logo"><img src="/logo.png" alt="BoosterStop" width="177" height="22" loading="lazy"></div>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/boosterstoptcg/" target="_blank" rel="noopener me" aria-label="Instagram" title="Instagram">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/>
+        <circle cx="12" cy="12" r="4.2"/>
+        <circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="https://www.tiktok.com/@boosterstop_tcg" target="_blank" rel="noopener me" aria-label="TikTok" title="TikTok">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+        <path d="M16.5 2h-2.9v13.2a2.7 2.7 0 1 1-2.7-2.7c.27 0 .53.04.78.12V9.7a5.9 5.9 0 1 0 4.82 5.8V9.16a6.9 6.9 0 0 0 4.0 1.28V7.53a4.1 4.1 0 0 1-4.0-4.0V2z"/>
+      </svg>
+    </a>
+    <a href="https://www.linkedin.com/company/boosterstop/" target="_blank" rel="noopener me" aria-label="LinkedIn" title="LinkedIn">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+        <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4v11H3v-11zM10 9.5h3.8v1.5h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76v5.69h-4v-5.05c0-1.2-.02-2.75-1.7-2.75-1.7 0-1.96 1.31-1.96 2.66v5.14h-3.98v-11z"/>
+      </svg>
+    </a>
+  </div>
   <div class="footer-links">
     {%- unless pid == "stock" %}
     <a href="{{ base }}stock.html" class="footer-stock" data-en="📦 Live Stock" data-fr="📦 Stock Live">{% if fr %}📦 Stock Live{% else %}📦 Live Stock{% endif %}</a>
