@@ -227,35 +227,35 @@ page: stock
 
 <!-- PAGE HEADER -->
 <div class="page-header">
-  <h1 class="page-title" data-en="Live <span>Stock</span>" data-fr="Stock en <span>Direct</span>">Live <span>Stock</span></h1>
-  <p class="page-sub" data-en="Real-time inventory of every BoosterStop machine, pulled directly from the machines themselves. Spot something missing? Request a restock in one click." data-fr="Inventaire en temps réel de chaque distributeur BoosterStop, lu directement dans les machines. Un produit manque ? Demandez un réassort en un clic.">Real-time inventory of every BoosterStop machine, pulled directly from the machines themselves. Spot something missing? Request a restock in one click.</p>
+  <h1 class="page-title">Live <span>Stock</span></h1>
+  <p class="page-sub">Real-time inventory of every BoosterStop machine, pulled directly from the machines themselves. Spot something missing? Request a restock in one click.</p>
   <div class="header-meta">
-    <span class="last-update" data-en="Last update: " data-fr="Dernière mise à jour : ">Last update: </span><b id="lastUpdate">—</b>
-    <button class="refresh-btn" onclick="loadAll()" data-en="↻ Refresh" data-fr="↻ Actualiser">↻ Refresh</button>
+    <span class="last-update">Last update: </span><b id="lastUpdate">—</b>
+    <button class="refresh-btn" onclick="loadAll()">↻ Refresh</button>
   </div>
 </div>
 
 <!-- COUNTRY TABS -->
 <div class="country-tabs-wrap">
   <div class="country-tabs">
-    <button class="country-tab active" onclick="switchCountry('ch', this)">🇨🇭 <span data-en="Switzerland — Geneva" data-fr="Suisse — Genève">Switzerland — Geneva</span></button>
-    <button class="country-tab" onclick="switchCountry('be', this)">🇧🇪 <span data-en="Belgium" data-fr="Belgique">Belgium</span></button>
-    <button class="country-tab" onclick="switchCountry('fr', this)">🇫🇷 <span data-en="France" data-fr="France">France</span> <span class="soon-pill" data-en="Soon" data-fr="Bientôt">Soon</span></button>
-    <button class="country-tab" onclick="switchCountry('uae', this)">🇦🇪 <span data-en="UAE" data-fr="Émirats">UAE</span> <span class="soon-pill" data-en="Soon" data-fr="Bientôt">Soon</span></button>
+    <button class="country-tab active" onclick="switchCountry('ch', this)">🇨🇭 <span>Switzerland — Geneva</span></button>
+    <button class="country-tab" onclick="switchCountry('be', this)">🇧🇪 <span>Belgium</span></button>
+    <button class="country-tab" onclick="switchCountry('fr', this)">🇫🇷 <span>France</span> <span class="soon-pill">Soon</span></button>
+    <button class="country-tab" onclick="switchCountry('uae', this)">🇦🇪 <span>UAE</span> <span class="soon-pill">Soon</span></button>
   </div>
 </div>
 
 <!-- CH PANEL -->
 <div id="panel-ch">
   <div class="stats-bar">
-    <div class="stat"><div class="stat-value" id="stat-machines">7</div><div class="stat-label" data-en="Machines live" data-fr="Machines actives">Machines live</div></div>
-    <div class="stat"><div class="stat-value green" id="stat-instock">—</div><div class="stat-label" data-en="Products in stock" data-fr="Produits en stock">Products in stock</div></div>
-    <div class="stat"><div class="stat-value orange" id="stat-low">—</div><div class="stat-label" data-en="Running low" data-fr="Bientôt épuisés">Running low</div></div>
-    <div class="stat"><div class="stat-value red" id="stat-empty">—</div><div class="stat-label" data-en="Sold out slots" data-fr="Rails épuisés">Sold out slots</div></div>
+    <div class="stat"><div class="stat-value" id="stat-machines">7</div><div class="stat-label">Machines live</div></div>
+    <div class="stat"><div class="stat-value green" id="stat-instock">—</div><div class="stat-label">Products in stock</div></div>
+    <div class="stat"><div class="stat-value orange" id="stat-low">—</div><div class="stat-label">Running low</div></div>
+    <div class="stat"><div class="stat-value red" id="stat-empty">—</div><div class="stat-label">Sold out slots</div></div>
   </div>
 
   <div class="machine-select-zone">
-    <div class="zone-label" data-en="Pick a machine" data-fr="Choisissez une machine">Pick a machine</div>
+    <div class="zone-label">Pick a machine</div>
     <div class="machine-tabs" id="machineTabs">
       <button class="machine-tab active" onclick="selectMachine(0)">
         <span class="mt-dot"></span>
@@ -271,19 +271,19 @@ page: stock
       </button>
       <button class="machine-tab soon" onclick="selectMachine(3)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">La Poste de Plainpalais</span><span class="mt-sub">Plainpalais · 1205</span><span class="mt-soon" data-en="Live stock soon" data-fr="Stock live bientôt">Live stock soon</span></span>
+        <span class="mt-label"><span class="mt-name">La Poste de Plainpalais</span><span class="mt-sub">Plainpalais · 1205</span><span class="mt-soon">Live stock soon</span></span>
       </button>
       <button class="machine-tab soon" onclick="selectMachine(4)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">La Poste de Meyrin</span><span class="mt-sub">Meyrin · 1217</span><span class="mt-soon" data-en="Live stock soon" data-fr="Stock live bientôt">Live stock soon</span></span>
+        <span class="mt-label"><span class="mt-name">La Poste de Meyrin</span><span class="mt-sub">Meyrin · 1217</span><span class="mt-soon">Live stock soon</span></span>
       </button>
       <button class="machine-tab soon" onclick="selectMachine(5)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">La Poste de Thônex</span><span class="mt-sub">Thônex · 1226</span><span class="mt-soon" data-en="Live stock soon" data-fr="Stock live bientôt">Live stock soon</span></span>
+        <span class="mt-label"><span class="mt-name">La Poste de Thônex</span><span class="mt-sub">Thônex · 1226</span><span class="mt-soon">Live stock soon</span></span>
       </button>
       <button class="machine-tab soon" onclick="selectMachine(6)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">La Poste de Carouge</span><span class="mt-sub">Carouge · 1227</span><span class="mt-soon" data-en="Live stock soon" data-fr="Stock live bientôt">Live stock soon</span></span>
+        <span class="mt-label"><span class="mt-name">La Poste de Carouge</span><span class="mt-sub">Carouge · 1227</span><span class="mt-soon">Live stock soon</span></span>
       </button>
     </div>
     <div class="stock-map-wrap"><div id="stockMap"></div></div>
@@ -295,17 +295,17 @@ page: stock
           <div class="smc-addr" id="smcAddr">Rue du Vieux-Collège 3, 1204 Genève</div>
         </div>
       </div>
-      <span class="smc-hint" data-en="Switch with the tabs above or tap a pin on the map" data-fr="Changez via les onglets ci-dessus ou touchez un point sur la carte">Switch with the tabs above or tap a pin on the map</span>
+      <span class="smc-hint">Switch with the tabs above or tap a pin on the map</span>
     </div>
   </div>
 
   <div class="machine-view" id="machineView">
     <div class="mv-head">
-      <div class="mv-title" data-en="Inside the machine — <span>live</span>" data-fr="Dans la machine — <span>en direct</span>">Inside the machine — <span>live</span></div>
-      <button class="new-product-btn" onclick="openNewProductModal()" data-en="💡 Suggest a new product" data-fr="💡 Suggérer un nouveau produit">💡 Suggest a new product</button>
+      <div class="mv-title">Inside the machine — <span>live</span></div>
+      <button class="new-product-btn" onclick="openNewProductModal()">💡 Suggest a new product</button>
     </div>
     <div id="floorsContainer">
-      <div class="state-msg"><span class="spin"></span><br><span data-en="Connecting to the machine…" data-fr="Connexion à la machine…">Connecting to the machine…</span></div>
+      <div class="state-msg"><span class="spin"></span><br><span>Connecting to the machine…</span></div>
     </div>
   </div>
 </div>
@@ -313,34 +313,34 @@ page: stock
 <!-- BE PANEL -->
 <div id="panel-be" style="display:none;">
   <div class="stats-bar">
-    <div class="stat"><div class="stat-value">5</div><div class="stat-label" data-en="Machines live" data-fr="Machines actives">Machines live</div></div>
-    <div class="stat"><div class="stat-value green">—</div><div class="stat-label" data-en="Products in stock" data-fr="Produits en stock">Products in stock</div></div>
-    <div class="stat"><div class="stat-value orange">—</div><div class="stat-label" data-en="Running low" data-fr="Bientôt épuisés">Running low</div></div>
-    <div class="stat"><div class="stat-value red">—</div><div class="stat-label" data-en="Sold out slots" data-fr="Rails épuisés">Sold out slots</div></div>
+    <div class="stat"><div class="stat-value">5</div><div class="stat-label">Machines live</div></div>
+    <div class="stat"><div class="stat-value green">—</div><div class="stat-label">Products in stock</div></div>
+    <div class="stat"><div class="stat-value orange">—</div><div class="stat-label">Running low</div></div>
+    <div class="stat"><div class="stat-value red">—</div><div class="stat-label">Sold out slots</div></div>
   </div>
 
   <div class="machine-select-zone">
-    <div class="zone-label" data-en="Our Belgian machines" data-fr="Nos machines belges">Our Belgian machines</div>
+    <div class="zone-label">Our Belgian machines</div>
     <div class="machine-tabs">
       <button class="machine-tab soon active" onclick="selectBeMachine(this)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">Machine 1</span><span class="mt-sub" data-en="Belgium" data-fr="Belgique">Belgium</span><span class="mt-soon" data-en="Location soon" data-fr="Emplacement bientôt">Location soon</span></span>
+        <span class="mt-label"><span class="mt-name">Machine 1</span><span class="mt-sub">Belgium</span><span class="mt-soon">Location soon</span></span>
       </button>
       <button class="machine-tab soon" onclick="selectBeMachine(this)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">Machine 2</span><span class="mt-sub" data-en="Belgium" data-fr="Belgique">Belgium</span><span class="mt-soon" data-en="Location soon" data-fr="Emplacement bientôt">Location soon</span></span>
+        <span class="mt-label"><span class="mt-name">Machine 2</span><span class="mt-sub">Belgium</span><span class="mt-soon">Location soon</span></span>
       </button>
       <button class="machine-tab soon" onclick="selectBeMachine(this)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">Machine 3</span><span class="mt-sub" data-en="Belgium" data-fr="Belgique">Belgium</span><span class="mt-soon" data-en="Location soon" data-fr="Emplacement bientôt">Location soon</span></span>
+        <span class="mt-label"><span class="mt-name">Machine 3</span><span class="mt-sub">Belgium</span><span class="mt-soon">Location soon</span></span>
       </button>
       <button class="machine-tab soon" onclick="selectBeMachine(this)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">Machine 4</span><span class="mt-sub" data-en="Belgium" data-fr="Belgique">Belgium</span><span class="mt-soon" data-en="Location soon" data-fr="Emplacement bientôt">Location soon</span></span>
+        <span class="mt-label"><span class="mt-name">Machine 4</span><span class="mt-sub">Belgium</span><span class="mt-soon">Location soon</span></span>
       </button>
       <button class="machine-tab soon" onclick="selectBeMachine(this)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">Machine 5</span><span class="mt-sub" data-en="Belgium" data-fr="Belgique">Belgium</span><span class="mt-soon" data-en="Location soon" data-fr="Emplacement bientôt">Location soon</span></span>
+        <span class="mt-label"><span class="mt-name">Machine 5</span><span class="mt-sub">Belgium</span><span class="mt-soon">Location soon</span></span>
       </button>
     </div>
   </div>
@@ -348,8 +348,8 @@ page: stock
   <div class="machine-view">
     <div class="machine-soon-msg">
       <div class="msm-icon">🇧🇪</div>
-      <div class="msm-title" data-en="Live stock coming soon" data-fr="Stock live bientôt disponible">Live stock coming soon</div>
-      <p class="msm-sub" data-en="Our 5 Belgian machines are live and stocked. Real-time inventory and the exact addresses will appear here as soon as they are connected." data-fr="Nos 5 machines belges sont actives et approvisionnées. L'inventaire en temps réel et les adresses exactes apparaîtront ici dès leur connexion.">Our 5 Belgian machines are live and stocked. Real-time inventory and the exact addresses will appear here as soon as they are connected.</p>
+      <div class="msm-title">Live stock coming soon</div>
+      <p class="msm-sub">Our 5 Belgian machines are live and stocked. Real-time inventory and the exact addresses will appear here as soon as they are connected.</p>
     </div>
   </div>
 </div>
@@ -358,13 +358,13 @@ page: stock
 <div class="coming-soon-country" id="panel-fr">
   <div class="csc-inner">
     <div class="csc-flag">🇫🇷</div>
-    <div class="csc-title" data-en="France — Launching Soon" data-fr="France — Bientôt disponible">France — Launching Soon</div>
-    <p class="csc-sub" data-en="Border towns first, then the major cities. Leave your email and be the first to know when we go live." data-fr="Les villes frontalières d'abord, puis les grandes villes. Laissez votre email pour être prévenu du lancement.">Border towns first, then the major cities. Leave your email and be the first to know when we go live.</p>
+    <div class="csc-title">France — Launching Soon</div>
+    <p class="csc-sub">Border towns first, then the major cities. Leave your email and be the first to know when we go live.</p>
     <div class="notify-form">
       <input type="email" id="notifyFR" placeholder="you@example.com">
-      <button onclick="notifyMe('fr')" data-en="Notify me" data-fr="Prévenez-moi">Notify me</button>
+      <button onclick="notifyMe('fr')">Notify me</button>
     </div>
-    <div class="notify-ok" id="notifyOkFR" data-en="✓ Noted, you'll be the first to know!" data-fr="✓ C'est noté, vous serez prévenu en premier !">✓ Noted, you'll be the first to know!</div>
+    <div class="notify-ok" id="notifyOkFR">✓ Noted, you'll be the first to know!</div>
   </div>
 </div>
 
@@ -372,13 +372,13 @@ page: stock
 <div class="coming-soon-country" id="panel-uae">
   <div class="csc-inner">
     <div class="csc-flag">🇦🇪</div>
-    <div class="csc-title" data-en="UAE — Launching Soon" data-fr="Émirats — Bientôt disponible">UAE — Launching Soon</div>
-    <p class="csc-sub" data-en="Dubai and Abu Dhabi are on the roadmap. Leave your email and be the first to know when we go live." data-fr="Dubaï et Abu Dhabi sont sur la feuille de route. Laissez votre email pour être prévenu du lancement.">Dubai and Abu Dhabi are on the roadmap. Leave your email and be the first to know when we go live.</p>
+    <div class="csc-title">UAE — Launching Soon</div>
+    <p class="csc-sub">Dubai and Abu Dhabi are on the roadmap. Leave your email and be the first to know when we go live.</p>
     <div class="notify-form">
       <input type="email" id="notifyUAE" placeholder="you@example.com">
-      <button onclick="notifyMe('uae')" data-en="Notify me" data-fr="Prévenez-moi">Notify me</button>
+      <button onclick="notifyMe('uae')">Notify me</button>
     </div>
-    <div class="notify-ok" id="notifyOkUAE" data-en="✓ Noted, you'll be the first to know!" data-fr="✓ C'est noté, vous serez prévenu en premier !">✓ Noted, you'll be the first to know!</div>
+    <div class="notify-ok" id="notifyOkUAE">✓ Noted, you'll be the first to know!</div>
   </div>
 </div>
 
@@ -392,9 +392,9 @@ page: stock
     <img class="sm-img" id="smImg" src="" alt="" width="300" height="150" loading="lazy">
     <div class="sm-name" id="smName">—</div>
     <div class="sm-meta" id="smMeta">—</div>
-    <div class="sm-stockline"><span data-en="Remaining stock" data-fr="Stock restant">Remaining stock</span><b id="smStock">—</b></div>
+    <div class="sm-stockline"><span>Remaining stock</span><b id="smStock">—</b></div>
     <div class="sm-bar"><i id="smFill" style="width:0%"></i></div>
-    <button class="m-submit" id="smRestockBtn" onclick="openRestockModalFromSlot()" data-en="🔔 Request a restock" data-fr="🔔 Demander un réassort">🔔 Request a restock</button>
+    <button class="m-submit" id="smRestockBtn" onclick="openRestockModalFromSlot()">🔔 Request a restock</button>
   </div>
 </div>
 
@@ -402,22 +402,22 @@ page: stock
 <div class="modal-overlay" id="restockModal">
   <div class="modal">
     <button class="modal-close" onclick="closeModal()">✕</button>
-    <h3 id="modalTitle" data-en="Request a <span>restock</span>" data-fr="Demander un <span>réassort</span>">Request a <span>restock</span></h3>
-    <p class="m-sub" id="modalSub" data-en="Tell us what you'd like to see refilled. We prioritize restocks based on your requests." data-fr="Dites-nous ce que vous aimeriez voir réapprovisionné. Nous priorisons les réassorts selon vos demandes.">Tell us what you'd like to see refilled. We prioritize restocks based on your requests.</p>
+    <h3 id="modalTitle">Request a <span>restock</span></h3>
+    <p class="m-sub" id="modalSub">Tell us what you'd like to see refilled. We prioritize restocks based on your requests.</p>
     <div class="m-field">
-      <label id="modalInputLabel" data-en="Product" data-fr="Produit">Product</label>
+      <label id="modalInputLabel">Product</label>
       <input type="text" id="modalInput" placeholder="—">
     </div>
     <div class="m-field">
-      <label data-en="Your email (optional, to notify you)" data-fr="Votre email (facultatif, pour vous prévenir)">Your email (optional, to notify you)</label>
+      <label>Your email (optional, to notify you)</label>
       <input type="email" id="modalEmail" placeholder="you@example.com">
     </div>
     <div class="m-field">
-      <label data-en="Anything else?" data-fr="Autre chose ?">Anything else?</label>
+      <label>Anything else?</label>
       <textarea id="modalNotes" placeholder="..."></textarea>
     </div>
-    <button class="m-submit" id="modalSubmit" onclick="submitRestock()" data-en="Send request" data-fr="Envoyer la demande">Send request</button>
-    <div class="m-ok" id="modalOk" data-en="✓ Request sent, thank you!" data-fr="✓ Demande envoyée, merci !">✓ Request sent, thank you!</div>
+    <button class="m-submit" id="modalSubmit" onclick="submitRestock()">Send request</button>
+    <div class="m-ok" id="modalOk">✓ Request sent, thank you!</div>
   </div>
 </div>
 

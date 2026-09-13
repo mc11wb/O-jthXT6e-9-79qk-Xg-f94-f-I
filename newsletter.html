@@ -116,12 +116,12 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 
 <!-- HERO -->
 <div class="nl-hero">
-  <div class="nl-eyebrow" data-en="New drops · Exclusive promos" data-fr="Nouveautés · Promos exclusives">New drops · Exclusive promos</div>
-  <h1 class="nl-title" data-en="Never miss a <span>drop.</span>" data-fr="Ne ratez plus <span>rien.</span>">Never miss a <span>drop.</span></h1>
-  <p class="nl-sub" data-en="New releases and exclusive discount codes, straight to your inbox. Pick the games you care about and we'll only email you about what actually matters to you." data-fr="Nouvelles sorties et codes promo exclusifs, directement dans votre boîte mail. Choisissez vos jeux préférés et on ne vous écrit que pour ce qui vous concerne vraiment.">New releases and exclusive discount codes, straight to your inbox. Pick the games you care about and we'll only email you about what actually matters to you.</p>
+  <div class="nl-eyebrow">New drops · Exclusive promos</div>
+  <h1 class="nl-title">Never miss a <span>drop.</span></h1>
+  <p class="nl-sub">New releases and exclusive discount codes, straight to your inbox. Pick the games you care about and we'll only email you about what actually matters to you.</p>
   <div class="nl-offer">
     <span class="nl-offer-badge">-10%</span>
-    <span class="nl-offer-text" data-en="Sign up and get a <strong>10% code</strong> on your first order, plus early access to new drops and exclusive promos." data-fr="Inscrivez-vous et recevez un <strong>code de 10%</strong> sur votre première commande, plus les nouveautés en avant-première et des promos exclusives.">Sign up and get a <strong>10% code</strong> on your first order, plus early access to new drops and exclusive promos.</span>
+    <span class="nl-offer-text">Sign up and get a <strong>10% code</strong> on your first order, plus early access to new drops and exclusive promos.</span>
   </div>
 </div>
 
@@ -130,21 +130,21 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
   <div class="nl-form">
     <!-- COUNTRIES -->
     <div class="nl-section">
-      <div class="nl-label" data-en="Countries" data-fr="Pays">Countries</div>
-      <div class="nl-hint" data-en="Which market are you in? (select one or more)" data-fr="Dans quel marché êtes-vous ? (un ou plusieurs)">Which market are you in? (select one or more)</div>
+      <div class="nl-label">Countries</div>
+      <div class="nl-hint">Which market are you in? (select one or more)</div>
       <div class="chip-grid" id="countryGrid">
-        <div class="chip" data-value="Switzerland" onclick="toggleChip(this)"><span class="chk">✓</span><span class="flag">🇨🇭</span><span data-en="Switzerland" data-fr="Suisse">Switzerland</span></div>
-        <div class="chip" data-value="Belgium" onclick="toggleChip(this)"><span class="chk">✓</span><span class="flag">🇧🇪</span><span data-en="Belgium" data-fr="Belgique">Belgium</span></div>
-        <div class="chip" data-value="UAE" onclick="toggleChip(this)"><span class="chk">✓</span><span class="flag">🇦🇪</span><span data-en="UAE" data-fr="Émirats">UAE</span></div>
+        <div class="chip" data-value="Switzerland" onclick="toggleChip(this)"><span class="chk">✓</span><span class="flag">🇨🇭</span><span>Switzerland</span></div>
+        <div class="chip" data-value="Belgium" onclick="toggleChip(this)"><span class="chk">✓</span><span class="flag">🇧🇪</span><span>Belgium</span></div>
+        <div class="chip" data-value="UAE" onclick="toggleChip(this)"><span class="chk">✓</span><span class="flag">🇦🇪</span><span>UAE</span></div>
       </div>
     </div>
 
     <!-- TCG -->
     <div class="nl-section">
-      <div class="nl-label" data-en="Trading card games" data-fr="Jeux de cartes">Trading card games</div>
-      <div class="nl-hint" data-en="Which universes are you into? (select all you like)" data-fr="Quels univers vous intéressent ? (autant que vous voulez)">Which universes are you into? (select all you like)</div>
+      <div class="nl-label">Trading card games</div>
+      <div class="nl-hint">Which universes are you into? (select all you like)</div>
       <div class="tcg-all">
-        <div class="tcg-chip all-chip" data-value="__ALL__" onclick="toggleAll(this)"><span class="chk">✓</span><span data-en="✨ All TCGs — keep me posted on everything" data-fr="✨ Tous les TCG — tenez-moi au courant de tout">✨ All TCGs — keep me posted on everything</span></div>
+        <div class="tcg-chip all-chip" data-value="__ALL__" onclick="toggleAll(this)"><span class="chk">✓</span><span>✨ All TCGs — keep me posted on everything</span></div>
       </div>
       <div class="tcg-grid" id="tcgGrid">
         <div class="tcg-chip" data-value="Pokémon" onclick="toggleChip(this)"><span class="chk">✓</span>Pokémon</div>
@@ -155,13 +155,13 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
         <div class="tcg-chip" data-value="Disney Lorcana" onclick="toggleChip(this)"><span class="chk">✓</span>Disney Lorcana</div>
         <div class="tcg-chip" data-value="Yu-Gi-Oh!" onclick="toggleChip(this)"><span class="chk">✓</span>Yu-Gi-Oh!</div>
         <div class="tcg-chip" data-value="Naruto TCG" onclick="toggleChip(this)"><span class="chk">✓</span>Naruto TCG</div>
-        <div class="tcg-chip" data-value="Other" onclick="toggleChip(this)"><span class="chk">✓</span><span data-en="Other" data-fr="Autre">Other</span></div>
+        <div class="tcg-chip" data-value="Other" onclick="toggleChip(this)"><span class="chk">✓</span><span>Other</span></div>
       </div>
     </div>
 
     <!-- EMAIL -->
     <div class="nl-section">
-      <div class="nl-label" data-en="Your email" data-fr="Votre email">Your email</div>
+      <div class="nl-label">Your email</div>
       <div class="nl-email-row">
         <input class="nl-input" id="nlEmail" type="email" placeholder="you@example.com">
       </div>
@@ -171,13 +171,13 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
     <label class="nl-consent" id="nlConsentRow">
       <input type="checkbox" id="nlConsent">
       <span class="nl-consent-box">✓</span>
-      <span class="nl-consent-text" data-en="I agree to receive new-release news and promotional emails from BoosterStop. I can unsubscribe at any time." data-fr="J'accepte de recevoir les nouveautés et les emails promotionnels de BoosterStop. Je peux me désinscrire à tout moment.">I agree to receive new-release news and promotional emails from BoosterStop. I can unsubscribe at any time.</span>
+      <span class="nl-consent-text">I agree to receive new-release news and promotional emails from BoosterStop. I can unsubscribe at any time.</span>
     </label>
 
-    <button class="nl-submit" id="nlSubmit" onclick="submitNewsletter()" data-en="🔔 Subscribe" data-fr="🔔 Je m'abonne">🔔 Subscribe</button>
-    <div class="nl-success" id="nlSuccess" data-en="✓ You're in! Expect new-drop news and exclusive promo codes." data-fr="✓ C'est fait ! Vous recevrez les nouveautés et des codes promo exclusifs.">✓ You're in! Expect new-drop news and exclusive promo codes.</div>
+    <button class="nl-submit" id="nlSubmit" onclick="submitNewsletter()">🔔 Subscribe</button>
+    <div class="nl-success" id="nlSuccess">✓ You're in! Expect new-drop news and exclusive promo codes.</div>
   </div>
-  <p class="nl-stocknote" data-en="Looking for live stock? Check real-time availability on the <a href='/stock.html'>Live Stock</a> page." data-fr="Vous cherchez le stock en temps réel ? Consultez la disponibilité sur la page <a href='/stock.html'>Stock Live</a>.">Looking for live stock? Check real-time availability on the <a href="/stock.html">Live Stock</a> page.</p>
+  <p class="nl-stocknote">Looking for live stock? Check real-time availability on the <a href="/stock.html">Live Stock</a> page.</p>
 </div>
 
 {% include footer.html %}
