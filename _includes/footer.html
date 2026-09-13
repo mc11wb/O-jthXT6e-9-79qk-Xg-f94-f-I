@@ -26,8 +26,9 @@
 
 <!-- FOOTER (commun : _includes/footer.html) -->
 <footer>
-  <div class="footer-logo"><img src="/logo.png" alt="BoosterStop" width="177" height="22" loading="lazy"></div>
-  <div class="footer-social">
+  <div class="footer-brand">
+    <div class="footer-logo"><img src="/logo.png" alt="BoosterStop" width="177" height="22" loading="lazy"></div>
+    <div class="footer-social">
     <a href="https://www.instagram.com/boosterstoptcg/" target="_blank" rel="noopener me" aria-label="Instagram" title="Instagram">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
         <rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/>
@@ -46,6 +47,8 @@
       </svg>
     </a>
   </div>
+  </div>
+
   <div class="footer-links">
     {%- unless pid == "stock" %}
     <a href="{{ base }}stock.html" class="footer-stock" data-en="📦 Live Stock" data-fr="📦 Stock Live">{% if fr %}📦 Stock Live{% else %}📦 Live Stock{% endif %}</a>

@@ -36,10 +36,13 @@ nav ul a.nav-stock{color:var(--red);font-weight:500;}
 .lang-btn:hover{border-color:var(--red);color:var(--red);}
 
 /* ---------- FOOTER ---------- */
-footer{border-top:1px solid var(--gray-mid);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;}
+footer{box-sizing:border-box;border-top:1px solid var(--gray-mid);padding:32px 24px;display:flex;flex-direction:column;align-items:center;gap:18px;max-width:1100px;margin:0 auto;text-align:center;}
 footer p{font-size:12px;color:#444;letter-spacing:0.5px;margin:0;}
+.footer-brand{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;}
 .footer-logo img{height:22px;width:auto;opacity:0.6;}
-.footer-links{display:flex;align-items:center;gap:16px;}
+.footer-links{display:flex;align-items:center;flex-wrap:wrap;justify-content:center;gap:10px 18px;}
+/* le copyright occupe toujours sa propre ligne */
+.footer-links p{flex-basis:100%;text-align:center;margin-top:4px;}
 .footer-stock{font-size:11px;color:var(--red);text-decoration:none;letter-spacing:1px;border:1px solid rgba(232,24,60,0.4);padding:5px 12px;border-radius:2px;}
 .footer-privacy{font-size:12px;color:#666;text-decoration:none;letter-spacing:0.5px;}
 
@@ -95,7 +98,7 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;margin:0;}
 @media(max-width:600px){.footer-social{order:-1;gap:22px;}}
 
 /* ---------- EMPLACEMENTS EN PIED DE PAGE ---------- */
-.footer-locs{display:flex;flex-direction:column;align-items:center;gap:10px;padding:28px 24px 30px;
+.footer-locs{box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:10px;padding:28px 24px 30px;
   border-top:1px solid var(--gray-mid);margin:40px auto 0;max-width:900px;text-align:center;}
 .fl-title{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:1.4px;color:var(--text-muted);}
 .fl-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;}
@@ -121,3 +124,58 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;margin:0;}
 
 .footer-contact{font-size:12px;color:#444;letter-spacing:0.5px;text-decoration:none;}
 .footer-contact:hover{color:var(--white);}
+
+
+/* ============================================================
+   OPTIMISATION MOBILE
+   Tout est regroupe ici pour ne toucher qu'un fichier. Les
+   selecteurs commencent par body afin de passer devant les
+   styles propres a chaque page, charges apres cette feuille.
+   ============================================================ */
+@media(max-width:768px){
+
+  /* --- 1. Champs de saisie ---------------------------------
+     Sous 16px, iOS zoome automatiquement au focus et l'utilisateur
+     doit repincer pour revenir. Concerne tous les formulaires. */
+  body input[type="text"], body input[type="email"], body input[type="tel"],
+  body input[type="search"], body select, body textarea{font-size:16px !important;}
+  /* le !important est necessaire : les styles propres a chaque page sont
+     charges apres cette feuille et l'emportent sur la specificite. */
+
+  /* --- 2. Cibles tactiles ----------------------------------
+     Objectif 44px de haut. Seuls des paddings sont ajoutes,
+     aucune taille de police ni couleur n'est modifiee. */
+  body .fl-links a{display:inline-block;padding:11px 6px;}
+  body .fl-links{gap:0 10px;}
+  body .fl-all{display:inline-block;padding:13px 8px;}
+  body .footer-links a{display:inline-block;padding:14px 6px;}
+  body .footer-social a{padding:13px;}
+  body .footer-social{gap:4px;}
+
+  body .bsm-near a, body .qz-near a{display:inline-block;padding:11px 0;}
+  body .bsm-tel a, body .b2-contact a, body .pr-contact a{display:inline-block;padding:9px 0;}
+  body .bsm-crumbs a, body .qz-crumbs a, body .b2-crumbs a, body .pr-crumbs a{
+    display:inline-block;padding:11px 3px;}
+  body .qz-actions a{padding:12px 16px;}
+
+  /* --- elements d'origine du site ---------------------------
+     Seules les zones cliquables sont elargies. Ni police ni
+     couleur ne changent, et rien de ceci ne s'applique au bureau. */
+  body .map-stock-link, body .lang-btn{padding-top:13px;padding-bottom:13px;}
+  /* hauteur fixe dans la feuille d'origine : il faut la liberer */
+  body .map-tab{height:auto;min-height:42px;padding-top:10px;padding-bottom:10px;}
+  body .tag{height:auto;min-height:40px;display:flex;align-items:center;justify-content:center;}
+  body .pill{min-height:42px;}
+  body .btn-request{padding-top:13px;padding-bottom:13px;}
+  body .stock-link{display:inline-block;padding:11px 0;}
+  body .mob-link{min-height:46px;}
+  body .refresh-btn{padding-top:14px;padding-bottom:14px;}
+
+  /* --- 3. Lisibilite ---------------------------------------
+     Le libelle du badge suisse etait affiche en 8px. */
+  body .swiss-badge .sb-text{font-size:10px;letter-spacing:.6px;}
+
+  /* Le logo de la barre reste a sa taille : l'agrandir repousserait
+     toute la nav vers le bas, et la barre du bas offre deja un retour
+     a l'accueil bien plus accessible au pouce. */
+}
