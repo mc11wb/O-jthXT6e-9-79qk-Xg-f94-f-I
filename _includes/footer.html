@@ -50,6 +50,8 @@
     {%- unless pid == "stock" %}
     <a href="{{ base }}stock.html" class="footer-stock" data-en="📦 Live Stock" data-fr="📦 Stock Live">{% if fr %}📦 Stock Live{% else %}📦 Live Stock{% endif %}</a>
     {%- endunless %}
+    <a href="{{ base }}#contact" class="footer-contact" data-en="Contact" data-fr="Contact">Contact</a>
+    <a href="{{ base }}installer-un-distributeur.html" class="footer-b2b" data-en="Host a machine" data-fr="Accueillir une machine">{% if fr %}Accueillir une machine{% else %}Host a machine{% endif %}</a>
     <a href="{{ base }}presse.html" class="footer-press"{% if pid == "presse" %} style="color:var(--white)"{% endif %} data-en="Press" data-fr="Presse">{% if fr %}Presse{% else %}Press{% endif %}</a>
     <a href="{{ base }}privacy.html" class="footer-privacy" data-en="Privacy &amp; Cookies" data-fr="Confidentialité">{% if fr %}Confidentialité{% else %}Privacy &amp; Cookies{% endif %}</a>
     <p>© {{ site.time | date: "%Y" }} BoosterStop — 247 Distribution SNC</p>

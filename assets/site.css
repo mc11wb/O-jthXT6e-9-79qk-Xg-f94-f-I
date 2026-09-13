@@ -107,3 +107,17 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;margin:0;}
 
 .footer-press{font-size:12px;color:#444;letter-spacing:0.5px;text-decoration:none;}
 .footer-press:hover{color:var(--white);}
+
+.footer-b2b{font-size:12px;color:#444;letter-spacing:0.5px;text-decoration:none;}
+.footer-b2b:hover{color:var(--white);}
+
+/* ---------- BLOC PARTENAIRE CONDENSE (renvoie vers la page dediee) ---------- */
+.partner-inner{max-width:760px;margin:0 auto;padding:56px 24px;text-align:center;}
+.partner-eyebrow{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;color:var(--red);margin-bottom:14px;}
+.partner-title{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:1px;font-size:clamp(30px,5vw,48px);margin:0 0 18px;}
+.partner-text{color:#cfcce0;font-size:17px;line-height:1.7;max-width:60ch;margin:0 auto 26px;}
+.partner-cta{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.8px;padding:12px 30px;border-radius:var(--radius);}
+.partner-cta:hover{background:#ff2b4e;}
+
+.footer-contact{font-size:12px;color:#444;letter-spacing:0.5px;text-decoration:none;}
+.footer-contact:hover{color:var(--white);}

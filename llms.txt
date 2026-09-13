@@ -61,6 +61,7 @@ Pour chaque quartier encore dépourvu de distributeur, une page indique la machi
 - [Stock en direct](https://boosterstop.com/fr/stock.html) : inventaire en temps réel de chaque machine, rail par rail, avec prix et quantités restantes.
 - [Expansion du réseau](https://boosterstop.com/fr/expansion.html) : villes et quartiers où BoosterStop est actif ou prévu.
 - [Newsletter](https://boosterstop.com/fr/newsletter.html) : inscription aux nouveautés et promotions.
+- [Accueillir un distributeur](https://boosterstop.com/fr/installer-un-distributeur.html) : page destinée aux gérants de lieux souhaitant héberger une machine — répartition des rôles, types de lieux recherchés, formulaire de qualification.
 - [Espace presse](https://boosterstop.com/fr/presse.html) : faits, chiffres et contact pour les rédactions.
 - [Confidentialité et cookies](https://boosterstop.com/fr/privacy.html) : politique de protection des données (nLPD suisse et RGPD).
 
@@ -80,4 +81,4 @@ Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Di
 
 ## Optionnel
 
-- [Sitemap XML](https://boosterstop.com/sitemap.xml) : les 56 URL du site avec leurs annotations hreflang.
+- [Sitemap XML](https://boosterstop.com/sitemap.xml) : les 58 URL du site avec leurs annotations hreflang.
