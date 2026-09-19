@@ -11,7 +11,7 @@ Le site est bilingue : les pages en anglais sont à la racine, les pages en fran
 - **Courriel** : contact@boosterstop.com
 - **Profils** : [Instagram](https://www.instagram.com/boosterstoptcg/), [TikTok](https://www.tiktok.com/@boosterstop_tcg), [LinkedIn](https://www.linkedin.com/company/boosterstop/)
 - **Marchés** : Suisse (actif), Belgique (lancement imminent), Émirats Arabes Unis (lancement imminent), France (à l'étude)
-- **Licences proposées** : 23 licences dont Pokémon, One Piece, Magic: The Gathering (y compris les crossovers Universes Beyond), Disney Lorcana, Dragon Ball Super Fusion World, Riftbound: League of Legends, Gundam Card Game, Digimon, Naruto, Star Wars Unlimited, Union Arena, Cyberpunk TCG, Azuki TCG, Vibes TCG, Safir Cards, ainsi que des cartes de sport (football, NBA, NFL, NHL, F1)
+- **Licences proposées** : 24 licences dont Pokémon, One Piece, Yu-Gi-Oh!, Magic: The Gathering (y compris les crossovers Universes Beyond), Disney Lorcana, Dragon Ball Super Fusion World, Riftbound: League of Legends, Gundam Card Game, Digimon, Naruto, Star Wars Unlimited, Union Arena, Cyberpunk TCG, Azuki TCG, Vibes TCG, Safir Cards, ainsi que des cartes de sport (football, NBA, NFL, NHL, F1)
 - **Langues des cartes** : français, anglais, japonais, chinois, allemand, espagnol, portugais, selon les sets
 - **Moyens de paiement** : espèces avec monnaie rendue en pièces et en billets, TWINT, carte sans contact, smartphone
 - **Garantie produit** : tous les produits sont scellés d'usine et proviennent de distributeurs officiels. Aucun produit n'est pesé, fouillé, ouvert, trié ou rescellé.
@@ -58,7 +58,7 @@ Pour chaque quartier encore dépourvu de distributeur, une page indique la machi
 
 - [Accueil](https://boosterstop.com/fr/) : présentation du réseau, carte des emplacements, fonctionnement, garanties d'authenticité, formulaire de contact et section partenariat pour les propriétaires d'espaces.
 - [Tous les distributeurs à Genève](https://boosterstop.com/fr/distributeurs-geneve.html) : les huit emplacements, avec adresse, horaires et état de la connexion au stock en direct.
-- [Licences TCG à Genève](https://boosterstop.com/fr/licences-geneve.html) : catalogue détaillé des 23 licences disponibles, avec pour chacune une description, ses éditions populaires et son niveau de rareté.
+- [Licences TCG à Genève](https://boosterstop.com/fr/licences-geneve.html) : catalogue détaillé des 24 licences disponibles, avec pour chacune une description, ses éditions populaires et son niveau de rareté.
 - [Stock en direct](https://boosterstop.com/fr/stock.html) : inventaire en temps réel de chaque machine, rail par rail, avec prix et quantités restantes.
 - [Expansion du réseau](https://boosterstop.com/fr/expansion.html) : villes et quartiers où BoosterStop est actif ou prévu.
 - [Newsletter](https://boosterstop.com/fr/newsletter.html) : inscription aux nouveautés et promotions.
@@ -83,3 +83,31 @@ Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Di
 ## Optionnel
 
 - [Sitemap XML](https://boosterstop.com/sitemap.xml) : les 58 URL du site avec leurs annotations hreflang.
+
+## Pages par licence et calendrier des sorties
+- [Sorties TCG 2026-2027](https://boosterstop.com/fr/sorties-tcg-geneve.html) : dates officielles des sets Pokémon, One Piece, Magic, Yu-Gi-Oh!, Riftbound, Lorcana, Dragon Ball et Match Attax, de septembre 2026 à mars 2027.
+- [Cartes One Piece à Genève](https://boosterstop.com/fr/cartes-one-piece-geneve.html)
+- [Cartes Magic à Genève](https://boosterstop.com/fr/cartes-magic-geneve.html)
+- [Cartes Yu-Gi-Oh! à Genève](https://boosterstop.com/fr/cartes-yu-gi-oh-geneve.html)
+- [Cartes Foot à Genève](https://boosterstop.com/fr/cartes-foot-geneve.html)
+- [Cartes Dragon Ball à Genève](https://boosterstop.com/fr/cartes-dragon-ball-geneve.html)
+- [Cartes Lorcana à Genève](https://boosterstop.com/fr/cartes-lorcana-geneve.html)
+- [Cartes Riftbound à Genève](https://boosterstop.com/fr/cartes-riftbound-geneve.html)
+- [Topps à Genève](https://boosterstop.com/fr/cartes-topps-geneve.html)
+- [Cartes Pokémon à Genève](https://boosterstop.com/fr/cartes-pokemon-geneve.html)
+- [Cartes Magic × Final Fantasy à Genève](https://boosterstop.com/fr/cartes-magic-final-fantasy-geneve.html)
+- [Cartes Magic × Marvel à Genève](https://boosterstop.com/fr/cartes-magic-marvel-geneve.html)
+- [Cartes Magic × Terre du Milieu à Genève](https://boosterstop.com/fr/cartes-magic-seigneur-des-anneaux-geneve.html)
+- [Cartes Naruto à Genève](https://boosterstop.com/fr/cartes-naruto-geneve.html)
+- [Cartes Digimon à Genève](https://boosterstop.com/fr/cartes-digimon-geneve.html)
+- [Cartes Gundam à Genève](https://boosterstop.com/fr/cartes-gundam-geneve.html)
+- [Cartes Cyberpunk TCG à Genève](https://boosterstop.com/fr/cartes-cyberpunk-geneve.html)
+- [Cartes Azuki TCG à Genève](https://boosterstop.com/fr/cartes-azuki-geneve.html)
+- [Cartes Vibes TCG à Genève](https://boosterstop.com/fr/cartes-vibes-geneve.html)
+- [Safir Cards à Genève](https://boosterstop.com/fr/cartes-safir-geneve.html)
+- [Cartes Union Arena à Genève](https://boosterstop.com/fr/cartes-union-arena-geneve.html)
+- [Cartes Star Wars: Unlimited à Genève](https://boosterstop.com/fr/cartes-star-wars-unlimited-geneve.html)
+- [Cartes NBA à Genève](https://boosterstop.com/fr/cartes-nba-geneve.html)
+- [Cartes NFL à Genève](https://boosterstop.com/fr/cartes-nfl-geneve.html)
+- [Cartes NHL à Genève](https://boosterstop.com/fr/cartes-nhl-geneve.html)
+- [Cartes Formule 1 à Genève](https://boosterstop.com/fr/cartes-f1-geneve.html)
