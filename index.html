@@ -140,6 +140,14 @@ page: index
   .map-location-addr { font-size: 12px; color: var(--text-muted); }
   .map-stock-link { display: inline-block; margin-top: 5px; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); text-decoration: none; border: 1px solid rgba(232,24,60,0.3); padding: 3px 10px; border-radius: 2px; transition: background 0.2s; }
   .map-stock-link:hover { background: rgba(232,24,60,0.08); }
+  .map-location-dot.soon-dot { background: var(--yellow); box-shadow: 0 0 6px rgba(255,208,0,0.6); animation: pulseSoon 2s ease-in-out infinite; }
+  .map-location-badge { display: inline-block; margin-left: 8px; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--yellow); background: rgba(255,208,0,0.1); border: 1px solid rgba(255,208,0,0.45); padding: 2px 8px; border-radius: 2px; vertical-align: 1px; white-space: nowrap; }
+  .map-stock-link.soon { color: var(--yellow); border-color: rgba(255,208,0,0.35); cursor: default; }
+  .map-stock-link.soon:hover { background: rgba(255,208,0,0.08); }
+  @keyframes pulseSoon { 0%,100% { box-shadow: 0 0 0 0 rgba(255,208,0,0.5); } 50% { box-shadow: 0 0 0 8px rgba(255,208,0,0); } }
+  .map-location-dot.open-now { background: #22C55E; border: none; box-shadow: 0 0 6px rgba(34,197,94,0.6); animation: pulseOpen 2s ease-in-out infinite; }
+  @keyframes pulseOpen { 0%,100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); } 50% { box-shadow: 0 0 0 8px rgba(34,197,94,0); } }
+  @media (max-width: 520px) { .map-location-badge { display: block; margin: 5px 0 0; } }
   @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(232,24,60,0.5); } 50% { box-shadow: 0 0 0 8px rgba(232,24,60,0); } }
 
   /* COMING SOON PANEL */
@@ -332,7 +340,7 @@ page: index
     <div class="country-item">
       <span class="country-flag">🇨🇭</span>
       <span>Switzerland</span>
-      <span class="country-status live">Live — 7 machines</span>
+      <span class="country-status live">Live — 8 machines</span>
     </div>
     <div class="country-item">
       <span class="country-flag">🇧🇪</span>
@@ -430,7 +438,7 @@ page: index
       <div class="map-wrapper"><div id="map-geneva"></div></div>
       <div class="map-locations-list">
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(0)">
-          <div class="map-location-dot live"></div>
+          <div class="map-location-dot live" data-loc="0"></div>
           <div>
             <div class="map-location-name">La Poste de Rive</div>
             <div class="map-location-addr">Rue du Vieux-Collège 3, 1204 Genève</div>
@@ -438,7 +446,7 @@ page: index
           </div>
         </div>
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(1)">
-          <div class="map-location-dot live"></div>
+          <div class="map-location-dot live" data-loc="1"></div>
           <div>
             <div class="map-location-name">La Poste des Charmilles</div>
             <div class="map-location-addr">Promenade de l'Europe 11, 1203 Genève</div>
@@ -446,7 +454,7 @@ page: index
           </div>
         </div>
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(2)">
-          <div class="map-location-dot live"></div>
+          <div class="map-location-dot live" data-loc="2"></div>
           <div>
             <div class="map-location-name">La Poste du Petit-Lancy</div>
             <div class="map-location-addr">Rue des Bossons 88b, 1213 Petit-Lancy</div>
@@ -454,35 +462,43 @@ page: index
           </div>
         </div>
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(3)">
-          <div class="map-location-dot live"></div>
+          <div class="map-location-dot live" data-loc="3"></div>
           <div>
-            <div class="map-location-name">La Poste de Plainpalais</div>
+            <div class="map-location-name">La Poste de Plainpalais <span class="map-location-badge">Coming 30 September</span></div>
             <div class="map-location-addr">Rue Pictet-de-Bock 6, 1205 Genève</div>
             <a href="/stock.html?machine=3" class="map-stock-link">📦 Check stock</a>
           </div>
         </div>
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(4)">
-          <div class="map-location-dot live"></div>
+          <div class="map-location-dot live" data-loc="4"></div>
           <div>
-            <div class="map-location-name">La Poste de Meyrin</div>
+            <div class="map-location-name">La Poste de Meyrin <span class="map-location-badge">Coming 30 September</span></div>
             <div class="map-location-addr">Avenue de Feuillasse 24, 1217 Meyrin</div>
             <a href="/stock.html?machine=4" class="map-stock-link">📦 Check stock</a>
           </div>
         </div>
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(5)">
-          <div class="map-location-dot live"></div>
+          <div class="map-location-dot live" data-loc="5"></div>
           <div>
-            <div class="map-location-name">La Poste de Thônex</div>
+            <div class="map-location-name">La Poste de Thônex <span class="map-location-badge">Coming 30 September</span></div>
             <div class="map-location-addr">Rue de Genève 106, 1226 Thônex</div>
             <a href="/stock.html?machine=5" class="map-stock-link">📦 Check stock</a>
           </div>
         </div>
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(6)">
-          <div class="map-location-dot live"></div>
+          <div class="map-location-dot live" data-loc="6"></div>
           <div>
-            <div class="map-location-name">La Poste de Carouge</div>
+            <div class="map-location-name">La Poste de Carouge <span class="map-location-badge">Coming 30 September</span></div>
             <div class="map-location-addr">Boulevard des Promenades 16, 1227 Carouge</div>
             <a href="/stock.html?machine=6" class="map-stock-link">📦 Check stock</a>
+          </div>
+        </div>
+        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(7)">
+          <div class="map-location-dot soon-dot" data-loc="7"></div>
+          <div>
+            <div class="map-location-name">King Jouet Carouge <span class="map-location-badge">Coming 30 September</span></div>
+            <div class="map-location-addr">Avenue Cardinal-Mermillod 36, 1227 Carouge</div>
+            <span class="map-stock-link soon">🚀 Coming soon</span>
           </div>
         </div>
         <div class="map-location-item incoming">
@@ -662,6 +678,8 @@ page: index
   .bs-popup-hours strong { color: #f4f2ee; }
   .bs-popup-stock-btn { display: block; margin-top: 8px; background: rgba(232,24,60,0.1); border: 1px solid rgba(232,24,60,0.4); color: #E8183C; text-decoration: none; font-family: "DM Sans", sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 10px; border-radius: 2px; text-align: center; transition: background 0.2s; }
   .bs-popup-stock-btn:hover { background: rgba(232,24,60,0.2); }
+  .bs-popup-badge.soon { color: #FFD000; background: rgba(255,208,0,0.1); border-color: rgba(255,208,0,0.45); }
+  .bs-popup-soon-date { display: block; margin-top: 7px; padding-top: 6px; border-top: 1px solid #2e2e2e; color: #FFD000; font-size: 10px; letter-spacing: 0.5px; }
 </style>
 <script>
 const darkStyles = [
@@ -822,6 +840,60 @@ function fireBooster() {
 let gMapRef = null;
 let gMarkersRef = [];
 
+/* ---------- OUVERT MAINTENANT (heure de Genève) ---------- */
+const GENEVA_LOCATIONS = [
+  { lat: 46.2008, lng: 6.1520, name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', hours: '<strong>Mon–Fri</strong> 09:00–18:00<br><strong>Sat</strong> 09:00–12:00<br><strong>Sun</strong> Closed', open: { wd: [540, 1080], sat: [540, 720], sun: null } },
+  { lat: 46.2112, lng: 6.1268, name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", hours: '<strong>Mon–Fri</strong> 09:00–19:00<br><strong>Sat</strong> 09:00–17:00<br><strong>Sun</strong> Closed', open: { wd: [540, 1140], sat: [540, 1020], sun: null } },
+  { lat: 46.1872, lng: 6.1214, name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', hours: '<strong>Mon–Fri</strong> 08:00–18:00<br><strong>Sat</strong> 09:00–13:00<br><strong>Sun</strong> Closed', open: { wd: [480, 1080], sat: [540, 780], sun: null } },
+  { lat: 46.1938, lng: 6.1427, name: 'La Poste de Plainpalais', addr: "Rue Pictet-de-Bock 6, 1205 Genève", hours: '<strong>Mon–Fri</strong> 08:00–18:00<br><strong>Sat</strong> 09:00–16:00<br><strong>Sun</strong> Closed', open: { wd: [480, 1080], sat: [540, 960], sun: null } },
+  { lat: 46.2323, lng: 6.0835, name: 'La Poste de Meyrin', addr: "Avenue de Feuillasse 24, 1217 Meyrin", hours: '<strong>Mon–Fri</strong> 08:30–18:00<br><strong>Sat</strong> 08:30–15:00<br><strong>Sun</strong> Closed', open: { wd: [510, 1080], sat: [510, 900], sun: null } },
+  { lat: 46.1928, lng: 6.202, name: 'La Poste de Thônex', addr: "Rue de Genève 106, 1226 Thônex", hours: '<strong>Mon–Fri</strong> 08:30–18:30<br><strong>Sat</strong> 09:00–15:00<br><strong>Sun</strong> Closed', open: { wd: [510, 1110], sat: [540, 900], sun: null } },
+  { lat: 46.1835, lng: 6.1375, name: 'La Poste de Carouge', addr: "Boulevard des Promenades 16, 1227 Carouge", hours: '<strong>Mon–Fri</strong> 08:00–18:00<br><strong>Sat</strong> 08:30–12:00<br><strong>Sun</strong> Closed', open: { wd: [480, 1080], sat: [510, 720], sun: null } },
+  { lat: 46.1860, lng: 6.1431, name: 'King Jouet Carouge', addr: "Avenue Cardinal-Mermillod 36, 1227 Carouge", hours: '<strong>Mon–Fri</strong> 09:00–19:00<br><strong>Sat</strong> 09:00–18:00<br><strong>Sun</strong> Closed', soon: true, open: { wd: [540, 1140], sat: [540, 1080], sun: null } }
+];
+
+function bsGenevaNow() {
+  try {
+    const p = {};
+    new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Zurich', hourCycle: 'h23', weekday: 'short', hour: '2-digit', minute: '2-digit' })
+      .formatToParts(new Date()).forEach(function(x) { p[x.type] = x.value; });
+    const days = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+    let h = parseInt(p.hour, 10);
+    if (h === 24) h = 0;
+    return { day: days[p.weekday], mins: h * 60 + parseInt(p.minute, 10) };
+  } catch (e) {
+    const d = new Date();
+    return { day: d.getDay(), mins: d.getHours() * 60 + d.getMinutes() };
+  }
+}
+function bsIsOpen(loc) {
+  if (!loc || !loc.open) return false;
+  const n = bsGenevaNow();
+  const r = n.day === 0 ? loc.open.sun : (n.day === 6 ? loc.open.sat : loc.open.wd);
+  if (!r) return false;
+  return n.mins >= r[0] && n.mins < r[1];
+}
+function bsMarkerIcon(loc) {
+  const open = bsIsOpen(loc);
+  if (loc.soon) {
+    return { path: google.maps.SymbolPath.CIRCLE, scale: 9, fillColor: '#120F2A', fillOpacity: 1, strokeColor: open ? '#22C55E' : '#FFD000', strokeWeight: 2.5 };
+  }
+  return { path: google.maps.SymbolPath.CIRCLE, scale: 10, fillColor: open ? '#22C55E' : '#FFD000', fillOpacity: 1, strokeColor: '#ffffff', strokeWeight: 1.5 };
+}
+function bsRefreshOpenState() {
+  document.querySelectorAll('.map-location-dot[data-loc]').forEach(function(dot) {
+    const loc = GENEVA_LOCATIONS[parseInt(dot.getAttribute('data-loc'), 10)];
+    const open = bsIsOpen(loc);
+    dot.classList.toggle('open-now', open);
+    dot.setAttribute('title', open ? (currentLang === 'fr' ? 'Ouvert maintenant' : 'Open now') : (currentLang === 'fr' ? 'Fermé actuellement' : 'Closed right now'));
+  });
+  if (typeof google !== 'undefined' && google.maps && gMarkersRef.length) {
+    gMarkersRef.forEach(function(mk, i) { if (mk) mk.setIcon(bsMarkerIcon(GENEVA_LOCATIONS[i])); });
+  }
+}
+if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', bsRefreshOpenState); } else { bsRefreshOpenState(); }
+setInterval(bsRefreshOpenState, 60000);
+
 function openPopupByIndex(i) {
   // Scroll to map section first
   const mapSection = document.getElementById('where');
@@ -855,15 +927,7 @@ window.initMap = function() {
     { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#2a2a2a' }] }
   ];
 
-  const genevaLocations = [
-    { lat: 46.2008, lng: 6.1520, name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', hours: '<strong>Mon–Fri</strong> 09:00–18:00<br><strong>Sat</strong> 09:00–12:00<br><strong>Sun</strong> Closed' },
-    { lat: 46.2112, lng: 6.1268, name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", hours: '<strong>Mon–Fri</strong> 09:00–19:00<br><strong>Sat</strong> 09:00–17:00<br><strong>Sun</strong> Closed' },
-    { lat: 46.1872, lng: 6.1214, name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', hours: '<strong>Mon–Fri</strong> 08:00–18:00<br><strong>Sat</strong> 09:00–13:00<br><strong>Sun</strong> Closed' },
-    { lat: 46.1938, lng: 6.1427, name: 'La Poste de Plainpalais', addr: "Rue Pictet-de-Bock 6, 1205 Genève", hours: '<strong>Mon–Fri</strong> 08:00–18:00<br><strong>Sat</strong> 09:00–16:00<br><strong>Sun</strong> Closed' },
-    { lat: 46.2323, lng: 6.0835, name: 'La Poste de Meyrin', addr: "Avenue de Feuillasse 24, 1217 Meyrin", hours: '<strong>Mon–Fri</strong> 08:30–18:00<br><strong>Sat</strong> 08:30–15:00<br><strong>Sun</strong> Closed' },
-    { lat: 46.1928, lng: 6.202, name: 'La Poste de Thônex', addr: "Rue de Genève 106, 1226 Thônex", hours: '<strong>Mon–Fri</strong> 08:30–18:30<br><strong>Sat</strong> 09:00–15:00<br><strong>Sun</strong> Closed' },
-    { lat: 46.1835, lng: 6.1375, name: 'La Poste de Carouge', addr: "Boulevard des Promenades 16, 1227 Carouge", hours: '<strong>Mon–Fri</strong> 08:00–18:00<br><strong>Sat</strong> 08:30–12:00<br><strong>Sun</strong> Closed' }
-  ];
+  const genevaLocations = GENEVA_LOCATIONS;
 
   let activeInfo = null;
 
@@ -876,13 +940,16 @@ window.initMap = function() {
     const marker = new google.maps.Marker({
       position: { lat: loc.lat, lng: loc.lng },
       map: gMapRef,
-      icon: { path: google.maps.SymbolPath.CIRCLE, scale: 10, fillColor: '#FFD000', fillOpacity: 1, strokeColor: '#ffffff', strokeWeight: 1.5 }
+      icon: bsMarkerIcon(loc)
     });
     marker.addListener('click', function() {
       if (activeInfo) activeInfo.close();
-      activeInfo = new google.maps.InfoWindow({
-        content: '<div class="bs-popup"><div class="bs-popup-badge">BoosterStop TCG</div><div class="bs-popup-name">' + loc.name + '</div><div class="bs-popup-addr">' + loc.addr + '</div><div class="bs-popup-hours">' + loc.hours + '</div><a href="/stock.html?machine=' + i + '" class="bs-popup-stock-btn" target="_self">📦 ' + (currentLang==='fr'?'Voir le stock':'Check stock') + ' →</a></div>'
-      });
+      const popBadge = loc.soon ? (currentLang==='fr'?'Bientôt disponible':'Coming soon') : 'BoosterStop TCG';
+      const popHead = '<div class="bs-popup"><div class="bs-popup-badge' + (loc.soon ? ' soon' : '') + '">' + popBadge + '</div><div class="bs-popup-name">' + loc.name + '</div><div class="bs-popup-addr">' + loc.addr + '</div>';
+      const popBody = loc.soon
+        ? '<div class="bs-popup-hours">' + loc.hours + '<span class="bs-popup-soon-date">' + (currentLang==='fr'?'Mise en service le 30 septembre':'Going live 30 September') + '</span></div>'
+        : '<div class="bs-popup-hours">' + loc.hours + '</div><a href="/stock.html?machine=' + i + '" class="bs-popup-stock-btn" target="_self">📦 ' + (currentLang==='fr'?'Voir le stock':'Check stock') + ' →</a>';
+      activeInfo = new google.maps.InfoWindow({ content: popHead + popBody + '</div>' });
       activeInfo.open(gMapRef, marker);
     });
     gMarkersRef[i] = marker;
