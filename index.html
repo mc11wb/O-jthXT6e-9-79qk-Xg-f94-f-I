@@ -7,7 +7,7 @@ page: index
 <head>
 {% include head.html %}
 <title>BoosterStop TCG - Vending Machines in Geneva | Pokémon, One Piece, Magic &amp; more</title>
-<meta name="description" content="BoosterStop TCG is the first vending-machine network for Trading Card Games. 100% sealed boosters, displays & collector boxes from official distributors, in French, English, Japanese, Chinese and more, live 24/7 in Geneva. Pokémon, One Piece, Magic, Lorcana, Yu-Gi-Oh! and more.">
+<meta name="description" content="BoosterStop TCG is the first vending-machine network for Trading Card Games. 100% sealed boosters, displays & collector boxes from official distributors, in French, English, Japanese, Chinese and more, self-service in Geneva. Pokémon, One Piece, Magic, Lorcana, Yu-Gi-Oh! and more.">
 <meta name="keywords" content="TCG vending machine, Geneva, Pokémon boosters Geneva, Japanese Pokémon cards Geneva, Chinese Pokémon cards, One Piece card game, Magic the Gathering, Disney Lorcana, Yu-Gi-Oh, trading card games Switzerland, distributeur cartes Genève, cartes japonaises Genève, sealed boosters">
 <link rel="canonical" href="https://boosterstop.com/">
 <link rel="alternate" hreflang="en" href="https://boosterstop.com/">
@@ -18,7 +18,7 @@ page: index
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
 <meta property="og:title" content="BoosterStop — TCG Vending Machines in Geneva">
-<meta property="og:description" content="100% sealed boosters, displays & collector boxes from official distributors, in French, English, Japanese, Chinese and more. Available 24/7 in Geneva.">
+<meta property="og:description" content="100% sealed boosters, displays & collector boxes from official distributors, in French, English, Japanese, Chinese and more. Self-service in eight machines across Geneva.">
 <meta property="og:url" content="https://boosterstop.com/">
 <meta property="og:image" content="https://boosterstop.com/logo.png">
 <meta property="og:locale" content="en_US">
@@ -26,7 +26,7 @@ page: index
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="BoosterStop — TCG Vending Machines in Geneva">
-<meta name="twitter:description" content="Sealed TCG boosters from official distributors, 24/7 in Geneva. Pokémon, One Piece, Magic & more.">
+<meta name="twitter:description" content="Sealed TCG boosters from official distributors, self-service in Geneva. Pokémon, One Piece, Magic & more.">
 <meta name="twitter:image" content="https://boosterstop.com/logo.png">
 <link rel="preload" as="image" href="/front%20transparent.png" fetchpriority="high">
 <style>
@@ -48,6 +48,9 @@ page: index
   .hero-eyebrow { font-size: 11px; letter-spacing: 4px; color: var(--red); text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
   .hero-eyebrow::before { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--red); }
   .hero-logo { margin-bottom: 40px; }
+  .hero-h1 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 1px;
+    font-size: clamp(21px, 2.7vw, 31px); line-height: 1.15; color: var(--white);
+    margin: 0 0 20px; max-width: 20ch; }
   .hero-body { color: #aaa; font-size: 16px; line-height: 1.75; margin-bottom: 32px; }
   .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 0; }
   .tag { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border: 1px solid var(--gray-mid); color: var(--text-muted); text-decoration: none; padding: 6px 16px; border-radius: 2px; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s; }
@@ -308,7 +311,8 @@ page: index
     <div class="hero-logo">
       <img src="/logo.png" alt="BoosterStop" width="724" height="90" fetchpriority="high" style="height: clamp(40px, 6vw, 90px); width: auto;">
     </div>
-    <p class="hero-body">The first vending machine network dedicated to Trading Card Games.<br>Boosters, displays, collector boxes, available 24/7, right where you are.</p>
+    <h1 class="hero-h1">TCG card vending machines in Geneva</h1>
+    <p class="hero-body">The first vending machine network dedicated to Trading Card Games.<br>Boosters, displays, collector boxes, self-service, right where you are.</p>
     <div class="hero-tags">
       <a class="tag" href="/licences-geneve.html#pokemon">Pokémon</a>
       <a class="tag" href="/licences-geneve.html#one-piece">One Piece TCG</a>
@@ -591,7 +595,7 @@ page: index
     </details>
     <details class="faq-item">
       <summary>Why vending machines instead of a regular shop?</summary>
-      <div class="faq-a">Convenience and 24/7 access matter, but that's not the whole point. Our real goal is visibility: we want to give as many TCG licenses as possible a place in front of players, including the ones you rarely find on shelves, right where people already are.</div>
+      <div class="faq-a">Convenience and self-service access matter, but that's not the whole point. Our real goal is visibility: we want to give as many TCG licenses as possible a place in front of players, including the ones you rarely find on shelves, right where people already are.</div>
     </details>
     <details class="faq-item">
       <summary>Which games can I find in the machines?</summary>
@@ -997,7 +1001,7 @@ document.addEventListener('DOMContentLoaded', function() {
       "legalName": "247 Distribution SNC",
       "url": "https://boosterstop.com/",
       "logo": "https://boosterstop.com/logo.png",
-      "description": "The first vending-machine network dedicated to Trading Card Games. 100% sealed products from official distributors, available 24/7.",
+      "description": "The first vending-machine network dedicated to Trading Card Games. 100% sealed products from official distributors, self-service.",
       "email": "contact@boosterstop.com",
       "areaServed": [
         "Switzerland",
@@ -1042,7 +1046,7 @@ document.addEventListener('DOMContentLoaded', function() {
           "name": "Why vending machines instead of a regular shop?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Convenience and 24/7 access matter, but our real goal is visibility: giving as many TCG licenses as possible a place in front of players, including the ones you rarely find on shelves, right where people already are."
+            "text": "Convenience and self-service access matter, but our real goal is visibility: giving as many TCG licenses as possible a place in front of players, including the ones you rarely find on shelves, right where people already are."
           }
         },
         {

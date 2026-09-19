@@ -729,12 +729,12 @@ async function submitRestock() {
 
 /* ---------- NOTIFY (BE / UAE) ---------- */
 async function notifyMe(code) {
-  const input = document.getElementById(code === 'be' ? 'notifyBE' : 'notifyUAE');
-  const ok = document.getElementById(code === 'be' ? 'notifyOkBE' : 'notifyOkUAE');
+  const input = document.getElementById(code === 'fr' ? 'notifyFR' : 'notifyUAE');
+  const ok = document.getElementById(code === 'fr' ? 'notifyOkFR' : 'notifyOkUAE');
   const email = input.value.trim();
   if (!email) { input.style.borderColor = 'var(--red)'; input.focus(); return; }
   try {
-    const res = await fetch(code === 'be' ? FORMSPREE.notify_be : FORMSPREE.notify_uae, {
+    const res = await fetch(code === 'fr' ? FORMSPREE.notify_fr : FORMSPREE.notify_uae, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({ email: email, country: code === 'fr' ? 'France' : 'UAE', _subject: '[BoosterStop] Launch notification — ' + (code === 'fr' ? 'France' : 'UAE') })

@@ -1,6 +1,6 @@
 # BoosterStop
 
-> BoosterStop est le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner (TCG). Exploité par 247 Distribution SNC (Genève, Suisse), il propose des boosters, displays et boîtes collector 100% scellés, issus exclusivement de distributeurs officiels. Huit machines sont installées dans le canton de Genève, sept à l'intérieur de filiales de La Poste Suisse et une chez King Jouet Carouge. Le réseau se déploie vers la Suisse romande, la France, la Belgique et les Émirats Arabes Unis.
+> BoosterStop est le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner (TCG). Exploité par 247 Distribution SNC (Genève, Suisse), il propose des boosters, displays et boîtes collector 100% scellés, issus exclusivement de distributeurs officiels. Huit machines sont installées dans le canton de Genève, sept à l'intérieur de filiales de La Poste Suisse et une chez King Jouet Carouge. Cinq machines sont actives en Belgique. Le réseau se déploie vers la Suisse romande, la France et les Émirats Arabes Unis.
 
 Le site est bilingue : les pages en anglais sont à la racine, les pages en français sous `/fr/`. Les deux versions sont reliées par des balises hreflang et ont un contenu équivalent.
 
@@ -10,7 +10,7 @@ Le site est bilingue : les pages en anglais sont à la racine, les pages en fran
 - **Téléphone** : +41 22 886 01 58
 - **Courriel** : contact@boosterstop.com
 - **Profils** : [Instagram](https://www.instagram.com/boosterstoptcg/), [TikTok](https://www.tiktok.com/@boosterstop_tcg), [LinkedIn](https://www.linkedin.com/company/boosterstop/)
-- **Marchés** : Suisse (actif), Belgique (lancement imminent), Émirats Arabes Unis (lancement imminent), France (à l'étude)
+- **Marchés** : Suisse (actif), Belgique (actif, 5 machines), Émirats Arabes Unis (lancement imminent), France (à l'étude)
 - **Licences proposées** : 24 licences dont Pokémon, One Piece, Yu-Gi-Oh!, Magic: The Gathering (y compris les crossovers Universes Beyond), Disney Lorcana, Dragon Ball Super Fusion World, Riftbound: League of Legends, Gundam Card Game, Digimon, Naruto, Star Wars Unlimited, Union Arena, Cyberpunk TCG, Azuki TCG, Vibes TCG, Safir Cards, ainsi que des cartes de sport (football, NBA, NFL, NHL, F1)
 - **Langues des cartes** : français, anglais, japonais, chinois, allemand, espagnol, portugais, selon les sets
 - **Moyens de paiement** : espèces avec monnaie rendue en pièces et en billets, TWINT, carte sans contact, smartphone
@@ -82,7 +82,7 @@ Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Di
 
 ## Optionnel
 
-- [Sitemap XML](https://boosterstop.com/sitemap.xml) : les 58 URL du site avec leurs annotations hreflang.
+- [Sitemap XML](https://boosterstop.com/sitemap.xml) : les 110 URL du site avec leurs annotations hreflang.
 
 ## Pages par licence et calendrier des sorties
 - [Sorties TCG 2026-2027](https://boosterstop.com/fr/sorties-tcg-geneve.html) : dates officielles des sets Pokémon, One Piece, Magic, Yu-Gi-Oh!, Riftbound, Lorcana, Dragon Ball et Match Attax, de septembre 2026 à mars 2027.
