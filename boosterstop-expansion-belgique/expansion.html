@@ -1,0 +1,995 @@
+---
+lang: en
+page: expansion
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include head.html %}
+<title>TCG Vending Machines: Geneva, Belgium, Lausanne, Dubai… | BoosterStop</title>
+<meta name="description" content="Pokémon, One Piece and Magic vending machines. Live in Geneva and Belgium, expanding across Suisse romande, border France, Dubai &amp; Abu Dhabi. Request your city.">
+<link rel="canonical" href="https://boosterstop.com/expansion.html">
+<link rel="alternate" hreflang="en" href="https://boosterstop.com/expansion.html">
+<link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/expansion.html">
+<link rel="alternate" hreflang="x-default" href="https://boosterstop.com/expansion.html">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BoosterStop">
+<meta property="og:title" content="TCG Vending Machines — Geneva, Belgium, Suisse romande, France, UAE">
+<meta property="og:description" content="The BoosterStop network is expanding: tell us where to install the next machine.">
+<meta property="og:url" content="https://boosterstop.com/expansion.html">
+<meta property="og:image" content="https://boosterstop.com/logo.png">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TCG Vending Machines — Geneva, Belgium, Suisse romande, France, UAE">
+<meta name="twitter:description" content="Live in Geneva and Belgium. Launching in Dubai. Which city is next? You decide.">
+<meta name="twitter:image" content="https://boosterstop.com/logo.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#120F2A;--white:#f4f2ee;--yellow:#FFD000;
+  --gray:#1E1A3A;--gray-mid:#2e2a50;--text-muted:#8888aa;
+  --red:#E8183C;--green:#22c55e;--radius:4px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;font-size:15px;background-image:radial-gradient(ellipse at 80% 10%,rgba(232,24,60,0.08) 0%,transparent 50%),radial-gradient(ellipse at 20% 80%,rgba(42,31,94,0.3) 0%,transparent 60%);}
+
+/* HERO */
+.hero{max-width:900px;margin:0 auto;padding:150px 48px 40px;text-align:center;}
+.hero-eyebrow{font-size:11px;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:12px;justify-content:center;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:inline-block;width:28px;height:1px;background:var(--red);}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,7vw,72px);line-height:0.95;}
+h1 .accent{color:var(--red);}
+.hero-sub{color:var(--text-muted);font-size:16px;line-height:1.75;max-width:640px;margin:20px auto 0;}
+.hero-stats{display:flex;justify-content:center;gap:2px;margin-top:36px;flex-wrap:wrap;}
+.hstat{background:var(--gray);border-top:2px solid var(--red);padding:16px 28px;min-width:150px;}
+.hstat b{font-family:'Bebas Neue',sans-serif;font-size:30px;display:block;line-height:1;}
+.hstat span{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);}
+
+/* RÉGIONS */
+.wrap{max-width:900px;margin:0 auto;padding:30px 48px 20px;}
+.region{padding:44px 0 8px;border-top:1px solid var(--gray-mid);}
+.region:first-of-type{border-top:none;padding-top:24px;}
+.region-head{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:14px;}
+.region-head h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,4vw,34px);letter-spacing:1px;display:flex;align-items:center;gap:12px;}
+.rflag{font-size:26px;}
+.status{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;white-space:nowrap;}
+.st-live{background:rgba(255,208,0,0.12);color:var(--yellow);border:1px solid rgba(255,208,0,0.35);}
+.st-soon{background:rgba(232,24,60,0.1);color:var(--red);border:1px solid rgba(232,24,60,0.4);}
+.st-study{background:rgba(255,255,255,0.04);color:var(--text-muted);border:1px solid var(--gray-mid);}
+.region-intro{color:#b9b6d0;font-size:14.5px;line-height:1.8;max-width:760px;margin-bottom:22px;}
+.group{margin-bottom:22px;}
+.group-label{font-size:11px;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.group-label::after{content:'';flex:1;height:1px;background:var(--gray-mid);}
+.cities{display:flex;flex-wrap:wrap;gap:8px;}
+.city{font-size:12.5px;letter-spacing:0.4px;border:1px solid var(--gray-mid);color:#ccc;padding:6px 14px;border-radius:20px;background:rgba(255,255,255,0.02);transition:border-color 0.2s,color 0.2s;}
+.city:hover{border-color:var(--red);color:var(--white);}
+
+/* FORMULAIRE VILLE */
+.ask{max-width:900px;margin:30px auto 0;padding:0 48px;}
+.ask-card{background:var(--gray);border:1px solid var(--gray-mid);border-top:2px solid var(--red);border-radius:var(--radius);padding:32px;}
+.ask-card h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,4vw,36px);letter-spacing:1px;margin-bottom:6px;}
+.ask-card h2 span{color:var(--red);}
+.ask-sub{color:var(--text-muted);font-size:14px;margin-bottom:22px;max-width:600px;}
+.ask-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.af-field{display:flex;flex-direction:column;gap:6px;}
+.af-field.full{grid-column:1 / -1;}
+.af-field label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);}
+.af-field input,.af-field textarea{background:var(--black);border:1px solid var(--gray-mid);border-radius:var(--radius);color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;padding:13px 16px;outline:none;transition:border-color 0.2s;}
+.af-field input:focus,.af-field textarea:focus{border-color:var(--red);}
+.af-field input::placeholder,.af-field textarea::placeholder{color:#555;}
+.af-field textarea{min-height:70px;resize:vertical;}
+.ask-submit{grid-column:1 / -1;background:var(--yellow);color:var(--black);border:none;padding:15px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;border-radius:var(--radius);cursor:pointer;transition:opacity 0.2s;}
+.ask-submit:hover{opacity:0.9;}
+.ask-submit:disabled{opacity:0.5;cursor:not-allowed;}
+.ask-ok{display:none;grid-column:1 / -1;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.35);color:var(--green);font-size:13.5px;padding:14px 18px;border-radius:var(--radius);text-align:center;}
+
+/* FAQ */
+.faq{max-width:900px;margin:0 auto;padding:50px 48px 30px;}
+.faq h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,4vw,38px);letter-spacing:1px;margin-bottom:20px;}
+.faq h2 span{color:var(--red);}
+.faq-item{background:var(--gray);border-left:2px solid var(--gray-mid);transition:border-color 0.2s;margin-bottom:2px;}
+.faq-item[open]{border-left-color:var(--red);}
+.faq-item summary{list-style:none;cursor:pointer;padding:18px 22px;font-size:14.5px;font-weight:400;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:'+';font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--red);line-height:1;flex-shrink:0;transition:transform 0.2s;}
+.faq-item[open] summary::after{transform:rotate(45deg);}
+.faq-item p{padding:0 22px 20px;font-size:13.5px;color:var(--text-muted);line-height:1.75;}
+
+/* LIENS UTILES + FOOTER */
+.also{max-width:900px;margin:0 auto;padding:0 48px 70px;display:flex;gap:10px;flex-wrap:wrap;}
+.also a{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--red);border:1px solid rgba(232,24,60,0.35);padding:10px 18px;border-radius:2px;transition:background 0.2s;}
+.also a:hover{background:rgba(232,24,60,0.08);}
+
+@media(max-width:768px){
+  .hero{padding:120px 22px 30px;}
+  .wrap,.ask,.faq,.also{padding-left:22px;padding-right:22px;}
+  .ask-form{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+{% include nav.html %}
+
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Network expansion</div>
+  <h1><span>TCG machines, </span><span class="accent">soon near you.</span></h1>
+  <p class="hero-sub">Live in Geneva and now in Belgium. Launching in the UAE. Under review across Suisse romande and neighbouring France. The next cities are chosen by one thing: your demand.</p>
+  <div class="hero-stats">
+    <div class="hstat"><b>4</b><span>countries</span></div>
+    <div class="hstat"><b>8</b><span>machines in Geneva</span></div>
+    <div class="hstat"><b>5</b><span>machines in Belgium</span></div>
+    <div class="hstat"><b>120+</b><span>cities on the radar</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+<section class="region" id="suisse">
+  <div class="region-head">
+    <h2><span class="rflag">🇨🇭</span> <span>Switzerland — Geneva &amp; Suisse romande</span></h2>
+    <span class="status st-live">Live in Geneva</span>
+  </div>
+  <p class="region-intro">Our TCG vending machines are already live in Geneva: sealed Pokémon, One Piece and Magic boosters, displays and collector boxes, self-service inside La Poste branches and at King Jouet Carouge. Searching for a TCG shop in Lausanne, Pokémon cards in Fribourg or a card vending machine near you? Suisse romande is the next step of the network: tell us your city below.</p>
+    <div class="group">
+      <div class="group-label">Geneva — neighbourhoods served today</div>
+      <div class="cities">
+      <span class="city">Rive</span>
+      <span class="city">Eaux-Vives</span>
+      <span class="city">Charmilles</span>
+      <span class="city">Petit-Lancy</span>
+      <span class="city">Plainpalais</span>
+      <span class="city">Champel</span>
+      <span class="city">Servette</span>
+      <span class="city">Pâquis</span>
+      <span class="city">Saint-Jean</span>
+      <span class="city">Jonction</span>
+      <span class="city">Carouge</span>
+      <span class="city">Lancy</span>
+      <span class="city">Onex</span>
+      <span class="city">Meyrin</span>
+      <span class="city">Vernier</span>
+      <span class="city">Thônex</span>
+      <span class="city">Grand-Saconnex</span>
+      <span class="city">Chêne-Bougeries</span>
+      <span class="city">Versoix</span>
+      <span class="city">Bernex</span>
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">Suisse romande — planned expansion</div>
+      <div class="cities">
+      <span class="city">Lausanne</span>
+      <span class="city">Nyon</span>
+      <span class="city">Morges</span>
+      <span class="city">Renens</span>
+      <span class="city">Vevey</span>
+      <span class="city">Montreux</span>
+      <span class="city">Yverdon-les-Bains</span>
+      <span class="city">Fribourg</span>
+      <span class="city">Bulle</span>
+      <span class="city">Neuchâtel</span>
+      <span class="city">La Chaux-de-Fonds</span>
+      <span class="city">Sion</span>
+      <span class="city">Sierre</span>
+      <span class="city">Martigny</span>
+      <span class="city">Monthey</span>
+      <span class="city">Aigle</span>
+      <span class="city">Gland</span>
+      <span class="city">Rolle</span>
+      <span class="city">Payerne</span>
+      <span class="city">Delémont</span>
+      </div>
+    </div>
+</section>
+
+<section class="region" id="belgique">
+  <div class="region-head">
+    <h2><span class="rflag">🇧🇪</span> <span>Belgium — Brussels &amp; Wallonia</span></h2>
+    <span class="status st-live">Live — 5 machines</span>
+  </div>
+  <p class="region-intro">BoosterStop is now live in Belgium: 5 machines are up and running, with sealed Pokémon, One Piece, Magic boosters and collector boxes in self-service, from official distributors only. The exact addresses will be published very soon on our locations map and the Live Stock page. Next step: more of Brussels and French-speaking Wallonia. Looking for a Pokémon or One Piece card machine in your commune? Request it below.</p>
+    <div class="group">
+      <div class="group-label">Brussels — communes</div>
+      <div class="cities">
+      <span class="city">Bruxelles-Ville</span>
+      <span class="city">Ixelles</span>
+      <span class="city">Schaerbeek</span>
+      <span class="city">Uccle</span>
+      <span class="city">Anderlecht</span>
+      <span class="city">Etterbeek</span>
+      <span class="city">Saint-Gilles</span>
+      <span class="city">Forest</span>
+      <span class="city">Jette</span>
+      <span class="city">Evere</span>
+      <span class="city">Auderghem</span>
+      <span class="city">Woluwe-Saint-Lambert</span>
+      <span class="city">Woluwe-Saint-Pierre</span>
+      <span class="city">Molenbeek-Saint-Jean</span>
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">Wallonia</div>
+      <div class="cities">
+      <span class="city">Liège</span>
+      <span class="city">Namur</span>
+      <span class="city">Charleroi</span>
+      <span class="city">Mons</span>
+      <span class="city">Tournai</span>
+      <span class="city">Wavre</span>
+      <span class="city">Louvain-la-Neuve</span>
+      <span class="city">Nivelles</span>
+      <span class="city">Braine-l’Alleud</span>
+      <span class="city">Verviers</span>
+      <span class="city">La Louvière</span>
+      <span class="city">Arlon</span>
+      </div>
+    </div>
+</section>
+
+<section class="region" id="france">
+  <div class="region-head">
+    <h2><span class="rflag">🇫🇷</span> <span>France — border towns, Montpellier &amp; major cities</span></h2>
+    <span class="status st-study">Under review</span>
+  </div>
+  <p class="region-intro">Annemasse, Annecy, Thonon or Ferney: neighbouring France is only minutes away from our Geneva machines, and local installations are under review, along with Montpellier and its region. If you're searching for a trading card shop in Annecy or Pokémon boosters in Annemasse, let us know: demand decides where we open next.</p>
+    <div class="group">
+      <div class="group-label">Swiss border — Haute-Savoie &amp; Ain</div>
+      <div class="cities">
+      <span class="city">Annemasse</span>
+      <span class="city">Saint-Julien-en-Genevois</span>
+      <span class="city">Ferney-Voltaire</span>
+      <span class="city">Saint-Genis-Pouilly</span>
+      <span class="city">Gex</span>
+      <span class="city">Divonne-les-Bains</span>
+      <span class="city">Douvaine</span>
+      <span class="city">Thonon-les-Bains</span>
+      <span class="city">Évian-les-Bains</span>
+      <span class="city">Annecy</span>
+      <span class="city">La Roche-sur-Foron</span>
+      <span class="city">Bonneville</span>
+      <span class="city">Cluses</span>
+      <span class="city">Sallanches</span>
+      <span class="city">Chamonix</span>
+      <span class="city">Valserhône (Bellegarde)</span>
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">Montpellier &amp; Occitanie</div>
+      <div class="cities">
+      <span class="city">Montpellier</span>
+      <span class="city">Lattes</span>
+      <span class="city">Castelnau-le-Lez</span>
+      <span class="city">Nîmes</span>
+      <span class="city">Sète</span>
+      <span class="city">Béziers</span>
+      <span class="city">Lunel</span>
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">Major cities</div>
+      <div class="cities">
+      <span class="city">Lyon</span>
+      <span class="city">Paris</span>
+      <span class="city">Marseille</span>
+      <span class="city">Toulouse</span>
+      <span class="city">Bordeaux</span>
+      <span class="city">Lille</span>
+      <span class="city">Strasbourg</span>
+      <span class="city">Nice</span>
+      <span class="city">Nantes</span>
+      <span class="city">Grenoble</span>
+      </div>
+    </div>
+</section>
+
+<section class="region" id="uae">
+  <div class="region-head">
+    <h2><span class="rflag">🇦🇪</span> <span>United Arab Emirates — Dubai, Abu Dhabi &amp; Sharjah</span></h2>
+    <span class="status st-soon">Launching soon</span>
+  </div>
+  <p class="region-intro">BoosterStop is coming to the Emirates. From Dubai Marina to Yas Island, our machines will bring sealed Pokémon, One Piece, Magic and more to malls and high-traffic venues, with the same official-distributor guarantee, in self-service. Tell us which district should get one first.</p>
+    <div class="group">
+      <div class="group-label">Dubai — districts</div>
+      <div class="cities">
+      <span class="city">Dubai Marina</span>
+      <span class="city">Downtown Dubai</span>
+      <span class="city">Business Bay</span>
+      <span class="city">Jumeirah</span>
+      <span class="city">JBR</span>
+      <span class="city">Palm Jumeirah</span>
+      <span class="city">JLT</span>
+      <span class="city">Al Barsha</span>
+      <span class="city">Deira</span>
+      <span class="city">Bur Dubai</span>
+      <span class="city">Mirdif</span>
+      <span class="city">Dubai Silicon Oasis</span>
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">Abu Dhabi</div>
+      <div class="cities">
+      <span class="city">Yas Island</span>
+      <span class="city">Al Reem Island</span>
+      <span class="city">Corniche</span>
+      <span class="city">Khalifa City</span>
+      <span class="city">Saadiyat Island</span>
+      <span class="city">Al Zahiyah</span>
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">Sharjah</div>
+      <div class="cities">
+      <span class="city">Al Majaz</span>
+      <span class="city">Al Nahda</span>
+      <span class="city">Al Qasba</span>
+      <span class="city">Muwaileh</span>
+      </div>
+    </div>
+</section>
+</div>
+
+<!-- DEMANDE DE VILLE -->
+<div class="ask" id="votre-ville">
+  <div class="ask-card">
+    <h2><span>Your city</span> <span>isn't on the list?</span></h2>
+    <p class="ask-sub">Tell us where you'd like a BoosterStop machine. Every request is counted and directly shapes our expansion plan. Leave your email if you want to be notified when it opens.</p>
+    <div class="ask-form">
+      <div class="af-field">
+        <label>City / town</label>
+        <input type="text" id="askCity" placeholder="Lausanne, Annecy, Ixelles…">
+      </div>
+      <div class="af-field">
+        <label>Your email (optional)</label>
+        <input type="email" id="askEmail" placeholder="you@example.com">
+      </div>
+      <div class="af-field full">
+        <label>A spot in mind? (mall, station, shop…)</label>
+        <textarea id="askNotes" placeholder="..."></textarea>
+      </div>
+      <button class="ask-submit" id="askSubmit" onclick="submitCity()">📍 Request my city</button>
+      <div class="ask-ok" id="askOk">✓ Request received, thank you! The more requests a city gets, the sooner it opens.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+  <h2><span>Questions</span> <span>&amp; answers</span></h2>
+<details class="faq-item">
+  <summary>Where can I find a TCG card vending machine near me?</summary>
+  <p>BoosterStop has 8 machines in the canton of Geneva, seven inside La Poste branches (Rive, Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex, Carouge) and one at King Jouet Carouge, plus 5 machines live in Belgium. The UAE is launching next, and other cities open based on demand. Request yours with the form on this page.</p>
+</details>
+<details class="faq-item">
+  <summary>Is there a TCG shop or machine in Lausanne / Suisse romande?</summary>
+  <p>Not yet, but Suisse romande is the first expansion zone of the network. Lausanne, Nyon, Fribourg, Neuchâtel, Sion and the whole Léman arc are on the roadmap. In the meantime, the Geneva machines are 35-45 minutes from Lausanne by train and restocked continuously.</p>
+</details>
+<details class="faq-item">
+  <summary>Where can I buy Pokémon cards near Annemasse, Annecy or Thonon?</summary>
+  <p>The Geneva machines are 15 to 50 minutes from most of neighbouring France (Annemasse, Saint-Julien, Ferney, Thonon, Annecy) and sell sealed Pokémon, One Piece and Magic products in self-service, with no customs on personal purchases within allowances. French installations on the border and around Montpellier are under review.</p>
+</details>
+<details class="faq-item">
+  <summary>Is there a BoosterStop machine in Belgium?</summary>
+  <p>Yes. The Belgian network is live with 5 machines, and their exact addresses will be published very soon on the locations map and the Live Stock page. The network keeps growing across Brussels (Ixelles, Schaerbeek, Uccle…) and Wallonia (Liège, Namur, Charleroi, Mons…). Subscribe to the newsletter to be the first to know.</p>
+</details>
+<details class="faq-item">
+  <summary>Will BoosterStop machines be available in Dubai and Abu Dhabi?</summary>
+  <p>Yes, the UAE launch is in preparation, with Dubai (Marina, Downtown, Business Bay…), Abu Dhabi (Yas Island, Al Reem…) and Sharjah on the roadmap. Same principle as Geneva: 100% sealed products from official distributors, available in self-service.</p>
+</details>
+</div>
+
+<!-- LIENS UTILES -->
+<div class="also">
+  <a href="/#where">📍 Current locations</a>
+  <a href="/stock.html">📦 Live stock</a>
+  <a href="/licences-geneve.html">🃏 All licenses</a>
+  <a href="/newsletter.html">🔔 Newsletter -10%</a>
+</div>
+
+{% include footer.html %}
+
+<!-- NAV MOBILE -->
+
+<script>
+var currentLang = 'en';
+
+async function submitCity() {
+  var city = document.getElementById('askCity').value.trim();
+  var cityEl = document.getElementById('askCity');
+  if (!city) { cityEl.style.borderColor = 'var(--red)'; cityEl.focus(); return; }
+  var btn = document.getElementById('askSubmit');
+  btn.disabled = true;
+  btn.textContent = currentLang === 'fr' ? 'Envoi…' : 'Sending…';
+  try {
+    var res = await fetch('https://formspree.io/f/xkjwpvgy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        type: 'city_request',
+        city: city,
+        email: document.getElementById('askEmail').value.trim(),
+        notes: document.getElementById('askNotes').value.trim(),
+        page_lang: currentLang,
+        _subject: '[BoosterStop] Demande de ville — ' + city
+      })
+    });
+    if (res.ok) {
+      btn.style.display = 'none';
+      document.getElementById('askOk').style.display = 'block';
+    } else { throw new Error(); }
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = currentLang === 'fr' ? 'Réessayer' : 'Try again';
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://boosterstop.com/expansion.html#webpage",
+      "url": "https://boosterstop.com/expansion.html",
+      "name": "TCG Vending Machines: Geneva, Lausanne, Brussels, Dubai… | BoosterStop",
+      "description": "Where BoosterStop TCG vending machines are live and where they are launching next: Geneva, Belgium (Brussels and Wallonia), Suisse romande, border France, Montpellier, Dubai, Abu Dhabi and Sharjah.",
+      "isPartOf": {
+        "@id": "https://boosterstop.com/#website"
+      },
+      "about": {
+        "@id": "https://boosterstop.com/#organization"
+      },
+      "inLanguage": [
+        "en",
+        "fr"
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "BoosterStop TCG vending machines",
+      "serviceType": "Trading card game vending machines",
+      "provider": {
+        "@id": "https://boosterstop.com/#organization"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Rive"
+        },
+        {
+          "@type": "City",
+          "name": "Eaux-Vives"
+        },
+        {
+          "@type": "City",
+          "name": "Charmilles"
+        },
+        {
+          "@type": "City",
+          "name": "Petit-Lancy"
+        },
+        {
+          "@type": "City",
+          "name": "Plainpalais"
+        },
+        {
+          "@type": "City",
+          "name": "Champel"
+        },
+        {
+          "@type": "City",
+          "name": "Servette"
+        },
+        {
+          "@type": "City",
+          "name": "Pâquis"
+        },
+        {
+          "@type": "City",
+          "name": "Saint-Jean"
+        },
+        {
+          "@type": "City",
+          "name": "Jonction"
+        },
+        {
+          "@type": "City",
+          "name": "Carouge"
+        },
+        {
+          "@type": "City",
+          "name": "Lancy"
+        },
+        {
+          "@type": "City",
+          "name": "Onex"
+        },
+        {
+          "@type": "City",
+          "name": "Meyrin"
+        },
+        {
+          "@type": "City",
+          "name": "Vernier"
+        },
+        {
+          "@type": "City",
+          "name": "Thônex"
+        },
+        {
+          "@type": "City",
+          "name": "Grand-Saconnex"
+        },
+        {
+          "@type": "City",
+          "name": "Chêne-Bougeries"
+        },
+        {
+          "@type": "City",
+          "name": "Versoix"
+        },
+        {
+          "@type": "City",
+          "name": "Bernex"
+        },
+        {
+          "@type": "City",
+          "name": "Lausanne"
+        },
+        {
+          "@type": "City",
+          "name": "Nyon"
+        },
+        {
+          "@type": "City",
+          "name": "Morges"
+        },
+        {
+          "@type": "City",
+          "name": "Renens"
+        },
+        {
+          "@type": "City",
+          "name": "Vevey"
+        },
+        {
+          "@type": "City",
+          "name": "Montreux"
+        },
+        {
+          "@type": "City",
+          "name": "Yverdon-les-Bains"
+        },
+        {
+          "@type": "City",
+          "name": "Fribourg"
+        },
+        {
+          "@type": "City",
+          "name": "Bulle"
+        },
+        {
+          "@type": "City",
+          "name": "Neuchâtel"
+        },
+        {
+          "@type": "City",
+          "name": "La Chaux-de-Fonds"
+        },
+        {
+          "@type": "City",
+          "name": "Sion"
+        },
+        {
+          "@type": "City",
+          "name": "Sierre"
+        },
+        {
+          "@type": "City",
+          "name": "Martigny"
+        },
+        {
+          "@type": "City",
+          "name": "Monthey"
+        },
+        {
+          "@type": "City",
+          "name": "Aigle"
+        },
+        {
+          "@type": "City",
+          "name": "Gland"
+        },
+        {
+          "@type": "City",
+          "name": "Rolle"
+        },
+        {
+          "@type": "City",
+          "name": "Payerne"
+        },
+        {
+          "@type": "City",
+          "name": "Delémont"
+        },
+        {
+          "@type": "City",
+          "name": "Annemasse"
+        },
+        {
+          "@type": "City",
+          "name": "Saint-Julien-en-Genevois"
+        },
+        {
+          "@type": "City",
+          "name": "Ferney-Voltaire"
+        },
+        {
+          "@type": "City",
+          "name": "Saint-Genis-Pouilly"
+        },
+        {
+          "@type": "City",
+          "name": "Gex"
+        },
+        {
+          "@type": "City",
+          "name": "Divonne-les-Bains"
+        },
+        {
+          "@type": "City",
+          "name": "Douvaine"
+        },
+        {
+          "@type": "City",
+          "name": "Thonon-les-Bains"
+        },
+        {
+          "@type": "City",
+          "name": "Évian-les-Bains"
+        },
+        {
+          "@type": "City",
+          "name": "Annecy"
+        },
+        {
+          "@type": "City",
+          "name": "La Roche-sur-Foron"
+        },
+        {
+          "@type": "City",
+          "name": "Bonneville"
+        },
+        {
+          "@type": "City",
+          "name": "Cluses"
+        },
+        {
+          "@type": "City",
+          "name": "Sallanches"
+        },
+        {
+          "@type": "City",
+          "name": "Chamonix"
+        },
+        {
+          "@type": "City",
+          "name": "Valserhône (Bellegarde)"
+        },
+        {
+          "@type": "City",
+          "name": "Montpellier"
+        },
+        {
+          "@type": "City",
+          "name": "Lattes"
+        },
+        {
+          "@type": "City",
+          "name": "Castelnau-le-Lez"
+        },
+        {
+          "@type": "City",
+          "name": "Nîmes"
+        },
+        {
+          "@type": "City",
+          "name": "Sète"
+        },
+        {
+          "@type": "City",
+          "name": "Béziers"
+        },
+        {
+          "@type": "City",
+          "name": "Lunel"
+        },
+        {
+          "@type": "City",
+          "name": "Lyon"
+        },
+        {
+          "@type": "City",
+          "name": "Paris"
+        },
+        {
+          "@type": "City",
+          "name": "Marseille"
+        },
+        {
+          "@type": "City",
+          "name": "Toulouse"
+        },
+        {
+          "@type": "City",
+          "name": "Bordeaux"
+        },
+        {
+          "@type": "City",
+          "name": "Lille"
+        },
+        {
+          "@type": "City",
+          "name": "Strasbourg"
+        },
+        {
+          "@type": "City",
+          "name": "Nice"
+        },
+        {
+          "@type": "City",
+          "name": "Nantes"
+        },
+        {
+          "@type": "City",
+          "name": "Grenoble"
+        },
+        {
+          "@type": "City",
+          "name": "Bruxelles-Ville"
+        },
+        {
+          "@type": "City",
+          "name": "Ixelles"
+        },
+        {
+          "@type": "City",
+          "name": "Schaerbeek"
+        },
+        {
+          "@type": "City",
+          "name": "Uccle"
+        },
+        {
+          "@type": "City",
+          "name": "Anderlecht"
+        },
+        {
+          "@type": "City",
+          "name": "Etterbeek"
+        },
+        {
+          "@type": "City",
+          "name": "Saint-Gilles"
+        },
+        {
+          "@type": "City",
+          "name": "Forest"
+        },
+        {
+          "@type": "City",
+          "name": "Jette"
+        },
+        {
+          "@type": "City",
+          "name": "Evere"
+        },
+        {
+          "@type": "City",
+          "name": "Auderghem"
+        },
+        {
+          "@type": "City",
+          "name": "Woluwe-Saint-Lambert"
+        },
+        {
+          "@type": "City",
+          "name": "Woluwe-Saint-Pierre"
+        },
+        {
+          "@type": "City",
+          "name": "Molenbeek-Saint-Jean"
+        },
+        {
+          "@type": "City",
+          "name": "Liège"
+        },
+        {
+          "@type": "City",
+          "name": "Namur"
+        },
+        {
+          "@type": "City",
+          "name": "Charleroi"
+        },
+        {
+          "@type": "City",
+          "name": "Mons"
+        },
+        {
+          "@type": "City",
+          "name": "Tournai"
+        },
+        {
+          "@type": "City",
+          "name": "Wavre"
+        },
+        {
+          "@type": "City",
+          "name": "Louvain-la-Neuve"
+        },
+        {
+          "@type": "City",
+          "name": "Nivelles"
+        },
+        {
+          "@type": "City",
+          "name": "Braine-l’Alleud"
+        },
+        {
+          "@type": "City",
+          "name": "Verviers"
+        },
+        {
+          "@type": "City",
+          "name": "La Louvière"
+        },
+        {
+          "@type": "City",
+          "name": "Arlon"
+        },
+        {
+          "@type": "City",
+          "name": "Dubai Marina"
+        },
+        {
+          "@type": "City",
+          "name": "Downtown Dubai"
+        },
+        {
+          "@type": "City",
+          "name": "Business Bay"
+        },
+        {
+          "@type": "City",
+          "name": "Jumeirah"
+        },
+        {
+          "@type": "City",
+          "name": "JBR"
+        },
+        {
+          "@type": "City",
+          "name": "Palm Jumeirah"
+        },
+        {
+          "@type": "City",
+          "name": "JLT"
+        },
+        {
+          "@type": "City",
+          "name": "Al Barsha"
+        },
+        {
+          "@type": "City",
+          "name": "Deira"
+        },
+        {
+          "@type": "City",
+          "name": "Bur Dubai"
+        },
+        {
+          "@type": "City",
+          "name": "Mirdif"
+        },
+        {
+          "@type": "City",
+          "name": "Dubai Silicon Oasis"
+        },
+        {
+          "@type": "City",
+          "name": "Yas Island"
+        },
+        {
+          "@type": "City",
+          "name": "Al Reem Island"
+        },
+        {
+          "@type": "City",
+          "name": "Corniche"
+        },
+        {
+          "@type": "City",
+          "name": "Khalifa City"
+        },
+        {
+          "@type": "City",
+          "name": "Saadiyat Island"
+        },
+        {
+          "@type": "City",
+          "name": "Al Zahiyah"
+        },
+        {
+          "@type": "City",
+          "name": "Al Majaz"
+        },
+        {
+          "@type": "City",
+          "name": "Al Nahda"
+        },
+        {
+          "@type": "City",
+          "name": "Al Qasba"
+        },
+        {
+          "@type": "City",
+          "name": "Muwaileh"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://boosterstop.com/expansion.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where can I find a TCG card vending machine near me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "BoosterStop has 8 machines in the canton of Geneva, seven inside La Poste branches (Rive, Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex, Carouge) and one at King Jouet Carouge, plus 5 machines live in Belgium. The UAE is launching next, and other cities open based on demand. Request yours with the form on this page."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a TCG shop or machine in Lausanne / Suisse romande?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not yet, but Suisse romande is the first expansion zone of the network. Lausanne, Nyon, Fribourg, Neuchâtel, Sion and the whole Léman arc are on the roadmap. In the meantime, the Geneva machines are 35-45 minutes from Lausanne by train and restocked continuously."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where can I buy Pokémon cards near Annemasse, Annecy or Thonon?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Geneva machines are 15 to 50 minutes from most of neighbouring France (Annemasse, Saint-Julien, Ferney, Thonon, Annecy) and sell sealed Pokémon, One Piece and Magic products in self-service, with no customs on personal purchases within allowances. French installations on the border and around Montpellier are under review."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a BoosterStop machine in Belgium?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The Belgian network is live with 5 machines, and their exact addresses will be published very soon on the locations map and the Live Stock page. The network keeps growing across Brussels (Ixelles, Schaerbeek, Uccle…) and Wallonia (Liège, Namur, Charleroi, Mons…). Subscribe to the newsletter to be the first to know."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will BoosterStop machines be available in Dubai and Abu Dhabi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, the UAE launch is in preparation, with Dubai (Marina, Downtown, Business Bay…), Abu Dhabi (Yas Island, Al Reem…) and Sharjah on the roadmap. Same principle as Geneva: 100% sealed products from official distributors, available in self-service."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>
