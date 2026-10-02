@@ -24,11 +24,9 @@
 <meta property="og:title" content="{% if fr %}Le blog BoosterStop{% else %}The BoosterStop blog{% endif %}">
 <meta property="og:description" content="{{ page.description | escape }}">
 <meta property="og:url" content="{{ site_root }}{{ base }}blog.html">
-<meta property="og:locale" content="{% if fr %}fr_CH{% else %}en_US{% endif %}">
+<meta property="og:locale" content="{% if fr %}fr_FR{% else %}en_US{% endif %}">
 <meta property="og:image" content="{{ site_root }}/front%20transparent.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="geo.region" content="CH-GE">
-<meta name="geo.placename" content="{% if fr %}Genève{% else %}Geneva{% endif %}">
 </head>
 <body>
 {% include nav.html %}
@@ -41,6 +39,7 @@
   </div>
   <h1>{{ page.h1 }}</h1>
   <p class="bp-lead">{{ page.lead }}</p>
+  {% include reviews.html compact=true tp_only=true %}
 </header>
 
 {%- if posts.size > 0 %}
@@ -74,8 +73,6 @@
 
 {% include blog-machines.html %}
 
-{% include reviews.html %}
-
 </div><!-- /bp-wrap -->
 
 {% include footer.html %}
@@ -90,7 +87,7 @@
       "url": "{{ site_root }}{{ base }}blog.html",
       "name": "{% if fr %}Blog BoosterStop{% else %}BoosterStop blog{% endif %}",
       "description": {{ page.description | jsonify }},
-      "inLanguage": "{% if fr %}fr-CH{% else %}en{% endif %}",
+      "inLanguage": "{% if fr %}fr{% else %}en{% endif %}",
       "publisher": {"@id": "{{ site_root }}/#organization", "@type": "Organization", "name": "BoosterStop", "url": "{{ site_root }}/"}
       {%- if posts.size > 0 %},
       "blogPost": [

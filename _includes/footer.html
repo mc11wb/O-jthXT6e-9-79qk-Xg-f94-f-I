@@ -8,12 +8,6 @@
 {%- if lang == "fr" -%}{%- assign fr = true -%}{%- assign base = "/fr/" -%}{%- else -%}{%- assign fr = false -%}{%- assign base = "/" -%}{%- endif -%}
 {%- if pid == "index" -%}{%- assign anchor = "" -%}{%- else -%}{%- assign anchor = base -%}{%- endif -%}
 
-{%- comment -%} Pages distributeur : badges d'avis de la machine (fiche Google + Trustpilot) {%- endcomment -%}
-{%- assign rv_machine = site.data.machines | where: "page_id", pid | first -%}
-{%- if rv_machine %}
-{% include reviews.html only=rv_machine.id %}
-{%- endif %}
-
 <!-- EMPLACEMENTS — maillage interne vers les 7 pages distributeur -->
 <!-- div et non nav : site.css cible l'element nav en position:fixed -->
 <div class="footer-locs" role="navigation" aria-label="{% if fr %}Nos distributeurs{% else %}Our machines{% endif %}">
@@ -63,7 +57,9 @@
     <a href="{{ base }}installer-un-distributeur.html" class="footer-b2b">{% if fr %}Accueillir une machine{% else %}Host a machine{% endif %}</a>
     <a href="{{ base }}blog.html" class="footer-press"{% if pid == "blog" %} style="color:var(--white)"{% endif %}>Blog</a>
     <a href="{{ base }}presse.html" class="footer-press"{% if pid == "presse" %} style="color:var(--white)"{% endif %}>{% if fr %}Presse{% else %}Press{% endif %}</a>
+    {%- unless pid == "stock" %}
     <a href="{% if fr %}{{ site.data.avis.trustpilot_fr }}{% else %}{{ site.data.avis.trustpilot_en }}{% endif %}" class="footer-tp" target="_blank" rel="noopener">★ {% if fr %}Donner un avis{% else %}Leave a review{% endif %}</a>
+    {%- endunless %}
     <a href="{{ base }}privacy.html" class="footer-privacy">{% if fr %}Confidentialité{% else %}Privacy &amp; Cookies{% endif %}</a>
     <p>© {{ site.time | date: "%Y" }} BoosterStop — 247 Distribution SNC</p>
   </div>

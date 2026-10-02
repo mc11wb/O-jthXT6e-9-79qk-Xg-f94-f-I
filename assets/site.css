@@ -222,9 +222,17 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;margin:0;}
 .rv-badge:hover{border-color:var(--yellow)}
 .rv-badge:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
 .rv-ico{flex:0 0 28px;height:28px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
-.rv-g .rv-ico{background:#fff;color:#4285F4;font-family:Arial,sans-serif}
+.rv-g .rv-ico{background:#fff}
+.rv-ico img{display:block;width:18px;height:18px}
 .rv-tp .rv-ico{background:#00B67A;color:#fff}
 .rv-tp:hover{border-color:#00B67A}
 @media (max-width:768px){.rv{margin:8px 16px 40px;padding:20px}.bp-wrap .rv{margin-left:0;margin-right:0}.rv-badge{flex:1 1 100%}}
 .footer-tp{font-size:12px;color:#444;letter-spacing:0.5px;text-decoration:none}
 .footer-tp:hover{color:#00B67A}
+
+/* Bandeau compact en haut de page */
+.rv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:18px 0 0;font-family:'DM Sans',sans-serif}
+.rv-bar-lbl{flex-basis:100%;font-size:13px;color:var(--text-muted);margin-bottom:2px}
+.rv-bar .rv-badge{font-size:13px;padding:6px 12px 6px 6px;min-height:44px;background:rgba(255,255,255,.03)}
+.rv-bar .rv-ico{flex-basis:26px;height:26px;font-size:14px}
+@media (max-width:768px){.rv-bar .rv-badge{flex:0 1 auto}}

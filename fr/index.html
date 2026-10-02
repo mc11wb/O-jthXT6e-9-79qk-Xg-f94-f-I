@@ -680,6 +680,10 @@ page: index
   .bs-popup-hours strong { color: #f4f2ee; }
   .bs-popup-stock-btn { display: block; margin-top: 8px; background: rgba(232,24,60,0.1); border: 1px solid rgba(232,24,60,0.4); color: #E8183C; text-decoration: none; font-family: "DM Sans", sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 10px; border-radius: 2px; text-align: center; transition: background 0.2s; }
   .bs-popup-stock-btn:hover { background: rgba(232,24,60,0.2); }
+  .bs-popup-review-btn { display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 6px; background: rgba(255,255,255,0.04); border: 1px solid #3a3660; color: #f4f2ee; text-decoration: none; font-family: "DM Sans", sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 10px; border-radius: 2px; transition: border-color 0.2s; }
+  .bs-popup-review-btn span { display: inline-flex; align-items: center; justify-content: center; width: 15px; height: 15px; border-radius: 2px; background: #fff; }
+  .bs-popup-review-btn img { display: block; width: 11px; height: 11px; }
+  .bs-popup-review-btn:hover { border-color: #FFD000; }
   .bs-popup-badge.soon { color: #FFD000; background: rgba(255,208,0,0.1); border-color: rgba(255,208,0,0.45); }
   .bs-popup-soon-date { display: block; margin-top: 7px; padding-top: 6px; border-top: 1px solid #2e2e2e; color: #FFD000; font-size: 10px; letter-spacing: 0.5px; }
 </style>
@@ -843,6 +847,8 @@ let gMapRef = null;
 let gMarkersRef = [];
 
 /* ---------- OUVERT MAINTENANT (heure de Genève) ---------- */
+/* Fiches Google des machines (bouton « Noter sur Google » des popups) — source : _data/machines.yml */
+const BS_GOOGLE_REVIEW = { {%- for m in site.data.machines -%}{%- if m.google_place_id -%}{{ m.nom | jsonify }}: {{ site.data.avis.google_avis | append: m.google_place_id | jsonify }},{%- endif -%}{%- endfor -%} };
 const GENEVA_LOCATIONS = [
   { lat: 46.2008, lng: 6.1520, name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', hours: '<strong>Lun–Ven</strong> 09h00–18h00<br><strong>Sam</strong> 09h00–12h00<br><strong>Dim</strong> Fermé', open: { wd: [540, 1080], sat: [540, 720], sun: null } },
   { lat: 46.2112, lng: 6.1268, name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", hours: '<strong>Lun–Ven</strong> 09h00–19h00<br><strong>Sam</strong> 09h00–17h00<br><strong>Dim</strong> Fermé', open: { wd: [540, 1140], sat: [540, 1020], sun: null } },
@@ -950,7 +956,8 @@ window.initMap = function() {
       const popHead = '<div class="bs-popup"><div class="bs-popup-badge' + (loc.soon ? ' soon' : '') + '">' + popBadge + '</div><div class="bs-popup-name">' + loc.name + '</div><div class="bs-popup-addr">' + loc.addr + '</div>';
       const popBody = loc.soon
         ? '<div class="bs-popup-hours">' + loc.hours + '<span class="bs-popup-soon-date">' + (currentLang==='fr'?'Mise en service le 30 septembre':'Going live 30 September') + '</span></div>'
-        : '<div class="bs-popup-hours">' + loc.hours + '</div><a href="/fr/stock.html?machine=' + i + '" class="bs-popup-stock-btn" target="_self">📦 ' + (currentLang==='fr'?'Voir le stock':'Check stock') + ' →</a>';
+        : '<div class="bs-popup-hours">' + loc.hours + '</div><a href="/fr/stock.html?machine=' + i + '" class="bs-popup-stock-btn" target="_self">📦 ' + (currentLang==='fr'?'Voir le stock':'Check stock') + ' →</a>'
+          + (BS_GOOGLE_REVIEW[loc.name] ? '<a href="' + BS_GOOGLE_REVIEW[loc.name] + '&hl=' + (currentLang==='fr'?'fr':'en') + '" class="bs-popup-review-btn" target="_blank" rel="noopener"><span><img src="{{ site.data.avis.google_logo }}" alt="Google" width="11" height="11"></span> ' + (currentLang==='fr'?'Noter sur Google':'Rate on Google') + '</a>' : '');
       activeInfo = new google.maps.InfoWindow({ content: popHead + popBody + '</div>' });
       activeInfo.open(gMapRef, marker);
     });

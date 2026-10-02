@@ -3,6 +3,7 @@ title: "Buying Pokémon cards in Geneva from a self-service machine: the complet
 seo_title: "Buying Pokémon cards in Geneva: vending machine guide"
 description: "Where to find Pokémon card vending machines in Geneva, what's inside, how to pay and how to check the stock before you go."
 licence: pokemon
+pays: ch
 resume:
   - "Eight BoosterStop machines in the canton of Geneva: seven inside La Poste branches and one at King Jouet Carouge."
   - "Factory-sealed boosters, displays and boxes, bought only from official distributors."

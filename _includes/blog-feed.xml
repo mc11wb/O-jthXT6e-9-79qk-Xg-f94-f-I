@@ -7,8 +7,8 @@
     <title>{% if fr %}Blog BoosterStop{% else %}BoosterStop blog{% endif %}</title>
     <link>{{ site_root }}{{ base }}blog.html</link>
     <atom:link href="{{ site_root }}{{ base }}blog/feed.xml" rel="self" type="application/rss+xml"/>
-    <description>{% if fr %}Guides, sorties et conseils de collection autour des cartes à collectionner, par BoosterStop, distributeurs automatiques de TCG à Genève.{% else %}Guides, releases and collecting tips about trading cards, from BoosterStop, TCG vending machines in Geneva.{% endif %}</description>
-    <language>{% if fr %}fr-CH{% else %}en{% endif %}</language>
+    <description>{% if fr %}Guides, sorties et conseils de collection autour des cartes à collectionner, par BoosterStop, réseau de distributeurs automatiques de TCG.{% else %}Guides, releases and collecting tips about trading cards, from BoosterStop, a network of TCG vending machines.{% endif %}</description>
+    <language>{% if fr %}fr{% else %}en{% endif %}</language>
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
     {%- for p in posts limit: 30 %}
     <item>

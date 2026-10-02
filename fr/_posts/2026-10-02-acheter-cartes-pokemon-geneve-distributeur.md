@@ -3,6 +3,7 @@ title: "Acheter des cartes Pokémon à Genève en libre-service : le guide des d
 seo_title: "Acheter des cartes Pokémon à Genève : guide des distributeurs"
 description: "Où trouver les distributeurs de cartes Pokémon à Genève, ce qu'il y a dedans, comment payer et comment vérifier le stock avant de se déplacer."
 licence: pokemon
+pays: ch
 resume:
   - "Huit distributeurs BoosterStop dans le canton de Genève : sept dans des filiales de La Poste et un chez King Jouet Carouge."
   - "Boosters, displays et coffrets 100 % scellés, achetés uniquement auprès de distributeurs officiels."

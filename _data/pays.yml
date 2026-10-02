@@ -1,0 +1,35 @@
+# Pays du réseau — encart « Nos distributeurs » du blog.
+# statut: actif | bientot
+# Pour un article ciblé, mettre « pays: ch » (ou be, fr, pt, at) dans son front matter :
+# l'encart s'ouvre sur ce pays. Sans « pays », l'article est généraliste (Suisse par défaut).
+- id: ch
+  dans: "en Suisse"
+  fr: Suisse
+  en: Switzerland
+  drapeau: "🇨🇭"
+  statut: actif
+- id: be
+  dans: "en Belgique"
+  fr: Belgique
+  en: Belgium
+  drapeau: "🇧🇪"
+  statut: actif
+  machines: 5
+- id: fr
+  dans: "en France"
+  fr: France
+  en: France
+  drapeau: "🇫🇷"
+  statut: bientot
+- id: pt
+  dans: "au Portugal"
+  fr: Portugal
+  en: Portugal
+  drapeau: "🇵🇹"
+  statut: bientot
+- id: at
+  dans: "en Autriche"
+  fr: Autriche
+  en: Austria
+  drapeau: "🇦🇹"
+  statut: bientot

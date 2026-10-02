@@ -233,6 +233,7 @@ page: stock
     <span class="last-update">Dernière mise à jour : </span><b id="lastUpdate">—</b>
     <button class="refresh-btn" onclick="loadAll()">↻ Actualiser</button>
   </div>
+  {% include reviews.html compact=true no_tp=true %}
 </div>
 
 <!-- COUNTRY TABS -->
@@ -752,6 +753,11 @@ document.querySelectorAll('.modal-overlay').forEach(function(ov) {
 (function() {
   const params = new URLSearchParams(window.location.search);
   const wanted = parseInt(params.get('machine'), 10);
+  const wantedPays = params.get('pays');
+  if (wantedPays && wantedPays !== 'ch') {
+    const tab = document.querySelector(".country-tab[onclick*=\"'" + wantedPays + "'\"]");
+    if (tab) switchCountry(wantedPays, tab);
+  }
   if (!isNaN(wanted) && wanted >= 0 && wanted < MACHINES.length) {
     currentMachine = wanted;
     document.getElementById('smcName').textContent = MACHINES[wanted].name;

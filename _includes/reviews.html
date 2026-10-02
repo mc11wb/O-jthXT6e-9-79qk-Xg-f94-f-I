@@ -2,13 +2,18 @@
   BADGES D'AVIS — « Noter sur Google » (par machine) et « Avis Trustpilot ».
   Appel : include reviews.html            → toutes les machines ayant une fiche Google
           include reviews.html only="rive" → une seule machine (pages distributeur)
+          compact=true                     → bandeau léger pour le haut de page
+          tp_only=true                     → Trustpilot seul (pages non liées à une machine)
+          no_tp=true                       → Google seul (page Stock Live)
   Si l'article a « machine: <id> », cette machine passe en premier.
   Règle Google / Trustpilot : on demande un avis honnête, sans contrepartie
   et à tout le monde — ne jamais ajouter de réduction ni de « si vous êtes satisfait ».
 {%- endcomment -%}
 {%- assign rv_fr = false -%}{%- if page.lang == "fr" -%}{%- assign rv_fr = true -%}{%- endif -%}
 {%- assign rv_all = site.data.machines | where_exp: "m", "m.google_place_id" -%}
-{%- if include.only -%}
+{%- if include.tp_only -%}
+  {%- assign rv_list = "" | split: "" -%}
+{%- elsif include.only -%}
   {%- assign rv_list = rv_all | where: "id", include.only -%}
 {%- elsif page.machine -%}
   {%- assign rv_a = rv_all | where: "id", page.machine -%}
@@ -18,6 +23,23 @@
   {%- assign rv_list = rv_all -%}
 {%- endif -%}
 {%- if rv_fr -%}{%- assign tp = site.data.avis.trustpilot_fr -%}{%- else -%}{%- assign tp = site.data.avis.trustpilot_en -%}{%- endif -%}
+{%- if include.compact %}
+<div class="rv-bar" role="group" aria-label="{% if rv_fr %}Donner votre avis{% else %}Leave a review{% endif %}">
+  <span class="rv-bar-lbl">{% if rv_fr %}Votre avis aide les autres collectionneurs{% else %}Your review helps other collectors{% endif %}</span>
+  {%- for m in rv_list %}
+  <a class="rv-badge rv-g" href="{{ site.data.avis.google_avis }}{{ m.google_place_id }}{% if rv_fr %}&amp;hl=fr{% else %}&amp;hl=en{% endif %}" target="_blank" rel="noopener">
+    <span class="rv-ico"><img src="{{ site.data.avis.google_logo }}" alt="Google" width="18" height="18" loading="lazy" decoding="async"></span>
+    <span>{% if include.only %}{% if rv_fr %}Noter sur Google{% else %}Rate on Google{% endif %}{% else %}{% if rv_fr %}Noter <b>{{ m.court }}</b>{% else %}Rate <b>{{ m.court }}</b>{% endif %}{% endif %}</span>
+  </a>
+  {%- endfor %}
+  {%- unless include.no_tp %}
+  <a class="rv-badge rv-tp" href="{{ tp }}" target="_blank" rel="noopener">
+    <span class="rv-ico" aria-hidden="true">★</span>
+    <span>Trustpilot</span>
+  </a>
+  {%- endunless %}
+</div>
+{%- else %}
 <section class="rv{% if include.only %} rv-solo{% endif %}" aria-labelledby="rv-title">
   <div class="rv-txt">
     <h2 id="rv-title">{% if rv_fr %}Votre avis nous aide{% else %}Your review helps{% endif %}</h2>
@@ -26,7 +48,7 @@
   <div class="rv-badges">
     {%- for m in rv_list %}
     <a class="rv-badge rv-g" href="{{ site.data.avis.google_avis }}{{ m.google_place_id }}{% if rv_fr %}&amp;hl=fr{% else %}&amp;hl=en{% endif %}" target="_blank" rel="noopener">
-      <span class="rv-ico" aria-hidden="true">G</span>
+      <span class="rv-ico"><img src="{{ site.data.avis.google_logo }}" alt="Google" width="18" height="18" loading="lazy" decoding="async"></span>
       <span>{% if rv_fr %}Noter <b>{{ m.court }}</b> sur Google{% else %}Rate <b>{{ m.court }}</b> on Google{% endif %}</span>
     </a>
     {%- endfor %}
@@ -36,3 +58,4 @@
     </a>
   </div>
 </section>
+{%- endif %}

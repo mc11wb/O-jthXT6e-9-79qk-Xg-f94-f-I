@@ -1,66 +1,115 @@
 {%- comment -%}
-  ENCART « OÙ ACHETER » — en bas de chaque article et de la page blog.
-  Données : _data/machines.yml. Si l'article a « machine: <id> »
-  dans son front matter, ce distributeur passe en tête de liste.
-  Le bouton calcule la machine la plus proche dans le navigateur :
-  la position n'est ni envoyée ni enregistrée.
+  ENCART « NOS DISTRIBUTEURS » — en bas des articles et de la page blog.
+  Un onglet par pays (_data/pays.yml) ; s'ouvre sur « pays » du front matter
+  de l'article, sinon sur le premier pays. Les machines dont l'emplacement est
+  publié viennent de _data/machines.yml (champ pays). Si l'article a
+  « machine: <id> », ce distributeur passe en tête de sa liste.
+  « Trouver le plus proche » calcule dans le navigateur : la position
+  n'est ni envoyée ni enregistrée.
 {%- endcomment -%}
 {%- assign bm_fr = false -%}{%- if page.lang == "fr" -%}{%- assign bm_fr = true -%}{%- endif -%}
 {%- assign bm_base = "/" -%}{%- if bm_fr -%}{%- assign bm_base = "/fr/" -%}{%- endif -%}
-{%- assign bm_all = site.data.machines -%}
-{%- if page.machine -%}
-  {%- assign bm_first = bm_all | where: "id", page.machine -%}
-  {%- assign bm_rest = bm_all | where_exp: "m", "m.id != page.machine" -%}
-  {%- assign bm_list = bm_first | concat: bm_rest -%}
-{%- else -%}
-  {%- assign bm_list = bm_all -%}
-{%- endif -%}
+{%- assign bm_open = page.pays | default: site.data.pays.first.id -%}
+{%- assign bm_open_ok = site.data.pays | where: "id", bm_open | first -%}
+{%- unless bm_open_ok -%}{%- assign bm_open = site.data.pays.first.id -%}{%- endunless -%}
+{%- assign bm_active = site.data.pays | where: "statut", "actif" -%}
+{%- assign bm_published = site.data.machines.size -%}
 <section class="bm" id="distributeurs" aria-labelledby="bm-title">
   <div class="bm-top">
     <div>
-      <h2 id="bm-title">{% if bm_fr %}Acheter vos cartes à Genève{% else %}Buy your cards in Geneva{% endif %}</h2>
-      <p>{% if bm_fr %}{{ bm_all.size }} distributeurs en libre-service, produits scellés issus de distributeurs officiels. Espèces, TWINT et sans contact.{% else %}{{ bm_all.size }} self-service machines, sealed products from official distributors only. Cash, TWINT and contactless.{% endif %}</p>
+      <h2 id="bm-title">{% if bm_fr %}Nos distributeurs{% else %}Our vending machines{% endif %}</h2>
+      <p>{% if bm_fr %}Boosters, displays et coffrets scellés, issus uniquement de distributeurs officiels. Espèces, carte sans contact et paiement mobile.{% else %}Sealed boosters, displays and boxes from official distributors only. Cash, contactless cards and mobile payment.{% endif %}</p>
     </div>
-    <button type="button" class="bm-find" id="bmFind" data-again="{% if bm_fr %}Actualiser{% else %}Refresh{% endif %}">{% if bm_fr %}Trouver le plus proche{% else %}Find the nearest{% endif %}</button>
   </div>
-  <p class="bm-msg" id="bmMsg" role="status" aria-live="polite"></p>
-  <ul class="bm-list" id="bmList" data-near="{% if bm_fr %}Le plus proche{% else %}Nearest{% endif %}">
-    {%- for m in bm_list %}
-    <li class="bm-row" data-lat="{{ m.lat }}" data-lng="{{ m.lng }}">
-      <a href="{% if bm_fr %}{{ m.url }}{% else %}{{ m.url_en }}{% endif %}">
-        <span class="bm-nm">{{ m.nom }}<small>{{ m.adresse }}</small></span>
-        <span class="bm-side"><span class="bm-dist"></span>{% if m.live %}<span class="bm-live">{% if bm_fr %}Stock en direct{% else %}Live stock{% endif %}</span>{% endif %}</span>
-      </a>
-    </li>
+  <div class="bm-tabs" role="tablist" aria-label="{% if bm_fr %}Pays{% else %}Countries{% endif %}">
+    {%- for c in site.data.pays %}
+    <button type="button" role="tab" class="bm-tab" id="bmt-{{ c.id }}" aria-controls="bmp-{{ c.id }}" aria-selected="{% if c.id == bm_open %}true{% else %}false{% endif %}"{% unless c.id == bm_open %} tabindex="-1"{% endunless %}>
+      <span aria-hidden="true">{{ c.drapeau }}</span> {% if bm_fr %}{{ c.fr }}{% else %}{{ c.en }}{% endif %}{% if c.statut != "actif" %} <small>{% if bm_fr %}bientôt{% else %}soon{% endif %}</small>{% endif %}
+    </button>
     {%- endfor %}
-  </ul>
-  <div class="bm-actions">
-    <a href="{{ bm_base }}stock.html">{% if bm_fr %}Voir le stock en direct{% else %}See live stock{% endif %}</a>
-    <a href="{{ bm_base }}distributeurs-geneve.html">{% if bm_fr %}Adresses et horaires{% else %}Addresses and opening hours{% endif %}</a>
   </div>
+
+  {%- for c in site.data.pays %}
+  {%- capture c_name %}in {{ c.en }}{% endcapture -%}{%- if bm_fr -%}{%- assign c_name = c.dans -%}{%- endif -%}
+  {%- assign c_machines = site.data.machines | where: "pays", c.id -%}
+  {%- if page.machine -%}
+    {%- assign c_first = c_machines | where: "id", page.machine -%}
+    {%- assign c_rest = c_machines | where_exp: "m", "m.id != page.machine" -%}
+    {%- assign c_machines = c_first | concat: c_rest -%}
+  {%- endif %}
+  <div class="bm-panel" role="tabpanel" id="bmp-{{ c.id }}" aria-labelledby="bmt-{{ c.id }}" data-pays="{{ c.id }}"{% unless c.id == bm_open %} hidden{% endunless %}>
+    {%- if c_machines.size > 0 %}
+    <div class="bm-sub">
+      <p>{% if bm_fr %}{{ c_machines.size }} distributeurs en libre-service {{ c_name }}.{% else %}{{ c_machines.size }} self-service machines {{ c_name }}.{% endif %}</p>
+      <button type="button" class="bm-find" data-again="{% if bm_fr %}Actualiser{% else %}Refresh{% endif %}">{% if bm_fr %}Trouver le plus proche{% else %}Find the nearest{% endif %}</button>
+    </div>
+    <p class="bm-msg" role="status" aria-live="polite"></p>
+    <ul class="bm-list" data-near="{% if bm_fr %}Le plus proche{% else %}Nearest{% endif %}">
+      {%- for m in c_machines %}
+      <li class="bm-row" data-lat="{{ m.lat }}" data-lng="{{ m.lng }}">
+        <a href="{% if bm_fr %}{{ m.url }}{% else %}{{ m.url_en }}{% endif %}">
+          <span class="bm-nm">{{ m.nom }}<small>{{ m.adresse }}</small></span>
+          <span class="bm-side"><span class="bm-dist"></span>{% if m.live %}<span class="bm-live">{% if bm_fr %}Stock en direct{% else %}Live stock{% endif %}</span>{% endif %}</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+    <div class="bm-actions">
+      <a href="{{ bm_base }}stock.html?pays={{ c.id }}">{% if bm_fr %}Voir le stock en direct{% else %}See live stock{% endif %}</a>
+      <a href="{{ bm_base }}distributeurs-geneve.html">{% if bm_fr %}Adresses et horaires{% else %}Addresses and opening hours{% endif %}</a>
+    </div>
+    {%- elsif c.statut == "actif" %}
+    <div class="bm-note">
+      <p>{% if bm_fr %}{% if c.machines %}{{ c.machines }} distributeurs sont en service {{ c_name }}.{% else %}Nos distributeurs sont en service {{ c_name }}.{% endif %} Leurs emplacements seront bientôt publiés ici.{% else %}{% if c.machines %}{{ c.machines }} machines are running {{ c_name }}.{% else %}Our machines are running {{ c_name }}.{% endif %} Their locations will be published here soon.{% endif %}</p>
+      <div class="bm-actions">
+        <a href="{{ bm_base }}stock.html?pays={{ c.id }}">{% if bm_fr %}Voir le stock en direct{% else %}See live stock{% endif %}</a>
+        <a href="{{ bm_base }}newsletter.html">{% if bm_fr %}Être prévenu des nouveaux emplacements{% else %}Get notified of new locations{% endif %}</a>
+      </div>
+    </div>
+    {%- else %}
+    <div class="bm-note">
+      <p>{% if bm_fr %}BoosterStop arrive {{ c_name }}. Inscrivez-vous pour savoir où et quand ouvrent les premiers distributeurs.{% else %}BoosterStop is coming to {{ c.en }}. Sign up to find out where and when the first machines open.{% endif %}</p>
+      <div class="bm-actions">
+        <a href="{{ bm_base }}newsletter.html">{% if bm_fr %}Être prévenu de l'ouverture{% else %}Get notified when we open{% endif %}</a>
+        <a href="{{ bm_base }}installer-un-distributeur.html">{% if bm_fr %}Accueillir une machine{% else %}Host a machine{% endif %}</a>
+      </div>
+    </div>
+    {%- endif %}
+  </div>
+  {%- endfor %}
 </section>
 <script>
 (function(){
-  var btn=document.getElementById('bmFind'),msg=document.getElementById('bmMsg'),list=document.getElementById('bmList');
-  if(!btn||!list)return;
-  var T={% if bm_fr %}{look:'Recherche de votre position…',far:'Aucun distributeur près de vous pour l’instant : nos machines sont dans le canton de Genève.',err:'Position indisponible. Choisissez un distributeur dans la liste.',dec:','}{% else %}{look:'Finding your location…',far:'No machine near you yet: our machines are in the canton of Geneva.',err:'Location unavailable. Pick a machine from the list.',dec:'.'}{% endif %};
-  list.style.setProperty('--near',JSON.stringify(list.dataset.near));
-  if(!('geolocation' in navigator)){btn.hidden=true;return;}
+  var box=document.getElementById('distributeurs');if(!box)return;
+  var T={% if bm_fr %}{look:'Recherche de votre position…',far:'Aucun distributeur près de vous dans ce pays pour l’instant.',err:'Position indisponible. Choisissez un distributeur dans la liste.',dec:','}{% else %}{look:'Finding your location…',far:'No machine near you in this country yet.',err:'Location unavailable. Pick a machine from the list.',dec:'.'}{% endif %};
+  /* Onglets pays */
+  var tabs=[].slice.call(box.querySelectorAll('.bm-tab'));
+  function show(t){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;
+    document.getElementById(x.getAttribute('aria-controls')).hidden=!on;});}
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){show(t);});
+    t.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;
+      if(d){e.preventDefault();var n=tabs[(i+d+tabs.length)%tabs.length];show(n);n.focus();}});
+  });
+  /* Machine la plus proche, par pays */
   function km(a,b,c,d){var r=Math.PI/180,x=Math.sin((c-a)*r/2),y=Math.sin((d-b)*r/2);
     return 12742*Math.asin(Math.sqrt(x*x+Math.cos(a*r)*Math.cos(c*r)*y*y));}
-  btn.addEventListener('click',function(){
-    btn.disabled=true;msg.textContent=T.look;
-    navigator.geolocation.getCurrentPosition(function(p){
-      var rows=[].slice.call(list.children),la=p.coords.latitude,ln=p.coords.longitude;
-      rows.forEach(function(li){li.d=km(la,ln,+li.dataset.lat,+li.dataset.lng);li.classList.remove('near');
-        li.querySelector('.bm-dist').textContent=(li.d<10?li.d.toFixed(1):Math.round(li.d)).toString().replace('.',T.dec)+' km';});
-      rows.sort(function(a,b){return a.d-b.d;}).forEach(function(li){list.appendChild(li);});
-      rows[0].classList.add('near');
-      msg.textContent=rows[0].d>40?T.far:'';
-      btn.disabled=false;btn.textContent=btn.dataset.again;
-    },function(){
-      msg.textContent=T.err;btn.disabled=false;
-    },{enableHighAccuracy:false,timeout:10000,maximumAge:300000});
+  [].forEach.call(box.querySelectorAll('.bm-find'),function(btn){
+    var panel=btn.closest('.bm-panel'),list=panel.querySelector('.bm-list'),msg=panel.querySelector('.bm-msg');
+    if(!('geolocation' in navigator)){btn.hidden=true;return;}
+    list.style.setProperty('--near',JSON.stringify(list.dataset.near));
+    btn.addEventListener('click',function(){
+      btn.disabled=true;msg.textContent=T.look;
+      navigator.geolocation.getCurrentPosition(function(p){
+        var rows=[].slice.call(list.children),la=p.coords.latitude,ln=p.coords.longitude;
+        rows.forEach(function(li){li.d=km(la,ln,+li.dataset.lat,+li.dataset.lng);li.classList.remove('near');
+          li.querySelector('.bm-dist').textContent=(li.d<10?li.d.toFixed(1):Math.round(li.d)).toString().replace('.',T.dec)+' km';});
+        rows.sort(function(a,b){return a.d-b.d;}).forEach(function(li){list.appendChild(li);});
+        rows[0].classList.add('near');
+        msg.textContent=rows[0].d>40?T.far:'';
+        btn.disabled=false;btn.textContent=btn.dataset.again;
+      },function(){msg.textContent=T.err;btn.disabled=false;},{enableHighAccuracy:false,timeout:10000,maximumAge:300000});
+    });
   });
 })();
 </script>

@@ -1,10 +1,12 @@
-# Distributeurs du canton de Genève — source unique pour le blog (FR + EN)
+# Distributeurs dont l'emplacement est publié — source unique pour le blog (FR + EN)
+# pays: id de _data/pays.yml
 # (encart « où acheter » en bas des articles et de la page blog).
 # live: true = inventaire consultable en direct sur /stock.html
 # page_id: identifiant de la page distributeur (champ « page » de son front matter)
 # google_place_id: fiche Google de la machine → bouton « Noter sur Google ».
 #   Vide = pas encore de fiche ; coller l'ID dès qu'elle existe.
 - id: rive
+  pays: ch
   nom: La Poste de Rive
   court: Rive
   adresse: Rue du Vieux-Collège 3, 1204 Genève
@@ -17,6 +19,7 @@
   google_place_id: ChIJt9nEw5xljEcRFuyNEZGtZYA
 
 - id: charmilles
+  pays: ch
   nom: La Poste des Charmilles
   court: Les Charmilles
   adresse: Promenade de l'Europe 11, 1203 Genève
@@ -29,6 +32,7 @@
   google_place_id: ChIJNY5MSpNljEcRuuONizAhk7Q
 
 - id: petit-lancy
+  pays: ch
   nom: La Poste du Petit-Lancy
   court: Petit-Lancy
   adresse: Rue des Bossons 88b, 1213 Petit-Lancy
@@ -41,6 +45,7 @@
   google_place_id: ChIJ-Zttd1l7jEcRswsDSHI2P7E
 
 - id: plainpalais
+  pays: ch
   nom: La Poste de Plainpalais
   court: Plainpalais
   adresse: Rue Pictet-de-Bock 6, 1205 Genève
@@ -53,6 +58,7 @@
   google_place_id:
 
 - id: meyrin
+  pays: ch
   nom: La Poste de Meyrin
   court: Meyrin
   adresse: Avenue de Feuillasse 24, 1217 Meyrin
@@ -65,6 +71,7 @@
   google_place_id:
 
 - id: thonex
+  pays: ch
   nom: La Poste de Thônex
   court: Thônex
   adresse: Rue de Genève 106, 1226 Thônex
@@ -77,6 +84,7 @@
   google_place_id:
 
 - id: carouge
+  pays: ch
   nom: La Poste de Carouge
   court: Carouge
   adresse: Boulevard des Promenades 16, 1227 Carouge
@@ -89,6 +97,7 @@
   google_place_id:
 
 - id: king-jouet-carouge
+  pays: ch
   nom: King Jouet Carouge
   court: King Jouet Carouge
   adresse: Avenue Cardinal-Mermillod 36, 1227 Carouge

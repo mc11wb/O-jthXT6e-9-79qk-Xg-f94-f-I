@@ -4,3 +4,5 @@ google_avis: "https://search.google.com/local/writereview?placeid="
 # Trustpilot : page d'avis de boosterstop.com (créée au premier avis si elle n'existe pas)
 trustpilot_fr: "https://fr.trustpilot.com/evaluate/boosterstop.com"
 trustpilot_en: "https://www.trustpilot.com/evaluate/boosterstop.com"
+# Logo Google officiel (fichier hébergé par Google) pour les boutons « Noter sur Google »
+google_logo: "https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg"
