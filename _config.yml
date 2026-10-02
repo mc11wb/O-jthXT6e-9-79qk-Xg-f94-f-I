@@ -22,7 +22,7 @@ exclude:
 #   EN : _posts/AAAA-MM-JJ-slug.md     → /blog/slug.html
 # Même slug dans les deux langues = traductions reliées
 # (hreflang, bouton EN/FR, sitemap). Un article peut exister
-# dans une seule langue. Blog généraliste : « pays: be » (ch, fr, pt, at)
+# dans une seule langue. Blog généraliste : « pays: be » (ch, ae, fr, pt, at)
 # dans le front matter cible un pays (_data/pays.yml).
 # Une date future = article masqué jusqu'au premier build après cette date.
 # ------------------------------------------------------------

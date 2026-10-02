@@ -11,7 +11,7 @@
     image         /assets/blog/fichier.jpg (1600×900 conseillé)
     image_alt     description de l'image
     licence       slug de _data/licences.yml (ex. pokemon) → lien + catégorie
-    pays          ch, be, fr, pt ou at si l'article cible un pays (_data/pays.yml) ;
+    pays          ch, be, ae, fr, pt ou at si l'article cible un pays (_data/pays.yml) ;
                   absent = article généraliste
     machine       id de _data/machines.yml mis en tête de l'encart
     resume        2 à 4 points « L'essentiel » en haut de l'article
@@ -116,11 +116,6 @@
     <li><a class="bp-tag" href="{{ lic_url }}">{{ lic_name }}</a></li>
     {%- endif %}
   </ul>
-  {%- if page.pays == "ch" or page.machine %}
-  {% include reviews.html compact=true %}
-  {%- else %}
-  {% include reviews.html compact=true tp_only=true %}
-  {%- endif %}
 </header>
 
 {%- if page.image %}

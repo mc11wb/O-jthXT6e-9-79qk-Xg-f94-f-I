@@ -30,7 +30,7 @@
   </div>
 
   {%- for c in site.data.pays %}
-  {%- capture c_name %}in {{ c.en }}{% endcapture -%}{%- if bm_fr -%}{%- assign c_name = c.dans -%}{%- endif -%}
+  {%- capture c_name %}in {{ c.en_dans | default: c.en }}{% endcapture -%}{%- if bm_fr -%}{%- assign c_name = c.dans -%}{%- endif -%}
   {%- assign c_machines = site.data.machines | where: "pays", c.id -%}
   {%- if page.machine -%}
     {%- assign c_first = c_machines | where: "id", page.machine -%}
@@ -68,7 +68,7 @@
     </div>
     {%- else %}
     <div class="bm-note">
-      <p>{% if bm_fr %}BoosterStop arrive {{ c_name }}. Inscrivez-vous pour savoir où et quand ouvrent les premiers distributeurs.{% else %}BoosterStop is coming to {{ c.en }}. Sign up to find out where and when the first machines open.{% endif %}</p>
+      <p>{% if bm_fr %}BoosterStop arrive {{ c_name }}. Inscrivez-vous pour savoir où et quand ouvrent les premiers distributeurs.{% else %}BoosterStop is coming to {{ c.en_dans | default: c.en }}. Sign up to find out where and when the first machines open.{% endif %}</p>
       <div class="bm-actions">
         <a href="{{ bm_base }}newsletter.html">{% if bm_fr %}Être prévenu de l'ouverture{% else %}Get notified when we open{% endif %}</a>
         <a href="{{ bm_base }}installer-un-distributeur.html">{% if bm_fr %}Accueillir une machine{% else %}Host a machine{% endif %}</a>
