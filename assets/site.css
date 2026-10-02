@@ -179,3 +179,52 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;margin:0;}
      toute la nav vers le bas, et la barre du bas offre deja un retour
      a l'accueil bien plus accessible au pouce. */
 }
+
+/* ---------- HEADER : écrans intermédiaires (769-1279px) ----------
+   Les liens du menu passaient sur deux lignes : on resserre les
+   espacements ; le badge suisse ne garde que le drapeau, puis
+   disparaît sur les plus petites largeurs. */
+@media (min-width:769px) and (max-width:1279px){
+  nav{padding:20px 28px;}
+  .nav-right,nav ul{gap:16px;}
+  nav ul a{white-space:nowrap;}
+  .nav-left{margin-right:16px;}
+  .swiss-badge .sb-text{display:none;}
+}
+@media (min-width:769px) and (max-width:1099px){
+  nav{padding:18px 20px;}
+  .nav-right,nav ul{gap:12px;}
+  nav ul a{font-size:12px;letter-spacing:0.2px;}
+  .nav-logo img{height:22px;}
+}
+/* 769-899px : trop étroit pour le menu complet, on passe à la barre
+   du bas comme sur mobile */
+@media (min-width:769px) and (max-width:899px){
+  nav ul{display:none;}
+  .mob-nav{display:flex;}
+  body{padding-bottom:68px;}
+}
+
+/* ---------- BADGES D'AVIS (Google / Trustpilot) — _includes/reviews.html ---------- */
+.rv{box-sizing:border-box;max-width:1080px;margin:8px auto 48px;padding:22px 24px;display:flex;flex-wrap:wrap;
+  gap:18px 32px;align-items:center;justify-content:space-between;border:1px solid var(--gray-mid);
+  border-radius:var(--radius);background:var(--gray);font-family:'DM Sans',sans-serif}
+.rv-solo{max-width:900px}
+.bp-wrap .rv{margin-left:0;margin-right:0}
+.rv-txt{flex:1 1 280px;min-width:0}
+.rv h2{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:clamp(24px,3.4vw,30px);letter-spacing:.8px;margin:0 0 4px;line-height:1.1;color:var(--white)}
+.rv p{margin:0;color:var(--text-muted);font-size:14px;line-height:1.6;max-width:52ch}
+.rv-badges{display:flex;flex-wrap:wrap;gap:10px}
+.rv-badge{display:inline-flex;align-items:center;gap:10px;min-height:44px;box-sizing:border-box;padding:8px 14px 8px 8px;
+  border-radius:var(--radius);border:1px solid var(--gray-mid);background:var(--black);color:var(--white);
+  text-decoration:none;font-size:14px;line-height:1.3}
+.rv-badge b{font-weight:600}
+.rv-badge:hover{border-color:var(--yellow)}
+.rv-badge:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
+.rv-ico{flex:0 0 28px;height:28px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
+.rv-g .rv-ico{background:#fff;color:#4285F4;font-family:Arial,sans-serif}
+.rv-tp .rv-ico{background:#00B67A;color:#fff}
+.rv-tp:hover{border-color:#00B67A}
+@media (max-width:768px){.rv{margin:8px 16px 40px;padding:20px}.bp-wrap .rv{margin-left:0;margin-right:0}.rv-badge{flex:1 1 100%}}
+.footer-tp{font-size:12px;color:#444;letter-spacing:0.5px;text-decoration:none}
+.footer-tp:hover{color:#00B67A}

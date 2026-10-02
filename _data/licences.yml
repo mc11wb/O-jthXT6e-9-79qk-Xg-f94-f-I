@@ -1,0 +1,27 @@
+# Licences — slug utilisé dans le champ « licence » d'un article.
+# Renvoie vers /cartes-<slug>-geneve.html (EN) et /fr/cartes-<slug>-geneve.html (FR).
+pokemon: { fr: "Pokémon", en: "Pokémon" }
+one-piece: { fr: "One Piece", en: "One Piece" }
+magic: { fr: "Magic: The Gathering", en: "Magic: The Gathering" }
+magic-final-fantasy: { fr: "Magic × Final Fantasy", en: "Magic × Final Fantasy" }
+magic-marvel: { fr: "Magic × Marvel", en: "Magic × Marvel" }
+magic-seigneur-des-anneaux: { fr: "Magic × Terre du Milieu", en: "Magic × Lord of the Rings" }
+yu-gi-oh: { fr: "Yu-Gi-Oh!", en: "Yu-Gi-Oh!" }
+foot: { fr: "Football", en: "Football" }
+dragon-ball: { fr: "Dragon Ball", en: "Dragon Ball" }
+lorcana: { fr: "Disney Lorcana", en: "Disney Lorcana" }
+riftbound: { fr: "Riftbound", en: "Riftbound" }
+topps: { fr: "Topps", en: "Topps" }
+naruto: { fr: "Naruto Mythos", en: "Naruto Mythos" }
+digimon: { fr: "Digimon", en: "Digimon" }
+gundam: { fr: "Gundam", en: "Gundam" }
+cyberpunk: { fr: "Cyberpunk TCG", en: "Cyberpunk TCG" }
+azuki: { fr: "Azuki TCG", en: "Azuki TCG" }
+vibes: { fr: "Vibes TCG", en: "Vibes TCG" }
+safir: { fr: "Safir Cards", en: "Safir Cards" }
+union-arena: { fr: "Union Arena", en: "Union Arena" }
+star-wars-unlimited: { fr: "Star Wars: Unlimited", en: "Star Wars: Unlimited" }
+nba: { fr: "NBA", en: "NBA" }
+nfl: { fr: "NFL", en: "NFL" }
+nhl: { fr: "NHL", en: "NHL" }
+f1: { fr: "Formule 1", en: "Formula 1" }

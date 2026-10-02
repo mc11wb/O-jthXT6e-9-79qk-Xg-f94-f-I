@@ -1,3 +1,6 @@
+---
+layout: null
+---
 # BoosterStop
 
 > BoosterStop est le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner (TCG). Exploité par 247 Distribution SNC (Genève, Suisse), il propose des boosters, displays et boîtes collector 100% scellés, issus exclusivement de distributeurs officiels. Huit machines sont installées dans le canton de Genève, sept à l'intérieur de filiales de La Poste Suisse et une chez King Jouet Carouge. Cinq machines sont actives en Belgique. Le réseau se déploie vers la Suisse romande, la France et les Émirats Arabes Unis.
@@ -65,10 +68,33 @@ Pour chaque quartier encore dépourvu de distributeur, une page indique la machi
 - [Accueillir un distributeur](https://boosterstop.com/fr/installer-un-distributeur.html) : page destinée aux gérants de lieux souhaitant héberger une machine — répartition des rôles, types de lieux recherchés, formulaire de qualification.
 - [Espace presse](https://boosterstop.com/fr/presse.html) : faits, chiffres et contact pour les rédactions.
 - [Confidentialité et cookies](https://boosterstop.com/fr/privacy.html) : politique de protection des données (nLPD suisse et RGPD).
+- [Blog](https://boosterstop.com/fr/blog.html) : guides d'achat, sorties et conseils de collection. Flux RSS : https://boosterstop.com/fr/blog/feed.xml (version anglaise : https://boosterstop.com/blog.html, flux https://boosterstop.com/blog/feed.xml)
 
+{% assign blog_fr = site.posts | where: "lang", "fr" -%}
+{% assign blog_en = site.posts | where: "lang", "en" -%}
+{%- if site.posts.size > 0 -%}
+## Articles du blog
+
+Chaque article existe en français, en anglais, ou dans les deux langues (même nom de fichier, préfixe `/fr/` pour le français).
+
+{% if blog_fr.size > 0 -%}
+En français :
+
+{% for p in blog_fr limit: 50 -%}
+- [{{ p.title }}](https://boosterstop.com{{ p.url }}) ({{ p.date | date: "%Y-%m-%d" }}) : {{ p.description | strip_html | strip }}
+{% endfor %}
+{% endif -%}
+{% if blog_en.size > 0 -%}
+En anglais :
+
+{% for p in blog_en limit: 50 -%}
+- [{{ p.title }}](https://boosterstop.com{{ p.url }}) ({{ p.date | date: "%Y-%m-%d" }}) : {{ p.description | strip_html | strip }}
+{% endfor %}
+{% endif -%}
+{% endif -%}
 ## Pages principales (anglais)
 
-Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Distributeurs](https://boosterstop.com/distributeurs-geneve.html), [Licences](https://boosterstop.com/licences-geneve.html), [Stock](https://boosterstop.com/stock.html), [Expansion](https://boosterstop.com/expansion.html), [Newsletter](https://boosterstop.com/newsletter.html), [Presse](https://boosterstop.com/presse.html), [Confidentialité](https://boosterstop.com/privacy.html).
+Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Distributeurs](https://boosterstop.com/distributeurs-geneve.html), [Licences](https://boosterstop.com/licences-geneve.html), [Stock](https://boosterstop.com/stock.html), [Expansion](https://boosterstop.com/expansion.html), [Newsletter](https://boosterstop.com/newsletter.html), [Presse](https://boosterstop.com/presse.html), [Blog](https://boosterstop.com/blog.html), [Confidentialité](https://boosterstop.com/privacy.html).
 
 ## Questions fréquentes
 
@@ -82,7 +108,7 @@ Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Di
 
 ## Optionnel
 
-- [Sitemap XML](https://boosterstop.com/sitemap.xml) : les 110 URL du site avec leurs annotations hreflang.
+- [Sitemap XML](https://boosterstop.com/sitemap.xml) : toutes les URL du site, avec leurs annotations hreflang pour les pages bilingues.
 
 ## Pages par licence et calendrier des sorties
 - [Sorties TCG 2026-2027](https://boosterstop.com/fr/sorties-tcg-geneve.html) : dates officielles des sets Pokémon, One Piece, Magic, Yu-Gi-Oh!, Riftbound, Lorcana, Dragon Ball et Match Attax, de septembre 2026 à mars 2027.

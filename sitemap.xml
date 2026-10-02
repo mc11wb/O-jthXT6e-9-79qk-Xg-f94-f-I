@@ -1,6 +1,10 @@
+---
+layout: null
+---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://boosterstop.com/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://boosterstop.com/"/>
@@ -771,4 +775,37 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com/sorties-tcg-geneve.html"/>
     <lastmod>2026-09-19</lastmod>
   </url>
+{%- comment -%}
+  BLOG — généré automatiquement : chaque article de _posts/ (EN) et
+  fr/_posts/ (FR) est ajouté ici. Les traductions (même slug) sont
+  reliées par hreflang ; un article sans traduction n'en a pas.
+{%- endcomment -%}
+{%- assign blog_last = site.posts | first -%}
+{%- capture blog_mod %}{% if blog_last %}{{ blog_last.date | date: "%Y-%m-%d" }}{% else %}{{ site.time | date: "%Y-%m-%d" }}{% endif %}{% endcapture -%}
+{%- assign blog_idx = "/blog.html,/fr/blog.html" | split: "," -%}
+{%- for loc in blog_idx %}
+  <url>
+    <loc>https://boosterstop.com{{ loc }}</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://boosterstop.com/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com/blog.html"/>
+    <lastmod>{{ blog_mod }}</lastmod>
+  </url>
+{%- endfor %}
+{%- for post in site.posts %}
+  {%- assign twin = site.posts | where: "slug", post.slug | where_exp: "p", "p.lang != post.lang" | first %}
+  <url>
+    <loc>https://boosterstop.com{{ post.url }}</loc>
+    {%- if twin %}
+    {%- if post.lang == "fr" %}{% assign u_en = twin.url %}{% assign u_fr = post.url %}{% else %}{% assign u_en = post.url %}{% assign u_fr = twin.url %}{% endif %}
+    <xhtml:link rel="alternate" hreflang="en" href="https://boosterstop.com{{ u_en }}"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://boosterstop.com{{ u_fr }}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://boosterstop.com{{ u_en }}"/>
+    {%- endif %}
+    <lastmod>{{ post.last_modified_at | default: post.date | date: "%Y-%m-%d" }}</lastmod>
+    {%- if post.image %}
+    <image:image><image:loc>https://boosterstop.com{{ post.image }}</image:loc></image:image>
+    {%- endif %}
+  </url>
+{%- endfor %}
 </urlset>

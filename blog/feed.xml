@@ -1,0 +1,6 @@
+---
+layout: null
+lang: en
+---
+<?xml version="1.0" encoding="UTF-8"?>
+{% include blog-feed.xml %}

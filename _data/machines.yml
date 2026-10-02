@@ -1,0 +1,100 @@
+# Distributeurs du canton de Genève — source unique pour le blog (FR + EN)
+# (encart « où acheter » en bas des articles et de la page blog).
+# live: true = inventaire consultable en direct sur /stock.html
+# page_id: identifiant de la page distributeur (champ « page » de son front matter)
+# google_place_id: fiche Google de la machine → bouton « Noter sur Google ».
+#   Vide = pas encore de fiche ; coller l'ID dès qu'elle existe.
+- id: rive
+  nom: La Poste de Rive
+  court: Rive
+  adresse: Rue du Vieux-Collège 3, 1204 Genève
+  lat: 46.201946
+  lng: 6.1504446
+  url: /fr/distributeur-geneve-rive.html
+  url_en: /distributeur-geneve-rive.html
+  live: true
+  page_id: distributeur-geneve-rive
+  google_place_id: ChIJt9nEw5xljEcRFuyNEZGtZYA
+
+- id: charmilles
+  nom: La Poste des Charmilles
+  court: Les Charmilles
+  adresse: Promenade de l'Europe 11, 1203 Genève
+  lat: 46.2080238
+  lng: 6.1230909
+  url: /fr/distributeur-geneve-charmilles.html
+  url_en: /distributeur-geneve-charmilles.html
+  live: true
+  page_id: distributeur-geneve-charmilles
+  google_place_id: ChIJNY5MSpNljEcRuuONizAhk7Q
+
+- id: petit-lancy
+  nom: La Poste du Petit-Lancy
+  court: Petit-Lancy
+  adresse: Rue des Bossons 88b, 1213 Petit-Lancy
+  lat: 46.1889447
+  lng: 6.1104449
+  url: /fr/distributeur-petit-lancy.html
+  url_en: /distributeur-petit-lancy.html
+  live: true
+  page_id: distributeur-petit-lancy
+  google_place_id: ChIJ-Zttd1l7jEcRswsDSHI2P7E
+
+- id: plainpalais
+  nom: La Poste de Plainpalais
+  court: Plainpalais
+  adresse: Rue Pictet-de-Bock 6, 1205 Genève
+  lat: 46.1938474
+  lng: 6.1426527
+  url: /fr/distributeur-geneve-plainpalais.html
+  url_en: /distributeur-geneve-plainpalais.html
+  live: false
+  page_id: distributeur-geneve-plainpalais
+  google_place_id:
+
+- id: meyrin
+  nom: La Poste de Meyrin
+  court: Meyrin
+  adresse: Avenue de Feuillasse 24, 1217 Meyrin
+  lat: 46.2323422
+  lng: 6.0834824
+  url: /fr/distributeur-meyrin.html
+  url_en: /distributeur-meyrin.html
+  live: false
+  page_id: distributeur-meyrin
+  google_place_id:
+
+- id: thonex
+  nom: La Poste de Thônex
+  court: Thônex
+  adresse: Rue de Genève 106, 1226 Thônex
+  lat: 46.1927988
+  lng: 6.2020452
+  url: /fr/distributeur-thonex.html
+  url_en: /distributeur-thonex.html
+  live: false
+  page_id: distributeur-thonex
+  google_place_id:
+
+- id: carouge
+  nom: La Poste de Carouge
+  court: Carouge
+  adresse: Boulevard des Promenades 16, 1227 Carouge
+  lat: 46.1834815
+  lng: 6.1374843
+  url: /fr/distributeur-carouge.html
+  url_en: /distributeur-carouge.html
+  live: false
+  page_id: distributeur-carouge
+  google_place_id:
+
+- id: king-jouet-carouge
+  nom: King Jouet Carouge
+  court: King Jouet Carouge
+  adresse: Avenue Cardinal-Mermillod 36, 1227 Carouge
+  lat: 46.1860
+  lng: 6.1431
+  url: /fr/distributeurs-geneve.html
+  url_en: /distributeurs-geneve.html
+  live: false
+  google_place_id:

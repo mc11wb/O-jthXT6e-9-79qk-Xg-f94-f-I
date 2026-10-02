@@ -1,0 +1,115 @@
+{%- comment -%}
+  PAGE LISTE DU BLOG — partagée par /blog.html (EN) et /fr/blog.html (FR).
+  Titre, H1 et chapô viennent du front matter de chaque page.
+{%- endcomment -%}
+{%- assign site_root = "https://boosterstop.com" -%}
+{%- assign fr = false -%}{%- if page.lang == "fr" -%}{%- assign fr = true -%}{%- endif -%}
+{%- if fr -%}{%- assign base = "/fr/" -%}{%- else -%}{%- assign base = "/" -%}{%- endif -%}
+{%- assign posts = site.posts | where: "lang", page.lang -%}
+<!DOCTYPE html>
+<html lang="{% if fr %}fr{% else %}en{% endif %}">
+<head>
+{% include head.html %}
+<link rel="stylesheet" href="/assets/blog.css?v={{ site.time | date: '%s' }}">
+<title>{{ page.title }} | BoosterStop</title>
+<meta name="description" content="{{ page.description | escape }}">
+<link rel="canonical" href="{{ site_root }}{{ base }}blog.html">
+<link rel="alternate" hreflang="en" href="{{ site_root }}/blog.html">
+<link rel="alternate" hreflang="fr" href="{{ site_root }}/fr/blog.html">
+<link rel="alternate" hreflang="x-default" href="{{ site_root }}/blog.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="alternate" type="application/rss+xml" title="{% if fr %}Blog BoosterStop{% else %}BoosterStop blog{% endif %}" href="{{ site_root }}{{ base }}blog/feed.xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BoosterStop">
+<meta property="og:title" content="{% if fr %}Le blog BoosterStop{% else %}The BoosterStop blog{% endif %}">
+<meta property="og:description" content="{{ page.description | escape }}">
+<meta property="og:url" content="{{ site_root }}{{ base }}blog.html">
+<meta property="og:locale" content="{% if fr %}fr_CH{% else %}en_US{% endif %}">
+<meta property="og:image" content="{{ site_root }}/front%20transparent.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="geo.region" content="CH-GE">
+<meta name="geo.placename" content="{% if fr %}Genève{% else %}Geneva{% endif %}">
+</head>
+<body>
+{% include nav.html %}
+
+<div class="bp-wrap">
+
+<header class="bp-head">
+  <div class="bp-crumbs" role="navigation" aria-label="{% if fr %}Fil d&apos;Ariane{% else %}Breadcrumb{% endif %}">
+    <a href="{{ base }}">BoosterStop</a> › Blog
+  </div>
+  <h1>{{ page.h1 }}</h1>
+  <p class="bp-lead">{{ page.lead }}</p>
+</header>
+
+{%- if posts.size > 0 %}
+<ul class="bl-list">
+  {%- for p in posts %}
+  {%- assign p_lic = "" -%}{%- if p.licence and site.data.licences[p.licence] -%}{%- if fr -%}{%- assign p_lic = site.data.licences[p.licence].fr -%}{%- else -%}{%- assign p_lic = site.data.licences[p.licence].en -%}{%- endif -%}{%- endif %}
+  <li class="bl-item{% if p.image %} has-img{% endif %}">
+    <div>
+      <div class="bl-when">
+        <time datetime="{{ p.date | date: '%Y-%m-%d' }}">{% if fr %}{{ p.date | date: "%d.%m.%Y" }}{% else %}{{ p.date | date: "%b %-d, %Y" }}{% endif %}</time>
+        {%- if p_lic != "" %}<a class="bp-tag" href="{{ base }}cartes-{{ p.licence }}-geneve.html">{{ p_lic }}</a>{% endif %}
+      </div>
+      <h2><a href="{{ p.url }}">{{ p.title }}</a></h2>
+      <p>{{ p.description }}</p>
+    </div>
+    {%- if p.image %}
+    <a href="{{ p.url }}" tabindex="-1" aria-hidden="true"><img src="{{ p.image }}" alt="" width="600" height="375" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"></a>
+    {%- endif %}
+  </li>
+  {%- endfor %}
+</ul>
+{%- else %}
+<div class="bl-empty">
+  {%- if fr %}
+  <p>Les premiers articles arrivent bientôt. En attendant, le <a href="/fr/sorties-tcg-geneve.html">calendrier des sorties TCG</a> et le <a href="/fr/stock.html">stock en direct</a> de nos machines sont à jour.</p>
+  {%- else %}
+  <p>The first articles are on their way. In the meantime, the <a href="/sorties-tcg-geneve.html">TCG release calendar</a> and the <a href="/stock.html">live stock</a> of our machines are up to date.</p>
+  {%- endif %}
+</div>
+{%- endif %}
+
+{% include blog-machines.html %}
+
+{% include reviews.html %}
+
+</div><!-- /bp-wrap -->
+
+{% include footer.html %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Blog",
+      "@id": "{{ site_root }}{{ base }}blog.html#blog",
+      "url": "{{ site_root }}{{ base }}blog.html",
+      "name": "{% if fr %}Blog BoosterStop{% else %}BoosterStop blog{% endif %}",
+      "description": {{ page.description | jsonify }},
+      "inLanguage": "{% if fr %}fr-CH{% else %}en{% endif %}",
+      "publisher": {"@id": "{{ site_root }}/#organization", "@type": "Organization", "name": "BoosterStop", "url": "{{ site_root }}/"}
+      {%- if posts.size > 0 %},
+      "blogPost": [
+        {%- for p in posts limit: 20 %}
+        {"@type": "BlogPosting", "headline": {{ p.title | strip_html | jsonify }}, "url": "{{ site_root }}{{ p.url }}", "datePublished": "{{ p.date | date_to_xmlschema }}"}{% unless forloop.last %},{% endunless %}
+        {%- endfor %}
+      ]
+      {%- endif %}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "BoosterStop", "item": "{{ site_root }}{{ base }}"},
+        {"@type": "ListItem", "position": 2, "name": "Blog"}
+      ]
+    }
+  ]
+}
+</script>
+
+</body>
+</html>

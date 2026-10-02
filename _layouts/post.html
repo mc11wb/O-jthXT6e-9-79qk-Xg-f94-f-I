@@ -1,0 +1,278 @@
+{%- comment -%}
+  MODÈLE D'ARTICLE — appliqué automatiquement aux fichiers de fr/_posts/ (FR)
+  et _posts/ (EN), voir defaults dans _config.yml. Même slug = traductions. Champs lus dans le front matter :
+    title*        titre affiché (H1) et repris dans Google
+    seo_title     titre Google si différent du H1 (60 caractères max)
+    description*  résumé de 140-160 caractères (Google, réseaux, IA)
+    date*         date de publication (dans le nom du fichier)
+    last_modified_at  date de mise à jour, à renseigner après une correction
+    author        nom du rédacteur ; à défaut « L'équipe BoosterStop » / « The BoosterStop team »
+    author_bio    une phrase sur le rédacteur (crédibilité)
+    image         /assets/blog/fichier.jpg (1600×900 conseillé)
+    image_alt     description de l'image
+    licence       slug de _data/licences.yml (ex. pokemon) → lien + catégorie
+    machine       id de _data/machines.yml mis en tête de l'encart
+    resume        2 à 4 points « L'essentiel » en haut de l'article
+    faq           liste de { q: question, r: réponse } → bloc FAQ + FAQPage
+  (* obligatoire)
+{%- endcomment -%}
+{%- assign site_root = "https://boosterstop.com" -%}
+{%- assign fr = false -%}{%- if page.lang == "fr" -%}{%- assign fr = true -%}{%- endif -%}
+{%- if fr -%}{%- assign base = "/fr/" -%}{%- else -%}{%- assign base = "/" -%}{%- endif -%}
+{%- capture abs_url %}{{ site_root }}{{ page.url }}{% endcapture -%}
+{%- assign twin = site.posts | where: "slug", page.slug | where_exp: "p", "p.lang != page.lang" | first -%}
+{%- assign img_path = page.image | default: "/front%20transparent.png" -%}
+{%- if img_path contains "://" -%}{%- assign abs_img = img_path -%}{%- else -%}{%- capture abs_img %}{{ site_root }}{{ img_path }}{% endcapture -%}{%- endif -%}
+{%- assign modified = page.last_modified_at | default: page.date -%}
+{%- if fr -%}{%- assign team = "L'équipe BoosterStop" -%}{%- else -%}{%- assign team = "The BoosterStop team" -%}{%- endif -%}
+{%- assign author_name = page.author | default: team -%}
+{%- assign lic_name = "" -%}
+{%- if page.licence and site.data.licences[page.licence] -%}{%- if fr -%}{%- assign lic_name = site.data.licences[page.licence].fr -%}{%- else -%}{%- assign lic_name = site.data.licences[page.licence].en -%}{%- endif -%}{%- endif -%}
+{%- capture lic_url %}{{ base }}cartes-{{ page.licence }}-geneve.html{% endcapture -%}
+{%- assign words = content | strip_html | number_of_words -%}
+{%- assign minutes = words | divided_by: 230.0 | ceil | at_least: 1 -%}
+{%- if fr -%}
+  {%- assign months = "janvier,février,mars,avril,mai,juin,juillet,août,septembre,octobre,novembre,décembre" | split: "," -%}
+{%- else -%}
+  {%- assign months = "January,February,March,April,May,June,July,August,September,October,November,December" | split: "," -%}
+{%- endif -%}
+{%- assign m_idx = page.date | date: "%-m" | minus: 1 -%}
+{%- assign d_day = page.date | date: "%-d" -%}
+{%- if fr -%}
+{%- capture date_txt %}{{ d_day }}{% if d_day == "1" %}er{% endif %} {{ months[m_idx] }} {{ page.date | date: "%Y" }}{% endcapture -%}
+{%- else -%}
+{%- capture date_txt %}{{ months[m_idx] }} {{ d_day }}, {{ page.date | date: "%Y" }}{% endcapture -%}
+{%- endif -%}
+{%- capture mod_txt -%}{%- if page.last_modified_at -%}{%- assign mm = page.last_modified_at | date: "%-m" | minus: 1 -%}{%- assign md = page.last_modified_at | date: "%-d" -%}{%- if fr -%}{{ md }} {{ months[mm] }} {{ page.last_modified_at | date: "%Y" }}{%- else -%}{{ months[mm] }} {{ md }}, {{ page.last_modified_at | date: "%Y" }}{%- endif -%}{%- endif -%}{%- endcapture -%}
+{%- comment -%} Sommaire : construit à partir des H2 de l'article {%- endcomment -%}
+{%- assign h2_parts = content | split: '<h2 id="' -%}
+{%- assign toc_count = h2_parts.size | minus: 1 -%}
+<!DOCTYPE html>
+<html lang="{% if fr %}fr{% else %}en{% endif %}">
+<head>
+{% include head.html %}
+<link rel="stylesheet" href="/assets/blog.css?v={{ site.time | date: '%s' }}">
+<title>{{ page.seo_title | default: page.title }} | BoosterStop</title>
+<meta name="description" content="{{ page.description | strip_html | strip | escape }}">
+<link rel="canonical" href="{{ abs_url }}">
+{%- if twin %}
+{%- if fr %}{%- capture fr_abs %}{{ abs_url }}{% endcapture %}{%- capture en_abs %}{{ site_root }}{{ twin.url }}{% endcapture %}{%- else %}{%- capture en_abs %}{{ abs_url }}{% endcapture %}{%- capture fr_abs %}{{ site_root }}{{ twin.url }}{% endcapture %}{%- endif %}
+<link rel="alternate" hreflang="en" href="{{ en_abs }}">
+<link rel="alternate" hreflang="fr" href="{{ fr_abs }}">
+<link rel="alternate" hreflang="x-default" href="{{ en_abs }}">
+{%- endif %}
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="{{ author_name | escape }}">
+<link rel="alternate" type="application/rss+xml" title="{% if fr %}Blog BoosterStop{% else %}BoosterStop blog{% endif %}" href="{{ site_root }}{{ base }}blog/feed.xml">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="BoosterStop">
+<meta property="og:title" content="{{ page.title | escape }}">
+<meta property="og:description" content="{{ page.description | strip_html | strip | escape }}">
+<meta property="og:url" content="{{ abs_url }}">
+<meta property="og:locale" content="{% if fr %}fr_CH{% else %}en_US{% endif %}">
+<meta property="og:image" content="{{ abs_img }}">
+{%- if page.image_alt %}
+<meta property="og:image:alt" content="{{ page.image_alt | escape }}">
+{%- endif %}
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+<meta property="article:modified_time" content="{{ modified | date_to_xmlschema }}">
+{%- if lic_name != "" %}
+<meta property="article:section" content="{{ lic_name | escape }}">
+{%- endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page.title | escape }}">
+<meta name="twitter:description" content="{{ page.description | strip_html | strip | escape }}">
+<meta name="twitter:image" content="{{ abs_img }}">
+<meta name="geo.region" content="CH-GE">
+<meta name="geo.placename" content="{% if fr %}Genève{% else %}Geneva{% endif %}">
+</head>
+<body>
+{% include nav.html %}
+
+<div class="bp-wrap">
+
+<header class="bp-head">
+  <div class="bp-crumbs" role="navigation" aria-label="{% if fr %}Fil d&apos;Ariane{% else %}Breadcrumb{% endif %}">
+    <a href="{{ base }}">BoosterStop</a> › <a href="{{ base }}blog.html">Blog</a>{% if lic_name != "" %} › <a href="{{ lic_url }}">{{ lic_name }}</a>{% endif %}
+  </div>
+  <h1>{{ page.title }}</h1>
+  <p class="bp-lead">{{ page.description }}</p>
+  <ul class="bp-meta">
+    <li>{% if fr %}Par{% else %}By{% endif %} <b>{{ author_name }}</b></li>
+    <li>{% if fr %}Publié le{% else %}Published{% endif %} <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ date_txt }}</time></li>
+    {%- if page.last_modified_at %}
+    <li>{% if fr %}Mis à jour le{% else %}Updated{% endif %} <time datetime="{{ page.last_modified_at | date: '%Y-%m-%d' }}">{{ mod_txt }}</time></li>
+    {%- endif %}
+    <li>{{ minutes }} {% if fr %}min de lecture{% else %}min read{% endif %}</li>
+    {%- if lic_name != "" %}
+    <li><a class="bp-tag" href="{{ lic_url }}">{{ lic_name }}</a></li>
+    {%- endif %}
+  </ul>
+</header>
+
+{%- if page.image %}
+<figure class="bp-hero">
+  <img src="{{ page.image }}" alt="{{ page.image_alt | default: page.title | escape }}" width="1600" height="900" fetchpriority="high">
+</figure>
+{%- endif %}
+
+<div class="bp-grid{% if toc_count < 3 %} no-toc{% endif %}">
+
+  {%- if toc_count >= 3 %}
+  <details class="bp-toc" id="bpToc">
+    <summary>{% if fr %}Sommaire{% else %}Contents{% endif %}</summary>
+    <ol>
+      {%- for part in h2_parts offset: 1 %}
+      {%- assign h_id = part | split: '"' | first -%}
+      {%- assign h_txt = part | split: '</h2>' | first | split: '">' | shift | join: '">' | strip_html | strip %}
+      <li><a href="#{{ h_id }}">{{ h_txt }}</a></li>
+      {%- endfor %}
+    </ol>
+  </details>
+  {%- endif %}
+
+  {%- if page.resume %}
+  <aside class="bp-key" aria-labelledby="bp-key-title">
+    <h2 id="bp-key-title">{% if fr %}L'essentiel{% else %}Key points{% endif %}</h2>
+    <ul>
+      {%- for r in page.resume %}
+      <li>{{ r | markdownify | remove: '<p>' | remove: '</p>' | strip }}</li>
+      {%- endfor %}
+    </ul>
+  </aside>
+  {%- endif %}
+
+  <article class="bp-body" id="article">
+{{ content }}
+  </article>
+
+</div>
+
+{%- if page.faq %}
+<section class="bp-sec" id="faq">
+  <h2>{% if fr %}Questions fréquentes{% else %}Frequently asked questions{% endif %}</h2>
+  <dl class="bp-faq">
+    {%- for f in page.faq %}
+    <dt>{{ f.q }}</dt>
+    <dd>{{ f.r | markdownify }}</dd>
+    {%- endfor %}
+  </dl>
+</section>
+{%- endif %}
+
+<section class="bp-sec" aria-label="{% if fr %}Auteur{% else %}Author{% endif %}">
+  <div class="bp-author">
+    <span class="bp-author-mark" aria-hidden="true">{{ author_name | remove: "L'équipe " | remove: "The " | slice: 0 }}</span>
+    <p><b>{{ author_name }}</b>{%- if page.author_bio -%}{{ page.author_bio }}{%- elsif fr -%}BoosterStop exploite des distributeurs automatiques de cartes à collectionner dans le canton de Genève et en Belgique. Tous les produits sont scellés et proviennent de distributeurs officiels.{%- else -%}BoosterStop runs trading card vending machines in the canton of Geneva and in Belgium. Every product is factory-sealed and comes from official distributors.{%- endif -%}</p>
+  </div>
+</section>
+
+{% include blog-machines.html %}
+
+{% include reviews.html %}
+
+{%- comment -%} Articles liés : même licence d'abord, sinon les plus récents {%- endcomment -%}
+{%- assign fr_posts = site.posts | where: "lang", page.lang | where_exp: "p", "p.url != page.url" -%}
+{%- if page.licence -%}
+  {%- assign same = fr_posts | where: "licence", page.licence -%}
+  {%- assign others = fr_posts | where_exp: "p", "p.licence != page.licence" -%}
+  {%- assign related = same | concat: others -%}
+{%- else -%}
+  {%- assign related = fr_posts -%}
+{%- endif -%}
+{%- if related.size > 0 %}
+<section class="bp-sec" aria-labelledby="bp-rel-title">
+  <h2 id="bp-rel-title">{% if fr %}À lire aussi{% else %}Read next{% endif %}</h2>
+  <ul class="bp-related">
+    {%- for p in related limit: 3 %}
+    <li><a href="{{ p.url }}">{{ p.title }}<time datetime="{{ p.date | date: '%Y-%m-%d' }}">{{ p.date | date: "%d.%m.%Y" }}</time></a></li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- endif %}
+
+</div><!-- /bp-wrap -->
+
+{% include footer.html %}
+
+<script>
+(function(){
+  var t=document.getElementById('bpToc');if(!t)return;
+  var wide=window.matchMedia('(min-width:1000px)');
+  function sync(){if(wide.matches)t.setAttribute('open','');}
+  sync();if(wide.addEventListener)wide.addEventListener('change',sync);
+  t.querySelector('summary').addEventListener('click',function(e){if(wide.matches)e.preventDefault();});
+  if(!('IntersectionObserver' in window))return;
+  var links={};[].forEach.call(t.querySelectorAll('a'),function(a){links[a.getAttribute('href').slice(1)]=a;});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){
+    for(var k in links)links[k].classList.remove('on');var a=links[e.target.id];if(a)a.classList.add('on');}});},
+    {rootMargin:'-90px 0px -70% 0px'});
+  for(var id in links){var h=document.getElementById(id);if(h)io.observe(h);}
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "{{ abs_url }}#article",
+      "mainEntityOfPage": {"@type": "WebPage", "@id": "{{ abs_url }}"},
+      "url": "{{ abs_url }}",
+      "headline": {{ page.title | strip_html | truncate: 110 | jsonify }},
+      "description": {{ page.description | strip_html | strip | jsonify }},
+      "image": {"@type": "ImageObject", "url": "{{ abs_img }}"{% if page.image %}, "width": 1600, "height": 900{% endif %}},
+      "datePublished": "{{ page.date | date_to_xmlschema }}",
+      "dateModified": "{{ modified | date_to_xmlschema }}",
+      "inLanguage": "{% if fr %}fr-CH{% else %}en{% endif %}",
+      "wordCount": {{ words }},
+      "timeRequired": "PT{{ minutes }}M",
+      {%- if lic_name != "" %}
+      "articleSection": {{ lic_name | jsonify }},
+      "about": {"@type": "Thing", "name": {{ lic_name | jsonify }}, "url": "{{ site_root }}{{ lic_url }}"},
+      {%- endif %}
+      {%- if page.author %}
+      "author": {"@type": "Person", "name": {{ page.author | jsonify }}{% if page.author_bio %}, "description": {{ page.author_bio | jsonify }}{% endif %}, "worksFor": {"@id": "{{ site_root }}/#organization"}},
+      {%- else %}
+      "author": {"@id": "{{ site_root }}/#organization"},
+      {%- endif %}
+      "publisher": {
+        "@type": "Organization",
+        "@id": "{{ site_root }}/#organization",
+        "name": "BoosterStop",
+        "url": "{{ site_root }}/",
+        "logo": {"@type": "ImageObject", "url": "{{ site_root }}/logo.png"}
+      },
+      "isPartOf": {"@type": "Blog", "@id": "{{ site_root }}{{ base }}blog.html#blog", "name": "{% if fr %}Blog BoosterStop{% else %}BoosterStop blog{% endif %}"},
+      "spatialCoverage": {"@type": "Place", "name": "{% if fr %}Canton de Genève, Suisse{% else %}Canton of Geneva, Switzerland{% endif %}"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "BoosterStop", "item": "{{ site_root }}{{ base }}"},
+        {"@type": "ListItem", "position": 2, "name": "Blog", "item": "{{ site_root }}{{ base }}blog.html"},
+        {"@type": "ListItem", "position": 3, "name": {{ page.title | strip_html | jsonify }}}
+      ]
+    }
+    {%- if page.faq %},
+    {
+      "@type": "FAQPage",
+      "@id": "{{ abs_url }}#faq",
+      "mainEntity": [
+        {%- for f in page.faq %}
+        {
+          "@type": "Question",
+          "name": {{ f.q | strip | jsonify }},
+          "acceptedAnswer": {"@type": "Answer", "text": {{ f.r | markdownify | strip_html | strip | jsonify }}}
+        }{% unless forloop.last %},{% endunless %}
+        {%- endfor %}
+      ]
+    }
+    {%- endif %}
+  ]
+}
+</script>
+
+</body>
+</html>

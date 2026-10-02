@@ -15,3 +15,30 @@ exclude:
   - Gemfile.lock
   - node_modules
   - vendor
+
+# ------------------------------------------------------------
+# BLOG bilingue — un article = un fichier Markdown :
+#   FR : fr/_posts/AAAA-MM-JJ-slug.md  → /fr/blog/slug.html
+#   EN : _posts/AAAA-MM-JJ-slug.md     → /blog/slug.html
+# Même slug dans les deux langues = traductions reliées
+# (hreflang, bouton EN/FR, sitemap). Un article peut exister
+# dans une seule langue.
+# Une date future = article masqué jusqu'au premier build après cette date.
+# ------------------------------------------------------------
+defaults:
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      layout: post
+      lang: en
+      page: blog
+      permalink: /blog/:title:output_ext
+  - scope:
+      path: "fr/_posts"
+      type: posts
+    values:
+      layout: post
+      lang: fr
+      page: blog
+      permalink: /fr/blog/:title:output_ext

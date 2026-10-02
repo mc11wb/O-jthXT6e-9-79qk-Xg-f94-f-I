@@ -1,0 +1,38 @@
+{%- comment -%}
+  BADGES D'AVIS — « Noter sur Google » (par machine) et « Avis Trustpilot ».
+  Appel : include reviews.html            → toutes les machines ayant une fiche Google
+          include reviews.html only="rive" → une seule machine (pages distributeur)
+  Si l'article a « machine: <id> », cette machine passe en premier.
+  Règle Google / Trustpilot : on demande un avis honnête, sans contrepartie
+  et à tout le monde — ne jamais ajouter de réduction ni de « si vous êtes satisfait ».
+{%- endcomment -%}
+{%- assign rv_fr = false -%}{%- if page.lang == "fr" -%}{%- assign rv_fr = true -%}{%- endif -%}
+{%- assign rv_all = site.data.machines | where_exp: "m", "m.google_place_id" -%}
+{%- if include.only -%}
+  {%- assign rv_list = rv_all | where: "id", include.only -%}
+{%- elsif page.machine -%}
+  {%- assign rv_a = rv_all | where: "id", page.machine -%}
+  {%- assign rv_b = rv_all | where_exp: "m", "m.id != page.machine" -%}
+  {%- assign rv_list = rv_a | concat: rv_b -%}
+{%- else -%}
+  {%- assign rv_list = rv_all -%}
+{%- endif -%}
+{%- if rv_fr -%}{%- assign tp = site.data.avis.trustpilot_fr -%}{%- else -%}{%- assign tp = site.data.avis.trustpilot_en -%}{%- endif -%}
+<section class="rv{% if include.only %} rv-solo{% endif %}" aria-labelledby="rv-title">
+  <div class="rv-txt">
+    <h2 id="rv-title">{% if rv_fr %}Votre avis nous aide{% else %}Your review helps{% endif %}</h2>
+    <p>{% if include.only and rv_list.size > 0 %}{% if rv_fr %}Vous avez acheté dans cette machine ? Racontez comment ça s'est passé : les avis aident les collectionneurs à la trouver.{% else %}Bought from this machine? Tell others how it went: reviews help collectors find it.{% endif %}{% else %}{% if rv_fr %}Vous avez acheté dans l'une de nos machines ? Racontez comment ça s'est passé : chaque avis aide d'autres collectionneurs à nous trouver.{% else %}Bought from one of our machines? Tell others how it went: every review helps other collectors find us.{% endif %}{% endif %}</p>
+  </div>
+  <div class="rv-badges">
+    {%- for m in rv_list %}
+    <a class="rv-badge rv-g" href="{{ site.data.avis.google_avis }}{{ m.google_place_id }}{% if rv_fr %}&amp;hl=fr{% else %}&amp;hl=en{% endif %}" target="_blank" rel="noopener">
+      <span class="rv-ico" aria-hidden="true">G</span>
+      <span>{% if rv_fr %}Noter <b>{{ m.court }}</b> sur Google{% else %}Rate <b>{{ m.court }}</b> on Google{% endif %}</span>
+    </a>
+    {%- endfor %}
+    <a class="rv-badge rv-tp" href="{{ tp }}" target="_blank" rel="noopener">
+      <span class="rv-ico" aria-hidden="true">★</span>
+      <span>{% if rv_fr %}Donner un avis sur <b>Trustpilot</b>{% else %}Review us on <b>Trustpilot</b>{% endif %}</span>
+    </a>
+  </div>
+</section>

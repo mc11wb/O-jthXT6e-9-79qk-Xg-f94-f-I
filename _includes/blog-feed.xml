@@ -1,0 +1,28 @@
+{%- assign site_root = "https://boosterstop.com" -%}
+{%- assign fr = false -%}{%- if page.lang == "fr" -%}{%- assign fr = true -%}{%- endif -%}
+{%- if fr -%}{%- assign base = "/fr/" -%}{%- assign team = "L'équipe BoosterStop" -%}{%- else -%}{%- assign base = "/" -%}{%- assign team = "The BoosterStop team" -%}{%- endif -%}
+{%- assign posts = site.posts | where: "lang", page.lang %}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>{% if fr %}Blog BoosterStop{% else %}BoosterStop blog{% endif %}</title>
+    <link>{{ site_root }}{{ base }}blog.html</link>
+    <atom:link href="{{ site_root }}{{ base }}blog/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>{% if fr %}Guides, sorties et conseils de collection autour des cartes à collectionner, par BoosterStop, distributeurs automatiques de TCG à Genève.{% else %}Guides, releases and collecting tips about trading cards, from BoosterStop, TCG vending machines in Geneva.{% endif %}</description>
+    <language>{% if fr %}fr-CH{% else %}en{% endif %}</language>
+    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+    {%- for p in posts limit: 30 %}
+    <item>
+      <title>{{ p.title | strip_html | xml_escape }}</title>
+      <link>{{ site_root }}{{ p.url }}</link>
+      <guid isPermaLink="true">{{ site_root }}{{ p.url }}</guid>
+      <pubDate>{{ p.date | date_to_rfc822 }}</pubDate>
+      <dc:creator>{{ p.author | default: team | xml_escape }}</dc:creator>
+      {%- if p.licence %}
+      <category>{% if fr %}{{ site.data.licences[p.licence].fr | xml_escape }}{% else %}{{ site.data.licences[p.licence].en | xml_escape }}{% endif %}</category>
+      {%- endif %}
+      <description>{{ p.description | strip_html | xml_escape }}</description>
+      <content:encoded><![CDATA[{{ p.content | replace: 'src="/', 'src="https://boosterstop.com/' | replace: 'href="/', 'href="https://boosterstop.com/' | replace: "]]>", "]]&gt;" }}]]></content:encoded>
+    </item>
+    {%- endfor %}
+  </channel>
+</rss>

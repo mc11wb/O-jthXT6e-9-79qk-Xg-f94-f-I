@@ -1,0 +1,6 @@
+# Liens d'avis — badges « Noter sur Google » et « Avis Trustpilot »
+# Google : l'ID de chaque fiche est dans _data/machines.yml (google_place_id)
+google_avis: "https://search.google.com/local/writereview?placeid="
+# Trustpilot : page d'avis de boosterstop.com (créée au premier avis si elle n'existe pas)
+trustpilot_fr: "https://fr.trustpilot.com/evaluate/boosterstop.com"
+trustpilot_en: "https://www.trustpilot.com/evaluate/boosterstop.com"

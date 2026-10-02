@@ -1,0 +1,66 @@
+{%- comment -%}
+  ENCART « OÙ ACHETER » — en bas de chaque article et de la page blog.
+  Données : _data/machines.yml. Si l'article a « machine: <id> »
+  dans son front matter, ce distributeur passe en tête de liste.
+  Le bouton calcule la machine la plus proche dans le navigateur :
+  la position n'est ni envoyée ni enregistrée.
+{%- endcomment -%}
+{%- assign bm_fr = false -%}{%- if page.lang == "fr" -%}{%- assign bm_fr = true -%}{%- endif -%}
+{%- assign bm_base = "/" -%}{%- if bm_fr -%}{%- assign bm_base = "/fr/" -%}{%- endif -%}
+{%- assign bm_all = site.data.machines -%}
+{%- if page.machine -%}
+  {%- assign bm_first = bm_all | where: "id", page.machine -%}
+  {%- assign bm_rest = bm_all | where_exp: "m", "m.id != page.machine" -%}
+  {%- assign bm_list = bm_first | concat: bm_rest -%}
+{%- else -%}
+  {%- assign bm_list = bm_all -%}
+{%- endif -%}
+<section class="bm" id="distributeurs" aria-labelledby="bm-title">
+  <div class="bm-top">
+    <div>
+      <h2 id="bm-title">{% if bm_fr %}Acheter vos cartes à Genève{% else %}Buy your cards in Geneva{% endif %}</h2>
+      <p>{% if bm_fr %}{{ bm_all.size }} distributeurs en libre-service, produits scellés issus de distributeurs officiels. Espèces, TWINT et sans contact.{% else %}{{ bm_all.size }} self-service machines, sealed products from official distributors only. Cash, TWINT and contactless.{% endif %}</p>
+    </div>
+    <button type="button" class="bm-find" id="bmFind" data-again="{% if bm_fr %}Actualiser{% else %}Refresh{% endif %}">{% if bm_fr %}Trouver le plus proche{% else %}Find the nearest{% endif %}</button>
+  </div>
+  <p class="bm-msg" id="bmMsg" role="status" aria-live="polite"></p>
+  <ul class="bm-list" id="bmList" data-near="{% if bm_fr %}Le plus proche{% else %}Nearest{% endif %}">
+    {%- for m in bm_list %}
+    <li class="bm-row" data-lat="{{ m.lat }}" data-lng="{{ m.lng }}">
+      <a href="{% if bm_fr %}{{ m.url }}{% else %}{{ m.url_en }}{% endif %}">
+        <span class="bm-nm">{{ m.nom }}<small>{{ m.adresse }}</small></span>
+        <span class="bm-side"><span class="bm-dist"></span>{% if m.live %}<span class="bm-live">{% if bm_fr %}Stock en direct{% else %}Live stock{% endif %}</span>{% endif %}</span>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+  <div class="bm-actions">
+    <a href="{{ bm_base }}stock.html">{% if bm_fr %}Voir le stock en direct{% else %}See live stock{% endif %}</a>
+    <a href="{{ bm_base }}distributeurs-geneve.html">{% if bm_fr %}Adresses et horaires{% else %}Addresses and opening hours{% endif %}</a>
+  </div>
+</section>
+<script>
+(function(){
+  var btn=document.getElementById('bmFind'),msg=document.getElementById('bmMsg'),list=document.getElementById('bmList');
+  if(!btn||!list)return;
+  var T={% if bm_fr %}{look:'Recherche de votre position…',far:'Aucun distributeur près de vous pour l’instant : nos machines sont dans le canton de Genève.',err:'Position indisponible. Choisissez un distributeur dans la liste.',dec:','}{% else %}{look:'Finding your location…',far:'No machine near you yet: our machines are in the canton of Geneva.',err:'Location unavailable. Pick a machine from the list.',dec:'.'}{% endif %};
+  list.style.setProperty('--near',JSON.stringify(list.dataset.near));
+  if(!('geolocation' in navigator)){btn.hidden=true;return;}
+  function km(a,b,c,d){var r=Math.PI/180,x=Math.sin((c-a)*r/2),y=Math.sin((d-b)*r/2);
+    return 12742*Math.asin(Math.sqrt(x*x+Math.cos(a*r)*Math.cos(c*r)*y*y));}
+  btn.addEventListener('click',function(){
+    btn.disabled=true;msg.textContent=T.look;
+    navigator.geolocation.getCurrentPosition(function(p){
+      var rows=[].slice.call(list.children),la=p.coords.latitude,ln=p.coords.longitude;
+      rows.forEach(function(li){li.d=km(la,ln,+li.dataset.lat,+li.dataset.lng);li.classList.remove('near');
+        li.querySelector('.bm-dist').textContent=(li.d<10?li.d.toFixed(1):Math.round(li.d)).toString().replace('.',T.dec)+' km';});
+      rows.sort(function(a,b){return a.d-b.d;}).forEach(function(li){list.appendChild(li);});
+      rows[0].classList.add('near');
+      msg.textContent=rows[0].d>40?T.far:'';
+      btn.disabled=false;btn.textContent=btn.dataset.again;
+    },function(){
+      msg.textContent=T.err;btn.disabled=false;
+    },{enableHighAccuracy:false,timeout:10000,maximumAge:300000});
+  });
+})();
+</script>

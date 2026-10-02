@@ -2,7 +2,7 @@
   HEADER COMMUN — inséré dans chaque page via la balise include nav.html
   Lit le front matter de la page :
     lang : en | fr
-    page : index | stock | licences-geneve | expansion | newsletter | privacy
+    page : index | stock | licences-geneve | expansion | newsletter | privacy | blog
            | distributeurs-geneve | distributeur-<emplacement>
   Pour ajouter ou modifier un lien du menu : éditer CE fichier uniquement.
 {%- endcomment -%}
@@ -17,6 +17,19 @@
   {%- capture en_url -%}/{{ pid }}.html{%- endcapture -%}
   {%- capture fr_url -%}/fr/{{ pid }}.html{%- endcapture -%}
 {%- endif -%}
+{%- comment -%}
+  Articles du blog : le bouton de langue mène à la traduction (même slug)
+  si elle existe, sinon à la page blog de l'autre langue.
+{%- endcomment -%}
+{%- if page.collection == "posts" -%}
+  {%- assign twin = site.posts | where: "slug", page.slug | where_exp: "p", "p.lang != page.lang" | first -%}
+  {%- if fr -%}
+    {%- assign fr_url = page.url -%}{%- if twin -%}{%- assign en_url = twin.url -%}{%- else -%}{%- assign en_url = "/blog.html" -%}{%- endif -%}
+  {%- else -%}
+    {%- assign en_url = page.url -%}{%- if twin -%}{%- assign fr_url = twin.url -%}{%- else -%}{%- assign fr_url = "/fr/blog.html" -%}{%- endif -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if page.en_url -%}{%- assign en_url = page.en_url -%}{%- endif -%}
 <!-- NAV (commun : _includes/nav.html) -->
 <nav>
   <div class="nav-left">
@@ -27,6 +40,7 @@
     <ul>
       <li><a href="{{ base }}distributeurs-geneve.html"{% if pid == "distributeurs-geneve" %} class="active"{% endif %}>{% if fr %}Emplacements{% else %}Locations{% endif %}</a></li>
       <li><a href="{{ base }}licences-geneve.html"{% if pid == "licences-geneve" %} class="active"{% endif %}>{% if fr %}🃏 Licences{% else %}🃏 Licenses{% endif %}</a></li>
+      <li><a href="{{ base }}blog.html"{% if pid == "blog" %} class="active"{% endif %}>📰 Blog</a></li>
       <li><a href="{{ base }}expansion.html"{% if pid == "expansion" %} class="active"{% endif %}>🌍 Expansion</a></li>
       
       <li><a href="{{ base }}newsletter.html"{% if pid == "newsletter" %} class="active"{% endif %}>🔔 Newsletter <span class="nl-badge">-10%</span></a></li>
