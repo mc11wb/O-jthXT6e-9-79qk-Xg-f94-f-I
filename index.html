@@ -492,17 +492,17 @@ page: index
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(6)">
           <div class="map-location-dot live" data-loc="6"></div>
           <div>
-            <div class="map-location-name">La Poste de Carouge <span class="map-location-badge">Coming 30 September</span></div>
+            <div class="map-location-name">La Poste de Carouge</div>
             <div class="map-location-addr">Boulevard des Promenades 16, 1227 Carouge</div>
             <a href="/stock.html?machine=6" class="map-stock-link">📦 Check stock</a>
           </div>
         </div>
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(7)">
-          <div class="map-location-dot soon-dot" data-loc="7"></div>
+          <div class="map-location-dot live" data-loc="7"></div>
           <div>
-            <div class="map-location-name">King Jouet Carouge <span class="map-location-badge">Coming 30 September</span></div>
+            <div class="map-location-name">King Jouet Carouge</div>
             <div class="map-location-addr">Avenue Cardinal-Mermillod 36, 1227 Carouge</div>
-            <span class="map-stock-link soon">🚀 Coming soon</span>
+            <a href="/stock.html?machine=7" class="map-stock-link">📦 Check stock</a>
           </div>
         </div>
         <div class="map-location-item incoming">
@@ -859,7 +859,7 @@ const GENEVA_LOCATIONS = [
   { lat: 46.2323, lng: 6.0835, name: 'La Poste de Meyrin', addr: "Avenue de Feuillasse 24, 1217 Meyrin", hours: '<strong>Mon–Fri</strong> 08:30–18:00<br><strong>Sat</strong> 08:30–15:00<br><strong>Sun</strong> Closed', open: { wd: [510, 1080], sat: [510, 900], sun: null } },
   { lat: 46.1928, lng: 6.202, name: 'La Poste de Thônex', addr: "Rue de Genève 106, 1226 Thônex", hours: '<strong>Mon–Fri</strong> 08:30–18:30<br><strong>Sat</strong> 09:00–15:00<br><strong>Sun</strong> Closed', open: { wd: [510, 1110], sat: [540, 900], sun: null } },
   { lat: 46.1835, lng: 6.1375, name: 'La Poste de Carouge', addr: "Boulevard des Promenades 16, 1227 Carouge", hours: '<strong>Mon–Fri</strong> 08:00–18:00<br><strong>Sat</strong> 08:30–12:00<br><strong>Sun</strong> Closed', open: { wd: [480, 1080], sat: [510, 720], sun: null } },
-  { lat: 46.1860, lng: 6.1431, name: 'King Jouet Carouge', addr: "Avenue Cardinal-Mermillod 36, 1227 Carouge", hours: '<strong>Mon–Fri</strong> 09:00–19:00<br><strong>Sat</strong> 09:00–18:00<br><strong>Sun</strong> Closed', soon: true, open: { wd: [540, 1140], sat: [540, 1080], sun: null } }
+  { lat: 46.1860, lng: 6.1431, name: 'King Jouet Carouge', addr: "Avenue Cardinal-Mermillod 36, 1227 Carouge", hours: '<strong>Mon–Fri</strong> 09:00–19:00<br><strong>Sat</strong> 09:00–18:00<br><strong>Sun</strong> Closed', open: { wd: [540, 1140], sat: [540, 1080], sun: null } }
 ];
 
 function bsGenevaNow() {

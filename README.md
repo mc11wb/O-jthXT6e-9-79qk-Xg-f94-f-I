@@ -68,7 +68,9 @@ Tout part du tableau `MACHINES` en haut du `<script>` de `stock.html` (et `fr/st
 - `worker: 0`, `1`, `2` → la machine est connectée, le stock live s'affiche
 - `worker: null` → la machine est installée mais pas encore branchée : le site affiche « Stock live bientôt » à la place des étages, et l'onglet porte un liseré jaune
 
-**Pour brancher Plainpalais, Meyrin, Thônex ou Carouge** : il suffit de remplacer `null` par l'index correspondant du Worker, dans les deux fichiers. Rien d'autre à toucher — les stats, la carte et le cadrage s'ajustent tout seuls.
+Index actuels du Worker : `0` Rive, `1` Charmilles, `2` Petit-Lancy, `3` King Jouet Carouge, `4` La Poste de Carouge (ordre de `MACHINE_IDS` dans le Worker — toujours ajouter à la fin, ne jamais réordonner).
+
+**Pour brancher Plainpalais, Meyrin ou Thônex** : il suffit de remplacer `null` par l'index correspondant du Worker, dans les deux fichiers. Rien d'autre à toucher — les stats, la carte et le cadrage s'ajustent tout seuls.
 
 Ajouter une machine = une ligne dans `MACHINES` + un `<button class="machine-tab">` dans le panneau `#panel-ch`, + un bloc `Store` dans le JSON-LD de `index.html` pour le SEO local.
 

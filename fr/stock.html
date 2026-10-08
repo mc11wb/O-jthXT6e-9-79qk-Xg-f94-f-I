@@ -282,13 +282,13 @@ page: stock
         <span class="mt-dot"></span>
         <span class="mt-label"><span class="mt-name">La Poste de Thônex</span><span class="mt-sub">Thônex · 1226</span><span class="mt-soon">Stock live bientôt</span></span>
       </button>
-      <button class="machine-tab soon" onclick="selectMachine(6)">
+      <button class="machine-tab" onclick="selectMachine(6)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">La Poste de Carouge</span><span class="mt-sub">Carouge · 1227</span><span class="mt-soon">Stock live bientôt</span></span>
+        <span class="mt-label"><span class="mt-name">La Poste de Carouge</span><span class="mt-sub">Carouge · 1227</span></span>
       </button>
-      <button class="machine-tab soon" onclick="selectMachine(7)">
+      <button class="machine-tab" onclick="selectMachine(7)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">King Jouet Carouge</span><span class="mt-sub">Carouge · 1227</span><span class="mt-soon">Arrive le 30 septembre</span></span>
+        <span class="mt-label"><span class="mt-name">King Jouet Carouge</span><span class="mt-sub">Carouge · 1227</span></span>
       </button>
     </div>
     <div class="stock-map-wrap"><div id="stockMap"></div></div>
@@ -440,8 +440,8 @@ const MACHINES = [
   { name: 'La Poste de Plainpalais', addr: 'Rue Pictet-de-Bock 6, 1205 Genève', lat: 46.1938474, lng: 6.1426527, worker: null },
   { name: 'La Poste de Meyrin', addr: 'Avenue de Feuillasse 24, 1217 Meyrin', lat: 46.2323422, lng: 6.0834824, worker: null },
   { name: 'La Poste de Thônex', addr: 'Rue de Genève 106, 1226 Thônex', lat: 46.1927988, lng: 6.2020452, worker: null },
-  { name: 'La Poste de Carouge', addr: 'Boulevard des Promenades 16, 1227 Carouge', lat: 46.1834815, lng: 6.1374843, worker: null },
-  { name: 'King Jouet Carouge', addr: 'Avenue Cardinal-Mermillod 36, 1227 Carouge', lat: 46.1859644, lng: 6.1431141, worker: null, soon: true }
+  { name: 'La Poste de Carouge', addr: 'Boulevard des Promenades 16, 1227 Carouge', lat: 46.1834815, lng: 6.1374843, worker: 4 },
+  { name: 'King Jouet Carouge', addr: 'Avenue Cardinal-Mermillod 36, 1227 Carouge', lat: 46.1859644, lng: 6.1431141, worker: 3 }
 ];
 // worker = index appelé sur le Cloudflare Worker. null = machine installée,
 // mais stock live pas encore connecté → message « bientôt » à la place des étages.
@@ -559,12 +559,16 @@ function selectMachine(i, scroll) {
 async function loadAll() {
   document.getElementById('floorsContainer').innerHTML = '<div class="state-msg"><span class="spin"></span><br><span>' + (currentLang === 'fr' ? 'Connexion à la machine…' : 'Connecting to the machine…') + '</span></div>';
   let totalIn = 0, totalLow = 0, totalEmpty = 0, anyOk = false;
+  const seenIds = {};
   for (let i = 0; i < MACHINES.length; i++) {
     if (MACHINES[i].worker === null) { machineData[i] = null; continue; }
     try {
       const res = await fetch(WORKER + '/stock?machine=' + MACHINES[i].worker);
       const data = await res.json();
-      if (data && data.ok) {
+      if (data && data.ok && data.machine_id && seenIds[data.machine_id]) {
+        machineData[i] = null;
+      } else if (data && data.ok) {
+        if (data.machine_id) seenIds[data.machine_id] = true;
         machineData[i] = data;
         anyOk = true;
         totalIn += (data.in_stock || 0);
