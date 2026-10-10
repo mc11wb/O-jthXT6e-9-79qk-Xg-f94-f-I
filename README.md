@@ -65,12 +65,12 @@ Tout part du tableau `MACHINES` en haut du `<script>` de `stock.html` (et `fr/st
 
 `worker` est l'index appelé sur le Cloudflare Worker :
 
-- `worker: 0`, `1`, `2` → la machine est connectée, le stock live s'affiche
+- `worker: 0` à `7` → la machine est connectée, le stock live s'affiche
 - `worker: null` → la machine est installée mais pas encore branchée : le site affiche « Stock live bientôt » à la place des étages, et l'onglet porte un liseré jaune
 
-Index actuels du Worker : `0` Rive, `1` Charmilles, `2` Petit-Lancy, `3` King Jouet Carouge, `4` La Poste de Carouge (ordre de `MACHINE_IDS` dans le Worker — toujours ajouter à la fin, ne jamais réordonner).
+Index actuels du Worker : `0` Rive (4017), `1` Charmilles (3996), `2` Petit-Lancy (3995), `3` King Jouet Carouge (4260), `4` La Poste de Carouge (4259), `5` Plainpalais (4261), `6` Meyrin (4262), `7` Thônex (4258) — ordre de `MACHINE_IDS` dans le Worker : toujours ajouter à la fin, ne jamais réordonner.
 
-**Pour brancher Plainpalais, Meyrin ou Thônex** : il suffit de remplacer `null` par l'index correspondant du Worker, dans les deux fichiers. Rien d'autre à toucher — les stats, la carte et le cadrage s'ajustent tout seuls.
+Les huit machines de Genève sont branchées. **Pour en brancher une nouvelle** : ajouter son id zhongdacloud à la fin de `MACHINE_IDS` dans le Worker, puis remplacer `null` par ce nouvel index dans `stock.html`, `fr/stock.html` et ses pages distributeur (`WORKER_INDEX`). Passer aussi `live: true` dans `_data/machines.yml`.
 
 Ajouter une machine = une ligne dans `MACHINES` + un `<button class="machine-tab">` dans le panneau `#panel-ch`, + un bloc `Store` dans le JSON-LD de `index.html` pour le SEO local.
 

@@ -53,7 +53,7 @@
   lng: 6.1426527
   url: /fr/distributeur-geneve-plainpalais.html
   url_en: /distributeur-geneve-plainpalais.html
-  live: false
+  live: true
   page_id: distributeur-geneve-plainpalais
   google_place_id:
 
@@ -66,7 +66,7 @@
   lng: 6.0834824
   url: /fr/distributeur-meyrin.html
   url_en: /distributeur-meyrin.html
-  live: false
+  live: true
   page_id: distributeur-meyrin
   google_place_id:
 
@@ -79,7 +79,7 @@
   lng: 6.2020452
   url: /fr/distributeur-thonex.html
   url_en: /distributeur-thonex.html
-  live: false
+  live: true
   page_id: distributeur-thonex
   google_place_id:
 
@@ -92,7 +92,7 @@
   lng: 6.1374843
   url: /fr/distributeur-carouge.html
   url_en: /distributeur-carouge.html
-  live: false
+  live: true
   page_id: distributeur-carouge
   google_place_id:
 
@@ -105,5 +105,5 @@
   lng: 6.1431
   url: /fr/distributeurs-geneve.html
   url_en: /distributeurs-geneve.html
-  live: false
+  live: true
   google_place_id:

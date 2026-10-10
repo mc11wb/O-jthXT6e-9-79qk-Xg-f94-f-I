@@ -270,17 +270,17 @@ page: stock
         <span class="mt-dot"></span>
         <span class="mt-label"><span class="mt-name">La Poste du Petit-Lancy</span><span class="mt-sub">Petit-Lancy · 1213</span></span>
       </button>
-      <button class="machine-tab soon" onclick="selectMachine(3)">
+      <button class="machine-tab" onclick="selectMachine(3)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">La Poste de Plainpalais</span><span class="mt-sub">Plainpalais · 1205</span><span class="mt-soon">Live stock soon</span></span>
+        <span class="mt-label"><span class="mt-name">La Poste de Plainpalais</span><span class="mt-sub">Plainpalais · 1205</span></span>
       </button>
-      <button class="machine-tab soon" onclick="selectMachine(4)">
+      <button class="machine-tab" onclick="selectMachine(4)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">La Poste de Meyrin</span><span class="mt-sub">Meyrin · 1217</span><span class="mt-soon">Live stock soon</span></span>
+        <span class="mt-label"><span class="mt-name">La Poste de Meyrin</span><span class="mt-sub">Meyrin · 1217</span></span>
       </button>
-      <button class="machine-tab soon" onclick="selectMachine(5)">
+      <button class="machine-tab" onclick="selectMachine(5)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">La Poste de Thônex</span><span class="mt-sub">Thônex · 1226</span><span class="mt-soon">Live stock soon</span></span>
+        <span class="mt-label"><span class="mt-name">La Poste de Thônex</span><span class="mt-sub">Thônex · 1226</span></span>
       </button>
       <button class="machine-tab" onclick="selectMachine(6)">
         <span class="mt-dot"></span>
@@ -437,9 +437,9 @@ const MACHINES = [
   { name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', lat: 46.201946, lng: 6.1504446, worker: 0 },
   { name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", lat: 46.2080238, lng: 6.1230909, worker: 1 },
   { name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', lat: 46.1889447, lng: 6.1104449, worker: 2 },
-  { name: 'La Poste de Plainpalais', addr: 'Rue Pictet-de-Bock 6, 1205 Genève', lat: 46.1938474, lng: 6.1426527, worker: null },
-  { name: 'La Poste de Meyrin', addr: 'Avenue de Feuillasse 24, 1217 Meyrin', lat: 46.2323422, lng: 6.0834824, worker: null },
-  { name: 'La Poste de Thônex', addr: 'Rue de Genève 106, 1226 Thônex', lat: 46.1927988, lng: 6.2020452, worker: null },
+  { name: 'La Poste de Plainpalais', addr: 'Rue Pictet-de-Bock 6, 1205 Genève', lat: 46.1938474, lng: 6.1426527, worker: 5 },
+  { name: 'La Poste de Meyrin', addr: 'Avenue de Feuillasse 24, 1217 Meyrin', lat: 46.2323422, lng: 6.0834824, worker: 6 },
+  { name: 'La Poste de Thônex', addr: 'Rue de Genève 106, 1226 Thônex', lat: 46.1927988, lng: 6.2020452, worker: 7 },
   { name: 'La Poste de Carouge', addr: 'Boulevard des Promenades 16, 1227 Carouge', lat: 46.1834815, lng: 6.1374843, worker: 4 },
   { name: 'King Jouet Carouge', addr: 'Avenue Cardinal-Mermillod 36, 1227 Carouge', lat: 46.1859644, lng: 6.1431141, worker: 3 }
 ];
@@ -453,6 +453,35 @@ const FLOORS = [
   { label: { en: 'Floor 5', fr: 'Étage 5' }, min: 50, max: 53 },
   { label: { en: 'Floor 6 — bottom', fr: 'Étage 6 — bas' }, min: 60, max: 62 }
 ];
+
+// Rails hors des plages FLOORS (machines à 60 emplacements numérotées
+// autrement) : rangés par dizaine, et seulement s'ils portent un produit.
+// Les machines actuelles s'affichent donc exactement comme avant.
+function floorGroups(slots) {
+  const groups = FLOORS.map(function(fl) {
+    return {
+      key: Math.floor(fl.min / 10),
+      label: fl.label[currentLang],
+      slots: slots.filter(function(s) { return s.slot_num >= fl.min && s.slot_num <= fl.max; })
+    };
+  });
+  slots.forEach(function(s) {
+    const n = Number(s.slot_num);
+    if (!s.configured || isNaN(n)) return;
+    if (FLOORS.some(function(fl) { return n >= fl.min && n <= fl.max; })) return;
+    const key = Math.floor(n / 10);
+    let g = groups.find(function(x) { return x.key === key; });
+    if (!g) {
+      g = { key: key, label: (currentLang === 'fr' ? 'Étage ' : 'Floor ') + key, slots: [] };
+      groups.push(g);
+    }
+    g.slots.push(s);
+  });
+  groups.forEach(function(g) { g.slots.sort(function(a, b) { return a.slot_num - b.slot_num; }); });
+  return groups
+    .filter(function(g) { return g.slots.length > 0; })
+    .sort(function(a, b) { return a.key - b.key; });
+}
 
 let currentLang = 'en';
 let currentMachine = 0;
@@ -617,10 +646,9 @@ function renderFloors() {
     return;
   }
   let html = '';
-  FLOORS.forEach(function(fl) {
-    const flSlots = slots.filter(function(s) { return s.slot_num >= fl.min && s.slot_num <= fl.max; });
-    if (flSlots.length === 0) return;
-    html += '<div class="floor"><div class="floor-label">' + fl.label[currentLang] + '</div><div class="slots">';
+  floorGroups(slots).forEach(function(fl) {
+    const flSlots = fl.slots;
+    html += '<div class="floor"><div class="floor-label">' + fl.label + '</div><div class="slots">';
     flSlots.forEach(function(s) {
       const stock = s.stock || 0;
       const vol = s.volume || 0;

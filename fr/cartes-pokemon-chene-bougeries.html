@@ -129,8 +129,15 @@ body{margin:0;background:var(--black);color:var(--white);
   <h2>Ce qu'il y a dans la machine de Thônex</h2>
   <p>Le stock est lu directement dans les rails. Vérifiez avant de partir, et vous saurez si le déplacement vaut le coup.</p>
   <div class="qz-live">
-    <div class="qz-msg">L&#x27;inventaire en direct de Thônex arrive prochainement. En attendant, la page Stock Live montre l&#x27;ensemble du réseau.</div>
-    <a class="qz-all" href="/fr/stock.html">Voir les 6 étages de la machine, rail par rail →</a>
+    <div class="qz-live-top">
+      <span class="qz-live-title"><span class="qz-dot" id="qzDot"></span>Thônex</span>
+      <span class="qz-stamp" id="qzStamp">…</span>
+    </div>
+    <div class="qz-msg" id="qzMsg">…</div>
+    <ul class="qz-rows" id="qzRows" hidden></ul>
+    <ul class="qz-rows" id="qzRows2" hidden></ul>
+    <button type="button" class="qz-toggle" id="qzToggle" hidden aria-expanded="false" aria-controls="qzRows2"></button>
+    <a class="qz-all" href="/fr/distributeur-thonex.html">Voir la page de Thônex →</a>
   </div>
 </section>
 
@@ -263,6 +270,83 @@ body{margin:0;background:var(--black);color:var(--white);
     }
   ]
 }
+</script>
+
+<script>
+(function () {
+  'use strict';
+  var W = 7, API = "https://boosterstop-stock.cold-water-7039.workers.dev", VISIBLES = 6;
+  var rows = document.getElementById('qzRows'), rows2 = document.getElementById('qzRows2');
+  var msg = document.getElementById('qzMsg'), stamp = document.getElementById('qzStamp');
+  var dot = document.getElementById('qzDot'), tog = document.getElementById('qzToggle');
+
+  function plus(k) {
+    return k === 1 ? "Voir 1 autre produit" : "Voir les " + k + " autres produits";
+  }
+  tog.addEventListener('click', function () {
+    var o = tog.getAttribute('aria-expanded') === 'true';
+    tog.setAttribute('aria-expanded', o ? 'false' : 'true');
+    rows2.hidden = o;
+    tog.textContent = o ? plus(rows2.children.length) : "Réduire la liste";
+  });
+
+  function idle(t, s) {
+    rows.hidden = rows2.hidden = tog.hidden = true;
+    msg.hidden = false; msg.textContent = t;
+    dot.classList.remove('on'); stamp.textContent = s || '';
+  }
+
+  function ligne(i) {
+    var li = document.createElement('li');
+    var l = document.createElement('span'); l.className = 'qz-nm';
+    l.appendChild(document.createTextNode(i.name));
+    var s = document.createElement('small');
+    s.textContent = i.qty > 1 ? i.qty + " exemplaires" : "dernier exemplaire";
+    l.appendChild(s);
+    var r = document.createElement('span'); r.className = 'qz-pr';
+    r.textContent = i.price ? 'CHF ' + i.price : '';
+    li.appendChild(l); li.appendChild(r);
+    return li;
+  }
+
+  function render(slots) {
+    var by = {};
+    slots.forEach(function (s) {
+      if (!s.configured) return;
+      var q = s.stock || 0; if (q <= 0) return;
+      var k = s.goods_name || '-';
+      if (!by[k]) by[k] = { name: k, qty: 0, price: s.price };
+      by[k].qty += q;
+    });
+    var items = Object.keys(by).map(function (k) { return by[k]; });
+    if (!items.length) { idle("La machine est vide pour le moment. Le prochain réassort est prévu sous quelques jours.", "Stock épuisé"); return; }
+    items.sort(function (a, b) { return b.qty - a.qty; });
+    msg.hidden = true; rows.hidden = false;
+    rows.textContent = ''; rows2.textContent = '';
+    items.slice(0, VISIBLES).forEach(function (i) { rows.appendChild(ligne(i)); });
+    var reste = items.slice(VISIBLES);
+    if (reste.length) {
+      reste.forEach(function (i) { rows2.appendChild(ligne(i)); });
+      rows2.hidden = true; tog.hidden = false;
+      tog.setAttribute('aria-expanded', 'false');
+      tog.textContent = plus(reste.length);
+    } else { rows2.hidden = tog.hidden = true; }
+    dot.classList.add('on');
+    stamp.textContent = "À jour à " + new Date().toLocaleTimeString("fr-CH", { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function load() {
+    fetch(API + '/stock?machine=' + W, { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (!d || !d.ok) throw 0; render(d.slots || []); })
+      .catch(function () { idle("Le stock en direct n'est pas joignable pour le moment. Réessayez dans quelques minutes.", ''); });
+  }
+  load();
+  setInterval(load, 120000);
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') load();
+  });
+})();
 </script>
 
 </body>

@@ -55,6 +55,7 @@
     {%- endunless %}
     <a href="{{ base }}#contact" class="footer-contact">Contact</a>
     <a href="{{ base }}installer-un-distributeur.html" class="footer-b2b">{% if fr %}Accueillir une machine{% else %}Host a machine{% endif %}</a>
+    <a href="{{ base }}rachat-pokemon-one-piece.html" class="footer-b2b"{% if pid == "rachat-pokemon-one-piece" %} style="color:var(--white)"{% endif %}>{% if fr %}Rachat Pokémon &amp; One Piece{% else %}Sell Pokémon &amp; One Piece{% endif %}</a>
     <a href="{{ base }}blog.html" class="footer-press"{% if pid == "blog" %} style="color:var(--white)"{% endif %}>Blog</a>
     <a href="{{ base }}presse.html" class="footer-press"{% if pid == "presse" %} style="color:var(--white)"{% endif %}>{% if fr %}Presse{% else %}Press{% endif %}</a>
     <a href="{% if fr %}{{ site.data.avis.trustpilot_fr }}{% else %}{{ site.data.avis.trustpilot_en }}{% endif %}" class="footer-tp" target="_blank" rel="noopener">★ {% if fr %}Donner un avis{% else %}Leave a review{% endif %}</a>

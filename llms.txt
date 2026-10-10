@@ -23,19 +23,16 @@ Le site est bilingue : les pages en anglais sont à la racine, les pages en fran
 
 Chaque machine est accessible en libre-service pendant les heures d'ouverture de la filiale La Poste qui l'héberge. Fermeture les neuf jours fériés du canton de Genève, dont le Jeûne genevois et le 31 décembre.
 
-Machines dont l'inventaire est consultable en direct sur le site :
+Les huit machines ont leur inventaire consultable en direct sur le site :
 
 - **La Poste de Rive** — Rue du Vieux-Collège 3, 1204 Genève · lun-ven 09:00-18:00, sam 09:00-12:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-rive.html)
 - **La Poste des Charmilles** — Promenade de l'Europe 11, 1203 Genève · lun-ven 09:00-19:00, sam 09:00-17:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-charmilles.html)
 - **La Poste du Petit-Lancy** — Rue des Bossons 88b, 1213 Petit-Lancy · lun-ven 08:00-18:00, sam 09:00-13:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-petit-lancy.html)
-
-Machines installées, inventaire en direct à venir :
-
 - **La Poste de Plainpalais** — Rue Pictet-de-Bock 6, 1205 Genève · lun-ven 08:00-18:00, sam 09:00-16:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-plainpalais.html)
 - **La Poste de Meyrin** — Avenue de Feuillasse 24, 1217 Meyrin · lun-ven 08:30-18:00, sam 08:30-15:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-meyrin.html)
 - **La Poste de Thônex** — Rue de Genève 106, 1226 Thônex · lun-ven 08:30-18:30, sam 09:00-15:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-thonex.html)
 - **La Poste de Carouge** — Boulevard des Promenades 16, 1227 Carouge · lun-ven 08:00-18:00, sam 08:30-12:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-carouge.html)
-- **King Jouet Carouge** — Avenue Cardinal-Mermillod 36, 1227 Carouge · lun-ven 09:00-19:00, sam 09:00-18:00, dimanche fermé · mise en service le 30 septembre 2026
+- **King Jouet Carouge** — Avenue Cardinal-Mermillod 36, 1227 Carouge · lun-ven 09:00-19:00, sam 09:00-18:00, dimanche fermé · [stock en direct](https://boosterstop.com/fr/stock.html?machine=7)
 
 Vue d'ensemble : [tous les distributeurs de Genève](https://boosterstop.com/fr/distributeurs-geneve.html) · [version anglaise](https://boosterstop.com/distributeurs-geneve.html)
 
@@ -60,12 +57,13 @@ Pour chaque quartier encore dépourvu de distributeur, une page indique la machi
 ## Pages principales (français)
 
 - [Accueil](https://boosterstop.com/fr/) : présentation du réseau, carte des emplacements, fonctionnement, garanties d'authenticité, formulaire de contact et section partenariat pour les propriétaires d'espaces.
-- [Tous les distributeurs à Genève](https://boosterstop.com/fr/distributeurs-geneve.html) : les huit emplacements, avec adresse, horaires et état de la connexion au stock en direct.
+- [Tous les distributeurs à Genève](https://boosterstop.com/fr/distributeurs-geneve.html) : les huit emplacements, avec adresse, horaires et lien vers le stock en direct de chaque machine.
 - [Licences TCG à Genève](https://boosterstop.com/fr/licences-geneve.html) : catalogue détaillé des 24 licences disponibles, avec pour chacune une description, ses éditions populaires et son niveau de rareté.
 - [Stock en direct](https://boosterstop.com/fr/stock.html) : inventaire en temps réel de chaque machine, rail par rail, avec prix et quantités restantes.
 - [Expansion du réseau](https://boosterstop.com/fr/expansion.html) : villes et quartiers où BoosterStop est actif ou prévu.
 - [Newsletter](https://boosterstop.com/fr/newsletter.html) : inscription aux nouveautés et promotions.
 - [Accueillir un distributeur](https://boosterstop.com/fr/installer-un-distributeur.html) : page destinée aux gérants de lieux souhaitant héberger une machine — répartition des rôles, types de lieux recherchés, formulaire de qualification.
+- [Rachat Pokémon et One Piece](https://boosterstop.com/fr/rachat-pokemon-one-piece.html) : BoosterStop rachète les produits scellés (displays, coffrets Dresseur d'élite, coffrets, bundles, cartons) et les cartes gradées (PSA, CGC, Beckett, PCA) Pokémon et One Piece, en Suisse et en Europe uniquement. Pas de cartes non gradées, de vrac ni d'autres licences. Estimation gratuite et sans engagement via un formulaire.
 - [Espace presse](https://boosterstop.com/fr/presse.html) : faits, chiffres et contact pour les rédactions.
 - [Confidentialité et cookies](https://boosterstop.com/fr/privacy.html) : politique de protection des données (nLPD suisse et RGPD).
 - [Blog](https://boosterstop.com/fr/blog.html) : guides d'achat, sorties et conseils de collection. Flux RSS : https://boosterstop.com/fr/blog/feed.xml (version anglaise : https://boosterstop.com/blog.html, flux https://boosterstop.com/blog/feed.xml)
@@ -94,7 +92,7 @@ En anglais :
 {% endif -%}
 ## Pages principales (anglais)
 
-Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Distributeurs](https://boosterstop.com/distributeurs-geneve.html), [Licences](https://boosterstop.com/licences-geneve.html), [Stock](https://boosterstop.com/stock.html), [Expansion](https://boosterstop.com/expansion.html), [Newsletter](https://boosterstop.com/newsletter.html), [Presse](https://boosterstop.com/presse.html), [Blog](https://boosterstop.com/blog.html), [Confidentialité](https://boosterstop.com/privacy.html).
+Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Distributeurs](https://boosterstop.com/distributeurs-geneve.html), [Licences](https://boosterstop.com/licences-geneve.html), [Stock](https://boosterstop.com/stock.html), [Expansion](https://boosterstop.com/expansion.html), [Newsletter](https://boosterstop.com/newsletter.html), [Rachat](https://boosterstop.com/rachat-pokemon-one-piece.html), [Presse](https://boosterstop.com/presse.html), [Blog](https://boosterstop.com/blog.html), [Confidentialité](https://boosterstop.com/privacy.html).
 
 ## Questions fréquentes
 
@@ -104,6 +102,7 @@ Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Di
 - **Comment payer ?** En espèces, avec monnaie rendue en pièces et en billets, par TWINT, ou en sans contact par carte et smartphone. Le produit sort immédiatement.
 - **Quels sont les horaires ?** Ceux de la filiale La Poste qui héberge la machine, variables selon l'emplacement. Fermeture les jours fériés genevois.
 - **Un problème avec une machine ?** Téléphone +41 22 886 01 58, en indiquant l'emplacement et l'heure. Remboursement ou remplacement après vérification du journal de la machine.
+- **BoosterStop rachète-t-il des cartes ?** Oui, uniquement des produits scellés et des cartes gradées Pokémon ou One Piece, vendus depuis la Suisse ou un pays européen. La demande se fait sur la page [Rachat](https://boosterstop.com/fr/rachat-pokemon-one-piece.html).
 - **Peut-on accueillir une machine ?** Oui. BoosterStop cherche des partenaires (centres commerciaux, gares, cinémas, lieux à fort passage). L'installation, le réassort et la maintenance sont entièrement pris en charge, sans investissement pour l'hôte.
 
 ## Optionnel
