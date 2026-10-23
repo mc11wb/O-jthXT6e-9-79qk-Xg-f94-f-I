@@ -136,3 +136,21 @@ Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Di
 - [Cartes NFL à Genève](https://boosterstop.com/fr/cartes-nfl-geneve.html)
 - [Cartes NHL à Genève](https://boosterstop.com/fr/cartes-nhl-geneve.html)
 - [Cartes Formule 1 à Genève](https://boosterstop.com/fr/cartes-f1-geneve.html)
+
+## Local partners (new markets)
+- [Local partner wanted](https://boosterstop.com/partenaire-local.html): BoosterStop is looking for a local company in each new country to install and run its TCG vending machines. Target markets: Germany, Austria, Spain, Italy, Portugal, the Netherlands, the Nordics (Sweden, Norway, Denmark, Finland) and the Middle East (Saudi Arabia, Qatar, Kuwait, Bahrain, Oman). Each country in the network is run by a local company.
+- Same page in French (https://boosterstop.com/fr/partenaire-local.html), Dutch (https://boosterstop.com/nl/partenaire-local.html), German (https://boosterstop.com/de/partenaire-local.html), Spanish (https://boosterstop.com/es/partenaire-local.html), Italian (https://boosterstop.com/it/partenaire-local.html), Portuguese (https://boosterstop.com/pt/partenaire-local.html) and Arabic (https://boosterstop.com/ar/partenaire-local.html).
+
+## Languages
+- The site is available in English (https://boosterstop.com/), French (https://boosterstop.com/fr/) and Dutch (https://boosterstop.com/nl/). Geneva-specific pages (neighbourhoods, licences, machine pages, blog) exist in English and French.
+
+## Belgium
+- [Our machines in Belgium](https://boosterstop.com/distributeurs-belgique.html): five BoosterStop TCG vending machines inside Carrefour stores, in Brussels, Flanders and Wallonia. Also in French (https://boosterstop.com/fr/distributeurs-belgique.html) and Dutch (https://boosterstop.com/nl/distributeurs-belgique.html).
+- [Carrefour Tomberg (Woluwe-Saint-Lambert)](https://boosterstop.com/distributeur-bruxelles-woluwe.html): Rue Tomberg 96-114, 1200 Woluwe-Saint-Lambert, Belgium.
+- [Carrefour Zandhoven (Zandhoven)](https://boosterstop.com/distributeur-zandhoven.html): Langestraat 41, 2240 Zandhoven, Belgium.
+- [Carrefour Zemst (Mechelen)](https://boosterstop.com/distributeur-mechelen-zemst.html): Zemstbaan 242, 2800 Mechelen, Belgium.
+- [Carrefour Korbeek-Lo (Korbeek-Lo)](https://boosterstop.com/distributeur-korbeek-lo.html): Vlinderlaan 1C, 3360 Korbeek-Lo, Belgium.
+- [Carrefour La Louvière (La Louvière)](https://boosterstop.com/distributeur-la-louviere.html): Rue Albert Ier 21, 7100 La Louvière, Belgium.
+
+## Stock snapshot
+- Each Geneva machine page and the Live Stock page show the machine's products as text, from a snapshot refreshed every morning. The live view on the page is loaded from the machine in real time.

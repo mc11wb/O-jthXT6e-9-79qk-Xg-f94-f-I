@@ -8,10 +8,7 @@ page: stock
 {% include head.html %}
 <title>Live Stock — BoosterStop | Real-time TCG vending machine inventory</title>
 <meta name="description" content="Check the real-time stock of every BoosterStop TCG vending machine in Geneva. See what's inside each machine, request a restock or suggest a new product.">
-<link rel="canonical" href="https://boosterstop.com/stock.html">
-<link rel="alternate" hreflang="en" href="https://boosterstop.com/stock.html">
-<link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/stock.html">
-<link rel="alternate" hreflang="x-default" href="https://boosterstop.com/stock.html">
+{% include hreflang.html %}
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
@@ -164,6 +161,13 @@ page: stock
   .notify-form button { background: var(--red); color: var(--white); border: none; font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 12px 18px; border-radius: var(--radius); cursor: pointer; transition: opacity 0.2s; white-space: nowrap; }
   .notify-form button:hover { opacity: 0.9; }
   .notify-ok { display: none; color: var(--green); font-size: 13px; margin-top: 12px; }
+  .be-stock-links { list-style: none; margin: 18px auto 0; padding: 0; max-width: 520px; text-align: left; }
+  .be-stock-links li { padding: 9px 0; border-top: 1px solid var(--gray-mid); font-size: 14px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 14px; }
+  .be-stock-links a { color: var(--white); text-underline-offset: 3px; }
+  .be-stock-links span { color: var(--text-muted); }
+  .csc-partner { margin-top: 22px; font-size: 13.5px; color: var(--text-muted); }
+  .csc-partner a { color: var(--white); text-underline-offset: 3px; }
+  .csc-partner a:hover { color: var(--yellow); }
 
   /* MODALS */
   .modal-overlay { position: fixed; inset: 0; z-index: 500; background: rgba(10,8,24,0.8); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px; }
@@ -233,7 +237,6 @@ page: stock
     <span class="last-update">Last update: </span><b id="lastUpdate">—</b>
     <button class="refresh-btn" onclick="loadAll()">↻ Refresh</button>
   </div>
-  {% include reviews.html compact=true no_tp=true %}
 </div>
 
 <!-- COUNTRY TABS -->
@@ -313,6 +316,7 @@ page: stock
       <div class="state-msg"><span class="spin"></span><br><span>Connecting to the machine…</span></div>
     </div>
   </div>
+{% include stock-liste.html %}
 </div>
 
 <!-- BE PANEL -->
@@ -327,26 +331,16 @@ page: stock
   <div class="machine-select-zone">
     <div class="zone-label">Our Belgian machines</div>
     <div class="machine-tabs">
-      <button class="machine-tab soon active" onclick="selectBeMachine(this)">
+      {%- assign hb_ms = site.data.machines | where: "pays", "be" -%}
+{%- assign hb_t = site.data.belgique[page.lang] -%}
+{%- if page.lang == "nl" -%}{%- assign hb_sx = "_nl" -%}{%- elsif page.lang == "en" -%}{%- assign hb_sx = "_en" -%}{%- else -%}{%- assign hb_sx = "" -%}{%- endif -%}
+{%- capture hb_kc -%}court{{ hb_sx }}{%- endcapture -%}{%- capture hb_ka -%}adresse{{ hb_sx }}{%- endcapture -%}
+      {%- for m in hb_ms %}
+      <button class="machine-tab soon{% if forloop.first %} active{% endif %}" onclick="selectBeMachine(this)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">Machine 1</span><span class="mt-sub">Belgium</span><span class="mt-soon">Location soon</span></span>
+        <span class="mt-label"><span class="mt-name">{{ m.nom }}</span><span class="mt-sub">{{ m[hb_kc] | default: m.court }} · {{ m.cp }}</span><span class="mt-soon">{{ hb_t.stock_bientot }}</span></span>
       </button>
-      <button class="machine-tab soon" onclick="selectBeMachine(this)">
-        <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">Machine 2</span><span class="mt-sub">Belgium</span><span class="mt-soon">Location soon</span></span>
-      </button>
-      <button class="machine-tab soon" onclick="selectBeMachine(this)">
-        <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">Machine 3</span><span class="mt-sub">Belgium</span><span class="mt-soon">Location soon</span></span>
-      </button>
-      <button class="machine-tab soon" onclick="selectBeMachine(this)">
-        <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">Machine 4</span><span class="mt-sub">Belgium</span><span class="mt-soon">Location soon</span></span>
-      </button>
-      <button class="machine-tab soon" onclick="selectBeMachine(this)">
-        <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">Machine 5</span><span class="mt-sub">Belgium</span><span class="mt-soon">Location soon</span></span>
-      </button>
+      {%- endfor %}
     </div>
   </div>
 
@@ -354,7 +348,12 @@ page: stock
     <div class="machine-soon-msg">
       <div class="msm-icon">🇧🇪</div>
       <div class="msm-title">Live stock coming soon</div>
-      <p class="msm-sub">Our 5 Belgian machines are live and stocked. Real-time inventory and the exact addresses will appear here as soon as they are connected.</p>
+      <p class="msm-sub">{{ hb_t.stock_txt }}</p>
+      <ul class="be-stock-links">
+        {%- for m in hb_ms %}
+        <li><a href="{% include lien.html f=m.fichier %}">{{ m.nom }}</a> <span>{{ m[hb_ka] | default: m.adresse }}</span></li>
+        {%- endfor %}
+      </ul>
     </div>
   </div>
 </div>
@@ -370,6 +369,7 @@ page: stock
       <button onclick="notifyMe('fr')">Notify me</button>
     </div>
     <div class="notify-ok" id="notifyOkFR">✓ Noted, you'll be the first to know!</div>
+    <p class="csc-partner">Want to launch BoosterStop in your country? <a href="/partenaire-local.html">Become a local partner</a></p>
   </div>
 </div>
 
@@ -384,6 +384,7 @@ page: stock
       <button onclick="notifyMe('uae')">Notify me</button>
     </div>
     <div class="notify-ok" id="notifyOkUAE">✓ Noted, you'll be the first to know!</div>
+    <p class="csc-partner">Want to launch BoosterStop in your country? <a href="/partenaire-local.html">Become a local partner</a></p>
   </div>
 </div>
 

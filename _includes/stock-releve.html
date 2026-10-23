@@ -1,0 +1,38 @@
+{%- comment -%}
+  Bloc « Disponible en ce moment » d'une page machine (Genève et Belgique).
+  Affiche le dernier relevé du stock (_data/stock.json, mis à jour chaque matin
+  par .github/workflows/stock-releve.yml) : Google lit ainsi les produits de la
+  machine. Sur les pages genevoises, le script de la page remplace ensuite la
+  liste par le stock en direct ; s'il n'arrive pas à joindre la machine, le
+  relevé reste affiché.
+  Paramètres : chargement / connexion = textes quand il n'y a pas encore de relevé.
+  La machine est trouvée par le champ page_id de _data/machines.yml (ou id=…).
+{%- endcomment -%}
+{%- assign rl_m = site.data.machines | where: "page_id", page.page | first -%}
+{%- if include.id -%}{%- assign rl_m = site.data.machines | where: "id", include.id | first -%}{%- endif -%}
+{%- assign rl_t = site.data.i18n[ui] | default: site.data.i18n.en -%}
+{%- assign rl_s = nil -%}
+{%- if rl_m and site.data.stock.machines -%}{%- assign rl_s = site.data.stock.machines[rl_m.id] -%}{%- endif -%}
+{%- assign rl_items = "" | split: "" -%}
+{%- if rl_s and rl_s.ok and rl_s.produits -%}{%- assign rl_items = rl_s.produits -%}{%- endif -%}
+{%- if rl_m.pays == "be" -%}{%- assign rl_cur = "€" -%}{%- else -%}{%- assign rl_cur = "CHF" -%}{%- endif -%}
+{%- assign rl_stamp = include.chargement -%}
+{%- if rl_items.size > 0 -%}
+  {%- assign rl_d = rl_s.maj | date: "%d/%m" -%}{%- assign rl_h = rl_s.maj | date: "%H:%M" -%}
+  {%- assign rl_stamp = rl_t.rl_stamp | replace: "%d", rl_d | replace: "%h", rl_h -%}
+{%- endif -%}
+{%- assign rl_rest = rl_items.size | minus: 6 %}
+    <span class="bsm-stamp" id="bsmStamp">{{ rl_stamp }}</span>
+  </div>
+  <div class="bsm-msg" id="bsmMsg"{% if rl_items.size > 0 %} hidden{% endif %}>{{ include.connexion }}</div>
+  <ul class="bsm-rows" id="bsmRows"{% if rl_items.size == 0 %} hidden{% endif %}>
+    {%- for p in rl_items limit: 6 %}
+    <li><span class="bsm-nm">{{ p.nom | escape }}<small>{% if p.qte > 1 %}{{ p.qte }} {{ rl_t.rl_units }}{% else %}{{ rl_t.rl_last }}{% endif %}</small></span><span class="bsm-pr">{% if p.prix %}{{ rl_cur }} {{ p.prix }}{% endif %}</span></li>
+    {%- endfor %}
+  </ul>
+  <ul class="bsm-rows" id="bsmRows2" hidden>
+    {%- for p in rl_items offset: 6 %}
+    <li><span class="bsm-nm">{{ p.nom | escape }}<small>{% if p.qte > 1 %}{{ p.qte }} {{ rl_t.rl_units }}{% else %}{{ rl_t.rl_last }}{% endif %}</small></span><span class="bsm-pr">{% if p.prix %}{{ rl_cur }} {{ p.prix }}{% endif %}</span></li>
+    {%- endfor %}
+  </ul>
+  <button type="button" class="bsm-toggle" id="bsmToggle"{% if rl_rest < 1 %} hidden{% endif %} aria-expanded="false" aria-controls="bsmRows2">{% if rl_rest == 1 %}{{ rl_t.rl_more1 }}{% elsif rl_rest > 1 %}{{ rl_t.rl_more | replace: "%n", rl_rest }}{% endif %}</button>

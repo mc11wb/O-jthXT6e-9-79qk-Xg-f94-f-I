@@ -1,0 +1,137 @@
+# Textes communs (menu, pied de page, barre mobile, bannière cookies)
+# pour les langues « complet: true » de _data/langues.yml.
+# Le HTML est autorisé (&amp; pour « & »).
+en:
+  langue: Language
+  nav_emplacements: Locations
+  nav_licences: "🃏 Licenses"
+  nav_blog: "📰 Blog"
+  nav_expansion: "🌍 Expansion"
+  nav_newsletter: "🔔 Newsletter"
+  nav_stock: "📦 Live Stock"
+  fl_aria: Our machines
+  fl_titre: Our machines in Geneva
+  fl_tous: All locations →
+  f_stock: "📦 Live Stock"
+  f_contact: Contact
+  f_accueillir: Host a machine
+  f_partenaire: Local partner
+  f_rachat: "Sell Pokémon &amp; One Piece"
+  f_blog: Blog
+  f_presse: Press
+  f_avis: "★ Leave a review"
+  f_privacy: "Privacy &amp; Cookies"
+  m_machines: Machines
+  m_stock: Stock
+  m_tcg: TCG
+  m_newsletter: Newsletter
+  m_partenaire: Partner
+  m_contact: Contact
+  cookie_txt: "We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential."
+  cookie_plus: Learn more
+  cookie_ess: Essential only
+  cookie_ok: Accept all
+  trustpilot: trustpilot_en
+  nav_emplacements_f: distributeurs-geneve.html
+  fl_titre_be: Our machines in Belgium
+  fl_tous_be: All Belgian machines →
+  rl_stamp: "Snapshot of %d at %h"
+  rl_units: units
+  rl_last: last one
+  rl_more1: Show 1 more product
+  rl_more: "Show %n more products"
+  rl_list_h: Every machine's stock
+  rl_list_sub: "Snapshot of %d at %h. The view above is live; this list is refreshed every morning."
+  rl_count: products
+  rl_empty: Empty at the last check
+  rl_page: See this machine's page
+
+fr:
+  langue: Langue
+  nav_emplacements: Emplacements
+  nav_licences: "🃏 Licences"
+  nav_blog: "📰 Blog"
+  nav_expansion: "🌍 Expansion"
+  nav_newsletter: "🔔 Newsletter"
+  nav_stock: "📦 Stock Live"
+  fl_aria: Nos distributeurs
+  fl_titre: Nos distributeurs à Genève
+  fl_tous: Tous les emplacements →
+  f_stock: "📦 Stock Live"
+  f_contact: Contact
+  f_accueillir: Accueillir une machine
+  f_partenaire: Partenaire local
+  f_rachat: "Rachat Pokémon &amp; One Piece"
+  f_blog: Blog
+  f_presse: Presse
+  f_avis: "★ Donner un avis"
+  f_privacy: Confidentialité
+  m_machines: Machines
+  m_stock: Stock
+  m_tcg: TCG
+  m_newsletter: Newsletter
+  m_partenaire: Partenaire
+  m_contact: Contact
+  cookie_txt: "Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel."
+  cookie_plus: En savoir plus
+  cookie_ess: Essentiels
+  cookie_ok: Tout accepter
+  trustpilot: trustpilot_fr
+  nav_emplacements_f: distributeurs-geneve.html
+  fl_titre_be: Nos distributeurs en Belgique
+  fl_tous_be: Tous en Belgique →
+  rl_stamp: "Relevé du %d à %h"
+  rl_units: exemplaires
+  rl_last: dernier exemplaire
+  rl_more1: Voir 1 autre produit
+  rl_more: "Voir les %n autres produits"
+  rl_list_h: Le stock de chaque machine
+  rl_list_sub: "Relevé du %d à %h. La vue ci-dessus est en direct ; cette liste est mise à jour chaque matin."
+  rl_count: produits
+  rl_empty: Vide au dernier relevé
+  rl_page: Voir la page de cette machine
+
+nl:
+  langue: Taal
+  nav_emplacements: Locaties
+  nav_licences: "🃏 Licenties"
+  nav_blog: "📰 Blog"
+  nav_expansion: "🌍 Expansie"
+  nav_newsletter: "🔔 Nieuwsbrief"
+  nav_stock: "📦 Live voorraad"
+  fl_aria: Onze automaten
+  fl_titre: Onze automaten in Genève
+  fl_tous: Alle locaties →
+  f_stock: "📦 Live voorraad"
+  f_contact: Contact
+  f_accueillir: Een automaat plaatsen
+  f_partenaire: Lokale partner
+  f_rachat: "Pokémon &amp; One Piece verkopen"
+  f_blog: Blog
+  f_presse: Pers
+  f_avis: "★ Schrijf een review"
+  f_privacy: "Privacy &amp; cookies"
+  m_machines: Automaten
+  m_stock: Voorraad
+  m_tcg: TCG
+  m_newsletter: Nieuwsbrief
+  m_partenaire: Partner
+  m_contact: Contact
+  cookie_txt: "We gebruiken cookies voor kaarten en formulieren en om je ervaring te verbeteren. Je kunt alles accepteren of alleen het noodzakelijke bewaren."
+  cookie_plus: Meer info
+  cookie_ess: Alleen noodzakelijk
+  cookie_ok: Alles accepteren
+  trustpilot: trustpilot_en
+  nav_emplacements_f: distributeurs-belgique.html
+  fl_titre_be: Onze automaten in België
+  fl_tous_be: Alle automaten in België →
+  rl_stamp: "Stand van %d om %h"
+  rl_units: stuks
+  rl_last: laatste exemplaar
+  rl_more1: Toon nog 1 product
+  rl_more: "Toon nog %n producten"
+  rl_list_h: De voorraad van elke automaat
+  rl_list_sub: "Stand van %d om %h. De weergave hierboven is live; deze lijst wordt elke ochtend bijgewerkt."
+  rl_count: producten
+  rl_empty: Leeg bij de laatste telling
+  rl_page: Bekijk de pagina van deze automaat

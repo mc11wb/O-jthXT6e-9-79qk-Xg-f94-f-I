@@ -8,10 +8,7 @@ page: expansion
 {% include head.html %}
 <title>TCG Vending Machines: Geneva, Belgium, Lausanne, Dubai… | BoosterStop</title>
 <meta name="description" content="Pokémon, One Piece and Magic vending machines. Live in Geneva and Belgium, expanding across Suisse romande, border France, Dubai &amp; Abu Dhabi. Request your city.">
-<link rel="canonical" href="https://boosterstop.com/expansion.html">
-<link rel="alternate" hreflang="en" href="https://boosterstop.com/expansion.html">
-<link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/expansion.html">
-<link rel="alternate" hreflang="x-default" href="https://boosterstop.com/expansion.html">
+{% include hreflang.html %}
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
@@ -102,6 +99,16 @@ h1 .accent{color:var(--red);}
 .also a{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--red);border:1px solid rgba(232,24,60,0.35);padding:10px 18px;border-radius:2px;transition:background 0.2s;}
 .also a:hover{background:rgba(232,24,60,0.08);}
 
+/* PARTENAIRES LOCAUX */
+a.city{text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+a.city .cflag{font-size:15px;line-height:1;}
+.region-cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;margin-top:4px;border-radius:var(--radius);background:var(--yellow);color:var(--black);font-weight:500;font-size:14px;text-decoration:none;transition:background-color 0.2s;}
+.region-cta:hover{background:#ffe14d;}
+.hero-sub a,.faq-item p a{color:var(--white);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;}
+.hero-sub a:hover,.faq-item p a:hover{color:var(--yellow);}
+a.city:focus-visible,.region-cta:focus-visible,.hero-sub a:focus-visible,.faq-item p a:focus-visible{outline:2px solid var(--yellow);outline-offset:3px;}
+@media(max-width:768px){.region-cta{width:100%;}}
+
 @media(max-width:768px){
   .hero{padding:120px 22px 30px;}
   .wrap,.ask,.faq,.also{padding-left:22px;padding-right:22px;}
@@ -118,7 +125,7 @@ h1 .accent{color:var(--red);}
 <div class="hero">
   <div class="hero-eyebrow">Network expansion</div>
   <h1><span>TCG machines, </span><span class="accent">soon near you.</span></h1>
-  <p class="hero-sub">Live in Geneva and now in Belgium. Launching in the UAE. Under review across Suisse romande and neighbouring France. The next cities are chosen by one thing: your demand.</p>
+  <p class="hero-sub">Live in Geneva and now in Belgium. Launching in the UAE. Under review across Suisse romande and neighbouring France. The next cities are chosen by one thing: your demand. Elsewhere, we're looking for <a href="#partenaires">local partners</a>.</p>
   <div class="hero-stats">
     <div class="hstat"><b>4</b><span>countries</span></div>
     <div class="hstat"><b>8</b><span>machines in Geneva</span></div>
@@ -188,10 +195,22 @@ h1 .accent{color:var(--red);}
 
 <section class="region" id="belgique">
   <div class="region-head">
-    <h2><span class="rflag">🇧🇪</span> <span>Belgium — Brussels &amp; Wallonia</span></h2>
+    <h2><span class="rflag">🇧🇪</span> <span>Belgium — Brussels, Flanders &amp; Wallonia</span></h2>
     <span class="status st-live">Live — 5 machines</span>
   </div>
-  <p class="region-intro">BoosterStop is now live in Belgium: 5 machines are up and running, with sealed Pokémon, One Piece, Magic boosters and collector boxes in self-service, from official distributors only. The exact addresses will be published very soon on our locations map and the Live Stock page. Next step: more of Brussels and French-speaking Wallonia. Looking for a Pokémon or One Piece card machine in your commune? Request it below.</p>
+  <p class="region-intro">BoosterStop is now live in Belgium: 5 machines are up and running, with sealed Pokémon, One Piece, Magic boosters and collector boxes in self-service, from official distributors only. They are inside five Carrefour stores: Woluwe-Saint-Lambert, Zandhoven, Mechelen, Korbeek-Lo and La Louvière. Next step: more of Brussels and French-speaking Wallonia. Looking for a Pokémon or One Piece card machine in your commune? Request it below.</p>
+    <div class="group">
+      <div class="group-label">Live today — Carrefour stores</div>
+      <div class="cities">
+      {%- assign hb_ms = site.data.machines | where: "pays", "be" -%}
+{%- assign hb_t = site.data.belgique[page.lang] -%}
+{%- if page.lang == "nl" -%}{%- assign hb_sx = "_nl" -%}{%- elsif page.lang == "en" -%}{%- assign hb_sx = "_en" -%}{%- else -%}{%- assign hb_sx = "" -%}{%- endif -%}
+{%- capture hb_kc -%}court{{ hb_sx }}{%- endcapture -%}{%- capture hb_ka -%}adresse{{ hb_sx }}{%- endcapture -%}
+      {%- for m in hb_ms %}
+      <a class="city" href="{% include lien.html f=m.fichier %}">{{ m[hb_kc] | default: m.court }}</a>
+      {%- endfor %}
+      </div>
+    </div>
     <div class="group">
       <div class="group-label">Brussels — communes</div>
       <div class="cities">
@@ -330,6 +349,42 @@ h1 .accent{color:var(--red);}
       </div>
     </div>
 </section>
+
+<section class="region" id="partenaires">
+  <div class="region-head">
+    <h2><span class="rflag">🤝</span> <span>Local partners wanted</span></h2>
+    <span class="status st-study">Partner wanted</span>
+  </div>
+  <p class="region-intro">We want to open in these countries, but first we need a local company to install and run the machines. Is that your line of work, or do you know the right person? Pick the country and propose a partnership.</p>
+    <div class="group">
+      <div class="group-label">Europe</div>
+      <div class="cities">
+      {%- assign xp_pays = site.data.partenaire.pays | where: "region", "europe" %}
+      {%- for c in xp_pays %}
+      <a class="city" href="/partenaire-local.html?pays={{ c.id }}#formulaire"><span class="cflag" aria-hidden="true">{{ c.drapeau }}</span>{{ c.nom.en }}</a>
+      {%- endfor %}
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">Nordics</div>
+      <div class="cities">
+      {%- assign xp_pays = site.data.partenaire.pays | where: "region", "nord" %}
+      {%- for c in xp_pays %}
+      <a class="city" href="/partenaire-local.html?pays={{ c.id }}#formulaire"><span class="cflag" aria-hidden="true">{{ c.drapeau }}</span>{{ c.nom.en }}</a>
+      {%- endfor %}
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">Middle East</div>
+      <div class="cities">
+      {%- assign xp_pays = site.data.partenaire.pays | where: "region", "golfe" %}
+      {%- for c in xp_pays %}
+      <a class="city" href="/partenaire-local.html?pays={{ c.id }}#formulaire"><span class="cflag" aria-hidden="true">{{ c.drapeau }}</span>{{ c.nom.en }}</a>
+      {%- endfor %}
+      </div>
+    </div>
+    <a class="region-cta" href="/partenaire-local.html">Become a local partner</a>
+</section>
 </div>
 
 <!-- DEMANDE DE VILLE -->
@@ -373,11 +428,15 @@ h1 .accent{color:var(--red);}
 </details>
 <details class="faq-item">
   <summary>Is there a BoosterStop machine in Belgium?</summary>
-  <p>Yes. The Belgian network is live with 5 machines, and their exact addresses will be published very soon on the locations map and the Live Stock page. The network keeps growing across Brussels (Ixelles, Schaerbeek, Uccle…) and Wallonia (Liège, Namur, Charleroi, Mons…). Subscribe to the newsletter to be the first to know.</p>
+  <p>Yes. The Belgian network is live with 5 machines, inside Carrefour stores in Woluwe-Saint-Lambert, Zandhoven, Mechelen, Korbeek-Lo and La Louvière. The network keeps growing across Brussels (Ixelles, Schaerbeek, Uccle…) and Wallonia (Liège, Namur, Charleroi, Mons…). Subscribe to the newsletter to be the first to know.</p>
 </details>
 <details class="faq-item">
   <summary>Will BoosterStop machines be available in Dubai and Abu Dhabi?</summary>
   <p>Yes, the UAE launch is in preparation, with Dubai (Marina, Downtown, Business Bay…), Abu Dhabi (Yas Island, Al Reem…) and Sharjah on the roadmap. Same principle as Geneva: 100% sealed products from official distributors, available in self-service.</p>
+</details>
+<details class="faq-item">
+  <summary>Are you looking for partners in other countries?</summary>
+  <p>Yes. To open in Germany, Austria, Spain, Italy, Portugal, the Netherlands, the Nordics or the Middle East, we first need a local company to install and run the machines. <a href="/partenaire-local.html">Propose a partnership</a>.</p>
 </details>
 </div>
 
@@ -387,6 +446,8 @@ h1 .accent{color:var(--red);}
   <a href="/stock.html">📦 Live stock</a>
   <a href="/licences-geneve.html">🃏 All licenses</a>
   <a href="/newsletter.html">🔔 Newsletter -10%</a>
+  <a href="/partenaire-local.html">🤝 Local partner</a>
+  <a href="/installer-un-distributeur.html">🏪 Host a machine</a>
 </div>
 
 {% include footer.html %}
@@ -975,7 +1036,7 @@ async function submitCity() {
           "name": "Is there a BoosterStop machine in Belgium?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The Belgian network is live with 5 machines, and their exact addresses will be published very soon on the locations map and the Live Stock page. The network keeps growing across Brussels (Ixelles, Schaerbeek, Uccle…) and Wallonia (Liège, Namur, Charleroi, Mons…). Subscribe to the newsletter to be the first to know."
+            "text": "Yes. The Belgian network is live with 5 machines, inside Carrefour stores in Woluwe-Saint-Lambert, Zandhoven, Mechelen, Korbeek-Lo and La Louvière. The network keeps growing across Brussels (Ixelles, Schaerbeek, Uccle…) and Wallonia (Liège, Namur, Charleroi, Mons…). Subscribe to the newsletter to be the first to know."
           }
         },
         {

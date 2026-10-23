@@ -8,10 +8,7 @@ page: expansion
 {% include head.html %}
 <title>Distributeurs TCG : Genève, Belgique, Lausanne, Dubaï… | BoosterStop</title>
 <meta name="description" content="Distributeurs automatiques de cartes Pokémon, One Piece, Magic & plus. Actifs à Genève et en Belgique, en route vers Lausanne, Annemasse, Annecy, Dubaï. Demandez votre ville.">
-<link rel="canonical" href="https://boosterstop.com/fr/expansion.html">
-<link rel="alternate" hreflang="en" href="https://boosterstop.com/expansion.html">
-<link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/expansion.html">
-<link rel="alternate" hreflang="x-default" href="https://boosterstop.com/expansion.html">
+{% include hreflang.html %}
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
@@ -102,6 +99,16 @@ h1 .accent{color:var(--red);}
 .also a{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--red);border:1px solid rgba(232,24,60,0.35);padding:10px 18px;border-radius:2px;transition:background 0.2s;}
 .also a:hover{background:rgba(232,24,60,0.08);}
 
+/* PARTENAIRES LOCAUX */
+a.city{text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+a.city .cflag{font-size:15px;line-height:1;}
+.region-cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;margin-top:4px;border-radius:var(--radius);background:var(--yellow);color:var(--black);font-weight:500;font-size:14px;text-decoration:none;transition:background-color 0.2s;}
+.region-cta:hover{background:#ffe14d;}
+.hero-sub a,.faq-item p a{color:var(--white);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;}
+.hero-sub a:hover,.faq-item p a:hover{color:var(--yellow);}
+a.city:focus-visible,.region-cta:focus-visible,.hero-sub a:focus-visible,.faq-item p a:focus-visible{outline:2px solid var(--yellow);outline-offset:3px;}
+@media(max-width:768px){.region-cta{width:100%;}}
+
 @media(max-width:768px){
   .hero{padding:120px 22px 30px;}
   .wrap,.ask,.faq,.also{padding-left:22px;padding-right:22px;}
@@ -118,7 +125,7 @@ h1 .accent{color:var(--red);}
 <div class="hero">
   <div class="hero-eyebrow">Expansion du réseau</div>
   <h1><span>Des machines TCG, </span><span class="accent">bientôt près de chez vous.</span></h1>
-  <p class="hero-sub">Actif à Genève et désormais en Belgique. En lancement aux Émirats. À l'étude dans toute la Suisse romande et la France voisine. Les prochaines villes sont choisies par une seule chose : votre demande.</p>
+  <p class="hero-sub">Actif à Genève et désormais en Belgique. En lancement aux Émirats. À l'étude dans toute la Suisse romande et la France voisine. Les prochaines villes sont choisies par une seule chose : votre demande. Ailleurs, nous cherchons des <a href="#partenaires">partenaires locaux</a>.</p>
   <div class="hero-stats">
     <div class="hstat"><b>4</b><span>pays</span></div>
     <div class="hstat"><b>8</b><span>machines à Genève</span></div>
@@ -188,10 +195,22 @@ h1 .accent{color:var(--red);}
 
 <section class="region" id="belgique">
   <div class="region-head">
-    <h2><span class="rflag">🇧🇪</span> <span>Belgique — Bruxelles &amp; Wallonie</span></h2>
+    <h2><span class="rflag">🇧🇪</span> <span>Belgique — Bruxelles, Flandre &amp; Wallonie</span></h2>
     <span class="status st-live">Actif — 5 machines</span>
   </div>
-  <p class="region-intro">BoosterStop est désormais actif en Belgique : 5 machines sont en service, avec boosters Pokémon, One Piece, Magic et boîtes collector scellés en libre-service, issus exclusivement de distributeurs officiels. Les adresses exactes seront publiées très prochainement sur notre carte des emplacements et la page Stock Live. Prochaine étape : davantage de Bruxelles et de Wallonie francophone. Vous cherchez un distributeur de cartes Pokémon ou One Piece dans votre commune ? Demandez-le ci-dessous.</p>
+  <p class="region-intro">BoosterStop est désormais actif en Belgique : 5 machines sont en service, avec boosters Pokémon, One Piece, Magic et boîtes collector scellés en libre-service, issus exclusivement de distributeurs officiels. Elles sont installées dans cinq magasins Carrefour : Woluwe-Saint-Lambert, Zandhoven, Malines, Korbeek-Lo et La Louvière. Prochaine étape : davantage de Bruxelles et de Wallonie francophone. Vous cherchez un distributeur de cartes Pokémon ou One Piece dans votre commune ? Demandez-le ci-dessous.</p>
+    <div class="group">
+      <div class="group-label">En service aujourd'hui — Carrefour</div>
+      <div class="cities">
+      {%- assign hb_ms = site.data.machines | where: "pays", "be" -%}
+{%- assign hb_t = site.data.belgique[page.lang] -%}
+{%- if page.lang == "nl" -%}{%- assign hb_sx = "_nl" -%}{%- elsif page.lang == "en" -%}{%- assign hb_sx = "_en" -%}{%- else -%}{%- assign hb_sx = "" -%}{%- endif -%}
+{%- capture hb_kc -%}court{{ hb_sx }}{%- endcapture -%}{%- capture hb_ka -%}adresse{{ hb_sx }}{%- endcapture -%}
+      {%- for m in hb_ms %}
+      <a class="city" href="{% include lien.html f=m.fichier %}">{{ m[hb_kc] | default: m.court }}</a>
+      {%- endfor %}
+      </div>
+    </div>
     <div class="group">
       <div class="group-label">Bruxelles — communes</div>
       <div class="cities">
@@ -330,6 +349,42 @@ h1 .accent{color:var(--red);}
       </div>
     </div>
 </section>
+
+<section class="region" id="partenaires">
+  <div class="region-head">
+    <h2><span class="rflag">🤝</span> <span>Partenaires locaux recherchés</span></h2>
+    <span class="status st-study">Partenaire recherché</span>
+  </div>
+  <p class="region-intro">Nous voulons ouvrir dans ces pays, mais il nous faut d'abord une entreprise sur place pour installer et exploiter les machines. C'est votre métier, ou vous connaissez la bonne personne ? Choisissez le pays et proposez un partenariat.</p>
+    <div class="group">
+      <div class="group-label">Europe</div>
+      <div class="cities">
+      {%- assign xp_pays = site.data.partenaire.pays | where: "region", "europe" %}
+      {%- for c in xp_pays %}
+      <a class="city" href="/fr/partenaire-local.html?pays={{ c.id }}#formulaire"><span class="cflag" aria-hidden="true">{{ c.drapeau }}</span>{{ c.nom.fr }}</a>
+      {%- endfor %}
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">Europe du Nord</div>
+      <div class="cities">
+      {%- assign xp_pays = site.data.partenaire.pays | where: "region", "nord" %}
+      {%- for c in xp_pays %}
+      <a class="city" href="/fr/partenaire-local.html?pays={{ c.id }}#formulaire"><span class="cflag" aria-hidden="true">{{ c.drapeau }}</span>{{ c.nom.fr }}</a>
+      {%- endfor %}
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">Moyen-Orient</div>
+      <div class="cities">
+      {%- assign xp_pays = site.data.partenaire.pays | where: "region", "golfe" %}
+      {%- for c in xp_pays %}
+      <a class="city" href="/fr/partenaire-local.html?pays={{ c.id }}#formulaire"><span class="cflag" aria-hidden="true">{{ c.drapeau }}</span>{{ c.nom.fr }}</a>
+      {%- endfor %}
+      </div>
+    </div>
+    <a class="region-cta" href="/fr/partenaire-local.html">Devenir partenaire local</a>
+</section>
 </div>
 
 <!-- DEMANDE DE VILLE -->
@@ -373,11 +428,15 @@ h1 .accent{color:var(--red);}
 </details>
 <details class="faq-item">
   <summary>Y a-t-il un distributeur BoosterStop en Belgique ?</summary>
-  <p>Oui. Le réseau belge est actif avec 5 machines, dont les adresses exactes seront publiées très prochainement sur la carte des emplacements et la page Stock Live. Le réseau continue de s'étendre à Bruxelles (Ixelles, Schaerbeek, Uccle…) et en Wallonie (Liège, Namur, Charleroi, Mons…). Abonnez-vous à la newsletter pour être informé en premier.</p>
+  <p>Oui. Le réseau belge est actif avec 5 machines, installées dans des magasins Carrefour à Woluwe-Saint-Lambert, Zandhoven, Malines, Korbeek-Lo et La Louvière. Le réseau continue de s'étendre à Bruxelles (Ixelles, Schaerbeek, Uccle…) et en Wallonie (Liège, Namur, Charleroi, Mons…). Abonnez-vous à la newsletter pour être informé en premier.</p>
 </details>
 <details class="faq-item">
   <summary>Les machines BoosterStop seront-elles disponibles à Dubaï et Abu Dhabi ?</summary>
   <p>Oui, le lancement aux Émirats est en préparation, avec Dubaï (Marina, Downtown, Business Bay…), Abu Dhabi (Yas Island, Al Reem…) et Sharjah dans la feuille de route. Même principe qu'à Genève : produits 100% scellés issus de distributeurs officiels, disponibles en libre-service.</p>
+</details>
+<details class="faq-item">
+  <summary>Cherchez-vous des partenaires dans d'autres pays ?</summary>
+  <p>Oui. Pour ouvrir en Allemagne, en Autriche, en Espagne, en Italie, au Portugal, aux Pays-Bas, en Europe du Nord ou au Moyen-Orient, il nous faut d'abord une entreprise locale qui installe et exploite les machines. <a href="/fr/partenaire-local.html">Proposez un partenariat</a>.</p>
 </details>
 </div>
 
@@ -387,6 +446,8 @@ h1 .accent{color:var(--red);}
   <a href="/fr/stock.html">📦 Stock en direct</a>
   <a href="/fr/licences-geneve.html">🃏 Toutes les licences</a>
   <a href="/fr/newsletter.html">🔔 Newsletter -10%</a>
+  <a href="/fr/partenaire-local.html">🤝 Partenaire local</a>
+  <a href="/fr/installer-un-distributeur.html">🏪 Accueillir une machine</a>
 </div>
 
 {% include footer.html %}
@@ -975,7 +1036,7 @@ async function submitCity() {
           "name": "Y a-t-il un distributeur BoosterStop en Belgique ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Oui. Le réseau belge est actif avec 5 machines, dont les adresses exactes seront publiées très prochainement sur la carte des emplacements et la page Stock Live. Le réseau continue de s'étendre à Bruxelles (Ixelles, Schaerbeek, Uccle…) et en Wallonie (Liège, Namur, Charleroi, Mons…). Abonnez-vous à la newsletter pour être informé en premier."
+            "text": "Oui. Le réseau belge est actif avec 5 machines, installées dans des magasins Carrefour à Woluwe-Saint-Lambert, Zandhoven, Malines, Korbeek-Lo et La Louvière. Le réseau continue de s'étendre à Bruxelles (Ixelles, Schaerbeek, Uccle…) et en Wallonie (Liège, Namur, Charleroi, Mons…). Abonnez-vous à la newsletter pour être informé en premier."
           }
         },
         {

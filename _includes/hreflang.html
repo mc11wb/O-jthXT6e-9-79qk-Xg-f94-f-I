@@ -1,0 +1,24 @@
+{%- comment -%}
+  CANONICAL + HREFLANG — à placer dans le <head> de chaque page.
+  Liste automatiquement toutes les langues dans lesquelles la page existe
+  (même nom de fichier dans le dossier de la langue, cf. _data/langues.yml).
+  Une nouvelle traduction apparaît donc sur toutes les versions de la page
+  sans rien retoucher. x-default = version anglaise.
+{%- endcomment -%}
+{%- capture hl_urls -%}|{{ site.pages | map: "url" | join: "|" }}|{%- endcapture -%}
+{%- assign hl_lang = site.data.langues | where: "code", page.lang | first -%}
+{%- capture hl_prefix -%}/{{ hl_lang.dossier | default: "" }}{%- endcapture -%}
+{%- assign hl_file = page.url | remove_first: hl_prefix -%}
+{%- if hl_file == "index.html" -%}{%- assign hl_file = "" -%}{%- endif %}
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+{%- for l in site.data.langues -%}
+{%- capture hl_u -%}/{{ l.dossier | default: "" }}{{ hl_file }}{%- endcapture -%}
+{%- capture hl_p -%}|{{ hl_u }}|{%- endcapture -%}
+{%- if hl_urls contains hl_p %}
+<link rel="alternate" hreflang="{{ l.code }}" href="{{ site.url }}{{ hl_u }}">
+{%- endif -%}
+{%- endfor -%}
+{%- capture hl_p -%}|/{{ hl_file }}|{%- endcapture -%}
+{%- if hl_urls contains hl_p %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/{{ hl_file }}">
+{%- endif %}

@@ -1,0 +1,1 @@
+{%- comment -%} URL de la page « f » dans la langue du menu (ui_dir, défini par nav.html), ou en anglais si cette page n'existe pas encore dans cette langue. f="" = accueil. {%- endcomment -%}{%- capture lien_probe -%}|/{{ ui_dir }}{{ include.f }}|{%- endcapture -%}{%- if bs_urls contains lien_probe -%}/{{ ui_dir }}{{ include.f }}{%- else -%}/{{ include.f }}{%- endif -%}

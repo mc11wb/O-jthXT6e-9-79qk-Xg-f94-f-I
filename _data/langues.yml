@@ -1,0 +1,48 @@
+# Langues du site — utilisé par le menu de langue (_includes/nav.html).
+#
+# complet: true  → le site existe dans cette langue : le menu, le pied de page
+#                  et la barre mobile s'affichent dans cette langue et renvoient
+#                  vers les pages de cette langue (ou vers l'anglais si une page
+#                  n'a pas encore été traduite).
+# sans « complet » → seules certaines pages existent (aujourd'hui : la page
+#                  Partenaire local). Le menu de langue ne propose cette langue
+#                  que sur ces pages, et leur navigation reste en anglais.
+#
+# Pour traduire une page : créer le fichier au même nom dans le dossier de la
+# langue (ex. nl/licences-geneve.html). Le menu de langue la trouve tout seul.
+- code: en
+  nom: English
+  dossier: ""
+  locale: en_US
+  complet: true
+- code: fr
+  nom: Français
+  dossier: fr/
+  locale: fr_FR
+  complet: true
+- code: nl
+  nom: Nederlands
+  dossier: nl/
+  locale: nl_BE
+  complet: true
+- code: de
+  nom: Deutsch
+  dossier: de/
+  locale: de_DE
+- code: es
+  nom: Español
+  dossier: es/
+  locale: es_ES
+- code: it
+  nom: Italiano
+  dossier: it/
+  locale: it_IT
+- code: pt
+  nom: Português
+  dossier: pt/
+  locale: pt_PT
+- code: ar
+  nom: العربية
+  dossier: ar/
+  locale: ar_AR
+  rtl: true

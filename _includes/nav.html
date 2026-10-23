@@ -1,54 +1,82 @@
 {%- comment -%}
   HEADER COMMUN — inséré dans chaque page via la balise include nav.html
   Lit le front matter de la page :
-    lang : en | fr
-    page : index | stock | licences-geneve | expansion | newsletter | privacy | blog
-           | distributeurs-geneve | distributeur-<emplacement>
+    lang : en | fr | nl (site complet) — de | es | it | pt | ar (pages isolées)
+    page : identifiant de la page (lien actif du menu)
   Pour ajouter ou modifier un lien du menu : éditer CE fichier uniquement.
+  Textes du menu : _data/i18n.yml — langues : _data/langues.yml
+
+  Menu de langue : pour chaque langue, il cherche la même page dans le
+  dossier de cette langue (ex. /nl/stock.html). Si elle n'existe pas encore,
+  il renvoie vers l'accueil de cette langue (langues complètes) ou ne propose
+  pas la langue (langues avec seulement quelques pages).
 {%- endcomment -%}
 {%- assign lang = page.lang | default: "en" -%}
 {%- assign pid = page.page | default: "index" -%}
-{%- if lang == "fr" -%}{%- assign fr = true -%}{%- assign base = "/fr/" -%}{%- else -%}{%- assign fr = false -%}{%- assign base = "/" -%}{%- endif -%}
-{%- if pid == "index" -%}
+{%- assign lang_info = site.data.langues | where: "code", lang | first -%}
+{%- if lang_info.complet -%}{%- assign ui = lang -%}{%- else -%}{%- assign ui = "en" -%}{%- endif -%}
+{%- assign ui_info = site.data.langues | where: "code", ui | first -%}
+{%- assign ui_dir = ui_info.dossier | default: "" -%}
+{%- capture base -%}/{{ ui_dir }}{%- endcapture -%}
+{%- assign t = site.data.i18n[ui] -%}
+{%- if ui == "fr" -%}{%- assign fr = true -%}{%- else -%}{%- assign fr = false -%}{%- endif -%}
+{%- capture bs_urls -%}|{{ site.pages | map: "url" | join: "|" }}|{{ site.posts | map: "url" | join: "|" }}|{%- endcapture -%}
+{%- if pid == "index" and lang == ui -%}
   {%- assign anchor = "" -%}{%- assign logo_href = "#" -%}
-  {%- assign en_url = "/" -%}{%- assign fr_url = "/fr/" -%}
 {%- else -%}
   {%- assign anchor = base -%}{%- assign logo_href = base -%}
-  {%- capture en_url -%}/{{ pid }}.html{%- endcapture -%}
-  {%- capture fr_url -%}/fr/{{ pid }}.html{%- endcapture -%}
 {%- endif -%}
-{%- comment -%}
-  Articles du blog : le bouton de langue mène à la traduction (même slug)
-  si elle existe, sinon à la page blog de l'autre langue.
-{%- endcomment -%}
-{%- if page.collection == "posts" -%}
-  {%- assign twin = site.posts | where: "slug", page.slug | where_exp: "p", "p.lang != page.lang" | first -%}
-  {%- if fr -%}
-    {%- assign fr_url = page.url -%}{%- if twin -%}{%- assign en_url = twin.url -%}{%- else -%}{%- assign en_url = "/blog.html" -%}{%- endif -%}
-  {%- else -%}
-    {%- assign en_url = page.url -%}{%- if twin -%}{%- assign fr_url = twin.url -%}{%- else -%}{%- assign fr_url = "/fr/blog.html" -%}{%- endif -%}
-  {%- endif -%}
-{%- endif -%}
-{%- if page.en_url -%}{%- assign en_url = page.en_url -%}{%- endif -%}
+{%- comment -%} chemin de la page sans le dossier de langue : « stock.html », « » pour l'accueil {%- endcomment -%}
+{%- assign lang_dir = lang_info.dossier | default: "" -%}
+{%- capture lang_prefix -%}/{{ lang_dir }}{%- endcapture -%}
+{%- assign page_file = page.url | remove_first: lang_prefix -%}
+{%- if page_file == "index.html" -%}{%- assign page_file = "" -%}{%- endif -%}
 <!-- NAV (commun : _includes/nav.html) -->
-<nav>
+<nav{% if lang != ui %} lang="{{ ui }}" dir="ltr"{% endif %}>
   <div class="nav-left">
     <a href="{{ logo_href }}" class="nav-logo"><img src="/logo.png" alt="BoosterStop" width="225" height="28" fetchpriority="high"></a>
     <span class="swiss-badge" title="Made in Switzerland" aria-label="Made in Switzerland"><span class="sb-flag" aria-hidden="true">🇨🇭</span><span class="sb-text">Made in Switzerland</span></span>
   </div>
   <div class="nav-right">
     <ul>
-      <li><a href="{{ base }}distributeurs-geneve.html"{% if pid == "distributeurs-geneve" %} class="active"{% endif %}>{% if fr %}Emplacements{% else %}Locations{% endif %}</a></li>
-      <li><a href="{{ base }}licences-geneve.html"{% if pid == "licences-geneve" %} class="active"{% endif %}>{% if fr %}🃏 Licences{% else %}🃏 Licenses{% endif %}</a></li>
-      <li><a href="{{ base }}blog.html"{% if pid == "blog" %} class="active"{% endif %}>📰 Blog</a></li>
-      <li><a href="{{ base }}expansion.html"{% if pid == "expansion" %} class="active"{% endif %}>🌍 Expansion</a></li>
-      
-      <li><a href="{{ base }}newsletter.html"{% if pid == "newsletter" %} class="active"{% endif %}>🔔 Newsletter <span class="nl-badge">-10%</span></a></li>
-      <li><a href="{{ base }}stock.html" class="nav-stock{% if pid == "stock" %} active{% endif %}">{% if fr %}📦 Stock Live{% else %}📦 Live Stock{% endif %}</a></li>
+      {%- assign nav_loc = t.nav_emplacements_f | default: "distributeurs-geneve.html" %}
+      <li><a href="{% include lien.html f=nav_loc %}"{% if pid == "distributeurs-geneve" or pid == "distributeurs-belgique" %} class="active"{% endif %}>{{ t.nav_emplacements }}</a></li>
+      <li><a href="{% include lien.html f="licences-geneve.html" %}"{% if pid == "licences-geneve" %} class="active"{% endif %}>{{ t.nav_licences }}</a></li>
+      <li><a href="{% include lien.html f="blog.html" %}"{% if pid == "blog" %} class="active"{% endif %}>{{ t.nav_blog }}</a></li>
+      <li><a href="{% include lien.html f="expansion.html" %}"{% if pid == "expansion" or pid == "partenaire-local" %} class="active"{% endif %}>{{ t.nav_expansion }}</a></li>
+      <li><a href="{% include lien.html f="newsletter.html" %}"{% if pid == "newsletter" %} class="active"{% endif %}>{{ t.nav_newsletter }} <span class="nl-badge">-10%</span></a></li>
+      <li><a href="{% include lien.html f="stock.html" %}" class="nav-stock{% if pid == "stock" %} active{% endif %}">{{ t.nav_stock }}</a></li>
     </ul>
-    <div class="lang-switcher">
-      <a class="lang-btn{% unless fr %} active{% endunless %}" href="{{ en_url }}" hreflang="en">EN</a>
-      <a class="lang-btn{% if fr %} active{% endif %}" href="{{ fr_url }}" hreflang="fr">FR</a>
-    </div>
+    <details class="lang-dd">
+      <summary class="lang-dd-btn" aria-label="{{ t.langue }} : {{ lang_info.nom }}">
+        <svg class="lang-dd-ico" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.9 5.6 3.9 9s-1.3 6.4-3.9 9c-2.6-2.6-3.9-5.6-3.9-9S9.4 5.6 12 3z"/></svg>
+        <span class="lang-dd-code">{{ lang | upcase }}</span>
+        <svg class="lang-dd-chev" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg>
+      </summary>
+      <ul class="lang-dd-menu">
+        {%- for l in site.data.langues %}
+        {%- assign l_dir = l.dossier | default: "" -%}
+        {%- capture l_url -%}/{{ l_dir }}{{ page_file }}{%- endcapture -%}
+        {%- if l.code == "en" and page.en_url -%}{%- assign l_url = page.en_url -%}{%- endif -%}
+        {%- capture l_probe -%}|{{ l_url }}|{%- endcapture -%}
+        {%- assign l_show = true -%}
+        {%- unless bs_urls contains l_probe -%}
+          {%- if l.complet -%}
+            {%- capture l_blog -%}|/{{ l_dir }}blog.html|{%- endcapture -%}
+            {%- if page.collection == "posts" and bs_urls contains l_blog -%}
+              {%- capture l_url -%}/{{ l_dir }}blog.html{%- endcapture -%}
+            {%- else -%}
+              {%- capture l_url -%}/{{ l_dir }}{%- endcapture -%}
+            {%- endif -%}
+          {%- else -%}
+            {%- assign l_show = false -%}
+          {%- endif -%}
+        {%- endunless -%}
+        {%- if l_show %}
+        <li><a href="{{ l_url }}" hreflang="{{ l.code }}" lang="{{ l.code }}"{% if l.code == lang %} aria-current="true" class="on"{% endif %}><span class="ld-code">{{ l.code | upcase }}</span><span class="ld-name">{{ l.nom }}</span></a></li>
+        {%- endif -%}
+        {%- endfor %}
+      </ul>
+    </details>
   </div>
 </nav>

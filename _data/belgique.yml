@@ -1,0 +1,125 @@
+# Pages Belgique (_layouts/belgique.html) : une page par machine + la page
+# « distributeurs-belgique.html ». Les adresses viennent de _data/machines.yml.
+# %nom% %adresse% %ville% sont remplacés par les données de la machine.
+fr:
+  accueil_plus: "+ d'autres communes bientôt à Bruxelles et en Wallonie"
+  stock_bientot: "Stock live bientôt"
+  stock_txt: "Nos 5 machines belges sont en service et approvisionnées. Leur inventaire en temps réel apparaîtra ici dès qu'elles seront connectées. En attendant, chaque machine a sa page avec l'adresse et l'itinéraire."
+  liste_titre: "Distributeurs de cartes Pokémon en Belgique : 5 Carrefour | BoosterStop"
+  liste_desc: "Les 5 distributeurs BoosterStop en Belgique : Woluwe-Saint-Lambert, Zandhoven, Malines, Korbeek-Lo et La Louvière. Boosters Pokémon, One Piece et Magic scellés, en libre-service chez Carrefour."
+  liste_h1: "Nos distributeurs en Belgique"
+  liste_lead: "Cinq machines BoosterStop sont en service en Belgique, dans des magasins Carrefour : à Bruxelles, en Flandre et en Wallonie. Boosters, displays et coffrets scellés, issus des distributeurs officiels, en libre-service."
+  voir_page: "Voir la machine"
+  ensuite_h: "Et ensuite ?"
+  ensuite_txt: "D'autres communes sont prévues à Bruxelles et en Wallonie."
+  ensuite_lien: "Voir le plan d'expansion"
+  commerce_txt: "Vous avez un commerce en Belgique ?"
+  commerce_lien: "Accueillir une machine"
+  fil: "Fil d'Ariane"
+  fil_liste: "Distributeurs en Belgique"
+  desc: "Boosters Pokémon, One Piece et Magic scellés en libre-service dans le %nom%, %adresse%. Produits de distributeurs officiels, accès aux heures du magasin."
+  ou: "Dans le %nom%, %adresse%."
+  ou2: "Boosters, displays et coffrets scellés en libre-service, issus des distributeurs officiels."
+  live_titre: "Disponible en ce moment"
+  bientot: "Cette machine est en service et approvisionnée. Son inventaire en direct apparaîtra ici dès qu'elle sera connectée."
+  adresse_h: "Adresse"
+  pays: "Belgique"
+  itineraire: "Itinéraire"
+  acces_h: "Accès"
+  acces_txt: "Accessible pendant les heures d'ouverture du magasin Carrefour."
+  horaires_lien: "Horaires du magasin sur Google Maps"
+  dedans_h: "Ce qu'on y trouve"
+  dedans_txt: "Des boosters à l'unité, des coffrets et des displays, tous scellés d'origine et achetés aux distributeurs officiels : Pokémon, One Piece, Magic et d'autres licences selon les arrivages."
+  dedans_lien: "Toutes les licences que nous distribuons"
+  autres_h: "Les autres distributeurs en Belgique"
+  faq_h: "Questions fréquentes"
+  faq:
+    - { q: "Où acheter des cartes Pokémon à %ville% ?", a: "Dans le distributeur BoosterStop du %nom%, %adresse%. Il fonctionne en libre-service pendant les heures d'ouverture du magasin." }
+    - { q: "Les cartes sont-elles authentiques ?", a: "Oui. Tous les produits proviennent de distributeurs officiels, dans leur emballage d'origine scellé." }
+    - { q: "Peut-on voir le stock avant de venir ?", a: "Bientôt : l'inventaire en direct des machines belges arrivera sur cette page et sur la page Stock Live." }
+    - { q: "Y a-t-il d'autres distributeurs en Belgique ?", a: "Oui, cinq au total, tous dans des magasins Carrefour : Woluwe-Saint-Lambert, Zandhoven, Malines, Korbeek-Lo et La Louvière." }
+  liste_faq:
+    - { q: "Où trouver un distributeur de cartes Pokémon en Belgique ?", a: "Dans l'un des cinq distributeurs BoosterStop installés chez Carrefour : Woluwe-Saint-Lambert (Bruxelles), Zandhoven, Malines, Korbeek-Lo et La Louvière." }
+    - { q: "Les produits sont-ils officiels ?", a: "Oui. Tout est scellé d'origine et acheté aux distributeurs officiels de chaque licence." }
+
+nl:
+  accueil_plus: "+ binnenkort meer gemeenten in Brussel en Wallonië"
+  stock_bientot: "Live voorraad binnenkort"
+  stock_txt: "Onze 5 Belgische automaten zijn in gebruik en gevuld. De realtime voorraad verschijnt hier zodra ze verbonden zijn. Intussen heeft elke automaat een eigen pagina met het adres en de routebeschrijving."
+  liste_titre: "Pokémon-kaartautomaten in België: 5 Carrefour-winkels | BoosterStop"
+  liste_desc: "De 5 BoosterStop-automaten in België: Sint-Lambrechts-Woluwe, Zandhoven, Mechelen, Korbeek-Lo en La Louvière. Verzegelde Pokémon-, One Piece- en Magic-boosters in selfservice bij Carrefour."
+  liste_h1: "Onze automaten in België"
+  liste_lead: "Vijf BoosterStop-automaten zijn in gebruik in België, in Carrefour-winkels: in Brussel, Vlaanderen en Wallonië. Verzegelde boosters, displays en boxen van officiële distributeurs, in selfservice."
+  voir_page: "Bekijk de automaat"
+  ensuite_h: "En daarna?"
+  ensuite_txt: "Er staan nog andere gemeenten in Brussel en Wallonië op de planning."
+  ensuite_lien: "Bekijk het uitbreidingsplan"
+  commerce_txt: "Heb je een zaak in België?"
+  commerce_lien: "Een automaat plaatsen"
+  fil: "Kruimelpad"
+  fil_liste: "Automaten in België"
+  desc: "Verzegelde Pokémon-, One Piece- en Magic-boosters in selfservice in de %nom%, %adresse%. Producten van officiële distributeurs, toegankelijk tijdens de openingsuren."
+  ou: "In de %nom%, %adresse%."
+  ou2: "Verzegelde boosters, displays en boxen in selfservice, van officiële distributeurs."
+  live_titre: "Nu beschikbaar"
+  bientot: "Deze automaat is in gebruik en gevuld. De live voorraad verschijnt hier zodra hij verbonden is."
+  adresse_h: "Adres"
+  pays: "België"
+  itineraire: "Routebeschrijving"
+  acces_h: "Toegang"
+  acces_txt: "Toegankelijk tijdens de openingsuren van de Carrefour-winkel."
+  horaires_lien: "Openingsuren van de winkel op Google Maps"
+  dedans_h: "Wat je er vindt"
+  dedans_txt: "Losse boosters, boxen en displays, allemaal fabrieksverzegeld en gekocht bij officiële distributeurs: Pokémon, One Piece, Magic en andere licenties, afhankelijk van de leveringen."
+  dedans_lien: "Alle licenties die we verdelen"
+  autres_h: "Onze andere automaten in België"
+  faq_h: "Veelgestelde vragen"
+  faq:
+    - { q: "Waar koop ik Pokémon-kaarten in %ville%?", a: "In de BoosterStop-automaat van de %nom%, %adresse%. Hij werkt in selfservice tijdens de openingsuren van de winkel." }
+    - { q: "Zijn de kaarten echt?", a: "Ja. Alle producten komen van officiële distributeurs, in hun originele verzegelde verpakking." }
+    - { q: "Kan ik de voorraad bekijken voor ik kom?", a: "Binnenkort: de live voorraad van de Belgische automaten verschijnt op deze pagina en op de pagina Live voorraad." }
+    - { q: "Zijn er nog andere automaten in België?", a: "Ja, vijf in totaal, allemaal in Carrefour-winkels: Sint-Lambrechts-Woluwe, Zandhoven, Mechelen, Korbeek-Lo en La Louvière." }
+  liste_faq:
+    - { q: "Waar vind ik een Pokémon-kaartautomaat in België?", a: "In een van de vijf BoosterStop-automaten bij Carrefour: Sint-Lambrechts-Woluwe (Brussel), Zandhoven, Mechelen, Korbeek-Lo en La Louvière." }
+    - { q: "Zijn de producten officieel?", a: "Ja. Alles is fabrieksverzegeld en gekocht bij de officiële distributeurs van elke licentie." }
+
+en:
+  accueil_plus: "+ more communes coming to Brussels and Wallonia"
+  stock_bientot: "Live stock soon"
+  stock_txt: "Our 5 Belgian machines are live and stocked. Their real-time inventory will appear here as soon as they are connected. Meanwhile, each machine has its own page with the address and directions."
+  liste_titre: "Pokémon card vending machines in Belgium: 5 Carrefour stores | BoosterStop"
+  liste_desc: "The 5 BoosterStop machines in Belgium: Woluwe-Saint-Lambert, Zandhoven, Mechelen, Korbeek-Lo and La Louvière. Sealed Pokémon, One Piece and Magic boosters, self-service at Carrefour."
+  liste_h1: "Our machines in Belgium"
+  liste_lead: "Five BoosterStop machines are running in Belgium, inside Carrefour stores: in Brussels, Flanders and Wallonia. Sealed boosters, displays and boxes from official distributors, self-service."
+  voir_page: "See the machine"
+  ensuite_h: "What's next?"
+  ensuite_txt: "More communes are planned in Brussels and Wallonia."
+  ensuite_lien: "See the expansion plan"
+  commerce_txt: "Do you run a business in Belgium?"
+  commerce_lien: "Host a machine"
+  fil: "Breadcrumb"
+  fil_liste: "Machines in Belgium"
+  desc: "Sealed Pokémon, One Piece and Magic boosters, self-service inside %nom%, %adresse%. Products from official distributors, open during store hours."
+  ou: "Inside %nom%, %adresse%."
+  ou2: "Sealed boosters, displays and boxes, self-service, from official distributors."
+  live_titre: "Available right now"
+  bientot: "This machine is running and stocked. Its live inventory will appear here as soon as it is connected."
+  adresse_h: "Address"
+  pays: "Belgium"
+  itineraire: "Directions"
+  acces_h: "Access"
+  acces_txt: "Open during the Carrefour store's opening hours."
+  horaires_lien: "Store hours on Google Maps"
+  dedans_h: "What's inside"
+  dedans_txt: "Single boosters, boxes and displays, all factory-sealed and bought from official distributors: Pokémon, One Piece, Magic and other licenses depending on deliveries."
+  dedans_lien: "All the licenses we carry"
+  autres_h: "Our other machines in Belgium"
+  faq_h: "Frequently asked questions"
+  faq:
+    - { q: "Where can I buy Pokémon cards in %ville%?", a: "At the BoosterStop machine inside %nom%, %adresse%. It works in self-service during the store's opening hours." }
+    - { q: "Are the cards authentic?", a: "Yes. Every product comes from official distributors, in its original sealed packaging." }
+    - { q: "Can I check the stock before I go?", a: "Soon: the live inventory of the Belgian machines will appear on this page and on the Live Stock page." }
+    - { q: "Are there other machines in Belgium?", a: "Yes, five in total, all inside Carrefour stores: Woluwe-Saint-Lambert, Zandhoven, Mechelen, Korbeek-Lo and La Louvière." }
+  liste_faq:
+    - { q: "Where can I find a Pokémon card vending machine in Belgium?", a: "At one of the five BoosterStop machines inside Carrefour stores: Woluwe-Saint-Lambert (Brussels), Zandhoven, Mechelen, Korbeek-Lo and La Louvière." }
+    - { q: "Are the products official?", a: "Yes. Everything is factory-sealed and bought from each license's official distributors." }

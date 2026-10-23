@@ -1,0 +1,371 @@
+{%- comment -%}
+  PAGE « PARTENAIRE LOCAL » — un seul gabarit pour toutes les langues.
+  Textes et pays : _data/partenaire.yml. Une langue = un fichier
+  <dossier>/partenaire-local.html qui ne contient que son front matter
+  (layout: partenaire, lang: xx, page: partenaire-local).
+  Formulaire : Formspree contact (xkjwpvgy), type « local_partner ».
+{%- endcomment -%}
+{%- assign tx = site.data.partenaire.textes[page.lang] -%}
+{%- assign lang_info = site.data.langues | where: "code", page.lang | first -%}
+{%- assign p_ch = site.data.machines | where: "pays", "ch" -%}
+{%- assign p_be = site.data.pays | where: "id", "be" | first -%}
+{%- assign p_be_n = p_be.machines | default: 0 -%}
+{%- assign p_total = p_ch.size | plus: p_be_n -%}
+<!DOCTYPE html>
+<html lang="{{ page.lang }}"{% if lang_info.rtl %} dir="rtl"{% endif %}>
+<head>
+{% include head.html %}
+<title>{{ tx.title }}</title>
+<meta name="description" content="{{ tx.description }}">
+{% include hreflang.html %}
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BoosterStop">
+<meta property="og:title" content="{{ tx.og_title }}">
+<meta property="og:description" content="{{ tx.description }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ site.url }}/logo.png">
+<meta property="og:locale" content="{{ lang_info.locale }}">
+{%- for l in site.data.langues %}{% if l.code != page.lang %}
+<meta property="og:locale:alternate" content="{{ l.locale }}">
+{%- endif %}{% endfor %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ tx.og_title }}">
+<meta name="twitter:description" content="{{ tx.description }}">
+<meta name="twitter:image" content="{{ site.url }}/logo.png">
+{%- if lang_info.rtl %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+{%- endif %}
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --black: #120F2A; --white: #f4f2ee; --yellow: #FFD000; --gray: #1E1A3A; --gray-mid: #2e2a50; --text-muted: #8888aa; --red: #E8183C; --radius: 4px; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.6; font-size: 16px; overflow-x: hidden; background-image: radial-gradient(ellipse at 80% 10%, rgba(232,24,60,0.08) 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(42,31,94,0.3) 0%, transparent 60%); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  .p-wrap { max-width: 1100px; margin: 0 auto; padding-inline: 48px; }
+
+  /* HERO */
+  .p-hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); column-gap: 40px; align-items: center; padding-top: 128px; padding-bottom: 56px; }
+  .p-h1 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(50px, min(6.4vw, 11vh), 96px); line-height: .9; letter-spacing: .5px; margin: 0 0 24px; }
+  .p-h1 span { display: block; }
+  .p-lede { color: #cfcce0; font-size: 18px; line-height: 1.6; max-width: 46ch; margin: 0 0 28px; text-wrap: pretty; }
+  .p-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 30px; }
+  .p-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 26px; border-radius: var(--radius); font-family: inherit; font-size: 15px; font-weight: 500; text-decoration: none; cursor: pointer; border: 0; transition: background-color .2s, border-color .2s; }
+  .p-btn-main { background: var(--yellow); color: var(--black); }
+  .p-btn-main:hover { background: #ffe14d; }
+  .p-btn-main:disabled { opacity: .6; cursor: wait; }
+  .p-btn-alt { background: transparent; color: var(--white); border: 1px solid rgba(244,242,238,0.28); }
+  .p-btn-alt:hover { border-color: var(--white); }
+  .p-faits { list-style: none; display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: 14px; color: #b9b5cf; }
+  .p-faits li { display: flex; align-items: center; gap: 10px; }
+  .p-faits li::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--yellow); flex-shrink: 0; }
+  .p-hero-img { display: flex; justify-content: center; }
+  .p-hero-img img { width: 100%; max-width: 290px; height: auto; filter: drop-shadow(0 30px 70px rgba(0,0,0,0.85)); }
+
+  /* SECTIONS */
+  .p-sec { padding-top: 64px; padding-bottom: 64px; }
+  .p-h2 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(32px, 4.4vw, 52px); line-height: 1; letter-spacing: .5px; margin: 0 0 12px; }
+  .p-sub { color: var(--text-muted); font-size: 15.5px; line-height: 1.7; max-width: 62ch; margin: 0 0 30px; }
+  .p-h3 { font-size: 15px; font-weight: 500; color: var(--white); margin: 0 0 14px; }
+
+  /* PAYS */
+  .p-region + .p-region { margin-top: 28px; }
+  .p-pays { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+  .p-chip { display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding-inline: 14px 18px; border: 1px solid var(--gray-mid); border-radius: var(--radius); background: rgba(255,255,255,0.025); color: var(--white); font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; transition: border-color .2s, background-color .2s; }
+  .p-chip:hover { border-color: var(--yellow); }
+  .p-chip[aria-pressed="true"] { border-color: var(--yellow); background: rgba(255,208,0,0.1); }
+  .p-flag { font-size: 20px; line-height: 1; }
+  .p-chip-autre { border-style: dashed; color: #cfcce0; }
+  .p-reseau { margin-top: 30px; color: #b9b5cf; font-size: 14.5px; line-height: 1.7; max-width: 72ch; }
+  .p-reseau a { color: var(--white); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+  .p-reseau a:hover { color: var(--yellow); }
+  .p-en { color: var(--text-muted); font-size: 12px; }
+
+  /* MODELE */
+  .p-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px; }
+  .p-col { background: var(--gray); border-radius: 6px; padding: 28px; border-top: 2px solid var(--red); }
+  .p-col + .p-col { border-top-color: var(--yellow); }
+  .p-list { list-style: none; display: grid; gap: 12px; }
+  .p-list li { position: relative; padding-inline-start: 22px; color: #cfcce0; font-size: 15px; line-height: 1.55; }
+  .p-list li::before { content: ''; position: absolute; inset-inline-start: 0; top: .55em; width: 8px; height: 8px; border-radius: 2px; background: var(--red); }
+  .p-col + .p-col .p-list li::before { background: var(--yellow); }
+  .p-profils { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+  .p-profils { gap: 10px 28px; }
+  .p-profils li { padding-inline-start: 14px; border-inline-start: 2px solid var(--yellow); color: #d9d6ea; font-size: 14.5px; line-height: 1.5; }
+
+  /* ETAPES */
+  .p-etapes { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .p-etapes li { padding-top: 20px; border-top: 2px solid var(--gray-mid); }
+  .p-num { display: block; font-family: 'Bebas Neue', sans-serif; font-size: 44px; line-height: 1; color: var(--yellow); margin-bottom: 10px; }
+  .p-etapes h3 { font-size: 17px; font-weight: 500; margin: 0 0 6px; }
+  .p-etapes p { color: var(--text-muted); font-size: 14.5px; line-height: 1.65; }
+
+  /* FORMULAIRE */
+  #formulaire { scroll-margin-top: 90px; }
+  .p-form-card { background: var(--gray); border: 1px solid var(--gray-mid); border-radius: 8px; padding: 40px; }
+  .p-form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .p-field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+  .p-field.full { grid-column: 1 / -1; }
+  .p-field label { font-size: 13.5px; font-weight: 500; color: #d9d6ea; }
+  .p-field label small { font-size: 12.5px; font-weight: 400; color: var(--text-muted); }
+  .p-field input, .p-field select, .p-field textarea { width: 100%; min-height: 50px; padding: 13px 14px; background: var(--black); border: 1px solid var(--gray-mid); border-radius: var(--radius); color: var(--white); font-family: inherit; font-size: 15px; font-weight: 300; outline: none; transition: border-color .2s; }
+  .p-field textarea { min-height: 120px; resize: vertical; }
+  .p-field select { appearance: none; -webkit-appearance: none; padding-inline-end: 40px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='%238888aa' stroke-width='1.6'%3E%3Cpath d='M2.5 4.5 6 8l3.5-3.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+  [dir="rtl"] .p-field select { background-position: left 14px center; }
+  .p-field input::placeholder, .p-field textarea::placeholder { color: #5d5a7a; }
+  .p-field input:focus, .p-field select:focus, .p-field textarea:focus { border-color: var(--yellow); }
+  .p-hp { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+  .p-form .p-submit { grid-column: 1 / -1; justify-self: start; min-width: 260px; }
+  .p-msg { grid-column: 1 / -1; padding: 14px 18px; border-radius: var(--radius); font-size: 14.5px; }
+  .p-ok { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.35); color: #4ade80; }
+  .p-err { background: rgba(232,24,60,0.08); border: 1px solid rgba(232,24,60,0.4); color: #ff8fa3; }
+
+  /* FAQ */
+  .p-faq { background: var(--gray); border-inline-start: 2px solid var(--gray-mid); margin-bottom: 2px; transition: border-color .2s; }
+  .p-faq[open] { border-inline-start-color: var(--red); }
+  .p-faq summary { list-style: none; cursor: pointer; padding: 18px 22px; font-size: 15px; font-weight: 400; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .p-faq summary::-webkit-details-marker { display: none; }
+  .p-faq summary::after { content: '+'; font-family: 'Bebas Neue', sans-serif; font-size: 24px; line-height: 1; color: var(--red); flex-shrink: 0; transition: transform .2s; }
+  .p-faq[open] summary::after { transform: rotate(45deg); }
+  .p-faq p { padding: 0 22px 20px; color: var(--text-muted); font-size: 14.5px; line-height: 1.75; }
+  .p-faq a { color: var(--white); text-underline-offset: 3px; }
+
+  /* LIENS */
+  .p-liens { display: flex; flex-wrap: wrap; gap: 6px 26px; padding-top: 8px; padding-bottom: 72px; }
+  .p-liens a { display: inline-block; padding: 8px 0; color: #cfcce0; text-decoration: none; border-bottom: 1px solid rgba(244,242,238,0.25); }
+  .p-liens a:hover { color: var(--white); border-bottom-color: var(--yellow); }
+
+  .p-btn:focus-visible, .p-chip:focus-visible, .p-liens a:focus-visible, .p-reseau a:focus-visible, .p-faq summary:focus-visible, .p-faq a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
+
+  /* ARABE */
+  :lang(ar) .p-main { font-family: 'Cairo', 'DM Sans', sans-serif; font-weight: 400; }
+  :lang(ar) .p-h1, :lang(ar) .p-h2 { font-family: 'Cairo', sans-serif; font-weight: 800; letter-spacing: 0; }
+  :lang(ar) .p-h1 { font-size: clamp(42px, min(5.4vw, 9.5vh), 78px); line-height: 1.18; }
+  :lang(ar) .p-h2 { font-size: clamp(28px, 3.6vw, 42px); line-height: 1.3; }
+  :lang(ar) .p-num { font-family: 'Cairo', sans-serif; font-weight: 800; }
+  :lang(ar) .p-lede, :lang(ar) .p-sub, :lang(ar) .p-list li, :lang(ar) .p-faq p { line-height: 1.85; }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    .p-hero { grid-template-columns: minmax(0, 1fr); padding-top: 112px; }
+    .p-hero-img { display: none; }
+    .p-cols { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .p-wrap { padding-inline: 24px; }
+    .p-hero { padding-top: 100px; padding-bottom: 40px; }
+    .p-h1 { font-size: clamp(44px, 13vw, 66px); }
+    :lang(ar) .p-h1 { font-size: clamp(36px, 11vw, 54px); }
+    .p-lede { font-size: 16px; }
+    .p-ctas { flex-direction: column; }
+    .p-btn { width: 100%; }
+    .p-sec { padding-top: 44px; padding-bottom: 44px; }
+    .p-etapes { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+    .p-form-card { padding: 24px 18px; }
+    .p-form { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .p-form .p-submit { min-width: 0; width: 100%; }
+    .p-col { padding: 22px 20px; }
+    .p-chip { min-height: 44px; }
+    .p-liens { padding-bottom: 48px; }
+    .p-faq summary { font-size: 14.5px; padding: 16px 18px; }
+    .p-faq p { padding: 0 18px 18px; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "{{ site.url }}{{ page.url }}#webpage",
+  "url": "{{ site.url }}{{ page.url }}",
+  "name": {{ tx.title | jsonify }},
+  "description": {{ tx.description | jsonify }},
+  "inLanguage": "{{ page.lang }}",
+  "isPartOf": { "@id": "{{ site.url }}/#website" },
+  "about": { "@id": "{{ site.url }}/#organization" }
+}
+</script>
+</head>
+<body>
+
+{% include nav.html %}
+
+<main class="p-main">
+  <section class="p-wrap p-hero">
+    <div>
+      <h1 class="p-h1">{% for l in tx.h1 %}<span>{{ l }}</span>{% unless forloop.last %} {% endunless %}{% endfor %}</h1>
+      <p class="p-lede">{{ tx.lede }}</p>
+      <div class="p-ctas">
+        <a class="p-btn p-btn-main" href="#formulaire">{{ tx.cta_form }}</a>
+        <a class="p-btn p-btn-alt" href="#pays">{{ tx.cta_pays }}</a>
+      </div>
+      <ul class="p-faits">
+        {%- for f in tx.faits %}
+        <li>{{ f | replace: "%n", p_total }}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+    <div class="p-hero-img" aria-hidden="true"><img src="/front%20transparent.png" alt="" width="1431" height="1869" decoding="async"></div>
+  </section>
+
+  <section class="p-wrap p-sec" id="pays" aria-labelledby="pays-h">
+    <h2 class="p-h2" id="pays-h">{{ tx.pays_h2 }}</h2>
+    <p class="p-sub">{{ tx.pays_sub }}</p>
+    {%- for r in site.data.partenaire.regions %}
+    {%- capture rk -%}region_{{ r }}{%- endcapture -%}
+    {%- assign r_pays = site.data.partenaire.pays | where: "region", r %}
+    <div class="p-region">
+      <h3 class="p-h3">{{ tx[rk] }}</h3>
+      <ul class="p-pays">
+        {%- for c in r_pays %}
+        <li><button type="button" class="p-chip" data-pays="{{ c.id }}" aria-pressed="false"><span class="p-flag" aria-hidden="true">{{ c.drapeau }}</span>{{ c.nom[page.lang] }}</button></li>
+        {%- endfor %}
+        {%- if forloop.last %}
+        <li><button type="button" class="p-chip p-chip-autre" data-pays="autre" aria-pressed="false">{{ tx.autre }}</button></li>
+        {%- endif %}
+      </ul>
+    </div>
+    {%- endfor %}
+    <p class="p-reseau">{{ tx.reseau }} <a href="{% include lien.html f="expansion.html" %}">{{ tx.reseau_lien }}</a>{% unless lang_info.complet %} <span class="p-en">(EN)</span>{% endunless %}</p>
+  </section>
+
+  <section class="p-wrap p-sec" aria-labelledby="modele-h">
+    <h2 class="p-h2" id="modele-h">{{ tx.modele_h2 }}</h2>
+    <p class="p-sub">{{ tx.modele_sub }}</p>
+    <div class="p-cols">
+      <div class="p-col">
+        <h3 class="p-h3">{{ tx.nous_h3 }}</h3>
+        <ul class="p-list">{% for i in tx.nous %}<li>{{ i }}</li>{% endfor %}</ul>
+      </div>
+      <div class="p-col">
+        <h3 class="p-h3">{{ tx.vous_h3 }}</h3>
+        <ul class="p-list">{% for i in tx.vous %}<li>{{ i }}</li>{% endfor %}</ul>
+      </div>
+    </div>
+    <h3 class="p-h3">{{ tx.profils_h2 }}</h3>
+    <ul class="p-profils">{% for i in tx.profils %}<li>{{ i }}</li>{% endfor %}</ul>
+  </section>
+
+  <section class="p-wrap p-sec" aria-labelledby="etapes-h">
+    <h2 class="p-h2" id="etapes-h">{{ tx.etapes_h2 }}</h2>
+    <ol class="p-etapes">
+      {%- for e in tx.etapes %}
+      <li><span class="p-num" aria-hidden="true">{{ forloop.index }}</span><h3>{{ e.t }}</h3><p>{{ e.d }}</p></li>
+      {%- endfor %}
+    </ol>
+  </section>
+
+  <section class="p-wrap p-sec" id="formulaire" aria-labelledby="form-h">
+    <div class="p-form-card">
+      <h2 class="p-h2" id="form-h">{{ tx.form_h2 }}</h2>
+      <p class="p-sub">{{ tx.form_sub }}</p>
+      <form class="p-form" id="partnerForm" action="https://formspree.io/f/xkjwpvgy" method="post">
+        <div class="p-field"><label for="pPrenom">{{ tx.f_prenom }}</label><input id="pPrenom" name="prenom" type="text" autocomplete="given-name" required></div>
+        <div class="p-field"><label for="pNom">{{ tx.f_nom }}</label><input id="pNom" name="nom" type="text" autocomplete="family-name" required></div>
+        <div class="p-field"><label for="pSociete">{{ tx.f_societe }} <small>({{ tx.f_facultatif }})</small></label><input id="pSociete" name="entreprise" type="text" autocomplete="organization"></div>
+        <div class="p-field">
+          <label for="pPays">{{ tx.f_pays }}</label>
+          <select id="pPays" name="pays" required>
+            <option value="" disabled selected>{{ tx.f_choisir }}</option>
+            {%- for r in site.data.partenaire.regions %}
+            {%- capture rk -%}region_{{ r }}{%- endcapture -%}
+            {%- assign r_pays = site.data.partenaire.pays | where: "region", r %}
+            <optgroup label="{{ tx[rk] }}">
+              {%- for c in r_pays %}
+              <option value="{{ c.id }}" data-fr="{{ c.nom.fr }}">{{ c.nom[page.lang] }}</option>
+              {%- endfor %}
+            </optgroup>
+            {%- endfor %}
+            <option value="autre" data-fr="Autre pays">{{ tx.f_autre }}</option>
+          </select>
+        </div>
+        <div class="p-field"><label for="pVilles">{{ tx.f_villes }}</label><input id="pVilles" name="villes" type="text" placeholder="{{ tx.f_villes_ph }}" required></div>
+        <div class="p-field"><label for="pProfil">{{ tx.f_profil }}</label>
+          <select id="pProfil" name="profil" required>
+            <option value="" disabled selected>—</option>
+            {%- for o in tx.f_profils %}
+            <option>{{ o }}</option>
+            {%- endfor %}
+          </select>
+        </div>
+        <div class="p-field"><label for="pEmail">{{ tx.f_email }}</label><input id="pEmail" name="email" type="email" autocomplete="email" required></div>
+        <div class="p-field"><label for="pTel">{{ tx.f_tel }} <small>({{ tx.f_facultatif }})</small></label><input id="pTel" name="telephone" type="tel" autocomplete="tel" dir="ltr"></div>
+        <div class="p-field full"><label for="pMessage">{{ tx.f_message }}</label><textarea id="pMessage" name="message" placeholder="{{ tx.f_message_ph }}" required></textarea></div>
+        <div class="p-hp" aria-hidden="true"><label for="pGotcha">Website</label><input id="pGotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off"></div>
+        <button type="submit" class="p-btn p-btn-main p-submit">{{ tx.f_envoyer }}</button>
+        <p class="p-msg p-ok" id="partnerOk" role="status" hidden>{{ tx.f_ok }}</p>
+        <p class="p-msg p-err" id="partnerErr" role="alert" hidden>{{ tx.f_err }}</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="p-wrap p-sec" aria-labelledby="faq-h">
+    <h2 class="p-h2" id="faq-h">{{ tx.faq_h2 }}</h2>
+    {%- capture p_host -%}<a href="{% include lien.html f="installer-un-distributeur.html" %}">{{ tx.host }}</a>{%- endcapture -%}
+    {%- for q in tx.faq %}
+    <details class="p-faq"><summary>{{ q.q }}</summary><p>{{ q.a | replace: "%host%", p_host }}</p></details>
+    {%- endfor %}
+  </section>
+
+  <div class="p-wrap p-liens" role="navigation" aria-label="{{ tx.liens_aria }}">
+    {%- for l in tx.liens %}
+    <a href="{% include lien.html f=l.f %}">{{ l.t }}{% unless lang_info.complet %} <span class="p-en">(EN)</span>{% endunless %}</a>
+    {%- endfor %}
+  </div>
+</main>
+
+{% include footer.html %}
+
+<script>
+(function () {
+  var form = document.getElementById('partnerForm');
+  var sel = document.getElementById('pPays');
+  var ok = document.getElementById('partnerOk');
+  var err = document.getElementById('partnerErr');
+  var btn = form.querySelector('.p-submit');
+  var label = btn.textContent;
+  var chips = document.querySelectorAll('.p-chip');
+  function mark(code) {
+    for (var i = 0; i < chips.length; i++) chips[i].setAttribute('aria-pressed', chips[i].getAttribute('data-pays') === code ? 'true' : 'false');
+  }
+  try {
+    var pre = new URLSearchParams(location.search).get('pays');
+    if (pre && sel.querySelector('option[value="' + pre.replace(/[^a-z]/g, '') + '"]')) { sel.value = pre; mark(pre); }
+  } catch (e) {}
+  sel.addEventListener('change', function () { mark(sel.value); });
+  for (var i = 0; i < chips.length; i++) {
+    chips[i].addEventListener('click', function () {
+      var code = this.getAttribute('data-pays');
+      sel.value = code; mark(code);
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.getElementById('formulaire').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+      setTimeout(function () { document.getElementById('pPrenom').focus({ preventScroll: true }); }, reduce ? 0 : 500);
+    });
+  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    ok.hidden = true; err.hidden = true;
+    btn.disabled = true; btn.textContent = {{ tx.f_envoi | jsonify }};
+    var data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = v; });
+    var opt = sel.options[sel.selectedIndex];
+    var paysFr = (opt && opt.getAttribute('data-fr')) || sel.value;
+    data.type = 'local_partner';
+    data.page_lang = {{ page.lang | jsonify }};
+    data.pays_nom = paysFr;
+    data._replyto = data.email;
+    data._subject = '[BoosterStop] Partenaire local — ' + paysFr;
+    fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
+      .then(function (res) {
+        if (!res.ok) throw new Error('http ' + res.status);
+        form.reset(); mark('');
+        btn.hidden = true; ok.hidden = false;
+        if (typeof gtag === 'function') gtag('event', 'generate_lead', { lead_type: 'local_partner', country: data.pays });
+      })
+      .catch(function () { err.hidden = false; btn.disabled = false; btn.textContent = label; });
+  });
+})();
+</script>
+</body>
+</html>

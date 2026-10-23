@@ -9,10 +9,7 @@ page: index
 <title>BoosterStop TCG — Distributeurs à Genève | Pokémon, One Piece, Magic &amp; plus</title>
 <meta name="description" content="BoosterStop TCG est le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner. Boosters, displays & boîtes collector 100% scellés, en français, anglais, japonais, chinois. En libre-service à Genève.">
 <meta name="keywords" content="TCG vending machine, Geneva, Pokémon boosters Geneva, Japanese Pokémon cards Geneva, Chinese Pokémon cards, One Piece card game, Magic the Gathering, Disney Lorcana, Yu-Gi-Oh, trading card games Switzerland, distributeur cartes Genève, cartes japonaises Genève, sealed boosters">
-<link rel="canonical" href="https://boosterstop.com/fr/">
-<link rel="alternate" hreflang="en" href="https://boosterstop.com/">
-<link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/">
-<link rel="alternate" hreflang="x-default" href="https://boosterstop.com/">
+{% include hreflang.html %}
 <meta name="robots" content="index, follow">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -42,37 +39,78 @@ page: index
   body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.6; font-size: 16px; overflow-x: hidden; background-image: radial-gradient(ellipse at 80% 10%, rgba(232,24,60,0.08) 0%, transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(42,31,94,0.3) 0%, transparent 60%); }
 
   /* HERO */
-  .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 100px 48px 80px; position: relative; overflow: hidden; gap: 40px; }
+  .hero { min-height: min(100vh, 960px); min-height: min(100svh, 960px); display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); grid-template-rows: 1fr auto; column-gap: 40px; padding: 100px max(48px, calc((100% - 1100px) / 2 + 48px)) 0; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(232,24,60,0.08) 0%, transparent 65%); pointer-events: none; }
-  .hero-left { display: flex; flex-direction: column; justify-content: center; }
-  .hero-eyebrow { font-size: 11px; letter-spacing: 4px; color: var(--red); text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
-  .hero-eyebrow::before { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--red); }
-  .hero-logo { margin-bottom: 40px; }
-  .hero-h1 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 1px;
-    font-size: clamp(19px, 2vw, 28px); line-height: 1.15; color: var(--white);
-    margin: 0 0 20px; text-wrap: balance; }
-  .hero-body { color: #aaa; font-size: 16px; line-height: 1.75; margin-bottom: 32px; }
-  .hero-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 0; }
-  .tag { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; border: 1px solid var(--gray-mid); color: var(--text-muted); text-decoration: none; padding: 6px 16px; border-radius: 2px; cursor: pointer; transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s; }
-  .tag:hover { border-color: var(--red); color: var(--red); background: rgba(232,24,60,0.06); transform: translateY(-2px); }
-  .hero-right { position: relative; display: flex; align-items: center; justify-content: center; height: 100%; }
+  .hero-left { align-self: center; padding: 20px 0 40px; }
+  .hero-h1 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(52px, min(6.6vw, 10.8vh), 100px); line-height: .88; letter-spacing: .5px; color: var(--white); margin: 0 0 28px; }
+  .hero-h1 span { display: block; }
+  .hero-body { color: #cfcce0; font-size: 18px; line-height: 1.6; max-width: 44ch; margin: 0 0 32px; text-wrap: pretty; }
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 28px; }
+  .hero-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 26px; border-radius: var(--radius); font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: .2px; text-decoration: none; transition: background-color .2s, border-color .2s; }
+  .hero-btn-main { background: var(--yellow); color: var(--black); }
+  .hero-btn-main:hover { background: #ffe14d; }
+  .hero-btn-alt { color: var(--white); border: 1px solid rgba(244,242,238,0.28); }
+  .hero-btn-alt:hover { border-color: var(--white); }
+  .hero-lic { list-style: none; display: flex; flex-wrap: wrap; gap: 2px 20px; margin: 0; padding: 0; max-width: 34em; font-size: 14px; }
+  .hero-lic a { display: inline-block; padding: 5px 0; color: #b9b5cf; text-decoration: none; border-bottom: 1px solid transparent; transition: color .2s, border-color .2s; }
+  .hero-lic a:hover { color: var(--white); border-bottom-color: var(--yellow); }
+  .hero-lic .hero-lic-all { color: var(--white); border-bottom-color: rgba(244,242,238,0.35); }
+  .hero-right { --mw: clamp(220px, 25vw, 380px); position: relative; display: flex; align-items: center; justify-content: center; }
   .hero-machine-glow { position: absolute; width: 70%; height: 50%; background: radial-gradient(circle, rgba(232,24,60,0.25) 0%, rgba(42,31,94,0.2) 50%, transparent 70%); border-radius: 50%; filter: blur(50px); pointer-events: none; z-index: 0; }
-  .hero-machine-img { position: relative; z-index: 1; width: 100%; max-width: 312px; height: auto; object-fit: contain; filter: drop-shadow(0 30px 80px rgba(0,0,0,0.9)); animation: floatMachine 6s ease-in-out infinite; }
+  .hero-machine-img { position: relative; z-index: 1; width: 100%; max-width: var(--mw); height: auto; object-fit: contain; filter: drop-shadow(0 30px 80px rgba(0,0,0,0.9)); animation: floatMachine 6s ease-in-out infinite; }
   .hero-machine-img.mobile-img { display: none; }
   @keyframes floatMachine { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-  .hero-scroll { position: absolute; bottom: 40px; left: 48px; font-size: 11px; letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase; display: flex; align-items: center; gap: 12px; grid-column: 1/-1; }
-  .hero-scroll::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gray-mid); animation: scrollline 2s ease-in-out infinite; }
-  @keyframes scrollline { 0%,100% { width: 40px; opacity: 1; } 50% { width: 20px; opacity: 0.4; } }
+  .hero-net { grid-column: 1 / -1; list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 16px; margin: 0; padding: 0; border-top: 1px solid var(--gray-mid); position: relative; z-index: 2; }
+  .hero-net a { display: flex; align-items: center; gap: 12px; padding: 18px 0 22px; color: var(--white); text-decoration: none; }
+  .hn-flag { font-size: 22px; line-height: 1; flex-shrink: 0; }
+  .hn-txt { display: flex; flex-direction: column; min-width: 0; line-height: 1.35; }
+  .hn-name { font-size: 14px; font-weight: 500; }
+  .hn-status { font-size: 13px; color: var(--text-muted); }
+  .hn-status.live { color: var(--yellow); }
+  .hero-net a:hover .hn-name { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .hero-btn:focus-visible, .hero-lic a:focus-visible, .hero-net a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
+  #where { scroll-margin-top: 96px; }
+  @media (prefers-reduced-motion: reduce) { .hero-machine-img { animation: none; } }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .hero { min-height: 0; padding: 100px 28px 0; column-gap: 24px; }
+    .hero-left { padding: 36px 0 48px; }
+    .hero-h1 { font-size: clamp(52px, min(8.4vw, 11.5vh), 96px); }
+    .hero-btn { flex: 1 1 auto; }
+    .hero-right { --mw: clamp(220px, 30vw, 300px); }
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .hero-net { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero-net li:nth-child(n+3) { border-top: 1px solid var(--gray-mid); }
+    .hero-net li:last-child { grid-column: 1 / -1; }
+    .hero-net a { padding: 14px 0; }
+  }
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; min-height: 0; padding: 100px 24px 0; }
+    .hero-left { padding: 8px 0 0; }
+    .hero-h1 { font-size: clamp(44px, 15vw, 72px); margin-bottom: 18px; }
+    .hero-body { font-size: 16px; margin-bottom: 24px; }
+    .hero-ctas { flex-direction: column; gap: 10px; margin-bottom: 18px; }
+    .hero-btn { width: 100%; }
+    .hero-lic { gap: 0 14px; }
+    .hero-lic a { padding: 10px 0; }
+    .hero-right { --mw: 50vw; margin-top: 24px; }
+    .hero-machine-img.desktop-img { display: none; }
+    .hero-machine-img.mobile-img { display: block; margin: 0 auto; }
+    .hero-net { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 16px; margin-top: 32px; }
+    .hero-net li:nth-child(n+3) { border-top: 1px solid var(--gray-mid); }
+    .hero-net li:last-child { grid-column: 1 / -1; }
+    .hero-net a { padding: 14px 0; min-height: 64px; }
+  }
 
-  /* COUNTRIES BANNER */
-  .countries-banner { border-top: 1px solid var(--gray-mid); border-bottom: 1px solid var(--gray-mid); padding: 28px 48px; display: flex; align-items: center; gap: 48px; }
-  .countries-label { font-size: 10px; letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase; white-space: nowrap; flex-shrink: 0; }
-  .countries-list { display: flex; gap: 32px; flex-wrap: wrap; }
-  .country-item { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--white); }
-  .country-flag { font-size: 20px; }
-  .country-status { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; }
-  .country-status.live { background: rgba(255,208,0,0.12); color: var(--yellow); border: 1px solid rgba(255,208,0,0.3); }
-  .country-status.launching { background: rgba(255,255,255,0.04); color: var(--text-muted); border: 1px solid var(--gray-mid); }
+  /* LIENS INTERNES (cartes, emplacements, partenaires, FAQ) */
+  .how-link, .partner-alt { display: inline-block; margin-top: 16px; color: var(--white); font-size: 14px; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(244,242,238,0.3); padding-bottom: 2px; transition: border-color .2s, color .2s; }
+  .how-link:hover, .partner-alt:hover { color: var(--yellow); border-bottom-color: var(--yellow); }
+  .partner-alt { display: block; width: fit-content; margin: 18px auto 0; font-weight: 400; color: #cfcce0; }
+  .map-location-name a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(244,242,238,0.22); }
+  .map-location-name a:hover { border-bottom-color: var(--yellow); }
+  .faq-a a, .contact-left p a { color: var(--white); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .faq-a a:hover, .contact-left p a:hover { color: var(--yellow); }
+  .how-link:focus-visible, .partner-alt:focus-visible, .map-location-name a:focus-visible, .faq-a a:focus-visible, .contact-left p a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
 
   /* SECTION */
   section { padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
@@ -235,15 +273,6 @@ page: index
   .form-success { display: none; background: var(--yellow-dim); border: 1px solid rgba(255,208,0,0.3); border-radius: var(--radius); padding: 20px 24px; font-size: 14px; color: var(--yellow); letter-spacing: 0.3px; }
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; padding: 100px 24px 80px; gap: 0; }
-    .hero-tags { gap: 8px; }
-    .tag { font-size: 10px; padding: 5px 12px; letter-spacing: 1px; }
-    .hero-right { display: flex; margin-top: 32px; }
-    .hero-machine-img.desktop-img { display: none; }
-    .hero-machine-img.mobile-img { display: block; max-width: 52vw; margin: 0 auto; }
-    .booster-anim { bottom: calc(50% - 25vw); left: calc(50% - 5vw); }
-    .countries-banner { padding: 20px 24px; gap: 20px; flex-direction: column; align-items: flex-start; }
-    .countries-list { gap: 16px; }
     section { padding: 72px 24px; }
     .how-grid { grid-template-columns: 1fr; }
     .partner-section { padding: 72px 24px; }
@@ -264,15 +293,15 @@ page: index
   .booster-anim {
     display: none;
     position: absolute;
-    bottom: calc(50% - 150px);
-    left: calc(50% - 31px);
+    bottom: calc(50% - var(--mw) * 0.48);
+    left: calc(50% - var(--mw) * 0.1);
     transform: translateX(-50%);
     z-index: 10;
     pointer-events: none;
     justify-content: center;
   }
   .booster-anim img {
-    width: clamp(40px, 5.5vw, 62px);
+    width: calc(var(--mw) * 0.2);
     height: auto;
     opacity: 0;
     filter: drop-shadow(0 8px 40px rgba(232,24,60,0.7));
@@ -305,63 +334,50 @@ page: index
 
 
 <!-- HERO -->
+{%- comment -%}
+  Bandeau « réseau » en bas du hero : le nombre de machines en Suisse se
+  calcule depuis _data/machines.yml (pays: ch) et celui de la Belgique vient
+  du champ « machines » de _data/pays.yml. Rien à retoucher ici quand on
+  ajoute une machine.
+{%- endcomment -%}
+{%- assign hero_ch = site.data.machines | where: "pays", "ch" -%}
+{%- assign hero_be = site.data.pays | where: "id", "be" | first -%}
 <div class="hero">
   <div class="hero-left">
-    <div class="hero-eyebrow">Réseau de Distributeurs TCG</div>
-    <div class="hero-logo">
-      <img src="/logo.png" alt="BoosterStop" width="724" height="90" fetchpriority="high" style="height: clamp(40px, 6vw, 90px); width: auto;">
+    <h1 class="hero-h1"><span>Distributeurs</span> <span>de cartes TCG</span> <span>à Genève</span></h1>
+    <p class="hero-body">Boosters, displays et coffrets scellés d'usine, issus des circuits officiels, dans des bureaux de La Poste et chez King Jouet à Genève, et dans cinq Carrefour en Belgique.</p>
+    <div class="hero-ctas">
+      <a class="hero-btn hero-btn-main" href="/fr/stock.html">Voir le stock en direct</a>
+      <a class="hero-btn hero-btn-alt" href="#where">Trouver une machine</a>
     </div>
-    <h1 class="hero-h1">Le réseau de distributeurs automatiques de cartes TCG en plus forte croissance</h1>
-    <p class="hero-body">Le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner.<br>Boosters, displays, boîtes collector, en libre-service, là où vous êtes.</p>
-    <div class="hero-tags">
-      <a class="tag" href="/fr/licences-geneve.html#pokemon">Pokémon</a>
-      <a class="tag" href="/fr/licences-geneve.html#one-piece">One Piece TCG</a>
-      <a class="tag" href="/fr/licences-geneve.html#dragon-ball">Dragon Ball Super</a>
-      <a class="tag" href="/fr/licences-geneve.html#riftbound">Riftbound: LoL TCG</a>
-      <a class="tag" href="/fr/licences-geneve.html#mtg">Magic: The Gathering</a>
-      <a class="tag" href="/fr/licences-geneve.html#lorcana">Disney Lorcana</a>
-      <a class="tag" href="/fr/licences-geneve.html">Yu-Gi-Oh!</a>
-      <a class="tag" href="/fr/licences-geneve.html#naruto">Naruto TCG</a>
-      <a class="tag" href="/fr/licences-geneve.html">&amp; plus</a>
-    </div>
+    <ul class="hero-lic" aria-label="Licences">
+      <li><a href="/fr/cartes-pokemon-geneve.html">Pokémon</a></li>
+      <li><a href="/fr/cartes-one-piece-geneve.html">One Piece</a></li>
+      <li><a href="/fr/cartes-magic-geneve.html">Magic</a></li>
+      <li><a href="/fr/cartes-yu-gi-oh-geneve.html">Yu-Gi-Oh!</a></li>
+      <li><a href="/fr/cartes-lorcana-geneve.html">Lorcana</a></li>
+      <li><a href="/fr/cartes-dragon-ball-geneve.html">Dragon Ball</a></li>
+      <li><a href="/fr/cartes-riftbound-geneve.html">Riftbound</a></li>
+      <li><a href="/fr/cartes-naruto-geneve.html">Naruto</a></li>
+      <li><a class="hero-lic-all" href="/fr/licences-geneve.html">Les 24 licences</a></li>
+    </ul>
   </div>
   <div class="hero-right">
   <span id="machine" style="position:absolute;top:50%;left:0;width:1px;height:1px;"></span>
     <div class="hero-machine-glow"></div>
-    <img class="hero-machine-img desktop-img" src="/front%20transparent.png" alt="BoosterStop Machine" width="1431" height="1869" fetchpriority="high" decoding="async">
-    <img class="hero-machine-img mobile-img" src="/front%20transparent.png" alt="BoosterStop Machine" width="1431" height="1869" fetchpriority="high" decoding="async">
+    <img class="hero-machine-img desktop-img" src="/front%20transparent.png" alt="Distributeur automatique BoosterStop" width="1431" height="1869" fetchpriority="high" decoding="async">
+    <img class="hero-machine-img mobile-img" src="/front%20transparent.png" alt="Distributeur automatique BoosterStop" width="1431" height="1869" fetchpriority="high" decoding="async">
     <div class="booster-anim" id="boosterAnim">
       <img src="/Booster.png" alt="Booster" loading="lazy" decoding="async">
     </div>
   </div>
-  <div class="hero-scroll">Scroll</div>
-</div>
-
-<!-- COUNTRIES BANNER -->
-<div class="countries-banner fade-in">
-  <span class="countries-label">En cours &amp; à venir</span>
-  <div class="countries-list">
-    <div class="country-item">
-      <span class="country-flag">🇨🇭</span>
-      <span>Suisse</span>
-      <span class="country-status live">Actif — 8 machines</span>
-    </div>
-    <div class="country-item">
-      <span class="country-flag">🇧🇪</span>
-      <span>Belgique</span>
-      <span class="country-status live">Actif — 5 machines</span>
-    </div>
-    <div class="country-item">
-      <span class="country-flag">🇫🇷</span>
-      <span>France</span>
-      <span class="country-status launching">Bientôt disponible</span>
-    </div>
-    <div class="country-item">
-      <span class="country-flag">🇦🇪</span>
-      <span>Émirats Arabes Unis</span>
-      <span class="country-status launching">Bientôt disponible</span>
-    </div>
-  </div>
+  <ul class="hero-net" aria-label="Pays du réseau">
+    <li><a href="/fr/distributeurs-geneve.html"><span class="hn-flag" aria-hidden="true">🇨🇭</span><span class="hn-txt"><span class="hn-name">Suisse</span><span class="hn-status live">{{ hero_ch.size }} machines à Genève</span></span></a></li>
+    <li><a href="/fr/expansion.html#belgique"><span class="hn-flag" aria-hidden="true">🇧🇪</span><span class="hn-txt"><span class="hn-name">Belgique</span><span class="hn-status live">{{ hero_be.machines | default: 5 }} machines</span></span></a></li>
+    <li><a href="/fr/expansion.html#france"><span class="hn-flag" aria-hidden="true">🇫🇷</span><span class="hn-txt"><span class="hn-name">France</span><span class="hn-status">Bientôt</span></span></a></li>
+    <li><a href="/fr/expansion.html#uae"><span class="hn-flag" aria-hidden="true">🇦🇪</span><span class="hn-txt"><span class="hn-name">Émirats</span><span class="hn-status">Bientôt</span></span></a></li>
+    <li><a href="/fr/partenaire-local.html"><span class="hn-flag" aria-hidden="true">🌍</span><span class="hn-txt"><span class="hn-name">Votre pays ?</span><span class="hn-status">Partenaire recherché</span></span></a></li>
+  </ul>
 </div>
 
 <!-- HOW IT WORKS -->
@@ -371,17 +387,20 @@ page: index
     <div class="how-card">
       <div class="how-number">01</div>
       <h3>Trouve la machine</h3>
-      <p>Nos distributeurs sont installés dans des centres commerciaux, gares et espaces de loisirs en Suisse, Belgique et aux Émirats Arabes Unis.</p>
+      <p>Nos distributeurs sont installés dans des bureaux de La Poste et chez King Jouet à Genève, et dans cinq Carrefour en Belgique.</p>
+      <a class="how-link" href="/fr/distributeurs-geneve.html">Voir les emplacements</a>
     </div>
     <div class="how-card">
       <div class="how-number">02</div>
       <h3>Choisis ton produit</h3>
       <p>Boosters, displays ou boîtes collector : plusieurs licences TCG dans chaque machine, et plusieurs langues au choix : français, anglais, japonais, chinois et plus.</p>
+      <a class="how-link" href="/fr/licences-geneve.html">Voir les 24 licences</a>
     </div>
     <div class="how-card">
       <div class="how-number">03</div>
       <h3>Paie &amp; ouvre</h3>
       <p>Payez en espèces, avec monnaie rendue en pièces et en billets, par TWINT ou en sans contact carte &amp; smartphone. Le produit sort immédiatement, et l'expérience du pack opening commence là, devant la machine.</p>
+      <a class="how-link" href="/fr/stock.html">Voir le stock en direct</a>
     </div>
   </div>
 </section>
@@ -444,7 +463,7 @@ page: index
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(0)">
           <div class="map-location-dot live" data-loc="0"></div>
           <div>
-            <div class="map-location-name">La Poste de Rive</div>
+            <div class="map-location-name"><a href="/fr/distributeur-geneve-rive.html">La Poste de Rive</a></div>
             <div class="map-location-addr">Rue du Vieux-Collège 3, 1204 Genève</div>
             <a href="/fr/stock.html?machine=0" class="map-stock-link">📦 Voir le stock</a>
           </div>
@@ -452,7 +471,7 @@ page: index
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(1)">
           <div class="map-location-dot live" data-loc="1"></div>
           <div>
-            <div class="map-location-name">La Poste des Charmilles</div>
+            <div class="map-location-name"><a href="/fr/distributeur-geneve-charmilles.html">La Poste des Charmilles</a></div>
             <div class="map-location-addr">Promenade de l'Europe 11, 1203 Genève</div>
             <a href="/fr/stock.html?machine=1" class="map-stock-link">📦 Voir le stock</a>
           </div>
@@ -460,7 +479,7 @@ page: index
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(2)">
           <div class="map-location-dot live" data-loc="2"></div>
           <div>
-            <div class="map-location-name">La Poste du Petit-Lancy</div>
+            <div class="map-location-name"><a href="/fr/distributeur-petit-lancy.html">La Poste du Petit-Lancy</a></div>
             <div class="map-location-addr">Rue des Bossons 88b, 1213 Petit-Lancy</div>
             <a href="/fr/stock.html?machine=2" class="map-stock-link">📦 Voir le stock</a>
           </div>
@@ -468,7 +487,7 @@ page: index
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(3)">
           <div class="map-location-dot live" data-loc="3"></div>
           <div>
-            <div class="map-location-name">La Poste de Plainpalais</div>
+            <div class="map-location-name"><a href="/fr/distributeur-geneve-plainpalais.html">La Poste de Plainpalais</a></div>
             <div class="map-location-addr">Rue Pictet-de-Bock 6, 1205 Genève</div>
             <a href="/fr/stock.html?machine=3" class="map-stock-link">📦 Voir le stock</a>
           </div>
@@ -476,7 +495,7 @@ page: index
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(4)">
           <div class="map-location-dot live" data-loc="4"></div>
           <div>
-            <div class="map-location-name">La Poste de Meyrin</div>
+            <div class="map-location-name"><a href="/fr/distributeur-meyrin.html">La Poste de Meyrin</a></div>
             <div class="map-location-addr">Avenue de Feuillasse 24, 1217 Meyrin</div>
             <a href="/fr/stock.html?machine=4" class="map-stock-link">📦 Voir le stock</a>
           </div>
@@ -484,7 +503,7 @@ page: index
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(5)">
           <div class="map-location-dot live" data-loc="5"></div>
           <div>
-            <div class="map-location-name">La Poste de Thônex</div>
+            <div class="map-location-name"><a href="/fr/distributeur-thonex.html">La Poste de Thônex</a></div>
             <div class="map-location-addr">Rue de Genève 106, 1226 Thônex</div>
             <a href="/fr/stock.html?machine=5" class="map-stock-link">📦 Voir le stock</a>
           </div>
@@ -492,7 +511,7 @@ page: index
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(6)">
           <div class="map-location-dot live" data-loc="6"></div>
           <div>
-            <div class="map-location-name">La Poste de Carouge</div>
+            <div class="map-location-name"><a href="/fr/distributeur-carouge.html">La Poste de Carouge</a></div>
             <div class="map-location-addr">Boulevard des Promenades 16, 1227 Carouge</div>
             <a href="/fr/stock.html?machine=6" class="map-stock-link">📦 Voir le stock</a>
           </div>
@@ -518,11 +537,28 @@ page: index
     <!-- BELGIUM -->
     <div class="map-panel" id="tab-belgium">
       <div class="map-wrapper"><div id="map-belgium"></div></div>
-      <div class="map-coming-soon-msg">
-        <div class="coming-soon-icon">🇧🇪</div>
-        <div class="coming-soon-title">Belgique — 5 machines actives</div>
-        <div class="coming-soon-sub">Notre réseau belge est opérationnel avec 5 machines. Les adresses exactes seront publiées ici prochainement.</div>
-        <a href="/fr/expansion.html#belgique" class="map-stock-link">🌍 Bruxelles, Liège, Namur… voir le plan</a>
+      <div class="map-locations-list">
+        {%- assign hb_ms = site.data.machines | where: "pays", "be" -%}
+{%- assign hb_t = site.data.belgique[page.lang] -%}
+{%- if page.lang == "nl" -%}{%- assign hb_sx = "_nl" -%}{%- elsif page.lang == "en" -%}{%- assign hb_sx = "_en" -%}{%- else -%}{%- assign hb_sx = "" -%}{%- endif -%}
+{%- capture hb_kc -%}court{{ hb_sx }}{%- endcapture -%}{%- capture hb_ka -%}adresse{{ hb_sx }}{%- endcapture -%}
+        {%- for m in hb_ms %}
+        <div class="map-location-item">
+          <div class="map-location-dot live"></div>
+          <div>
+            <div class="map-location-name"><a href="{% include lien.html f=m.fichier %}">{{ m.nom }}</a></div>
+            <div class="map-location-addr">{{ m[hb_ka] | default: m.adresse }}</div>
+            <a href="https://www.google.com/maps/dir/?api=1&amp;destination={{ m.lat }},{{ m.lng }}" class="map-stock-link" rel="noopener">📍 {{ hb_t.itineraire }}</a>
+          </div>
+        </div>
+        {%- endfor %}
+        <div class="map-location-item incoming">
+          <div class="map-location-dot incoming-dot"></div>
+          <div>
+            <div class="map-location-name">{{ hb_t.accueil_plus }}</div>
+            <a href="{% include lien.html f="distributeurs-belgique.html" %}" class="map-stock-link">🇧🇪 {{ hb_t.fil_liste }}</a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -558,6 +594,7 @@ page: index
     <h2 class="partner-title">Accueillez une machine chez vous</h2>
     <p class="partner-text">Environ 1 m&#178; au sol et une prise électrique suffisent. Nous installons, remplissons et entretenons la machine, et elle reste sous notre assurance. Deux modèles possibles : loyer fixe ou partage du revenu.</p>
     <a class="partner-cta" href="{{ base }}installer-un-distributeur.html">Voir comment ça marche &rarr;</a>
+    <a class="partner-alt" href="/fr/partenaire-local.html">Hors de Suisse et de Belgique ? Devenez partenaire local</a>
   </div>
 </div>
 
@@ -603,7 +640,7 @@ page: index
     </details>
     <details class="faq-item">
       <summary>Dans quelles langues les cartes sont-elles disponibles ?</summary>
-      <div class="faq-a">Plusieurs. Nous proposons les mêmes jeux en plusieurs langues, dont le français, l'anglais, le japonais, le chinois, l'allemand, l'espagnol et le portugais. Par exemple du Pokémon en japonais, chinois ou français, et du One Piece en anglais. Cela vous permet de garder une collection cohérente dans la langue où vous avez commencé, de lire les cartes que vous jouez, et d'accéder à des sets qui ne sortent que sur certains marchés. Les langues varient selon les sets et les machines : consultez la page Stock Live pour voir ce qu'il y a dans chacune en temps réel.</div>
+      <div class="faq-a">Plusieurs. Nous proposons les mêmes jeux en plusieurs langues, dont le français, l'anglais, le japonais, le chinois, l'allemand, l'espagnol et le portugais. Par exemple du Pokémon en japonais, chinois ou français, et du One Piece en anglais. Cela vous permet de garder une collection cohérente dans la langue où vous avez commencé, de lire les cartes que vous jouez, et d'accéder à des sets qui ne sortent que sur certains marchés. Les langues varient selon les sets et les machines : consultez la page <a href="/fr/stock.html">Stock Live</a> pour voir ce qu'il y a dans chacune en temps réel.</div>
     </details>
     <details class="faq-item">
       <summary>Comment payer ?</summary>
@@ -611,7 +648,11 @@ page: index
     </details>
     <details class="faq-item">
       <summary>Puis-je vérifier le stock avant de me déplacer ?</summary>
-      <div class="faq-a">Oui. Notre page Stock Live affiche l'inventaire en temps réel de chaque machine. Si un produit manque, vous pouvez demander un réassort ou un nouveau produit directement. Nous adaptons notre sélection selon vos demandes.</div>
+      <div class="faq-a">Oui. Notre page <a href="/fr/stock.html">Stock Live</a> affiche l'inventaire en temps réel de chaque machine. Si un produit manque, vous pouvez demander un réassort ou un nouveau produit directement. Nous adaptons notre sélection selon vos demandes.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Peut-on ouvrir BoosterStop dans un autre pays ?</summary>
+      <div class="faq-a">Oui. Nous cherchons des partenaires locaux en Allemagne, en Autriche, en Espagne, en Italie, au Portugal, aux Pays-Bas, en Europe du Nord et au Moyen-Orient. Proposez votre pays sur la page <a href="/fr/partenaire-local.html">Partenaire local</a>.</div>
     </details>
   </div>
 </div>
@@ -622,7 +663,7 @@ page: index
   <div class="contact-grid">
     <div class="contact-left">
       <h2>Travaillons<br><span>ensemble.</span></h2>
-      <p>Vous gérez un espace commercial, une salle de jeux, un centre culturel ou un lieu à fort passage ? Parlez-nous de votre emplacement. Nous cherchons activement des partenaires en Suisse, en Belgique et aux Émirats Arabes Unis.</p>
+      <p>Vous gérez un espace commercial, une salle de jeux, un centre culturel ou un lieu à fort passage ? Parlez-nous de votre emplacement. Nous cherchons des emplacements en Suisse et en Belgique, et des <a href="/fr/partenaire-local.html">partenaires locaux</a> pour ouvrir dans d'autres pays.</p>
       <div class="contact-info">contact@boosterstop.com</div>
     </div>
     <form class="contact-form" id="contactForm" method="post" action="https://formspree.io/f/xkjwpvgy">
@@ -917,6 +958,12 @@ function openPopupByIndex(i) {
 }
 
 // Override initMap to store refs
+// Machines belges (carte de l'onglet Belgique), depuis _data/machines.yml
+const BE_LOCATIONS = [
+{%- for m in site.data.machines %}{% if m.pays == "be" %}
+  { name: {{ m.nom | jsonify }}, lat: {{ m.lat }}, lng: {{ m.lng }}, url: {{ m.url | jsonify }} },
+{%- endif %}{% endfor %}
+];
 const _origInitMap = window.initMap;
 window.initMap = function() {
   const darkStyles = [
@@ -974,9 +1021,16 @@ window.initMap = function() {
     disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
   });
 
-  new google.maps.Map(document.getElementById('map-belgium'), {
-    zoom: 7, center: { lat: 50.5, lng: 4.5 },
+  const beMap = new google.maps.Map(document.getElementById('map-belgium'), {
+    zoom: 8, center: { lat: 50.86, lng: 4.47 },
     disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
+  });
+  BE_LOCATIONS.forEach(function(loc) {
+    const mk = new google.maps.Marker({
+      position: { lat: loc.lat, lng: loc.lng }, map: beMap, title: loc.name,
+      icon: { path: google.maps.SymbolPath.CIRCLE, scale: 8, fillColor: '#E8183C', fillOpacity: 1, strokeColor: '#ffffff', strokeWeight: 2 }
+    });
+    mk.addListener('click', function() { window.location.href = loc.url; });
   });
 
   new google.maps.Map(document.getElementById('map-uae'), {

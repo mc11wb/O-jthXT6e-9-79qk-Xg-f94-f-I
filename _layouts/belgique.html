@@ -1,0 +1,280 @@
+{%- comment -%}
+  PAGES BELGIQUE — une page par machine (front matter « machine: id ») et la
+  page « distributeurs-belgique.html » (sans « machine »). FR, NL et EN.
+  Textes : _data/belgique.yml — adresses : _data/machines.yml (pays: be).
+{%- endcomment -%}
+{%- assign bt = site.data.belgique[page.lang] -%}
+{%- assign lang_info = site.data.langues | where: "code", page.lang | first -%}
+{%- assign be_ms = site.data.machines | where: "pays", "be" -%}
+{%- if page.lang == "nl" -%}{%- assign sx = "_nl" -%}{%- elsif page.lang == "en" -%}{%- assign sx = "_en" -%}{%- else -%}{%- assign sx = "" -%}{%- endif -%}
+{%- capture k_court -%}court{{ sx }}{%- endcapture -%}
+{%- capture k_adr -%}adresse{{ sx }}{%- endcapture -%}
+{%- capture k_ville -%}ville{{ sx }}{%- endcapture -%}
+{%- capture k_rue -%}rue{{ sx }}{%- endcapture -%}
+{%- if page.machine -%}
+  {%- assign bm = site.data.machines | where: "id", page.machine | first -%}
+  {%- assign b_adr = bm[k_adr] | default: bm.adresse -%}
+  {%- assign b_ville = bm[k_ville] | default: bm.ville -%}
+  {%- assign b_rue = bm[k_rue] | default: bm.rue -%}
+  {%- assign b_court = bm[k_court] | default: bm.court -%}
+  {%- assign p_titre = bm.titre[page.lang] -%}
+  {%- assign p_desc = bt.desc | replace: "%nom%", bm.nom | replace: "%adresse%", b_adr -%}
+{%- else -%}
+  {%- assign p_titre = bt.liste_titre -%}
+  {%- assign p_desc = bt.liste_desc -%}
+{%- endif -%}
+<!DOCTYPE html>
+<html lang="{{ page.lang }}">
+<head>
+{% include head.html %}
+<title>{{ p_titre }}</title>
+<meta name="description" content="{{ p_desc }}">
+{% include hreflang.html %}
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BoosterStop">
+<meta property="og:title" content="{{ p_titre | remove: ' | BoosterStop' }}">
+<meta property="og:description" content="{{ p_desc }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:image" content="{{ site.url }}/front%20transparent.png">
+<meta property="og:locale" content="{{ lang_info.locale }}">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+/* Pages distributeur.
+   site.css ne stylise pas body : chaque page le déclare, comme les autres
+   pages du site. Et attention, site.css cible l'ÉLÉMENT nav en
+   position:fixed — d'où les <div role="navigation"> plus bas. */
+body{
+  margin:0; background:var(--black); color:var(--white);
+  font-family:'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+/* préfixe bsm- pour ne rien heurter dans site.css */
+.bsm-wrap{max-width:980px;margin:0 auto;padding:0 24px}
+.bsm-head{padding:130px 0 44px;border-bottom:1px solid var(--gray-mid)}
+.bsm-crumbs{font-size:13px;color:var(--text-muted);margin-bottom:22px}
+.bsm-crumbs a{color:var(--text-muted);text-decoration:none}
+.bsm-crumbs a:hover{color:var(--white)}
+.bsm-now{display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:1.2px;
+  color:var(--black);background:var(--yellow);padding:3px 11px;border-radius:2px;margin-bottom:16px}
+.bsm-now.shut{background:var(--red);color:#fff}
+.bsm-now:empty{display:none}
+.bsm-head h1{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:1px;line-height:1.02;
+  font-size:clamp(38px,6.5vw,68px);margin:0 0 14px}
+.bsm-where{color:var(--text-muted);font-size:17px;max-width:48ch;line-height:1.65;margin:0}
+.bsm-live{margin:40px 0;border:1px solid var(--gray-mid);border-left:3px solid var(--red);background:var(--gray)}
+.bsm-live-top{display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;
+  padding:18px 22px;border-bottom:1px solid var(--gray-mid)}
+.bsm-live-title{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:.6px}
+.bsm-stamp{font-size:13px;color:var(--text-muted)}
+.bsm-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--text-muted);margin-right:8px}
+.bsm-dot.on{background:#31D07A}
+.bsm-rows{list-style:none;margin:0;padding:0}
+.bsm-rows li{display:flex;justify-content:space-between;gap:18px;align-items:center;
+  padding:14px 22px;border-bottom:1px solid var(--gray-mid)}
+.bsm-rows li:last-child{border-bottom:0}
+.bsm-nm{font-size:15px}
+.bsm-nm small{display:block;color:var(--text-muted);font-size:13px;margin-top:2px}
+.bsm-pr{font-family:'Bebas Neue',sans-serif;font-size:20px;color:var(--yellow);white-space:nowrap}
+.bsm-msg{padding:22px;color:var(--text-muted);font-size:15px;line-height:1.6}
+.bsm-toggle{display:block;width:100%;padding:14px 22px;background:none;border:0;
+  border-top:1px solid var(--gray-mid);color:var(--text-muted);font-family:inherit;
+  font-size:14px;text-align:left;cursor:pointer}
+.bsm-toggle:hover{color:var(--white);background:rgba(255,255,255,.03)}
+.bsm-toggle::after{content:' \25BE'}
+.bsm-toggle[aria-expanded="true"]::after{content:' \25B4'}
+.bsm-all{display:block;padding:15px 22px;border-top:1px solid var(--gray-mid);
+  font-size:14px;color:var(--red);text-decoration:none}
+.bsm-all:hover{background:rgba(232,24,60,.06)}
+.bsm-facts{display:grid;gap:34px;padding:42px 0;border-top:1px solid var(--gray-mid);grid-template-columns:1fr}
+@media(min-width:720px){.bsm-facts{grid-template-columns:1fr 1fr}}
+.bsm-facts h2{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:22px;letter-spacing:.8px;
+  color:var(--yellow);margin:0 0 10px}
+.bsm-facts address{font-style:normal;line-height:1.7;margin:0}
+.bsm-tel{margin:10px 0 0;font-size:15px}
+.bsm-tel a{color:var(--yellow);text-decoration:none}
+.bsm-tel a:hover{text-decoration:underline}
+.bsm-hours{border-collapse:collapse;font-size:15px;width:100%;max-width:300px}
+.bsm-hours td{padding:5px 0;border-bottom:1px solid var(--gray-mid)}
+.bsm-hours td+td{text-align:right;color:var(--text-muted)}
+.bsm-hours tr.shut td+td{color:var(--red)}
+.bsm-holi{margin:12px 0 0;font-size:13px;line-height:1.6;color:var(--text-muted);max-width:34ch}
+.bsm-note{margin:0 0 10px;color:var(--text-muted);font-size:15px}
+.bsm-go{display:inline-block;background:var(--red);color:#fff;text-decoration:none;
+  font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.8px;padding:10px 24px;
+  border-radius:var(--radius);margin-top:16px}
+.bsm-go:hover{background:#ff2b4e}
+.bsm-sec{padding:42px 0;border-top:1px solid var(--gray-mid)}
+.bsm-sec h2{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:1px;
+  font-size:clamp(26px,4vw,38px);margin:0 0 16px}
+.bsm-sec p{max-width:62ch;line-height:1.7;color:#cfcce0}
+.bsm-near{list-style:none;padding:0;margin:16px 0 0}
+.bsm-near li{padding:10px 0;border-bottom:1px solid var(--gray-mid)}
+.bsm-near a{color:var(--yellow);text-decoration:none;font-size:16px}
+.bsm-near a:hover{text-decoration:underline}
+.bsm-near span{color:var(--text-muted);font-size:14px}
+.bsm-faq dt{font-weight:600;margin-top:24px}
+.bsm-faq dd{margin:6px 0 0;color:#cfcce0;max-width:62ch;line-height:1.7}
+/* hub */
+.bsm-grid{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:14px;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.bsm-card{display:block;padding:20px;border:1px solid var(--gray-mid);border-radius:var(--radius);
+  text-decoration:none;color:inherit;background:var(--gray)}
+.bsm-card:hover{border-color:var(--yellow)}
+.bsm-card b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:24px;
+  letter-spacing:.6px;color:var(--white);margin-bottom:6px}
+.bsm-card span{display:block;color:var(--text-muted);font-size:14px;line-height:1.55}
+.bsm-card em{display:block;font-style:normal;color:var(--yellow);font-size:13px;margin-top:8px}
+
+.be-list{list-style:none;margin:36px 0 10px;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px}
+.be-card{background:var(--gray);padding:24px 24px 22px;display:flex;flex-direction:column;justify-content:space-between;gap:16px;border-top:2px solid var(--gray-mid)}
+.be-reg{display:block;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.be-card h2{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:28px;letter-spacing:.5px;margin:0;line-height:1.05}
+.be-card h2 a{color:var(--white);text-decoration:none}
+.be-card h2 a:hover{color:var(--yellow)}
+.be-shop{margin:4px 0 2px;color:#cfcce0;font-size:14.5px}
+.be-card address{font-style:normal;color:var(--text-muted);font-size:14px;line-height:1.55}
+.be-act{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.be-dir{color:#cfcce0;font-size:14px;text-underline-offset:3px}
+.bsm-hl{color:var(--white);font-size:14px;text-underline-offset:3px}
+@media(max-width:700px){.be-list{grid-template-columns:minmax(0,1fr)}}
+</style>
+<script type="application/ld+json">
+{%- if page.machine %}
+{"@context":"https://schema.org","@graph":[
+ {"@type":"Store","@id":"{{ site.url }}{{ page.url }}#store","name":{{ "BoosterStop — " | append: bm.nom | jsonify }},"url":"{{ site.url }}{{ page.url }}","description":{{ p_desc | jsonify }},"brand":{"@type":"Brand","name":"BoosterStop"},
+  "address":{"@type":"PostalAddress","streetAddress":{{ b_rue | jsonify }},"postalCode":"{{ bm.cp }}","addressLocality":{{ b_ville | jsonify }},"addressCountry":"BE"},
+  "geo":{"@type":"GeoCoordinates","latitude":{{ bm.lat }},"longitude":{{ bm.lng }}},
+  "containedInPlace":{"@type":"GroceryStore","name":{{ bm.nom | jsonify }}}},
+ {"@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"BoosterStop","item":"{{ site.url }}/{{ lang_info.dossier }}"},
+  {"@type":"ListItem","position":2,"name":{{ bt.fil_liste | jsonify }},"item":"{{ site.url }}/{{ lang_info.dossier }}distributeurs-belgique.html"},
+  {"@type":"ListItem","position":3,"name":{{ b_court | jsonify }},"item":"{{ site.url }}{{ page.url }}"}]}
+]}
+{%- else %}
+{"@context":"https://schema.org","@graph":[
+ {"@type":"ItemList","name":{{ bt.liste_h1 | jsonify }},"itemListElement":[
+  {%- for o in be_ms %}
+  {"@type":"ListItem","position":{{ forloop.index }},"url":"{{ site.url }}/{{ lang_info.dossier }}{{ o.fichier }}","name":{{ o.nom | jsonify }}}{% unless forloop.last %},{% endunless %}
+  {%- endfor %}]},
+ {"@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"BoosterStop","item":"{{ site.url }}/{{ lang_info.dossier }}"},
+  {"@type":"ListItem","position":2,"name":{{ bt.fil_liste | jsonify }},"item":"{{ site.url }}{{ page.url }}"}]}
+]}
+{%- endif %}
+</script>
+</head>
+<body>
+{% include nav.html %}
+
+<div class="bsm-wrap">
+{%- if page.machine %}
+
+<header class="bsm-head">
+  <div class="bsm-crumbs" role="navigation" aria-label="{{ bt.fil }}">
+    <a href="{{ base }}">BoosterStop</a> › <a href="{% include lien.html f="distributeurs-belgique.html" %}">{{ bt.fil_liste }}</a> › {{ b_court }}
+  </div>
+  <h1>{{ bm.h1[page.lang] }}</h1>
+  <p class="bsm-where">{{ bt.ou | replace: "%nom%", bm.nom | replace: "%adresse%", b_adr }} {{ bm.intro[page.lang] }} {{ bt.ou2 }}</p>
+</header>
+
+<div class="bsm-live">
+  <div class="bsm-live-top">
+    <span class="bsm-live-title"><span class="bsm-dot" id="bsmDot"></span>{{ bt.live_titre }}</span>
+    {% include stock-releve.html chargement="" connexion=bt.bientot %}
+  <a class="bsm-all" href="{% include lien.html f="stock.html" %}">{{ t.f_stock }}</a>
+</div>
+
+<div class="bsm-facts">
+  <div>
+    <h2>{{ bt.adresse_h }}</h2>
+    <address>
+      {{ b_rue }}<br>
+      {{ bm.cp }} {{ b_ville }}, {{ bt.pays }}
+    </address>
+    <a class="bsm-go" href="https://www.google.com/maps/dir/?api=1&amp;destination={{ bm.lat }},{{ bm.lng }}" rel="noopener">{{ bt.itineraire }}</a>
+  </div>
+  <div>
+    <h2>{{ bt.acces_h }}</h2>
+    <p class="bsm-note">{{ bt.acces_txt }}</p>
+    {%- capture b_q -%}{{ bm.nom }}, {{ bm.adresse_nl | default: bm.adresse }}{%- endcapture %}
+    <p><a class="bsm-hl" href="https://www.google.com/maps/search/?api=1&amp;query={{ b_q | url_encode }}" rel="noopener">{{ bt.horaires_lien }}</a></p>
+  </div>
+</div>
+
+<section class="bsm-sec">
+  <h2>{{ bt.dedans_h }}</h2>
+  <p>{{ bt.dedans_txt }} <a href="{% include lien.html f="licences-geneve.html" %}">{{ bt.dedans_lien }}</a>.</p>
+</section>
+
+<section class="bsm-sec">
+  <h2>{{ bt.autres_h }}</h2>
+  <ul class="bsm-near">
+    {%- for o in be_ms %}{% if o.id != bm.id %}
+    <li><a href="{% include lien.html f=o.fichier %}">{{ o[k_court] | default: o.court }}</a> <span>— {{ o[k_adr] | default: o.adresse }}</span></li>
+    {%- endif %}{% endfor %}
+  </ul>
+</section>
+
+<section class="bsm-sec">
+  <h2>{{ bt.faq_h }}</h2>
+  <dl class="bsm-faq">
+    {%- for f in bt.faq %}
+    <dt>{{ f.q | replace: "%ville%", b_ville }}</dt>
+    <dd>{{ f.a | replace: "%nom%", bm.nom | replace: "%adresse%", b_adr }}</dd>
+    {%- endfor %}
+  </dl>
+</section>
+{%- else %}
+
+<header class="bsm-head">
+  <div class="bsm-crumbs" role="navigation" aria-label="{{ bt.fil }}">
+    <a href="{{ base }}">BoosterStop</a> › {{ bt.fil_liste }}
+  </div>
+  <h1>{{ bt.liste_h1 }}</h1>
+  <p class="bsm-where">{{ bt.liste_lead }}</p>
+</header>
+
+<ul class="be-list">
+  {%- for o in be_ms %}
+  <li class="be-card">
+    <div>
+      <span class="be-reg">{{ o.region[page.lang] }}</span>
+      <h2><a href="{% include lien.html f=o.fichier %}">{{ o[k_court] | default: o.court }}</a></h2>
+      <p class="be-shop">{{ o.nom }}</p>
+      <address>{{ o[k_adr] | default: o.adresse }}</address>
+    </div>
+    <div class="be-act">
+      <a class="bsm-go" href="{% include lien.html f=o.fichier %}">{{ bt.voir_page }}</a>
+      <a class="be-dir" href="https://www.google.com/maps/dir/?api=1&amp;destination={{ o.lat }},{{ o.lng }}" rel="noopener">{{ bt.itineraire }}</a>
+    </div>
+  </li>
+  {%- endfor %}
+</ul>
+
+<section class="bsm-sec">
+  <h2>{{ bt.dedans_h }}</h2>
+  <p>{{ bt.dedans_txt }} <a href="{% include lien.html f="licences-geneve.html" %}">{{ bt.dedans_lien }}</a>.</p>
+</section>
+
+<section class="bsm-sec">
+  <h2>{{ bt.ensuite_h }}</h2>
+  <p>{{ bt.ensuite_txt }} <a href="{% include lien.html f="expansion.html" %}#belgique">{{ bt.ensuite_lien }}</a>. {{ bt.commerce_txt }} <a href="{% include lien.html f="installer-un-distributeur.html" %}">{{ bt.commerce_lien }}</a>.</p>
+</section>
+
+<section class="bsm-sec">
+  <h2>{{ bt.faq_h }}</h2>
+  <dl class="bsm-faq">
+    {%- for f in bt.liste_faq %}
+    <dt>{{ f.q }}</dt>
+    <dd>{{ f.a }}</dd>
+    {%- endfor %}
+  </dl>
+</section>
+{%- endif %}
+
+</div><!-- /bsm-wrap -->
+
+{% include footer.html %}
+</body>
+</html>

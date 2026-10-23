@@ -8,10 +8,7 @@ page: installer-un-distributeur
 {% include head.html %}
 <title>Accueillir un distributeur de cartes TCG dans votre établissement | BoosterStop</title>
 <meta name="description" content="Vous gérez un commerce, une salle de jeux ou un lieu à fort passage à Genève ? BoosterStop installe, remplit et entretient un distributeur de cartes à collectionner chez vous. Installation, réassort et maintenance pris en charge.">
-<link rel="canonical" href="https://boosterstop.com/fr/installer-un-distributeur.html">
-<link rel="alternate" hreflang="en" href="https://boosterstop.com/installer-un-distributeur.html">
-<link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/installer-un-distributeur.html">
-<link rel="alternate" hreflang="x-default" href="https://boosterstop.com/installer-un-distributeur.html">
+{% include hreflang.html %}
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
@@ -37,6 +34,8 @@ body{margin:0;background:var(--black);color:var(--white);
   border-radius:var(--radius);margin:36px 0}
 .b2-ref p{margin:0;color:#cfcce0;max-width:60ch;line-height:1.7}
 .b2-ref strong{color:var(--white)}
+.b2-ref + .b2-ref{margin-top:-20px}
+.b2-ref-loin{border-left-color:var(--gray-mid)}
 .b2-sec{padding:40px 0;border-top:1px solid var(--gray-mid)}
 .b2-sec h2{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:1px;
   font-size:clamp(26px,4vw,36px);margin:0 0 18px}
@@ -88,6 +87,8 @@ body{margin:0;background:var(--black);color:var(--white);
 </header>
 
 <div class="b2-ref"><p>Nos machines sont installées sur huit emplacements du canton de Genève, dont sept dans des <strong>filiales de La Poste Suisse</strong>. Allez en voir une avant de nous écrire : les huit adresses sont sur la <a href="/fr/distributeurs-geneve.html">page des distributeurs</a>.</p></div>
+
+<div class="b2-ref b2-ref-loin"><p>Votre lieu est hors de Suisse et de Belgique ? Dans les autres pays, nous cherchons d'abord une entreprise locale pour exploiter les machines : voyez la page <a href="/fr/partenaire-local.html">Partenaire local</a>.</p></div>
 
 <section class="b2-sec">
   <h2>La répartition des rôles</h2>

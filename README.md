@@ -87,3 +87,27 @@ Ajouter une machine = une ligne dans `MACHINES` + un `<button class="machine-tab
 3. Vérifier dans Settings → Pages que la source est **« Deploy from a branch »** (c'est ce mode qui lance Jekyll).
 4. Attendre la fin du déploiement (onglet Actions, 1 à 2 min), puis contrôler : menu, switch EN/FR, bannière cookies, nav mobile sur une page EN et une page FR.
 5. Ne pas toucher à `CNAME`, `robots.txt`, `sitemap.xml`, `llms.txt`, `404.html`, images : ils sont copiés tels quels.
+
+## Langues
+
+- `_data/langues.yml` : les langues du site. `complet: true` = EN, FR, NL (menu et pied de page traduits). DE, ES, IT, PT, AR n'ont que la page Partenaire local.
+- `_data/i18n.yml` : tous les textes du menu, du pied de page, de la barre mobile et de la bannière cookies, par langue.
+- Menu de langue (`_includes/nav.html`) : pour chaque langue, il cherche la même page dans le dossier de la langue (`/nl/stock.html`…). Si elle n'existe pas, il renvoie vers l'accueil de cette langue.
+- `{% include hreflang.html %}` dans le `<head>` de chaque page écrit le canonical et tous les hreflang tout seul : traduire une page = créer le fichier au même nom dans le dossier de la langue, rien d'autre à retoucher (penser au `sitemap.xml`).
+- Liens du menu et du pied de page : `{% include lien.html f="stock.html" %}` donne la page dans la langue du menu, ou la version anglaise si elle n'est pas encore traduite.
+- Pages NL : accueil, stock, expansion, accueillir une machine, newsletter, confidentialité, rachat, presse, partenaire local. Les pages propres à Genève renvoient vers l'anglais.
+- Page Partenaire local : un seul gabarit (`_layouts/partenaire.html`), textes et pays dans `_data/partenaire.yml`. Ajouter un pays = une entrée dans `pays`.
+
+## Belgique
+
+- Les 5 machines (Carrefour) sont dans `_data/machines.yml` (`pays: be`) : adresse FR/NL, coordonnées, textes propres à chaque lieu.
+- Pages générées par `_layouts/belgique.html` (textes : `_data/belgique.yml`) en FR, NL et EN : une page par machine (`distributeur-….html`) et `distributeurs-belgique.html`.
+- L'accueil (onglet Belgique de la carte), Stock Live, Expansion, le pied de page et l'encart « où acheter » du blog lisent les mêmes données : ajouter une machine belge = une entrée dans `machines.yml` + ses 3 petits fichiers de page.
+- Le menu « Locaties » de la version NL mène à la page Belgique (`nav_emplacements_f` dans `_data/i18n.yml`).
+
+## Relevé du stock (SEO)
+
+- `.github/workflows/stock-releve.yml` lance chaque matin `.github/scripts/stock_releve.py`, qui interroge le Worker pour chaque machine ayant un `worker` dans `machines.yml` et écrit `_data/stock.json`.
+- Les pages machines (`{% include stock-releve.html %}`) et Stock Live (`{% include stock-liste.html %}`) affichent ce relevé en texte, lisible par Google. Le navigateur le remplace par le stock en direct ; si la machine ne répond pas, le relevé reste affiché.
+- Lancer un relevé à la main : onglet Actions > « Relevé du stock » > Run workflow.
+- Brancher une machine belge sur le stock en direct : lui donner son numéro `worker` dans `machines.yml`.

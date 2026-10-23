@@ -1,0 +1,600 @@
+# Page « Partenaire local » (_layouts/partenaire.html) — un seul gabarit,
+# une page par langue : partenaire-local.html, fr/…, nl/…, de/…, es/…, it/…, pt/…, ar/…
+#
+# Ajouter un pays : une entrée dans « pays » (region = europe | nord | golfe),
+# avec son nom dans chaque langue. Il apparaît dans la liste et le formulaire.
+# « %n » = nombre de machines en service (calculé depuis _data/machines.yml
+# et _data/pays.yml). « %host% » = lien vers la page Accueillir une machine.
+
+regions: [europe, nord, golfe]
+
+pays:
+  - id: de
+    region: europe
+    drapeau: "🇩🇪"
+    nom: { en: Germany, fr: Allemagne, nl: Duitsland, de: Deutschland, es: Alemania, it: Germania, pt: Alemanha, ar: "ألمانيا" }
+  - id: at
+    region: europe
+    drapeau: "🇦🇹"
+    nom: { en: Austria, fr: Autriche, nl: Oostenrijk, de: Österreich, es: Austria, it: Austria, pt: Áustria, ar: "النمسا" }
+  - id: es
+    region: europe
+    drapeau: "🇪🇸"
+    nom: { en: Spain, fr: Espagne, nl: Spanje, de: Spanien, es: España, it: Spagna, pt: Espanha, ar: "إسبانيا" }
+  - id: it
+    region: europe
+    drapeau: "🇮🇹"
+    nom: { en: Italy, fr: Italie, nl: Italië, de: Italien, es: Italia, it: Italia, pt: Itália, ar: "إيطاليا" }
+  - id: pt
+    region: europe
+    drapeau: "🇵🇹"
+    nom: { en: Portugal, fr: Portugal, nl: Portugal, de: Portugal, es: Portugal, it: Portogallo, pt: Portugal, ar: "البرتغال" }
+  - id: nl
+    region: europe
+    drapeau: "🇳🇱"
+    nom: { en: Netherlands, fr: Pays-Bas, nl: Nederland, de: Niederlande, es: Países Bajos, it: Paesi Bassi, pt: Países Baixos, ar: "هولندا" }
+  - id: se
+    region: nord
+    drapeau: "🇸🇪"
+    nom: { en: Sweden, fr: Suède, nl: Zweden, de: Schweden, es: Suecia, it: Svezia, pt: Suécia, ar: "السويد" }
+  - id: "no"
+    region: nord
+    drapeau: "🇳🇴"
+    nom: { en: Norway, fr: Norvège, nl: Noorwegen, de: Norwegen, es: Noruega, it: Norvegia, pt: Noruega, ar: "النرويج" }
+  - id: dk
+    region: nord
+    drapeau: "🇩🇰"
+    nom: { en: Denmark, fr: Danemark, nl: Denemarken, de: Dänemark, es: Dinamarca, it: Danimarca, pt: Dinamarca, ar: "الدنمارك" }
+  - id: fi
+    region: nord
+    drapeau: "🇫🇮"
+    nom: { en: Finland, fr: Finlande, nl: Finland, de: Finnland, es: Finlandia, it: Finlandia, pt: Finlândia, ar: "فنلندا" }
+  - id: sa
+    region: golfe
+    drapeau: "🇸🇦"
+    nom: { en: Saudi Arabia, fr: Arabie saoudite, nl: Saudi-Arabië, de: Saudi-Arabien, es: Arabia Saudí, it: Arabia Saudita, pt: Arábia Saudita, ar: "المملكة العربية السعودية" }
+  - id: qa
+    region: golfe
+    drapeau: "🇶🇦"
+    nom: { en: Qatar, fr: Qatar, nl: Qatar, de: Katar, es: Catar, it: Qatar, pt: Catar, ar: "قطر" }
+  - id: kw
+    region: golfe
+    drapeau: "🇰🇼"
+    nom: { en: Kuwait, fr: Koweït, nl: Koeweit, de: Kuwait, es: Kuwait, it: Kuwait, pt: Kuwait, ar: "الكويت" }
+  - id: bh
+    region: golfe
+    drapeau: "🇧🇭"
+    nom: { en: Bahrain, fr: Bahreïn, nl: Bahrein, de: Bahrain, es: Baréin, it: Bahrein, pt: Barém, ar: "البحرين" }
+  - id: om
+    region: golfe
+    drapeau: "🇴🇲"
+    nom: { en: Oman, fr: Oman, nl: Oman, de: Oman, es: Omán, it: Oman, pt: Omã, ar: "عُمان" }
+
+textes:
+  fr:
+    title: "Partenaire local : lancez BoosterStop dans votre pays | BoosterStop"
+    description: "BoosterStop cherche des partenaires locaux pour ouvrir son réseau de distributeurs de cartes TCG en Allemagne, Autriche, Espagne, Italie, Portugal, aux Pays-Bas, en Europe du Nord et au Moyen-Orient."
+    og_title: "BoosterStop cherche un partenaire local dans votre pays"
+    h1: ["Nous cherchons", "un partenaire local", "dans votre pays"]
+    lede: "BoosterStop veut s'implanter dans de nouveaux pays. Dans chacun, nous cherchons une entreprise sur place pour installer et exploiter nos distributeurs de cartes TCG."
+    cta_form: "Proposer un partenariat"
+    cta_pays: "Voir les pays"
+    faits: ["%n machines en service en Suisse et en Belgique", "Le stock de chaque machine visible en direct", "Uniquement des produits scellés, achetés aux distributeurs officiels"]
+    pays_h2: "Les pays où nous cherchons un partenaire"
+    pays_sub: "Choisissez votre pays : il sera déjà sélectionné dans le formulaire."
+    region_europe: "Europe"
+    region_nord: "Europe du Nord"
+    region_golfe: "Moyen-Orient"
+    autre: "Un autre pays"
+    reseau: "Déjà dans le réseau : la Suisse et la Belgique. Les Émirats arabes unis sont en lancement et la France à l'étude."
+    reseau_lien: "Voir le réseau et les villes prévues"
+    modele_h2: "Le partenariat"
+    modele_sub: "Chaque pays du réseau est exploité par une entreprise locale. Le modèle se construit avec vous, selon le pays, le nombre d'emplacements et votre profil."
+    nous_h3: "BoosterStop apporte"
+    nous: ["Un concept qui tourne déjà, avec des machines en service en Suisse et en Belgique", "La marque, le site et le stock en direct de chaque machine", "Le savoir-faire terrain : choix des emplacements, sélection des produits, réassort", "Une gamme multilicence : Pokémon, One Piece, Magic et 21 autres licences"]
+    vous_h3: "Vous apportez"
+    vous: ["Une entreprise implantée dans votre pays", "La connaissance de votre marché et de ses lieux à fort passage", "L'exploitation au quotidien : installation, réassort, entretien", "Le respect de notre règle : des produits scellés, uniquement venus des distributeurs officiels"]
+    profils_h2: "Qui nous cherchons"
+    profils: ["Exploitants de distributeurs automatiques", "Boutiques et distributeurs de jeux de cartes", "Enseignes, centres commerciaux, gares et aéroports", "Entrepreneurs et investisseurs implantés localement"]
+    etapes_h2: "Comment ça se passe"
+    etapes:
+      - { t: "Vous nous écrivez", d: "Le formulaire prend deux minutes : votre pays, les villes visées et votre profil." }
+      - { t: "On fait connaissance", d: "Un appel pour parler de votre marché, des emplacements possibles et du modèle qui vous convient." }
+      - { t: "Un premier emplacement", d: "On démarre avec une machine pilote, puis on déploie le réseau dans votre pays." }
+    form_h2: "Proposer un partenariat"
+    form_sub: "Réponse sous 48 h. Vos informations servent uniquement à vous recontacter."
+    f_prenom: "Prénom"
+    f_nom: "Nom"
+    f_societe: "Entreprise"
+    f_facultatif: "facultatif"
+    f_pays: "Pays"
+    f_choisir: "Choisissez votre pays"
+    f_autre: "Autre pays"
+    f_villes: "Ville(s) visée(s)"
+    f_villes_ph: "Madrid, Barcelone…"
+    f_email: "E-mail"
+    f_tel: "Téléphone"
+    f_profil: "Vous êtes"
+    f_profils: ["Exploitant de distributeurs automatiques", "Boutique ou distributeur de jeux de cartes", "Enseigne, centre commercial ou lieu à fort passage", "Entrepreneur ou investisseur", "Autre"]
+    f_message: "Votre projet"
+    f_message_ph: "Votre expérience, les emplacements que vous visez, votre calendrier…"
+    f_envoyer: "Envoyer ma proposition"
+    f_envoi: "Envoi…"
+    f_ok: "Merci, votre proposition est bien arrivée. Nous revenons vers vous sous 48 h."
+    f_err: "L'envoi n'a pas abouti. Réessayez ou écrivez-nous à contact@boosterstop.com."
+    faq_h2: "Questions fréquentes"
+    host: "Accueillir une machine"
+    faq:
+      - { q: "Dans quels pays cherchez-vous un partenaire ?", a: "En Allemagne, en Autriche, en Espagne, en Italie, au Portugal, aux Pays-Bas, en Suède, en Norvège, au Danemark, en Finlande et au Moyen-Orient (Arabie saoudite, Qatar, Koweït, Bahreïn, Oman). Votre pays n'est pas dans la liste ? Écrivez-nous quand même." }
+      - { q: "Comment fonctionne le partenariat ?", a: "Chaque pays du réseau est exploité par une entreprise locale. Le modèle se définit avec chaque partenaire, selon le pays, le nombre d'emplacements et son profil : nous en parlons dès le premier appel." }
+      - { q: "Que faut-il pour installer une machine ?", a: "Environ 1 m² au sol (1,1 m² avec le dégagement) et une prise électrique standard. La machine consomme très peu." }
+      - { q: "Je veux seulement accueillir une machine dans mon commerce.", a: "En Suisse et en Belgique, passez par la page %host%. Dans les autres pays, écrivez-nous avec le formulaire ci-dessus en choisissant « Enseigne, centre commercial ou lieu à fort passage »." }
+      - { q: "Quels produits sont vendus ?", a: "Des boosters, displays et coffrets scellés de 24 licences, de Pokémon à Riftbound, achetés uniquement aux distributeurs officiels." }
+    liens_aria: "Pages utiles"
+    liens:
+      - { t: "Le réseau et les villes prévues", f: "expansion.html" }
+      - { t: "Le stock en direct", f: "stock.html" }
+      - { t: "Accueillir une machine", f: "installer-un-distributeur.html" }
+      - { t: "Presse", f: "presse.html" }
+
+  en:
+    title: "Local partner wanted: bring BoosterStop to your country | BoosterStop"
+    description: "BoosterStop is looking for local partners to open its TCG vending machine network in Germany, Austria, Spain, Italy, Portugal, the Netherlands, the Nordics and the Middle East."
+    og_title: "BoosterStop is looking for a local partner in your country"
+    h1: ["We're looking for", "a local partner", "in your country"]
+    lede: "BoosterStop is expanding into new countries. In each one, we're looking for a local company to install and run our TCG vending machines."
+    cta_form: "Propose a partnership"
+    cta_pays: "See the countries"
+    faits: ["%n machines running in Switzerland and Belgium", "Live stock for every machine", "Sealed products only, bought from official distributors"]
+    pays_h2: "Countries where we're looking for a partner"
+    pays_sub: "Pick your country and it will already be selected in the form."
+    region_europe: "Europe"
+    region_nord: "Nordics"
+    region_golfe: "Middle East"
+    autre: "Another country"
+    reseau: "Already in the network: Switzerland and Belgium. The United Arab Emirates are launching and France is under study."
+    reseau_lien: "See the network and planned cities"
+    modele_h2: "The partnership"
+    modele_sub: "Each country in the network is run by a local company. We build the model with you, based on the country, the number of locations and your profile."
+    nous_h3: "BoosterStop brings"
+    nous: ["A concept that already works, with machines running in Switzerland and Belgium", "The brand, the website and live stock for every machine", "Field know-how: choosing locations, selecting products, restocking", "A multi-license range: Pokémon, One Piece, Magic and 21 other licenses"]
+    vous_h3: "You bring"
+    vous: ["A company based in your country", "Knowledge of your market and its high-footfall locations", "Day-to-day operations: installation, restocking, maintenance", "Our one rule: sealed products only, from official distributors"]
+    profils_h2: "Who we're looking for"
+    profils: ["Vending machine operators", "Trading card shops and distributors", "Retail chains, shopping centres, stations and airports", "Entrepreneurs and investors with a local presence"]
+    etapes_h2: "How it works"
+    etapes:
+      - { t: "You write to us", d: "The form takes two minutes: your country, target cities and profile." }
+      - { t: "We get to know each other", d: "A call about your market, possible locations and the model that suits you." }
+      - { t: "A first location", d: "We start with a pilot machine, then roll out the network in your country." }
+    form_h2: "Propose a partnership"
+    form_sub: "We reply within 48 hours. Your details are only used to get back to you."
+    f_prenom: "First name"
+    f_nom: "Last name"
+    f_societe: "Company"
+    f_facultatif: "optional"
+    f_pays: "Country"
+    f_choisir: "Choose your country"
+    f_autre: "Another country"
+    f_villes: "Target city or cities"
+    f_villes_ph: "Madrid, Barcelona…"
+    f_email: "Email"
+    f_tel: "Phone"
+    f_profil: "You are"
+    f_profils: ["A vending machine operator", "A trading card shop or distributor", "A retailer, shopping centre or high-footfall venue", "An entrepreneur or investor", "Other"]
+    f_message: "Your project"
+    f_message_ph: "Your experience, the locations you have in mind, your timeline…"
+    f_envoyer: "Send my proposal"
+    f_envoi: "Sending…"
+    f_ok: "Thank you, your proposal has arrived. We'll get back to you within 48 hours."
+    f_err: "Sending failed. Try again or email us at contact@boosterstop.com."
+    faq_h2: "Frequently asked questions"
+    host: "Host a machine"
+    faq:
+      - { q: "Which countries are you looking for a partner in?", a: "Germany, Austria, Spain, Italy, Portugal, the Netherlands, Sweden, Norway, Denmark, Finland and the Middle East (Saudi Arabia, Qatar, Kuwait, Bahrain, Oman). Your country isn't listed? Write to us anyway." }
+      - { q: "How does the partnership work?", a: "Each country in the network is run by a local company. The model is defined with each partner, based on the country, the number of locations and their profile: we discuss it on the first call." }
+      - { q: "What does a machine need?", a: "About 1 m² of floor space (1.1 m² with clearance) and a standard power socket. The machine uses very little power." }
+      - { q: "I only want to host a machine in my venue.", a: "In Switzerland and Belgium, use the %host% page. In other countries, write to us with the form above and choose “A retailer, shopping centre or high-footfall venue”." }
+      - { q: "What products are sold?", a: "Sealed boosters, displays and boxes from 24 licenses, from Pokémon to Riftbound, bought only from official distributors." }
+    liens_aria: "Useful pages"
+    liens:
+      - { t: "The network and planned cities", f: "expansion.html" }
+      - { t: "Live stock", f: "stock.html" }
+      - { t: "Host a machine", f: "installer-un-distributeur.html" }
+      - { t: "Press", f: "presse.html" }
+
+  nl:
+    title: "Lokale partner gezocht: breng BoosterStop naar uw land | BoosterStop"
+    description: "BoosterStop zoekt lokale partners om zijn netwerk van TCG-automaten te openen in Duitsland, Oostenrijk, Spanje, Italië, Portugal, Nederland, Noord-Europa en het Midden-Oosten."
+    og_title: "BoosterStop zoekt een lokale partner in uw land"
+    h1: ["Wij zoeken", "een lokale partner", "in uw land"]
+    lede: "BoosterStop breidt uit naar nieuwe landen. In elk land zoeken we een lokaal bedrijf dat onze TCG-automaten plaatst en exploiteert."
+    cta_form: "Een partnerschap voorstellen"
+    cta_pays: "Bekijk de landen"
+    faits: ["%n automaten in gebruik in Zwitserland en België", "Live voorraad van elke automaat", "Alleen verzegelde producten, gekocht bij officiële distributeurs"]
+    pays_h2: "Landen waar we een partner zoeken"
+    pays_sub: "Kies uw land: het staat dan al ingevuld in het formulier."
+    region_europe: "Europa"
+    region_nord: "Noord-Europa"
+    region_golfe: "Midden-Oosten"
+    autre: "Een ander land"
+    reseau: "Al in het netwerk: Zwitserland en België. De Verenigde Arabische Emiraten starten binnenkort en Frankrijk wordt onderzocht."
+    reseau_lien: "Bekijk het netwerk en de geplande steden"
+    modele_h2: "Het partnerschap"
+    modele_sub: "Elk land in het netwerk wordt geëxploiteerd door een lokaal bedrijf. We bouwen het model samen met u op, afhankelijk van het land, het aantal locaties en uw profiel."
+    nous_h3: "BoosterStop brengt"
+    nous: ["Een concept dat al werkt, met automaten in gebruik in Zwitserland en België", "Het merk, de website en de live voorraad van elke automaat", "Ervaring op het terrein: locaties kiezen, producten selecteren, aanvullen", "Een aanbod met veel licenties: Pokémon, One Piece, Magic en 21 andere"]
+    vous_h3: "U brengt"
+    vous: ["Een bedrijf dat in uw land gevestigd is", "Kennis van uw markt en van drukbezochte locaties", "De dagelijkse exploitatie: plaatsing, aanvulling, onderhoud", "Onze enige regel: alleen verzegelde producten, van officiële distributeurs"]
+    profils_h2: "Wie we zoeken"
+    profils: ["Exploitanten van verkoopautomaten", "Winkels en distributeurs van ruilkaartspellen", "Winkelketens, winkelcentra, stations en luchthavens", "Ondernemers en investeerders met een lokale aanwezigheid"]
+    etapes_h2: "Hoe het verloopt"
+    etapes:
+      - { t: "U schrijft ons", d: "Het formulier duurt twee minuten: uw land, de beoogde steden en uw profiel." }
+      - { t: "We maken kennis", d: "Een gesprek over uw markt, mogelijke locaties en het model dat bij u past." }
+      - { t: "Een eerste locatie", d: "We starten met een proefautomaat en rollen daarna het netwerk uit in uw land." }
+    form_h2: "Een partnerschap voorstellen"
+    form_sub: "Antwoord binnen 48 uur. Uw gegevens worden alleen gebruikt om contact met u op te nemen."
+    f_prenom: "Voornaam"
+    f_nom: "Achternaam"
+    f_societe: "Bedrijf"
+    f_facultatif: "optioneel"
+    f_pays: "Land"
+    f_choisir: "Kies uw land"
+    f_autre: "Ander land"
+    f_villes: "Beoogde stad of steden"
+    f_villes_ph: "Amsterdam, Rotterdam…"
+    f_email: "E-mail"
+    f_tel: "Telefoon"
+    f_profil: "U bent"
+    f_profils: ["Exploitant van verkoopautomaten", "Winkel of distributeur van ruilkaartspellen", "Winkelketen, winkelcentrum of drukbezochte locatie", "Ondernemer of investeerder", "Andere"]
+    f_message: "Uw project"
+    f_message_ph: "Uw ervaring, de locaties die u voor ogen hebt, uw planning…"
+    f_envoyer: "Mijn voorstel versturen"
+    f_envoi: "Versturen…"
+    f_ok: "Bedankt, uw voorstel is goed aangekomen. We nemen binnen 48 uur contact met u op."
+    f_err: "Het versturen is mislukt. Probeer het opnieuw of mail ons op contact@boosterstop.com."
+    faq_h2: "Veelgestelde vragen"
+    host: "Een automaat plaatsen"
+    faq:
+      - { q: "In welke landen zoekt u een partner?", a: "In Duitsland, Oostenrijk, Spanje, Italië, Portugal, Nederland, Zweden, Noorwegen, Denemarken, Finland en het Midden-Oosten (Saudi-Arabië, Qatar, Koeweit, Bahrein, Oman). Staat uw land er niet bij? Schrijf ons toch." }
+      - { q: "Hoe werkt het partnerschap?", a: "Elk land in het netwerk wordt geëxploiteerd door een lokaal bedrijf. Het model wordt met elke partner bepaald, afhankelijk van het land, het aantal locaties en het profiel: we bespreken het in het eerste gesprek." }
+      - { q: "Wat heeft een automaat nodig?", a: "Ongeveer 1 m² vloeroppervlak (1,1 m² met vrije ruimte) en een gewoon stopcontact. De automaat verbruikt heel weinig stroom." }
+      - { q: "Ik wil alleen een automaat in mijn zaak plaatsen.", a: "In Zwitserland en België gaat u naar de pagina %host%. In andere landen schrijft u ons via het formulier hierboven en kiest u “Winkelketen, winkelcentrum of drukbezochte locatie”." }
+      - { q: "Welke producten worden verkocht?", a: "Verzegelde boosters, displays en boxen van 24 licenties, van Pokémon tot Riftbound, uitsluitend gekocht bij officiële distributeurs." }
+    liens_aria: "Nuttige pagina's"
+    liens:
+      - { t: "Het netwerk en de geplande steden", f: "expansion.html" }
+      - { t: "Live voorraad", f: "stock.html" }
+      - { t: "Een automaat plaatsen", f: "installer-un-distributeur.html" }
+      - { t: "Pers", f: "presse.html" }
+
+  de:
+    title: "Lokaler Partner gesucht: BoosterStop in Ihr Land bringen | BoosterStop"
+    description: "BoosterStop sucht lokale Partner, um sein Netz von TCG-Verkaufsautomaten in Deutschland, Österreich, Spanien, Italien, Portugal, den Niederlanden, Nordeuropa und im Nahen Osten zu eröffnen."
+    og_title: "BoosterStop sucht einen lokalen Partner in Ihrem Land"
+    h1: ["Wir suchen", "einen lokalen Partner", "in Ihrem Land"]
+    lede: "BoosterStop expandiert in neue Länder. In jedem Land suchen wir ein Unternehmen vor Ort, das unsere TCG-Verkaufsautomaten aufstellt und betreibt."
+    cta_form: "Partnerschaft vorschlagen"
+    cta_pays: "Länder ansehen"
+    faits: ["%n Automaten in Betrieb in der Schweiz und in Belgien", "Live-Bestand für jeden Automaten", "Nur versiegelte Ware, eingekauft bei offiziellen Distributoren"]
+    pays_h2: "Länder, in denen wir einen Partner suchen"
+    pays_sub: "Wählen Sie Ihr Land, dann ist es im Formular bereits eingetragen."
+    region_europe: "Europa"
+    region_nord: "Nordeuropa"
+    region_golfe: "Naher Osten"
+    autre: "Ein anderes Land"
+    reseau: "Bereits im Netz: die Schweiz und Belgien. Die Vereinigten Arabischen Emirate starten in Kürze, Frankreich wird geprüft."
+    reseau_lien: "Netz und geplante Städte ansehen"
+    modele_h2: "Die Partnerschaft"
+    modele_sub: "Jedes Land im Netz wird von einem lokalen Unternehmen betrieben. Das Modell entwickeln wir mit Ihnen, je nach Land, Anzahl der Standorte und Ihrem Profil."
+    nous_h3: "BoosterStop bringt mit"
+    nous: ["Ein Konzept, das bereits funktioniert, mit Automaten in Betrieb in der Schweiz und in Belgien", "Die Marke, die Website und den Live-Bestand jedes Automaten", "Erfahrung aus der Praxis: Standortwahl, Produktauswahl, Nachfüllen", "Ein Sortiment mit vielen Lizenzen: Pokémon, One Piece, Magic und 21 weitere"]
+    vous_h3: "Sie bringen mit"
+    vous: ["Ein Unternehmen mit Sitz in Ihrem Land", "Kenntnis Ihres Marktes und seiner stark frequentierten Standorte", "Den täglichen Betrieb: Aufstellung, Nachfüllen, Wartung", "Unsere eine Regel: nur versiegelte Ware von offiziellen Distributoren"]
+    profils_h2: "Wen wir suchen"
+    profils: ["Betreiber von Verkaufsautomaten", "Läden und Distributoren für Sammelkartenspiele", "Handelsketten, Einkaufszentren, Bahnhöfe und Flughäfen", "Unternehmer und Investoren mit lokaler Präsenz"]
+    etapes_h2: "So läuft es ab"
+    etapes:
+      - { t: "Sie schreiben uns", d: "Das Formular dauert zwei Minuten: Ihr Land, die Zielstädte und Ihr Profil." }
+      - { t: "Wir lernen uns kennen", d: "Ein Gespräch über Ihren Markt, mögliche Standorte und das passende Modell." }
+      - { t: "Ein erster Standort", d: "Wir starten mit einem Pilotautomaten und bauen dann das Netz in Ihrem Land aus." }
+    form_h2: "Partnerschaft vorschlagen"
+    form_sub: "Antwort innerhalb von 48 Stunden. Ihre Angaben dienen nur dazu, Sie zu kontaktieren."
+    f_prenom: "Vorname"
+    f_nom: "Nachname"
+    f_societe: "Unternehmen"
+    f_facultatif: "optional"
+    f_pays: "Land"
+    f_choisir: "Land wählen"
+    f_autre: "Anderes Land"
+    f_villes: "Zielstadt oder -städte"
+    f_villes_ph: "Berlin, München…"
+    f_email: "E-Mail"
+    f_tel: "Telefon"
+    f_profil: "Sie sind"
+    f_profils: ["Betreiber von Verkaufsautomaten", "Laden oder Distributor für Sammelkartenspiele", "Händler, Einkaufszentrum oder stark frequentierter Standort", "Unternehmer oder Investor", "Sonstiges"]
+    f_message: "Ihr Projekt"
+    f_message_ph: "Ihre Erfahrung, die Standorte, an die Sie denken, Ihr Zeitplan…"
+    f_envoyer: "Vorschlag senden"
+    f_envoi: "Wird gesendet…"
+    f_ok: "Danke, Ihr Vorschlag ist angekommen. Wir melden uns innerhalb von 48 Stunden."
+    f_err: "Das Senden hat nicht geklappt. Bitte erneut versuchen oder an contact@boosterstop.com schreiben."
+    faq_h2: "Häufige Fragen"
+    host: "Host a machine"
+    faq:
+      - { q: "In welchen Ländern suchen Sie einen Partner?", a: "In Deutschland, Österreich, Spanien, Italien, Portugal, den Niederlanden, Schweden, Norwegen, Dänemark, Finnland und im Nahen Osten (Saudi-Arabien, Katar, Kuwait, Bahrain, Oman). Ihr Land ist nicht dabei? Schreiben Sie uns trotzdem." }
+      - { q: "Wie funktioniert die Partnerschaft?", a: "Jedes Land im Netz wird von einem lokalen Unternehmen betrieben. Das Modell legen wir mit jedem Partner fest, je nach Land, Anzahl der Standorte und Profil: Wir besprechen es im ersten Gespräch." }
+      - { q: "Was braucht ein Automat?", a: "Etwa 1 m² Fläche (1,1 m² mit Abstand) und eine normale Steckdose. Der Automat verbraucht sehr wenig Strom." }
+      - { q: "Ich möchte nur einen Automaten in meinem Geschäft aufstellen.", a: "In der Schweiz und in Belgien nutzen Sie die Seite %host% (auf Englisch). In anderen Ländern schreiben Sie uns über das Formular oben und wählen „Händler, Einkaufszentrum oder stark frequentierter Standort“." }
+      - { q: "Welche Produkte werden verkauft?", a: "Versiegelte Booster, Displays und Boxen aus 24 Lizenzen, von Pokémon bis Riftbound, ausschließlich bei offiziellen Distributoren eingekauft." }
+    liens_aria: "Weitere Seiten"
+    liens:
+      - { t: "Netz und geplante Städte", f: "expansion.html" }
+      - { t: "Live-Bestand", f: "stock.html" }
+      - { t: "Einen Automaten aufstellen", f: "installer-un-distributeur.html" }
+      - { t: "Presse", f: "presse.html" }
+
+  es:
+    title: "Buscamos socio local: lleve BoosterStop a su país | BoosterStop"
+    description: "BoosterStop busca socios locales para abrir su red de máquinas expendedoras de cartas TCG en Alemania, Austria, España, Italia, Portugal, los Países Bajos, el norte de Europa y Oriente Medio."
+    og_title: "BoosterStop busca un socio local en su país"
+    h1: ["Buscamos", "un socio local", "en su país"]
+    lede: "BoosterStop se expande a nuevos países. En cada uno buscamos una empresa local que instale y explote nuestras máquinas expendedoras de cartas TCG."
+    cta_form: "Proponer una colaboración"
+    cta_pays: "Ver los países"
+    faits: ["%n máquinas en funcionamiento en Suiza y Bélgica", "Stock en directo de cada máquina", "Solo productos precintados, comprados a distribuidores oficiales"]
+    pays_h2: "Países en los que buscamos un socio"
+    pays_sub: "Elija su país y aparecerá ya seleccionado en el formulario."
+    region_europe: "Europa"
+    region_nord: "Norte de Europa"
+    region_golfe: "Oriente Medio"
+    autre: "Otro país"
+    reseau: "Ya en la red: Suiza y Bélgica. Los Emiratos Árabes Unidos están en lanzamiento y Francia, en estudio."
+    reseau_lien: "Ver la red y las ciudades previstas"
+    modele_h2: "La colaboración"
+    modele_sub: "Cada país de la red lo explota una empresa local. El modelo lo construimos con usted, según el país, el número de ubicaciones y su perfil."
+    nous_h3: "BoosterStop aporta"
+    nous: ["Un concepto que ya funciona, con máquinas en servicio en Suiza y Bélgica", "La marca, la web y el stock en directo de cada máquina", "Experiencia sobre el terreno: elegir ubicaciones, seleccionar productos, reponer", "Una gama con muchas licencias: Pokémon, One Piece, Magic y otras 21"]
+    vous_h3: "Usted aporta"
+    vous: ["Una empresa establecida en su país", "El conocimiento de su mercado y de sus lugares con mucho tránsito", "La explotación diaria: instalación, reposición, mantenimiento", "Nuestra única regla: solo productos precintados, de distribuidores oficiales"]
+    profils_h2: "A quién buscamos"
+    profils: ["Operadores de máquinas expendedoras", "Tiendas y distribuidores de juegos de cartas", "Cadenas comerciales, centros comerciales, estaciones y aeropuertos", "Emprendedores e inversores con presencia local"]
+    etapes_h2: "Cómo funciona"
+    etapes:
+      - { t: "Nos escribe", d: "El formulario lleva dos minutos: su país, las ciudades objetivo y su perfil." }
+      - { t: "Nos conocemos", d: "Una llamada para hablar de su mercado, las ubicaciones posibles y el modelo que le conviene." }
+      - { t: "Una primera ubicación", d: "Empezamos con una máquina piloto y después desplegamos la red en su país." }
+    form_h2: "Proponer una colaboración"
+    form_sub: "Respuesta en 48 horas. Sus datos solo sirven para contactarle."
+    f_prenom: "Nombre"
+    f_nom: "Apellidos"
+    f_societe: "Empresa"
+    f_facultatif: "opcional"
+    f_pays: "País"
+    f_choisir: "Elija su país"
+    f_autre: "Otro país"
+    f_villes: "Ciudad o ciudades objetivo"
+    f_villes_ph: "Madrid, Barcelona…"
+    f_email: "Correo electrónico"
+    f_tel: "Teléfono"
+    f_profil: "Usted es"
+    f_profils: ["Operador de máquinas expendedoras", "Tienda o distribuidor de juegos de cartas", "Comercio, centro comercial o lugar con mucho tránsito", "Emprendedor o inversor", "Otro"]
+    f_message: "Su proyecto"
+    f_message_ph: "Su experiencia, las ubicaciones que tiene en mente, sus plazos…"
+    f_envoyer: "Enviar mi propuesta"
+    f_envoi: "Enviando…"
+    f_ok: "Gracias, hemos recibido su propuesta. Le responderemos en 48 horas."
+    f_err: "No se pudo enviar. Inténtelo de nuevo o escríbanos a contact@boosterstop.com."
+    faq_h2: "Preguntas frecuentes"
+    host: "Host a machine"
+    faq:
+      - { q: "¿En qué países buscan un socio?", a: "En Alemania, Austria, España, Italia, Portugal, los Países Bajos, Suecia, Noruega, Dinamarca, Finlandia y Oriente Medio (Arabia Saudí, Catar, Kuwait, Baréin, Omán). ¿Su país no aparece? Escríbanos igualmente." }
+      - { q: "¿Cómo funciona la colaboración?", a: "Cada país de la red lo explota una empresa local. El modelo se define con cada socio, según el país, el número de ubicaciones y su perfil: lo hablamos en la primera llamada." }
+      - { q: "¿Qué necesita una máquina?", a: "Alrededor de 1 m² de superficie (1,1 m² con el espacio libre) y un enchufe normal. La máquina consume muy poco." }
+      - { q: "Solo quiero instalar una máquina en mi local.", a: "En Suiza y Bélgica, utilice la página %host% (en inglés). En otros países, escríbanos con el formulario de arriba y elija «Comercio, centro comercial o lugar con mucho tránsito»." }
+      - { q: "¿Qué productos se venden?", a: "Sobres, displays y cajas precintados de 24 licencias, de Pokémon a Riftbound, comprados únicamente a distribuidores oficiales." }
+    liens_aria: "Páginas útiles"
+    liens:
+      - { t: "La red y las ciudades previstas", f: "expansion.html" }
+      - { t: "Stock en directo", f: "stock.html" }
+      - { t: "Instalar una máquina", f: "installer-un-distributeur.html" }
+      - { t: "Prensa", f: "presse.html" }
+
+  it:
+    title: "Cerchiamo un partner locale per portare BoosterStop nel suo Paese | BoosterStop"
+    description: "BoosterStop cerca partner locali per aprire la sua rete di distributori automatici di carte TCG in Germania, Austria, Spagna, Italia, Portogallo, Paesi Bassi, Nord Europa e Medio Oriente."
+    og_title: "BoosterStop cerca un partner locale nel suo Paese"
+    h1: ["Cerchiamo", "un partner locale", "nel suo Paese"]
+    lede: "BoosterStop si espande in nuovi Paesi. In ognuno cerchiamo un'azienda del posto che installi e gestisca i nostri distributori automatici di carte TCG."
+    cta_form: "Proporre una collaborazione"
+    cta_pays: "Vedere i Paesi"
+    faits: ["%n macchine in funzione in Svizzera e in Belgio", "Lo stock di ogni macchina in tempo reale", "Solo prodotti sigillati, acquistati da distributori ufficiali"]
+    pays_h2: "I Paesi in cui cerchiamo un partner"
+    pays_sub: "Scelga il suo Paese: lo troverà già selezionato nel modulo."
+    region_europe: "Europa"
+    region_nord: "Nord Europa"
+    region_golfe: "Medio Oriente"
+    autre: "Un altro Paese"
+    reseau: "Già nella rete: Svizzera e Belgio. Gli Emirati Arabi Uniti sono in fase di lancio e la Francia è allo studio."
+    reseau_lien: "Vedere la rete e le città previste"
+    modele_h2: "La collaborazione"
+    modele_sub: "Ogni Paese della rete è gestito da un'azienda locale. Il modello lo costruiamo insieme, in base al Paese, al numero di postazioni e al suo profilo."
+    nous_h3: "BoosterStop porta"
+    nous: ["Un concetto che funziona già, con macchine in servizio in Svizzera e in Belgio", "Il marchio, il sito e lo stock in tempo reale di ogni macchina", "L'esperienza sul campo: scelta delle postazioni, selezione dei prodotti, rifornimento", "Un'offerta con molte licenze: Pokémon, One Piece, Magic e altre 21"]
+    vous_h3: "Il partner porta"
+    vous: ["Un'azienda con sede nel suo Paese", "La conoscenza del mercato e dei luoghi ad alto passaggio", "La gestione quotidiana: installazione, rifornimento, manutenzione", "La nostra unica regola: solo prodotti sigillati, da distributori ufficiali"]
+    profils_h2: "Chi cerchiamo"
+    profils: ["Gestori di distributori automatici", "Negozi e distributori di giochi di carte", "Catene, centri commerciali, stazioni e aeroporti", "Imprenditori e investitori con una presenza locale"]
+    etapes_h2: "Come funziona"
+    etapes:
+      - { t: "Ci scrive", d: "Il modulo richiede due minuti: Paese, città di interesse e profilo." }
+      - { t: "Ci conosciamo", d: "Una chiamata per parlare del suo mercato, delle postazioni possibili e del modello più adatto." }
+      - { t: "Una prima postazione", d: "Partiamo con una macchina pilota, poi sviluppiamo la rete nel suo Paese." }
+    form_h2: "Proporre una collaborazione"
+    form_sub: "Risposta entro 48 ore. I suoi dati servono solo per ricontattarla."
+    f_prenom: "Nome"
+    f_nom: "Cognome"
+    f_societe: "Azienda"
+    f_facultatif: "facoltativo"
+    f_pays: "Paese"
+    f_choisir: "Scelga il Paese"
+    f_autre: "Altro Paese"
+    f_villes: "Città di interesse"
+    f_villes_ph: "Milano, Roma…"
+    f_email: "E-mail"
+    f_tel: "Telefono"
+    f_profil: "Profilo"
+    f_profils: ["Gestore di distributori automatici", "Negozio o distributore di giochi di carte", "Catena, centro commerciale o luogo ad alto passaggio", "Imprenditore o investitore", "Altro"]
+    f_message: "Il suo progetto"
+    f_message_ph: "La sua esperienza, le postazioni a cui pensa, le tempistiche…"
+    f_envoyer: "Invia la proposta"
+    f_envoi: "Invio…"
+    f_ok: "Grazie, la sua proposta è arrivata. La ricontatteremo entro 48 ore."
+    f_err: "L'invio non è riuscito. Riprovi o ci scriva a contact@boosterstop.com."
+    faq_h2: "Domande frequenti"
+    host: "Host a machine"
+    faq:
+      - { q: "In quali Paesi cercate un partner?", a: "In Germania, Austria, Spagna, Italia, Portogallo, Paesi Bassi, Svezia, Norvegia, Danimarca, Finlandia e Medio Oriente (Arabia Saudita, Qatar, Kuwait, Bahrein, Oman). Il suo Paese non c'è? Ci scriva comunque." }
+      - { q: "Come funziona la collaborazione?", a: "Ogni Paese della rete è gestito da un'azienda locale. Il modello si definisce con ogni partner, in base al Paese, al numero di postazioni e al profilo: ne parliamo alla prima chiamata." }
+      - { q: "Di cosa ha bisogno una macchina?", a: "Circa 1 m² di superficie (1,1 m² con lo spazio libero) e una normale presa elettrica. La macchina consuma pochissimo." }
+      - { q: "Voglio solo ospitare una macchina nel mio locale.", a: "In Svizzera e in Belgio usi la pagina %host% (in inglese). Negli altri Paesi ci scriva con il modulo qui sopra e scelga «Catena, centro commerciale o luogo ad alto passaggio»." }
+      - { q: "Quali prodotti vengono venduti?", a: "Bustine, display e box sigillati di 24 licenze, da Pokémon a Riftbound, acquistati solo da distributori ufficiali." }
+    liens_aria: "Pagine utili"
+    liens:
+      - { t: "La rete e le città previste", f: "expansion.html" }
+      - { t: "Stock in tempo reale", f: "stock.html" }
+      - { t: "Ospitare una macchina", f: "installer-un-distributeur.html" }
+      - { t: "Stampa", f: "presse.html" }
+
+  pt:
+    title: "Procuramos um parceiro local: leve a BoosterStop ao seu país | BoosterStop"
+    description: "A BoosterStop procura parceiros locais para abrir a sua rede de máquinas de venda automática de cartas TCG na Alemanha, Áustria, Espanha, Itália, Portugal, Países Baixos, Norte da Europa e Médio Oriente."
+    og_title: "A BoosterStop procura um parceiro local no seu país"
+    h1: ["Procuramos", "um parceiro local", "no seu país"]
+    lede: "A BoosterStop está a expandir-se para novos países. Em cada um, procuramos uma empresa local que instale e explore as nossas máquinas de venda automática de cartas TCG."
+    cta_form: "Propor uma parceria"
+    cta_pays: "Ver os países"
+    faits: ["%n máquinas em funcionamento na Suíça e na Bélgica", "O stock de cada máquina em tempo real", "Apenas produtos selados, comprados a distribuidores oficiais"]
+    pays_h2: "Países onde procuramos um parceiro"
+    pays_sub: "Escolha o seu país e ele já aparece selecionado no formulário."
+    region_europe: "Europa"
+    region_nord: "Norte da Europa"
+    region_golfe: "Médio Oriente"
+    autre: "Outro país"
+    reseau: "Já na rede: a Suíça e a Bélgica. Os Emirados Árabes Unidos estão em lançamento e a França está em estudo."
+    reseau_lien: "Ver a rede e as cidades previstas"
+    modele_h2: "A parceria"
+    modele_sub: "Cada país da rede é explorado por uma empresa local. Construímos o modelo consigo, consoante o país, o número de locais e o seu perfil."
+    nous_h3: "A BoosterStop traz"
+    nous: ["Um conceito que já funciona, com máquinas em funcionamento na Suíça e na Bélgica", "A marca, o site e o stock em tempo real de cada máquina", "Experiência no terreno: escolha dos locais, seleção dos produtos, reposição", "Uma oferta com muitas licenças: Pokémon, One Piece, Magic e outras 21"]
+    vous_h3: "O parceiro traz"
+    vous: ["Uma empresa sediada no seu país", "O conhecimento do mercado e dos locais de grande afluência", "A exploração diária: instalação, reposição, manutenção", "A nossa única regra: apenas produtos selados, de distribuidores oficiais"]
+    profils_h2: "Quem procuramos"
+    profils: ["Operadores de máquinas de venda automática", "Lojas e distribuidores de jogos de cartas", "Cadeias de lojas, centros comerciais, estações e aeroportos", "Empresários e investidores com presença local"]
+    etapes_h2: "Como funciona"
+    etapes:
+      - { t: "Escreve-nos", d: "O formulário demora dois minutos: o seu país, as cidades pretendidas e o seu perfil." }
+      - { t: "Conhecemo-nos", d: "Uma chamada para falar do seu mercado, dos locais possíveis e do modelo que lhe convém." }
+      - { t: "Um primeiro local", d: "Começamos com uma máquina piloto e depois desenvolvemos a rede no seu país." }
+    form_h2: "Propor uma parceria"
+    form_sub: "Resposta em 48 horas. Os seus dados servem apenas para o contactarmos."
+    f_prenom: "Nome"
+    f_nom: "Apelido"
+    f_societe: "Empresa"
+    f_facultatif: "opcional"
+    f_pays: "País"
+    f_choisir: "Escolha o seu país"
+    f_autre: "Outro país"
+    f_villes: "Cidade(s) pretendida(s)"
+    f_villes_ph: "Lisboa, Porto…"
+    f_email: "E-mail"
+    f_tel: "Telefone"
+    f_profil: "Perfil"
+    f_profils: ["Operador de máquinas de venda automática", "Loja ou distribuidor de jogos de cartas", "Comércio, centro comercial ou local de grande afluência", "Empresário ou investidor", "Outro"]
+    f_message: "O seu projeto"
+    f_message_ph: "A sua experiência, os locais em que pensa, os prazos…"
+    f_envoyer: "Enviar a minha proposta"
+    f_envoi: "A enviar…"
+    f_ok: "Obrigado, recebemos a sua proposta. Respondemos em 48 horas."
+    f_err: "Não foi possível enviar. Tente novamente ou escreva-nos para contact@boosterstop.com."
+    faq_h2: "Perguntas frequentes"
+    host: "Host a machine"
+    faq:
+      - { q: "Em que países procuram um parceiro?", a: "Na Alemanha, Áustria, Espanha, Itália, Portugal, Países Baixos, Suécia, Noruega, Dinamarca, Finlândia e no Médio Oriente (Arábia Saudita, Catar, Kuwait, Barém, Omã). O seu país não está na lista? Escreva-nos na mesma." }
+      - { q: "Como funciona a parceria?", a: "Cada país da rede é explorado por uma empresa local. O modelo define-se com cada parceiro, consoante o país, o número de locais e o perfil: falamos disso na primeira chamada." }
+      - { q: "De que precisa uma máquina?", a: "Cerca de 1 m² de área (1,1 m² com o espaço livre) e uma tomada elétrica normal. A máquina consome muito pouco." }
+      - { q: "Só quero acolher uma máquina no meu espaço.", a: "Na Suíça e na Bélgica, use a página %host% (em inglês). Noutros países, escreva-nos através do formulário acima e escolha «Comércio, centro comercial ou local de grande afluência»." }
+      - { q: "Que produtos são vendidos?", a: "Boosters, displays e caixas selados de 24 licenças, do Pokémon ao Riftbound, comprados apenas a distribuidores oficiais." }
+    liens_aria: "Páginas úteis"
+    liens:
+      - { t: "A rede e as cidades previstas", f: "expansion.html" }
+      - { t: "Stock em tempo real", f: "stock.html" }
+      - { t: "Acolher uma máquina", f: "installer-un-distributeur.html" }
+      - { t: "Imprensa", f: "presse.html" }
+
+  ar:
+    title: "نبحث عن شريك محلي لإطلاق BoosterStop في بلدك | BoosterStop"
+    description: "تبحث BoosterStop عن شركاء محليين لافتتاح شبكتها من آلات بيع بطاقات TCG في ألمانيا والنمسا وإسبانيا وإيطاليا والبرتغال وهولندا وشمال أوروبا والشرق الأوسط."
+    og_title: "BoosterStop تبحث عن شريك محلي في بلدك"
+    h1: ["نبحث عن", "شريك محلي", "في بلدك"]
+    lede: "تتوسع BoosterStop إلى بلدان جديدة، وفي كل بلد نبحث عن شركة محلية تتولى تركيب آلات بيع بطاقات TCG الخاصة بنا وتشغيلها."
+    cta_form: "اقترح شراكة"
+    cta_pays: "عرض البلدان"
+    faits: ["%n آلة تعمل في سويسرا وبلجيكا", "مخزون كل آلة متاح مباشرةً", "منتجات مختومة فقط، تُشترى من الموزعين الرسميين"]
+    pays_h2: "البلدان التي نبحث فيها عن شريك"
+    pays_sub: "اختر بلدك ليظهر محددًا مسبقًا في النموذج."
+    region_europe: "أوروبا"
+    region_nord: "شمال أوروبا"
+    region_golfe: "الشرق الأوسط"
+    autre: "بلد آخر"
+    reseau: "ضمن الشبكة حاليًا: سويسرا وبلجيكا. والإمارات العربية المتحدة قيد الإطلاق، وفرنسا قيد الدراسة."
+    reseau_lien: "عرض الشبكة والمدن المخطط لها"
+    modele_h2: "الشراكة"
+    modele_sub: "تُدار الشبكة في كل بلد من قِبل شركة محلية، ونبني النموذج معك بحسب البلد وعدد المواقع وطبيعة نشاطك."
+    nous_h3: "ما تقدمه BoosterStop"
+    nous: ["مفهوم ناجح بالفعل، بآلات تعمل في سويسرا وبلجيكا", "العلامة التجارية والموقع الإلكتروني والمخزون المباشر لكل آلة", "خبرة ميدانية: اختيار المواقع وانتقاء المنتجات وإعادة التعبئة", "تشكيلة متعددة التراخيص: Pokémon، One Piece، Magic، و21 ترخيصًا آخر"]
+    vous_h3: "ما يقدمه الشريك"
+    vous: ["شركة قائمة في بلدك", "معرفة السوق والمواقع ذات الإقبال الكبير", "التشغيل اليومي: التركيب وإعادة التعبئة والصيانة", "قاعدتنا الوحيدة: منتجات مختومة فقط من الموزعين الرسميين"]
+    profils_h2: "من نبحث عنه"
+    profils: ["مشغلو آلات البيع الذاتي", "متاجر وموزعو ألعاب البطاقات", "سلاسل التجزئة ومراكز التسوق والمحطات والمطارات", "رواد الأعمال والمستثمرون ذوو الحضور المحلي"]
+    etapes_h2: "كيف تسير الأمور"
+    etapes:
+      - { t: "تراسلنا", d: "يستغرق النموذج دقيقتين: بلدك والمدن المستهدفة وطبيعة نشاطك." }
+      - { t: "نتعارف", d: "مكالمة للحديث عن سوقك والمواقع الممكنة والنموذج المناسب لك." }
+      - { t: "موقع أول", d: "نبدأ بآلة تجريبية، ثم نوسّع الشبكة في بلدك." }
+    form_h2: "اقترح شراكة"
+    form_sub: "نرد خلال 48 ساعة، وتُستخدم بياناتك فقط للتواصل معك."
+    f_prenom: "الاسم الأول"
+    f_nom: "اسم العائلة"
+    f_societe: "الشركة"
+    f_facultatif: "اختياري"
+    f_pays: "البلد"
+    f_choisir: "اختر بلدك"
+    f_autre: "بلد آخر"
+    f_villes: "المدينة أو المدن المستهدفة"
+    f_villes_ph: "الرياض، الدوحة…"
+    f_email: "البريد الإلكتروني"
+    f_tel: "الهاتف"
+    f_profil: "طبيعة نشاطك"
+    f_profils: ["مشغل آلات بيع ذاتي", "متجر أو موزع ألعاب بطاقات", "متجر أو مركز تسوق أو موقع ذو إقبال كبير", "رائد أعمال أو مستثمر", "غير ذلك"]
+    f_message: "مشروعك"
+    f_message_ph: "خبرتك، والمواقع التي تفكر فيها، وجدولك الزمني…"
+    f_envoyer: "إرسال اقتراحي"
+    f_envoi: "جارٍ الإرسال…"
+    f_ok: "شكرًا، وصلنا اقتراحك. سنعود إليك خلال 48 ساعة."
+    f_err: "تعذّر الإرسال. حاول مرة أخرى أو راسلنا على contact@boosterstop.com."
+    faq_h2: "أسئلة شائعة"
+    host: "Host a machine"
+    faq:
+      - { q: "في أي بلدان تبحثون عن شريك؟", a: "في ألمانيا والنمسا وإسبانيا وإيطاليا والبرتغال وهولندا والسويد والنرويج والدنمارك وفنلندا والشرق الأوسط (المملكة العربية السعودية وقطر والكويت والبحرين وعُمان). بلدك غير مدرج؟ راسلنا على أي حال." }
+      - { q: "كيف تعمل الشراكة؟", a: "تُدار الشبكة في كل بلد من قِبل شركة محلية، ويُحدَّد النموذج مع كل شريك بحسب البلد وعدد المواقع وطبيعة نشاطه، ونناقشه في المكالمة الأولى." }
+      - { q: "ماذا تحتاج الآلة؟", a: "نحو 1 م² من المساحة (1.1 م² مع المسافة اللازمة حولها) ومقبس كهرباء عادي، واستهلاكها للكهرباء منخفض جدًا." }
+      - { q: "أريد فقط استضافة آلة في متجري.", a: "في سويسرا وبلجيكا، استخدم صفحة %host% (بالإنجليزية). وفي البلدان الأخرى، راسلنا عبر النموذج أعلاه واختر «متجر أو مركز تسوق أو موقع ذو إقبال كبير»." }
+      - { q: "ما المنتجات المعروضة؟", a: "أكياس بطاقات (Boosters) وعلب عرض وصناديق مختومة من 24 ترخيصًا، من Pokémon إلى Riftbound، تُشترى من الموزعين الرسميين فقط." }
+    liens_aria: "صفحات مفيدة"
+    liens:
+      - { t: "الشبكة والمدن المخطط لها", f: "expansion.html" }
+      - { t: "المخزون المباشر", f: "stock.html" }
+      - { t: "استضافة آلة", f: "installer-un-distributeur.html" }
+      - { t: "الصحافة", f: "presse.html" }

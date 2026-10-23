@@ -3,6 +3,9 @@
 # (encart « où acheter » en bas des articles et de la page blog).
 # live: true = inventaire consultable en direct sur /stock.html
 # page_id: identifiant de la page distributeur (champ « page » de son front matter)
+# worker: numéro de la machine sur le Worker du stock (le même que sur /stock.html).
+#   Vide = stock en direct pas encore connecté. Sert au relevé quotidien du stock
+#   (.github/workflows/stock-releve.yml → _data/stock.json, lu par les pages).
 # google_place_id: fiche Google de la machine → bouton « Noter sur Google ».
 #   Vide = pas encore de fiche ; coller l'ID dès qu'elle existe.
 - id: rive
@@ -15,6 +18,7 @@
   url: /fr/distributeur-geneve-rive.html
   url_en: /distributeur-geneve-rive.html
   live: true
+  worker: 0
   page_id: distributeur-geneve-rive
   google_place_id: ChIJt9nEw5xljEcRFuyNEZGtZYA
 
@@ -28,6 +32,7 @@
   url: /fr/distributeur-geneve-charmilles.html
   url_en: /distributeur-geneve-charmilles.html
   live: true
+  worker: 1
   page_id: distributeur-geneve-charmilles
   google_place_id: ChIJNY5MSpNljEcRuuONizAhk7Q
 
@@ -41,6 +46,7 @@
   url: /fr/distributeur-petit-lancy.html
   url_en: /distributeur-petit-lancy.html
   live: true
+  worker: 2
   page_id: distributeur-petit-lancy
   google_place_id: ChIJ-Zttd1l7jEcRswsDSHI2P7E
 
@@ -54,6 +60,7 @@
   url: /fr/distributeur-geneve-plainpalais.html
   url_en: /distributeur-geneve-plainpalais.html
   live: true
+  worker: 5
   page_id: distributeur-geneve-plainpalais
   google_place_id:
 
@@ -67,6 +74,7 @@
   url: /fr/distributeur-meyrin.html
   url_en: /distributeur-meyrin.html
   live: true
+  worker: 6
   page_id: distributeur-meyrin
   google_place_id:
 
@@ -80,6 +88,7 @@
   url: /fr/distributeur-thonex.html
   url_en: /distributeur-thonex.html
   live: true
+  worker: 7
   page_id: distributeur-thonex
   google_place_id:
 
@@ -93,6 +102,7 @@
   url: /fr/distributeur-carouge.html
   url_en: /distributeur-carouge.html
   live: true
+  worker: 4
   page_id: distributeur-carouge
   google_place_id:
 
@@ -106,4 +116,153 @@
   url: /fr/distributeurs-geneve.html
   url_en: /distributeurs-geneve.html
   live: true
+  worker: 3
   google_place_id:
+
+# ------------------------------------------------------------------
+# BELGIQUE — 5 machines dans des magasins Carrefour.
+# Pages : _layouts/belgique.html (FR, NL, EN), même nom de fichier.
+# worker vide = stock en direct pas encore connecté : il suffit d'y mettre
+# le numéro du Worker pour que le relevé quotidien et les pages l'affichent.
+# ------------------------------------------------------------------
+- id: be-tomberg
+  pays: be
+  nom: Carrefour Tomberg
+  court: Woluwe-Saint-Lambert
+  court_nl: Sint-Lambrechts-Woluwe
+  court_en: Woluwe-Saint-Lambert
+  adresse: Rue Tomberg 96-114, 1200 Woluwe-Saint-Lambert
+  adresse_nl: Tomberg 96-114, 1200 Sint-Lambrechts-Woluwe
+  rue: Rue Tomberg 96-114
+  rue_nl: Tomberg 96-114
+  cp: "1200"
+  ville: Woluwe-Saint-Lambert
+  ville_nl: Sint-Lambrechts-Woluwe
+  region: { fr: Bruxelles, nl: Brussel, en: Brussels }
+  lat: 50.8425071
+  lng: 4.427353
+  fichier: distributeur-bruxelles-woluwe.html
+  page_id: distributeur-bruxelles-woluwe
+  url: /fr/distributeur-bruxelles-woluwe.html
+  url_en: /distributeur-bruxelles-woluwe.html
+  url_nl: /nl/distributeur-bruxelles-woluwe.html
+  live: false
+  worker:
+  google_place_id:
+  titre: { fr: "Distributeur Pokémon à Bruxelles (Woluwe) | BoosterStop", nl: "Pokémon-automaat in Brussel (Woluwe) | BoosterStop", en: "Pokémon vending machine in Brussels (Woluwe) | BoosterStop" }
+  h1: { fr: "Distributeur de cartes Pokémon à Bruxelles, Woluwe-Saint-Lambert", nl: "Pokémon-kaartautomaat in Brussel, Sint-Lambrechts-Woluwe", en: "Pokémon card vending machine in Brussels, Woluwe-Saint-Lambert" }
+  intro: { fr: "C'est la machine bruxelloise du réseau, à Woluwe-Saint-Lambert, dans l'est de la capitale.", nl: "Dit is de Brusselse automaat van het netwerk, in Sint-Lambrechts-Woluwe, in het oosten van de hoofdstad.", en: "This is the network's Brussels machine, in Woluwe-Saint-Lambert, in the east of the capital." }
+
+- id: be-zandhoven
+  pays: be
+  nom: Carrefour Zandhoven
+  court: Zandhoven
+  court_nl: Zandhoven
+  court_en: Zandhoven
+  adresse: Langestraat 41, 2240 Zandhoven
+  adresse_nl: Langestraat 41, 2240 Zandhoven
+  rue: Langestraat 41
+  rue_nl: Langestraat 41
+  cp: "2240"
+  ville: Zandhoven
+  ville_nl: Zandhoven
+  region: { fr: "Flandre, province d'Anvers", nl: "Vlaanderen, provincie Antwerpen", en: "Flanders, Antwerp province" }
+  lat: 51.2218304
+  lng: 4.6711155
+  fichier: distributeur-zandhoven.html
+  page_id: distributeur-zandhoven
+  url: /fr/distributeur-zandhoven.html
+  url_en: /distributeur-zandhoven.html
+  url_nl: /nl/distributeur-zandhoven.html
+  live: false
+  worker:
+  google_place_id:
+  titre: { fr: "Distributeur Pokémon à Zandhoven (Carrefour) | BoosterStop", nl: "Pokémon-automaat in Zandhoven (Carrefour) | BoosterStop", en: "Pokémon vending machine in Zandhoven | BoosterStop" }
+  h1: { fr: "Distributeur de cartes Pokémon à Zandhoven", nl: "Pokémon-kaartautomaat in Zandhoven", en: "Pokémon card vending machine in Zandhoven" }
+  intro: { fr: "La machine se trouve en province d'Anvers, à l'est d'Anvers.", nl: "De automaat staat in de provincie Antwerpen, ten oosten van Antwerpen.", en: "The machine is in the province of Antwerp, east of the city." }
+
+- id: be-zemst
+  pays: be
+  nom: Carrefour Zemst
+  court: Malines
+  court_nl: Mechelen
+  court_en: Mechelen
+  adresse: Zemstbaan 242, 2800 Malines
+  adresse_nl: Zemstbaan 242, 2800 Mechelen
+  rue: Zemstbaan 242
+  rue_nl: Zemstbaan 242
+  cp: "2800"
+  ville: Malines
+  ville_nl: Mechelen
+  ville_en: Mechelen
+  adresse_en: Zemstbaan 242, 2800 Mechelen
+  region: { fr: "Flandre, province d'Anvers", nl: "Vlaanderen, provincie Antwerpen", en: "Flanders, Antwerp province" }
+  lat: 50.9941679
+  lng: 4.4713024
+  fichier: distributeur-mechelen-zemst.html
+  page_id: distributeur-mechelen-zemst
+  url: /fr/distributeur-mechelen-zemst.html
+  url_en: /distributeur-mechelen-zemst.html
+  url_nl: /nl/distributeur-mechelen-zemst.html
+  live: false
+  worker:
+  google_place_id:
+  titre: { fr: "Distributeur Pokémon à Malines (Carrefour Zemst) | BoosterStop", nl: "Pokémon-automaat in Mechelen (Carrefour Zemst) | BoosterStop", en: "Pokémon vending machine in Mechelen | BoosterStop" }
+  h1: { fr: "Distributeur de cartes Pokémon à Malines (Carrefour Zemst)", nl: "Pokémon-kaartautomaat in Mechelen (Carrefour Zemst)", en: "Pokémon card vending machine in Mechelen (Carrefour Zemst)" }
+  intro: { fr: "La machine est dans l'hypermarché Carrefour de la Zemstbaan, à Malines, entre Bruxelles et Anvers.", nl: "De automaat staat in de Carrefour-hypermarkt aan de Zemstbaan in Mechelen, tussen Brussel en Antwerpen.", en: "The machine is in the Carrefour hypermarket on the Zemstbaan in Mechelen, between Brussels and Antwerp." }
+
+- id: be-korbeek-lo
+  pays: be
+  nom: Carrefour Korbeek-Lo
+  court: Korbeek-Lo
+  court_nl: Korbeek-Lo
+  court_en: Korbeek-Lo
+  adresse: Vlinderlaan 1C, 3360 Korbeek-Lo
+  adresse_nl: Vlinderlaan 1C, 3360 Korbeek-Lo
+  rue: Vlinderlaan 1C
+  rue_nl: Vlinderlaan 1C
+  cp: "3360"
+  ville: Korbeek-Lo
+  ville_nl: Korbeek-Lo
+  region: { fr: "Flandre, Brabant flamand", nl: "Vlaanderen, Vlaams-Brabant", en: "Flanders, Flemish Brabant" }
+  lat: 50.8639848
+  lng: 4.7469178
+  fichier: distributeur-korbeek-lo.html
+  page_id: distributeur-korbeek-lo
+  url: /fr/distributeur-korbeek-lo.html
+  url_en: /distributeur-korbeek-lo.html
+  url_nl: /nl/distributeur-korbeek-lo.html
+  live: false
+  worker:
+  google_place_id:
+  titre: { fr: "Distributeur Pokémon à Korbeek-Lo, près de Louvain | BoosterStop", nl: "Pokémon-automaat in Korbeek-Lo bij Leuven | BoosterStop", en: "Pokémon vending machine near Leuven (Korbeek-Lo) | BoosterStop" }
+  h1: { fr: "Distributeur de cartes Pokémon à Korbeek-Lo, près de Louvain", nl: "Pokémon-kaartautomaat in Korbeek-Lo, bij Leuven", en: "Pokémon card vending machine in Korbeek-Lo, near Leuven" }
+  intro: { fr: "La machine est à Korbeek-Lo (Bierbeek), aux portes de Louvain.", nl: "De automaat staat in Korbeek-Lo (Bierbeek), vlak bij Leuven.", en: "The machine is in Korbeek-Lo (Bierbeek), right next to Leuven." }
+
+- id: be-la-louviere
+  pays: be
+  nom: Carrefour La Louvière
+  court: La Louvière
+  court_nl: La Louvière
+  court_en: La Louvière
+  adresse: Rue Albert Ier 21, 7100 La Louvière
+  adresse_nl: Rue Albert Ier 21, 7100 La Louvière
+  rue: Rue Albert Ier 21
+  rue_nl: Rue Albert Ier 21
+  cp: "7100"
+  ville: La Louvière
+  ville_nl: La Louvière
+  region: { fr: "Wallonie, Hainaut", nl: "Wallonië, Henegouwen", en: "Wallonia, Hainaut" }
+  lat: 50.4765191
+  lng: 4.1873173
+  fichier: distributeur-la-louviere.html
+  page_id: distributeur-la-louviere
+  url: /fr/distributeur-la-louviere.html
+  url_en: /distributeur-la-louviere.html
+  url_nl: /nl/distributeur-la-louviere.html
+  live: false
+  worker:
+  google_place_id:
+  titre: { fr: "Distributeur Pokémon à La Louvière (Carrefour) | BoosterStop", nl: "Pokémon-automaat in La Louvière | BoosterStop", en: "Pokémon vending machine in La Louvière | BoosterStop" }
+  h1: { fr: "Distributeur de cartes Pokémon à La Louvière", nl: "Pokémon-kaartautomaat in La Louvière", en: "Pokémon card vending machine in La Louvière" }
+  intro: { fr: "C'est la machine wallonne du réseau, dans le Hainaut, entre Mons et Charleroi.", nl: "Dit is de Waalse automaat van het netwerk, in Henegouwen, tussen Bergen en Charleroi.", en: "This is the network's Walloon machine, in Hainaut, between Mons and Charleroi." }

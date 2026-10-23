@@ -2,26 +2,47 @@
   FOOTER COMMUN — inséré en bas de chaque page via la balise include footer.html
   Contient : footer, nav mobile (barre du bas), bannière cookies, JS commun.
   Lit le front matter de la page (lang, page) comme nav.html.
+  Textes : _data/i18n.yml. Chaque lien pointe vers la page dans la langue
+  du menu, ou vers l'anglais si elle n'est pas encore traduite (lien.html).
 {%- endcomment -%}
 {%- assign lang = page.lang | default: "en" -%}
 {%- assign pid = page.page | default: "index" -%}
-{%- if lang == "fr" -%}{%- assign fr = true -%}{%- assign base = "/fr/" -%}{%- else -%}{%- assign fr = false -%}{%- assign base = "/" -%}{%- endif -%}
-{%- if pid == "index" -%}{%- assign anchor = "" -%}{%- else -%}{%- assign anchor = base -%}{%- endif -%}
-
+{%- assign lang_info = site.data.langues | where: "code", lang | first -%}
+{%- if lang_info.complet -%}{%- assign ui = lang -%}{%- else -%}{%- assign ui = "en" -%}{%- endif -%}
+{%- assign ui_info = site.data.langues | where: "code", ui | first -%}
+{%- assign ui_dir = ui_info.dossier | default: "" -%}
+{%- capture base -%}/{{ ui_dir }}{%- endcapture -%}
+{%- assign t = site.data.i18n[ui] -%}
+{%- if ui == "fr" -%}{%- assign fr = true -%}{%- else -%}{%- assign fr = false -%}{%- endif -%}
+{%- if bs_urls == nil or bs_urls == "" -%}{%- capture bs_urls -%}|{{ site.pages | map: "url" | join: "|" }}|{{ site.posts | map: "url" | join: "|" }}|{%- endcapture -%}{%- endif -%}
+{%- if pid == "index" and lang == ui -%}{%- assign anchor = "" -%}{%- else -%}{%- assign anchor = base -%}{%- endif -%}
+{%- assign tp_key = t.trustpilot | default: "trustpilot_en" -%}
+<div class="site-foot"{% if lang != ui %} lang="{{ ui }}" dir="ltr"{% endif %}>
 <!-- EMPLACEMENTS — maillage interne vers les 7 pages distributeur -->
 <!-- div et non nav : site.css cible l'element nav en position:fixed -->
-<div class="footer-locs" role="navigation" aria-label="{% if fr %}Nos distributeurs{% else %}Our machines{% endif %}">
-  <span class="fl-title">{% if fr %}Nos distributeurs à Genève{% else %}Our machines in Geneva{% endif %}</span>
+<div class="footer-locs" role="navigation" aria-label="{{ t.fl_aria }}">
+  <span class="fl-title">{{ t.fl_titre }}</span>
   <span class="fl-links">
-    <a href="{{ base }}distributeur-geneve-rive.html">Rive</a>
-    <a href="{{ base }}distributeur-geneve-charmilles.html">Les Charmilles</a>
-    <a href="{{ base }}distributeur-petit-lancy.html">Petit-Lancy</a>
-    <a href="{{ base }}distributeur-geneve-plainpalais.html">Plainpalais</a>
-    <a href="{{ base }}distributeur-meyrin.html">Meyrin</a>
-    <a href="{{ base }}distributeur-thonex.html">Thônex</a>
-    <a href="{{ base }}distributeur-carouge.html">Carouge</a>
+    <a href="{% include lien.html f="distributeur-geneve-rive.html" %}">Rive</a>
+    <a href="{% include lien.html f="distributeur-geneve-charmilles.html" %}">Les Charmilles</a>
+    <a href="{% include lien.html f="distributeur-petit-lancy.html" %}">Petit-Lancy</a>
+    <a href="{% include lien.html f="distributeur-geneve-plainpalais.html" %}">Plainpalais</a>
+    <a href="{% include lien.html f="distributeur-meyrin.html" %}">Meyrin</a>
+    <a href="{% include lien.html f="distributeur-thonex.html" %}">Thônex</a>
+    <a href="{% include lien.html f="distributeur-carouge.html" %}">Carouge</a>
   </span>
-  <a class="fl-all" href="{{ base }}distributeurs-geneve.html">{% if fr %}Tous les emplacements{% else %}All locations{% endif %} →</a>
+  <a class="fl-all" href="{% include lien.html f="distributeurs-geneve.html" %}">{{ t.fl_tous }}</a>
+</div>
+<div class="footer-locs footer-locs-be" role="navigation" aria-label="{{ t.fl_titre_be }}">
+  <span class="fl-title">{{ t.fl_titre_be }}</span>
+  <span class="fl-links">
+    {%- assign f_be = site.data.machines | where: "pays", "be" -%}
+    {%- capture f_k -%}court{% if ui == "nl" %}_nl{% elsif ui == "en" %}_en{% endif %}{%- endcapture -%}
+    {%- for m in f_be %}
+    <a href="{% include lien.html f=m.fichier %}">{{ m[f_k] | default: m.court }}</a>
+    {%- endfor %}
+  </span>
+  <a class="fl-all" href="{% include lien.html f="distributeurs-belgique.html" %}">{{ t.fl_tous_be }}</a>
 </div>
 
 <!-- FOOTER (commun : _includes/footer.html) -->
@@ -51,35 +72,37 @@
 
   <div class="footer-links">
     {%- unless pid == "stock" %}
-    <a href="{{ base }}stock.html" class="footer-stock">{% if fr %}📦 Stock Live{% else %}📦 Live Stock{% endif %}</a>
+    <a href="{% include lien.html f="stock.html" %}" class="footer-stock">{{ t.f_stock }}</a>
     {%- endunless %}
-    <a href="{{ base }}#contact" class="footer-contact">Contact</a>
-    <a href="{{ base }}installer-un-distributeur.html" class="footer-b2b">{% if fr %}Accueillir une machine{% else %}Host a machine{% endif %}</a>
-    <a href="{{ base }}rachat-pokemon-one-piece.html" class="footer-b2b"{% if pid == "rachat-pokemon-one-piece" %} style="color:var(--white)"{% endif %}>{% if fr %}Rachat Pokémon &amp; One Piece{% else %}Sell Pokémon &amp; One Piece{% endif %}</a>
-    <a href="{{ base }}blog.html" class="footer-press"{% if pid == "blog" %} style="color:var(--white)"{% endif %}>Blog</a>
-    <a href="{{ base }}presse.html" class="footer-press"{% if pid == "presse" %} style="color:var(--white)"{% endif %}>{% if fr %}Presse{% else %}Press{% endif %}</a>
-    <a href="{% if fr %}{{ site.data.avis.trustpilot_fr }}{% else %}{{ site.data.avis.trustpilot_en }}{% endif %}" class="footer-tp" target="_blank" rel="noopener">★ {% if fr %}Donner un avis{% else %}Leave a review{% endif %}</a>
-    <a href="{{ base }}privacy.html" class="footer-privacy">{% if fr %}Confidentialité{% else %}Privacy &amp; Cookies{% endif %}</a>
+    <a href="{{ anchor }}#contact" class="footer-contact">{{ t.f_contact }}</a>
+    <a href="{% include lien.html f="installer-un-distributeur.html" %}" class="footer-b2b"{% if pid == "installer-un-distributeur" %} style="color:var(--white)"{% endif %}>{{ t.f_accueillir }}</a>
+    <a href="{% include lien.html f="partenaire-local.html" %}" class="footer-b2b"{% if pid == "partenaire-local" %} style="color:var(--white)"{% endif %}>{{ t.f_partenaire }}</a>
+    <a href="{% include lien.html f="rachat-pokemon-one-piece.html" %}" class="footer-b2b"{% if pid == "rachat-pokemon-one-piece" %} style="color:var(--white)"{% endif %}>{{ t.f_rachat }}</a>
+    <a href="{% include lien.html f="blog.html" %}" class="footer-press"{% if pid == "blog" %} style="color:var(--white)"{% endif %}>{{ t.f_blog }}</a>
+    <a href="{% include lien.html f="presse.html" %}" class="footer-press"{% if pid == "presse" %} style="color:var(--white)"{% endif %}>{{ t.f_presse }}</a>
+    <a href="{{ site.data.avis[tp_key] }}" class="footer-tp" target="_blank" rel="noopener">{{ t.f_avis }}</a>
+    <a href="{% include lien.html f="privacy.html" %}" class="footer-privacy">{{ t.f_privacy }}</a>
     <p>© {{ site.time | date: "%Y" }} BoosterStop — 247 Distribution SNC</p>
   </div>
 </footer>
 
 <!-- NAV MOBILE (commun) -->
 <div class="mob-nav" id="mobNav">
-  <a href="{{ base }}distributeurs-geneve.html" class="mob-link{% if pid == "distributeurs-geneve" %} active{% endif %}"><span class="m-icon">📍</span><span>Machines</span></a>
-  <a href="{{ base }}stock.html" class="mob-link{% if pid == "stock" %} active{% endif %}"><span class="m-icon">📦</span><span>Stock</span></a>
-  <a href="{{ base }}licences-geneve.html" class="mob-link{% if pid == "licences-geneve" %} active{% endif %}"><span class="m-icon">🃏</span><span>TCG</span></a>
-  <a href="{{ base }}newsletter.html" class="mob-link{% if pid == "newsletter" %} active{% endif %}"><span class="m-icon">🔔</span><span class="m-badge">-10%</span><span>Newsletter</span></a>
-  <a href="{{ base }}installer-un-distributeur.html" class="mob-link{% if pid == "installer-un-distributeur" %} active{% endif %}"><span class="m-icon">🤝</span><span>{% if fr %}Partenaire{% else %}Partner{% endif %}</span></a>
-  <a href="{{ anchor }}#contact" class="mob-link"><span class="m-icon">✉️</span><span>Contact</span></a>
+  <a href="{% include lien.html f="distributeurs-geneve.html" %}" class="mob-link{% if pid == "distributeurs-geneve" %} active{% endif %}"><span class="m-icon">📍</span><span>{{ t.m_machines }}</span></a>
+  <a href="{% include lien.html f="stock.html" %}" class="mob-link{% if pid == "stock" %} active{% endif %}"><span class="m-icon">📦</span><span>{{ t.m_stock }}</span></a>
+  <a href="{% include lien.html f="licences-geneve.html" %}" class="mob-link{% if pid == "licences-geneve" %} active{% endif %}"><span class="m-icon">🃏</span><span>{{ t.m_tcg }}</span></a>
+  <a href="{% include lien.html f="newsletter.html" %}" class="mob-link{% if pid == "newsletter" %} active{% endif %}"><span class="m-icon">🔔</span><span class="m-badge">-10%</span><span>{{ t.m_newsletter }}</span></a>
+  <a href="{% include lien.html f="installer-un-distributeur.html" %}" class="mob-link{% if pid == "installer-un-distributeur" or pid == "partenaire-local" %} active{% endif %}"><span class="m-icon">🤝</span><span>{{ t.m_partenaire }}</span></a>
+  <a href="{{ anchor }}#contact" class="mob-link"><span class="m-icon">✉️</span><span>{{ t.m_contact }}</span></a>
+</div>
 </div>
 
 <!-- BANNIÈRE COOKIES / RGPD (commun) -->
-<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
-  <div class="cookie-text"><strong>🍪</strong> {% if fr %}Nous utilisons des cookies pour les cartes et formulaires et pour améliorer votre expérience. Vous pouvez accepter ou ne garder que l'essentiel. <a href="{{ base }}privacy.html">En savoir plus</a>.{% else %}We use cookies to run maps &amp; forms and to improve your experience. You can accept or keep only what's essential. <a href="{{ base }}privacy.html">Learn more</a>.{% endif %}</div>
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent"{% if lang != ui %} lang="{{ ui }}" dir="ltr"{% endif %}>
+  <div class="cookie-text"><strong>🍪</strong> {{ t.cookie_txt }} <a href="{% include lien.html f="privacy.html" %}">{{ t.cookie_plus }}</a>.</div>
   <div class="cookie-actions">
-    <button class="cookie-btn decline" onclick="setCookieConsent(false)">{% if fr %}Essentiels{% else %}Essential only{% endif %}</button>
-    <button class="cookie-btn accept" onclick="setCookieConsent(true)">{% if fr %}Tout accepter{% else %}Accept all{% endif %}</button>
+    <button class="cookie-btn decline" onclick="setCookieConsent(false)">{{ t.cookie_ess }}</button>
+    <button class="cookie-btn accept" onclick="setCookieConsent(true)">{{ t.cookie_ok }}</button>
   </div>
 </div>
 <script src="/assets/site.js?v={{ site.time | date: '%s' }}"></script>

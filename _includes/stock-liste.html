@@ -1,0 +1,53 @@
+{%- comment -%}
+  Page Stock Live : le dernier relevé de chaque machine genevoise, en texte
+  (Google ne lit pas le stock chargé en direct par le script de la page).
+  Source : _data/stock.json, mis à jour chaque matin par la GitHub Action.
+{%- endcomment -%}
+{%- assign sl_t = site.data.i18n[ui] | default: site.data.i18n.en -%}
+{%- assign sl_ms = site.data.machines | where: "pays", "ch" -%}
+{%- assign sl_any = false -%}
+{%- for m in sl_ms -%}{%- assign sl_s = site.data.stock.machines[m.id] -%}{%- if sl_s and sl_s.ok -%}{%- assign sl_any = true -%}{%- endif -%}{%- endfor -%}
+{%- if sl_any and site.data.stock.maj -%}
+{%- assign sl_d = site.data.stock.maj | date: "%d/%m" -%}{%- assign sl_h = site.data.stock.maj | date: "%H:%M" %}
+<section class="rl-list" aria-labelledby="rlListH">
+  <h2 id="rlListH">{{ sl_t.rl_list_h }}</h2>
+  <p class="rl-sub">{{ sl_t.rl_list_sub | replace: "%d", sl_d | replace: "%h", sl_h }}</p>
+  {%- for m in sl_ms %}
+  {%- assign sl_s = site.data.stock.machines[m.id] -%}
+  {%- if sl_s and sl_s.ok %}
+  {%- assign sl_f = m.url_en | remove_first: "/" %}
+  <details class="rl-m">
+    <summary><span class="rl-nm">{{ m.nom }}</span><span class="rl-n">{{ sl_s.produits.size }} {{ sl_t.rl_count }}</span></summary>
+    {%- if sl_s.produits.size > 0 %}
+    <ul>
+      {%- for p in sl_s.produits %}
+      <li><span>{{ p.nom | escape }}</span><span class="rl-q">{% if p.qte > 1 %}{{ p.qte }} {{ sl_t.rl_units }}{% else %}{{ sl_t.rl_last }}{% endif %}{% if p.prix %} · CHF {{ p.prix }}{% endif %}</span></li>
+      {%- endfor %}
+    </ul>
+    {%- else %}
+    <p class="rl-empty">{{ sl_t.rl_empty }}</p>
+    {%- endif %}
+    <a class="rl-page" href="{% include lien.html f=sl_f %}">{{ sl_t.rl_page }}</a>
+  </details>
+  {%- endif %}
+  {%- endfor %}
+</section>
+<style>
+  .rl-list { max-width: 1200px; margin: 0 auto; padding: 0 48px 56px; }
+  @media (max-width: 768px) { .rl-list { padding: 0 20px 44px; } }
+  .rl-list h2 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; font-size: clamp(26px, 3.4vw, 34px); letter-spacing: .5px; margin: 0 0 6px; }
+  .rl-sub { color: var(--text-muted); font-size: 14px; margin: 0 0 18px; max-width: 70ch; }
+  .rl-m { background: var(--gray); border-left: 2px solid var(--gray-mid); margin-bottom: 2px; }
+  .rl-m[open] { border-left-color: var(--red); }
+  .rl-m summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; padding: 16px 20px; font-size: 15px; }
+  .rl-m summary::-webkit-details-marker { display: none; }
+  .rl-n { color: var(--text-muted); font-size: 13px; white-space: nowrap; }
+  .rl-m ul { list-style: none; margin: 0; padding: 0 20px 6px; }
+  .rl-m li { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; border-top: 1px solid var(--gray-mid); font-size: 14px; }
+  .rl-q { color: var(--text-muted); white-space: nowrap; }
+  .rl-empty { padding: 0 20px 14px; color: var(--text-muted); font-size: 14px; }
+  .rl-page { display: inline-block; margin: 6px 20px 16px; color: var(--white); font-size: 13.5px; text-underline-offset: 3px; }
+  .rl-m summary:focus-visible, .rl-page:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+  @media (max-width: 600px) { .rl-m li { flex-direction: column; gap: 2px; } .rl-q { white-space: normal; } }
+</style>
+{%- endif -%}

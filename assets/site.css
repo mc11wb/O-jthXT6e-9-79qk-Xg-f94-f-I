@@ -28,12 +28,31 @@ nav ul a.nav-stock{color:var(--red);font-weight:500;}
 .swiss-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border:1px solid var(--gray-mid);border-radius:3px;font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--text-muted);white-space:nowrap;line-height:1;}
 .swiss-badge .sb-flag{font-size:12px;line-height:1;}
 
-/* ---------- SWITCH EN / FR ---------- */
-.lang-switcher{display:flex;gap:4px;}
-.lang-switcher a{text-decoration:none;display:inline-block;}
-.lang-btn{background:none;border:1px solid var(--gray-mid);color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;padding:4px 10px;border-radius:2px;cursor:pointer;transition:all 0.2s;}
-.lang-btn.active{border-color:var(--red);color:var(--red);background:rgba(232,24,60,0.06);}
-.lang-btn:hover{border-color:var(--red);color:var(--red);}
+/* ---------- MENU DE LANGUE (_includes/nav.html) ----------
+   <details> natif : s'ouvre au clic ou au clavier sans JS ; site.js le
+   referme au clic extérieur et avec Échap. Les règles « nav .lang-dd-menu »
+   passent devant « nav ul » (menu horizontal, masqué sur mobile). */
+.lang-dd{position:relative;flex-shrink:0;}
+.lang-dd>summary{list-style:none;}
+.lang-dd>summary::-webkit-details-marker{display:none;}
+.lang-dd-btn{display:inline-flex;align-items:center;gap:6px;height:32px;padding:0 10px;border:1px solid var(--gray-mid);border-radius:3px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:1px;cursor:pointer;user-select:none;-webkit-user-select:none;transition:border-color 0.2s;}
+.lang-dd-btn:hover,.lang-dd[open]>.lang-dd-btn{border-color:var(--red);}
+.lang-dd-btn:focus-visible{outline:2px solid var(--yellow);outline-offset:2px;}
+.lang-dd-ico,.lang-dd-chev{color:var(--text-muted);flex-shrink:0;}
+.lang-dd-chev{transition:transform 0.2s;}
+.lang-dd[open] .lang-dd-chev{transform:rotate(180deg);}
+nav .lang-dd-menu{display:block;position:absolute;top:calc(100% + 8px);right:0;z-index:300;min-width:200px;margin:0;padding:6px;list-style:none;background:#1a1636;border:1px solid var(--gray-mid);border-radius:6px;box-shadow:0 16px 40px rgba(0,0,0,0.55);}
+.lang-dd:not([open]) .lang-dd-menu{display:none;}
+nav .lang-dd-menu a{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:4px;color:#d9d6ea;text-decoration:none;font-size:14px;letter-spacing:0;white-space:nowrap;}
+nav .lang-dd-menu a:hover{background:rgba(255,255,255,0.06);color:var(--white);}
+nav .lang-dd-menu a.on{background:rgba(232,24,60,0.12);color:var(--white);}
+nav .lang-dd-menu a:focus-visible{outline:2px solid var(--yellow);outline-offset:-2px;}
+.ld-code{flex:0 0 24px;font-size:11px;font-weight:500;letter-spacing:1px;color:var(--text-muted);}
+nav .lang-dd-menu a.on .ld-code{color:var(--red);}
+@media (max-width:768px){
+  .lang-dd-btn{height:40px;padding:0 11px;}
+  nav .lang-dd-menu a{padding:12px;}
+}
 
 /* ---------- FOOTER ---------- */
 footer{box-sizing:border-box;border-top:1px solid var(--gray-mid);padding:32px 24px;display:flex;flex-direction:column;align-items:center;gap:18px;max-width:1100px;margin:0 auto;text-align:center;}
@@ -205,6 +224,18 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;margin:0;}
   body{padding-bottom:68px;}
 }
 
+/* ---------- HEADER : petits téléphones (≤400px) ----------
+   Logo + badge suisse + EN/FR dépassaient la largeur de l'écran :
+   le badge passait sous le bouton EN (de 5px à 390px jusqu'à 35px
+   à 360px). Logo ramené à 22px, comme sur la page Stock (21px) ;
+   sous 350px, le badge suisse disparaît. */
+@media (max-width:400px){
+  .nav-logo img{height:22px;}
+}
+@media (max-width:350px){
+  .swiss-badge{display:none;}
+}
+
 /* ---------- BADGES D'AVIS (Google / Trustpilot) — _includes/reviews.html ---------- */
 .rv{box-sizing:border-box;max-width:1080px;margin:8px auto 48px;padding:22px 24px;display:flex;flex-wrap:wrap;
   gap:18px 32px;align-items:center;justify-content:space-between;border:1px solid var(--gray-mid);
@@ -236,3 +267,9 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;margin:0;}
 .rv-bar .rv-badge{font-size:13px;padding:6px 12px 6px 6px;min-height:44px;background:rgba(255,255,255,.03)}
 .rv-bar .rv-ico{flex-basis:26px;height:26px;font-size:14px}
 @media (max-width:768px){.rv-bar .rv-badge{flex:0 1 auto}}
+
+/* Deuxième ligne d'emplacements (Belgique) dans le pied de page */
+.footer-locs + .footer-locs{margin-top:10px;}
+
+/* Pages machines : le bouton « voir les autres produits » reste masqué quand il n'y a rien à déplier */
+.bsm-toggle[hidden]{display:none;}
