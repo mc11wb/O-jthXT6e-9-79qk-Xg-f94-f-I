@@ -8,10 +8,7 @@ page: distributeur-geneve-charmilles
 {% include head.html %}
 <title>Pokémon card vending machine in Genève Les Charmilles | BoosterStop</title>
 <meta name="description" content="Self-service Pokémon boosters inside La Poste des Charmilles, Promenade de l&#x27;Europe 11, 1203 Genève. Live stock, cash, TWINT or contactless, sealed products from official distributors.">
-<link rel="canonical" href="https://boosterstop.com/distributeur-geneve-charmilles.html">
-<link rel="alternate" hreflang="en" href="https://boosterstop.com/distributeur-geneve-charmilles.html">
-<link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/distributeur-geneve-charmilles.html">
-<link rel="alternate" hreflang="x-default" href="https://boosterstop.com/distributeur-geneve-charmilles.html">
+{% include hreflang.html %}
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
@@ -130,12 +127,7 @@ body{
 <div class="bsm-live">
   <div class="bsm-live-top">
     <span class="bsm-live-title"><span class="bsm-dot" id="bsmDot"></span>Available right now</span>
-    <span class="bsm-stamp" id="bsmStamp">Loading…</span>
-  </div>
-  <div class="bsm-msg" id="bsmMsg">Connecting to the machine…</div>
-  <ul class="bsm-rows" id="bsmRows" hidden></ul>
-  <ul class="bsm-rows" id="bsmRows2" hidden></ul>
-  <button type="button" class="bsm-toggle" id="bsmToggle" hidden aria-expanded="false" aria-controls="bsmRows2"></button>
+    {% include stock-releve.html chargement="Loading…" connexion="Connecting to the machine…" %}
   <a class="bsm-all" href="/stock.html">See all 6 floors of the machine, slot by slot →</a>
 </div>
 
@@ -710,7 +702,7 @@ body{
         if (!data || !data.ok) throw new Error('ko');
         render(data.slots || []);
       })
-      .catch(function () { idle("Live stock is unreachable right now. Please try again in a few minutes.", ''); });
+      .catch(function () { if (elRows.children.length) return; idle("Live stock is unreachable right now. Please try again in a few minutes.", ''); });
   }
 
   paintState();

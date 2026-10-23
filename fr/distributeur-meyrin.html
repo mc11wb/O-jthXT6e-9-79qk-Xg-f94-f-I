@@ -8,10 +8,7 @@ page: distributeur-meyrin
 {% include head.html %}
 <title>Distributeur de cartes Pokémon à Meyrin | BoosterStop</title>
 <meta name="description" content="Boosters Pokémon en libre-service dans La Poste de Meyrin, Avenue de Feuillasse 24, 1217 Meyrin. Stock en direct, espèces, TWINT ou sans contact, produits scellés de distributeurs officiels.">
-<link rel="canonical" href="https://boosterstop.com/fr/distributeur-meyrin.html">
-<link rel="alternate" hreflang="en" href="https://boosterstop.com/distributeur-meyrin.html">
-<link rel="alternate" hreflang="fr" href="https://boosterstop.com/fr/distributeur-meyrin.html">
-<link rel="alternate" hreflang="x-default" href="https://boosterstop.com/distributeur-meyrin.html">
+{% include hreflang.html %}
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
@@ -130,12 +127,7 @@ body{
 <div class="bsm-live">
   <div class="bsm-live-top">
     <span class="bsm-live-title"><span class="bsm-dot" id="bsmDot"></span>Disponible en ce moment</span>
-    <span class="bsm-stamp" id="bsmStamp">Chargement…</span>
-  </div>
-  <div class="bsm-msg" id="bsmMsg">Connexion à la machine…</div>
-  <ul class="bsm-rows" id="bsmRows" hidden></ul>
-  <ul class="bsm-rows" id="bsmRows2" hidden></ul>
-  <button type="button" class="bsm-toggle" id="bsmToggle" hidden aria-expanded="false" aria-controls="bsmRows2"></button>
+    {% include stock-releve.html chargement="Chargement…" connexion="Connexion à la machine…" %}
   <a class="bsm-all" href="/fr/stock.html">Voir les 6 étages de la machine, rail par rail →</a>
 </div>
 
@@ -710,7 +702,7 @@ body{
         if (!data || !data.ok) throw new Error('ko');
         render(data.slots || []);
       })
-      .catch(function () { idle("Le stock en direct n'est pas joignable pour le moment. Réessayez dans quelques minutes.", ''); });
+      .catch(function () { if (elRows.children.length) return; idle("Le stock en direct n'est pas joignable pour le moment. Réessayez dans quelques minutes.", ''); });
   }
 
   paintState();
