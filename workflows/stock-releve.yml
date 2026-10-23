@@ -1,0 +1,55 @@
+# Relevé du stock pour Google — chaque matin vers 6 h (heure suisse), et à la
+# demande depuis l'onglet Actions (« Run workflow »).
+# Écrit _data/stock.json ; GitHub Pages republie le site avec ce relevé.
+name: Relevé du stock
+
+on:
+  schedule:
+    - cron: "15 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: stock-releve
+  cancel-in-progress: false
+
+jobs:
+  releve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Relever le stock des machines
+        run: |
+          pip install --quiet pyyaml
+          python .github/scripts/stock_releve.py
+
+      - name: Enregistrer le relevé
+        id: commit
+        run: |
+          if git diff --quiet -- _data/stock.json; then
+            echo "Relevé identique, rien à publier."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _data/stock.json
+          git commit -m "Relevé du stock du $(TZ=Europe/Zurich date +'%d/%m/%Y %H:%M')"
+          git push
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Relancer la publication GitHub Pages
+        if: steps.commit.outputs.pushed == 'true'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" > /dev/null && echo "Publication demandée."
