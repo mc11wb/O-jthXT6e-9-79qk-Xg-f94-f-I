@@ -71,6 +71,10 @@ body{margin:0;background:var(--black);color:var(--white);
 .b2-contact{margin-top:26px;font-size:15px;color:var(--text-muted)}
 .b2-contact a{color:var(--yellow);text-decoration:none}
 .b2-contact a:hover{text-decoration:underline}
+.b2-lieux li:has(a){padding:0}
+.b2-lieux li a{display:block;padding:13px 16px;color:var(--white);text-decoration:none}
+.b2-lieux li a::after{content:' →';color:var(--yellow)}
+.b2-lieux li:has(a):hover{border-color:var(--red)}
 </style>
 </head>
 <body>
@@ -121,13 +125,14 @@ body{margin:0;background:var(--black);color:var(--white);
 <section class="b2-sec">
   <h2>De locaties die ons interesseren</h2>
   <ul class="b2-lieux">
-    <li>Winkelcentra</li>
-    <li>Stations en vervoersknooppunten</li>
-    <li>Bioscopen en gamezalen</li>
-    <li>Speelgoed- en hobbywinkels</li>
-    <li>Culturele en sportcentra</li>
-    <li>Drukbezochte winkels</li>
-  </ul>
+        <li><a href="/nl/distributeur-aeroport.html">Luchthavens</a></li>
+        <li><a href="/nl/distributeur-centre-commercial.html">Winkelcentra</a></li>
+        <li><a href="/nl/distributeur-gare.html">Stations en vervoersknooppunten</a></li>
+        <li><a href="/nl/distributeur-magasin-de-jouets.html">Bioscopen en gamezalen</a></li>
+        <li><a href="/nl/distributeur-magasin-de-jouets.html">Speelgoed- en hobbywinkels</a></li>
+        <li>Culturele en sportcentra</li>
+        <li>Drukbezochte winkels</li>
+      </ul>
 </section>
 
 <section class="b2-sec">

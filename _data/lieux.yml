@@ -1,0 +1,678 @@
+# PAGES « LIEUX » (B2B) : aéroports, gares, centres commerciaux, jouets et loisirs.
+# Gabarit : _layouts/lieu.html. Une page = un fichier qui ne contient que son front matter
+# (layout: lieu, lang, page, lieu). Chiffres affichés arrondis, réseau de Genève.
+ordre:
+- aeroport
+- gare
+- centre-commercial
+- magasin-de-jouets
+commun:
+  fr:
+    crumb_host: Accueillir une machine
+    cta_form: Proposer un emplacement
+    cta_voir: Voir nos machines
+    stats:
+    - v: 10 000+
+      l: CHF de ventes par mois et par machine, en moyenne à Genève
+    - v: 400+
+      l: ventes par mois et par machine
+    - v: ≈ 1 m²
+      l: au sol et une simple prise électrique
+    - v: '0'
+      l: 'investissement de votre côté : machine, installation et assurance à notre charge'
+    stats_aria: Chiffres clés
+    stats_note: Moyennes arrondies de notre réseau à Genève.
+    roles_h2: Qui fait quoi
+    nous_h3: Ce que nous prenons en charge
+    nous:
+    - L'installation, la maintenance et le service client
+    - Le réassort chaque semaine, et plus souvent à la sortie d'un nouveau set
+    - 'L''encaissement : espèces avec monnaie rendue, carte sans contact, smartphone, et TWINT en Suisse'
+    - 'L''assurance : la machine reste notre propriété'
+    vous_h3: Ce que vous fournissez
+    vous:
+    - Un emplacement visible, à l'intérieur ou à l'abri
+    - Environ 1 m² au sol (1,1 m² avec le dégagement) et une prise électrique
+    - Un accès pour nos passages de réassort
+    modele: 'Rémunération : loyer fixe ou part du chiffre d''affaires, selon le lieu. Engagement souple, sans durée minimale.'
+    refs_h2: Ils accueillent déjà nos machines
+    refs:
+    - t: La Poste Suisse
+      d: 7 filiales dans le canton de Genève
+      f: distributeurs-geneve.html
+    - t: Carrefour
+      d: 5 magasins en Belgique
+      f: distributeurs-belgique.html
+    - t: King Jouet
+      d: Le magasin de Carouge
+      f: distributeurs-geneve.html
+    faq_h2: Les questions qu'on nous pose
+    form_h2: Proposez votre emplacement
+    form_sub: 'Nous répondons sous 48 heures. Le premier échange sert à voir si le passage justifie une machine : nous le disons franchement quand ce n''est pas le cas.'
+    f_nom: Votre nom
+    f_fonction: Votre fonction
+    f_etab: Nom de l'établissement
+    f_type: Type de lieu
+    f_commune: Commune ou ville
+    f_passage: Passage quotidien estimé
+    passages:
+    - Moins de 1 000 personnes
+    - 1 000 à 5 000
+    - 5 000 à 20 000
+    - Plus de 20 000
+    - Je ne sais pas
+    f_email: E-mail
+    f_tel: Téléphone
+    f_facultatif: facultatif
+    f_msg: Décrivez l'emplacement envisagé
+    f_envoyer: Envoyer
+    f_envoi: Envoi…
+    f_ok: Message envoyé, nous revenons vers vous sous 48 heures.
+    f_err: L'envoi n'a pas fonctionné. Réessayez ou écrivez-nous à contact@boosterstop.com.
+    contact: Vous préférez en parler de vive voix ?
+    autres_h2: Autres types de lieux
+    autre_lien: Votre lieu n'est pas dans la liste ? Voir la page Accueillir une machine
+    hors: Hors de Suisse et de Belgique ? Voir la page Partenaire local
+    types:
+      aeroport: Aéroport
+      gare: Gare
+      centre-commercial: Centre commercial
+      magasin-de-jouets: Magasin de jouets ou lieu de loisirs
+      autre: Autre
+  en:
+    crumb_host: Host a machine
+    cta_form: Propose a location
+    cta_voir: See our machines
+    stats:
+    - v: 10,000+
+      l: CHF in sales per machine per month, on average in Geneva
+    - v: 400+
+      l: sales per machine per month
+    - v: ≈ 1 m²
+      l: of floor space and a standard socket
+    - v: '0'
+      l: 'investment on your side: machine, installation and insurance are on us'
+    stats_aria: Key figures
+    stats_note: Rounded averages from our Geneva network.
+    roles_h2: Who does what
+    nous_h3: What we take care of
+    nous:
+    - Installation, maintenance and customer service
+    - Restocking every week, and more often when a new set comes out
+    - 'Payments: cash with change, contactless card, smartphone, and TWINT in Switzerland'
+    - 'Insurance: the machine remains our property'
+    vous_h3: What you provide
+    vous:
+    - A visible spot, indoors or sheltered
+    - About 1 m² of floor space (1.1 m² with clearance) and a power socket
+    - Access for our restocking visits
+    modele: 'Payment: a fixed rent or a share of revenue, depending on the venue. Flexible commitment, no minimum term.'
+    refs_h2: Already hosting our machines
+    refs:
+    - t: La Poste Switzerland
+      d: 7 branches in the canton of Geneva
+      f: distributeurs-geneve.html
+    - t: Carrefour
+      d: 5 stores in Belgium
+      f: distributeurs-belgique.html
+    - t: King Jouet
+      d: The Carouge store
+      f: distributeurs-geneve.html
+    faq_h2: Questions we get asked
+    form_h2: Propose your location
+    form_sub: We reply within 48 hours. The first exchange is mainly about whether the footfall justifies a machine, and we say so frankly when it doesn't.
+    f_nom: Your name
+    f_fonction: Your role
+    f_etab: Venue name
+    f_type: Type of venue
+    f_commune: Town or city
+    f_passage: Estimated daily footfall
+    passages:
+    - Fewer than 1,000 people
+    - 1,000 to 5,000
+    - 5,000 to 20,000
+    - More than 20,000
+    - I don't know
+    f_email: Email
+    f_tel: Phone
+    f_facultatif: optional
+    f_msg: Describe the location you have in mind
+    f_envoyer: Send
+    f_envoi: Sending…
+    f_ok: Message sent. We'll get back to you within 48 hours.
+    f_err: Sending failed. Please try again or email us at contact@boosterstop.com.
+    contact: Prefer to talk it through?
+    autres_h2: Other types of venue
+    autre_lien: Your venue isn't listed? See Host a machine
+    hors: Outside Switzerland and Belgium? See Local partner
+    types:
+      aeroport: Airport
+      gare: Train station
+      centre-commercial: Shopping centre
+      magasin-de-jouets: Toy shop or leisure venue
+      autre: Other
+  nl:
+    crumb_host: Een automaat plaatsen
+    cta_form: Een locatie voorstellen
+    cta_voir: Onze automaten bekijken
+    stats:
+    - v: 10.000+
+      l: CHF omzet per automaat per maand, gemiddeld in Genève
+    - v: 400+
+      l: verkopen per automaat per maand
+    - v: ± 1 m²
+      l: vloeroppervlak en een gewoon stopcontact
+    - v: '0'
+      l: 'investering aan uw kant: automaat, installatie en verzekering zijn voor ons'
+    stats_aria: Kerncijfers
+    stats_note: Afgeronde gemiddelden van ons netwerk in Genève.
+    roles_h2: Wie doet wat
+    nous_h3: Wat wij verzorgen
+    nous:
+    - De installatie, het onderhoud en de klantenservice
+    - Het bijvullen, elke week en vaker wanneer er een nieuwe set uitkomt
+    - 'De betalingen: contant met wisselgeld, contactloos met kaart of smartphone, en TWINT in Zwitserland'
+    - 'De verzekering: de automaat blijft ons eigendom'
+    vous_h3: Wat u voorziet
+    vous:
+    - Een zichtbare plek, binnen of overdekt
+    - Ongeveer 1 m² vloeroppervlak (1,1 m² met vrije ruimte) en een stopcontact
+    - Toegang voor het bijvullen
+    modele: 'Vergoeding: een vaste huur of een deel van de omzet, afhankelijk van de locatie. Flexibele verbintenis, zonder minimumduur.'
+    refs_h2: Zij hebben al een automaat van ons
+    refs:
+    - t: La Poste (Zwitserland)
+      d: 7 postkantoren in het kanton Genève
+      f: distributeurs-geneve.html
+    - t: Carrefour
+      d: 5 winkels in België
+      f: distributeurs-belgique.html
+    - t: King Jouet
+      d: De winkel in Carouge
+      f: distributeurs-geneve.html
+    faq_h2: Vragen die we vaak krijgen
+    form_h2: Stel uw locatie voor
+    form_sub: We antwoorden binnen 48 uur. Het eerste gesprek dient vooral om te zien of er genoeg passage is voor een automaat, en we zeggen het eerlijk als dat niet zo is.
+    f_nom: Uw naam
+    f_fonction: Uw functie
+    f_etab: Naam van de zaak of locatie
+    f_type: Soort locatie
+    f_commune: Gemeente of stad
+    f_passage: Geschatte dagelijkse passage
+    passages:
+    - Minder dan 1.000 mensen
+    - 1.000 tot 5.000
+    - 5.000 tot 20.000
+    - Meer dan 20.000
+    - Weet ik niet
+    f_email: E-mail
+    f_tel: Telefoon
+    f_facultatif: optioneel
+    f_msg: Beschrijf de plek die u in gedachten hebt
+    f_envoyer: Versturen
+    f_envoi: Versturen…
+    f_ok: Bericht verstuurd. We nemen binnen 48 uur contact met u op.
+    f_err: Het versturen is mislukt. Probeer het opnieuw of mail ons op contact@boosterstop.com.
+    contact: Liever even bellen?
+    autres_h2: Andere soorten locaties
+    autre_lien: Staat uw locatie er niet bij? Bekijk de pagina Een automaat plaatsen
+    hors: Buiten Zwitserland en België? Bekijk de pagina Lokale partner
+    types:
+      aeroport: Luchthaven
+      gare: Station
+      centre-commercial: Winkelcentrum
+      magasin-de-jouets: Speelgoedwinkel of vrijetijdslocatie
+      autre: Andere
+lieux:
+  aeroport:
+    fichier: distributeur-aeroport.html
+    fr:
+      title: Distributeur de cartes TCG pour aéroports | BoosterStop
+      description: 'Un distributeur de cartes à collectionner en libre-service dans votre aéroport : environ 1 m², plus de 10 000 CHF de ventes par mois en moyenne, installation et réassort pris en charge.'
+      crumb: Aéroports
+      h1: Un distributeur de cartes à collectionner dans votre aéroport
+      lead: 'Pokémon, One Piece, Magic : des boosters scellés en libre-service, sur environ 1 m². BoosterStop installe, remplit et entretient la machine. L''aéroport fournit l''emplacement et perçoit une redevance.'
+      why_h2: Pourquoi ça marche dans un aéroport
+      why:
+      - t: Des passagers qui ont du temps
+        d: Entre le contrôle de sécurité et l'embarquement, les passagers attendent. Un booster s'achète en quelques secondes, se glisse dans un bagage cabine et occupe les enfants pendant le vol.
+      - t: Un public venu du monde entier
+        d: Pokémon, One Piece et Magic se collectionnent sur tous les continents. Nos machines proposent aussi des éditions japonaises et chinoises, recherchées par les collectionneurs et appréciées comme souvenir.
+      - t: Beaucoup de chiffre sur peu de place
+        d: À Genève, une machine fait en moyenne plus de 10 000 CHF de ventes par mois, sur environ 1 m² au sol. Rapporté au mètre carré, c'est un chiffre qui compte dans une zone commerciale où chaque mètre est loué.
+      - t: Aucun personnel, aucune caisse
+        d: 'Le paiement se fait à la machine : carte sans contact, smartphone, ou espèces avec monnaie rendue. Rien ne passe par vos équipes.'
+      integ_h2: Comment la machine s'intègre
+      integ:
+      - t: Zone publique ou zone réservée
+        d: La machine va là où vous le décidez. Pour nos passages en zone réservée, nous suivons vos procédures d'accès et de sécurité.
+      - t: Réassort aux heures creuses
+        d: Le réassort a lieu chaque semaine, et plus souvent à la sortie d'un nouveau set, aux créneaux que vous fixez.
+      - t: Un format de concession classique
+        d: Redevance fixe ou part du chiffre d'affaires, selon vos règles de concession. Engagement souple, sans durée minimale imposée.
+      - t: Une image soignée
+        d: Uniquement des produits scellés, achetés chez les distributeurs officiels. À Genève, le stock de chaque machine est visible en ligne, en direct.
+      faq:
+      - q: Quelle surface faut-il ?
+        a: Environ 1 m² par machine, 1,1 m² avec le dégagement nécessaire. La machine pèse 280 kg et ne demande qu'une prise électrique standard ; sa consommation est très basse.
+      - q: Les voyageurs étrangers peuvent-ils payer ?
+        a: Oui. La machine accepte la carte sans contact et le paiement par smartphone, en plus des espèces avec monnaie rendue.
+      - q: Comment l'aéroport est-il rémunéré ?
+        a: Par une redevance fixe ou par une part du chiffre d'affaires de la machine, selon votre modèle de concession. Nous en convenons ensemble.
+      - q: Qui s'occupe des pannes et du service client ?
+        a: 'Nous. La machine reste notre propriété et relève de notre assurance : l''aéroport n''assume aucune responsabilité financière à son égard.'
+      - q: Peut-on commencer par une seule machine ?
+        a: Oui. Une première machine permet de mesurer les ventes réelles sur votre site avant d'aller plus loin.
+    en:
+      title: TCG vending machines for airports | BoosterStop
+      description: 'A self-service trading card vending machine in your airport: about 1 m², over CHF 10,000 in sales per month on average, installation and restocking handled for you.'
+      crumb: Airports
+      h1: A trading card vending machine in your airport
+      lead: 'Pokémon, One Piece, Magic: sealed boosters in self-service, on about 1 m². BoosterStop installs, fills and maintains the machine. The airport provides the space and receives a fee.'
+      why_h2: Why it works in an airport
+      why:
+      - t: Passengers with time on their hands
+        d: Between security and boarding, passengers wait. A booster takes seconds to buy, slips into a cabin bag and keeps children busy on the flight.
+      - t: A worldwide audience
+        d: Pokémon, One Piece and Magic are collected on every continent. Our machines also carry Japanese and Chinese editions, sought after by collectors and popular as souvenirs.
+      - t: High sales on little space
+        d: In Geneva, a machine averages over CHF 10,000 in sales per month on about 1 m² of floor space. Measured per square metre, that figure matters in a commercial zone where every metre is let.
+      - t: No staff, no till
+        d: 'Customers pay at the machine: contactless card, smartphone, or cash with change. Nothing goes through your teams.'
+      integ_h2: How the machine fits in
+      integ:
+      - t: Landside or airside
+        d: The machine goes where you decide. For our visits airside, we follow your access and security procedures.
+      - t: Restocking off-peak
+        d: We restock every week, and more often when a new set comes out, in the time slots you set.
+      - t: A standard concession format
+        d: A fixed fee or a share of revenue, under your concession rules. Flexible commitment, no minimum term.
+      - t: A clean brand image
+        d: Sealed products only, bought from official distributors. In Geneva, each machine's stock is visible online, live.
+      faq:
+      - q: How much space is needed?
+        a: About 1 m² per machine, 1.1 m² including the clearance needed. The machine weighs 280 kg and only needs a standard socket; its power use is very low.
+      - q: Can international travellers pay?
+        a: Yes. The machine takes contactless cards and smartphone payments, as well as cash with change.
+      - q: How is the airport paid?
+        a: Through a fixed fee or a share of the machine's revenue, depending on your concession model. We agree on it together.
+      - q: Who handles breakdowns and customer service?
+        a: 'We do. The machine remains our property and is covered by our insurance: the airport carries no financial responsibility for it.'
+      - q: Can we start with a single machine?
+        a: Yes. A first machine lets you measure real sales at your site before going further.
+    nl:
+      title: TCG-automaten voor luchthavens | BoosterStop
+      description: 'Een selfservice-automaat met verzamelkaarten in uw luchthaven: ongeveer 1 m², gemiddeld meer dan 10.000 CHF omzet per maand, installatie en bijvullen door ons.'
+      crumb: Luchthavens
+      h1: Een automaat met verzamelkaarten in uw luchthaven
+      lead: 'Pokémon, One Piece, Magic: verzegelde boosters in selfservice, op ongeveer 1 m². BoosterStop installeert, vult en onderhoudt de automaat. De luchthaven levert de plek en ontvangt een vergoeding.'
+      why_h2: Waarom het werkt in een luchthaven
+      why:
+      - t: Passagiers met tijd
+        d: Tussen de veiligheidscontrole en het boarden wachten passagiers. Een booster is in enkele seconden gekocht, past in de handbagage en houdt kinderen bezig tijdens de vlucht.
+      - t: Een publiek van over de hele wereld
+        d: Pokémon, One Piece en Magic worden op alle continenten verzameld. Onze automaten hebben ook Japanse en Chinese edities, gezocht door verzamelaars en geliefd als souvenir.
+      - t: Veel omzet op weinig ruimte
+        d: In Genève haalt een automaat gemiddeld meer dan 10.000 CHF omzet per maand op ongeveer 1 m² vloeroppervlak. Per vierkante meter is dat een cijfer dat telt in een commerciële zone waar elke meter verhuurd wordt.
+      - t: Geen personeel, geen kassa
+        d: 'Klanten betalen aan de automaat: contactloos met kaart of smartphone, of contant met wisselgeld. Niets loopt via uw medewerkers.'
+      integ_h2: Hoe de automaat past
+      integ:
+      - t: Openbare of beveiligde zone
+        d: De automaat komt waar u beslist. Voor onze bezoeken aan de beveiligde zone volgen we uw toegangs- en veiligheidsprocedures.
+      - t: Bijvullen buiten de piekuren
+        d: We vullen elke week bij, en vaker wanneer er een nieuwe set uitkomt, op de momenten die u bepaalt.
+      - t: Een klassieke concessievorm
+        d: Een vaste vergoeding of een deel van de omzet, volgens uw concessieregels. Flexibele verbintenis, zonder minimumduur.
+      - t: Een verzorgd imago
+        d: Alleen verzegelde producten, gekocht bij officiële distributeurs. In Genève is de voorraad van elke automaat live online te zien.
+      faq:
+      - q: Hoeveel ruimte is er nodig?
+        a: Ongeveer 1 m² per automaat, 1,1 m² met de nodige vrije ruimte. De automaat weegt 280 kg en heeft alleen een gewoon stopcontact nodig; het verbruik is zeer laag.
+      - q: Kunnen buitenlandse reizigers betalen?
+        a: Ja. De automaat aanvaardt contactloze kaarten en betalen met de smartphone, naast contant geld met wisselgeld.
+      - q: Hoe wordt de luchthaven vergoed?
+        a: Met een vaste vergoeding of een deel van de omzet van de automaat, volgens uw concessiemodel. We spreken het samen af.
+      - q: Wie regelt storingen en klantenservice?
+        a: 'Wij. De automaat blijft ons eigendom en valt onder onze verzekering: de luchthaven draagt er geen enkele financiële verantwoordelijkheid voor.'
+      - q: Kunnen we met één automaat beginnen?
+        a: Ja. Met een eerste automaat meet u de echte verkoop op uw locatie voor u verder gaat.
+  gare:
+    fichier: distributeur-gare.html
+    fr:
+      title: Distributeur de cartes TCG pour gares | BoosterStop
+      description: 'Un distributeur de cartes à collectionner en libre-service dans votre gare : environ 1 m², plus de 400 ventes par mois en moyenne, installation, réassort et maintenance pris en charge.'
+      crumb: Gares
+      h1: Un distributeur de cartes à collectionner dans votre gare
+      lead: Des boosters Pokémon, One Piece ou Magic en libre-service, entre deux trains. BoosterStop installe, remplit et entretient la machine ; la gare fournit l'emplacement et une prise électrique.
+      why_h2: Pourquoi ça marche dans une gare
+      why:
+      - t: Des clients qui repassent chaque jour
+        d: Les pendulaires traversent la gare matin et soir. Les collectionneurs reviennent à chaque sortie de set, et consultent le stock en ligne avant de passer.
+      - t: Un achat qui tient dans une correspondance
+        d: 'Choisir, payer, récupérer : l''achat prend quelques instants. Assez pour le faire entre deux trains, sans file d''attente ni vendeur.'
+      - t: Du chiffre sans personnel
+        d: 'À Genève, une machine fait en moyenne plus de 400 ventes par mois. L''encaissement se fait à la machine : espèces avec monnaie rendue, carte sans contact, smartphone, et TWINT en Suisse.'
+      - t: De l'animation dans le hall
+        d: Un nouveau set est en machine le jour de sa sortie. Ces jours-là, la machine attire du monde et donne une raison de passer par votre gare.
+      integ_h2: Comment la machine s'intègre
+      integ:
+      - t: Dans le hall ou une galerie
+        d: 'La machine doit être à l''abri : hall, galerie commerçante ou passage couvert, près des flux principaux.'
+      - t: Un pilote sur une gare
+        d: Le plus simple est de commencer par une machine dans une gare, de mesurer les ventes, puis de décider ensemble de la suite.
+      - t: Une rémunération souple
+        d: Loyer fixe ou part du chiffre d'affaires, selon ce qui convient à votre réseau. Sans durée minimale imposée.
+      - t: Un réassort qui ne gêne pas les flux
+        d: Nous passons chaque semaine, et plus souvent à la sortie d'un set, aux heures qui vous conviennent.
+      faq:
+      - q: La machine peut-elle être installée sur un quai ?
+        a: Elle doit être à l'intérieur ou à l'abri des intempéries. Un hall, une galerie ou un passage couvert conviennent bien.
+      - q: Peut-on commencer par une seule gare ?
+        a: 'Oui, c''est même ce que nous conseillons : une machine pilote, des ventes mesurées, puis une décision sur la suite du réseau.'
+      - q: Comment la gare est-elle rémunérée ?
+        a: Par un loyer fixe ou une part du chiffre d'affaires de la machine. Nous en convenons ensemble selon le passage.
+      - q: Qui gère l'encaissement et les pannes ?
+        a: Nous. Le paiement se fait à la machine, rien ne passe par vos guichets. Installation, maintenance et service client sont à notre charge.
+      - q: Quelle place et quelle alimentation faut-il ?
+        a: Environ 1 m² au sol (1,1 m² avec le dégagement) et une prise électrique standard. La machine pèse 280 kg et consomme très peu.
+    en:
+      title: TCG vending machines for train stations | BoosterStop
+      description: 'A self-service trading card vending machine in your station: about 1 m², over 400 sales per month on average, installation, restocking and maintenance handled for you.'
+      crumb: Train stations
+      h1: A trading card vending machine in your station
+      lead: Pokémon, One Piece or Magic boosters in self-service, between two trains. BoosterStop installs, fills and maintains the machine; the station provides the space and a power socket.
+      why_h2: Why it works in a station
+      why:
+      - t: Customers who come back every day
+        d: Commuters pass through the station morning and evening. Collectors return with every new set, and check the stock online before they come.
+      - t: A purchase that fits in a connection
+        d: 'Choose, pay, collect: it takes a few moments. Enough time between two trains, with no queue and no salesperson.'
+      - t: Sales without staff
+        d: 'In Geneva, a machine averages over 400 sales per month. Payment happens at the machine: cash with change, contactless card, smartphone, and TWINT in Switzerland.'
+      - t: Something happening in the hall
+        d: A new set is in the machine on release day. On those days, the machine draws a crowd and gives people a reason to come through your station.
+      integ_h2: How the machine fits in
+      integ:
+      - t: In the hall or a concourse
+        d: 'The machine needs shelter: the main hall, a shopping concourse or a covered passage, close to the main flows.'
+      - t: A pilot in one station
+        d: 'The simplest start is one machine in one station: measure the sales, then decide together on what comes next.'
+      - t: Flexible payment
+        d: A fixed rent or a share of revenue, whichever suits your network. No minimum term.
+      - t: Restocking that stays out of the way
+        d: We come every week, and more often when a set comes out, at times that suit you.
+      faq:
+      - q: Can the machine go on a platform?
+        a: It needs to be indoors or sheltered from the weather. A hall, a concourse or a covered passage work well.
+      - q: Can we start with a single station?
+        a: 'Yes, and that''s what we recommend: one pilot machine, measured sales, then a decision on the rest of the network.'
+      - q: How is the station paid?
+        a: Through a fixed rent or a share of the machine's revenue. We agree on it together, based on footfall.
+      - q: Who handles payments and breakdowns?
+        a: We do. Payment happens at the machine and nothing goes through your ticket offices. Installation, maintenance and customer service are on us.
+      - q: What space and power are needed?
+        a: About 1 m² of floor space (1.1 m² with clearance) and a standard socket. The machine weighs 280 kg and uses very little power.
+    nl:
+      title: TCG-automaten voor stations | BoosterStop
+      description: 'Een selfservice-automaat met verzamelkaarten in uw station: ongeveer 1 m², gemiddeld meer dan 400 verkopen per maand, installatie, bijvullen en onderhoud door ons.'
+      crumb: Stations
+      h1: Een automaat met verzamelkaarten in uw station
+      lead: Boosters van Pokémon, One Piece of Magic in selfservice, tussen twee treinen door. BoosterStop installeert, vult en onderhoudt de automaat; het station levert de plek en een stopcontact.
+      why_h2: Waarom het werkt in een station
+      why:
+      - t: Klanten die elke dag terugkomen
+        d: Pendelaars komen 's ochtends en 's avonds door het station. Verzamelaars komen terug bij elke nieuwe set en bekijken de voorraad online voor ze langskomen.
+      - t: Een aankoop die in een overstap past
+        d: 'Kiezen, betalen, meenemen: het duurt maar even. Genoeg tijd tussen twee treinen, zonder wachtrij en zonder verkoper.'
+      - t: Omzet zonder personeel
+        d: 'In Genève haalt een automaat gemiddeld meer dan 400 verkopen per maand. Betalen gebeurt aan de automaat: contant met wisselgeld, contactloos met kaart of smartphone, en TWINT in Zwitserland.'
+      - t: Leven in de stationshal
+        d: Een nieuwe set zit in de automaat op de dag van de release. Op die dagen trekt de automaat volk en geeft hij mensen een reden om langs uw station te komen.
+      integ_h2: Hoe de automaat past
+      integ:
+      - t: In de hal of een winkelgalerij
+        d: 'De automaat moet beschut staan: in de hal, een winkelgalerij of een overdekte doorgang, dicht bij de grootste stromen.'
+      - t: Een pilot in één station
+        d: 'De eenvoudigste start is één automaat in één station: de verkoop meten en dan samen beslissen over het vervolg.'
+      - t: Een flexibele vergoeding
+        d: Een vaste huur of een deel van de omzet, wat het best bij uw netwerk past. Zonder minimumduur.
+      - t: Bijvullen zonder de stromen te hinderen
+        d: We komen elke week, en vaker wanneer er een set uitkomt, op momenten die u passen.
+      faq:
+      - q: Kan de automaat op een perron staan?
+        a: Hij moet binnen of beschut tegen het weer staan. Een hal, een winkelgalerij of een overdekte doorgang zijn ideaal.
+      - q: Kunnen we met één station beginnen?
+        a: 'Ja, dat raden we zelfs aan: één pilotautomaat, gemeten verkoop, en dan een beslissing over de rest van het netwerk.'
+      - q: Hoe wordt het station vergoed?
+        a: Met een vaste huur of een deel van de omzet van de automaat. We spreken het samen af, op basis van de passage.
+      - q: Wie regelt de betalingen en storingen?
+        a: Wij. Betalen gebeurt aan de automaat en niets loopt via uw loketten. Installatie, onderhoud en klantenservice zijn voor ons.
+      - q: Welke ruimte en stroom zijn nodig?
+        a: Ongeveer 1 m² vloeroppervlak (1,1 m² met vrije ruimte) en een gewoon stopcontact. De automaat weegt 280 kg en verbruikt zeer weinig.
+  centre-commercial:
+    fichier: distributeur-centre-commercial.html
+    fr:
+      title: Distributeur de cartes TCG pour centres commerciaux | BoosterStop
+      description: 'Installez un distributeur de cartes à collectionner dans votre centre commercial : environ 1 m², plus de 10 000 CHF de ventes par mois en moyenne, des visites ciblées à chaque sortie de set.'
+      crumb: Centres commerciaux
+      h1: Un distributeur de cartes à collectionner dans votre centre commercial
+      lead: Une machine d'environ 1 m² qui attire les collectionneurs, les familles et les jeunes adultes. BoosterStop l'installe, la remplit et l'entretient ; vous fournissez l'emplacement.
+      why_h2: Pourquoi ça marche dans un centre commercial
+      why:
+      - t: Des visites qui reviennent
+        d: Les collectionneurs repassent à chaque sortie de set. Notre page de stock en direct leur donne une raison de vérifier, puis de venir chez vous plutôt qu'ailleurs.
+      - t: Le public que vous cherchez
+        d: 'Pokémon et One Piece parlent aux enfants, à leurs parents et aux jeunes adultes qui collectionnent : le cœur de la clientèle d''un centre commercial.'
+      - t: Peu de surface, beaucoup de chiffre
+        d: À Genève, une machine fait en moyenne plus de 10 000 CHF de ventes par mois sur environ 1 m². Elle trouve sa place dans une allée ou un espace commun, avec un engagement souple et sans durée minimale.
+      - t: Des jours de sortie qui font parler
+        d: Un nouveau set est en machine le jour de sa sortie. Ces jours-là, la machine crée de l'animation dans le centre.
+      integ_h2: Comment la machine s'intègre
+      integ:
+      - t: Allée, entrée ou espace commun
+        d: Un emplacement visible, à l'intérieur, près des flux principaux. Environ 1 m² au sol et une prise électrique suffisent.
+      - t: Aucune gestion pour vos équipes
+        d: 'Installation, réassort hebdomadaire, maintenance et service client : tout est à notre charge. Le paiement se fait à la machine.'
+      - t: Une rémunération au choix
+        d: Loyer fixe ou part du chiffre d'affaires, selon votre politique. Engagement souple, sans durée minimale imposée.
+      - t: Votre centre en ligne
+        d: Chaque machine a sa page sur notre site, avec l'adresse du lieu. À Genève, on y voit aussi son stock en direct.
+      faq:
+      - q: Où placer la machine dans le centre ?
+        a: 'Là où passent le plus de visiteurs : entrée, allée principale, près des escalators ou d''une enseigne de jouets ou de loisirs. Nous en parlons lors du premier échange.'
+      - q: Qui encaisse les ventes ?
+        a: 'La machine elle-même : espèces avec monnaie rendue, carte sans contact, smartphone, et TWINT en Suisse. Rien ne passe par vos caisses.'
+      - q: Comment le centre est-il rémunéré ?
+        a: Par un loyer fixe ou une part du chiffre d'affaires de la machine, au choix. Nous en convenons ensemble selon le passage.
+      - q: La machine fait-elle concurrence à nos enseignes ?
+        a: Nous composons l'assortiment avec vous. Si une enseigne du centre vend déjà certains produits, nous pouvons les laisser de côté.
+      - q: Qui est responsable de la machine ?
+        a: 'Nous. Elle reste notre propriété et relève de notre assurance : vous n''assumez aucune responsabilité financière.'
+    en:
+      title: TCG vending machines for shopping centres | BoosterStop
+      description: 'Install a trading card vending machine in your shopping centre: about 1 m², over CHF 10,000 in sales per month on average, and targeted visits with every new set.'
+      crumb: Shopping centres
+      h1: A trading card vending machine in your shopping centre
+      lead: A machine of about 1 m² that draws collectors, families and young adults. BoosterStop installs, fills and maintains it; you provide the space.
+      why_h2: Why it works in a shopping centre
+      why:
+      - t: Visits that come back
+        d: Collectors return with every new set. Our live stock page gives them a reason to check, then to come to you rather than elsewhere.
+      - t: The audience you want
+        d: 'Pokémon and One Piece speak to children, their parents and young adults who collect: the core of a shopping centre''s visitors.'
+      - t: Little space, strong sales
+        d: In Geneva, a machine averages over CHF 10,000 in sales per month on about 1 m². It fits in an aisle or a common area, with a flexible commitment and no minimum term.
+      - t: Release days people talk about
+        d: A new set is in the machine on release day. On those days, the machine brings life to the centre.
+      integ_h2: How the machine fits in
+      integ:
+      - t: Aisle, entrance or common area
+        d: A visible spot indoors, close to the main flows. About 1 m² of floor space and a power socket are enough.
+      - t: Nothing for your teams to manage
+        d: Installation, weekly restocking, maintenance and customer service are all on us. Payment happens at the machine.
+      - t: Your choice of payment
+        d: A fixed rent or a share of revenue, depending on your policy. Flexible commitment, no minimum term.
+      - t: Your centre, online
+        d: Each machine has its own page on our site, with the venue's address. In Geneva, it also shows the live stock.
+      faq:
+      - q: Where should the machine go?
+        a: 'Wherever most visitors pass: the entrance, the main aisle, near the escalators or a toy or leisure store. We discuss it in the first exchange.'
+      - q: Who takes the payments?
+        a: 'The machine itself: cash with change, contactless card, smartphone, and TWINT in Switzerland. Nothing goes through your tills.'
+      - q: How is the centre paid?
+        a: Through a fixed rent or a share of the machine's revenue, as you prefer. We agree on it together, based on footfall.
+      - q: Will the machine compete with our tenants?
+        a: We build the assortment with you. If a store in the centre already sells certain products, we can leave them out.
+      - q: Who is responsible for the machine?
+        a: 'We are. It remains our property and is covered by our insurance: you carry no financial responsibility.'
+    nl:
+      title: TCG-automaten voor winkelcentra | BoosterStop
+      description: 'Plaats een automaat met verzamelkaarten in uw winkelcentrum: ongeveer 1 m², gemiddeld meer dan 10.000 CHF omzet per maand, en gerichte bezoeken bij elke nieuwe set.'
+      crumb: Winkelcentra
+      h1: Een automaat met verzamelkaarten in uw winkelcentrum
+      lead: Een automaat van ongeveer 1 m² die verzamelaars, gezinnen en jongvolwassenen aantrekt. BoosterStop installeert, vult en onderhoudt hem; u levert de plek.
+      why_h2: Waarom het werkt in een winkelcentrum
+      why:
+      - t: Bezoeken die terugkomen
+        d: Verzamelaars komen terug bij elke nieuwe set. Onze pagina met de live voorraad geeft hen een reden om te kijken, en dan naar u te komen in plaats van elders.
+      - t: Het publiek dat u zoekt
+        d: 'Pokémon en One Piece spreken kinderen aan, hun ouders en de jongvolwassenen die verzamelen: de kern van de bezoekers van een winkelcentrum.'
+      - t: Weinig ruimte, veel omzet
+        d: In Genève haalt een automaat gemiddeld meer dan 10.000 CHF omzet per maand op ongeveer 1 m². Hij past in een gang of een gemeenschappelijke ruimte, met een flexibele verbintenis zonder minimumduur.
+      - t: Releasedagen die opvallen
+        d: Een nieuwe set zit in de automaat op de dag van de release. Op die dagen brengt de automaat leven in het centrum.
+      integ_h2: Hoe de automaat past
+      integ:
+      - t: Gang, ingang of gemeenschappelijke ruimte
+        d: Een zichtbare plek binnen, dicht bij de grootste stromen. Ongeveer 1 m² vloeroppervlak en een stopcontact volstaan.
+      - t: Niets te beheren voor uw team
+        d: Installatie, wekelijks bijvullen, onderhoud en klantenservice zijn allemaal voor ons. Betalen gebeurt aan de automaat.
+      - t: Een vergoeding naar keuze
+        d: Een vaste huur of een deel van de omzet, volgens uw beleid. Flexibele verbintenis, zonder minimumduur.
+      - t: Uw centrum online
+        d: Elke automaat heeft een eigen pagina op onze site, met het adres van de locatie. In Genève staat er ook de live voorraad op.
+      faq:
+      - q: Waar komt de automaat in het centrum?
+        a: 'Waar de meeste bezoekers passeren: de ingang, de hoofdgang, bij de roltrappen of bij een speelgoed- of vrijetijdswinkel. We bespreken het in het eerste gesprek.'
+      - q: Wie ontvangt de betalingen?
+        a: 'De automaat zelf: contant met wisselgeld, contactloos met kaart of smartphone, en TWINT in Zwitserland. Niets loopt via uw kassa''s.'
+      - q: Hoe wordt het centrum vergoed?
+        a: Met een vaste huur of een deel van de omzet van de automaat, naar keuze. We spreken het samen af, op basis van de passage.
+      - q: Gaat de automaat concurreren met onze huurders?
+        a: We stellen het assortiment samen met u samen. Verkoopt een winkel in het centrum bepaalde producten al, dan kunnen we die weglaten.
+      - q: Wie is verantwoordelijk voor de automaat?
+        a: 'Wij. Hij blijft ons eigendom en valt onder onze verzekering: u draagt geen enkele financiële verantwoordelijkheid.'
+  magasin-de-jouets:
+    fichier: distributeur-magasin-de-jouets.html
+    fr:
+      title: Distributeur de cartes TCG pour magasins de jouets et lieux de loisirs | BoosterStop
+      description: 'Un distributeur de cartes à collectionner dans votre magasin de jouets, cinéma, bowling ou salle de jeux : un assortiment qui complète le vôtre, sans personnel ni stock à gérer.'
+      crumb: Jouets et loisirs
+      h1: Un distributeur de cartes à collectionner dans votre magasin ou votre lieu de loisirs
+      lead: 'Magasin de jouets, cinéma, bowling, salle de jeux : une machine de boosters scellés qui complète votre offre au lieu de la concurrencer. BoosterStop s''occupe de tout, de l''installation au réassort.'
+      why_h2: Pourquoi ça marche chez vous
+      why:
+      - t: Un assortiment qui complète le vôtre
+        d: Nous ne mettons pas en machine les produits que vous vendez déjà. Vos rayons restent les vôtres ; la machine ajoute des boosters à l'unité et des éditions difficiles à trouver.
+      - t: Des éditions qu'on ne trouve pas en rayon
+        d: Nos machines proposent aussi des boosters en japonais et en chinois, très recherchés par les collectionneurs.
+      - t: Des ventes sans passer par la caisse
+        d: Le client paie à la machine. Aucun stock à commander, aucune vente à gérer pour vos équipes.
+      - t: Pour les lieux de loisirs
+        d: Au cinéma, au bowling ou en salle de jeux, les clients attendent et cherchent un petit plaisir à rapporter. Un booster en fait partie.
+      integ_h2: Comment ça se passe
+      integ:
+      - t: Un emplacement visible
+        d: 'Par exemple près de la sortie : la machine ne prend aucune place dans vos rayons. Environ 1 m² et une prise électrique suffisent.'
+      - t: Un pilote d'abord
+        d: Nous commençons par une machine, nous mesurons les ventes avec vous, puis nous décidons ensemble de la suite.
+      - t: Une part du chiffre d'affaires
+        d: Vous percevez une part du chiffre d'affaires de la machine, ou un loyer fixe si vous préférez. Engagement souple, sans durée minimale.
+      - t: Un réassort chaque semaine
+        d: Nos équipes remplissent la machine chaque semaine, et plus souvent à la sortie d'un set, avec les produits qui se vendent le mieux.
+      faq:
+      - q: Allez-vous vendre les mêmes produits que nous ?
+        a: Non. L'assortiment de la machine est construit pour éviter ce que vous vendez déjà, à partir des produits qui se vendent le mieux dans notre réseau.
+      - q: Avez-vous déjà une machine dans un magasin de jouets ?
+        a: Oui, chez King Jouet à Carouge, en plus de nos machines dans les filiales de La Poste à Genève et dans cinq magasins Carrefour en Belgique.
+      - q: Comment suis-je rémunéré ?
+        a: Par une part du chiffre d'affaires de la machine ou par un loyer fixe, selon votre lieu. Nous en convenons ensemble.
+      - q: Et pour un cinéma ou un bowling ?
+        a: 'C''est le même fonctionnement : nous installons, remplissons et entretenons la machine ; vous fournissez un emplacement à l''intérieur et une prise électrique.'
+      - q: Qui s'occupe des pannes ?
+        a: Nous. La machine reste notre propriété, sous notre assurance, et nous assurons la maintenance et le service client.
+    en:
+      title: TCG vending machines for toy shops and leisure venues | BoosterStop
+      description: 'A trading card vending machine in your toy shop, cinema, bowling alley or arcade: an assortment that complements yours, with no staff or stock to manage.'
+      crumb: Toys and leisure
+      h1: A trading card vending machine in your shop or leisure venue
+      lead: 'Toy shop, cinema, bowling alley, arcade: a machine of sealed boosters that adds to your offer instead of competing with it. BoosterStop handles everything, from installation to restocking.'
+      why_h2: Why it works for you
+      why:
+      - t: An assortment that complements yours
+        d: We don't stock products you already sell. Your shelves stay yours; the machine adds single boosters and hard-to-find editions.
+      - t: Editions you won't find on the shelf
+        d: Our machines also carry Japanese and Chinese boosters, highly sought after by collectors.
+      - t: Sales that skip the till
+        d: Customers pay at the machine. No stock to order, no sales for your teams to handle.
+      - t: For leisure venues
+        d: At the cinema, the bowling alley or the arcade, people wait and look for a small treat to take home. A booster is one of them.
+      integ_h2: How it works
+      integ:
+      - t: A visible spot
+        d: 'Near the exit, for example: the machine takes no space from your shelves. About 1 m² and a power socket are enough.'
+      - t: A pilot first
+        d: We start with one machine, measure the sales with you, then decide together what comes next.
+      - t: A share of revenue
+        d: You receive a share of the machine's revenue, or a fixed rent if you prefer. Flexible commitment, no minimum term.
+      - t: Restocked every week
+        d: Our team fills the machine every week, and more often when a set comes out, with the products that sell best.
+      faq:
+      - q: Will you sell the same products as us?
+        a: No. The machine's assortment is built to avoid what you already sell, based on the best sellers in our network.
+      - q: Do you already have a machine in a toy shop?
+        a: Yes, at King Jouet in Carouge, alongside our machines in La Poste branches in Geneva and in five Carrefour stores in Belgium.
+      - q: How am I paid?
+        a: Through a share of the machine's revenue or a fixed rent, depending on your venue. We agree on it together.
+      - q: What about a cinema or bowling alley?
+        a: 'It works the same way: we install, fill and maintain the machine; you provide an indoor spot and a power socket.'
+      - q: Who handles breakdowns?
+        a: We do. The machine remains our property, under our insurance, and we take care of maintenance and customer service.
+    nl:
+      title: TCG-automaten voor speelgoedwinkels en vrijetijdslocaties | BoosterStop
+      description: 'Een automaat met verzamelkaarten in uw speelgoedwinkel, bioscoop, bowling of speelhal: een assortiment dat het uwe aanvult, zonder personeel of voorraad te beheren.'
+      crumb: Speelgoed en vrije tijd
+      h1: Een automaat met verzamelkaarten in uw winkel of vrijetijdslocatie
+      lead: 'Speelgoedwinkel, bioscoop, bowling, speelhal: een automaat met verzegelde boosters die uw aanbod aanvult in plaats van ermee te concurreren. BoosterStop regelt alles, van installatie tot bijvullen.'
+      why_h2: Waarom het bij u werkt
+      why:
+      - t: Een assortiment dat het uwe aanvult
+        d: We zetten geen producten in de automaat die u al verkoopt. Uw rekken blijven van u; de automaat voegt losse boosters en moeilijk te vinden edities toe.
+      - t: Edities die u niet in de rekken vindt
+        d: Onze automaten hebben ook Japanse en Chinese boosters, erg gezocht door verzamelaars.
+      - t: Verkoop buiten de kassa
+        d: De klant betaalt aan de automaat. Geen voorraad te bestellen, geen verkoop te verwerken voor uw team.
+      - t: Voor vrijetijdslocaties
+        d: In de bioscoop, de bowling of de speelhal wachten mensen en zoeken ze een kleine traktatie om mee te nemen. Een booster is er een van.
+      integ_h2: Hoe het verloopt
+      integ:
+      - t: Een zichtbare plek
+        d: 'Bijvoorbeeld bij de uitgang: de automaat neemt geen plaats in uw rekken in. Ongeveer 1 m² en een stopcontact volstaan.'
+      - t: Eerst een pilot
+        d: We beginnen met één automaat, meten de verkoop samen met u en beslissen dan samen over het vervolg.
+      - t: Een deel van de omzet
+        d: U ontvangt een deel van de omzet van de automaat, of een vaste huur als u dat verkiest. Flexibele verbintenis, zonder minimumduur.
+      - t: Elke week bijgevuld
+        d: Ons team vult de automaat elke week bij, en vaker wanneer er een set uitkomt, met de producten die het best verkopen.
+      faq:
+      - q: Gaat u dezelfde producten verkopen als wij?
+        a: Nee. Het assortiment van de automaat is samengesteld om te vermijden wat u al verkoopt, op basis van de bestsellers in ons netwerk.
+      - q: Hebt u al een automaat in een speelgoedwinkel?
+        a: Ja, bij King Jouet in Carouge, naast onze automaten in postkantoren van La Poste in Genève en in vijf Carrefour-winkels in België.
+      - q: Hoe word ik vergoed?
+        a: Met een deel van de omzet van de automaat of een vaste huur, afhankelijk van uw locatie. We spreken het samen af.
+      - q: En voor een bioscoop of bowling?
+        a: 'Het werkt op dezelfde manier: wij installeren, vullen en onderhouden de automaat; u levert een plek binnen en een stopcontact.'
+      - q: Wie regelt storingen?
+        a: Wij. De automaat blijft ons eigendom, valt onder onze verzekering, en wij zorgen voor onderhoud en klantenservice.

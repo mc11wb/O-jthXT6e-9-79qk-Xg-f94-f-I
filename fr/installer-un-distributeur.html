@@ -71,6 +71,10 @@ body{margin:0;background:var(--black);color:var(--white);
 .b2-contact{margin-top:26px;font-size:15px;color:var(--text-muted)}
 .b2-contact a{color:var(--yellow);text-decoration:none}
 .b2-contact a:hover{text-decoration:underline}
+.b2-lieux li:has(a){padding:0}
+.b2-lieux li a{display:block;padding:13px 16px;color:var(--white);text-decoration:none}
+.b2-lieux li a::after{content:' →';color:var(--yellow)}
+.b2-lieux li:has(a):hover{border-color:var(--red)}
 </style>
 </head>
 <body>
@@ -121,13 +125,14 @@ body{margin:0;background:var(--black);color:var(--white);
 <section class="b2-sec">
   <h2>Les lieux qui nous intéressent</h2>
   <ul class="b2-lieux">
-    <li>Centres commerciaux</li>
-    <li>Gares et pôles de transport</li>
-    <li>Cinémas et salles de jeux</li>
-    <li>Magasins de jouets et de loisirs</li>
-    <li>Centres culturels et sportifs</li>
-    <li>Commerces à fort passage</li>
-  </ul>
+        <li><a href="/fr/distributeur-aeroport.html">Aéroports</a></li>
+        <li><a href="/fr/distributeur-centre-commercial.html">Centres commerciaux</a></li>
+        <li><a href="/fr/distributeur-gare.html">Gares et pôles de transport</a></li>
+        <li><a href="/fr/distributeur-magasin-de-jouets.html">Cinémas et salles de jeux</a></li>
+        <li><a href="/fr/distributeur-magasin-de-jouets.html">Magasins de jouets et de loisirs</a></li>
+        <li>Centres culturels et sportifs</li>
+        <li>Commerces à fort passage</li>
+      </ul>
 </section>
 
 <section class="b2-sec">

@@ -106,6 +106,22 @@ body{margin:0;background:var(--black);color:var(--white);
 .lx-also a:hover{border-color:var(--yellow);color:var(--yellow)}
 .lx-badge{display:inline-block;margin-left:8px;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--yellow);border:1px solid rgba(255,208,0,.45);padding:1px 7px;border-radius:2px;vertical-align:1px}
 .lx-badge.past{color:var(--text-muted);border-color:var(--gray-mid)}
+
+/* Quartiers sans machine : la plus proche, avec le trajet (remplace les anciennes pages par quartier) */
+.qz-hoods{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;margin-top:18px}
+.qz-hood{background:var(--gray);padding:18px 18px 16px;border-top:2px solid var(--gray-mid);scroll-margin-top:90px}
+.qz-hood:target{border-top-color:var(--red)}
+.qz-hood h3{font-size:16px;font-weight:700;margin:0 0 6px}
+.qz-hood p{margin:0 0 8px;font-size:14px;line-height:1.55}
+.qz-hood-main a{color:var(--white);font-weight:500}
+.qz-hood-main span{display:block;color:var(--yellow);font-size:13px;margin-top:2px}
+.qz-hood-hint{color:#cfcce0}
+.qz-hood-alt{color:var(--text-muted);font-size:13px}
+.qz-hood-alt a{color:#cfcce0}
+.qz-hood-act{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px}
+.qz-hood-act a{color:var(--white);font-size:13.5px;text-underline-offset:3px}
+@media(max-width:900px){.qz-hoods{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.qz-hoods{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -134,9 +150,102 @@ body{margin:0;background:var(--black);color:var(--white);
   </ul>
 </section>
 
-<section class="qz-sec">
-  <h2>La ville, pas seulement le quartier</h2>
-  <p>Nous avons une page par quartier pour vous dire quelle machine est la plus proche de chez vous. Celle-ci fait l'inverse : elle donne la vue d'ensemble, les huit emplacements, et renvoie vers le stock en direct. Si vous cherchez une carte précise, c'est la page Stock Live qu'il faut ouvrir ; si vous cherchez la machine la plus proche, la page de votre quartier.</p>
+<section class="qz-sec" id="quartiers">
+  <h2>La machine la plus proche de votre quartier</h2>
+  <p>Pas encore de machine dans votre quartier ? Voici la plus proche, avec le temps de trajet. Votre quartier n'y est pas ? <a href="/fr/expansion.html#votre-ville">Demandez une machine</a>.</p>
+  <div class="qz-hoods">
+    <article class="qz-hood" id="quartier-grand-lancy">
+      <h3>Grand-Lancy</h3>
+      <p class="qz-hood-main"><a href="/fr/distributeur-petit-lancy.html">Petit-Lancy</a> <span>0,3 km · 4 min à pied · 2 min à vélo</span></p>
+      <p class="qz-hood-hint">Le Grand-Lancy et le Petit-Lancy forment la même commune : la machine est à quelques minutes, de l&#x27;autre côté du quartier.</p>
+      <p class="qz-hood-alt">Aussi : <a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a> (2,3 km), <a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a> (2,3 km), <a href="/fr/distributeur-geneve-rive.html">Rive</a> (3,1 km)</p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.1889447,6.1104449&amp;travelmode=walking" rel="noopener">Itinéraire à pied</a> <a href="/fr/stock.html?machine=petit-lancy">Voir son stock</a></p>
+    </article>
+    <article class="qz-hood" id="quartier-acacias">
+      <h3>Les Acacias</h3>
+      <p class="qz-hood-main"><a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a> <span>0,5 km · 6 min à pied · 2 min à vélo</span></p>
+      <p class="qz-hood-hint">Depuis les Acacias, la plaine de Plainpalais se rejoint en quelques minutes en remontant vers l&#x27;Arve.</p>
+      <p class="qz-hood-alt">Aussi : <a href="/fr/distributeur-geneve-rive.html">Rive</a> (1,6 km), <a href="/fr/distributeur-petit-lancy.html">Petit-Lancy</a> (2,2 km), <a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a> (2,3 km)</p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.1938474,6.1426527&amp;travelmode=walking" rel="noopener">Itinéraire à pied</a> <a href="/fr/stock.html?machine=plainpalais">Voir son stock</a></p>
+    </article>
+    <article class="qz-hood" id="quartier-chene-bourg">
+      <h3>Chêne-Bourg</h3>
+      <p class="qz-hood-main"><a href="/fr/distributeur-thonex.html">Thônex</a> <span>0,6 km · 8 min à pied · 2 min à vélo</span></p>
+      <p class="qz-hood-hint">Chêne-Bourg et Thônex se touchent : c&#x27;est le trajet le plus court de tout le réseau depuis un quartier sans machine.</p>
+      <p class="qz-hood-alt">Aussi : <a href="/fr/distributeur-geneve-rive.html">Rive</a> (3,6 km), <a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a> (4,2 km), <a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a> (5,8 km)</p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.1927988,6.2020452&amp;travelmode=walking" rel="noopener">Itinéraire à pied</a> <a href="/fr/stock.html?machine=thonex">Voir son stock</a></p>
+    </article>
+    <article class="qz-hood" id="quartier-servette">
+      <h3>Servette</h3>
+      <p class="qz-hood-main"><a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a> <span>0,8 km · 10 min à pied · 3 min à vélo</span></p>
+      <p class="qz-hood-hint">La Servette et les Charmilles sont voisines : dix minutes à pied séparent le quartier de la machine.</p>
+      <p class="qz-hood-alt">Aussi : <a href="/fr/distributeur-geneve-rive.html">Rive</a> (2,1 km), <a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a> (2,4 km), <a href="/fr/distributeur-petit-lancy.html">Petit-Lancy</a> (3,1 km)</p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.2080238,6.1230909&amp;travelmode=walking" rel="noopener">Itinéraire à pied</a> <a href="/fr/stock.html?machine=charmilles">Voir son stock</a></p>
+    </article>
+    <article class="qz-hood" id="quartier-jonction">
+      <h3>Jonction</h3>
+      <p class="qz-hood-main"><a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a> <span>1,0 km · 12 min à pied · 4 min à vélo</span></p>
+      <p class="qz-hood-hint">Depuis la Jonction, la machine des Charmilles se rejoint en longeant le Rhône vers l&#x27;aval.</p>
+      <p class="qz-hood-alt">Aussi : <a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a> (1,3 km), <a href="/fr/distributeur-petit-lancy.html">Petit-Lancy</a> (1,8 km), <a href="/fr/distributeur-geneve-rive.html">Rive</a> (1,8 km)</p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.2080238,6.1230909&amp;travelmode=walking" rel="noopener">Itinéraire à pied</a> <a href="/fr/stock.html?machine=charmilles">Voir son stock</a></p>
+    </article>
+    <article class="qz-hood" id="quartier-onex">
+      <h3>Onex</h3>
+      <p class="qz-hood-main"><a href="/fr/distributeur-petit-lancy.html">Petit-Lancy</a> <span>1,0 km · 12 min à pied · 4 min à vélo</span></p>
+      <p class="qz-hood-hint">Onex et le Petit-Lancy sont limitrophes : moins d&#x27;un kilomètre sépare les deux communes.</p>
+      <p class="qz-hood-alt">Aussi : <a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a> (3,2 km), <a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a> (3,5 km), <a href="/fr/distributeur-geneve-rive.html">Rive</a> (4,4 km)</p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.1889447,6.1104449&amp;travelmode=walking" rel="noopener">Itinéraire à pied</a> <a href="/fr/stock.html?machine=petit-lancy">Voir son stock</a></p>
+    </article>
+    <article class="qz-hood" id="quartier-cornavin">
+      <h3>Gare Cornavin</h3>
+      <p class="qz-hood-main"><a href="/fr/distributeur-geneve-rive.html">Rive</a> <span>1,1 km · 14 min à pied · 4 min à vélo</span></p>
+      <p class="qz-hood-hint">Depuis Cornavin, la machine de Rive est de l&#x27;autre côté du pont du Mont-Blanc. Pratique pour occuper une correspondance.</p>
+      <p class="qz-hood-alt">Aussi : <a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a> (1,6 km), <a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a> (1,9 km), <a href="/fr/distributeur-petit-lancy.html">Petit-Lancy</a> (3,5 km)</p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.201946,6.1504446&amp;travelmode=walking" rel="noopener">Itinéraire à pied</a> <a href="/fr/stock.html?machine=rive">Voir son stock</a></p>
+    </article>
+    <article class="qz-hood" id="quartier-champel">
+      <h3>Champel</h3>
+      <p class="qz-hood-main"><a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a> <span>1,2 km · 15 min à pied · 5 min à vélo</span></p>
+      <p class="qz-hood-hint">Champel surplombe l&#x27;Arve : la descente vers Plainpalais est rapide, la remontée un peu moins.</p>
+      <p class="qz-hood-alt">Aussi : <a href="/fr/distributeur-geneve-rive.html">Rive</a> (1,5 km), <a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a> (3,3 km), <a href="/fr/distributeur-thonex.html">Thônex</a> (3,4 km)</p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.1938474,6.1426527&amp;travelmode=walking" rel="noopener">Itinéraire à pied</a> <a href="/fr/stock.html?machine=plainpalais">Voir son stock</a></p>
+    </article>
+    <article class="qz-hood" id="quartier-eaux-vives">
+      <h3>Les Eaux-Vives</h3>
+      <p class="qz-hood-main"><a href="/fr/distributeur-geneve-rive.html">Rive</a> <span>1,2 km · 15 min à pied · 5 min à vélo</span></p>
+      <p class="qz-hood-hint">Les Eaux-Vives bordent directement le quartier de Rive : la machine est au bout des Rues Basses.</p>
+      <p class="qz-hood-alt">Aussi : <a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a> (1,9 km), <a href="/fr/distributeur-thonex.html">Thônex</a> (2,9 km), <a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a> (3,4 km)</p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.201946,6.1504446&amp;travelmode=walking" rel="noopener">Itinéraire à pied</a> <a href="/fr/stock.html?machine=rive">Voir son stock</a></p>
+    </article>
+    <article class="qz-hood" id="quartier-paquis">
+      <h3>Les Pâquis</h3>
+      <p class="qz-hood-main"><a href="/fr/distributeur-geneve-rive.html">Rive</a> <span>1,2 km · 15 min à pied · 5 min à vélo</span></p>
+      <p class="qz-hood-hint">Depuis les Pâquis, la machine de Rive se rejoint en traversant la rade.</p>
+      <p class="qz-hood-alt">Aussi : <a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a> (2,0 km), <a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a> (2,1 km), <a href="/fr/distributeur-petit-lancy.html">Petit-Lancy</a> (3,9 km)</p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.201946,6.1504446&amp;travelmode=walking" rel="noopener">Itinéraire à pied</a> <a href="/fr/stock.html?machine=rive">Voir son stock</a></p>
+    </article>
+    <article class="qz-hood" id="quartier-chene-bougeries">
+      <h3>Chêne-Bougeries</h3>
+      <p class="qz-hood-main"><a href="/fr/distributeur-thonex.html">Thônex</a> <span>1,4 km · 18 min à pied · 6 min à vélo</span></p>
+      <p class="qz-hood-hint">Chêne-Bougeries se trouve entre Rive et Thônex, avec une machine accessible de chaque côté.</p>
+      <p class="qz-hood-alt">Aussi : <a href="/fr/distributeur-geneve-rive.html">Rive</a> (2,7 km), <a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a> (3,3 km), <a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a> (4,9 km)</p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.1927988,6.2020452&amp;travelmode=walking" rel="noopener">Itinéraire à pied</a> <a href="/fr/stock.html?machine=thonex">Voir son stock</a></p>
+    </article>
+    <article class="qz-hood" id="quartier-vernier">
+      <h3>Vernier</h3>
+      <p class="qz-hood-main"><a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a> <span>1,5 km · 18 min à pied · 6 min à vélo</span></p>
+      <p class="qz-hood-hint">Vernier est la deuxième commune du canton : la machine des Charmilles est la plus proche de son territoire.</p>
+      <p class="qz-hood-alt">Aussi : <a href="/fr/distributeur-petit-lancy.html">Petit-Lancy</a> (2,6 km), <a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a> (3,5 km), <a href="/fr/distributeur-geneve-rive.html">Rive</a> (3,7 km)</p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.2080238,6.1230909&amp;travelmode=walking" rel="noopener">Itinéraire à pied</a> <a href="/fr/stock.html?machine=charmilles">Voir son stock</a></p>
+    </article>
+    <article class="qz-hood" id="quartier-plan-les-ouates">
+      <h3>Plan-les-Ouates</h3>
+      <p class="qz-hood-main"><a href="/fr/distributeur-petit-lancy.html">Petit-Lancy</a> <span>2,5 km · 31 min à pied · 10 min à vélo</span></p>
+      <p class="qz-hood-hint">Depuis Plan-les-Ouates, la machine du Petit-Lancy est la plus proche, en remontant vers le nord.</p>
+      <p class="qz-hood-alt">Aussi : <a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a> (3,7 km), <a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a> (4,6 km), <a href="/fr/distributeur-geneve-rive.html">Rive</a> (4,8 km)</p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.1889447,6.1104449&amp;travelmode=walking" rel="noopener">Itinéraire à pied</a> <a href="/fr/stock.html?machine=petit-lancy">Voir son stock</a></p>
+    </article>
+  </div>
 </section>
 
 <section class="qz-sec">
@@ -190,7 +299,7 @@ body{margin:0;background:var(--black);color:var(--white);
     <dt>Vendez-vous des cartes Pokémon à l'unité ?</dt>
     <dd>Non. Uniquement du scellé d'usine, jamais de singles ni de lots reconditionnés.</dd>
     <dt>Quelle machine est la plus proche de chez moi ?</dt>
-    <dd>Nos pages par quartier, de Champel à Vernier, indiquent la machine la plus proche avec le trajet à pied, à vélo et en transports.</dd>
+    <dd>La section <a href="#quartiers">La machine la plus proche de votre quartier</a>, sur cette page, couvre tous les quartiers de Champel à Vernier, avec le temps à pied et à vélo.</dd>
   </dl>
 </section>
 
@@ -291,7 +400,7 @@ body{margin:0;background:var(--black);color:var(--white);
           "name": "Quelle machine est la plus proche de chez moi ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Nos pages par quartier, de Champel à Vernier, indiquent la machine la plus proche avec le trajet à pied, à vélo et en transports."
+            "text": "La section « La machine la plus proche de votre quartier », sur cette page, couvre tous les quartiers de Champel à Vernier, avec le temps à pied et à vélo."
           }
         }
       ]

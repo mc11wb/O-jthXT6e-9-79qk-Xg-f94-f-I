@@ -71,6 +71,10 @@ body{margin:0;background:var(--black);color:var(--white);
 .b2-contact{margin-top:26px;font-size:15px;color:var(--text-muted)}
 .b2-contact a{color:var(--yellow);text-decoration:none}
 .b2-contact a:hover{text-decoration:underline}
+.b2-lieux li:has(a){padding:0}
+.b2-lieux li a{display:block;padding:13px 16px;color:var(--white);text-decoration:none}
+.b2-lieux li a::after{content:' →';color:var(--yellow)}
+.b2-lieux li:has(a):hover{border-color:var(--red)}
 </style>
 </head>
 <body>
@@ -121,13 +125,14 @@ body{margin:0;background:var(--black);color:var(--white);
 <section class="b2-sec">
   <h2>The venues we are looking for</h2>
   <ul class="b2-lieux">
-    <li>Shopping centres</li>
-    <li>Stations and transport hubs</li>
-    <li>Cinemas and games venues</li>
-    <li>Toy and hobby shops</li>
-    <li>Cultural and sports centres</li>
-    <li>High-traffic shops</li>
-  </ul>
+        <li><a href="/distributeur-aeroport.html">Airports</a></li>
+        <li><a href="/distributeur-centre-commercial.html">Shopping centres</a></li>
+        <li><a href="/distributeur-gare.html">Stations and transport hubs</a></li>
+        <li><a href="/distributeur-magasin-de-jouets.html">Cinemas and games venues</a></li>
+        <li><a href="/distributeur-magasin-de-jouets.html">Toy and hobby shops</a></li>
+        <li>Cultural and sports centres</li>
+        <li>High-traffic shops</li>
+      </ul>
 </section>
 
 <section class="b2-sec">

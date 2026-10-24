@@ -40,19 +40,6 @@ Vue d'ensemble : [tous les distributeurs de Genève](https://boosterstop.com/fr/
 
 Pour chaque quartier encore dépourvu de distributeur, une page indique la machine la plus proche, la distance et le temps de trajet à pied et à vélo. Les versions anglaises portent le même nom de fichier, sans le préfixe `/fr/`.
 
-- [Grand-Lancy](https://boosterstop.com/fr/cartes-pokemon-grand-lancy.html) — machine du Petit-Lancy, 0,3 km, 4 min à pied, 2 min à vélo
-- [Les Acacias](https://boosterstop.com/fr/cartes-pokemon-acacias.html) — machine de Plainpalais, 0,5 km, 6 min à pied, 2 min à vélo
-- [Chêne-Bourg](https://boosterstop.com/fr/cartes-pokemon-chene-bourg.html) — machine de Thônex, 0,6 km, 8 min à pied, 2 min à vélo
-- [La Servette](https://boosterstop.com/fr/cartes-pokemon-servette.html) — machine des Charmilles, 0,8 km, 10 min à pied, 3 min à vélo
-- [La Jonction](https://boosterstop.com/fr/cartes-pokemon-jonction.html) — machine des Charmilles, 1,0 km, 12 min à pied, 4 min à vélo
-- [Onex](https://boosterstop.com/fr/cartes-pokemon-onex.html) — machine du Petit-Lancy, 1,0 km, 12 min à pied, 4 min à vélo
-- [La gare Cornavin](https://boosterstop.com/fr/cartes-pokemon-cornavin.html) — machine de Rive, 1,1 km, 14 min à pied, 4 min à vélo
-- [Les Eaux-Vives](https://boosterstop.com/fr/cartes-pokemon-eaux-vives.html) — machine de Rive, 1,2 km, 15 min à pied, 5 min à vélo
-- [Les Pâquis](https://boosterstop.com/fr/cartes-pokemon-paquis.html) — machine de Rive, 1,2 km, 15 min à pied, 5 min à vélo
-- [Champel](https://boosterstop.com/fr/cartes-pokemon-champel.html) — machine de Plainpalais, 1,2 km, 15 min à pied, 5 min à vélo
-- [Chêne-Bougeries](https://boosterstop.com/fr/cartes-pokemon-chene-bougeries.html) — machine de Thônex, 1,4 km, 18 min à pied, 6 min à vélo
-- [Vernier](https://boosterstop.com/fr/cartes-pokemon-vernier.html) — machine des Charmilles, 1,5 km, 18 min à pied, 6 min à vélo
-- [Plan-les-Ouates](https://boosterstop.com/fr/cartes-pokemon-plan-les-ouates.html) — machine du Petit-Lancy, 2,5 km, 31 min à pied, 10 min à vélo
 
 ## Pages principales (français)
 
@@ -154,3 +141,12 @@ Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Di
 
 ## Stock snapshot
 - Each Geneva machine page and the Live Stock page show the machine's products as text, from a snapshot refreshed every morning. The live view on the page is loaded from the machine in real time.
+
+## For venues (B2B)
+
+Pages for decision-makers who could host a BoosterStop machine, in English, French (/fr/) and Dutch (/nl/):
+- Airports: https://boosterstop.com/distributeur-aeroport.html
+- Train stations: https://boosterstop.com/distributeur-gare.html
+- Shopping centres: https://boosterstop.com/distributeur-centre-commercial.html
+- Toy shops and leisure venues (cinemas, bowling, arcades): https://boosterstop.com/distributeur-magasin-de-jouets.html
+Rounded figures from the Geneva network: over CHF 10,000 in sales and over 400 sales per machine per month on average, about 1 m² of floor space. The host pays nothing: machine, installation, restocking, maintenance and insurance are handled by BoosterStop; the host receives a fixed rent or a share of revenue.
