@@ -5,7 +5,8 @@
 #                  vers les pages de cette langue (ou vers l'anglais si une page
 #                  n'a pas encore été traduite).
 # sans « complet » → seules certaines pages existent (aujourd'hui : la page
-#                  Partenaire local). Le menu de langue ne propose cette langue
+#                  Partenaire local). Ailleurs, le menu les propose dans un
+#                  groupe « Partenaire local » qui mène vers cette page. Le menu de langue ne propose cette langue
 #                  que sur ces pages, et leur navigation reste en anglais.
 #
 # Pour traduire une page : créer le fichier au même nom dans le dossier de la
@@ -46,3 +47,20 @@
   dossier: ar/
   locale: ar_AR
   rtl: true
+- code: sv
+  nom: Svenska
+  dossier: sv/
+  locale: sv_SE
+# « no » entre guillemets : sans eux, YAML le lit comme « faux »
+- code: "no"
+  nom: Norsk
+  dossier: no/
+  locale: nb_NO
+- code: da
+  nom: Dansk
+  dossier: da/
+  locale: da_DK
+- code: fi
+  nom: Suomi
+  dossier: fi/
+  locale: fi_FI

@@ -261,38 +261,38 @@ page: stock
   <div class="machine-select-zone">
     <div class="zone-label">Pick a machine</div>
     <div class="machine-tabs" id="machineTabs">
-      <button class="machine-tab active" onclick="selectMachine(0)">
+      <a class="machine-tab active" href="?machine=rive" onclick="event.preventDefault(); selectMachine(0)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">La Poste de Rive</span><span class="mt-sub">Rive · 1204</span></span>
-      </button>
-      <button class="machine-tab" onclick="selectMachine(1)">
+        <span class="mt-label"><span class="mt-name">Rive</span><span class="mt-sub">La Poste · 1204</span></span>
+      </a>
+      <a class="machine-tab" href="?machine=charmilles" onclick="event.preventDefault(); selectMachine(1)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">La Poste des Charmilles</span><span class="mt-sub">Charmilles · 1203</span></span>
-      </button>
-      <button class="machine-tab" onclick="selectMachine(2)">
+        <span class="mt-label"><span class="mt-name">Charmilles</span><span class="mt-sub">La Poste · 1203</span></span>
+      </a>
+      <a class="machine-tab" href="?machine=petit-lancy" onclick="event.preventDefault(); selectMachine(2)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">La Poste du Petit-Lancy</span><span class="mt-sub">Petit-Lancy · 1213</span></span>
-      </button>
-      <button class="machine-tab" onclick="selectMachine(3)">
+        <span class="mt-label"><span class="mt-name">Petit-Lancy</span><span class="mt-sub">La Poste · 1213</span></span>
+      </a>
+      <a class="machine-tab" href="?machine=plainpalais" onclick="event.preventDefault(); selectMachine(3)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">La Poste de Plainpalais</span><span class="mt-sub">Plainpalais · 1205</span></span>
-      </button>
-      <button class="machine-tab" onclick="selectMachine(4)">
+        <span class="mt-label"><span class="mt-name">Plainpalais</span><span class="mt-sub">La Poste · 1205</span></span>
+      </a>
+      <a class="machine-tab" href="?machine=meyrin" onclick="event.preventDefault(); selectMachine(4)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">La Poste de Meyrin</span><span class="mt-sub">Meyrin · 1217</span></span>
-      </button>
-      <button class="machine-tab" onclick="selectMachine(5)">
+        <span class="mt-label"><span class="mt-name">Meyrin</span><span class="mt-sub">La Poste · 1217</span></span>
+      </a>
+      <a class="machine-tab" href="?machine=thonex" onclick="event.preventDefault(); selectMachine(5)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">La Poste de Thônex</span><span class="mt-sub">Thônex · 1226</span></span>
-      </button>
-      <button class="machine-tab" onclick="selectMachine(6)">
+        <span class="mt-label"><span class="mt-name">Thônex</span><span class="mt-sub">La Poste · 1226</span></span>
+      </a>
+      <a class="machine-tab" href="?machine=carouge" onclick="event.preventDefault(); selectMachine(6)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">La Poste de Carouge</span><span class="mt-sub">Carouge · 1227</span></span>
-      </button>
-      <button class="machine-tab" onclick="selectMachine(7)">
+        <span class="mt-label"><span class="mt-name">Carouge</span><span class="mt-sub">La Poste · 1227</span></span>
+      </a>
+      <a class="machine-tab" href="?machine=king-jouet-carouge" onclick="event.preventDefault(); selectMachine(7)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">King Jouet Carouge</span><span class="mt-sub">Carouge · 1227</span></span>
-      </button>
+        <span class="mt-label"><span class="mt-name">King Jouet</span><span class="mt-sub">Carouge · 1227</span></span>
+      </a>
     </div>
     <div class="stock-map-wrap"><div id="stockMap"></div></div>
     <div class="selected-machine-card" id="selectedMachineCard">
@@ -303,7 +303,10 @@ page: stock
           <div class="smc-addr" id="smcAddr">Rue du Vieux-Collège 3, 1204 Genève</div>
         </div>
       </div>
-      <span class="smc-hint">Switch with the tabs above or tap a pin on the map</span>
+      <div class="smc-right">
+        <button type="button" class="smc-link" onclick="copyMachineLink(this)">🔗 Copy link</button>
+        <span class="smc-hint">Switch with the tabs above or tap a pin on the map</span>
+      </div>
     </div>
   </div>
 
@@ -338,7 +341,7 @@ page: stock
       {%- for m in hb_ms %}
       <button class="machine-tab soon{% if forloop.first %} active{% endif %}" onclick="selectBeMachine(this)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">{{ m.nom }}</span><span class="mt-sub">{{ m[hb_kc] | default: m.court }} · {{ m.cp }}</span><span class="mt-soon">{{ hb_t.stock_bientot }}</span></span>
+        <span class="mt-label"><span class="mt-name">{{ m[hb_kc] | default: m.court }}</span><span class="mt-sub">Carrefour · {{ m.cp }}</span><span class="mt-soon">{{ hb_t.stock_bientot }}</span></span>
       </button>
       {%- endfor %}
     </div>
@@ -435,14 +438,14 @@ const FORMSPREE = {
   notify_uae: 'https://formspree.io/f/mqevbnwb'
 };
 const MACHINES = [
-  { name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', lat: 46.201946, lng: 6.1504446, worker: 0 },
-  { name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", lat: 46.2080238, lng: 6.1230909, worker: 1 },
-  { name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', lat: 46.1889447, lng: 6.1104449, worker: 2 },
-  { name: 'La Poste de Plainpalais', addr: 'Rue Pictet-de-Bock 6, 1205 Genève', lat: 46.1938474, lng: 6.1426527, worker: 5 },
-  { name: 'La Poste de Meyrin', addr: 'Avenue de Feuillasse 24, 1217 Meyrin', lat: 46.2323422, lng: 6.0834824, worker: 6 },
-  { name: 'La Poste de Thônex', addr: 'Rue de Genève 106, 1226 Thônex', lat: 46.1927988, lng: 6.2020452, worker: 7 },
-  { name: 'La Poste de Carouge', addr: 'Boulevard des Promenades 16, 1227 Carouge', lat: 46.1834815, lng: 6.1374843, worker: 4 },
-  { name: 'King Jouet Carouge', addr: 'Avenue Cardinal-Mermillod 36, 1227 Carouge', lat: 46.1859644, lng: 6.1431141, worker: 3 }
+  { slug: 'rive', name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', lat: 46.201946, lng: 6.1504446, worker: 0 },
+  { slug: 'charmilles', name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", lat: 46.2080238, lng: 6.1230909, worker: 1 },
+  { slug: 'petit-lancy', name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', lat: 46.1889447, lng: 6.1104449, worker: 2 },
+  { slug: 'plainpalais', name: 'La Poste de Plainpalais', addr: 'Rue Pictet-de-Bock 6, 1205 Genève', lat: 46.1938474, lng: 6.1426527, worker: 5 },
+  { slug: 'meyrin', name: 'La Poste de Meyrin', addr: 'Avenue de Feuillasse 24, 1217 Meyrin', lat: 46.2323422, lng: 6.0834824, worker: 6 },
+  { slug: 'thonex', name: 'La Poste de Thônex', addr: 'Rue de Genève 106, 1226 Thônex', lat: 46.1927988, lng: 6.2020452, worker: 7 },
+  { slug: 'carouge', name: 'La Poste de Carouge', addr: 'Boulevard des Promenades 16, 1227 Carouge', lat: 46.1834815, lng: 6.1374843, worker: 4 },
+  { slug: 'king-jouet-carouge', name: 'King Jouet Carouge', addr: 'Avenue Cardinal-Mermillod 36, 1227 Carouge', lat: 46.1859644, lng: 6.1431141, worker: 3 }
 ];
 // worker = index appelé sur le Cloudflare Worker. null = machine installée,
 // mais stock live pas encore connecté → message « bientôt » à la place des étages.
@@ -571,6 +574,9 @@ function updateMachineTabs() {
   document.querySelectorAll('#panel-ch .machine-tab').forEach(function(t, i) {
     t.classList.toggle('active', i === currentMachine);
   });
+  /* l'onglet choisi reste visible dans la rangée qui défile (mobile) */
+  var row = document.getElementById('machineTabs'), tab = row && row.children[currentMachine];
+  if (tab) row.scrollLeft = tab.offsetLeft - (row.clientWidth - tab.offsetWidth) / 2;
 }
 function selectMachine(i, scroll) {
   currentMachine = i;
@@ -579,6 +585,7 @@ function selectMachine(i, scroll) {
   updateMachineTabs();
   updateMarkerStyles();
   renderFloors();
+  try { history.replaceState(null, '', '?machine=' + MACHINES[i].slug); } catch (e) {}
   if (scroll !== false) {
     const mv = document.getElementById('machineView');
     if (mv) mv.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -782,10 +789,23 @@ document.querySelectorAll('.modal-overlay').forEach(function(ov) {
   ov.addEventListener('click', function(e) { if (e.target === ov) ov.classList.remove('open'); });
 });
 
+/* Lien direct vers la machine affichée (stock.html?machine=rive) */
+function copyMachineLink(btn) {
+  var url = location.origin + location.pathname + '?machine=' + MACHINES[currentMachine].slug;
+  var label = btn.getAttribute('data-label') || btn.textContent;
+  btn.setAttribute('data-label', label);
+  function done() { btn.textContent = '✓ Link copied'; setTimeout(function() { btn.textContent = label; }, 2000); }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url).then(done, function() { window.prompt('', url); });
+  } else { window.prompt('', url); }
+}
+
 /* ---------- INIT ---------- */
 (function() {
   const params = new URLSearchParams(window.location.search);
-  const wanted = parseInt(params.get('machine'), 10);
+  const mParam = params.get('machine');
+  let wanted = parseInt(mParam, 10);
+  if (isNaN(wanted) && mParam) wanted = MACHINES.findIndex(function(m) { return m.slug === mParam; });
   const wantedPays = params.get('pays');
   if (wantedPays && wantedPays !== 'ch') {
     const tab = document.querySelector(".country-tab[onclick*=\"'" + wantedPays + "'\"]");
@@ -910,6 +930,16 @@ body.modal-lock { position: fixed; width: 100%; overflow: hidden; }
   .slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .mob-nav a { font-size: 7.5px; }
 }
+
+/* Onglets machines : liens directs, nom complet du lieu visible */
+a.machine-tab { text-decoration: none; }
+.machine-tab { flex: 1 0 auto; }
+.mt-name { overflow: visible; text-overflow: clip; }
+.smc-right { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.smc-link { background: none; border: 1px solid var(--gray-mid); border-radius: var(--radius); color: var(--white); font-family: inherit; font-size: 12px; padding: 8px 12px; cursor: pointer; white-space: nowrap; transition: border-color .2s; }
+.smc-link:hover { border-color: var(--red); }
+.smc-link:focus-visible, a.machine-tab:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; }
+@media (min-width: 769px) { .machine-tab { min-width: 118px; padding-left: 12px; padding-right: 12px; } .mt-sub { letter-spacing: .5px; } }
 </style>
 <script>
 /* Verrou de scroll + Échap sur les modales */

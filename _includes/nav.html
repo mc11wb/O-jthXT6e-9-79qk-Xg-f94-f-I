@@ -76,6 +76,24 @@
         <li><a href="{{ l_url }}" hreflang="{{ l.code }}" lang="{{ l.code }}"{% if l.code == lang %} aria-current="true" class="on"{% endif %}><span class="ld-code">{{ l.code | upcase }}</span><span class="ld-name">{{ l.nom }}</span></a></li>
         {%- endif -%}
         {%- endfor %}
+        {%- comment -%} Langues qui n'ont pas cette page : lien vers leur page Partenaire local {%- endcomment -%}
+        {%- capture ld_extra -%}
+        {%- for l in site.data.langues -%}
+          {%- unless l.complet -%}
+            {%- capture l_url -%}/{{ l.dossier }}{{ page_file }}{%- endcapture -%}
+            {%- capture l_probe -%}|{{ l_url }}|{%- endcapture -%}
+            {%- capture l_pp -%}|/{{ l.dossier }}partenaire-local.html|{%- endcapture -%}
+            {%- unless bs_urls contains l_probe -%}{%- if bs_urls contains l_pp %}
+        <li><a href="/{{ l.dossier }}partenaire-local.html" hreflang="{{ l.code }}" lang="{{ l.code }}"><span class="ld-code">{{ l.code | upcase }}</span><span class="ld-name">{{ l.nom }}</span></a></li>
+            {%- endif -%}{%- endunless -%}
+          {%- endunless -%}
+        {%- endfor -%}
+        {%- endcapture -%}
+        {%- assign ld_extra_s = ld_extra | strip -%}
+        {%- if ld_extra_s != "" %}
+        <li class="ld-sep" role="presentation">{{ t.langue_partenaire }}</li>
+        {{- ld_extra }}
+        {%- endif %}
       </ul>
     </details>
   </div>

@@ -2,6 +2,7 @@
 # pour les langues « complet: true » de _data/langues.yml.
 # Le HTML est autorisé (&amp; pour « & »).
 en:
+  langue_partenaire: Local partner page
   langue: Language
   nav_emplacements: Locations
   nav_licences: "🃏 Licenses"
@@ -47,6 +48,7 @@ en:
   rl_page: See this machine's page
 
 fr:
+  langue_partenaire: Page partenaire local
   langue: Langue
   nav_emplacements: Emplacements
   nav_licences: "🃏 Licences"
@@ -92,6 +94,7 @@ fr:
   rl_page: Voir la page de cette machine
 
 nl:
+  langue_partenaire: Pagina lokale partner
   langue: Taal
   nav_emplacements: Locaties
   nav_licences: "🃏 Licenties"

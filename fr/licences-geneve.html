@@ -537,6 +537,16 @@ details.lic[open] .chev{transform:rotate(180deg); color:var(--red);}
 .btn-primary{background:var(--red); color:#fff;}
 .btn-secondary{background:transparent; border:1px solid rgba(255,255,255,.25); color:var(--white);}
 
+
+/* Petits écrans : les badges passent sur une ligne au-dessus du nom, qui prend toute la largeur */
+@media (max-width:540px){
+  summary.lic-head{flex-wrap:wrap; gap:8px 10px; padding:16px 14px;}
+  summary.lic-head .slot-tag{order:1;}
+  summary.lic-head .hot-flag{order:2;}
+  summary.lic-head .rarity-badge{order:3;}
+  summary.lic-head .chev{order:4; margin-left:auto;}
+  summary.lic-head .lic-titles{order:5; flex:1 1 100%;}
+}
 </style>
 </head>
 <body>
