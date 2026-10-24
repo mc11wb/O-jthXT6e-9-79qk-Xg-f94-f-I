@@ -222,7 +222,8 @@
     <h2>{{ c.autres_h2 }}</h2>
     <ul class="b2-lieux">
       {%- for k in site.data.lieux.ordre %}{% unless k == page.lieu %}
-      <li><a href="{% include lien.html f=site.data.lieux.lieux[k].fichier %}">{{ site.data.lieux.lieux[k][page.lang].crumb }}</a></li>
+      {%- assign lx_f = site.data.lieux.lieux[k].fichier %}
+      <li><a href="{% include lien.html f=lx_f %}">{{ site.data.lieux.lieux[k][page.lang].crumb }}</a></li>
       {%- endunless %}{% endfor %}
     </ul>
     <p class="lx-more"><a href="{% include lien.html f="installer-un-distributeur.html" %}">{{ c.autre_lien }}</a><br><a href="{% include lien.html f="partenaire-local.html" %}">{{ c.hors }}</a></p>
