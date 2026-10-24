@@ -1,0 +1,493 @@
+---
+lang: ar
+page: expansion
+---
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+{% include head.html %}
+<title>أجهزة بيع بطاقات TCG: جنيف، بلجيكا، لوزان، دبي… | BoosterStop</title>
+<meta name="description" content="أجهزة بيع بطاقات بوكيمون وون بيس وماجيك. تعمل في جنيف وبلجيكا، وتتوسع في سويسرا الناطقة بالفرنسية وفرنسا الحدودية ودبي وأبوظبي. اطلب مدينتك.">
+{% include hreflang.html %}
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BoosterStop">
+<meta property="og:title" content="أجهزة بيع بطاقات TCG — جنيف، بلجيكا، سويسرا الناطقة بالفرنسية، فرنسا، الإمارات">
+<meta property="og:description" content="شبكة BoosterStop تتوسع: أخبرنا أين نركّب الجهاز التالي.">
+<meta property="og:url" content="https://boosterstop.com/ar/expansion.html">
+<meta property="og:image" content="https://boosterstop.com/logo.png">
+<meta property="og:locale" content="ar_AE">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="أجهزة بيع بطاقات TCG — جنيف، بلجيكا، سويسرا الناطقة بالفرنسية، فرنسا، الإمارات">
+<meta name="twitter:description" content="تعمل في جنيف وبلجيكا. الإطلاق في دبي قريباً. أي مدينة التالية؟ القرار لك.">
+<meta name="twitter:image" content="https://boosterstop.com/logo.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#120F2A;--white:#f4f2ee;--yellow:#FFD000;
+  --gray:#1E1A3A;--gray-mid:#2e2a50;--text-muted:#8888aa;
+  --red:#E8183C;--green:#22c55e;--radius:4px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.6;font-size:15px;background-image:radial-gradient(ellipse at 80% 10%,rgba(232,24,60,0.08) 0%,transparent 50%),radial-gradient(ellipse at 20% 80%,rgba(42,31,94,0.3) 0%,transparent 60%);}
+
+/* HERO */
+.hero{max-width:900px;margin:0 auto;padding:150px 48px 40px;text-align:center;}
+.hero-eyebrow{font-size:11px;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;gap:12px;justify-content:center;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';display:inline-block;width:28px;height:1px;background:var(--red);}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,7vw,72px);line-height:0.95;}
+h1 .accent{color:var(--red);}
+.hero-sub{color:var(--text-muted);font-size:16px;line-height:1.75;max-width:640px;margin:20px auto 0;}
+.hero-stats{display:flex;justify-content:center;gap:2px;margin-top:36px;flex-wrap:wrap;}
+.hstat{background:var(--gray);border-top:2px solid var(--red);padding:16px 28px;min-width:150px;}
+.hstat b{font-family:'Bebas Neue',sans-serif;font-size:30px;display:block;line-height:1;}
+.hstat span{font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);}
+
+/* RÉGIONS */
+.wrap{max-width:900px;margin:0 auto;padding:30px 48px 20px;}
+.region{padding:44px 0 8px;border-top:1px solid var(--gray-mid);}
+.region:first-of-type{border-top:none;padding-top:24px;}
+.region-head{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:14px;}
+.region-head h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(24px,4vw,34px);letter-spacing:1px;display:flex;align-items:center;gap:12px;}
+.rflag{font-size:26px;}
+.status{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;white-space:nowrap;}
+.st-live{background:rgba(255,208,0,0.12);color:var(--yellow);border:1px solid rgba(255,208,0,0.35);}
+.st-soon{background:rgba(232,24,60,0.1);color:var(--red);border:1px solid rgba(232,24,60,0.4);}
+.st-study{background:rgba(255,255,255,0.04);color:var(--text-muted);border:1px solid var(--gray-mid);}
+.region-intro{color:#b9b6d0;font-size:14.5px;line-height:1.8;max-width:760px;margin-bottom:22px;}
+.group{margin-bottom:22px;}
+.group-label{font-size:11px;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.group-label::after{content:'';flex:1;height:1px;background:var(--gray-mid);}
+.cities{display:flex;flex-wrap:wrap;gap:8px;}
+.city{font-size:12.5px;letter-spacing:0.4px;border:1px solid var(--gray-mid);color:#ccc;padding:6px 14px;border-radius:20px;background:rgba(255,255,255,0.02);transition:border-color 0.2s,color 0.2s;}
+.city:hover{border-color:var(--red);color:var(--white);}
+
+/* FORMULAIRE VILLE */
+.ask{max-width:900px;margin:30px auto 0;padding:0 48px;}
+.ask-card{background:var(--gray);border:1px solid var(--gray-mid);border-top:2px solid var(--red);border-radius:var(--radius);padding:32px;}
+.ask-card h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,4vw,36px);letter-spacing:1px;margin-bottom:6px;}
+.ask-card h2 span{color:var(--red);}
+.ask-sub{color:var(--text-muted);font-size:14px;margin-bottom:22px;max-width:600px;}
+.ask-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.af-field{display:flex;flex-direction:column;gap:6px;}
+.af-field.full{grid-column:1 / -1;}
+.af-field label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);}
+.af-field input,.af-field textarea{background:var(--black);border:1px solid var(--gray-mid);border-radius:var(--radius);color:var(--white);font-family:'DM Sans',sans-serif;font-size:14px;padding:13px 16px;outline:none;transition:border-color 0.2s;}
+.af-field input:focus,.af-field textarea:focus{border-color:var(--red);}
+.af-field input::placeholder,.af-field textarea::placeholder{color:#555;}
+.af-field textarea{min-height:70px;resize:vertical;}
+.ask-submit{grid-column:1 / -1;background:var(--yellow);color:var(--black);border:none;padding:15px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;border-radius:var(--radius);cursor:pointer;transition:opacity 0.2s;}
+.ask-submit:hover{opacity:0.9;}
+.ask-submit:disabled{opacity:0.5;cursor:not-allowed;}
+.ask-ok{display:none;grid-column:1 / -1;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.35);color:var(--green);font-size:13.5px;padding:14px 18px;border-radius:var(--radius);text-align:center;}
+
+/* FAQ */
+.faq{max-width:900px;margin:0 auto;padding:50px 48px 30px;}
+.faq h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(26px,4vw,38px);letter-spacing:1px;margin-bottom:20px;}
+.faq h2 span{color:var(--red);}
+.faq-item{background:var(--gray);border-left:2px solid var(--gray-mid);transition:border-color 0.2s;margin-bottom:2px;}
+.faq-item[open]{border-left-color:var(--red);}
+.faq-item summary{list-style:none;cursor:pointer;padding:18px 22px;font-size:14.5px;font-weight:400;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary::after{content:'+';font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--red);line-height:1;flex-shrink:0;transition:transform 0.2s;}
+.faq-item[open] summary::after{transform:rotate(45deg);}
+.faq-item p{padding:0 22px 20px;font-size:13.5px;color:var(--text-muted);line-height:1.75;}
+
+/* LIENS UTILES + FOOTER */
+.also{max-width:900px;margin:0 auto;padding:0 48px 70px;display:flex;gap:10px;flex-wrap:wrap;}
+.also a{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;color:var(--red);border:1px solid rgba(232,24,60,0.35);padding:10px 18px;border-radius:2px;transition:background 0.2s;}
+.also a:hover{background:rgba(232,24,60,0.08);}
+
+/* PARTENAIRES LOCAUX */
+a.city{text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+a.city .cflag{font-size:15px;line-height:1;}
+.region-cta{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;margin-top:4px;border-radius:var(--radius);background:var(--yellow);color:var(--black);font-weight:500;font-size:14px;text-decoration:none;transition:background-color 0.2s;}
+.region-cta:hover{background:#ffe14d;}
+.hero-sub a,.faq-item p a{color:var(--white);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;}
+.hero-sub a:hover,.faq-item p a:hover{color:var(--yellow);}
+a.city:focus-visible,.region-cta:focus-visible,.hero-sub a:focus-visible,.faq-item p a:focus-visible{outline:2px solid var(--yellow);outline-offset:3px;}
+@media(max-width:768px){.region-cta{width:100%;}}
+
+@media(max-width:768px){
+  .hero{padding:120px 22px 30px;}
+  .wrap,.ask,.faq,.also{padding-left:22px;padding-right:22px;}
+  .ask-form{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+{% include nav.html %}
+
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">توسع الشبكة</div>
+  <h1><span>أجهزة TCG، </span><span class="accent">قريباً بالقرب منك.</span></h1>
+  <p class="hero-sub">تعمل في جنيف والآن في بلجيكا. الإطلاق في الإمارات قريباً. قيد الدراسة في سويسرا الناطقة بالفرنسية وفرنسا المجاورة. المدن التالية يحددها شيء واحد: طلبكم. وفي أماكن أخرى، نبحث عن <a href="#partenaires">شركاء محليين</a>.</p>
+  <div class="hero-stats">
+    <div class="hstat"><b>4</b><span>دول</span></div>
+    <div class="hstat"><b>8</b><span>أجهزة في جنيف</span></div>
+    <div class="hstat"><b>5</b><span>أجهزة في بلجيكا</span></div>
+    <div class="hstat"><b>120+</b><span>مدن قيد الدراسة</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+<section class="region" id="suisse">
+  <div class="region-head">
+    <h2><span class="rflag">🇨🇭</span> <span>سويسرا — جنيف وسويسرا الناطقة بالفرنسية</span></h2>
+    <span class="status st-live">تعمل في جنيف</span>
+  </div>
+  <p class="region-intro">أجهزتنا لبيع بطاقات TCG تعمل بالفعل في جنيف: عبوات بوستر وصناديق ديسبلاي وصناديق مقتنيات مختومة من بوكيمون وون بيس وماجيك، بالخدمة الذاتية داخل فروع البريد السويسري La Poste وفي King Jouet Carouge. تبحث عن متجر TCG في لوزان، أو بطاقات بوكيمون في فريبورغ، أو جهاز بيع بطاقات قريب منك؟ سويسرا الناطقة بالفرنسية هي الخطوة التالية للشبكة: أخبرنا بمدينتك أدناه.</p>
+    <div class="group">
+      <div class="group-label">جنيف — الأحياء المخدومة اليوم</div>
+      <div class="cities">
+      <span class="city">Rive</span>
+      <span class="city">Eaux-Vives</span>
+      <span class="city">Charmilles</span>
+      <span class="city">Petit-Lancy</span>
+      <span class="city">Plainpalais</span>
+      <span class="city">Champel</span>
+      <span class="city">Servette</span>
+      <span class="city">Pâquis</span>
+      <span class="city">Saint-Jean</span>
+      <span class="city">Jonction</span>
+      <span class="city">Carouge</span>
+      <span class="city">Lancy</span>
+      <span class="city">Onex</span>
+      <span class="city">Meyrin</span>
+      <span class="city">Vernier</span>
+      <span class="city">Thônex</span>
+      <span class="city">Grand-Saconnex</span>
+      <span class="city">Chêne-Bougeries</span>
+      <span class="city">Versoix</span>
+      <span class="city">Bernex</span>
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">سويسرا الناطقة بالفرنسية — توسع مخطط له</div>
+      <div class="cities">
+      <span class="city">Lausanne</span>
+      <span class="city">Nyon</span>
+      <span class="city">Morges</span>
+      <span class="city">Renens</span>
+      <span class="city">Vevey</span>
+      <span class="city">Montreux</span>
+      <span class="city">Yverdon-les-Bains</span>
+      <span class="city">Fribourg</span>
+      <span class="city">Bulle</span>
+      <span class="city">Neuchâtel</span>
+      <span class="city">La Chaux-de-Fonds</span>
+      <span class="city">Sion</span>
+      <span class="city">Sierre</span>
+      <span class="city">Martigny</span>
+      <span class="city">Monthey</span>
+      <span class="city">Aigle</span>
+      <span class="city">Gland</span>
+      <span class="city">Rolle</span>
+      <span class="city">Payerne</span>
+      <span class="city">Delémont</span>
+      </div>
+    </div>
+</section>
+
+<section class="region" id="belgique">
+  <div class="region-head">
+    <h2><span class="rflag">🇧🇪</span> <span>بلجيكا — بروكسل وفلاندرز والونيا</span></h2>
+    <span class="status st-live">يعمل — 5 أجهزة</span>
+  </div>
+  <p class="region-intro">BoosterStop يعمل الآن في بلجيكا: 5 أجهزة تعمل، فيها عبوات بوستر وصناديق مقتنيات مختومة من بوكيمون وون بيس وماجيك بالخدمة الذاتية، من الموزعين الرسميين فقط. توجد داخل خمسة متاجر كارفور: Woluwe-Saint-Lambert وZandhoven وMechelen وKorbeek-Lo وLa Louvière. الخطوة التالية: المزيد من بروكسل ووالونيا الناطقة بالفرنسية. تبحث عن جهاز بطاقات بوكيمون أو ون بيس في بلديتك؟ اطلبه أدناه.</p>
+    <div class="group">
+      <div class="group-label">تعمل اليوم — متاجر كارفور</div>
+      <div class="cities">
+      {%- assign hb_ms = site.data.machines | where: "pays", "be" -%}
+{%- assign hb_t = site.data.belgique[page.lang] -%}
+{%- if page.lang == "nl" -%}{%- assign hb_sx = "_nl" -%}{%- elsif page.lang == "en" -%}{%- assign hb_sx = "_en" -%}{%- else -%}{%- assign hb_sx = "" -%}{%- endif -%}
+{%- capture hb_kc -%}court{{ hb_sx }}{%- endcapture -%}{%- capture hb_ka -%}adresse{{ hb_sx }}{%- endcapture -%}
+      {%- for m in hb_ms %}
+      <a class="city" href="{% include lien.html f=m.fichier %}">{{ m[hb_kc] | default: m.court }}</a>
+      {%- endfor %}
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">بروكسل — البلديات</div>
+      <div class="cities">
+      <span class="city">Bruxelles-Ville</span>
+      <span class="city">Ixelles</span>
+      <span class="city">Schaerbeek</span>
+      <span class="city">Uccle</span>
+      <span class="city">Anderlecht</span>
+      <span class="city">Etterbeek</span>
+      <span class="city">Saint-Gilles</span>
+      <span class="city">Forest</span>
+      <span class="city">Jette</span>
+      <span class="city">Evere</span>
+      <span class="city">Auderghem</span>
+      <span class="city">Woluwe-Saint-Lambert</span>
+      <span class="city">Woluwe-Saint-Pierre</span>
+      <span class="city">Molenbeek-Saint-Jean</span>
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">والونيا</div>
+      <div class="cities">
+      <span class="city">Liège</span>
+      <span class="city">Namur</span>
+      <span class="city">Charleroi</span>
+      <span class="city">Mons</span>
+      <span class="city">Tournai</span>
+      <span class="city">Wavre</span>
+      <span class="city">Louvain-la-Neuve</span>
+      <span class="city">Nivelles</span>
+      <span class="city">Braine-l’Alleud</span>
+      <span class="city">Verviers</span>
+      <span class="city">La Louvière</span>
+      <span class="city">Arlon</span>
+      </div>
+    </div>
+</section>
+
+<section class="region" id="france">
+  <div class="region-head">
+    <h2><span class="rflag">🇫🇷</span> <span>فرنسا — المدن الحدودية ومونبلييه والمدن الكبرى</span></h2>
+    <span class="status st-study">قيد الدراسة</span>
+  </div>
+  <p class="region-intro">أنماس، أنسي، تونون أو فيرني: فرنسا المجاورة على بعد دقائق فقط من أجهزتنا في جنيف، والتركيبات المحلية قيد الدراسة، إلى جانب مونبلييه ومنطقتها. إذا كنت تبحث عن متجر بطاقات تداول في أنسي أو عبوات بوستر بوكيمون في أنماس، أخبرنا: الطلب يحدد أين نفتتح لاحقاً.</p>
+    <div class="group">
+      <div class="group-label">الحدود السويسرية — Haute-Savoie وAin</div>
+      <div class="cities">
+      <span class="city">Annemasse</span>
+      <span class="city">Saint-Julien-en-Genevois</span>
+      <span class="city">Ferney-Voltaire</span>
+      <span class="city">Saint-Genis-Pouilly</span>
+      <span class="city">Gex</span>
+      <span class="city">Divonne-les-Bains</span>
+      <span class="city">Douvaine</span>
+      <span class="city">Thonon-les-Bains</span>
+      <span class="city">Évian-les-Bains</span>
+      <span class="city">Annecy</span>
+      <span class="city">La Roche-sur-Foron</span>
+      <span class="city">Bonneville</span>
+      <span class="city">Cluses</span>
+      <span class="city">Sallanches</span>
+      <span class="city">Chamonix</span>
+      <span class="city">Valserhône (Bellegarde)&lrm;</span>
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">مونبلييه وأوكسيتانيا</div>
+      <div class="cities">
+      <span class="city">Montpellier</span>
+      <span class="city">Lattes</span>
+      <span class="city">Castelnau-le-Lez</span>
+      <span class="city">Nîmes</span>
+      <span class="city">Sète</span>
+      <span class="city">Béziers</span>
+      <span class="city">Lunel</span>
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">المدن الكبرى</div>
+      <div class="cities">
+      <span class="city">Lyon</span>
+      <span class="city">Paris</span>
+      <span class="city">Marseille</span>
+      <span class="city">Toulouse</span>
+      <span class="city">Bordeaux</span>
+      <span class="city">Lille</span>
+      <span class="city">Strasbourg</span>
+      <span class="city">Nice</span>
+      <span class="city">Nantes</span>
+      <span class="city">Grenoble</span>
+      </div>
+    </div>
+</section>
+
+<section class="region" id="uae">
+  <div class="region-head">
+    <h2><span class="rflag">🇦🇪</span> <span>الإمارات العربية المتحدة — دبي وأبوظبي والشارقة</span></h2>
+    <span class="status st-soon">الإطلاق قريباً</span>
+  </div>
+  <p class="region-intro">BoosterStop قادم إلى الإمارات. من دبي مارينا إلى جزيرة ياس، ستجلب أجهزتنا عبوات مختومة من بوكيمون وون بيس وماجيك وغيرها إلى مراكز التسوق والأماكن كثيرة الحركة، بنفس ضمان الموزعين الرسميين وبالخدمة الذاتية. أخبرنا بالمنطقة التي يجب أن تحصل على جهاز أولاً.</p>
+    <div class="group">
+      <div class="group-label">دبي — المناطق</div>
+      <div class="cities">
+      <span class="city">دبي مارينا</span>
+      <span class="city">وسط مدينة دبي</span>
+      <span class="city">الخليج التجاري</span>
+      <span class="city">جميرا</span>
+      <span class="city">جي بي آر</span>
+      <span class="city">نخلة جميرا</span>
+      <span class="city">أبراج بحيرات جميرا</span>
+      <span class="city">البرشاء</span>
+      <span class="city">ديرة</span>
+      <span class="city">بر دبي</span>
+      <span class="city">مردف</span>
+      <span class="city">واحة دبي للسيليكون</span>
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">أبوظبي</div>
+      <div class="cities">
+      <span class="city">جزيرة ياس</span>
+      <span class="city">جزيرة الريم</span>
+      <span class="city">الكورنيش</span>
+      <span class="city">مدينة خليفة</span>
+      <span class="city">جزيرة السعديات</span>
+      <span class="city">الظاهرية</span>
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">الشارقة</div>
+      <div class="cities">
+      <span class="city">المجاز</span>
+      <span class="city">النهدة</span>
+      <span class="city">القصباء</span>
+      <span class="city">مويلح</span>
+      </div>
+    </div>
+</section>
+
+<section class="region" id="partenaires">
+  <div class="region-head">
+    <h2><span class="rflag">🤝</span> <span>نبحث عن شركاء محليين</span></h2>
+    <span class="status st-study">نبحث عن شريك</span>
+  </div>
+  <p class="region-intro">نريد الافتتاح في هذه الدول، لكننا نحتاج أولاً إلى شركة محلية تركّب الأجهزة وتديرها. هل هذا مجال عملك، أو تعرف الشخص المناسب؟ اختر البلد واقترح شراكة.</p>
+    <div class="group">
+      <div class="group-label">أوروبا</div>
+      <div class="cities">
+      {%- assign xp_pays = site.data.partenaire.pays | where: "region", "europe" %}
+      {%- for c in xp_pays %}
+      <a class="city" href="/ar/partenaire-local.html?pays={{ c.id }}#formulaire"><span class="cflag" aria-hidden="true">{{ c.drapeau }}</span>{{ c.nom.ar }}</a>
+      {%- endfor %}
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">دول الشمال الأوروبي</div>
+      <div class="cities">
+      {%- assign xp_pays = site.data.partenaire.pays | where: "region", "nord" %}
+      {%- for c in xp_pays %}
+      <a class="city" href="/ar/partenaire-local.html?pays={{ c.id }}#formulaire"><span class="cflag" aria-hidden="true">{{ c.drapeau }}</span>{{ c.nom.ar }}</a>
+      {%- endfor %}
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-label">الشرق الأوسط</div>
+      <div class="cities">
+      {%- assign xp_pays = site.data.partenaire.pays | where: "region", "golfe" %}
+      {%- for c in xp_pays %}
+      <a class="city" href="/ar/partenaire-local.html?pays={{ c.id }}#formulaire"><span class="cflag" aria-hidden="true">{{ c.drapeau }}</span>{{ c.nom.ar }}</a>
+      {%- endfor %}
+      </div>
+    </div>
+    <a class="region-cta" href="/ar/partenaire-local.html">كن شريكاً محلياً</a>
+</section>
+</div>
+
+<!-- DEMANDE DE VILLE -->
+<div class="ask" id="votre-ville">
+  <div class="ask-card">
+    <h2><span>مدينتك</span> <span>ليست في القائمة؟</span></h2>
+    <p class="ask-sub">أخبرنا أين تريد جهاز BoosterStop. كل طلب يُحتسب ويؤثر مباشرة في خطة توسعنا. اترك بريدك الإلكتروني إن أردت أن نعلمك عند الافتتاح.</p>
+    <div class="ask-form">
+      <div class="af-field">
+        <label>المدينة / البلدة</label>
+        <input type="text" id="askCity" placeholder="دبي، الشارقة، لوزان…">
+      </div>
+      <div class="af-field">
+        <label>بريدك الإلكتروني (اختياري)</label>
+        <input type="email" id="askEmail" placeholder="you@example.com">
+      </div>
+      <div class="af-field full">
+        <label>مكان في ذهنك؟ (مركز تسوق، محطة، متجر…)</label>
+        <textarea id="askNotes" placeholder="..."></textarea>
+      </div>
+      <button class="ask-submit" id="askSubmit" onclick="submitCity()">📍 اطلب مدينتي</button>
+      <div class="ask-ok" id="askOk">✓ تم استلام الطلب، شكراً! كلما زادت الطلبات على مدينة، افتتحنا فيها أسرع.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq">
+  <h2><span>أسئلة</span> <span>وأجوبة</span></h2>
+<details class="faq-item">
+  <summary>أين أجد جهاز بيع بطاقات TCG قريباً مني؟</summary>
+  <p>لدى BoosterStop ثمانية أجهزة في كانتون جنيف، سبعة داخل فروع البريد السويسري (Rive وCharmilles وPetit-Lancy وPlainpalais وMeyrin وThônex وCarouge) وواحد في King Jouet Carouge، إضافة إلى 5 أجهزة تعمل في بلجيكا. الإمارات هي الإطلاق التالي، وتفتح مدن أخرى حسب الطلب. اطلب مدينتك عبر النموذج في هذه الصفحة.</p>
+</details>
+<details class="faq-item">
+  <summary>هل يوجد متجر أو جهاز TCG في لوزان / سويسرا الناطقة بالفرنسية؟</summary>
+  <p>ليس بعد، لكن سويسرا الناطقة بالفرنسية هي أول منطقة توسع للشبكة. لوزان ونيون وفريبورغ ونوشاتيل وسيون وكامل قوس بحيرة ليمان ضمن خطتنا. في الأثناء، تبعد أجهزة جنيف 35 إلى 45 دقيقة عن لوزان بالقطار ويُعاد تعبئتها باستمرار.</p>
+</details>
+<details class="faq-item">
+  <summary>أين أشتري بطاقات بوكيمون قرب أنماس أو أنسي أو تونون؟</summary>
+  <p>تبعد أجهزة جنيف من 15 إلى 50 دقيقة عن معظم فرنسا المجاورة (أنماس، سان جوليان، فيرني، تونون، أنسي)، وتبيع منتجات بوكيمون وون بيس وماجيك المختومة بالخدمة الذاتية، دون جمارك على المشتريات الشخصية ضمن الحدود المسموحة. التركيبات الفرنسية على الحدود وحول مونبلييه قيد الدراسة.</p>
+</details>
+<details class="faq-item">
+  <summary>هل يوجد جهاز BoosterStop في بلجيكا؟</summary>
+  <p>نعم. الشبكة البلجيكية تعمل بخمسة أجهزة داخل متاجر كارفور في Woluwe-Saint-Lambert وZandhoven وMechelen وKorbeek-Lo وLa Louvière. وتستمر الشبكة في النمو في بروكسل (Ixelles وSchaerbeek وUccle…) ووالونيا (Liège وNamur وCharleroi وMons…). اشترك في النشرة لتكون أول من يعلم.</p>
+</details>
+<details class="faq-item">
+  <summary>هل ستتوفر أجهزة BoosterStop في دبي وأبوظبي؟</summary>
+  <p>نعم، الإطلاق في الإمارات قيد التحضير، مع دبي (مارينا، وسط المدينة، الخليج التجاري…) وأبوظبي (جزيرة ياس، جزيرة الريم…) والشارقة ضمن الخطة. المبدأ نفسه كما في جنيف: منتجات مختومة 100% من الموزعين الرسميين، متاحة بالخدمة الذاتية.</p>
+</details>
+<details class="faq-item">
+  <summary>هل تبحثون عن شركاء في دول أخرى؟</summary>
+  <p>نعم. للافتتاح في ألمانيا أو النمسا أو إسبانيا أو إيطاليا أو البرتغال أو هولندا أو دول الشمال الأوروبي أو الشرق الأوسط، نحتاج أولاً إلى شركة محلية تركّب الأجهزة وتديرها. <a href="/ar/partenaire-local.html">اقترح شراكة</a>.</p>
+</details>
+</div>
+
+<!-- LIENS UTILES -->
+<div class="also">
+  <a href="/ar/#where">📍 المواقع الحالية</a>
+  <a href="/ar/stock.html">📦 المخزون المباشر</a>
+  <a href="/ar/licences-geneve.html">🃏 كل التراخيص</a>
+  <a href="/ar/newsletter.html">🔔 النشرة -10%</a>
+  <a href="/ar/partenaire-local.html">🤝 شريك محلي</a>
+  <a href="/ar/installer-un-distributeur.html">🏪 استضف جهازاً</a>
+</div>
+
+{% include footer.html %}
+
+<!-- NAV MOBILE -->
+
+<script>
+var currentLang = 'en';
+
+async function submitCity() {
+  var city = document.getElementById('askCity').value.trim();
+  var cityEl = document.getElementById('askCity');
+  if (!city) { cityEl.style.borderColor = 'var(--red)'; cityEl.focus(); return; }
+  var btn = document.getElementById('askSubmit');
+  btn.disabled = true;
+  btn.textContent = currentLang === 'fr' ? 'Envoi…' : 'جارٍ الإرسال…';
+  try {
+    var res = await fetch('https://formspree.io/f/xkjwpvgy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        type: 'city_request',
+        city: city,
+        email: document.getElementById('askEmail').value.trim(),
+        notes: document.getElementById('askNotes').value.trim(),
+        page_lang: 'ar',
+        _subject: '[BoosterStop] Demande de ville — ' + city
+      })
+    });
+    if (res.ok) {
+      btn.style.display = 'none';
+      document.getElementById('askOk').style.display = 'block';
+    } else { throw new Error(); }
+  } catch (e) {
+    btn.disabled = false;
+    btn.textContent = currentLang === 'fr' ? 'Réessayer' : 'حاول مرة أخرى';
+  }
+}
+</script>
+
+</body>
+</html>

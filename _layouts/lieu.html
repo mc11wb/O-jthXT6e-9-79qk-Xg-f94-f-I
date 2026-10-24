@@ -10,7 +10,7 @@
 {%- assign v = site.data.lieux.lieux[page.lieu][page.lang] -%}
 {%- assign lang_info = site.data.langues | where: "code", page.lang | first -%}
 <!DOCTYPE html>
-<html lang="{{ page.lang }}">
+<html lang="{{ page.lang }}"{% if lang_info.rtl %} dir="rtl"{% endif %}>
 <head>
 {% include head.html %}
 <title>{{ v.title }}</title>
@@ -89,7 +89,9 @@
   .b2-form button{margin-top:20px;background:var(--red);color:#fff;border:0;font-family:'Bebas Neue',sans-serif;font-size:19px;letter-spacing:.8px;padding:12px 28px;border-radius:var(--radius);cursor:pointer;min-height:46px}
   .b2-form button:hover{background:#ff2b4e}
   .b2-form button:disabled{opacity:.6;cursor:wait}
-  .lx-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  .lx-hp{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  html[lang="ar"] .lx-stat strong{font-size:30px}
+  @media(max-width:400px){html[lang="ar"] .lx-stat strong{font-size:24px}}
   .lx-ok{color:#31D07A;font-size:15px;margin:14px 0 0}
   .lx-err{color:#ff8a9d;font-size:15px;margin:14px 0 0}
   .b2-contact{margin-top:22px;font-size:15px;color:var(--text-muted)}

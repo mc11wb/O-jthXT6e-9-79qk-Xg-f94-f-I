@@ -138,3 +138,49 @@ nl:
   rl_count: producten
   rl_empty: Leeg bij de laatste telling
   rl_page: Bekijk de pagina van deze automaat
+
+ar:
+  langue_partenaire: صفحة الشريك المحلي
+  langue: اللغة
+  nav_emplacements: المواقع
+  nav_licences: "🃏 التراخيص"
+  nav_blog: "📰 المدونة"
+  nav_expansion: "🌍 التوسع"
+  nav_newsletter: "🔔 النشرة"
+  nav_stock: "📦 المخزون المباشر"
+  fl_aria: أجهزتنا
+  fl_titre: أجهزتنا في جنيف
+  fl_tous: "كل المواقع ←"
+  f_stock: "📦 المخزون المباشر"
+  f_contact: تواصل معنا
+  f_accueillir: استضف جهازاً
+  f_partenaire: شريك محلي
+  f_rachat: "بِع بوكيمون وون بيس"
+  f_blog: المدونة
+  f_presse: الصحافة
+  f_avis: "★ اترك تقييماً"
+  f_privacy: "الخصوصية وملفات تعريف الارتباط"
+  m_machines: الأجهزة
+  m_stock: المخزون
+  m_tcg: TCG
+  m_newsletter: النشرة
+  m_partenaire: شريك
+  m_contact: تواصل
+  cookie_txt: "نستخدم ملفات تعريف الارتباط لتشغيل الخرائط والنماذج ولتحسين تجربتك. يمكنك القبول أو الاكتفاء بالأساسي."
+  cookie_plus: اعرف المزيد
+  cookie_ess: الأساسي فقط
+  cookie_ok: قبول الكل
+  trustpilot: trustpilot_en
+  nav_emplacements_f: distributeurs-geneve.html
+  fl_titre_be: أجهزتنا في بلجيكا
+  fl_tous_be: "كل أجهزة بلجيكا ←"
+  rl_stamp: "لقطة يوم %d الساعة %h"
+  rl_units: وحدة
+  rl_last: الأخيرة
+  rl_more1: عرض منتج إضافي واحد
+  rl_more: "عرض %n منتجات إضافية"
+  rl_list_h: مخزون كل جهاز
+  rl_list_sub: "لقطة يوم %d الساعة %h. العرض أعلاه مباشر، وتُحدَّث هذه القائمة كل صباح."
+  rl_count: منتجات
+  rl_empty: فارغ عند آخر تحقق
+  rl_page: صفحة هذا الجهاز

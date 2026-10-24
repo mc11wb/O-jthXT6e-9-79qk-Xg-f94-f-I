@@ -45,8 +45,9 @@
 - code: ar
   nom: العربية
   dossier: ar/
-  locale: ar_AR
+  locale: ar_AE
   rtl: true
+  complet: true
 - code: sv
   nom: Svenska
   dossier: sv/

@@ -123,3 +123,51 @@ en:
   liste_faq:
     - { q: "Where can I find a Pokémon card vending machine in Belgium?", a: "At one of the five BoosterStop machines inside Carrefour stores: Woluwe-Saint-Lambert (Brussels), Zandhoven, Mechelen, Korbeek-Lo and La Louvière." }
     - { q: "Are the products official?", a: "Yes. Everything is factory-sealed and bought from each license's official distributors." }
+
+# العربية
+ar:
+  accueil_plus: + بلديات أخرى قريباً في بروكسل ووالونيا
+  stock_bientot: المخزون المباشر قريباً
+  stock_txt: أجهزتنا الخمسة في بلجيكا تعمل ومعبّأة. سيظهر مخزونها اللحظي هنا فور اتصالها. في الأثناء، لكل جهاز صفحته الخاصة مع العنوان والاتجاهات.
+  liste_titre: 'أجهزة بيع بطاقات بوكيمون في بلجيكا: 5 متاجر كارفور | BoosterStop'
+  liste_desc: 'أجهزة BoosterStop الخمسة في بلجيكا: Woluwe-Saint-Lambert وZandhoven وMechelen وKorbeek-Lo وLa Louvière. عبوات بوستر مختومة من بوكيمون وون بيس وماجيك، بالخدمة الذاتية في كارفور.'
+  liste_h1: أجهزتنا في بلجيكا
+  liste_lead: 'خمسة أجهزة BoosterStop تعمل في بلجيكا داخل متاجر كارفور: في بروكسل وفلاندرز ووالونيا. عبوات بوستر وصناديق ديسبلاي وصناديق مختومة من الموزعين الرسميين، بالخدمة الذاتية.'
+  voir_page: شاهد الجهاز
+  ensuite_h: ما التالي؟
+  ensuite_txt: بلديات أخرى مخطط لها في بروكسل ووالونيا.
+  ensuite_lien: اطلع على خطة التوسع
+  commerce_txt: تدير نشاطاً تجارياً في بلجيكا؟
+  commerce_lien: استضف جهازاً
+  fil: مسار التنقل
+  fil_liste: الأجهزة في بلجيكا
+  desc: عبوات بوستر مختومة من بوكيمون وون بيس وماجيك، بالخدمة الذاتية داخل %nom%، %adresse%. منتجات من الموزعين الرسميين، متاحة خلال ساعات عمل المتجر.
+  ou: داخل %nom%، %adresse%.
+  ou2: عبوات بوستر وصناديق ديسبلاي وصناديق مختومة، بالخدمة الذاتية، من الموزعين الرسميين.
+  live_titre: متوفر الآن
+  bientot: هذا الجهاز يعمل ومعبّأ. سيظهر مخزونه المباشر هنا فور اتصاله.
+  adresse_h: العنوان
+  pays: بلجيكا
+  itineraire: الاتجاهات
+  acces_h: الوصول
+  acces_txt: متاح خلال ساعات عمل متجر كارفور.
+  horaires_lien: ساعات المتجر على خرائط Google
+  dedans_h: ما بداخله
+  dedans_txt: 'عبوات بوستر بالقطعة وصناديق وديسبلاي، كلها مختومة من المصنع ومشتراة من الموزعين الرسميين: بوكيمون وون بيس وماجيك وتراخيص أخرى حسب التوريدات.'
+  dedans_lien: كل التراخيص التي نوفرها
+  autres_h: أجهزتنا الأخرى في بلجيكا
+  faq_h: الأسئلة الشائعة
+  faq:
+  - q: أين أشتري بطاقات بوكيمون في %ville%؟
+    a: من جهاز BoosterStop داخل %nom%، %adresse%. يعمل بالخدمة الذاتية خلال ساعات عمل المتجر.
+  - q: هل البطاقات أصلية؟
+    a: نعم. كل منتج يأتي من الموزعين الرسميين، في غلافه الأصلي المختوم.
+  - q: هل يمكنني التحقق من المخزون قبل الذهاب؟
+    a: 'قريباً: سيظهر المخزون المباشر لأجهزة بلجيكا في هذه الصفحة وفي صفحة المخزون المباشر.'
+  - q: هل توجد أجهزة أخرى في بلجيكا؟
+    a: 'نعم، خمسة في المجموع، كلها داخل متاجر كارفور: Woluwe-Saint-Lambert وZandhoven وMechelen وKorbeek-Lo وLa Louvière.'
+  liste_faq:
+  - q: أين أجد جهاز بيع بطاقات بوكيمون في بلجيكا؟
+    a: 'في أحد أجهزة BoosterStop الخمسة داخل متاجر كارفور: Woluwe-Saint-Lambert (بروكسل) وZandhoven وMechelen وKorbeek-Lo وLa Louvière.'
+  - q: هل المنتجات رسمية؟
+    a: نعم. كل شيء مختوم من المصنع ومشترى من الموزعين الرسميين لكل ترخيص.

@@ -90,7 +90,7 @@ Ajouter une machine = une ligne dans `MACHINES` + un `<button class="machine-tab
 
 ## Langues
 
-- `_data/langues.yml` : les langues du site. `complet: true` = EN, FR, NL (menu et pied de page traduits). DE, ES, IT, PT, AR, SV, NO, DA, FI n'ont que la page Partenaire local ; sur les autres pages, le menu de langue les propose dans un groupe « Page partenaire local ».
+- `_data/langues.yml` : les langues du site. `complet: true` = EN, FR, NL (menu et pied de page traduits). AR (arabe, de droite à gauche) a les pages principales, générées depuis l'anglais par /i18n/make_ar.py ; DE, ES, IT, PT, SV, NO, DA, FI n'ont que la page Partenaire local ; sur les autres pages, le menu de langue les propose dans un groupe « Page partenaire local ».
 - `_data/i18n.yml` : tous les textes du menu, du pied de page, de la barre mobile et de la bannière cookies, par langue.
 - Menu de langue (`_includes/nav.html`) : pour chaque langue, il cherche la même page dans le dossier de la langue (`/nl/stock.html`…). Si elle n'existe pas, il renvoie vers l'accueil de cette langue.
 - `{% include hreflang.html %}` dans le `<head>` de chaque page écrit le canonical et tous les hreflang tout seul : traduire une page = créer le fichier au même nom dans le dossier de la langue, rien d'autre à retoucher (penser au `sitemap.xml`).

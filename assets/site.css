@@ -274,3 +274,18 @@ footer p{font-size:12px;color:#444;letter-spacing:0.5px;margin:0;}
 
 /* Pages machines : le bouton « voir les autres produits » reste masqué quand il n'y a rien à déplier */
 .bsm-toggle[hidden]{display:none;}
+
+/* ---------- Pages en arabe (RTL) ----------
+   Cairo pour tout le texte (Bebas Neue n'a pas de glyphes arabes), pas d'espacement
+   entre les lettres (il casse les liaisons de l'écriture arabe), titres plus aérés. */
+html[lang="ar"] body, html[lang="ar"] body *:not(svg):not(path) { font-family: 'Cairo', 'DM Sans', system-ui, sans-serif !important; letter-spacing: 0 !important; }
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { font-weight: 800 !important; line-height: 1.35 !important; }
+html[lang="ar"] h4, html[lang="ar"] strong, html[lang="ar"] b { font-weight: 700; }
+/* Cairo est bien plus large que Bebas Neue : titres principaux plus petits */
+html[lang="ar"] h1 { font-size: clamp(30px, 4.4vw, 56px) !important; }
+html[lang="ar"] .hero-h1 { font-size: clamp(34px, 4.6vw, 62px) !important; }
+html[dir="rtl"] nav .lang-dd-menu { right: auto; left: 0; }
+html[dir="rtl"] .b2-lieux li a::after, html[dir="rtl"] .b2-lieux a::after { content: ' ←' !important; }
+/* Champs anti-spam : masqués sans décalage hors écran (en RTL, un décalage à gauche ajoute
+   un défilement horizontal de toute la page) */
+.rc-hp, .lx-hp { position: absolute !important; left: auto !important; right: auto !important; width: 1px !important; height: 1px !important; overflow: hidden !important; clip-path: inset(50%) !important; white-space: nowrap !important; }
