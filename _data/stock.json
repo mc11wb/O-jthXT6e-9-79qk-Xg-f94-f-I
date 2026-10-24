@@ -1,7 +1,7 @@
 {
  "machines": {
   "carouge": {
-   "maj": "2026-10-24T01:36:41+02:00",
+   "maj": "2026-10-24T10:50:42+02:00",
    "ok": true,
    "produits": [
     {
@@ -72,7 +72,7 @@
    ]
   },
   "charmilles": {
-   "maj": "2026-10-24T01:36:41+02:00",
+   "maj": "2026-10-24T10:50:42+02:00",
    "ok": true,
    "produits": [
     {
@@ -193,7 +193,7 @@
    ]
   },
   "king-jouet-carouge": {
-   "maj": "2026-10-24T01:36:41+02:00",
+   "maj": "2026-10-24T10:50:42+02:00",
    "ok": true,
    "produits": [
     {
@@ -267,11 +267,6 @@
      "qte": 20
     },
     {
-     "nom": "🇯🇵ST-01 Dragon Ball Fusion World",
-     "prix": "10.90",
-     "qte": 20
-    },
-    {
      "nom": "🇯🇵OP14 Booster One Piece",
      "prix": "6.90",
      "qte": 19
@@ -279,6 +274,11 @@
     {
      "nom": "🇬🇧 Marvel Spiderman Booster Magic",
      "prix": "7.90",
+     "qte": 18
+    },
+    {
+     "nom": "🇯🇵ST-01 Dragon Ball Fusion World",
+     "prix": "10.90",
      "qte": 18
     },
     {
@@ -314,7 +314,7 @@
     {
      "nom": "🇫🇷 Mystery Graded",
      "prix": "39.90",
-     "qte": 9
+     "qte": 8
     },
     {
      "nom": "🇯🇵 Flamme Blanche Booster Pokemon",
@@ -344,7 +344,7 @@
    ]
   },
   "meyrin": {
-   "maj": "2026-10-24T01:36:41+02:00",
+   "maj": "2026-10-24T10:50:42+02:00",
    "ok": true,
    "produits": [
     {
@@ -450,7 +450,7 @@
    ]
   },
   "petit-lancy": {
-   "maj": "2026-10-24T01:36:41+02:00",
+   "maj": "2026-10-24T10:50:42+02:00",
    "ok": true,
    "produits": [
     {
@@ -581,7 +581,7 @@
    ]
   },
   "plainpalais": {
-   "maj": "2026-10-24T01:36:41+02:00",
+   "maj": "2026-10-24T10:50:42+02:00",
    "ok": true,
    "produits": [
     {
@@ -647,7 +647,7 @@
     {
      "nom": "🇯🇵 Mega Inferno X Booster Pokemon",
      "prix": "6.90",
-     "qte": 22
+     "qte": 21
     },
     {
      "nom": "🇯🇵ST-01 Dragon Ball Fusion World",
@@ -682,7 +682,7 @@
    ]
   },
   "rive": {
-   "maj": "2026-10-24T01:36:41+02:00",
+   "maj": "2026-10-24T10:50:42+02:00",
    "ok": true,
    "produits": [
     {
@@ -828,7 +828,7 @@
    ]
   },
   "thonex": {
-   "maj": "2026-10-24T01:36:41+02:00",
+   "maj": "2026-10-24T10:50:42+02:00",
    "ok": true,
    "produits": [
     {
@@ -839,7 +839,7 @@
     {
      "nom": "🇨🇳 Team Rocket Booster Pokémon",
      "prix": "4.90",
-     "qte": 64
+     "qte": 63
     },
     {
      "nom": "🇯🇵Perfect Order Pokémon Booster",
@@ -862,11 +862,6 @@
      "qte": 24
     },
     {
-     "nom": "🇫🇷SHINOBI SHIREN SET 2 Naruto Booster",
-     "prix": "6.90",
-     "qte": 23
-    },
-    {
      "nom": "🇯🇵 OP15 Booster One Piece",
      "prix": "5.90",
      "qte": 23
@@ -875,6 +870,11 @@
      "nom": "🇯🇵 OP10 Booster One Piece",
      "prix": "6.90",
      "qte": 22
+    },
+    {
+     "nom": "🇫🇷SHINOBI SHIREN SET 2 Naruto Booster",
+     "prix": "6.90",
+     "qte": 21
     },
     {
      "nom": "🇯🇵 Mega Inferno X Booster Pokemon",
@@ -904,7 +904,7 @@
     {
      "nom": "🇫🇷 Mystery Graded",
      "prix": "39.90",
-     "qte": 8
+     "qte": 7
     },
     {
      "nom": "Pochettes Cartes Ultra Pro",
@@ -919,5 +919,5 @@
    ]
   }
  },
- "maj": "2026-10-24T01:36:41+02:00"
+ "maj": "2026-10-24T10:50:42+02:00"
 }
