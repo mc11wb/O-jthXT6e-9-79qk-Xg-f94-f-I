@@ -7,13 +7,13 @@ page: distributeurs-geneve
 <head>
 {% include head.html %}
 <title>أجهزة بيع بطاقات بوكيمون في جنيف — المواقع الثمانية | BoosterStop</title>
-<meta name="description" content="أجهزة BoosterStop الثمانية في كانتون جنيف: Rive وCharmilles وPetit-Lancy وPlainpalais وMeyrin وThônex وCarouge وKing Jouet Carouge. العناوين وساعات العمل والمخزون المباشر.">
+<meta name="description" content="أجهزة BoosterStop الثمانية في كانتون جنيف: Rive وCharmilles وPetit-Lancy وPlainpalais وMeyrin وThônex وCarouge وKing Jouet Carouge، إضافة إلى أجهزتنا الخمسة في كارفور في بلجيكا. العناوين وساعات العمل والمخزون المباشر.">
 {% include hreflang.html %}
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
 <meta property="og:title" content="أين تجد أجهزتنا في جنيف">
-<meta property="og:description" content="أجهزة BoosterStop الثمانية في كانتون جنيف: Rive وCharmilles وPetit-Lancy وPlainpalais وMeyrin وThônex وCarouge وKing Jouet Carouge. العناوين وساعات العمل والمخزون المباشر.">
+<meta property="og:description" content="أجهزة BoosterStop الثمانية في كانتون جنيف: Rive وCharmilles وPetit-Lancy وPlainpalais وMeyrin وThônex وCarouge وKing Jouet Carouge، إضافة إلى أجهزتنا الخمسة في كارفور في بلجيكا. العناوين وساعات العمل والمخزون المباشر.">
 <meta property="og:url" content="https://boosterstop.com/ar/distributeurs-geneve.html">
 <meta property="og:locale" content="en_CH">
 <meta property="og:image" content="https://boosterstop.com/front%20transparent.png">
@@ -117,7 +117,7 @@ body{
     <a href="/ar/">BoosterStop</a> › أين تجد أجهزتنا في جنيف
   </div>
   <h1>أين تجد أجهزتنا في جنيف</h1>
-  <p class="bsm-where">ثمانية أجهزة بالخدمة الذاتية في أنحاء الكانتون، سبعة منها داخل فروع البريد السويسري وواحد في King Jouet Carouge. تعرض كل صفحة العنوان الدقيق وساعات الوصول، والمخزون المقروء مباشرة من الخانات للأجهزة المتصلة.</p>
+  <p class="bsm-where">ثمانية أجهزة بالخدمة الذاتية في أنحاء الكانتون، سبعة منها داخل فروع البريد السويسري وواحد في King Jouet Carouge. تعرض كل صفحة العنوان الدقيق وساعات الوصول، والمخزون المقروء مباشرة من الخانات للأجهزة المتصلة. أجهزتنا الخمسة في بلجيكا، داخل متاجر كارفور، مدرجة في الأسفل.</p>
 </header>
 
 <section class="bsm-sec" style="border-top:0;padding-top:28px">
@@ -131,6 +131,18 @@ body{
     <li><a class="bsm-card" href="/distributeur-carouge.html"><b>Carouge</b><span>Boulevard des Promenades 16<br>1227 Carouge<br>08:00–18:00 · السبت 08:30–12:00</span><em>المخزون المباشر</em></a></li>
     <li><a class="bsm-card" href="/ar/stock.html?machine=7"><b>King Jouet Carouge</b><span>Avenue Cardinal-Mermillod 36<br>1227 Carouge<br>09:00–19:00 · السبت 09:00–18:00</span><em>المخزون المباشر</em></a></li>
   </ul>
+</section>
+
+<section class="bsm-sec" id="belgique">
+  <h2>أجهزتنا في بلجيكا</h2>
+  <p>خمسة أجهزة بالخدمة الذاتية داخل هايبرماركت كارفور، من بروكسل إلى مقاطعة أنتويرب وبرابانت الفلمنكية وهينو. الوصول إليها حسب ساعات عمل المتجر؛ تعرض كل صفحة العنوان وموقع الجهاز داخل المتجر ورابط خرائط Google.</p>
+  <ul class="bsm-grid">
+    {%- assign bsm_be = site.data.machines | where: "pays", "be" -%}
+    {%- for o in bsm_be %}
+    <li><a class="bsm-card" href="{{ o.url_en }}"><b>{{ o.court_en | default: o.court }}</b><span>{{ o.nom }}<br>{{ o.adresse_en | default: o.adresse }}<br>{{ o.region.ar | default: o.region.en }}</span><em>حسب ساعات عمل المتجر</em></a></li>
+    {%- endfor %}
+  </ul>
+  <p style="margin-top:20px"><a href="/distributeurs-belgique.html">كل الأجهزة في بلجيكا ←</a></p>
 </section>
 
 <section class="bsm-sec">

@@ -7,13 +7,13 @@ page: distributeurs-geneve
 <head>
 {% include head.html %}
 <title>Pokémon card vending machines in Geneva — all 8 locations | BoosterStop</title>
-<meta name="description" content="All 8 BoosterStop vending machines across the canton of Geneva: Rive, Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex, Carouge and King Jouet Carouge. Addresses, hours and live stock.">
+<meta name="description" content="All 8 BoosterStop vending machines across the canton of Geneva: Rive, Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex, Carouge and King Jouet Carouge, plus our 5 Carrefour machines in Belgium. Addresses, hours and live stock.">
 {% include hreflang.html %}
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
 <meta property="og:title" content="Where to find our machines in Geneva">
-<meta property="og:description" content="All 8 BoosterStop vending machines across the canton of Geneva: Rive, Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex, Carouge and King Jouet Carouge. Addresses, hours and live stock.">
+<meta property="og:description" content="All 8 BoosterStop vending machines across the canton of Geneva: Rive, Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex, Carouge and King Jouet Carouge, plus our 5 Carrefour machines in Belgium. Addresses, hours and live stock.">
 <meta property="og:url" content="https://boosterstop.com/distributeurs-geneve.html">
 <meta property="og:locale" content="en_CH">
 <meta property="og:image" content="https://boosterstop.com/front%20transparent.png">
@@ -117,7 +117,7 @@ body{
     <a href="/">BoosterStop</a> › Where to find our machines in Geneva
   </div>
   <h1>Where to find our machines in Geneva</h1>
-  <p class="bsm-where">Eight self-service machines across the canton, seven of them inside a Swiss Post branch and one at King Jouet Carouge. Every page gives the exact address, the access hours and, for connected machines, stock read live from the slots.</p>
+  <p class="bsm-where">Eight self-service machines across the canton, seven of them inside a Swiss Post branch and one at King Jouet Carouge. Every page gives the exact address, the access hours and, for connected machines, stock read live from the slots. Our five Belgian machines, in Carrefour stores, are listed further down.</p>
 </header>
 
 <section class="bsm-sec" style="border-top:0;padding-top:28px">
@@ -133,9 +133,21 @@ body{
   </ul>
 </section>
 
+<section class="bsm-sec" id="belgique">
+  <h2>Our machines in Belgium</h2>
+  <p>Five self-service machines inside Carrefour hypermarkets, from Brussels to Antwerp province, Flemish Brabant and Hainaut. Access follows the store's opening hours; each page gives the address, where the machine stands inside the store and a Google Maps link.</p>
+  <ul class="bsm-grid">
+    {%- assign bsm_be = site.data.machines | where: "pays", "be" -%}
+    {%- for o in bsm_be %}
+    <li><a class="bsm-card" href="{{ o.url_en }}"><b>{{ o.court_en | default: o.court }}</b><span>{{ o.nom }}<br>{{ o.adresse_en | default: o.adresse }}<br>{{ o.region.en }}</span><em>Store opening hours</em></a></li>
+    {%- endfor %}
+  </ul>
+  <p style="margin-top:20px"><a href="/distributeurs-belgique.html">All Belgian machines →</a></p>
+</section>
+
 <section class="bsm-sec">
   <h2>Elsewhere</h2>
-  <p>The network reaches beyond Geneva. The <a href="/expansion.html">expansion page</a> lists the cities where we are installing new machines, and the <a href="/licences-geneve.html">licences page</a> details the 24 games we carry.</p>
+  <p>The network keeps growing. The <a href="/expansion.html">expansion page</a> follows the next openings, in Lausanne, France and the United Arab Emirates, and the <a href="/licences-geneve.html">licences page</a> details the 24 games we carry.</p>
 </section>
 
 

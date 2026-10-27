@@ -22,6 +22,7 @@ en:
   f_presse: Press
   f_avis: "★ Leave a review"
   f_privacy: "Privacy &amp; Cookies"
+  m_lieux: Locations
   m_machines: Machines
   m_stock: Stock
   m_tcg: TCG
@@ -68,6 +69,7 @@ fr:
   f_presse: Presse
   f_avis: "★ Donner un avis"
   f_privacy: Confidentialité
+  m_lieux: Emplacements
   m_machines: Machines
   m_stock: Stock
   m_tcg: TCG
@@ -114,6 +116,7 @@ nl:
   f_presse: Pers
   f_avis: "★ Schrijf een review"
   f_privacy: "Privacy &amp; cookies"
+  m_lieux: Locaties
   m_machines: Automaten
   m_stock: Voorraad
   m_tcg: TCG
@@ -160,6 +163,7 @@ ar:
   f_presse: الصحافة
   f_avis: "★ اترك تقييماً"
   f_privacy: "الخصوصية وملفات تعريف الارتباط"
+  m_lieux: المواقع
   m_machines: الأجهزة
   m_stock: المخزون
   m_tcg: TCG

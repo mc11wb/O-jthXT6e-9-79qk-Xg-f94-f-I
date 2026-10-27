@@ -86,11 +86,10 @@
   </div>
 </footer>
 
-<!-- NAV MOBILE (commun) -->
+<!-- NAV MOBILE (commun) — 5 entrées : Emplacements (ancre #where de l'accueil), Stock, Newsletter, Partenaire, Contact -->
 <div class="mob-nav" id="mobNav">
-  <a href="{% include lien.html f="distributeurs-geneve.html" %}" class="mob-link{% if pid == "distributeurs-geneve" %} active{% endif %}"><span class="m-icon">📍</span><span>{{ t.m_machines }}</span></a>
+  <a href="{{ anchor }}#where" class="mob-link"><span class="m-icon">📍</span><span>{{ t.m_lieux }}</span></a>
   <a href="{% include lien.html f="stock.html" %}" class="mob-link{% if pid == "stock" %} active{% endif %}"><span class="m-icon">📦</span><span>{{ t.m_stock }}</span></a>
-  <a href="{% include lien.html f="licences-geneve.html" %}" class="mob-link{% if pid == "licences-geneve" %} active{% endif %}"><span class="m-icon">🃏</span><span>{{ t.m_tcg }}</span></a>
   <a href="{% include lien.html f="newsletter.html" %}" class="mob-link{% if pid == "newsletter" %} active{% endif %}"><span class="m-icon">🔔</span><span class="m-badge">-10%</span><span>{{ t.m_newsletter }}</span></a>
   <a href="{% include lien.html f="installer-un-distributeur.html" %}" class="mob-link{% if pid == "installer-un-distributeur" or pid == "partenaire-local" %} active{% endif %}"><span class="m-icon">🤝</span><span>{{ t.m_partenaire }}</span></a>
   <a href="{{ anchor }}#contact" class="mob-link"><span class="m-icon">✉️</span><span>{{ t.m_contact }}</span></a>

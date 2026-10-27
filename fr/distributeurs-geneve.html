@@ -7,13 +7,13 @@ page: distributeurs-geneve
 <head>
 {% include head.html %}
 <title>Distributeurs de cartes Pokémon à Genève — les 8 emplacements | BoosterStop</title>
-<meta name="description" content="Les 8 distributeurs automatiques BoosterStop du canton de Genève : Rive, Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex, Carouge et King Jouet Carouge. Adresses, horaires et stock en direct.">
+<meta name="description" content="Les 8 distributeurs automatiques BoosterStop du canton de Genève : Rive, Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex, Carouge et King Jouet Carouge, plus nos 5 machines Carrefour en Belgique. Adresses, horaires et stock en direct.">
 {% include hreflang.html %}
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
 <meta property="og:title" content="Où trouver nos distributeurs à Genève">
-<meta property="og:description" content="Les 8 distributeurs automatiques BoosterStop du canton de Genève : Rive, Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex, Carouge et King Jouet Carouge. Adresses, horaires et stock en direct.">
+<meta property="og:description" content="Les 8 distributeurs automatiques BoosterStop du canton de Genève : Rive, Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex, Carouge et King Jouet Carouge, plus nos 5 machines Carrefour en Belgique. Adresses, horaires et stock en direct.">
 <meta property="og:url" content="https://boosterstop.com/fr/distributeurs-geneve.html">
 <meta property="og:locale" content="fr_CH">
 <meta property="og:image" content="https://boosterstop.com/front%20transparent.png">
@@ -117,7 +117,7 @@ body{
     <a href="/fr/">BoosterStop</a> › Où trouver nos distributeurs à Genève
   </div>
   <h1>Où trouver nos distributeurs à Genève</h1>
-  <p class="bsm-where">Huit machines en libre-service dans le canton, dont sept installées dans une agence La Poste et une chez King Jouet Carouge. Chaque page donne l&#x27;adresse exacte, les horaires d&#x27;accès et, pour les machines connectées, le stock lu en direct dans les rails.</p>
+  <p class="bsm-where">Huit machines en libre-service dans le canton, dont sept installées dans une agence La Poste et une chez King Jouet Carouge. Chaque page donne l&#x27;adresse exacte, les horaires d&#x27;accès et, pour les machines connectées, le stock lu en direct dans les rails. Nos cinq machines belges, dans des magasins Carrefour, sont listées plus bas.</p>
 </header>
 
 <section class="bsm-sec" style="border-top:0;padding-top:28px">
@@ -131,6 +131,18 @@ body{
     <li><a class="bsm-card" href="/fr/distributeur-carouge.html"><b>Carouge</b><span>Boulevard des Promenades 16<br>1227 Carouge<br>08:00–18:00 · sam. 08:30–12:00</span><em>Stock en direct</em></a></li>
     <li><a class="bsm-card" href="/fr/stock.html?machine=7"><b>King Jouet Carouge</b><span>Avenue Cardinal-Mermillod 36<br>1227 Carouge<br>09:00–19:00 · sam. 09:00–18:00</span><em>Stock en direct</em></a></li>
   </ul>
+</section>
+
+<section class="bsm-sec" id="belgique">
+  <h2>Nos distributeurs en Belgique</h2>
+  <p>Cinq machines en libre-service dans des hypermarchés Carrefour, de Bruxelles à la province d'Anvers, au Brabant flamand et au Hainaut. L'accès suit les horaires du magasin ; chaque page donne l'adresse, l'emplacement de la machine dans le magasin et un lien Google Maps.</p>
+  <ul class="bsm-grid">
+    {%- assign bsm_be = site.data.machines | where: "pays", "be" -%}
+    {%- for o in bsm_be %}
+    <li><a class="bsm-card" href="{{ o.url }}"><b>{{ o.court }}</b><span>{{ o.nom }}<br>{{ o.adresse }}<br>{{ o.region.fr }}</span><em>Horaires du magasin</em></a></li>
+    {%- endfor %}
+  </ul>
+  <p style="margin-top:20px"><a href="/fr/distributeurs-belgique.html">Tous les distributeurs belges →</a></p>
 </section>
 
 <section class="bsm-sec">
@@ -172,7 +184,7 @@ body{
       "@id": "https://boosterstop.com/fr/distributeurs-geneve.html#page",
       "url": "https://boosterstop.com/fr/distributeurs-geneve.html",
       "name": "Distributeurs de cartes Pokémon à Genève — les 8 emplacements | BoosterStop",
-      "description": "Les 8 distributeurs automatiques BoosterStop du canton de Genève : Rive, Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex, Carouge et King Jouet Carouge. Adresses, horaires et stock en direct.",
+      "description": "Les 8 distributeurs automatiques BoosterStop du canton de Genève : Rive, Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex, Carouge et King Jouet Carouge, plus nos 5 machines Carrefour en Belgique. Adresses, horaires et stock en direct.",
       "inLanguage": "fr"
     },
     {

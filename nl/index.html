@@ -7,7 +7,7 @@ page: index
 <head>
 {% include head.html %}
 <title>BoosterStop TCG - Automaten in Genève en België | Pokémon, One Piece, Magic &amp; meer</title>
-<meta name="description" content="BoosterStop TCG is het eerste netwerk van automaten voor ruilkaartspellen. 100% verzegelde boosters, displays en verzamelboxen van officiële distributeurs, in het Frans, Engels, Japans, Chinees en meer, in selfservice in Genève en België. Pokémon, One Piece, Magic, Lorcana, Yu-Gi-Oh! en meer.">
+<meta name="description" content="BoosterStop TCG is het eerste netwerk van automaten voor ruilkaartspellen. 100% verzegelde boosters, displays en verzamelboxen van officiële distributeurs, in het Frans, Engels, Japans, Chinees, Koreaans en meer, in selfservice in Genève en België. Pokémon, One Piece, Magic, Lorcana, Yu-Gi-Oh! en meer.">
 <meta name="keywords" content="TCG vending machine, Geneva, Pokémon boosters Geneva, Japanese Pokémon cards Geneva, Chinese Pokémon cards, One Piece card game, Magic the Gathering, Disney Lorcana, Yu-Gi-Oh, trading card games Switzerland, distributeur cartes Genève, cartes japonaises Genève, sealed boosters">
 {% include hreflang.html %}
 <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@ page: index
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
 <meta property="og:title" content="BoosterStop — TCG-automaten in Genève en België">
-<meta property="og:description" content="100% verzegelde boosters, displays en verzamelboxen van officiële distributeurs, in het Frans, Engels, Japans, Chinees en meer. Selfservice in acht automaten in Genève en vijf in België.">
+<meta property="og:description" content="100% verzegelde boosters, displays en verzamelboxen van officiële distributeurs, in het Frans, Engels, Japans, Chinees, Koreaans en meer. Selfservice in acht automaten in Genève en vijf in België.">
 <meta property="og:url" content="https://boosterstop.com/nl/">
 <meta property="og:image" content="https://boosterstop.com/logo.png">
 <meta property="og:locale" content="nl_BE">
@@ -344,8 +344,8 @@ page: index
 {%- assign hero_be = site.data.pays | where: "id", "be" | first -%}
 <div class="hero">
   <div class="hero-left">
-    <h1 class="hero-h1"><span>TCG-automaten</span> <span>in Genève</span> <span>en België</span></h1>
-    <p class="hero-body">Fabrieksverzegelde boosters, displays en verzamelboxen van officiële distributeurs. In Genève bij La Poste en King Jouet, en in België in vijf Carrefour-winkels.</p>
+    <h1 class="hero-h1"><span>TCG-automaten</span> <span>in België</span></h1>
+    <p class="hero-body">Fabrieksverzegelde boosters, displays en verzamelboxen van officiële distributeurs. Vandaag in heel België en in Genève, binnenkort ook in Lausanne, Frankrijk en drie emiraten van de VAE.</p>
     <div class="hero-ctas">
       <a class="hero-btn hero-btn-main" href="/nl/stock.html">Bekijk de live voorraad</a>
       <a class="hero-btn hero-btn-alt" href="#where">Vind een automaat</a>
@@ -375,7 +375,7 @@ page: index
     <li><a href="/distributeurs-geneve.html"><span class="hn-flag" aria-hidden="true">🇨🇭</span><span class="hn-txt"><span class="hn-name">Zwitserland</span><span class="hn-status live">{{ hero_ch.size }} automaten in Genève</span></span></a></li>
     <li><a href="/nl/expansion.html#belgique"><span class="hn-flag" aria-hidden="true">🇧🇪</span><span class="hn-txt"><span class="hn-name">België</span><span class="hn-status live">{{ hero_be.machines | default: 5 }} automaten</span></span></a></li>
     <li><a href="/nl/expansion.html#france"><span class="hn-flag" aria-hidden="true">🇫🇷</span><span class="hn-txt"><span class="hn-name">Frankrijk</span><span class="hn-status">Binnenkort</span></span></a></li>
-    <li><a href="/nl/expansion.html#uae"><span class="hn-flag" aria-hidden="true">🇦🇪</span><span class="hn-txt"><span class="hn-name">Emiraten</span><span class="hn-status">Binnenkort</span></span></a></li>
+    <li><a href="/nl/expansion.html#uae"><span class="hn-flag" aria-hidden="true">🇦🇪</span><span class="hn-txt"><span class="hn-name">Emiraten</span><span class="hn-status">3 emiraten, binnenkort</span></span></a></li>
     <li><a href="/nl/partenaire-local.html"><span class="hn-flag" aria-hidden="true">🌍</span><span class="hn-txt"><span class="hn-name">Jouw land?</span><span class="hn-status">Partner gezocht</span></span></a></li>
   </ul>
 </div>
@@ -393,7 +393,7 @@ page: index
     <div class="how-card">
       <div class="how-number">02</div>
       <h3>Kies je product</h3>
-      <p>Boosters, displays of verzamelboxen: meerdere TCG-werelden in elke automaat, en verschillende talen om uit te kiezen: Frans, Engels, Japans, Chinees en meer.</p>
+      <p>Boosters, displays of verzamelboxen: meerdere TCG-werelden in elke automaat, en verschillende talen om uit te kiezen: Frans, Engels, Japans, Chinees, Koreaans en meer.</p>
       <a class="how-link" href="/licences-geneve.html">Ontdek de 24 licenties</a>
     </div>
     <div class="how-card">
@@ -417,6 +417,7 @@ page: index
     <span class="lang-chip"><span class="lc-flag">🇬🇧</span> English</span>
     <span class="lang-chip"><span class="lc-flag">🇯🇵</span> <span class="lc-native">日本語</span> <span>Japans</span></span>
     <span class="lang-chip"><span class="lc-flag">🇨🇳</span> <span class="lc-native">中文</span> <span>Chinees</span></span>
+    <span class="lang-chip"><span class="lc-flag">🇰🇷</span> <span class="lc-native">한국어</span> <span>Koreaans</span></span>
     <span class="lang-chip"><span class="lc-flag">🇩🇪</span> Deutsch</span>
     <span class="lang-chip"><span class="lc-flag">🇪🇸</span> Español</span>
     <span class="lang-chip"><span class="lc-flag">🇵🇹</span> Português</span>
@@ -640,7 +641,7 @@ page: index
     </details>
     <details class="faq-item">
       <summary>In welke talen zijn de kaarten beschikbaar?</summary>
-      <div class="faq-a">In meerdere. We bieden dezelfde spellen aan in verschillende talen, waaronder Frans, Engels, Japans, Chinees, Duits, Spaans en Portugees. Bijvoorbeeld Pokémon in het Japans, Chinees of Frans, en One Piece in het Engels. Zo houd je je collectie consistent in de taal waarin je begon, lees je de kaarten die je echt speelt en vind je sets die alleen op bepaalde markten verschijnen. De beschikbare talen verschillen per set en per automaat: bekijk de <a href="/nl/stock.html">live voorraad</a> om te zien wat er nu in elke automaat zit.</div>
+      <div class="faq-a">In meerdere. We bieden dezelfde spellen aan in verschillende talen, waaronder Frans, Engels, Japans, Chinees, Koreaans, Duits, Spaans en Portugees. Bijvoorbeeld Pokémon in het Japans, Chinees of Frans, en One Piece in het Engels. Zo houd je je collectie consistent in de taal waarin je begon, lees je de kaarten die je echt speelt en vind je sets die alleen op bepaalde markten verschijnen. De beschikbare talen verschillen per set en per automaat: bekijk de <a href="/nl/stock.html">live voorraad</a> om te zien wat er nu in elke automaat zit.</div>
     </details>
     <details class="faq-item">
       <summary>Hoe betaal ik?</summary>

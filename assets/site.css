@@ -289,3 +289,27 @@ html[dir="rtl"] .b2-lieux li a::after, html[dir="rtl"] .b2-lieux a::after { cont
 /* Champs anti-spam : masqués sans décalage hors écran (en RTL, un décalage à gauche ajoute
    un défilement horizontal de toute la page) */
 .rc-hp, .lx-hp { position: absolute !important; left: auto !important; right: auto !important; width: 1px !important; height: 1px !important; overflow: hidden !important; clip-path: inset(50%) !important; white-space: nowrap !important; }
+
+/* ============================================================
+   PIED DE PAGE MOBILE (≤768px) — listes alignées sur deux colonnes
+   Sur bureau les liens forment un nuage centré ; sur mobile ce nuage
+   se repliait en lignes inégales. Ici : titres et listes alignés au
+   début de ligne, deux colonnes, une ligne fine par lien (cible 44px),
+   le bouton Stock en pleine largeur, le copyright seul en bas.
+   Préfixe body : passe devant les règles ci-dessus et celles des pages.
+   ============================================================ */
+@media(max-width:768px){
+  body .footer-locs{align-items:stretch;text-align:start;gap:2px;padding:24px 20px 10px;margin-top:24px;max-width:none;}
+  body .footer-locs + .footer-locs{margin-top:0;border-top:0;padding-top:10px;}
+  body .fl-title{font-size:15px;padding:4px 0;}
+  body .fl-links{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;justify-content:stretch;}
+  body .fl-links a{display:flex;align-items:center;min-height:44px;padding:0;border-bottom:1px solid rgba(255,255,255,.07);}
+  body .fl-all{align-self:flex-start;display:flex;align-items:center;min-height:44px;padding:0;margin:0;}
+  body footer{align-items:stretch;text-align:start;padding:10px 20px 28px;gap:6px;}
+  body .footer-brand{justify-content:space-between;gap:12px;flex-wrap:nowrap;padding:6px 0 10px;}
+  body .footer-social{order:0;gap:2px;margin-inline-end:-13px;}
+  body .footer-links{display:grid;grid-template-columns:1fr 1fr;gap:0 16px;align-items:stretch;justify-content:stretch;}
+  body .footer-links a{display:flex;align-items:center;min-height:44px;padding:0;border-bottom:1px solid rgba(255,255,255,.07);font-size:13px;color:var(--text-muted);letter-spacing:.2px;}
+  body .footer-links a.footer-stock{grid-column:1 / -1;justify-content:center;min-height:46px;margin:0 0 6px;border:1px solid rgba(232,24,60,.55);border-radius:var(--radius);color:var(--red);font-size:12px;letter-spacing:1px;}
+  body .footer-links p{grid-column:1 / -1;text-align:start;margin:14px 0 0;font-size:11px;color:var(--text-muted);}
+}

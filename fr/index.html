@@ -7,7 +7,7 @@ page: index
 <head>
 {% include head.html %}
 <title>BoosterStop TCG — Distributeurs à Genève | Pokémon, One Piece, Magic &amp; plus</title>
-<meta name="description" content="BoosterStop TCG est le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner. Boosters, displays & boîtes collector 100% scellés, en français, anglais, japonais, chinois. En libre-service à Genève.">
+<meta name="description" content="BoosterStop TCG est le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner. Boosters, displays & boîtes collector 100% scellés, en français, anglais, japonais, chinois, coréen. En libre-service à Genève.">
 <meta name="keywords" content="TCG vending machine, Geneva, Pokémon boosters Geneva, Japanese Pokémon cards Geneva, Chinese Pokémon cards, One Piece card game, Magic the Gathering, Disney Lorcana, Yu-Gi-Oh, trading card games Switzerland, distributeur cartes Genève, cartes japonaises Genève, sealed boosters">
 {% include hreflang.html %}
 <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@ page: index
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
 <meta property="og:title" content="BoosterStop — Distributeurs TCG à Genève">
-<meta property="og:description" content="Boosters, displays & boîtes collector 100% scellés, de distributeurs officiels, en français, anglais, japonais, chinois et plus. En libre-service dans huit distributeurs à Genève.">
+<meta property="og:description" content="Boosters, displays & boîtes collector 100% scellés, de distributeurs officiels, en français, anglais, japonais, chinois, coréen et plus. En libre-service dans huit distributeurs à Genève.">
 <meta property="og:url" content="https://boosterstop.com/fr/">
 <meta property="og:image" content="https://boosterstop.com/logo.png">
 <meta property="og:locale" content="fr_FR">
@@ -344,8 +344,8 @@ page: index
 {%- assign hero_be = site.data.pays | where: "id", "be" | first -%}
 <div class="hero">
   <div class="hero-left">
-    <h1 class="hero-h1"><span>Distributeurs</span> <span>de cartes TCG</span> <span>à Genève</span></h1>
-    <p class="hero-body">Boosters, displays et coffrets scellés d'usine, issus des circuits officiels, dans des bureaux de La Poste et chez King Jouet à Genève, et dans cinq Carrefour en Belgique.</p>
+    <h1 class="hero-h1"><span>Distributeurs</span> <span>de cartes TCG</span></h1>
+    <p class="hero-body">Boosters, displays et coffrets scellés d'usine, issus des circuits officiels. Aujourd'hui à Genève et dans toute la Belgique, bientôt à Lausanne, en France et dans trois émirats des EAU.</p>
     <div class="hero-ctas">
       <a class="hero-btn hero-btn-main" href="/fr/stock.html">Voir le stock en direct</a>
       <a class="hero-btn hero-btn-alt" href="#where">Trouver une machine</a>
@@ -375,7 +375,7 @@ page: index
     <li><a href="/fr/distributeurs-geneve.html"><span class="hn-flag" aria-hidden="true">🇨🇭</span><span class="hn-txt"><span class="hn-name">Suisse</span><span class="hn-status live">{{ hero_ch.size }} machines à Genève</span></span></a></li>
     <li><a href="/fr/expansion.html#belgique"><span class="hn-flag" aria-hidden="true">🇧🇪</span><span class="hn-txt"><span class="hn-name">Belgique</span><span class="hn-status live">{{ hero_be.machines | default: 5 }} machines</span></span></a></li>
     <li><a href="/fr/expansion.html#france"><span class="hn-flag" aria-hidden="true">🇫🇷</span><span class="hn-txt"><span class="hn-name">France</span><span class="hn-status">Bientôt</span></span></a></li>
-    <li><a href="/fr/expansion.html#uae"><span class="hn-flag" aria-hidden="true">🇦🇪</span><span class="hn-txt"><span class="hn-name">Émirats</span><span class="hn-status">Bientôt</span></span></a></li>
+    <li><a href="/fr/expansion.html#uae"><span class="hn-flag" aria-hidden="true">🇦🇪</span><span class="hn-txt"><span class="hn-name">Émirats</span><span class="hn-status">3 émirats, bientôt</span></span></a></li>
     <li><a href="/fr/partenaire-local.html"><span class="hn-flag" aria-hidden="true">🌍</span><span class="hn-txt"><span class="hn-name">Votre pays ?</span><span class="hn-status">Partenaire recherché</span></span></a></li>
   </ul>
 </div>
@@ -393,7 +393,7 @@ page: index
     <div class="how-card">
       <div class="how-number">02</div>
       <h3>Choisis ton produit</h3>
-      <p>Boosters, displays ou boîtes collector : plusieurs licences TCG dans chaque machine, et plusieurs langues au choix : français, anglais, japonais, chinois et plus.</p>
+      <p>Boosters, displays ou boîtes collector : plusieurs licences TCG dans chaque machine, et plusieurs langues au choix : français, anglais, japonais, chinois, coréen et plus.</p>
       <a class="how-link" href="/fr/licences-geneve.html">Voir les 24 licences</a>
     </div>
     <div class="how-card">
@@ -417,13 +417,14 @@ page: index
     <span class="lang-chip"><span class="lc-flag">🇬🇧</span> English</span>
     <span class="lang-chip"><span class="lc-flag">🇯🇵</span> <span class="lc-native">日本語</span> <span>Japonais</span></span>
     <span class="lang-chip"><span class="lc-flag">🇨🇳</span> <span class="lc-native">中文</span> <span>Chinois</span></span>
+    <span class="lang-chip"><span class="lc-flag">🇰🇷</span> <span class="lc-native">한국어</span> <span>Coréen</span></span>
     <span class="lang-chip"><span class="lc-flag">🇩🇪</span> Deutsch</span>
     <span class="lang-chip"><span class="lc-flag">🇪🇸</span> Español</span>
     <span class="lang-chip"><span class="lc-flag">🇵🇹</span> Português</span>
     <span class="lang-chip more">&amp; plus selon les sets</span>
   </div>
 
-  <div class="lang-examples">Par exemple : du <strong>Pokémon</strong> en japonais, chinois ou français · du <strong>One Piece</strong> en anglais · et d'autres selon nos licences. Les langues disponibles varient selon les sets et les machines. Consultez la page <a href="/fr/stock.html" style="color:var(--red);">Stock Live</a> pour voir ce qu'il y a dans chacune en temps réel.</div>
+  <div class="lang-examples">Par exemple : du <strong>Pokémon</strong> en japonais, chinois, coréen ou français · du <strong>One Piece</strong> en anglais · et d'autres selon nos licences. Les langues disponibles varient selon les sets et les machines. Consultez la page <a href="/fr/stock.html" style="color:var(--red);">Stock Live</a> pour voir ce qu'il y a dans chacune en temps réel.</div>
 
   <div class="lang-cards">
     <div class="lang-card">
@@ -640,7 +641,7 @@ page: index
     </details>
     <details class="faq-item">
       <summary>Dans quelles langues les cartes sont-elles disponibles ?</summary>
-      <div class="faq-a">Plusieurs. Nous proposons les mêmes jeux en plusieurs langues, dont le français, l'anglais, le japonais, le chinois, l'allemand, l'espagnol et le portugais. Par exemple du Pokémon en japonais, chinois ou français, et du One Piece en anglais. Cela vous permet de garder une collection cohérente dans la langue où vous avez commencé, de lire les cartes que vous jouez, et d'accéder à des sets qui ne sortent que sur certains marchés. Les langues varient selon les sets et les machines : consultez la page <a href="/fr/stock.html">Stock Live</a> pour voir ce qu'il y a dans chacune en temps réel.</div>
+      <div class="faq-a">Plusieurs. Nous proposons les mêmes jeux en plusieurs langues, dont le français, l'anglais, le japonais, le chinois, le coréen, l'allemand, l'espagnol et le portugais. Par exemple du Pokémon en japonais, chinois, coréen ou français, et du One Piece en anglais. Cela vous permet de garder une collection cohérente dans la langue où vous avez commencé, de lire les cartes que vous jouez, et d'accéder à des sets qui ne sortent que sur certains marchés. Les langues varient selon les sets et les machines : consultez la page <a href="/fr/stock.html">Stock Live</a> pour voir ce qu'il y a dans chacune en temps réel.</div>
     </details>
     <details class="faq-item">
       <summary>Comment payer ?</summary>
@@ -1121,7 +1122,7 @@ document.addEventListener('DOMContentLoaded', function() {
           "name": "In which languages are the cards available?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Several. BoosterStop stocks the same games across multiple languages, among them French, English, Japanese, Chinese, German, Spanish and Portuguese. For example Pokémon in Japanese, Chinese or French, and One Piece in English. This lets collectors keep a collection consistent in the language they started with, read the cards they play, and access sets that only release in certain markets. Available languages vary by set and by machine."
+            "text": "Several. BoosterStop stocks the same games across multiple languages, among them French, English, Japanese, Chinese, Korean, German, Spanish and Portuguese. For example Pokémon in Japanese, Chinese or French, and One Piece in English. This lets collectors keep a collection consistent in the language they started with, read the cards they play, and access sets that only release in certain markets. Available languages vary by set and by machine."
           }
         },
         {

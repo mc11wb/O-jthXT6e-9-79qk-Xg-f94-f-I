@@ -138,7 +138,7 @@
   cp: "1200"
   ville: Woluwe-Saint-Lambert
   ville_nl: Sint-Lambrechts-Woluwe
-  region: { fr: Bruxelles, nl: Brussel, en: Brussels }
+  region: { fr: Bruxelles, nl: Brussel, en: Brussels, ar: "بروكسل" }
   lat: 50.8425071
   lng: 4.427353
   fichier: distributeur-bruxelles-woluwe.html
@@ -166,7 +166,7 @@
   cp: "2240"
   ville: Zandhoven
   ville_nl: Zandhoven
-  region: { fr: "Flandre, province d'Anvers", nl: "Vlaanderen, provincie Antwerpen", en: "Flanders, Antwerp province" }
+  region: { fr: "Flandre, province d'Anvers", nl: "Vlaanderen, provincie Antwerpen", en: "Flanders, Antwerp province", ar: "الفلاندرز، مقاطعة أنتويرب" }
   lat: 51.2218304
   lng: 4.6711155
   fichier: distributeur-zandhoven.html
@@ -196,7 +196,7 @@
   ville_nl: Mechelen
   ville_en: Mechelen
   adresse_en: Zemstbaan 242, 2800 Mechelen
-  region: { fr: "Flandre, province d'Anvers", nl: "Vlaanderen, provincie Antwerpen", en: "Flanders, Antwerp province" }
+  region: { fr: "Flandre, province d'Anvers", nl: "Vlaanderen, provincie Antwerpen", en: "Flanders, Antwerp province", ar: "الفلاندرز، مقاطعة أنتويرب" }
   lat: 50.9941679
   lng: 4.4713024
   fichier: distributeur-mechelen-zemst.html
@@ -224,7 +224,7 @@
   cp: "3360"
   ville: Korbeek-Lo
   ville_nl: Korbeek-Lo
-  region: { fr: "Flandre, Brabant flamand", nl: "Vlaanderen, Vlaams-Brabant", en: "Flanders, Flemish Brabant" }
+  region: { fr: "Flandre, Brabant flamand", nl: "Vlaanderen, Vlaams-Brabant", en: "Flanders, Flemish Brabant", ar: "الفلاندرز، برابانت الفلمنكية" }
   lat: 50.8639848
   lng: 4.7469178
   fichier: distributeur-korbeek-lo.html
@@ -252,7 +252,7 @@
   cp: "7100"
   ville: La Louvière
   ville_nl: La Louvière
-  region: { fr: "Wallonie, Hainaut", nl: "Wallonië, Henegouwen", en: "Wallonia, Hainaut" }
+  region: { fr: "Wallonie, Hainaut", nl: "Wallonië, Henegouwen", en: "Wallonia, Hainaut", ar: "والونيا، هينو" }
   lat: 50.4765191
   lng: 4.1873173
   fichier: distributeur-la-louviere.html

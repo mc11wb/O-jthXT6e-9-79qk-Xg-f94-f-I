@@ -7,7 +7,7 @@ page: index
 <head>
 {% include head.html %}
 <title>BoosterStop TCG - Vending Machines in Geneva | Pokémon, One Piece, Magic &amp; more</title>
-<meta name="description" content="BoosterStop TCG is the first vending-machine network for Trading Card Games. 100% sealed boosters, displays & collector boxes from official distributors, in French, English, Japanese, Chinese and more, self-service in Geneva. Pokémon, One Piece, Magic, Lorcana, Yu-Gi-Oh! and more.">
+<meta name="description" content="BoosterStop TCG is the first vending-machine network for Trading Card Games. 100% sealed boosters, displays & collector boxes from official distributors, in French, English, Japanese, Chinese, Korean and more, self-service in Geneva. Pokémon, One Piece, Magic, Lorcana, Yu-Gi-Oh! and more.">
 <meta name="keywords" content="TCG vending machine, Geneva, Pokémon boosters Geneva, Japanese Pokémon cards Geneva, Chinese Pokémon cards, One Piece card game, Magic the Gathering, Disney Lorcana, Yu-Gi-Oh, trading card games Switzerland, distributeur cartes Genève, cartes japonaises Genève, sealed boosters">
 {% include hreflang.html %}
 <meta name="robots" content="index, follow">
@@ -15,7 +15,7 @@ page: index
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
 <meta property="og:title" content="BoosterStop — TCG Vending Machines in Geneva">
-<meta property="og:description" content="100% sealed boosters, displays & collector boxes from official distributors, in French, English, Japanese, Chinese and more. Self-service in eight machines across Geneva.">
+<meta property="og:description" content="100% sealed boosters, displays & collector boxes from official distributors, in French, English, Japanese, Chinese, Korean and more. Self-service in eight machines across Geneva.">
 <meta property="og:url" content="https://boosterstop.com/">
 <meta property="og:image" content="https://boosterstop.com/logo.png">
 <meta property="og:locale" content="en_US">
@@ -343,8 +343,8 @@ page: index
 {%- assign hero_be = site.data.pays | where: "id", "be" | first -%}
 <div class="hero">
   <div class="hero-left">
-    <h1 class="hero-h1"><span>TCG vending</span> <span>machines</span> <span>in Geneva</span></h1>
-    <p class="hero-body">Factory-sealed boosters, displays and collector boxes from official distributors, in La Poste branches and at King Jouet in Geneva, and in five Carrefour stores in Belgium.</p>
+    <h1 class="hero-h1"><span>TCG vending</span> <span>machines</span></h1>
+    <p class="hero-body">Factory-sealed boosters, displays and collector boxes from official distributors. In Geneva and across Belgium today; Lausanne, France and three Emirates of the UAE are next.</p>
     <div class="hero-ctas">
       <a class="hero-btn hero-btn-main" href="/stock.html">Check live stock</a>
       <a class="hero-btn hero-btn-alt" href="#where">Find a machine</a>
@@ -374,7 +374,7 @@ page: index
     <li><a href="/distributeurs-geneve.html"><span class="hn-flag" aria-hidden="true">🇨🇭</span><span class="hn-txt"><span class="hn-name">Switzerland</span><span class="hn-status live">{{ hero_ch.size }} machines in Geneva</span></span></a></li>
     <li><a href="/expansion.html#belgique"><span class="hn-flag" aria-hidden="true">🇧🇪</span><span class="hn-txt"><span class="hn-name">Belgium</span><span class="hn-status live">{{ hero_be.machines | default: 5 }} machines</span></span></a></li>
     <li><a href="/expansion.html#france"><span class="hn-flag" aria-hidden="true">🇫🇷</span><span class="hn-txt"><span class="hn-name">France</span><span class="hn-status">Coming soon</span></span></a></li>
-    <li><a href="/expansion.html#uae"><span class="hn-flag" aria-hidden="true">🇦🇪</span><span class="hn-txt"><span class="hn-name">UAE</span><span class="hn-status">Coming soon</span></span></a></li>
+    <li><a href="/expansion.html#uae"><span class="hn-flag" aria-hidden="true">🇦🇪</span><span class="hn-txt"><span class="hn-name">UAE</span><span class="hn-status">3 Emirates soon</span></span></a></li>
     <li><a href="/partenaire-local.html"><span class="hn-flag" aria-hidden="true">🌍</span><span class="hn-txt"><span class="hn-name">Your country?</span><span class="hn-status">Partner wanted</span></span></a></li>
   </ul>
 </div>
@@ -392,7 +392,7 @@ page: index
     <div class="how-card">
       <div class="how-number">02</div>
       <h3>Pick your product</h3>
-      <p>Boosters, displays or collector boxes: multiple TCG universes in every machine, and several languages to choose from: French, English, Japanese, Chinese and more.</p>
+      <p>Boosters, displays or collector boxes: multiple TCG universes in every machine, and several languages to choose from: French, English, Japanese, Chinese, Korean and more.</p>
       <a class="how-link" href="/licences-geneve.html">Browse the 24 licenses</a>
     </div>
     <div class="how-card">
@@ -416,6 +416,7 @@ page: index
     <span class="lang-chip"><span class="lc-flag">🇬🇧</span> English</span>
     <span class="lang-chip"><span class="lc-flag">🇯🇵</span> <span class="lc-native">日本語</span> <span>Japanese</span></span>
     <span class="lang-chip"><span class="lc-flag">🇨🇳</span> <span class="lc-native">中文</span> <span>Chinese</span></span>
+    <span class="lang-chip"><span class="lc-flag">🇰🇷</span> <span class="lc-native">한국어</span> <span>Korean</span></span>
     <span class="lang-chip"><span class="lc-flag">🇩🇪</span> Deutsch</span>
     <span class="lang-chip"><span class="lc-flag">🇪🇸</span> Español</span>
     <span class="lang-chip"><span class="lc-flag">🇵🇹</span> Português</span>
@@ -639,7 +640,7 @@ page: index
     </details>
     <details class="faq-item">
       <summary>In which languages are the cards available?</summary>
-      <div class="faq-a">Several. We stock the same games across multiple languages, among them French, English, Japanese, Chinese, German, Spanish and Portuguese. For example Pokémon in Japanese, Chinese or French, and One Piece in English. This lets you keep a collection consistent in the language you started with, read the cards you actually play, and reach sets that only release in certain markets. Available languages vary by set and by machine, so check the <a href="/stock.html">Live Stock</a> page to see what's in each one right now.</div>
+      <div class="faq-a">Several. We stock the same games across multiple languages, among them French, English, Japanese, Chinese, Korean, German, Spanish and Portuguese. For example Pokémon in Japanese, Chinese or French, and One Piece in English. This lets you keep a collection consistent in the language you started with, read the cards you actually play, and reach sets that only release in certain markets. Available languages vary by set and by machine, so check the <a href="/stock.html">Live Stock</a> page to see what's in each one right now.</div>
     </details>
     <details class="faq-item">
       <summary>How do I pay?</summary>
@@ -1122,7 +1123,7 @@ document.addEventListener('DOMContentLoaded', function() {
           "name": "In which languages are the cards available?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Several. BoosterStop stocks the same games across multiple languages, among them French, English, Japanese, Chinese, German, Spanish and Portuguese. For example Pokémon in Japanese, Chinese or French, and One Piece in English. This lets collectors keep a collection consistent in the language they started with, read the cards they play, and access sets that only release in certain markets. Available languages vary by set and by machine."
+            "text": "Several. BoosterStop stocks the same games across multiple languages, among them French, English, Japanese, Chinese, Korean, German, Spanish and Portuguese. For example Pokémon in Japanese, Chinese or French, and One Piece in English. This lets collectors keep a collection consistent in the language they started with, read the cards they play, and access sets that only release in certain markets. Available languages vary by set and by machine."
           }
         },
         {
