@@ -2,7 +2,7 @@
 title: "Coalesced Energy peut-elle rendre Renekton viable dans Riftbound Radiance ?"
 seo_title: "Coalesced Energy et Renekton : deck Riftbound Radiance"
 description: "Comment fonctionne Coalesced Energy, pourquoi elle colle à Renekton, et une decklist Renekton Energy complète à tester sur Rift Atlas avec le code 5JVEYH."
-date: 2026-10-27 09:40:00 +0100
+date: 2026-10-27 00:40:00 +0100
 licence: riftbound
 image: /assets/blog/riftbound-radiance-renekton-coalesced-energy.jpg
 image_alt: "Coalesced Energy, une unité Shurima de Riftbound Radiance"

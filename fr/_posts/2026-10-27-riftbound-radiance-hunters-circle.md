@@ -2,7 +2,7 @@
 title: "Hunters' Circle : le champ de bataille de Radiance qui renforce les decks agressifs de Riftbound ?"
 seo_title: "Hunters' Circle : analyse du champ de bataille Radiance"
 description: "Hunters' Circle réduit d'une énergie la première unité ou le premier équipement joué chaque tour. Retour du Sneaky Deckhand au tour 1 et Astral Heron dès le tour 3."
-date: 2026-10-27 09:30:00 +0100
+date: 2026-10-27 00:30:00 +0100
 licence: riftbound
 image: /assets/blog/riftbound-radiance-hunters-circle.jpg
 image_alt: "Hunters' Circle, un champ de bataille de Riftbound Radiance"

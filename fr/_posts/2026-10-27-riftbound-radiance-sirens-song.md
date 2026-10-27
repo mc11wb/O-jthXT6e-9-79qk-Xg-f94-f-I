@@ -2,7 +2,7 @@
 title: "Siren's Song : le nouveau sort violet incontournable de Riftbound Radiance ?"
 seo_title: "Siren's Song : analyse de la carte Riftbound Radiance"
 description: "Siren's Song déplace une unité ennemie qui a déjà bougé ce tour, à vitesse de réaction. Comparaison avec Fight or Flight (banni) et usages dans les decks Draven."
-date: 2026-10-27 09:20:00 +0100
+date: 2026-10-27 00:20:00 +0100
 licence: riftbound
 image: /assets/blog/riftbound-radiance-sirens-song.jpg
 image_alt: "Siren's Song, un sort de réaction violet à deux énergies de Riftbound Radiance"

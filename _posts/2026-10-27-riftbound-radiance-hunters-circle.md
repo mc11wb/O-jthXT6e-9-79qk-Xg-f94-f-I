@@ -2,7 +2,7 @@
 title: "Hunters' Circle: the Radiance battlefield that makes aggressive Riftbound decks stronger?"
 seo_title: "Hunters' Circle: Riftbound Radiance battlefield analysis"
 description: "Hunters' Circle cuts the cost of the first unit or Gear played there each turn. Why that revives the turn-1 Sneaky Deckhand and lands Astral Heron on turn 3."
-date: 2026-10-27 09:30:00 +0100
+date: 2026-10-27 00:30:00 +0100
 licence: riftbound
 image: /assets/blog/riftbound-radiance-hunters-circle.jpg
 image_alt: "Hunters' Circle, a battlefield from Riftbound Radiance"

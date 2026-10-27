@@ -2,7 +2,7 @@
 title: "Graves, Blasting Through: can the Radiance champion find a place in the Riftbound meta?"
 seo_title: "Graves, Blasting Through: Riftbound Radiance analysis"
 description: "Graves, Blasting Through deals his Might to every enemy unit when he attacks or defends. His upsides, his cost problem, and the cards that make him work."
-date: 2026-10-27 09:00:00 +0100
+date: 2026-10-27 00:00:00 +0100
 licence: riftbound
 image: /assets/blog/riftbound-radiance-graves-blasting-through.jpg
 image_alt: "Graves, Blasting Through, a champion unit from Riftbound Radiance"

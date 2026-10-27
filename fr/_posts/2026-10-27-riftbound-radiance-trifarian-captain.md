@@ -2,7 +2,7 @@
 title: "Trifarian Captain : la meilleure pioche à 2 énergies de Riftbound Radiance ?"
 seo_title: "Trifarian Captain : analyse de la carte Riftbound Radiance"
 description: "Ce que fait Trifarian Captain, sa comparaison avec Scuttle Crab, Clockwork Keeper et Patched Porobot, et pourquoi Miracle Kennen est le premier deck à la jouer."
-date: 2026-10-27 09:10:00 +0100
+date: 2026-10-27 00:10:00 +0100
 licence: riftbound
 image: /assets/blog/riftbound-radiance-trifarian-captain.jpg
 image_alt: "Trifarian Captain, une unité Noxus à deux énergies de Riftbound Radiance"

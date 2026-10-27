@@ -2,7 +2,7 @@
 title: "Siren's Song: can Radiance's new reaction spell become a purple staple?"
 seo_title: "Siren's Song: Riftbound Radiance card analysis"
 description: "Siren's Song moves an enemy unit that already moved this turn, at reaction speed. How it compares to the banned Fight or Flight, and how Draven decks can use it."
-date: 2026-10-27 09:20:00 +0100
+date: 2026-10-27 00:20:00 +0100
 licence: riftbound
 image: /assets/blog/riftbound-radiance-sirens-song.jpg
 image_alt: "Siren's Song, a two-energy purple reaction spell from Riftbound Radiance"

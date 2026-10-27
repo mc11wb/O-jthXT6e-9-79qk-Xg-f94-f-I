@@ -2,7 +2,7 @@
 title: "Trifarian Captain: the best new 2-drop card draw in Riftbound Radiance?"
 seo_title: "Trifarian Captain: Riftbound Radiance card analysis"
 description: "What Trifarian Captain does, how it compares to Scuttle Crab, Clockwork Keeper and Patched Porobot, and why Miracle Kennen is the first deck to want it."
-date: 2026-10-27 09:10:00 +0100
+date: 2026-10-27 00:10:00 +0100
 licence: riftbound
 image: /assets/blog/riftbound-radiance-trifarian-captain.jpg
 image_alt: "Trifarian Captain, a two-energy Noxus unit from Riftbound Radiance"

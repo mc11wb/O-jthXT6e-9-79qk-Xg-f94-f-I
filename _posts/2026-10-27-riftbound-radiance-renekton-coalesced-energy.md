@@ -2,7 +2,7 @@
 title: "Can Coalesced Energy make Renekton viable in Riftbound Radiance?"
 seo_title: "Coalesced Energy and Renekton: Riftbound Radiance deck"
 description: "How Coalesced Energy works, why it fits Renekton, Butcher of the Sands, and a full Renekton Energy decklist to try on Rift Atlas with the code 5JVEYH."
-date: 2026-10-27 09:40:00 +0100
+date: 2026-10-27 00:40:00 +0100
 licence: riftbound
 image: /assets/blog/riftbound-radiance-renekton-coalesced-energy.jpg
 image_alt: "Coalesced Energy, a Shurima unit from Riftbound Radiance"
