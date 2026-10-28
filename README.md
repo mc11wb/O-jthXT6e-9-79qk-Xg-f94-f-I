@@ -105,6 +105,16 @@ Ajouter une machine = une ligne dans `MACHINES` + un `<button class="machine-tab
 - L'accueil (onglet Belgique de la carte), Stock Live, Expansion, le pied de page et l'encart « où acheter » du blog lisent les mêmes données : ajouter une machine belge = une entrée dans `machines.yml` + ses 3 petits fichiers de page.
 - Le menu « Locaties » de la version NL mène à la page Belgique (`nav_emplacements_f` dans `_data/i18n.yml`).
 
+## Newsletter (une par pays)
+
+- Gabarit unique `_layouts/newsletter.html`, textes et pays dans `_data/newsletter.yml`. `newsletter.html`, `fr/`, `nl/` et `ar/newsletter.html` ne contiennent que leur front matter (`layout: newsletter`). Ne plus les régénérer avec make_ar.py : l'arabe est dans `_data/newsletter.yml`.
+- Le visiteur choisit **un seul pays** (Suisse, Belgique, Émirats « bientôt »). La page affiche l'offre de ce pays et envoie l'inscription avec `pays` (CH, BE, AE), `liste` (newsletter-ch, newsletter-be, newsletter-ae), le texte exact du consentement et un sujet « [BoosterStop BE] … ».
+- Chaque pays a son `endpoint` Formspree : un formulaire par pays = une liste Brevo par pays = un email de bienvenue (et donc un code) par pays. Le code n'est jamais écrit sur la page.
+- Lien direct vers un pays : `/newsletter.html#be` (ou `?pays=be`). Sans lien, la page présélectionne selon le fuseau horaire (Zurich, Bruxelles, Dubaï), puis la langue (NL → Belgique, AR → Émirats).
+- Après l'inscription, un bloc **facultatif** « Personnalisez votre newsletter » demande prénom, distributeur habituel (liste lue dans `_data/machines.yml` selon le pays, masquée s'il n'y en a pas) et anniversaire (jour et mois, jamais l'année). Il part au même endpoint avec `type: profil`, la même adresse email, `distributeur` (id de machines.yml), `distributeur_nom` et `anniversaire` au format JJ-MM. L'inscription elle-même ne demande toujours que pays, jeux, email et consentement.
+- Dans Brevo : attributs PRENOM, DISTRIBUTEUR et ANNIVERSAIRE (texte JJ-MM) à mettre à jour sur le contact existant (même email).
+- Ajouter un pays = une entrée dans `pays:` de `_data/newsletter.yml`, avec sa couleur dans le gabarit (`[data-pays="xx"]`).
+
 ## Relevé du stock (SEO)
 
 - `.github/workflows/stock-releve.yml` lance chaque matin `.github/scripts/stock_releve.py`, qui interroge le Worker pour chaque machine ayant un `worker` dans `machines.yml` et écrit `_data/stock.json`.

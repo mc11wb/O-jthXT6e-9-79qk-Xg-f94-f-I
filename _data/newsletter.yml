@@ -1,0 +1,316 @@
+# ============================================================
+# NEWSLETTER — une newsletter séparée par pays.
+# Gabarit : _layouts/newsletter.html. Pages : newsletter.html (EN),
+# fr/, nl/, ar/newsletter.html (front matter seulement).
+#
+# Chaque pays a SA newsletter : son offre, son code de bienvenue,
+# son formulaire et sa liste. Le visiteur choisit UN pays.
+#
+#   endpoint : formulaire Formspree qui reçoit les inscriptions du pays.
+#              Pour séparer complètement les pays, créer un formulaire
+#              Formspree par pays et coller son lien ici.
+#   liste    : nom de la liste Brevo à alimenter, envoyé avec chaque
+#              inscription (champ « liste »).
+#   remise   : pourcentage affiché sur la page. Le CODE lui-même n'est
+#              jamais écrit sur la page : il part dans l'email de
+#              bienvenue de la liste Brevo du pays.
+#   statut   : actif | bientot (bientot = inscription « être prévenu de
+#              l'ouverture », le code arrive à l'ouverture).
+#
+# Après l'inscription, un bloc FACULTATIF « Personnalisez votre newsletter »
+# demande prénom, distributeur habituel (liste lue dans _data/machines.yml,
+# selon le pays) et anniversaire (jour + mois, jamais l'année). Il est envoyé
+# au même endpoint avec type: profil et la même adresse email.
+#
+# Lien direct vers un pays : /newsletter.html#be (ch, be, ae).
+# Sans lien direct, la page choisit selon le fuseau horaire du
+# visiteur (Zurich → ch, Bruxelles → be, Dubaï → ae), sinon NL → be
+# et AR → ae, sinon rien n'est présélectionné.
+# ============================================================
+pays:
+  - id: ch
+    drapeau: "🇨🇭"
+    statut: actif
+    remise: 10
+    endpoint: https://formspree.io/f/meebkyng
+    liste: newsletter-ch
+    fuseaux: [Europe/Zurich]
+    nom: { en: Switzerland, fr: Suisse, nl: Zwitserland, ar: سويسرا }
+    dans: { en: in Switzerland, fr: en Suisse, nl: in Zwitserland, ar: في سويسرا }
+    reseau:
+      en: 8 machines in Geneva
+      fr: 8 distributeurs à Genève
+      nl: 8 automaten in Genève
+      ar: 8 آلات في جنيف
+    offre:
+      en: "Get a <strong>%remise% welcome code</strong> by email, valid in our Swiss machines, plus early access to new drops and promos in Geneva."
+      fr: "Recevez par email un <strong>code de bienvenue de %remise%</strong>, valable dans nos distributeurs suisses, plus les nouveautés et les promos à Genève en avant-première."
+      nl: "Ontvang per e-mail een <strong>welkomstcode van %remise%</strong>, geldig in onze Zwitserse automaten, plus vroege toegang tot nieuwe releases en promo's in Genève."
+      ar: "احصل عبر البريد على <strong>رمز ترحيب بخصم %remise%</strong> صالح في آلاتنا في سويسرا، مع وصول مبكر إلى الإصدارات الجديدة والعروض في جنيف."
+    bouton:
+      en: "🔔 Subscribe for Switzerland"
+      fr: "🔔 Je m'abonne pour la Suisse"
+      nl: "🔔 Inschrijven voor Zwitserland"
+      ar: "🔔 اشترك في نشرة سويسرا"
+    succes:
+      en: "✓ You're in. Your %remise% code for our Swiss machines is on its way to your inbox."
+      fr: "✓ C'est fait ! Votre code de %remise% pour nos distributeurs suisses arrive dans votre boîte mail."
+      nl: "✓ Je bent ingeschreven. Je code van %remise% voor onze Zwitserse automaten komt eraan in je mailbox."
+      ar: "✓ تم الاشتراك. رمز خصم %remise% لآلاتنا في سويسرا في طريقه إلى بريدك."
+
+  - id: be
+    drapeau: "🇧🇪"
+    statut: actif
+    remise: 10
+    endpoint: https://formspree.io/f/meebkyng
+    liste: newsletter-be
+    fuseaux: [Europe/Brussels]
+    langue_defaut: nl
+    nom: { en: Belgium, fr: Belgique, nl: België, ar: بلجيكا }
+    dans: { en: in Belgium, fr: en Belgique, nl: in België, ar: في بلجيكا }
+    reseau:
+      en: 5 machines in Carrefour stores
+      fr: 5 distributeurs dans des Carrefour
+      nl: 5 automaten in Carrefour-winkels
+      ar: 5 آلات في متاجر كارفور
+    offre:
+      en: "Get a <strong>%remise% welcome code</strong> by email, valid in our Belgian machines, plus early access to new drops and promos at your Carrefour."
+      fr: "Recevez par email un <strong>code de bienvenue de %remise%</strong>, valable dans nos distributeurs belges, plus les nouveautés et les promos de votre Carrefour en avant-première."
+      nl: "Ontvang per e-mail een <strong>welkomstcode van %remise%</strong>, geldig in onze Belgische automaten, plus vroege toegang tot nieuwe releases en promo's in jouw Carrefour."
+      ar: "احصل عبر البريد على <strong>رمز ترحيب بخصم %remise%</strong> صالح في آلاتنا في بلجيكا، مع وصول مبكر إلى الإصدارات الجديدة والعروض في متجر كارفور القريب منك."
+    bouton:
+      en: "🔔 Subscribe for Belgium"
+      fr: "🔔 Je m'abonne pour la Belgique"
+      nl: "🔔 Inschrijven voor België"
+      ar: "🔔 اشترك في نشرة بلجيكا"
+    succes:
+      en: "✓ You're in. Your %remise% code for our Belgian machines is on its way to your inbox."
+      fr: "✓ C'est fait ! Votre code de %remise% pour nos distributeurs belges arrive dans votre boîte mail."
+      nl: "✓ Je bent ingeschreven. Je code van %remise% voor onze Belgische automaten komt eraan in je mailbox."
+      ar: "✓ تم الاشتراك. رمز خصم %remise% لآلاتنا في بلجيكا في طريقه إلى بريدك."
+
+  - id: ae
+    drapeau: "🇦🇪"
+    statut: bientot
+    remise: 10
+    endpoint: https://formspree.io/f/meebkyng
+    liste: newsletter-ae
+    fuseaux: [Asia/Dubai]
+    langue_defaut: ar
+    nom: { en: United Arab Emirates, fr: Émirats arabes unis, nl: Verenigde Arabische Emiraten, ar: الإمارات العربية المتحدة }
+    court: { en: UAE, fr: Émirats, nl: Emiraten, ar: الإمارات }
+    dans: { en: in the UAE, fr: aux Émirats, nl: in de Emiraten, ar: في الإمارات }
+    reseau:
+      en: Opening soon
+      fr: Ouverture prochaine
+      nl: Binnenkort open
+      ar: الافتتاح قريباً
+    offre:
+      en: "We're opening in the UAE soon. Be the first to know where and when, and get your <strong>%remise% welcome code</strong> on launch day."
+      fr: "Nous ouvrons bientôt aux Émirats. Soyez prévenu en premier des emplacements et de la date, et recevez votre <strong>code de bienvenue de %remise%</strong> le jour de l'ouverture."
+      nl: "We openen binnenkort in de Emiraten. Hoor als eerste waar en wanneer, en ontvang je <strong>welkomstcode van %remise%</strong> op de openingsdag."
+      ar: "نفتتح قريباً في الإمارات. كن أول من يعرف المكان والموعد، واحصل على <strong>رمز ترحيب بخصم %remise%</strong> يوم الافتتاح."
+    bouton:
+      en: "🔔 Notify me when the UAE opens"
+      fr: "🔔 Me prévenir de l'ouverture aux Émirats"
+      nl: "🔔 Laat me weten wanneer de Emiraten openen"
+      ar: "🔔 أخبرني عند الافتتاح في الإمارات"
+    succes:
+      en: "✓ You're on the list. We'll email you as soon as our first UAE machines open, with your %remise% code."
+      fr: "✓ C'est noté ! On vous écrit dès l'ouverture de nos premiers distributeurs aux Émirats, avec votre code de %remise%."
+      nl: "✓ Je staat op de lijst. We mailen je zodra onze eerste automaten in de Emiraten openen, met je code van %remise%."
+      ar: "✓ أنت على القائمة. سنراسلك فور افتتاح أولى آلاتنا في الإمارات، مع رمز خصم %remise%."
+
+# Jeux proposés (valeur envoyée = « v », texte affiché = « t » ou la valeur)
+tcgs:
+  - v: Pokémon
+  - v: One Piece TCG
+  - v: Dragon Ball Super
+  - v: "Riftbound: LoL TCG"
+    t: "Riftbound: LoL"
+  - v: "Magic: The Gathering"
+  - v: Disney Lorcana
+  - v: Yu-Gi-Oh!
+  - v: Naruto TCG
+
+textes:
+  en:
+    title: "Newsletter — BoosterStop | New drops & exclusive promos"
+    description: "Join the BoosterStop newsletter for your country: Switzerland or Belgium. Get a 10% welcome code valid in your country's machines, plus early access to new TCG drops and promos."
+    og_title: "BoosterStop Newsletter — 10% welcome code"
+    og_description: "New TCG drops and exclusive promos, straight to your inbox. One newsletter per country, each with its own welcome code."
+    eyebrow: "New drops · Exclusive promos"
+    h1: "Never miss a <span>drop.</span>"
+    sub: "New releases and discount codes, straight to your inbox. Pick your country first: each one has its own newsletter and its own welcome code."
+    pays_label: Your country
+    pays_hint: "Where do you buy your boosters? The welcome code only works in that country's machines."
+    pays_choisir: "Pick your country above to see your offer and sign up."
+    pays_plusieurs: "Buying in more than one country? Sign up once for each."
+    bientot: Soon
+    code: code
+    form_titre: "%nom% newsletter"
+    tcg_label: Trading card games
+    tcg_hint: "Which games are you into? Pick as many as you like."
+    tcg_tous: "✨ All TCGs, keep me posted on everything"
+    tcg_autre: Other
+    email_label: Your email
+    email_ph: you@example.com
+    consent: "I agree to receive new-release news and promotional emails from BoosterStop %dans%. I can unsubscribe at any time."
+    err_email: "Enter a valid email address."
+    err_tcg: "Pick at least one game, or All TCGs."
+    err_consent: "Tick the box to agree to receive our emails."
+    err_envoi: "The signup didn't go through. Check your connection and try again."
+    envoi: Subscribing…
+    retry: Try again
+    pr_titre: Personalise your newsletter
+    pr_hint: "Optional, 15 seconds. Tell us your machine and we'll email you when your games land there. Add your birthday and you'll get a gift on the day."
+    pr_prenom: First name
+    pr_prenom_ph: Your first name
+    pr_machine: Your usual machine
+    pr_machine_vide: "I don't know yet"
+    pr_anniv: Birthday
+    pr_anniv_hint: No need for the year.
+    pr_jour: Day
+    pr_mois: Month
+    mois: [January, February, March, April, May, June, July, August, September, October, November, December]
+    pr_save: Save
+    pr_skip: No thanks
+    pr_ok: "✓ Saved. Your next emails will be tailored to you."
+    pr_err_vide: "Fill in at least one field, or click No thanks."
+    pr_err_date: "Pick both the day and the month."
+    stock: 'Looking for live stock? Check real-time availability on the <a href="/stock.html">Live Stock</a> page.'
+  fr:
+    title: "Newsletter — BoosterStop | Nouveautés &amp; promos exclusives"
+    description: "Rejoignez la newsletter BoosterStop de votre pays, Suisse ou Belgique : code de bienvenue -10% valable dans les distributeurs de votre pays, nouveautés TCG en avant-première et promos."
+    og_title: "Newsletter BoosterStop — code de bienvenue -10%"
+    og_description: "Les nouveautés TCG et des promos exclusives, directement dans votre boîte mail. Une newsletter par pays, chacune avec son code de bienvenue."
+    eyebrow: "Nouveautés · Promos exclusives"
+    h1: "Ne ratez plus <span>rien.</span>"
+    sub: "Nouvelles sorties et codes promo, directement dans votre boîte mail. Choisissez d'abord votre pays : chacun a sa propre newsletter et son propre code de bienvenue."
+    pays_label: Votre pays
+    pays_hint: "Où achetez-vous vos boosters ? Le code de bienvenue n'est valable que dans les distributeurs de ce pays."
+    pays_choisir: "Choisissez votre pays ci-dessus pour voir votre offre et vous inscrire."
+    pays_plusieurs: "Vous achetez dans plusieurs pays ? Inscrivez-vous une fois pour chacun."
+    bientot: Bientôt
+    code: code
+    form_titre: "Newsletter %nom%"
+    tcg_label: Jeux de cartes
+    tcg_hint: "Quels univers vous intéressent ? Autant que vous voulez."
+    tcg_tous: "✨ Tous les TCG, tenez-moi au courant de tout"
+    tcg_autre: Autre
+    email_label: Votre email
+    email_ph: vous@exemple.com
+    consent: "J'accepte de recevoir les nouveautés et les emails promotionnels de BoosterStop %dans%. Je peux me désinscrire à tout moment."
+    err_email: "Entrez une adresse email valide."
+    err_tcg: "Choisissez au moins un jeu, ou Tous les TCG."
+    err_consent: "Cochez la case pour accepter de recevoir nos emails."
+    err_envoi: "L'inscription n'est pas passée. Vérifiez votre connexion et réessayez."
+    envoi: Envoi…
+    retry: Réessayer
+    pr_titre: Personnalisez votre newsletter
+    pr_hint: "Facultatif, 15 secondes. Indiquez votre distributeur et on vous prévient quand vos jeux y arrivent. Ajoutez votre anniversaire et recevez un cadeau le jour J."
+    pr_prenom: Prénom
+    pr_prenom_ph: Votre prénom
+    pr_machine: Votre distributeur habituel
+    pr_machine_vide: "Je ne sais pas encore"
+    pr_anniv: Anniversaire
+    pr_anniv_hint: Pas besoin de l'année.
+    pr_jour: Jour
+    pr_mois: Mois
+    mois: [janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre]
+    pr_save: Enregistrer
+    pr_skip: Non merci
+    pr_ok: "✓ C'est enregistré. Vos prochains emails seront faits pour vous."
+    pr_err_vide: "Remplissez au moins un champ, ou cliquez sur Non merci."
+    pr_err_date: "Choisissez le jour et le mois."
+    stock: 'Vous cherchez le stock en temps réel ? Consultez la disponibilité sur la page <a href="/fr/stock.html">Stock Live</a>.'
+  nl:
+    title: "Nieuwsbrief — BoosterStop | Nieuwe releases &amp; exclusieve promo's"
+    description: "Schrijf je in voor de BoosterStop-nieuwsbrief van jouw land, België of Zwitserland: een welkomstcode van 10% geldig in de automaten van jouw land, plus vroege toegang tot nieuwe TCG-releases en promo's."
+    og_title: "BoosterStop-nieuwsbrief — welkomstcode van 10%"
+    og_description: "Nieuwe TCG-releases en exclusieve promo's, rechtstreeks in je mailbox. Eén nieuwsbrief per land, elk met een eigen welkomstcode."
+    eyebrow: "Nieuwe releases · Exclusieve promo's"
+    h1: "Mis geen enkele <span>release.</span>"
+    sub: "Nieuwe releases en kortingscodes, rechtstreeks in je mailbox. Kies eerst je land: elk land heeft een eigen nieuwsbrief en een eigen welkomstcode."
+    pays_label: Jouw land
+    pays_hint: "Waar koop je je boosters? De welkomstcode werkt alleen in de automaten van dat land."
+    pays_choisir: "Kies hierboven je land om je aanbod te zien en je in te schrijven."
+    pays_plusieurs: "Koop je in meer dan één land? Schrijf je voor elk land apart in."
+    bientot: Binnenkort
+    code: code
+    form_titre: "Nieuwsbrief %nom%"
+    tcg_label: Ruilkaartspellen
+    tcg_hint: "Welke spellen volg je? Kies er zoveel je wilt."
+    tcg_tous: "✨ Alle TCG's, hou me overal van op de hoogte"
+    tcg_autre: Andere
+    email_label: Je e-mailadres
+    email_ph: jij@voorbeeld.be
+    consent: "Ik ga akkoord met het ontvangen van nieuws over nieuwe releases en promotionele e-mails van BoosterStop %dans%. Ik kan me op elk moment uitschrijven."
+    err_email: "Vul een geldig e-mailadres in."
+    err_tcg: "Kies minstens één spel, of Alle TCG's."
+    err_consent: "Vink het vakje aan om onze e-mails te ontvangen."
+    err_envoi: "De inschrijving is niet gelukt. Controleer je verbinding en probeer opnieuw."
+    envoi: Inschrijven…
+    retry: Opnieuw proberen
+    pr_titre: Personaliseer je nieuwsbrief
+    pr_hint: "Optioneel, 15 seconden. Kies je automaat en we laten je weten wanneer jouw spellen er binnen zijn. Voeg je verjaardag toe en krijg een cadeau op de dag zelf."
+    pr_prenom: Voornaam
+    pr_prenom_ph: Je voornaam
+    pr_machine: Je vaste automaat
+    pr_machine_vide: "Weet ik nog niet"
+    pr_anniv: Verjaardag
+    pr_anniv_hint: Het jaar hoeft niet.
+    pr_jour: Dag
+    pr_mois: Maand
+    mois: [januari, februari, maart, april, mei, juni, juli, augustus, september, oktober, november, december]
+    pr_save: Opslaan
+    pr_skip: Nee, bedankt
+    pr_ok: "✓ Opgeslagen. Je volgende e-mails zijn op jou afgestemd."
+    pr_err_vide: "Vul minstens één veld in, of klik op Nee, bedankt."
+    pr_err_date: "Kies de dag en de maand."
+    stock: 'Op zoek naar de live voorraad? Bekijk de realtime beschikbaarheid op de pagina <a href="/nl/stock.html">Live voorraad</a>.'
+  ar:
+    title: "النشرة الإخبارية — BoosterStop | إصدارات جديدة وعروض حصرية"
+    description: "اشترك في نشرة BoosterStop الخاصة ببلدك: احصل على رمز ترحيب بخصم 10% صالح في آلات بلدك، مع وصول مبكر إلى إصدارات TCG الجديدة والعروض."
+    og_title: "نشرة BoosterStop — رمز ترحيب بخصم 10%"
+    og_description: "إصدارات TCG الجديدة وعروض حصرية، مباشرة إلى بريدك. نشرة لكل بلد، ولكل منها رمز ترحيب خاص."
+    eyebrow: "إصدارات جديدة · عروض حصرية"
+    h1: "لا تفوّت <span>أي إصدار.</span>"
+    sub: "الإصدارات الجديدة ورموز الخصم، مباشرة إلى بريدك. اختر بلدك أولاً: لكل بلد نشرته الخاصة ورمز ترحيب خاص به."
+    pays_label: بلدك
+    pays_hint: "أين تشتري البطاقات؟ رمز الترحيب صالح فقط في آلات هذا البلد."
+    pays_choisir: "اختر بلدك أعلاه لرؤية عرضك والاشتراك."
+    pays_plusieurs: "تشتري في أكثر من بلد؟ اشترك مرة لكل بلد."
+    bientot: قريباً
+    code: رمز
+    form_titre: "نشرة %nom%"
+    tcg_label: ألعاب بطاقات التداول
+    tcg_hint: "ما الألعاب التي تهمك؟ اختر ما تشاء."
+    tcg_tous: "✨ كل ألعاب TCG، أبقوني على اطلاع بكل شيء"
+    tcg_autre: أخرى
+    email_label: بريدك الإلكتروني
+    email_ph: you@example.com
+    consent: "أوافق على تلقي أخبار الإصدارات الجديدة ورسائل ترويجية من BoosterStop %dans%. يمكنني إلغاء الاشتراك في أي وقت."
+    err_email: "أدخل بريداً إلكترونياً صالحاً."
+    err_tcg: "اختر لعبة واحدة على الأقل، أو كل ألعاب TCG."
+    err_consent: "ضع علامة في المربع للموافقة على تلقي رسائلنا."
+    err_envoi: "لم يتم الاشتراك. تحقق من اتصالك وحاول مرة أخرى."
+    envoi: جارٍ الاشتراك…
+    retry: حاول مرة أخرى
+    pr_titre: خصّص نشرتك
+    pr_hint: "اختياري، 15 ثانية. اختر آلتك وسنخبرك عندما تصل ألعابك إليها. أضف تاريخ ميلادك واحصل على هدية في يومه."
+    pr_prenom: الاسم الأول
+    pr_prenom_ph: اسمك الأول
+    pr_machine: آلتك المعتادة
+    pr_machine_vide: "لا أعرف بعد"
+    pr_anniv: تاريخ الميلاد
+    pr_anniv_hint: لا حاجة إلى السنة.
+    pr_jour: اليوم
+    pr_mois: الشهر
+    mois: [يناير, فبراير, مارس, أبريل, مايو, يونيو, يوليو, أغسطس, سبتمبر, أكتوبر, نوفمبر, ديسمبر]
+    pr_save: حفظ
+    pr_skip: لا شكراً
+    pr_ok: "✓ تم الحفظ. ستكون رسائلك القادمة مخصّصة لك."
+    pr_err_vide: "املأ حقلاً واحداً على الأقل، أو اضغط لا شكراً."
+    pr_err_date: "اختر اليوم والشهر."
+    stock: 'تبحث عن المخزون المباشر؟ تحقق من التوفر اللحظي في صفحة <a href="/ar/stock.html">المخزون المباشر</a>.'
