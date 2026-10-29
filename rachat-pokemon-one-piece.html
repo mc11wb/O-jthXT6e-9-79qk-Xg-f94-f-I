@@ -213,7 +213,7 @@ body{margin:0;background:var(--black);color:var(--white);
 
   <div class="rc-form" id="rcBox">
     <form id="rcForm" action="https://formspree.io/f/xkjwpvgy" method="POST">
-      <input type="hidden" name="_subject" id="rcSubject" value="Rachat — demande depuis le site">
+      <input type="hidden" name="_subject" id="rcSubject" value="Rachat - demande depuis le site">
       <input type="hidden" name="origine" value="page rachat-pokemon-one-piece (EN)">
       <div class="rc-hp" aria-hidden="true"><label>Leave empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
 
@@ -261,7 +261,7 @@ body{margin:0;background:var(--black);color:var(--white);
 
       <div class="rc-details" id="rcDetails">
         <label for="rcLot">Your lot, one line per product or card</label>
-        <textarea id="rcLot" name="lot" required placeholder="e.g. 2 × Obsidian Flames booster box (EN)&#10;1 × Prismatic Evolutions Elite Trainer Box (EN)&#10;Charizard ex 199/165 — PSA 10 — cert no. 12345678"></textarea>
+        <textarea id="rcLot" name="lot" required placeholder="e.g. 2 × Obsidian Flames booster box (EN)&#10;1 × Prismatic Evolutions Elite Trainer Box (EN)&#10;Charizard ex 199/165, PSA 10, cert no. 12345678"></textarea>
         <p class="rc-hint" id="rcLotHint">Sealed: product, language and quantity. Graded: card, company, grade and certificate number.</p>
 
         <div class="rc-row">
@@ -412,8 +412,8 @@ body{margin:0;background:var(--black);color:var(--white);
   };
   var EX = {
     "Scellé": "e.g. 2 × Obsidian Flames booster box (EN)\n1 × Prismatic Evolutions Elite Trainer Box (EN)\n1 × One Piece OP-09 booster box (EN)",
-    "Gradé": "e.g. Charizard ex 199/165 — PSA 10 — cert no. 12345678\nShanks OP01-120 — CGC 9.5 — cert no. 87654321",
-    "Scellé et gradé": "e.g. 2 × Obsidian Flames booster box (EN)\nCharizard ex 199/165 — PSA 10 — cert no. 12345678"
+    "Gradé": "e.g. Charizard ex 199/165, PSA 10, cert no. 12345678\nShanks OP01-120, CGC 9.5, cert no. 87654321",
+    "Scellé et gradé": "e.g. 2 × Obsidian Flames booster box (EN)\nCharizard ex 199/165, PSA 10, cert no. 12345678"
   };
   var HINT = {
     "Scellé": "For each product: name, language and quantity.",
@@ -460,7 +460,7 @@ body{margin:0;background:var(--black);color:var(--white);
       verdict.textContent = T.ok;
       details.hidden = false;
       send.disabled = false;
-      subject.value = 'Rachat — ' + typ.value + ' — ' + lic.value + ' — ' + opt.value;
+      subject.value = 'Rachat - ' + typ.value + ' - ' + lic.value + ' - ' + opt.value;
     } else {
       verdict.className = 'rc-verdict';
       verdict.textContent = T.attente;

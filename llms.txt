@@ -25,14 +25,14 @@ Chaque machine est accessible en libre-service pendant les heures d'ouverture de
 
 Les huit machines ont leur inventaire consultable en direct sur le site :
 
-- **La Poste de Rive** — Rue du Vieux-Collège 3, 1204 Genève · lun-ven 09:00-18:00, sam 09:00-12:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-rive.html)
-- **La Poste des Charmilles** — Promenade de l'Europe 11, 1203 Genève · lun-ven 09:00-19:00, sam 09:00-17:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-charmilles.html)
-- **La Poste du Petit-Lancy** — Rue des Bossons 88b, 1213 Petit-Lancy · lun-ven 08:00-18:00, sam 09:00-13:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-petit-lancy.html)
-- **La Poste de Plainpalais** — Rue Pictet-de-Bock 6, 1205 Genève · lun-ven 08:00-18:00, sam 09:00-16:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-plainpalais.html)
-- **La Poste de Meyrin** — Avenue de Feuillasse 24, 1217 Meyrin · lun-ven 08:30-18:00, sam 08:30-15:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-meyrin.html)
-- **La Poste de Thônex** — Rue de Genève 106, 1226 Thônex · lun-ven 08:30-18:30, sam 09:00-15:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-thonex.html)
-- **La Poste de Carouge** — Boulevard des Promenades 16, 1227 Carouge · lun-ven 08:00-18:00, sam 08:30-12:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-carouge.html)
-- **King Jouet Carouge** — Avenue Cardinal-Mermillod 36, 1227 Carouge · lun-ven 09:00-19:00, sam 09:00-18:00, dimanche fermé · [stock en direct](https://boosterstop.com/fr/stock.html?machine=7)
+- **La Poste de Rive**, Rue du Vieux-Collège 3, 1204 Genève · lun-ven 09:00-18:00, sam 09:00-12:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-rive.html)
+- **La Poste des Charmilles**, Promenade de l'Europe 11, 1203 Genève · lun-ven 09:00-19:00, sam 09:00-17:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-charmilles.html)
+- **La Poste du Petit-Lancy**, Rue des Bossons 88b, 1213 Petit-Lancy · lun-ven 08:00-18:00, sam 09:00-13:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-petit-lancy.html)
+- **La Poste de Plainpalais**, Rue Pictet-de-Bock 6, 1205 Genève · lun-ven 08:00-18:00, sam 09:00-16:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-plainpalais.html)
+- **La Poste de Meyrin**, Avenue de Feuillasse 24, 1217 Meyrin · lun-ven 08:30-18:00, sam 08:30-15:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-meyrin.html)
+- **La Poste de Thônex**, Rue de Genève 106, 1226 Thônex · lun-ven 08:30-18:30, sam 09:00-15:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-thonex.html)
+- **La Poste de Carouge**, Boulevard des Promenades 16, 1227 Carouge · lun-ven 08:00-18:00, sam 08:30-12:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-carouge.html)
+- **King Jouet Carouge**, Avenue Cardinal-Mermillod 36, 1227 Carouge · lun-ven 09:00-19:00, sam 09:00-18:00, dimanche fermé · [stock en direct](https://boosterstop.com/fr/stock.html?machine=7)
 
 Vue d'ensemble : [tous les distributeurs de Genève](https://boosterstop.com/fr/distributeurs-geneve.html) · [version anglaise](https://boosterstop.com/distributeurs-geneve.html)
 
@@ -49,7 +49,7 @@ Pour chaque quartier encore dépourvu de distributeur, une page indique la machi
 - [Stock en direct](https://boosterstop.com/fr/stock.html) : inventaire en temps réel de chaque machine, rail par rail, avec prix et quantités restantes.
 - [Expansion du réseau](https://boosterstop.com/fr/expansion.html) : villes et quartiers où BoosterStop est actif ou prévu.
 - [Newsletter](https://boosterstop.com/fr/newsletter.html) : inscription aux nouveautés et promotions.
-- [Accueillir un distributeur](https://boosterstop.com/fr/installer-un-distributeur.html) : page destinée aux gérants de lieux souhaitant héberger une machine — répartition des rôles, types de lieux recherchés, formulaire de qualification.
+- [Accueillir un distributeur](https://boosterstop.com/fr/installer-un-distributeur.html) : page destinée aux gérants de lieux souhaitant héberger une machine : répartition des rôles, types de lieux recherchés, formulaire de qualification.
 - [Rachat Pokémon et One Piece](https://boosterstop.com/fr/rachat-pokemon-one-piece.html) : BoosterStop rachète les produits scellés (displays, coffrets Dresseur d'élite, coffrets, bundles, cartons) et les cartes gradées (PSA, CGC, Beckett, PCA) Pokémon et One Piece, en Suisse et en Europe uniquement. Pas de cartes non gradées, de vrac ni d'autres licences. Estimation gratuite et sans engagement via un formulaire.
 - [Espace presse](https://boosterstop.com/fr/presse.html) : faits, chiffres et contact pour les rédactions.
 - [Confidentialité et cookies](https://boosterstop.com/fr/privacy.html) : politique de protection des données (nLPD suisse et RGPD).

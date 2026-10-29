@@ -6,14 +6,14 @@ page: stock
 <html lang="en">
 <head>
 {% include head.html %}
-<title>Live Stock — BoosterStop | Real-time TCG vending machine inventory</title>
-<meta name="description" content="Check the real-time stock of every BoosterStop TCG vending machine in Geneva. See what's inside each machine, request a restock or suggest a new product.">
+<title>Live stock of our TCG vending machines | BoosterStop</title>
+<meta name="description" content="Real-time stock of the BoosterStop machines in Geneva, slot by slot. See what is inside each machine, request a restock or suggest a new product.">
 {% include hreflang.html %}
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
-<meta property="og:title" content="Live Stock — BoosterStop">
-<meta property="og:description" content="Real-time inventory of every BoosterStop TCG vending machine in Geneva.">
+<meta property="og:title" content="Live stock | BoosterStop">
+<meta property="og:description" content="Real-time inventory of every connected BoosterStop machine in Geneva.">
 <meta property="og:url" content="https://boosterstop.com/stock.html">
 <meta property="og:image" content="https://boosterstop.com/logo.png">
 <style>
@@ -242,7 +242,7 @@ page: stock
 <!-- COUNTRY TABS -->
 <div class="country-tabs-wrap">
   <div class="country-tabs">
-    <button class="country-tab active" onclick="switchCountry('ch', this)">🇨🇭 <span>Switzerland — Geneva</span></button>
+    <button class="country-tab active" onclick="switchCountry('ch', this)">🇨🇭 <span>Switzerland: Geneva</span></button>
     <button class="country-tab" onclick="switchCountry('be', this)">🇧🇪 <span>Belgium</span></button>
     <button class="country-tab" onclick="switchCountry('fr', this)">🇫🇷 <span>France</span> <span class="soon-pill">Soon</span></button>
     <button class="country-tab" onclick="switchCountry('uae', this)">🇦🇪 <span>UAE</span> <span class="soon-pill">Soon</span></button>
@@ -312,7 +312,7 @@ page: stock
 
   <div class="machine-view" id="machineView">
     <div class="mv-head">
-      <div class="mv-title">Inside the machine — <span>live</span></div>
+      <div class="mv-title">Inside the machine: <span>live</span></div>
       <button class="new-product-btn" onclick="openNewProductModal()">💡 Suggest a new product</button>
     </div>
     <div id="floorsContainer">
@@ -365,7 +365,7 @@ page: stock
 <div class="coming-soon-country" id="panel-fr">
   <div class="csc-inner">
     <div class="csc-flag">🇫🇷</div>
-    <div class="csc-title">France — Launching Soon</div>
+    <div class="csc-title">France: Launching Soon</div>
     <p class="csc-sub">Border towns first, then the major cities. Leave your email and be the first to know when we go live.</p>
     <div class="notify-form">
       <input type="email" id="notifyFR" placeholder="you@example.com">
@@ -380,7 +380,7 @@ page: stock
 <div class="coming-soon-country" id="panel-uae">
   <div class="csc-inner">
     <div class="csc-flag">🇦🇪</div>
-    <div class="csc-title">UAE — Launching Soon</div>
+    <div class="csc-title">UAE: Launching Soon</div>
     <p class="csc-sub">Dubai and Abu Dhabi are on the roadmap. Leave your email and be the first to know when we go live.</p>
     <div class="notify-form">
       <input type="email" id="notifyUAE" placeholder="you@example.com">
@@ -450,12 +450,12 @@ const MACHINES = [
 // worker = index appelé sur le Cloudflare Worker. null = machine installée,
 // mais stock live pas encore connecté → message « bientôt » à la place des étages.
 const FLOORS = [
-  { label: { en: 'Floor 1 — top', fr: 'Étage 1 — haut' }, min: 10, max: 19 },
+  { label: { en: 'Floor 1 (top)', fr: 'Étage 1 (haut)' }, min: 10, max: 19 },
   { label: { en: 'Floor 2', fr: 'Étage 2' }, min: 20, max: 29 },
   { label: { en: 'Floor 3', fr: 'Étage 3' }, min: 30, max: 39 },
   { label: { en: 'Floor 4', fr: 'Étage 4' }, min: 40, max: 49 },
   { label: { en: 'Floor 5', fr: 'Étage 5' }, min: 50, max: 53 },
-  { label: { en: 'Floor 6 — bottom', fr: 'Étage 6 — bas' }, min: 60, max: 62 }
+  { label: { en: 'Floor 6 (bottom)', fr: 'Étage 6 (bas)' }, min: 60, max: 62 }
 ];
 
 // Rails hors des plages FLOORS (machines à 60 emplacements numérotées
@@ -755,7 +755,7 @@ async function submitRestock() {
         product: product,
         email: document.getElementById('modalEmail').value.trim(),
         notes: document.getElementById('modalNotes').value.trim(),
-        _subject: '[BoosterStop] ' + (modalMode === 'restock' ? 'Restock request' : 'New product suggestion') + ' — ' + MACHINES[currentMachine].name
+        _subject: '[BoosterStop] ' + (modalMode === 'restock' ? 'Restock request' : 'New product suggestion') + ' - ' + MACHINES[currentMachine].name
       })
     });
     if (res.ok) {
@@ -778,7 +778,7 @@ async function notifyMe(code) {
     const res = await fetch(code === 'fr' ? FORMSPREE.notify_fr : FORMSPREE.notify_uae, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email: email, country: code === 'fr' ? 'France' : 'UAE', _subject: '[BoosterStop] Launch notification — ' + (code === 'fr' ? 'France' : 'UAE') })
+      body: JSON.stringify({ email: email, country: code === 'fr' ? 'France' : 'UAE', _subject: '[BoosterStop] Launch notification - ' + (code === 'fr' ? 'France' : 'UAE') })
     });
     if (res.ok) { ok.style.display = 'block'; input.value = ''; }
   } catch (e) {}

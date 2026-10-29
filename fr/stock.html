@@ -6,14 +6,14 @@ page: stock
 <html lang="fr">
 <head>
 {% include head.html %}
-<title>Stock en Direct — BoosterStop | Inventaire temps réel des distributeurs</title>
-<meta name="description" content="Consultez en temps réel le stock de chaque distributeur TCG BoosterStop à Genève. Voyez ce qu'il y a dans chaque machine, demandez un réassort ou suggérez un nouveau produit.">
+<title>Stock en direct de nos distributeurs TCG | BoosterStop</title>
+<meta name="description" content="Le stock en temps réel des distributeurs BoosterStop à Genève, rail par rail. Voyez ce qu'il y a dans chaque machine, demandez un réassort ou suggérez un produit.">
 {% include hreflang.html %}
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
-<meta property="og:title" content="Stock en Direct — BoosterStop">
-<meta property="og:description" content="Inventaire en temps réel de chaque distributeur TCG BoosterStop à Genève.">
+<meta property="og:title" content="Stock en direct | BoosterStop">
+<meta property="og:description" content="Inventaire en temps réel de chaque distributeur BoosterStop connecté à Genève.">
 <meta property="og:url" content="https://boosterstop.com/fr/stock.html">
 <meta property="og:image" content="https://boosterstop.com/logo.png">
 <style>
@@ -242,7 +242,7 @@ page: stock
 <!-- COUNTRY TABS -->
 <div class="country-tabs-wrap">
   <div class="country-tabs">
-    <button class="country-tab active" onclick="switchCountry('ch', this)">🇨🇭 <span>Suisse — Genève</span></button>
+    <button class="country-tab active" onclick="switchCountry('ch', this)">🇨🇭 <span>Suisse : Genève</span></button>
     <button class="country-tab" onclick="switchCountry('be', this)">🇧🇪 <span>Belgique</span></button>
     <button class="country-tab" onclick="switchCountry('fr', this)">🇫🇷 <span>France</span> <span class="soon-pill">Bientôt</span></button>
     <button class="country-tab" onclick="switchCountry('uae', this)">🇦🇪 <span>Émirats</span> <span class="soon-pill">Bientôt</span></button>
@@ -312,7 +312,7 @@ page: stock
 
   <div class="machine-view" id="machineView">
     <div class="mv-head">
-      <div class="mv-title">Dans la machine — <span>en direct</span></div>
+      <div class="mv-title">Dans la machine : <span>en direct</span></div>
       <button class="new-product-btn" onclick="openNewProductModal()">💡 Suggérer un nouveau produit</button>
     </div>
     <div id="floorsContainer">
@@ -365,7 +365,7 @@ page: stock
 <div class="coming-soon-country" id="panel-fr">
   <div class="csc-inner">
     <div class="csc-flag">🇫🇷</div>
-    <div class="csc-title">France — Bientôt disponible</div>
+    <div class="csc-title">France : Bientôt disponible</div>
     <p class="csc-sub">Les villes frontalières d'abord, puis les grandes villes. Laissez votre email pour être prévenu du lancement.</p>
     <div class="notify-form">
       <input type="email" id="notifyFR" placeholder="vous@email.com">
@@ -380,7 +380,7 @@ page: stock
 <div class="coming-soon-country" id="panel-uae">
   <div class="csc-inner">
     <div class="csc-flag">🇦🇪</div>
-    <div class="csc-title">Émirats — Bientôt disponible</div>
+    <div class="csc-title">Émirats : Bientôt disponible</div>
     <p class="csc-sub">Dubaï et Abu Dhabi sont sur la feuille de route. Laissez votre email pour être prévenu du lancement.</p>
     <div class="notify-form">
       <input type="email" id="notifyUAE" placeholder="vous@exemple.com">
@@ -450,12 +450,12 @@ const MACHINES = [
 // worker = index appelé sur le Cloudflare Worker. null = machine installée,
 // mais stock live pas encore connecté → message « bientôt » à la place des étages.
 const FLOORS = [
-  { label: { en: 'Floor 1 — top', fr: 'Étage 1 — haut' }, min: 10, max: 19 },
+  { label: { en: 'Floor 1 (top)', fr: 'Étage 1 (haut)' }, min: 10, max: 19 },
   { label: { en: 'Floor 2', fr: 'Étage 2' }, min: 20, max: 29 },
   { label: { en: 'Floor 3', fr: 'Étage 3' }, min: 30, max: 39 },
   { label: { en: 'Floor 4', fr: 'Étage 4' }, min: 40, max: 49 },
   { label: { en: 'Floor 5', fr: 'Étage 5' }, min: 50, max: 53 },
-  { label: { en: 'Floor 6 — bottom', fr: 'Étage 6 — bas' }, min: 60, max: 62 }
+  { label: { en: 'Floor 6 (bottom)', fr: 'Étage 6 (bas)' }, min: 60, max: 62 }
 ];
 
 // Rails hors des plages FLOORS (machines à 60 emplacements numérotées
@@ -755,7 +755,7 @@ async function submitRestock() {
         product: product,
         email: document.getElementById('modalEmail').value.trim(),
         notes: document.getElementById('modalNotes').value.trim(),
-        _subject: '[BoosterStop] ' + (modalMode === 'restock' ? 'Restock request' : 'New product suggestion') + ' — ' + MACHINES[currentMachine].name
+        _subject: '[BoosterStop] ' + (modalMode === 'restock' ? 'Restock request' : 'New product suggestion') + ' - ' + MACHINES[currentMachine].name
       })
     });
     if (res.ok) {
@@ -778,7 +778,7 @@ async function notifyMe(code) {
     const res = await fetch(code === 'fr' ? FORMSPREE.notify_fr : FORMSPREE.notify_uae, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ email: email, country: code === 'fr' ? 'France' : 'UAE', _subject: '[BoosterStop] Launch notification — ' + (code === 'fr' ? 'France' : 'UAE') })
+      body: JSON.stringify({ email: email, country: code === 'fr' ? 'France' : 'UAE', _subject: '[BoosterStop] Launch notification - ' + (code === 'fr' ? 'France' : 'UAE') })
     });
     if (res.ok) { ok.style.display = 'block'; input.value = ''; }
   } catch (e) {}

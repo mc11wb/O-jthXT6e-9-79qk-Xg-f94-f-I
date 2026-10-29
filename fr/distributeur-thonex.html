@@ -166,9 +166,9 @@ body{
 <section class="bsm-sec">
   <h2>Les autres distributeurs à proximité</h2>
   <ul class="bsm-near">
-    <li><a href="/fr/distributeur-geneve-rive.html">Rive</a> <span>— Rue du Vieux-Collège 3, 1204 Genève</span></li>
-    <li><a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a> <span>— Rue Pictet-de-Bock 6, 1205 Genève</span></li>
-    <li><a href="/fr/distributeur-carouge.html">Carouge</a> <span>— Boulevard des Promenades 16, 1227 Carouge</span></li>
+    <li><a href="/fr/distributeur-geneve-rive.html">Rive</a><span>, Rue du Vieux-Collège 3, 1204 Genève</span></li>
+    <li><a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a><span>, Rue Pictet-de-Bock 6, 1205 Genève</span></li>
+    <li><a href="/fr/distributeur-carouge.html">Carouge</a><span>, Boulevard des Promenades 16, 1227 Carouge</span></li>
   </ul>
 </section>
 
@@ -199,7 +199,7 @@ body{
     {
       "@type": "Store",
       "@id": "https://boosterstop.com/fr/distributeur-thonex.html#store",
-      "name": "BoosterStop — La Poste de Thônex",
+      "name": "BoosterStop La Poste de Thônex",
       "description": "Distributeur automatique de cartes à collectionner en libre-service, dans La Poste de Thônex à Thônex.",
       "url": "https://boosterstop.com/fr/distributeur-thonex.html",
       "image": "https://boosterstop.com/front%20transparent.png",
@@ -598,7 +598,7 @@ body{
     if (!el) return;
     var now = new Date();
     if (isHoliday(now)) {
-      el.textContent = "Fermé — jour férié";
+      el.textContent = "Fermé (jour férié)";
       el.classList.add('shut');
       return;
     }
@@ -695,7 +695,7 @@ body{
   }
 
   function load() {
-    if (WORKER_INDEX === null) { idle("Cette machine est installée et approvisionnée. Son inventaire en direct arrive très prochainement — en attendant, la page Stock Live montre le réseau complet.", ''); return; }
+    if (WORKER_INDEX === null) { idle("Cette machine est installée et approvisionnée. Son inventaire en direct arrive très prochainement. En attendant, la page Stock Live montre le réseau complet.", ''); return; }
     fetch(WORKER + '/stock?machine=' + WORKER_INDEX, { cache: 'no-store' })
       .then(function (r) { return r.json(); })
       .then(function (data) {
