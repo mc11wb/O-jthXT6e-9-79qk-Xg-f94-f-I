@@ -21,6 +21,7 @@ en:
   f_blog: Blog
   f_presse: Press
   f_avis: "★ Leave a review"
+  f_legal: "247 Distribution SNC in Switzerland and BoosterStop Belgium SRL in Belgium"
   f_privacy: "Privacy &amp; Cookies"
   m_lieux: Locations
   m_machines: Machines
@@ -68,6 +69,7 @@ fr:
   f_blog: Blog
   f_presse: Presse
   f_avis: "★ Donner un avis"
+  f_legal: "247 Distribution SNC en Suisse et BoosterStop Belgium SRL en Belgique"
   f_privacy: Confidentialité
   m_lieux: Emplacements
   m_machines: Machines
@@ -115,6 +117,7 @@ nl:
   f_blog: Blog
   f_presse: Pers
   f_avis: "★ Schrijf een review"
+  f_legal: "247 Distribution SNC in Zwitserland en BoosterStop Belgium SRL in België"
   f_privacy: "Privacy &amp; cookies"
   m_lieux: Locaties
   m_machines: Automaten
@@ -162,6 +165,7 @@ ar:
   f_blog: المدونة
   f_presse: الصحافة
   f_avis: "★ اترك تقييماً"
+  f_legal: "247 Distribution SNC في سويسرا وBoosterStop Belgium SRL في بلجيكا"
   f_privacy: "الخصوصية وملفات تعريف الارتباط"
   m_lieux: المواقع
   m_machines: الأجهزة

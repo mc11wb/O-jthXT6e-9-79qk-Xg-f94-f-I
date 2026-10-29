@@ -82,7 +82,7 @@
     <a href="{% include lien.html f="presse.html" %}" class="footer-press"{% if pid == "presse" %} style="color:var(--white)"{% endif %}>{{ t.f_presse }}</a>
     <a href="{{ site.data.avis[tp_key] }}" class="footer-tp" target="_blank" rel="noopener">{{ t.f_avis }}</a>
     <a href="{% include lien.html f="privacy.html" %}" class="footer-privacy">{{ t.f_privacy }}</a>
-    <p>© {{ site.time | date: "%Y" }} BoosterStop, 247 Distribution SNC</p>
+    <p>© {{ site.time | date: "%Y" }} BoosterStop. {{ t.f_legal }}</p>
   </div>
 </footer>
 
