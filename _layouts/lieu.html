@@ -284,7 +284,7 @@
     data.page_lang = {{ page.lang | jsonify }};
     data.origine = {{ page.url | jsonify }};
     data._replyto = data.email;
-    data._subject = '[BoosterStop] Accueillir une machine — ' + typeFr;
+    data._subject = '[BoosterStop] Accueillir une machine - ' + typeFr;
     fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
       .then(function (res) {
         if (!res.ok) throw new Error('http ' + res.status);

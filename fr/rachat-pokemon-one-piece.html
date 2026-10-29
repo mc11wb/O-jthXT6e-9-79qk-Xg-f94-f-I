@@ -213,7 +213,7 @@ body{margin:0;background:var(--black);color:var(--white);
 
   <div class="rc-form" id="rcBox">
     <form id="rcForm" action="https://formspree.io/f/xkjwpvgy" method="POST">
-      <input type="hidden" name="_subject" id="rcSubject" value="Rachat — demande depuis le site">
+      <input type="hidden" name="_subject" id="rcSubject" value="Rachat - demande depuis le site">
       <input type="hidden" name="origine" value="page rachat-pokemon-one-piece (FR)">
       <div class="rc-hp" aria-hidden="true"><label>Ne pas remplir <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
 
@@ -261,7 +261,7 @@ body{margin:0;background:var(--black);color:var(--white);
 
       <div class="rc-details" id="rcDetails">
         <label for="rcLot">Votre lot, une ligne par produit ou par carte</label>
-        <textarea id="rcLot" name="lot" required placeholder="Ex. : 2 × display Flammes Obsidiennes (FR)&#10;1 × coffret Dresseur d&#x27;élite Évolutions Prismatiques (FR)&#10;Dracaufeu ex 199/165 — PSA 10 — certificat n° 12345678"></textarea>
+        <textarea id="rcLot" name="lot" required placeholder="Ex. : 2 × display Flammes Obsidiennes (FR)&#10;1 × coffret Dresseur d&#x27;élite Évolutions Prismatiques (FR)&#10;Dracaufeu ex 199/165, PSA 10, certificat n° 12345678"></textarea>
         <p class="rc-hint" id="rcLotHint">Pour le scellé : produit, langue et quantité. Pour le gradé : carte, société, note et numéro de certificat.</p>
 
         <div class="rc-row">
@@ -412,8 +412,8 @@ body{margin:0;background:var(--black);color:var(--white);
   };
   var EX = {
     "Scellé": "Ex. : 2 × display Flammes Obsidiennes (FR)\n1 × coffret Dresseur d'élite Évolutions Prismatiques (FR)\n1 × display One Piece OP-09 (EN)",
-    "Gradé": "Ex. : Dracaufeu ex 199/165 — PSA 10 — certificat n° 12345678\nShanks OP01-120 — CGC 9.5 — certificat n° 87654321",
-    "Scellé et gradé": "Ex. : 2 × display Flammes Obsidiennes (FR)\nDracaufeu ex 199/165 — PSA 10 — certificat n° 12345678"
+    "Gradé": "Ex. : Dracaufeu ex 199/165, PSA 10, certificat n° 12345678\nShanks OP01-120, CGC 9.5, certificat n° 87654321",
+    "Scellé et gradé": "Ex. : 2 × display Flammes Obsidiennes (FR)\nDracaufeu ex 199/165, PSA 10, certificat n° 12345678"
   };
   var HINT = {
     "Scellé": "Pour chaque produit : nom, langue et quantité.",
@@ -460,7 +460,7 @@ body{margin:0;background:var(--black);color:var(--white);
       verdict.textContent = T.ok;
       details.hidden = false;
       send.disabled = false;
-      subject.value = 'Rachat — ' + typ.value + ' — ' + lic.value + ' — ' + opt.value;
+      subject.value = 'Rachat - ' + typ.value + ' - ' + lic.value + ' - ' + opt.value;
     } else {
       verdict.className = 'rc-verdict';
       verdict.textContent = T.attente;

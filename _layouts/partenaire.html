@@ -355,7 +355,7 @@
     data.page_lang = {{ page.lang | jsonify }};
     data.pays_nom = paysFr;
     data._replyto = data.email;
-    data._subject = '[BoosterStop] Partenaire local — ' + paysFr;
+    data._subject = '[BoosterStop] Partenaire local - ' + paysFr;
     fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
       .then(function (res) {
         if (!res.ok) throw new Error('http ' + res.status);

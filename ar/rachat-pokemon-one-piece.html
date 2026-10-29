@@ -214,7 +214,7 @@ body{margin:0;background:var(--black);color:var(--white);
 
   <div class="rc-form" id="rcBox">
     <form id="rcForm" action="https://formspree.io/f/xkjwpvgy" method="POST">
-      <input type="hidden" name="_subject" id="rcSubject" value="Rachat — demande depuis le site">
+      <input type="hidden" name="_subject" id="rcSubject" value="Rachat - demande depuis le site">
       <input type="hidden" name="origine" value="page rachat-pokemon-one-piece (EN)">
       <div class="rc-hp" aria-hidden="true"><label>اتركه فارغاً <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
 
@@ -262,7 +262,7 @@ body{margin:0;background:var(--black);color:var(--white);
 
       <div class="rc-details" id="rcDetails">
         <label for="rcLot">مجموعتك، سطر لكل منتج أو بطاقة</label>
-        <textarea id="rcLot" name="lot" required placeholder="مثال: 2 × صندوق بوستر Obsidian Flames (EN)&#10;1 × صندوق Elite Trainer لـ Prismatic Evolutions (EN)&#10;Charizard ex 199/165 — PSA 10 — شهادة رقم 12345678"></textarea>
+        <textarea id="rcLot" name="lot" required placeholder="مثال: 2 × صندوق بوستر Obsidian Flames (EN)&#10;1 × صندوق Elite Trainer لـ Prismatic Evolutions (EN)&#10;Charizard ex 199/165, PSA 10, شهادة رقم 12345678"></textarea>
         <p class="rc-hint" id="rcLotHint">المختوم: المنتج واللغة والكمية. المصنّف: البطاقة والشركة والدرجة ورقم الشهادة.</p>
 
         <div class="rc-row">
@@ -344,8 +344,8 @@ body{margin:0;background:var(--black);color:var(--white);
   };
   var EX = {
     "Scellé": "مثال: 2 × صندوق بوستر Obsidian Flames (EN)\n1 × صندوق Elite Trainer لـ Prismatic Evolutions (EN)\n1 × صندوق بوستر One Piece OP-09 (EN)",
-    "Gradé": "مثال: Charizard ex 199/165 — PSA 10 — شهادة رقم 12345678\nShanks OP01-120 — CGC 9.5 — شهادة رقم 87654321",
-    "Scellé et gradé": "مثال: 2 × صندوق بوستر Obsidian Flames (EN)\nCharizard ex 199/165 — PSA 10 — شهادة رقم 12345678"
+    "Gradé": "مثال: Charizard ex 199/165, PSA 10, شهادة رقم 12345678\nShanks OP01-120, CGC 9.5, شهادة رقم 87654321",
+    "Scellé et gradé": "مثال: 2 × صندوق بوستر Obsidian Flames (EN)\nCharizard ex 199/165, PSA 10, شهادة رقم 12345678"
   };
   var HINT = {
     "Scellé": "لكل منتج: الاسم واللغة والكمية.",
@@ -392,7 +392,7 @@ body{margin:0;background:var(--black);color:var(--white);
       verdict.textContent = T.ok;
       details.hidden = false;
       send.disabled = false;
-      subject.value = 'Rachat — ' + typ.value + ' — ' + lic.value + ' — ' + opt.value;
+      subject.value = 'Rachat - ' + typ.value + ' - ' + lic.value + ' - ' + opt.value;
     } else {
       verdict.className = 'rc-verdict';
       verdict.textContent = T.attente;

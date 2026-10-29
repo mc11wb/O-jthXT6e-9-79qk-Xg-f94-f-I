@@ -509,10 +509,10 @@ var NL_PAYS = {
           statut_pays: p.statut,
           langue: NL_LANG,
           tcgs: tcgs.join(', '),
-          consent: 'Yes — opted in to marketing emails (' + code + ')',
+          consent: 'Yes, opted in to marketing emails (' + code + ')',
           consent_texte: p.consent,
           consent_timestamp: new Date().toISOString(),
-          _subject: '[BoosterStop ' + code + '] Newsletter ' + code + ' — ' + tcgs.join(', ')
+          _subject: '[BoosterStop ' + code + '] Newsletter ' + code + ' - ' + tcgs.join(', ')
         })
       });
       if(res.ok){

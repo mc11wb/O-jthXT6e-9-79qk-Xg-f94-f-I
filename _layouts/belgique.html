@@ -142,7 +142,7 @@ body{
 <script type="application/ld+json">
 {%- if page.machine %}
 {"@context":"https://schema.org","@graph":[
- {"@type":"Store","@id":"{{ site.url }}{{ page.url }}#store","name":{{ "BoosterStop — " | append: bm.nom | jsonify }},"url":"{{ site.url }}{{ page.url }}","description":{{ p_desc | jsonify }},"brand":{"@type":"Brand","name":"BoosterStop"},
+ {"@type":"Store","@id":"{{ site.url }}{{ page.url }}#store","name":{{ "BoosterStop " | append: bm.nom | jsonify }},"url":"{{ site.url }}{{ page.url }}","description":{{ p_desc | jsonify }},"brand":{"@type":"Brand","name":"BoosterStop"},
   "address":{"@type":"PostalAddress","streetAddress":{{ b_rue | jsonify }},"postalCode":"{{ bm.cp }}","addressLocality":{{ b_ville | jsonify }},"addressCountry":"BE"},
   "geo":{"@type":"GeoCoordinates","latitude":{{ bm.lat }},"longitude":{{ bm.lng }}},
   "containedInPlace":{"@type":"GroceryStore","name":{{ bm.nom | jsonify }}}},
@@ -211,7 +211,7 @@ body{
   <h2>{{ bt.autres_h }}</h2>
   <ul class="bsm-near">
     {%- for o in be_ms %}{% if o.id != bm.id %}
-    <li><a href="{% include lien.html f=o.fichier %}">{{ o[k_court] | default: o.court }}</a> <span>— {{ o[k_adr] | default: o.adresse }}</span></li>
+    <li><a href="{% include lien.html f=o.fichier %}">{{ o[k_court] | default: o.court }}</a><span>, {{ o[k_adr] | default: o.adresse }}</span></li>
     {%- endif %}{% endfor %}
   </ul>
 </section>

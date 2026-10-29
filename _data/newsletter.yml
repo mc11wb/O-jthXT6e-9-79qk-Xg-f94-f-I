@@ -135,9 +135,9 @@ tcgs:
 
 textes:
   en:
-    title: "Newsletter — BoosterStop | New drops & exclusive promos"
+    title: "BoosterStop newsletter: new drops and exclusive promos"
     description: "Join the BoosterStop newsletter for your country: Switzerland or Belgium. Get a 10% welcome code valid in your country's machines, plus early access to new TCG drops and promos."
-    og_title: "BoosterStop Newsletter — 10% welcome code"
+    og_title: "BoosterStop newsletter: 10% welcome code"
     og_description: "New TCG drops and exclusive promos, straight to your inbox. One newsletter per country, each with its own welcome code."
     eyebrow: "New drops · Exclusive promos"
     h1: "Never miss a <span>drop.</span>"
@@ -180,9 +180,9 @@ textes:
     pr_err_date: "Pick both the day and the month."
     stock: 'Looking for live stock? Check real-time availability on the <a href="/stock.html">Live Stock</a> page.'
   fr:
-    title: "Newsletter — BoosterStop | Nouveautés &amp; promos exclusives"
+    title: "Newsletter BoosterStop : nouveautés et promos exclusives"
     description: "Rejoignez la newsletter BoosterStop de votre pays, Suisse ou Belgique : code de bienvenue -10% valable dans les distributeurs de votre pays, nouveautés TCG en avant-première et promos."
-    og_title: "Newsletter BoosterStop — code de bienvenue -10%"
+    og_title: "Newsletter BoosterStop : code de bienvenue -10%"
     og_description: "Les nouveautés TCG et des promos exclusives, directement dans votre boîte mail. Une newsletter par pays, chacune avec son code de bienvenue."
     eyebrow: "Nouveautés · Promos exclusives"
     h1: "Ne ratez plus <span>rien.</span>"
@@ -225,9 +225,9 @@ textes:
     pr_err_date: "Choisissez le jour et le mois."
     stock: 'Vous cherchez le stock en temps réel ? Consultez la disponibilité sur la page <a href="/fr/stock.html">Stock Live</a>.'
   nl:
-    title: "Nieuwsbrief — BoosterStop | Nieuwe releases &amp; exclusieve promo's"
+    title: "BoosterStop-nieuwsbrief: nieuwe releases en exclusieve promo's"
     description: "Schrijf je in voor de BoosterStop-nieuwsbrief van jouw land, België of Zwitserland: een welkomstcode van 10% geldig in de automaten van jouw land, plus vroege toegang tot nieuwe TCG-releases en promo's."
-    og_title: "BoosterStop-nieuwsbrief — welkomstcode van 10%"
+    og_title: "BoosterStop-nieuwsbrief: welkomstcode van 10%"
     og_description: "Nieuwe TCG-releases en exclusieve promo's, rechtstreeks in je mailbox. Eén nieuwsbrief per land, elk met een eigen welkomstcode."
     eyebrow: "Nieuwe releases · Exclusieve promo's"
     h1: "Mis geen enkele <span>release.</span>"
@@ -270,9 +270,9 @@ textes:
     pr_err_date: "Kies de dag en de maand."
     stock: 'Op zoek naar de live voorraad? Bekijk de realtime beschikbaarheid op de pagina <a href="/nl/stock.html">Live voorraad</a>.'
   ar:
-    title: "النشرة الإخبارية — BoosterStop | إصدارات جديدة وعروض حصرية"
+    title: "نشرة BoosterStop الإخبارية: إصدارات جديدة وعروض حصرية"
     description: "اشترك في نشرة BoosterStop الخاصة ببلدك: احصل على رمز ترحيب بخصم 10% صالح في آلات بلدك، مع وصول مبكر إلى إصدارات TCG الجديدة والعروض."
-    og_title: "نشرة BoosterStop — رمز ترحيب بخصم 10%"
+    og_title: "نشرة BoosterStop: رمز ترحيب بخصم 10%"
     og_description: "إصدارات TCG الجديدة وعروض حصرية، مباشرة إلى بريدك. نشرة لكل بلد، ولكل منها رمز ترحيب خاص."
     eyebrow: "إصدارات جديدة · عروض حصرية"
     h1: "لا تفوّت <span>أي إصدار.</span>"
