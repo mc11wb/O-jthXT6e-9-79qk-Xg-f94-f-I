@@ -1,7 +1,7 @@
 {
  "machines": {
   "carouge": {
-   "maj": "2026-10-31T11:21:16+01:00",
+   "maj": "2026-11-01T12:14:02+01:00",
    "ok": true,
    "produits": [
     {
@@ -67,7 +67,7 @@
     {
      "nom": "🇫🇷 B28 Booster Dragon Ball Super",
      "prix": "6.90",
-     "qte": 12
+     "qte": 10
     },
     {
      "nom": "🇬🇧 World Championship 2026 Booster Yu-Gi-Oh!",
@@ -97,18 +97,18 @@
    ]
   },
   "charmilles": {
-   "maj": "2026-10-31T11:21:16+01:00",
+   "maj": "2026-11-01T12:14:02+01:00",
    "ok": true,
    "produits": [
-    {
-     "nom": "🇨🇳 Storm Emeralda Mega Evolution Pokémon",
-     "prix": "5.90",
-     "qte": 81
-    },
     {
      "nom": "🇫🇷 Chaos Ascendant Booster Pokémon",
      "prix": "8.90",
      "qte": 81
+    },
+    {
+     "nom": "🇨🇳 Storm Emeralda Mega Evolution Pokémon",
+     "prix": "5.90",
+     "qte": 80
     },
     {
      "nom": "🇫🇷 Équilibre Parfait Booster Pokémon",
@@ -133,12 +133,12 @@
     {
      "nom": "🇫🇷 Nuit Noire Booster Pokémon",
      "prix": "8.90",
-     "qte": 30
+     "qte": 27
     },
     {
      "nom": "🇯🇵 Inferno X Pokemon Booster",
      "prix": "7.90",
-     "qte": 23
+     "qte": 22
     },
     {
      "nom": "🇬🇧 2nd Edition Naruto Mythos TCG First set",
@@ -156,14 +156,14 @@
      "qte": 17
     },
     {
-     "nom": "🇫🇷 Flammes Obsidiennes Booster Pokémon",
-     "prix": "7.90",
-     "qte": 16
-    },
-    {
      "nom": "🇯🇵ST-01 Dragon Ball Fusion World",
      "prix": "10.90",
      "qte": 15
+    },
+    {
+     "nom": "🇫🇷 Flammes Obsidiennes Booster Pokémon",
+     "prix": "7.90",
+     "qte": 14
     },
     {
      "nom": "🇯🇵OP16 Booster One Piece",
@@ -186,14 +186,14 @@
      "qte": 12
     },
     {
-     "nom": "🇨🇳 Team Rocket Booster Pokémon",
-     "prix": "4.90",
-     "qte": 8
-    },
-    {
      "nom": "🇫🇷 Marvel Super Heroes Booster Magic",
      "prix": "8.90",
      "qte": 7
+    },
+    {
+     "nom": "🇨🇳 Team Rocket Booster Pokémon",
+     "prix": "4.90",
+     "qte": 6
     },
     {
      "nom": "Pochettes Cartes Ultra Pro",
@@ -208,7 +208,7 @@
    ]
   },
   "king-jouet-carouge": {
-   "maj": "2026-10-31T11:21:16+01:00",
+   "maj": "2026-11-01T12:14:02+01:00",
    "ok": true,
    "produits": [
     {
@@ -229,7 +229,7 @@
     {
      "nom": "🇯🇵 OP17 Booster The World's Strongest Warriors",
      "prix": "7.90",
-     "qte": 63
+     "qte": 56
     },
     {
      "nom": "🇬🇧SHINOBI SHIREN SET 2 Naruto Booster",
@@ -239,17 +239,22 @@
     {
      "nom": "🇨🇳 Dark Crystal Blaze Booster Pokemon",
      "prix": "4.90",
-     "qte": 43
+     "qte": 40
+    },
+    {
+     "nom": "🇨🇳 30ᵉ Anniversaire Booster Pokémon",
+     "prix": "8.90",
+     "qte": 38
     },
     {
      "nom": "🇯🇵 Abyss Eye Booster Pokemon",
      "prix": "5.90",
-     "qte": 38
+     "qte": 37
     },
     {
      "nom": "🇨🇳 Team Rocket Booster Pokémon",
      "prix": "4.90",
-     "qte": 31
+     "qte": 30
     },
     {
      "nom": "🇬🇧 Azuki Gates Awakened Booster",
@@ -264,7 +269,7 @@
     {
      "nom": "🇯🇵 Ninja Spinner Pokemon Booster",
      "prix": "5.90",
-     "qte": 23
+     "qte": 22
     },
     {
      "nom": "🇫🇷 Réalité fracturée booster magic",
@@ -284,17 +289,17 @@
     {
      "nom": "🇯🇵OP16 Booster One Piece",
      "prix": "6.90",
-     "qte": 18
+     "qte": 17
     },
     {
      "nom": "🇯🇵Perfect Order Pokémon Booster",
      "prix": "4.90",
-     "qte": 16
+     "qte": 15
     },
     {
      "nom": "🇨🇳 Abyss Eye Booster Pokemon",
      "prix": "5.90",
-     "qte": 14
+     "qte": 13
     },
     {
      "nom": "🇬🇧 Marvel Spiderman Booster Magic",
@@ -314,7 +319,7 @@
     {
      "nom": "🇯🇵ST-01 Dragon Ball Fusion World",
      "prix": "10.90",
-     "qte": 11
+     "qte": 10
     },
     {
      "nom": "🇯🇵 Flamme Blanche Booster Pokemon",
@@ -329,7 +334,7 @@
     {
      "nom": "🇯🇵 OP15 Booster One Piece",
      "prix": "5.90",
-     "qte": 7
+     "qte": 4
     },
     {
      "nom": "Pochettes Cartes Ultra Pro",
@@ -344,7 +349,7 @@
    ]
   },
   "meyrin": {
-   "maj": "2026-10-31T11:21:16+01:00",
+   "maj": "2026-11-01T12:14:02+01:00",
    "ok": true,
    "produits": [
     {
@@ -365,7 +370,7 @@
     {
      "nom": "🇨🇳 Dark Crystal Blaze Booster Pokemon",
      "prix": "4.90",
-     "qte": 40
+     "qte": 39
     },
     {
      "nom": "🇨🇳 Ninja Spinner Booster Pokemon",
@@ -445,7 +450,7 @@
    ]
   },
   "petit-lancy": {
-   "maj": "2026-10-31T11:21:16+01:00",
+   "maj": "2026-11-01T12:14:02+01:00",
    "ok": true,
    "produits": [
     {
@@ -581,7 +586,7 @@
    ]
   },
   "plainpalais": {
-   "maj": "2026-10-31T11:21:16+01:00",
+   "maj": "2026-11-01T12:14:02+01:00",
    "ok": true,
    "produits": [
     {
@@ -622,17 +627,12 @@
     {
      "nom": "🇯🇵 Storm Emeralda Booster Pokemon",
      "prix": "6.90",
-     "qte": 42
+     "qte": 37
     },
     {
      "nom": "🇨🇳 Dark Crystal Blaze Booster Pokemon",
      "prix": "4.90",
-     "qte": 34
-    },
-    {
-     "nom": "🇯🇵 Mystery Graded",
-     "prix": "39.90",
-     "qte": 25
+     "qte": 32
     },
     {
      "nom": "🇬🇧 The Flash Chapitre 4 Booster DC Comics",
@@ -645,6 +645,11 @@
      "qte": 24
     },
     {
+     "nom": "🇯🇵 Mystery Graded",
+     "prix": "39.90",
+     "qte": 24
+    },
+    {
      "nom": "🇯🇵ST-01 Dragon Ball Fusion World",
      "prix": "10.90",
      "qte": 21
@@ -652,12 +657,7 @@
     {
      "nom": "🇨🇳 30ᵉ Anniversaire Booster Pokémon",
      "prix": "8.90",
-     "qte": 20
-    },
-    {
-     "nom": "🇯🇵 Mega Inferno X Booster Pokemon",
-     "prix": "6.90",
-     "qte": 19
+     "qte": 17
     },
     {
      "nom": "🇫🇷 B28 Booster Dragon Ball Super",
@@ -665,9 +665,14 @@
      "qte": 17
     },
     {
+     "nom": "🇯🇵 Mega Inferno X Booster Pokemon",
+     "prix": "6.90",
+     "qte": 17
+    },
+    {
      "nom": "Pochettes Cartes Ultra Pro",
      "prix": "2.90",
-     "qte": 12
+     "qte": 11
     },
     {
      "nom": "🇫🇷 Nuit Noire Booster Pokémon",
@@ -697,7 +702,7 @@
    ]
   },
   "rive": {
-   "maj": "2026-10-31T11:21:16+01:00",
+   "maj": "2026-11-01T12:14:02+01:00",
    "ok": true,
    "produits": [
     {
@@ -848,7 +853,7 @@
    ]
   },
   "thonex": {
-   "maj": "2026-10-31T11:21:16+01:00",
+   "maj": "2026-11-01T12:14:02+01:00",
    "ok": true,
    "produits": [
     {
@@ -869,7 +874,7 @@
     {
      "nom": "🇨🇳 30ᵉ Anniversaire Booster Pokémon",
      "prix": "8.90",
-     "qte": 33
+     "qte": 32
     },
     {
      "nom": "🇨🇳 Ninja Spinner Booster Pokemon",
@@ -934,5 +939,5 @@
    ]
   }
  },
- "maj": "2026-10-31T11:21:16+01:00"
+ "maj": "2026-11-01T12:14:02+01:00"
 }
