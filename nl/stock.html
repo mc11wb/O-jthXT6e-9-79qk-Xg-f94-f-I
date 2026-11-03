@@ -92,6 +92,20 @@ page: stock
   .machine-soon-msg .msm-sub { color: var(--text-muted); font-size: 13.5px; max-width: 440px; margin: 8px auto 0; line-height: 1.7; }
   .stock-map-wrap { border: 1px solid var(--gray-mid); border-radius: 0 0 0 0; overflow: hidden; height: 300px; position: relative; }
   #stockMap { width: 100%; height: 100%; }
+  .machine-tab[hidden] { display: none; }
+
+  /* SÉLECTEUR DE VILLE (carte Suisse) : Genève / Lausanne, posé sur la carte */
+  .map-cities { position: absolute; top: 14px; inset-inline-start: 14px; z-index: 2; display: flex; gap: 6px; }
+  .map-city { background: rgba(18,15,42,0.94); border: 1px solid var(--gray-mid); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 14px; border-radius: 2px; cursor: pointer; transition: color 0.2s, border-color 0.2s; line-height: 1; }
+  .map-city:hover { color: var(--white); border-color: rgba(232,24,60,0.5); }
+  .map-city.active { border-color: var(--red); color: var(--red); }
+  .map-city:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+  .map-city-n { display: inline-block; margin-inline-start: 7px; min-width: 18px; padding: 2px 5px; border-radius: 2px; background: rgba(255,255,255,0.07); color: var(--white); font-size: 10px; letter-spacing: 0; text-align: center; }
+  .map-city.active .map-city-n { background: rgba(232,24,60,0.18); color: var(--red); }
+  @media (max-width: 768px) {
+    .map-cities { top: 10px; inset-inline-start: 10px; gap: 5px; }
+    .map-city { font-size: 10px; letter-spacing: 1px; padding: 7px 10px; }
+  }
   .selected-machine-card { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; background: var(--gray); border: 1px solid var(--gray-mid); border-top: none; border-radius: 0 0 var(--radius) var(--radius); padding: 14px 20px; }
   .smc-left { display: flex; align-items: center; gap: 12px; }
   .smc-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--red); box-shadow: 0 0 8px rgba(232,24,60,0.7); }
@@ -294,7 +308,7 @@ page: stock
         <span class="mt-label"><span class="mt-name">King Jouet</span><span class="mt-sub">Ecublens · 1024</span></span>
       </a>
     </div>
-    <div class="stock-map-wrap"><div id="stockMap"></div></div>
+    <div class="stock-map-wrap"><div id="stockMap"></div><div class="map-cities" role="group" aria-label="Stad"><button type="button" class="map-city active" data-zone="ge" aria-pressed="true" onclick="setStockCity('ge')">Genève<span class="map-city-n" data-zone-count="ge"></span></button><button type="button" class="map-city" data-zone="vd" aria-pressed="false" onclick="setStockCity('vd')">Lausanne<span class="map-city-n" data-zone-count="vd"></span></button></div></div>
     <div class="selected-machine-card" id="selectedMachineCard">
       <div class="smc-left">
         <span class="smc-dot"></span>
@@ -585,7 +599,31 @@ function selectBeMachine(btn) {
   btn.classList.add('active');
 }
 
+/* ---------- Sélecteur de ville (Genève / Lausanne) ----------
+   Les onglets et la carte ne montrent que la ville de la machine choisie. */
+let lastGeMachine = 0;
+function stockZoneOf(i) { return (MACHINES[i] && MACHINES[i].zone) || 'ge'; }
+function setStockCity(zone) {
+  if (stockZoneOf(currentMachine) === zone) return;
+  const i = zone === 'ge' ? lastGeMachine : MACHINES.findIndex(function(m, k) { return stockZoneOf(k) === zone; });
+  if (i >= 0) selectMachine(i, false);
+}
+function updateCityUI() {
+  const zone = stockZoneOf(currentMachine);
+  if (zone === 'ge') lastGeMachine = currentMachine;
+  document.querySelectorAll('#panel-ch .map-city').forEach(function(b) {
+    const on = b.getAttribute('data-zone') === zone;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  document.querySelectorAll('#panel-ch [data-zone-count]').forEach(function(s) {
+    const z = s.getAttribute('data-zone-count');
+    s.textContent = MACHINES.filter(function(m, k) { return stockZoneOf(k) === z; }).length;
+  });
+  document.querySelectorAll('#panel-ch .machine-tab').forEach(function(t, i) { t.hidden = stockZoneOf(i) !== zone; });
+}
 function updateMachineTabs() {
+  updateCityUI();
   document.querySelectorAll('#panel-ch .machine-tab').forEach(function(t, i) {
     t.classList.toggle('active', i === currentMachine);
   });
@@ -833,6 +871,7 @@ function copyMachineLink(btn) {
     document.getElementById('smcAddr').textContent = MACHINES[wanted].addr;
     updateMachineTabs();
   }
+  updateCityUI();
 })();
 loadAll();
 setInterval(loadAll, 5 * 60 * 1000);

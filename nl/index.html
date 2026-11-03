@@ -168,6 +168,22 @@ page: index
   .map-panel.active { display: block; }
   .map-wrapper { position: relative; border: 1px solid var(--gray-mid); border-radius: 0 var(--radius) var(--radius) var(--radius); overflow: hidden; height: 380px; }
   .map-wrapper > div { width: 100%; height: 100%; }
+  .map-wrapper > .map-cities { width: auto; height: auto; }
+  .map-location-item[hidden] { display: none; }
+  .map-location-item.first-vis { border-top: none; }
+
+  /* SÉLECTEUR DE VILLE (carte Suisse) : Genève / Lausanne, posé sur la carte */
+  .map-cities { position: absolute; top: 14px; inset-inline-start: 14px; z-index: 2; display: flex; gap: 6px; }
+  .map-city { background: rgba(18,15,42,0.94); border: 1px solid var(--gray-mid); color: var(--text-muted); font-family: 'DM Sans', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 8px 14px; border-radius: 2px; cursor: pointer; transition: color 0.2s, border-color 0.2s; line-height: 1; }
+  .map-city:hover { color: var(--white); border-color: rgba(232,24,60,0.5); }
+  .map-city.active { border-color: var(--red); color: var(--red); }
+  .map-city:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+  .map-city-n { display: inline-block; margin-inline-start: 7px; min-width: 18px; padding: 2px 5px; border-radius: 2px; background: rgba(255,255,255,0.07); color: var(--white); font-size: 10px; letter-spacing: 0; text-align: center; }
+  .map-city.active .map-city-n { background: rgba(232,24,60,0.18); color: var(--red); }
+  @media (max-width: 768px) {
+    .map-cities { top: 10px; inset-inline-start: 10px; gap: 5px; }
+    .map-city { font-size: 10px; letter-spacing: 1px; padding: 7px 10px; }
+  }
 
   /* MAP LOCATIONS LIST */
   .map-locations-list { border: 1px solid var(--gray-mid); border-top: none; border-radius: 0 0 var(--radius) var(--radius); }
@@ -459,7 +475,7 @@ page: index
 
     <!-- GENEVA -->
     <div class="map-panel active" id="tab-geneva">
-      <div class="map-wrapper"><div id="map-geneva"></div></div>
+      <div class="map-wrapper"><div id="map-geneva"></div><div class="map-cities" role="group" aria-label="Stad"><button type="button" class="map-city active" data-zone="ge" aria-pressed="true" onclick="setCity('ge')">Genève<span class="map-city-n" data-zone-count="ge"></span></button><button type="button" class="map-city" data-zone="vd" aria-pressed="false" onclick="setCity('vd')">Lausanne<span class="map-city-n" data-zone-count="vd"></span></button></div></div>
       <div class="map-locations-list">
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(0)">
           <div class="map-location-dot live" data-loc="0"></div>
@@ -517,7 +533,7 @@ page: index
             <a href="/nl/stock.html?machine=king-jouet-carouge" class="map-stock-link">📦 Bekijk de voorraad</a>
           </div>
         </div>
-        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(7)">
+        <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(7)" data-zone="vd">
           <div class="map-location-dot live" data-loc="7"></div>
           <div>
             <div class="map-location-name"><a href="/distributeur-ecublens.html">King Jouet Ecublens</a></div>
@@ -946,7 +962,51 @@ function bsRefreshOpenState() {
 if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', bsRefreshOpenState); } else { bsRefreshOpenState(); }
 setInterval(bsRefreshOpenState, 60000);
 
+/* ---------- Sélecteur de ville (Genève / Lausanne) ----------
+   La zone vient de GENEVA_LOCATIONS (zone: 'vd' = Vaud, sinon Genève).
+   Le bouton cadre la carte et ne garde que les lignes de la ville. */
+let bsZone = 'ge';
+function bsZoneOf(loc) { return (loc && loc.zone) || 'ge'; }
+function setCity(zone) {
+  bsZone = zone;
+  document.querySelectorAll('#tab-geneva .map-city').forEach(function(b) {
+    const on = b.getAttribute('data-zone') === zone;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  let first = true;
+  document.querySelectorAll('#tab-geneva .map-location-item').forEach(function(it) {
+    const show = (it.getAttribute('data-zone') || 'ge') === zone;
+    it.hidden = !show;
+    it.classList.toggle('first-vis', show && first);
+    if (show) first = false;
+  });
+  if (typeof google === 'undefined' || !gMapRef) return;
+  const inZone = GENEVA_LOCATIONS.filter(function(loc) { return bsZoneOf(loc) === zone; });
+  if (!inZone.length) return;
+  if (inZone.length === 1) {
+    gMapRef.setCenter({ lat: inZone[0].lat, lng: inZone[0].lng });
+    gMapRef.setZoom(14);
+  } else {
+    const b = new google.maps.LatLngBounds();
+    inZone.forEach(function(loc) { b.extend({ lat: loc.lat, lng: loc.lng }); });
+    gMapRef.fitBounds(b, 56);
+  }
+}
+(function() {
+  function initCities() {
+    document.querySelectorAll('#tab-geneva [data-zone-count]').forEach(function(s) {
+      const z = s.getAttribute('data-zone-count');
+      s.textContent = GENEVA_LOCATIONS.filter(function(loc) { return bsZoneOf(loc) === z; }).length;
+    });
+    setCity(bsZone);
+  }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initCities); } else { initCities(); }
+})();
+
 function openPopupByIndex(i) {
+  // Machine dans l'autre ville : on bascule d'abord le sélecteur
+  if (GENEVA_LOCATIONS[i] && bsZoneOf(GENEVA_LOCATIONS[i]) !== bsZone) setCity(bsZoneOf(GENEVA_LOCATIONS[i]));
   // Scroll to map section first
   const mapSection = document.getElementById('where');
   if (mapSection) {
@@ -1014,11 +1074,8 @@ window.initMap = function() {
     gMarkersRef[i] = marker;
   });
 
-  // Cadrage automatique sur l'ensemble des machines (s'adapte quand on en ajoute)
-  const gBounds = new google.maps.LatLngBounds();
-  // Ecublens (zone 'vd') reste hors cadrage : la carte s'y déplace au clic sur sa ligne
-  genevaLocations.forEach(function(loc) { if (loc.zone !== 'vd') gBounds.extend({ lat: loc.lat, lng: loc.lng }); });
-  gMapRef.fitBounds(gBounds, 56);
+  // Cadrage sur la ville choisie (Genève par défaut, Lausanne via le sélecteur)
+  setCity(bsZone);
 
   new google.maps.Map(document.getElementById('map-france'), {
     zoom: 5, center: { lat: 46.6, lng: 2.4 },
