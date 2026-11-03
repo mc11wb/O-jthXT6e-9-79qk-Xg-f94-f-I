@@ -892,7 +892,7 @@ let gMarkersRef = [];
 
 /* ---------- OUVERT MAINTENANT (heure de Genève) ---------- */
 /* Fiches Google des machines (bouton « Noter sur Google » des popups) — source : _data/machines.yml */
-const BS_GOOGLE_REVIEW = { {%- for m in site.data.machines -%}{%- if m.google_place_id -%}{{ m.nom | jsonify }}: {{ site.data.avis.google_avis | append: m.google_place_id | jsonify }},{%- endif -%}{%- endfor -%} };
+const BS_GOOGLE_REVIEW = { {%- for m in site.data.machines -%}{%- if m.google_place_id -%}{{ m.nom | jsonify }}: {{ site.data.avis.google_avis | append: m.google_place_id | jsonify }},{%- elsif m.google_lien -%}{{ m.nom | jsonify }}: {{ m.google_lien | jsonify }},{%- endif -%}{%- endfor -%} };
 const GENEVA_LOCATIONS = [
   { lat: 46.2008, lng: 6.1520, name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', hours: '<strong>Ma–vr</strong> 09:00–18:00<br><strong>Za</strong> 09:00–12:00<br><strong>Zo</strong> Gesloten', open: { wd: [540, 1080], sat: [540, 720], sun: null } },
   { lat: 46.2112, lng: 6.1268, name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", hours: '<strong>Ma–vr</strong> 09:00–19:00<br><strong>Za</strong> 09:00–17:00<br><strong>Zo</strong> Gesloten', open: { wd: [540, 1140], sat: [540, 1020], sun: null } },
@@ -1007,7 +1007,7 @@ window.initMap = function() {
       const popBody = loc.soon
         ? '<div class="bs-popup-hours">' + loc.hours + '<span class="bs-popup-soon-date">' + (currentLang==='fr'?'Mise en service le 30 septembre':'In gebruik vanaf 30 september') + '</span></div>'
         : '<div class="bs-popup-hours">' + loc.hours + '</div><a href="/nl/stock.html?machine=' + i + '" class="bs-popup-stock-btn" target="_self">📦 ' + (currentLang==='fr'?'Voir le stock':'Bekijk de voorraad') + ' →</a>'
-          + (BS_GOOGLE_REVIEW[loc.name] ? '<a href="' + BS_GOOGLE_REVIEW[loc.name] + '&hl=' + (currentLang==='fr'?'fr':'nl') + '" class="bs-popup-review-btn" target="_blank" rel="noopener"><span><img src="{{ site.data.avis.google_logo }}" alt="Google" width="11" height="11"></span> ' + (currentLang==='fr'?'Noter sur Google':'Beoordeel op Google') + '</a>' : '');
+          + (BS_GOOGLE_REVIEW[loc.name] ? '<a href="' + BS_GOOGLE_REVIEW[loc.name] + (BS_GOOGLE_REVIEW[loc.name].indexOf('?') > -1 ? '&hl=' + (currentLang==='fr'?'fr':'nl') : '') + '" class="bs-popup-review-btn" target="_blank" rel="noopener"><span><img src="{{ site.data.avis.google_logo }}" alt="Google" width="11" height="11"></span> ' + (currentLang==='fr'?'Noter sur Google':'Beoordeel op Google') + '</a>' : '');
       activeInfo = new google.maps.InfoWindow({ content: popHead + popBody + '</div>' });
       activeInfo.open(gMapRef, marker);
     });
