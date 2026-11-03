@@ -15,7 +15,7 @@ page: index
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
 <meta property="og:title" content="BoosterStop : distributeurs TCG en Suisse et en Belgique">
-<meta property="og:description" content="Boosters, displays et coffrets scellés d'usine, issus des circuits officiels, dans 8 machines à Genève et 5 en Belgique. Stock en direct.">
+<meta property="og:description" content="Boosters, displays et coffrets scellés d'usine, issus des circuits officiels, dans 7 machines à Genève, 1 près de Lausanne et 5 en Belgique. Stock en direct.">
 <meta property="og:url" content="https://boosterstop.com/fr/">
 <meta property="og:image" content="https://boosterstop.com/logo.png">
 <meta property="og:locale" content="fr_FR">
@@ -372,7 +372,7 @@ page: index
     </div>
   </div>
   <ul class="hero-net" aria-label="Pays du réseau">
-    <li><a href="/fr/distributeurs-geneve.html"><span class="hn-flag" aria-hidden="true">🇨🇭</span><span class="hn-txt"><span class="hn-name">Suisse</span><span class="hn-status live">{{ hero_ch.size }} machines à Genève</span></span></a></li>
+    <li><a href="/fr/distributeurs-geneve.html"><span class="hn-flag" aria-hidden="true">🇨🇭</span><span class="hn-txt"><span class="hn-name">Suisse</span><span class="hn-status live">{{ hero_ch.size }} machines</span></span></a></li>
     <li><a href="/fr/expansion.html#belgique"><span class="hn-flag" aria-hidden="true">🇧🇪</span><span class="hn-txt"><span class="hn-name">Belgique</span><span class="hn-status live">{{ hero_be.machines | default: 5 }} machines</span></span></a></li>
     <li><a href="/fr/expansion.html#france"><span class="hn-flag" aria-hidden="true">🇫🇷</span><span class="hn-txt"><span class="hn-name">France</span><span class="hn-status">Bientôt</span></span></a></li>
     <li><a href="/fr/expansion.html#uae"><span class="hn-flag" aria-hidden="true">🇦🇪</span><span class="hn-txt"><span class="hn-name">Émirats</span><span class="hn-status">3 émirats, bientôt</span></span></a></li>
@@ -387,7 +387,7 @@ page: index
     <div class="how-card">
       <div class="how-number">01</div>
       <h3>Trouve la machine</h3>
-      <p>Nos distributeurs sont installés dans des bureaux de La Poste et chez King Jouet à Genève, et dans cinq Carrefour en Belgique.</p>
+      <p>Nos distributeurs sont installés dans des bureaux de La Poste et chez King Jouet à Genève, chez King Jouet Ecublens près de Lausanne, et dans cinq Carrefour en Belgique.</p>
       <a class="how-link" href="/fr/distributeurs-geneve.html">Voir les emplacements</a>
     </div>
     <div class="how-card">
@@ -451,7 +451,7 @@ page: index
     <div class="section-label">Emplacements</div>
 
     <div class="map-tabs">
-      <button class="map-tab active" onclick="switchTab('geneva')">🇨🇭 Genève : Actif</button>
+      <button class="map-tab active" onclick="switchTab('geneva')">🇨🇭 Suisse : Actif</button>
       <button class="map-tab" onclick="switchTab('belgium')">🇧🇪 Belgique : Actif</button>
       <button class="map-tab" onclick="switchTab('france')">🇫🇷 France : Bientôt</button>
       <button class="map-tab" onclick="switchTab('uae')">🇦🇪 Émirats : Bientôt</button>
@@ -496,33 +496,33 @@ page: index
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(4)">
           <div class="map-location-dot live" data-loc="4"></div>
           <div>
-            <div class="map-location-name"><a href="/fr/distributeur-meyrin.html">La Poste de Meyrin</a></div>
-            <div class="map-location-addr">Avenue de Feuillasse 24, 1217 Meyrin</div>
+            <div class="map-location-name"><a href="/fr/distributeur-thonex.html">La Poste de Thônex</a></div>
+            <div class="map-location-addr">Rue de Genève 106, 1226 Thônex</div>
             <a href="/fr/stock.html?machine=4" class="map-stock-link">📦 Voir le stock</a>
           </div>
         </div>
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(5)">
           <div class="map-location-dot live" data-loc="5"></div>
           <div>
-            <div class="map-location-name"><a href="/fr/distributeur-thonex.html">La Poste de Thônex</a></div>
-            <div class="map-location-addr">Rue de Genève 106, 1226 Thônex</div>
+            <div class="map-location-name"><a href="/fr/distributeur-carouge.html">La Poste de Carouge</a></div>
+            <div class="map-location-addr">Boulevard des Promenades 16, 1227 Carouge</div>
             <a href="/fr/stock.html?machine=5" class="map-stock-link">📦 Voir le stock</a>
           </div>
         </div>
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(6)">
           <div class="map-location-dot live" data-loc="6"></div>
           <div>
-            <div class="map-location-name"><a href="/fr/distributeur-carouge.html">La Poste de Carouge</a></div>
-            <div class="map-location-addr">Boulevard des Promenades 16, 1227 Carouge</div>
-            <a href="/fr/stock.html?machine=6" class="map-stock-link">📦 Voir le stock</a>
+            <div class="map-location-name">King Jouet Carouge</div>
+            <div class="map-location-addr">Avenue Cardinal-Mermillod 36, 1227 Carouge</div>
+            <a href="/fr/stock.html?machine=king-jouet-carouge" class="map-stock-link">📦 Voir le stock</a>
           </div>
         </div>
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(7)">
           <div class="map-location-dot live" data-loc="7"></div>
           <div>
-            <div class="map-location-name">King Jouet Carouge</div>
-            <div class="map-location-addr">Avenue Cardinal-Mermillod 36, 1227 Carouge</div>
-            <a href="/fr/stock.html?machine=7" class="map-stock-link">📦 Voir le stock</a>
+            <div class="map-location-name"><a href="/fr/distributeur-ecublens.html">King Jouet Ecublens</a></div>
+            <div class="map-location-addr">Chemin du Croset 7, 1024 Ecublens</div>
+            <a href="/fr/stock.html?machine=king-jouet-ecublens" class="map-stock-link">📦 Voir le stock</a>
           </div>
         </div>
         <div class="map-location-item incoming">
@@ -896,10 +896,10 @@ const GENEVA_LOCATIONS = [
   { lat: 46.2112, lng: 6.1268, name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", hours: '<strong>Lun–Ven</strong> 09h00–19h00<br><strong>Sam</strong> 09h00–17h00<br><strong>Dim</strong> Fermé', open: { wd: [540, 1140], sat: [540, 1020], sun: null } },
   { lat: 46.1872, lng: 6.1214, name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 09h00–13h00<br><strong>Dim</strong> Fermé', open: { wd: [480, 1080], sat: [540, 780], sun: null } },
   { lat: 46.1938, lng: 6.1427, name: 'La Poste de Plainpalais', addr: "Rue Pictet-de-Bock 6, 1205 Genève", hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 09h00–16h00<br><strong>Dim</strong> Fermé', open: { wd: [480, 1080], sat: [540, 960], sun: null } },
-  { lat: 46.2323, lng: 6.0835, name: 'La Poste de Meyrin', addr: "Avenue de Feuillasse 24, 1217 Meyrin", hours: '<strong>Lun–Ven</strong> 08h30–18h00<br><strong>Sam</strong> 08h30–15h00<br><strong>Dim</strong> Fermé', open: { wd: [510, 1080], sat: [510, 900], sun: null } },
   { lat: 46.1928, lng: 6.202, name: 'La Poste de Thônex', addr: "Rue de Genève 106, 1226 Thônex", hours: '<strong>Lun–Ven</strong> 08h30–18h30<br><strong>Sam</strong> 09h00–15h00<br><strong>Dim</strong> Fermé', open: { wd: [510, 1110], sat: [540, 900], sun: null } },
   { lat: 46.1835, lng: 6.1375, name: 'La Poste de Carouge', addr: "Boulevard des Promenades 16, 1227 Carouge", hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé', open: { wd: [480, 1080], sat: [510, 720], sun: null } },
-  { lat: 46.1860, lng: 6.1431, name: 'King Jouet Carouge', addr: "Avenue Cardinal-Mermillod 36, 1227 Carouge", hours: '<strong>Lun–Ven</strong> 09h00–19h00<br><strong>Sam</strong> 09h00–18h00<br><strong>Dim</strong> Fermé', open: { wd: [540, 1140], sat: [540, 1080], sun: null } }
+  { lat: 46.1860, lng: 6.1431, name: 'King Jouet Carouge', addr: "Avenue Cardinal-Mermillod 36, 1227 Carouge", hours: '<strong>Lun–Ven</strong> 09h00–19h00<br><strong>Sam</strong> 09h00–18h00<br><strong>Dim</strong> Fermé', open: { wd: [540, 1140], sat: [540, 1080], sun: null } },
+  { lat: 46.5338, lng: 6.5649, zone: 'vd', name: 'King Jouet Ecublens', addr: "Chemin du Croset 7, 1024 Ecublens", hours: '<strong>Lun–Jeu</strong> 09h00–19h30<br><strong>Ven</strong> 09h00–20h00<br><strong>Sam</strong> 08h00–18h00<br><strong>Dim</strong> Fermé', open: { wd: [540, 1170], fri: [540, 1200], sat: [480, 1080], sun: null } }
 ];
 
 function bsGenevaNow() {
@@ -919,7 +919,7 @@ function bsGenevaNow() {
 function bsIsOpen(loc) {
   if (!loc || !loc.open) return false;
   const n = bsGenevaNow();
-  const r = n.day === 0 ? loc.open.sun : (n.day === 6 ? loc.open.sat : loc.open.wd);
+  const r = n.day === 0 ? loc.open.sun : (n.day === 6 ? loc.open.sat : (n.day === 5 && loc.open.fri ? loc.open.fri : loc.open.wd));
   if (!r) return false;
   return n.mins >= r[0] && n.mins < r[1];
 }
@@ -1014,7 +1014,8 @@ window.initMap = function() {
 
   // Cadrage automatique sur l'ensemble des machines (s'adapte quand on en ajoute)
   const gBounds = new google.maps.LatLngBounds();
-  genevaLocations.forEach(function(loc) { gBounds.extend({ lat: loc.lat, lng: loc.lng }); });
+  // Ecublens (zone 'vd') reste hors cadrage : la carte s'y déplace au clic sur sa ligne
+  genevaLocations.forEach(function(loc) { if (loc.zone !== 'vd') gBounds.extend({ lat: loc.lat, lng: loc.lng }); });
   gMapRef.fitBounds(gBounds, 56);
 
   new google.maps.Map(document.getElementById('map-france'), {
@@ -1146,7 +1147,7 @@ document.addEventListener('DOMContentLoaded', function() {
     {
       "@type": "ItemList",
       "@id": "https://boosterstop.com/fr/#machines",
-      "name": "Distributeurs BoosterStop dans le canton de Genève",
+      "name": "Distributeurs BoosterStop à Genève et Ecublens",
       "numberOfItems": 7,
       "itemListElement": [
         {
@@ -1176,20 +1177,20 @@ document.addEventListener('DOMContentLoaded', function() {
         {
           "@type": "ListItem",
           "position": 5,
-          "name": "BoosterStop La Poste de Meyrin",
-          "item": "https://boosterstop.com/fr/distributeur-meyrin.html"
-        },
-        {
-          "@type": "ListItem",
-          "position": 6,
           "name": "BoosterStop La Poste de Thônex",
           "item": "https://boosterstop.com/fr/distributeur-thonex.html"
         },
         {
           "@type": "ListItem",
-          "position": 7,
+          "position": 6,
           "name": "BoosterStop La Poste de Carouge",
           "item": "https://boosterstop.com/fr/distributeur-carouge.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "BoosterStop King Jouet Ecublens",
+          "item": "https://boosterstop.com/fr/distributeur-ecublens.html"
         }
       ]
     }

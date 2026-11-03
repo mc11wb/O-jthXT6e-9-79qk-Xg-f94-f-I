@@ -3,7 +3,7 @@ layout: null
 ---
 # BoosterStop
 
-> BoosterStop est le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner (TCG). Exploité par 247 Distribution SNC (Genève, Suisse), il propose des boosters, displays et boîtes collector 100% scellés, issus exclusivement de distributeurs officiels. Huit machines sont installées dans le canton de Genève, sept à l'intérieur de filiales de La Poste Suisse et une chez King Jouet Carouge. Cinq machines sont actives en Belgique. Le réseau se déploie vers la Suisse romande, la France et les Émirats Arabes Unis.
+> BoosterStop est le premier réseau de distributeurs automatiques dédié aux jeux de cartes à collectionner (TCG). Exploité par 247 Distribution SNC (Genève, Suisse), il propose des boosters, displays et boîtes collector 100% scellés, issus exclusivement de distributeurs officiels. Sept machines sont installées dans le canton de Genève, six à l'intérieur de filiales de La Poste Suisse et une chez King Jouet Carouge, et une huitième chez King Jouet Ecublens, près de Lausanne (canton de Vaud). Cinq machines sont actives en Belgique. Le réseau se déploie vers la Suisse romande, la France et les Émirats Arabes Unis.
 
 Le site est bilingue : les pages en anglais sont à la racine, les pages en français sous `/fr/`. Les deux versions sont reliées par des balises hreflang et ont un contenu équivalent.
 
@@ -19,9 +19,9 @@ Le site est bilingue : les pages en anglais sont à la racine, les pages en fran
 - **Moyens de paiement** : espèces avec monnaie rendue en pièces et en billets, TWINT, carte sans contact, smartphone
 - **Garantie produit** : tous les produits sont scellés d'usine et proviennent de distributeurs officiels. Aucun produit n'est pesé, fouillé, ouvert, trié ou rescellé.
 
-## Les huit distributeurs du canton de Genève
+## Les huit distributeurs en Suisse (Genève et Ecublens)
 
-Chaque machine est accessible en libre-service pendant les heures d'ouverture de la filiale La Poste qui l'héberge. Fermeture les neuf jours fériés du canton de Genève, dont le Jeûne genevois et le 31 décembre.
+Chaque machine est accessible en libre-service pendant les heures d'ouverture du lieu qui l'héberge. Fermeture les jours fériés du canton concerné : à Genève, dont le Jeûne genevois et le 31 décembre ; à Ecublens (Vaud), dont le 2 janvier et le lundi du Jeûne fédéral.
 
 Les huit machines ont leur inventaire consultable en direct sur le site :
 
@@ -29,10 +29,10 @@ Les huit machines ont leur inventaire consultable en direct sur le site :
 - **La Poste des Charmilles**, Promenade de l'Europe 11, 1203 Genève · lun-ven 09:00-19:00, sam 09:00-17:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-charmilles.html)
 - **La Poste du Petit-Lancy**, Rue des Bossons 88b, 1213 Petit-Lancy · lun-ven 08:00-18:00, sam 09:00-13:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-petit-lancy.html)
 - **La Poste de Plainpalais**, Rue Pictet-de-Bock 6, 1205 Genève · lun-ven 08:00-18:00, sam 09:00-16:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-plainpalais.html)
-- **La Poste de Meyrin**, Avenue de Feuillasse 24, 1217 Meyrin · lun-ven 08:30-18:00, sam 08:30-15:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-meyrin.html)
 - **La Poste de Thônex**, Rue de Genève 106, 1226 Thônex · lun-ven 08:30-18:30, sam 09:00-15:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-thonex.html)
 - **La Poste de Carouge**, Boulevard des Promenades 16, 1227 Carouge · lun-ven 08:00-18:00, sam 08:30-12:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-carouge.html)
-- **King Jouet Carouge**, Avenue Cardinal-Mermillod 36, 1227 Carouge · lun-ven 09:00-19:00, sam 09:00-18:00, dimanche fermé · [stock en direct](https://boosterstop.com/fr/stock.html?machine=7)
+- **King Jouet Carouge**, Avenue Cardinal-Mermillod 36, 1227 Carouge · lun-ven 09:00-19:00, sam 09:00-18:00, dimanche fermé · [stock en direct](https://boosterstop.com/fr/stock.html?machine=king-jouet-carouge)
+- **King Jouet Ecublens (Le Croset)**, Chemin du Croset 7, 1024 Ecublens · lun-jeu 09:00-19:30, ven 09:00-20:00, sam 08:00-18:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-ecublens.html)
 
 Vue d'ensemble : [tous les distributeurs de Genève](https://boosterstop.com/fr/distributeurs-geneve.html) · [version anglaise](https://boosterstop.com/distributeurs-geneve.html)
 
@@ -83,7 +83,7 @@ Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Di
 
 ## Questions fréquentes
 
-- **Où acheter des cartes Pokémon à Genève ?** BoosterStop exploite huit distributeurs automatiques dans le canton, dont sept situés dans une filiale de La Poste : Rive, Les Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex et Carouge, plus un chez King Jouet Carouge.
+- **Où acheter des cartes Pokémon à Genève ?** BoosterStop exploite sept distributeurs automatiques dans le canton, dont six situés dans une filiale de La Poste : Rive, Les Charmilles, Petit-Lancy, Plainpalais, Thônex et Carouge, plus un chez King Jouet Carouge. Un huitième se trouve près de Lausanne, chez King Jouet Ecublens.
 - **Les produits sont-ils authentiques ?** Oui. Tout est scellé d'usine et provient de distributeurs officiels. Rien n'est pesé, fouillé, altéré ni trié.
 - **Peut-on vérifier le stock avant de se déplacer ?** Oui. La page Stock en direct et chaque page d'emplacement affichent l'inventaire lu directement dans la machine.
 - **Comment payer ?** En espèces, avec monnaie rendue en pièces et en billets, par TWINT, ou en sans contact par carte et smartphone. Le produit sort immédiatement.
