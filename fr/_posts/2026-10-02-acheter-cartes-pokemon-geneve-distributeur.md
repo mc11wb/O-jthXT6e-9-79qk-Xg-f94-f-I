@@ -5,13 +5,13 @@ description: "Où trouver les distributeurs de cartes Pokémon à Genève, ce qu
 licence: pokemon
 pays: ch
 resume:
-  - "Huit distributeurs BoosterStop dans le canton de Genève : sept dans des filiales de La Poste et un chez King Jouet Carouge."
+  - "Sept distributeurs BoosterStop dans le canton de Genève : six dans des filiales de La Poste et un chez King Jouet Carouge."
   - "Boosters, displays et coffrets 100 % scellés, achetés uniquement auprès de distributeurs officiels."
   - "Paiement en espèces avec monnaie rendue, par TWINT ou en sans contact. Le produit sort immédiatement."
   - "Le stock de Rive, des Charmilles et du Petit-Lancy se consulte [en direct](/fr/stock.html) avant de se déplacer."
 faq:
   - q: "Où acheter des cartes Pokémon à Genève sans passer par une boutique ?"
-    r: "Dans l'un des huit distributeurs BoosterStop du canton : Rive, Les Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex et Carouge, dans les filiales de La Poste, ainsi que chez King Jouet Carouge. La liste complète avec les adresses est sur la page [distributeurs à Genève](/fr/distributeurs-geneve.html)."
+    r: "Dans l'un des sept distributeurs BoosterStop du canton : Rive, Les Charmilles, Petit-Lancy, Plainpalais, Thônex et Carouge, dans les filiales de La Poste, ainsi que chez King Jouet Carouge. La liste complète avec les adresses est sur la page [distributeurs à Genève](/fr/distributeurs-geneve.html)."
   - q: "Les cartes vendues en distributeur sont-elles authentiques ?"
     r: "Oui. Tous les produits sont scellés d'usine et proviennent exclusivement de distributeurs officiels. Aucun produit n'est pesé, fouillé, ouvert, trié ou rescellé."
   - q: "Quels sont les horaires des distributeurs ?"
@@ -22,15 +22,17 @@ faq:
     r: "Appelez le +41 22 886 01 58 en indiquant l'emplacement et l'heure de l'achat. Après vérification du journal de la machine, vous êtes remboursé ou le produit est remplacé."
 ---
 
-Acheter des cartes Pokémon à Genève ne se limite plus aux boutiques spécialisées et à leurs horaires. Huit distributeurs automatiques BoosterStop sont installés dans le canton, au cœur de lieux que l'on fréquente déjà. Voici où ils se trouvent, ce qu'on y trouve et comment s'en servir.
+Acheter des cartes Pokémon à Genève ne se limite plus aux boutiques spécialisées et à leurs horaires. Sept distributeurs automatiques BoosterStop sont installés dans le canton, au cœur de lieux que l'on fréquente déjà. Voici où ils se trouvent, ce qu'on y trouve et comment s'en servir.
 
 ## Où se trouvent les distributeurs
 
-Sept machines sont installées à l'intérieur de filiales de La Poste, la huitième chez King Jouet Carouge :
+Six machines sont installées à l'intérieur de filiales de La Poste, la septième chez King Jouet Carouge :
 
 - **Genève centre** : [Rive](/fr/distributeur-geneve-rive.html), [Les Charmilles](/fr/distributeur-geneve-charmilles.html) et [Plainpalais](/fr/distributeur-geneve-plainpalais.html)
-- **Communes** : [Petit-Lancy](/fr/distributeur-petit-lancy.html), [Meyrin](/fr/distributeur-meyrin.html), [Thônex](/fr/distributeur-thonex.html) et [Carouge](/fr/distributeur-carouge.html)
+- **Communes** : [Petit-Lancy](/fr/distributeur-petit-lancy.html), [Thônex](/fr/distributeur-thonex.html) et [Carouge](/fr/distributeur-carouge.html)
 - **King Jouet Carouge**, avenue Cardinal-Mermillod 36
+
+Hors du canton, près de Lausanne, une huitième machine se trouve chez [King Jouet Ecublens](/fr/distributeur-ecublens.html), chemin du Croset 7.
 
 Les machines suivent les horaires du lieu qui les accueille. Elles sont donc fermées le dimanche et les jours fériés genevois. Si votre quartier n'a pas encore de machine, l'encart en bas de cet article calcule la plus proche de vous.
 

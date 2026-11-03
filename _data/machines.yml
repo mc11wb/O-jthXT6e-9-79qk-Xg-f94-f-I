@@ -64,20 +64,6 @@
   page_id: distributeur-geneve-plainpalais
   google_place_id:
 
-- id: meyrin
-  pays: ch
-  nom: La Poste de Meyrin
-  court: Meyrin
-  adresse: Avenue de Feuillasse 24, 1217 Meyrin
-  lat: 46.2323422
-  lng: 6.0834824
-  url: /fr/distributeur-meyrin.html
-  url_en: /distributeur-meyrin.html
-  live: true
-  worker: 6
-  page_id: distributeur-meyrin
-  google_place_id:
-
 - id: thonex
   pays: ch
   nom: La Poste de Thônex
@@ -117,6 +103,22 @@
   url_en: /distributeurs-geneve.html
   live: true
   worker: 3
+  google_place_id:
+
+# Ancienne machine de La Poste de Meyrin (même Worker 6), déménagée chez
+# King Jouet Le Croset en novembre 2026. /distributeur-meyrin.html redirige ici.
+- id: king-jouet-ecublens
+  pays: ch
+  nom: King Jouet Ecublens
+  court: King Jouet Ecublens
+  adresse: Chemin du Croset 7, 1024 Ecublens
+  lat: 46.5338498
+  lng: 6.5648668
+  url: /fr/distributeur-ecublens.html
+  url_en: /distributeur-ecublens.html
+  live: true
+  worker: 6
+  page_id: distributeur-ecublens
   google_place_id:
 
 # ------------------------------------------------------------------

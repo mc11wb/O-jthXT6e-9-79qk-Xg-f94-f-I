@@ -38,13 +38,13 @@ commun:
     refs_h2: Ils accueillent déjà nos machines
     refs:
     - t: La Poste Suisse
-      d: 7 filiales dans le canton de Genève
+      d: 6 filiales dans le canton de Genève
       f: distributeurs-geneve.html
     - t: Carrefour
       d: 5 magasins en Belgique
       f: distributeurs-belgique.html
     - t: King Jouet
-      d: Le magasin de Carouge
+      d: Les magasins de Carouge et d'Ecublens
       f: distributeurs-geneve.html
     faq_h2: Les questions qu'on nous pose
     form_h2: Proposez votre emplacement
@@ -110,13 +110,13 @@ commun:
     refs_h2: Already hosting our machines
     refs:
     - t: La Poste Switzerland
-      d: 7 branches in the canton of Geneva
+      d: 6 branches in the canton of Geneva
       f: distributeurs-geneve.html
     - t: Carrefour
       d: 5 stores in Belgium
       f: distributeurs-belgique.html
     - t: King Jouet
-      d: The Carouge store
+      d: The Carouge and Ecublens stores
       f: distributeurs-geneve.html
     faq_h2: Questions we get asked
     form_h2: Propose your location
@@ -182,13 +182,13 @@ commun:
     refs_h2: Zij hebben al een automaat van ons
     refs:
     - t: La Poste (Zwitserland)
-      d: 7 postkantoren in het kanton Genève
+      d: 6 postkantoren in het kanton Genève
       f: distributeurs-geneve.html
     - t: Carrefour
       d: 5 winkels in België
       f: distributeurs-belgique.html
     - t: King Jouet
-      d: De winkel in Carouge
+      d: De winkels in Carouge en Ecublens
       f: distributeurs-geneve.html
     faq_h2: Vragen die we vaak krijgen
     form_h2: Stel uw locatie voor
@@ -254,13 +254,13 @@ commun:
     refs_h2: يستضيفون أجهزتنا بالفعل
     refs:
     - t: البريد السويسري La Poste
-      d: 7 فروع في كانتون جنيف
+      d: 6 فروع في كانتون جنيف
       f: distributeurs-geneve.html
     - t: Carrefour
       d: 5 متاجر في بلجيكا
       f: distributeurs-belgique.html
     - t: King Jouet
-      d: متجر Carouge
+      d: متجرا Carouge وEcublens
       f: distributeurs-geneve.html
     faq_h2: أسئلة نتلقاها
     form_h2: اقترح مكانك
@@ -778,7 +778,7 @@ lieux:
       - q: Allez-vous vendre les mêmes produits que nous ?
         a: Non. L'assortiment de la machine est construit pour éviter ce que vous vendez déjà, à partir des produits qui se vendent le mieux dans notre réseau.
       - q: Avez-vous déjà une machine dans un magasin de jouets ?
-        a: Oui, chez King Jouet à Carouge, en plus de nos machines dans les filiales de La Poste à Genève et dans cinq magasins Carrefour en Belgique.
+        a: Oui, chez King Jouet à Carouge et à Ecublens, en plus de nos machines dans les filiales de La Poste à Genève et dans cinq magasins Carrefour en Belgique.
       - q: Comment suis-je rémunéré ?
         a: Par une part du chiffre d'affaires de la machine ou par un loyer fixe, selon votre lieu. Nous en convenons ensemble.
       - q: Et pour un cinéma ou un bowling ?
@@ -815,7 +815,7 @@ lieux:
       - q: Will you sell the same products as us?
         a: No. The machine's assortment is built to avoid what you already sell, based on the best sellers in our network.
       - q: Do you already have a machine in a toy shop?
-        a: Yes, at King Jouet in Carouge, alongside our machines in La Poste branches in Geneva and in five Carrefour stores in Belgium.
+        a: Yes, at King Jouet in Carouge and Ecublens, alongside our machines in La Poste branches in Geneva and in five Carrefour stores in Belgium.
       - q: How am I paid?
         a: Through a share of the machine's revenue or a fixed rent, depending on your venue. We agree on it together.
       - q: What about a cinema or bowling alley?
@@ -852,7 +852,7 @@ lieux:
       - q: Gaat u dezelfde producten verkopen als wij?
         a: Nee. Het assortiment van de automaat is samengesteld om te vermijden wat u al verkoopt, op basis van de bestsellers in ons netwerk.
       - q: Hebt u al een automaat in een speelgoedwinkel?
-        a: Ja, bij King Jouet in Carouge, naast onze automaten in postkantoren van La Poste in Genève en in vijf Carrefour-winkels in België.
+        a: Ja, bij King Jouet in Carouge en Ecublens, naast onze automaten in postkantoren van La Poste in Genève en in vijf Carrefour-winkels in België.
       - q: Hoe word ik vergoed?
         a: Met een deel van de omzet van de automaat of een vaste huur, afhankelijk van uw locatie. We spreken het samen af.
       - q: En voor een bioscoop of bowling?
@@ -889,7 +889,7 @@ lieux:
       - q: هل ستبيعون المنتجات نفسها التي نبيعها؟
         a: لا. تُبنى تشكيلة الجهاز لتجنّب ما تبيعه أصلاً، انطلاقاً من المنتجات الأكثر مبيعاً في شبكتنا.
       - q: هل لديكم جهاز في متجر ألعاب بالفعل؟
-        a: نعم، في King Jouet في Carouge، إضافة إلى أجهزتنا في فروع البريد السويسري في جنيف وفي خمسة متاجر Carrefour في بلجيكا.
+        a: نعم، في King Jouet في Carouge وEcublens، إضافة إلى أجهزتنا في فروع البريد السويسري في جنيف وفي خمسة متاجر Carrefour في بلجيكا.
       - q: كيف أحصل على مقابل؟
         a: بحصة من إيرادات الجهاز أو بإيجار ثابت، حسب مكانك. نتفق على ذلك معاً.
       - q: وماذا عن السينما أو البولينغ؟

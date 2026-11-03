@@ -277,21 +277,21 @@ page: stock
         <span class="mt-dot"></span>
         <span class="mt-label"><span class="mt-name">Plainpalais</span><span class="mt-sub">La Poste · 1205</span></span>
       </a>
-      <a class="machine-tab" href="?machine=meyrin" onclick="event.preventDefault(); selectMachine(4)">
-        <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">Meyrin</span><span class="mt-sub">La Poste · 1217</span></span>
-      </a>
-      <a class="machine-tab" href="?machine=thonex" onclick="event.preventDefault(); selectMachine(5)">
+      <a class="machine-tab" href="?machine=thonex" onclick="event.preventDefault(); selectMachine(4)">
         <span class="mt-dot"></span>
         <span class="mt-label"><span class="mt-name">Thônex</span><span class="mt-sub">La Poste · 1226</span></span>
       </a>
-      <a class="machine-tab" href="?machine=carouge" onclick="event.preventDefault(); selectMachine(6)">
+      <a class="machine-tab" href="?machine=carouge" onclick="event.preventDefault(); selectMachine(5)">
         <span class="mt-dot"></span>
         <span class="mt-label"><span class="mt-name">Carouge</span><span class="mt-sub">La Poste · 1227</span></span>
       </a>
-      <a class="machine-tab" href="?machine=king-jouet-carouge" onclick="event.preventDefault(); selectMachine(7)">
+      <a class="machine-tab" href="?machine=king-jouet-carouge" onclick="event.preventDefault(); selectMachine(6)">
         <span class="mt-dot"></span>
         <span class="mt-label"><span class="mt-name">King Jouet</span><span class="mt-sub">Carouge · 1227</span></span>
+      </a>
+      <a class="machine-tab" href="?machine=king-jouet-ecublens" onclick="event.preventDefault(); selectMachine(7)">
+        <span class="mt-dot"></span>
+        <span class="mt-label"><span class="mt-name">King Jouet</span><span class="mt-sub">Ecublens · 1024</span></span>
       </a>
     </div>
     <div class="stock-map-wrap"><div id="stockMap"></div></div>
@@ -442,10 +442,11 @@ const MACHINES = [
   { slug: 'charmilles', name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", lat: 46.2080238, lng: 6.1230909, worker: 1 },
   { slug: 'petit-lancy', name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', lat: 46.1889447, lng: 6.1104449, worker: 2 },
   { slug: 'plainpalais', name: 'La Poste de Plainpalais', addr: 'Rue Pictet-de-Bock 6, 1205 Genève', lat: 46.1938474, lng: 6.1426527, worker: 5 },
-  { slug: 'meyrin', name: 'La Poste de Meyrin', addr: 'Avenue de Feuillasse 24, 1217 Meyrin', lat: 46.2323422, lng: 6.0834824, worker: 6 },
   { slug: 'thonex', name: 'La Poste de Thônex', addr: 'Rue de Genève 106, 1226 Thônex', lat: 46.1927988, lng: 6.2020452, worker: 7 },
   { slug: 'carouge', name: 'La Poste de Carouge', addr: 'Boulevard des Promenades 16, 1227 Carouge', lat: 46.1834815, lng: 6.1374843, worker: 4 },
-  { slug: 'king-jouet-carouge', name: 'King Jouet Carouge', addr: 'Avenue Cardinal-Mermillod 36, 1227 Carouge', lat: 46.1859644, lng: 6.1431141, worker: 3 }
+  { slug: 'king-jouet-carouge', name: 'King Jouet Carouge', addr: 'Avenue Cardinal-Mermillod 36, 1227 Carouge', lat: 46.1859644, lng: 6.1431141, worker: 3 },
+  // ancienne machine de La Poste de Meyrin (Worker 6), déménagée chez King Jouet Le Croset
+  { slug: 'king-jouet-ecublens', name: 'King Jouet Ecublens', addr: 'Chemin du Croset 7, 1024 Ecublens', lat: 46.5338498, lng: 6.5648668, worker: 6, zone: 'vd' }
 ];
 // worker = index appelé sur le Cloudflare Worker. null = machine installée,
 // mais stock live pas encore connecté → message « bientôt » à la place des étages.
@@ -547,9 +548,23 @@ function initStockMap() {
     stockMarkers.push(marker);
   });
 
-  // Cadrage automatique sur l'ensemble des machines
+  fitStockMap();
+}
+// Cadrage sur la zone de la machine choisie : les machines de Genève ensemble,
+// Ecublens (zone 'vd', à 50 km) seule, pour ne pas écraser Genève dans un coin.
+let stockMapZone = null;
+function fitStockMap() {
+  if (!stockMapRef) return;
+  const zone = MACHINES[currentMachine].zone || 'ge';
+  stockMapZone = zone;
+  const inZone = MACHINES.filter(function(m) { return (m.zone || 'ge') === zone; });
+  if (inZone.length === 1) {
+    stockMapRef.setCenter({ lat: inZone[0].lat, lng: inZone[0].lng });
+    stockMapRef.setZoom(14);
+    return;
+  }
   const bounds = new google.maps.LatLngBounds();
-  MACHINES.forEach(function(m) { bounds.extend({ lat: m.lat, lng: m.lng }); });
+  inZone.forEach(function(m) { bounds.extend({ lat: m.lat, lng: m.lng }); });
   stockMapRef.fitBounds(bounds, 40);
 }
 function markerIcon(active) {
@@ -584,6 +599,7 @@ function selectMachine(i, scroll) {
   document.getElementById('smcAddr').textContent = MACHINES[i].addr;
   updateMachineTabs();
   updateMarkerStyles();
+  if (stockMapRef && (MACHINES[i].zone || 'ge') !== stockMapZone) fitStockMap();
   renderFloors();
   try { history.replaceState(null, '', '?machine=' + MACHINES[i].slug); } catch (e) {}
   if (scroll !== false) {

@@ -38,10 +38,10 @@ pays:
     nom: { en: Switzerland, fr: Suisse, nl: Zwitserland, ar: سويسرا }
     dans: { en: in Switzerland, fr: en Suisse, nl: in Zwitserland, ar: في سويسرا }
     reseau:
-      en: 8 machines in Geneva
-      fr: 8 distributeurs à Genève
-      nl: 8 automaten in Genève
-      ar: 8 آلات في جنيف
+      en: 8 machines in Geneva and Vaud
+      fr: 8 distributeurs à Genève et dans le canton de Vaud
+      nl: 8 automaten in Genève en Vaud
+      ar: 8 آلات في جنيف وفو
     offre:
       en: "Get a <strong>%remise% welcome code</strong> by email, valid in our Swiss machines, plus early access to new drops and promos in Geneva."
       fr: "Recevez par email un <strong>code de bienvenue de %remise%</strong>, valable dans nos distributeurs suisses, plus les nouveautés et les promos à Genève en avant-première."

@@ -11,7 +11,7 @@ en:
   nav_newsletter: "🔔 Newsletter"
   nav_stock: "📦 Live Stock"
   fl_aria: Our machines
-  fl_titre: Our machines in Geneva
+  fl_titre: Our machines in Switzerland
   fl_tous: All locations →
   f_stock: "📦 Live Stock"
   f_contact: Contact
@@ -59,7 +59,7 @@ fr:
   nav_newsletter: "🔔 Newsletter"
   nav_stock: "📦 Stock Live"
   fl_aria: Nos distributeurs
-  fl_titre: Nos distributeurs à Genève
+  fl_titre: Nos distributeurs en Suisse
   fl_tous: Tous les emplacements →
   f_stock: "📦 Stock Live"
   f_contact: Contact
@@ -107,7 +107,7 @@ nl:
   nav_newsletter: "🔔 Nieuwsbrief"
   nav_stock: "📦 Live voorraad"
   fl_aria: Onze automaten
-  fl_titre: Onze automaten in Genève
+  fl_titre: Onze automaten in Zwitserland
   fl_tous: Alle locaties →
   f_stock: "📦 Live voorraad"
   f_contact: Contact
@@ -155,7 +155,7 @@ ar:
   nav_newsletter: "🔔 النشرة"
   nav_stock: "📦 المخزون المباشر"
   fl_aria: أجهزتنا
-  fl_titre: أجهزتنا في جنيف
+  fl_titre: أجهزتنا في سويسرا
   fl_tous: "كل المواقع ←"
   f_stock: "📦 المخزون المباشر"
   f_contact: تواصل معنا

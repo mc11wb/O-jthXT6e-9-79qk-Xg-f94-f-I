@@ -5,13 +5,13 @@ description: "Where to find Pokémon card vending machines in Geneva, what's ins
 licence: pokemon
 pays: ch
 resume:
-  - "Eight BoosterStop machines in the canton of Geneva: seven inside La Poste branches and one at King Jouet Carouge."
+  - "Seven BoosterStop machines in the canton of Geneva: six inside La Poste branches and one at King Jouet Carouge."
   - "Factory-sealed boosters, displays and boxes, bought only from official distributors."
   - "Pay with cash (change given), TWINT or contactless. The product drops right away."
   - "Stock at Rive, Les Charmilles and Petit-Lancy can be checked [live](/stock.html) before you go."
 faq:
   - q: "Where can I buy Pokémon cards in Geneva without going to a shop?"
-    r: "At one of the eight BoosterStop machines in the canton: Rive, Les Charmilles, Petit-Lancy, Plainpalais, Meyrin, Thônex and Carouge, all inside La Poste branches, plus King Jouet Carouge. Full addresses are on the [Geneva locations](/distributeurs-geneve.html) page."
+    r: "At one of the seven BoosterStop machines in the canton: Rive, Les Charmilles, Petit-Lancy, Plainpalais, Thônex and Carouge, all inside La Poste branches, plus King Jouet Carouge. Full addresses are on the [Geneva locations](/distributeurs-geneve.html) page."
   - q: "Are the cards sold in the machines authentic?"
     r: "Yes. Every product is factory-sealed and comes exclusively from official distributors. Nothing is weighed, searched, opened, sorted or resealed."
   - q: "What are the opening hours?"
@@ -22,15 +22,17 @@ faq:
     r: "Call +41 22 886 01 58 with the location and the time of purchase. Once the machine log is checked, you get a refund or a replacement."
 ---
 
-Buying Pokémon cards in Geneva no longer means being limited to specialist shops and their opening hours. Eight BoosterStop vending machines are installed across the canton, inside places people already visit. Here is where they are, what they stock and how to use them.
+Buying Pokémon cards in Geneva no longer means being limited to specialist shops and their opening hours. Seven BoosterStop vending machines are installed across the canton, inside places people already visit. Here is where they are, what they stock and how to use them.
 
 ## Where the machines are
 
-Seven machines are inside La Poste branches, and the eighth is at King Jouet Carouge:
+Six machines are inside La Poste branches, and the seventh is at King Jouet Carouge:
 
 - **Central Geneva**: [Rive](/distributeur-geneve-rive.html), [Les Charmilles](/distributeur-geneve-charmilles.html) and [Plainpalais](/distributeur-geneve-plainpalais.html)
-- **Surrounding towns**: [Petit-Lancy](/distributeur-petit-lancy.html), [Meyrin](/distributeur-meyrin.html), [Thônex](/distributeur-thonex.html) and [Carouge](/distributeur-carouge.html)
+- **Surrounding towns**: [Petit-Lancy](/distributeur-petit-lancy.html), [Thônex](/distributeur-thonex.html) and [Carouge](/distributeur-carouge.html)
 - **King Jouet Carouge**, Avenue Cardinal-Mermillod 36
+
+Outside the canton, near Lausanne, an eighth machine is at [King Jouet Ecublens](/distributeur-ecublens.html), Chemin du Croset 7.
 
 The machines follow the opening hours of the venue that hosts them, so they are closed on Sundays and Geneva public holidays. If there's no machine in your neighbourhood yet, the box at the bottom of this article finds the nearest one.
 
