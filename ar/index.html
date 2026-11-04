@@ -235,6 +235,24 @@ page: index
   .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
   /* TRUST & FAQ */
+  /* NOS PARTENAIRES : bandeau de logos (fichiers dans /assets/partenaires/) */
+  .hosts-section { max-width: 1100px; margin: 0 auto; padding: 72px 48px 64px; }
+  .hosts-section .section-label { font-weight: 400; margin-bottom: 28px; }
+  .hosts-logos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .host-logo { display: flex; align-items: center; justify-content: center; height: 104px; padding: 20px 28px; background: #ffffff; border-radius: var(--radius); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+  .host-logo:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.35); }
+  .host-logo:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
+  .host-logo img { display: block; max-width: 100%; max-height: 56px; width: auto; height: auto; }
+  .host-logo img.host-logo-tall { max-height: 76px; } /* logo empilé (Carrefour) : plus haut pour le même poids visuel */
+  .host-logo-txt { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 500; color: #120F2A; }
+  @media (max-width: 768px) {
+    .hosts-section { padding: 56px 24px 48px; }
+    .hosts-logos { gap: 8px; }
+    .host-logo { height: 68px; padding: 10px 12px; }
+    .host-logo img { max-height: 36px; }
+    .host-logo img.host-logo-tall { max-height: 46px; }
+    .host-logo-txt { font-size: 13px; text-align: center; }
+  }
   .trust-section { max-width: 1100px; margin: 0 auto; padding: 100px 48px; }
   .trust-head { max-width: 640px; margin-bottom: 48px; }
   .trust-head h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px,4.5vw,52px); line-height: 1; color: var(--white); margin: 14px 0 18px; }
@@ -604,6 +622,36 @@ page: index
   </div>
 </div>
 
+<!-- NOS PARTENAIRES : logos des lieux qui accueillent les machines.
+     Fichiers : /assets/partenaires/la-poste.svg, king-jouet.png, carrefour.webp
+     (tant qu'un fichier manque, le nom de la marque s'affiche à sa place).
+     Chiffres du JSON-LD tirés de _data/machines.yml -->
+{%- assign hp_poste = site.data.machines | where: "pays", "ch" | where_exp: "m", "m.nom contains 'La Poste'" -%}
+{%- assign hp_kj = site.data.machines | where_exp: "m", "m.nom contains 'King Jouet'" -%}
+{%- assign hp_cf = site.data.machines | where_exp: "m", "m.nom contains 'Carrefour'" -%}
+<section class="hosts-section fade-in" id="partenaires" aria-labelledby="hosts-title">
+  <h2 class="section-label" id="hosts-title">شركاؤنا</h2>
+  <ul class="hosts-logos">
+    <li><a class="host-logo" href="{% include lien.html f="distributeurs-geneve.html" %}"><img src="/assets/partenaires/la-poste.svg" alt="البريد السويسري La Poste: أجهزة BoosterStop في {{ hp_poste.size }} فروع في جنيف" data-name="البريد السويسري" width="500" height="191" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'host-logo-txt', textContent: this.dataset.name }))"></a></li>
+    <li><a class="host-logo" href="{% include lien.html f="distributeurs-geneve.html" %}"><img src="/assets/partenaires/king-jouet.png" alt="King Jouet: أجهزة BoosterStop في {{ hp_kj.size }} متاجر ألعاب في جنيف وقرب لوزان" data-name="King Jouet" width="702" height="168" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'host-logo-txt', textContent: this.dataset.name }))"></a></li>
+    <li><a class="host-logo" href="{% include lien.html f="distributeurs-belgique.html" %}"><img class="host-logo-tall" src="/assets/partenaires/carrefour.webp" alt="Carrefour: أجهزة BoosterStop في {{ hp_cf.size }} متاجر في بلجيكا" data-name="Carrefour" width="480" height="385" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'host-logo-txt', textContent: this.dataset.name }))"></a></li>
+  </ul>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": "https://boosterstop.com/ar/#partners",
+    "name": "الشركاء الذين يستضيفون أجهزة BoosterStop",
+    "numberOfItems": 3,
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "item": { "@type": "Organization", "@id": "https://boosterstop.com/#partner-la-poste", "name": "Swiss Post", "logo": "https://boosterstop.com/assets/partenaires/la-poste.svg", "sameAs": ["https://en.wikipedia.org/wiki/Swiss_Post", "https://fr.wikipedia.org/wiki/La_Poste_(Suisse)"], "alternateName": "La Poste Suisse", "url": "https://www.post.ch/", "description": "يستضيف {{ hp_poste.size }} أجهزة BoosterStop في فروع البريد السويسري في كانتون جنيف." } },
+      { "@type": "ListItem", "position": 2, "item": { "@type": "Organization", "@id": "https://boosterstop.com/#partner-king-jouet", "name": "King Jouet", "logo": "https://boosterstop.com/assets/partenaires/king-jouet.png", "sameAs": ["https://www.groupe-king-jouet.com/", "https://fr.wikipedia.org/wiki/King_Jouet"], "url": "https://www.king-jouet.ch/", "description": "يستضيف {{ hp_kj.size }} أجهزة BoosterStop في متاجر King Jouet في جنيف وقرب لوزان." } },
+      { "@type": "ListItem", "position": 3, "item": { "@type": "Organization", "@id": "https://boosterstop.com/#partner-carrefour", "name": "Carrefour Belgium", "logo": "https://boosterstop.com/assets/partenaires/carrefour.webp", "sameAs": ["https://en.wikipedia.org/wiki/Carrefour", "https://fr.wikipedia.org/wiki/Carrefour_(entreprise)"], "alternateName": "Carrefour", "url": "https://www.carrefour.be/", "description": "يستضيف {{ hp_cf.size }} أجهزة BoosterStop في متاجر Carrefour في بلجيكا." } }
+    ]
+  }
+  </script>
+</section>
+
 <!-- PARTNER SECTION -->
 <div class="partner-section fade-in" id="partner">
   <div class="partner-inner">
@@ -652,6 +700,10 @@ page: index
       <div class="faq-a">سهولة الوصول والخدمة الذاتية مهمتان، لكنهما ليستا كل شيء. هدفنا الحقيقي هو الظهور: نريد أن نمنح أكبر عدد ممكن من تراخيص TCG مكاناً أمام اللاعبين، بما فيها تلك التي نادراً ما تجدها على الرفوف، حيث يوجد الناس أصلاً.</div>
     </details>
     <details class="faq-item">
+      <summary>أين توجد أجهزة BoosterStop؟</summary>
+      <div class="faq-a">لدى شركائنا: {{ hp_poste.size }} فروع للبريد السويسري في كانتون جنيف، و{{ hp_kj.size }} متاجر ألعاب King Jouet (في جنيف وقرب لوزان)، و{{ hp_cf.size }} متاجر Carrefour في بلجيكا. يتبع كل جهاز ساعات عمل المكان الذي يستضيفه.</div>
+    </details>
+    <details class="faq-item">
       <summary>ما الألعاب التي أجدها في الأجهزة؟</summary>
       <div class="faq-a">بوكيمون، ون بيس، دراغون بول سوبر، ريفتباوند: LoL، ماجيك: ذا غاذرينغ، ديزني لوركانا، يو-غي-أوه!، ناروتو والمزيد، مع عدة عوالم متاحة في كل جهاز في الوقت نفسه. تتطور التشكيلة مع الإصدارات الجديدة والطلب.</div>
     </details>
@@ -673,6 +725,81 @@ page: index
     </details>
   </div>
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://boosterstop.com/ar/#faq",
+  "inLanguage": "ar",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "هل المنتجات أصلية فعلاً ولم تُلمس؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم، بالتأكيد. كل شيء مختوم 100% ويأتي مباشرة من الموزعين الرسميين. لا نزن العبوات ولا نفتشها ولا نعبث بها ولا ننتقيها يدوياً. ما يدخل الجهاز هو تماماً كما خرج من المصنع."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "لماذا أجهزة بيع بدلاً من متجر عادي؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "سهولة الوصول والخدمة الذاتية مهمتان، لكنهما ليستا كل شيء. هدفنا الحقيقي هو الظهور: نريد أن نمنح أكبر عدد ممكن من تراخيص TCG مكاناً أمام اللاعبين، بما فيها تلك التي نادراً ما تجدها على الرفوف، حيث يوجد الناس أصلاً."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "أين توجد أجهزة BoosterStop؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "لدى شركائنا: {{ hp_poste.size }} فروع للبريد السويسري في كانتون جنيف، و{{ hp_kj.size }} متاجر ألعاب King Jouet (في جنيف وقرب لوزان)، و{{ hp_cf.size }} متاجر Carrefour في بلجيكا. يتبع كل جهاز ساعات عمل المكان الذي يستضيفه."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "ما الألعاب التي أجدها في الأجهزة؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "بوكيمون، ون بيس، دراغون بول سوبر، ريفتباوند: LoL، ماجيك: ذا غاذرينغ، ديزني لوركانا، يو-غي-أوه!، ناروتو والمزيد، مع عدة عوالم متاحة في كل جهاز في الوقت نفسه. تتطور التشكيلة مع الإصدارات الجديدة والطلب."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "بأي لغات تتوفر البطاقات؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "بعدة لغات. نوفّر الألعاب نفسها بلغات متعددة، منها الفرنسية والإنجليزية واليابانية والصينية والكورية والألمانية والإسبانية والبرتغالية. مثلاً بوكيمون باليابانية أو الصينية أو الفرنسية، وون بيس بالإنجليزية. هكذا تحافظ على تناسق مجموعتك باللغة التي بدأت بها، وتقرأ البطاقات التي تلعب بها، وتصل إلى إصدارات لا تصدر إلا في أسواق معينة. تختلف اللغات المتوفرة حسب الإصدار والجهاز، لذا راجع صفحة المخزون المباشر لترى ما في كل جهاز الآن."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "كيف أدفع؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نقبل الدفع نقداً مع استرداد الباقي بالقطع النقدية والأوراق، وكذلك عبر TWINT وبالبطاقة والهاتف الذكي دون تلامس. اختر منتجك وادفع، فينزل فوراً؛ وتبدأ متعة فتح العبوة عند الجهاز مباشرة."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل يمكنني التحقق من المخزون قبل الذهاب؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم. صفحة المخزون المباشر لدينا تعرض المخزون لحظة بلحظة لكل جهاز. إذا كان ما تريده غير متوفر، يمكنك طلب إعادة تعبئة أو منتج جديد مباشرة. نعدّل تشكيلتنا حسب طلباتكم."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "هل يمكن أن يفتتح BoosterStop في بلد آخر؟",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "نعم. نبحث عن شركاء محليين في ألمانيا والنمسا وإسبانيا وإيطاليا والبرتغال وهولندا ودول الشمال الأوروبي والشرق الأوسط. اقترح بلدك عبر صفحة الشريك المحلي ."
+      }
+    }
+  ]
+}
+</script>
 
 <!-- CONTACT -->
 <div class="contact-section fade-in" id="contact">

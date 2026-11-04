@@ -234,6 +234,24 @@ page: index
   .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
   /* TRUST & FAQ */
+  /* NOS PARTENAIRES : bandeau de logos (fichiers dans /assets/partenaires/) */
+  .hosts-section { max-width: 1100px; margin: 0 auto; padding: 72px 48px 64px; }
+  .hosts-section .section-label { font-weight: 400; margin-bottom: 28px; }
+  .hosts-logos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .host-logo { display: flex; align-items: center; justify-content: center; height: 104px; padding: 20px 28px; background: #ffffff; border-radius: var(--radius); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+  .host-logo:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.35); }
+  .host-logo:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
+  .host-logo img { display: block; max-width: 100%; max-height: 56px; width: auto; height: auto; }
+  .host-logo img.host-logo-tall { max-height: 76px; } /* logo empilé (Carrefour) : plus haut pour le même poids visuel */
+  .host-logo-txt { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 500; color: #120F2A; }
+  @media (max-width: 768px) {
+    .hosts-section { padding: 56px 24px 48px; }
+    .hosts-logos { gap: 8px; }
+    .host-logo { height: 68px; padding: 10px 12px; }
+    .host-logo img { max-height: 36px; }
+    .host-logo img.host-logo-tall { max-height: 46px; }
+    .host-logo-txt { font-size: 13px; text-align: center; }
+  }
   .trust-section { max-width: 1100px; margin: 0 auto; padding: 100px 48px; }
   .trust-head { max-width: 640px; margin-bottom: 48px; }
   .trust-head h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px,4.5vw,52px); line-height: 1; color: var(--white); margin: 14px 0 18px; }
@@ -604,6 +622,36 @@ page: index
   </div>
 </div>
 
+<!-- NOS PARTENAIRES : logos des lieux qui accueillent les machines.
+     Fichiers : /assets/partenaires/la-poste.svg, king-jouet.png, carrefour.webp
+     (tant qu'un fichier manque, le nom de la marque s'affiche à sa place).
+     Chiffres du JSON-LD tirés de _data/machines.yml -->
+{%- assign hp_poste = site.data.machines | where: "pays", "ch" | where_exp: "m", "m.nom contains 'La Poste'" -%}
+{%- assign hp_kj = site.data.machines | where_exp: "m", "m.nom contains 'King Jouet'" -%}
+{%- assign hp_cf = site.data.machines | where_exp: "m", "m.nom contains 'Carrefour'" -%}
+<section class="hosts-section fade-in" id="partenaires" aria-labelledby="hosts-title">
+  <h2 class="section-label" id="hosts-title">Nos partenaires</h2>
+  <ul class="hosts-logos">
+    <li><a class="host-logo" href="{% include lien.html f="distributeurs-geneve.html" %}"><img src="/assets/partenaires/la-poste.svg" alt="La Poste Suisse : distributeurs BoosterStop dans {{ hp_poste.size }} filiales à Genève" data-name="La Poste Suisse" width="500" height="191" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'host-logo-txt', textContent: this.dataset.name }))"></a></li>
+    <li><a class="host-logo" href="{% include lien.html f="distributeurs-geneve.html" %}"><img src="/assets/partenaires/king-jouet.png" alt="King Jouet : distributeurs BoosterStop dans {{ hp_kj.size }} magasins, à Genève et près de Lausanne" data-name="King Jouet" width="702" height="168" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'host-logo-txt', textContent: this.dataset.name }))"></a></li>
+    <li><a class="host-logo" href="{% include lien.html f="distributeurs-belgique.html" %}"><img class="host-logo-tall" src="/assets/partenaires/carrefour.webp" alt="Carrefour : distributeurs BoosterStop dans {{ hp_cf.size }} supermarchés en Belgique" data-name="Carrefour" width="480" height="385" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'host-logo-txt', textContent: this.dataset.name }))"></a></li>
+  </ul>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": "https://boosterstop.com/fr/#partners",
+    "name": "Partenaires qui accueillent les distributeurs BoosterStop",
+    "numberOfItems": 3,
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "item": { "@type": "Organization", "@id": "https://boosterstop.com/#partner-la-poste", "name": "Swiss Post", "logo": "https://boosterstop.com/assets/partenaires/la-poste.svg", "sameAs": ["https://en.wikipedia.org/wiki/Swiss_Post", "https://fr.wikipedia.org/wiki/La_Poste_(Suisse)"], "alternateName": "La Poste Suisse", "url": "https://www.post.ch/", "description": "Accueille {{ hp_poste.size }} distributeurs BoosterStop dans des filiales de La Poste Suisse du canton de Genève." } },
+      { "@type": "ListItem", "position": 2, "item": { "@type": "Organization", "@id": "https://boosterstop.com/#partner-king-jouet", "name": "King Jouet", "logo": "https://boosterstop.com/assets/partenaires/king-jouet.png", "sameAs": ["https://www.groupe-king-jouet.com/", "https://fr.wikipedia.org/wiki/King_Jouet"], "url": "https://www.king-jouet.ch/", "description": "Accueille {{ hp_kj.size }} distributeurs BoosterStop dans des magasins King Jouet à Genève et près de Lausanne." } },
+      { "@type": "ListItem", "position": 3, "item": { "@type": "Organization", "@id": "https://boosterstop.com/#partner-carrefour", "name": "Carrefour Belgium", "logo": "https://boosterstop.com/assets/partenaires/carrefour.webp", "sameAs": ["https://en.wikipedia.org/wiki/Carrefour", "https://fr.wikipedia.org/wiki/Carrefour_(entreprise)"], "alternateName": "Carrefour", "url": "https://www.carrefour.be/", "description": "Accueille {{ hp_cf.size }} distributeurs BoosterStop dans des supermarchés Carrefour en Belgique." } }
+    ]
+  }
+  </script>
+</section>
+
 <!-- PARTNER SECTION -->
 <div class="partner-section fade-in" id="partner">
   <div class="partner-inner">
@@ -650,6 +698,10 @@ page: index
     <details class="faq-item">
       <summary>Pourquoi des distributeurs plutôt qu'une boutique classique ?</summary>
       <div class="faq-a">La praticité et l'accès en libre-service comptent, mais ce n'est pas l'essentiel. Notre vrai objectif, c'est la visibilité : offrir une place à un maximum de licences TCG devant les joueurs, y compris celles qu'on trouve rarement en rayon, là où les gens sont déjà.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Où sont installés les distributeurs BoosterStop ?</summary>
+      <div class="faq-a">Chez nos partenaires : {{ hp_poste.size }} filiales de La Poste Suisse dans le canton de Genève, {{ hp_kj.size }} magasins King Jouet (à Genève et près de Lausanne) et {{ hp_cf.size }} supermarchés Carrefour en Belgique. Chaque machine suit les horaires d’ouverture du lieu qui l’accueille.</div>
     </details>
     <details class="faq-item">
       <summary>Quels jeux puis-je trouver dans les machines ?</summary>
@@ -1153,50 +1205,66 @@ document.addEventListener('DOMContentLoaded', function() {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Are the products really authentic and untouched?",
+          "name": "Les produits sont-ils vraiment authentiques et intacts ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Everything is 100% sealed and comes directly from official distributors. We never weigh, search, tamper with or hand-pick packs. What goes in the machine is exactly as it left the manufacturer."
+            "text": "Oui, absolument. Tout est 100% scellé et provient directement de distributeurs officiels. Nous ne pesons jamais, ne fouillons pas, n'altérons rien et ne trions pas les paquets. Ce qui entre dans la machine est exactement tel qu'il a quitté le fabricant."
           }
         },
         {
           "@type": "Question",
-          "name": "Why vending machines instead of a regular shop?",
+          "name": "Pourquoi des distributeurs plutôt qu'une boutique classique ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Convenience and self-service access matter, but our real goal is visibility: giving as many TCG licenses as possible a place in front of players, including the ones you rarely find on shelves, right where people already are."
+            "text": "La praticité et l'accès en libre-service comptent, mais ce n'est pas l'essentiel. Notre vrai objectif, c'est la visibilité : offrir une place à un maximum de licences TCG devant les joueurs, y compris celles qu'on trouve rarement en rayon, là où les gens sont déjà."
           }
         },
         {
           "@type": "Question",
-          "name": "Which games can I find in the machines?",
+          "name": "Où sont installés les distributeurs BoosterStop ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto and more, with several universes available in each machine at the same time."
+            "text": "Chez nos partenaires : {{ hp_poste.size }} filiales de La Poste Suisse dans le canton de Genève, {{ hp_kj.size }} magasins King Jouet (à Genève et près de Lausanne) et {{ hp_cf.size }} supermarchés Carrefour en Belgique. Chaque machine suit les horaires d’ouverture du lieu qui l’accueille."
           }
         },
         {
           "@type": "Question",
-          "name": "In which languages are the cards available?",
+          "name": "Quels jeux puis-je trouver dans les machines ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Several. BoosterStop stocks the same games across multiple languages, among them French, English, Japanese, Chinese, Korean, German, Spanish and Portuguese. For example Pokémon in Japanese, Chinese or French, and One Piece in English. This lets collectors keep a collection consistent in the language they started with, read the cards they play, and access sets that only release in certain markets. Available languages vary by set and by machine."
+            "text": "Pokémon, One Piece, Dragon Ball Super, Riftbound : LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto et plus, avec plusieurs univers disponibles simultanément dans chaque machine. La sélection évolue selon les sorties et la demande."
           }
         },
         {
           "@type": "Question",
-          "name": "How do I pay?",
+          "name": "Dans quelles langues les cartes sont-elles disponibles ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We accept cash with change returned in both coins and notes, as well as TWINT and contactless card and smartphone payments. Choose your product, pay, and it drops instantly."
+            "text": "Plusieurs. Nous proposons les mêmes jeux en plusieurs langues, dont le français, l'anglais, le japonais, le chinois, le coréen, l'allemand, l'espagnol et le portugais. Par exemple du Pokémon en japonais, chinois, coréen ou français, et du One Piece en anglais. Cela vous permet de garder une collection cohérente dans la langue où vous avez commencé, de lire les cartes que vous jouez, et d'accéder à des sets qui ne sortent que sur certains marchés. Les langues varient selon les sets et les machines : consultez la page Stock Live pour voir ce qu'il y a dans chacune en temps réel."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I check stock before going?",
+          "name": "Comment payer ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Our Live Stock page shows real-time inventory for each machine. If something you want is missing, you can request a restock or a new product directly."
+            "text": "Nous acceptons les espèces, avec monnaie rendue en pièces et en billets, ainsi que TWINT et les paiements sans contact par carte et smartphone. Choisissez votre produit, payez, et il sort immédiatement ; l'expérience du pack opening commence là, devant la machine."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Puis-je vérifier le stock avant de me déplacer ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. Notre page Stock Live affiche l'inventaire en temps réel de chaque machine. Si un produit manque, vous pouvez demander un réassort ou un nouveau produit directement. Nous adaptons notre sélection selon vos demandes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Peut-on ouvrir BoosterStop dans un autre pays ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. Nous cherchons des partenaires locaux en Allemagne, en Autriche, en Espagne, en Italie, au Portugal, aux Pays-Bas, en Europe du Nord et au Moyen-Orient. Proposez votre pays sur la page Partenaire local."
           }
         }
       ]
