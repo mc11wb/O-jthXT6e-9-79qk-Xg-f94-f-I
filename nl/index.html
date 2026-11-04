@@ -562,10 +562,10 @@ page: index
             <a href="/nl/stock.html?machine=king-jouet-ecublens" class="map-stock-link">📦 Bekijk de voorraad</a>
           </div>
         </div>
-        <div class="map-location-item incoming">
+        <div class="map-location-item incoming" data-zone="all">
           <div class="map-location-dot incoming-dot"></div>
           <div>
-            <div class="map-location-name">+ binnenkort meer locaties in Genève</div>
+            <div class="map-location-name">+5 automaten binnenkort in Franstalig Zwitserland: Genève, Lausanne, Montreux…</div>
             <a href="/nl/expansion.html" class="map-stock-link">🌍 Alle geplande steden: Franstalig Zwitserland, Frankrijk, België, Emiraten</a>
           </div>
         </div>
@@ -605,9 +605,9 @@ page: index
       <div class="map-wrapper"><div id="map-france"></div></div>
       <div class="map-coming-soon-msg">
         <div class="coming-soon-icon">🇫🇷</div>
-        <div class="coming-soon-title">Frankrijk: Binnenkort</div>
-        <div class="coming-soon-sub">Eerst de grenssteden, daarna de grote steden. Aankondigingen volgen.</div>
-        <a href="/nl/expansion.html#france" class="map-stock-link">🌍 Annemasse, Lyon, Montpellier… bekijk het plan</a>
+        <div class="coming-soon-title">Frankrijk: eerst Lille</div>
+        <div class="coming-soon-sub">Binnenkort 3 automaten in Lille, in Carrefour-winkels. Daarna Île-de-France, Auvergne-Rhône-Alpes en Occitanie.</div>
+        <a href="/nl/expansion.html#france" class="map-stock-link">🌍 Lille, Parijs, Lyon, Toulouse… bekijk het plan</a>
       </div>
     </div>
 
@@ -616,8 +616,8 @@ page: index
       <div class="map-wrapper"><div id="map-uae"></div></div>
       <div class="map-coming-soon-msg">
         <div class="coming-soon-icon">🇦🇪</div>
-        <div class="coming-soon-title">Emiraten: Binnenkort</div>
-        <div class="coming-soon-sub">Dubai en Abu Dhabi staan op de planning. Aankondigingen volgen.</div>
+        <div class="coming-soon-title">Emiraten: 25 automaten</div>
+        <div class="coming-soon-sub">5 automaten begin december, daarna nog 20 in januari, tussen Dubai en Abu Dhabi.</div>
         <a href="/nl/expansion.html#uae" class="map-stock-link">🌍 Dubai, Abu Dhabi, Sharjah… bekijk het plan</a>
       </div>
     </div>
@@ -637,7 +637,7 @@ page: index
   <ul class="hosts-logos">
     <li><a class="host-logo" href="{% include lien.html f="distributeurs-geneve.html" %}"><img class="host-logo-poste" src="/assets/partenaires/la-poste.svg" alt="La Poste (Zwitserland): BoosterStop-automaten in {{ hp_poste.size }} postkantoren in Genève" data-name="La Poste" width="500" height="191" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'host-logo-txt', textContent: this.dataset.name }))"></a></li>
     <li><a class="host-logo" href="{% include lien.html f="distributeurs-geneve.html" %}"><img src="/assets/partenaires/king-jouet.png" alt="King Jouet: BoosterStop-automaten in {{ hp_kj.size }} speelgoedwinkels, in Genève en bij Lausanne" data-name="King Jouet" width="702" height="168" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'host-logo-txt', textContent: this.dataset.name }))"></a></li>
-    <li><a class="host-logo" href="{% include lien.html f="distributeurs-belgique.html" %}"><img class="host-logo-tall" src="/assets/partenaires/carrefour.webp" alt="Carrefour: BoosterStop-automaten in {{ hp_cf.size }} supermarkten in België" data-name="Carrefour" width="480" height="385" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'host-logo-txt', textContent: this.dataset.name }))"></a></li>
+    <li><a class="host-logo" href="{% include lien.html f="distributeurs-belgique.html" %}"><img class="host-logo-tall" src="/assets/partenaires/carrefour.webp" alt="Carrefour: BoosterStop-automaten in {{ hp_cf.size }} supermarkten in België, binnenkort in Lille" data-name="Carrefour" width="480" height="385" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'host-logo-txt', textContent: this.dataset.name }))"></a></li>
   </ul>
   <script type="application/ld+json">
   {
@@ -649,7 +649,7 @@ page: index
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "item": { "@type": "Organization", "@id": "https://boosterstop.com/#partner-la-poste", "name": "Swiss Post", "logo": "https://boosterstop.com/assets/partenaires/la-poste.svg", "sameAs": ["https://en.wikipedia.org/wiki/Swiss_Post", "https://fr.wikipedia.org/wiki/La_Poste_(Suisse)"], "alternateName": "La Poste Suisse", "url": "https://www.post.ch/", "description": "Huisvest {{ hp_poste.size }} BoosterStop-automaten in postkantoren van La Poste in het kanton Genève." } },
       { "@type": "ListItem", "position": 2, "item": { "@type": "Organization", "@id": "https://boosterstop.com/#partner-king-jouet", "name": "King Jouet", "logo": "https://boosterstop.com/assets/partenaires/king-jouet.png", "sameAs": ["https://www.groupe-king-jouet.com/", "https://fr.wikipedia.org/wiki/King_Jouet"], "url": "https://www.king-jouet.ch/", "description": "Huisvest {{ hp_kj.size }} BoosterStop-automaten in King Jouet-speelgoedwinkels in Genève en bij Lausanne." } },
-      { "@type": "ListItem", "position": 3, "item": { "@type": "Organization", "@id": "https://boosterstop.com/#partner-carrefour", "name": "Carrefour Belgium", "logo": "https://boosterstop.com/assets/partenaires/carrefour.webp", "sameAs": ["https://en.wikipedia.org/wiki/Carrefour", "https://fr.wikipedia.org/wiki/Carrefour_(entreprise)"], "alternateName": "Carrefour", "url": "https://www.carrefour.be/", "description": "Huisvest {{ hp_cf.size }} BoosterStop-automaten in Carrefour-supermarkten in België." } }
+      { "@type": "ListItem", "position": 3, "item": { "@type": "Organization", "@id": "https://boosterstop.com/#partner-carrefour", "name": "Carrefour Belgium", "logo": "https://boosterstop.com/assets/partenaires/carrefour.webp", "sameAs": ["https://en.wikipedia.org/wiki/Carrefour", "https://fr.wikipedia.org/wiki/Carrefour_(entreprise)"], "alternateName": "Carrefour", "url": "https://www.carrefour.be/", "description": "Huisvest {{ hp_cf.size }} BoosterStop-automaten in Carrefour-supermarkten in België, met binnenkort meer in België en in Lille, Frankrijk." } }
     ]
   }
   </script>
@@ -707,6 +707,10 @@ page: index
       <div class="faq-a">Bij onze partners: {{ hp_poste.size }} postkantoren van La Poste in het kanton Genève, {{ hp_kj.size }} King Jouet-speelgoedwinkels (in Genève en bij Lausanne) en {{ hp_cf.size }} Carrefour-supermarkten in België. Elke automaat volgt de openingsuren van de locatie.</div>
     </details>
     <details class="faq-item">
+      <summary>Waar openen de volgende BoosterStop-automaten?</summary>
+      <div class="faq-a">Binnenkort komen er 13 nieuwe automaten bij: 5 in Franstalig Zwitserland (Genève, Lausanne, Montreux…) bij King Jouet, La Poste en andere partners, 5 extra in Carrefour-winkels in België, en 3 in Lille, ook bij Carrefour. Île-de-France, Auvergne-Rhône-Alpes en Occitanie volgen kort daarna. In de Verenigde Arabische Emiraten openen 25 automaten tussen Dubai en Abu Dhabi: 5 begin december en nog 20 in januari. Alle geplande steden staan op de <a href="{% include lien.html f="expansion.html" %}">uitbreidingspagina</a>.</div>
+    </details>
+    <details class="faq-item">
       <summary>Welke spellen vind ik in de automaten?</summary>
       <div class="faq-a">Pokémon, One Piece, Dragon Ball Super, Riftbound: LoL, Magic: The Gathering, Disney Lorcana, Yu-Gi-Oh!, Naruto en meer, met meerdere werelden tegelijk in elke automaat. Het aanbod evolueert met de nieuwe releases en de vraag.</div>
     </details>
@@ -758,6 +762,14 @@ page: index
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Bij onze partners: {{ hp_poste.size }} postkantoren van La Poste in het kanton Genève, {{ hp_kj.size }} King Jouet-speelgoedwinkels (in Genève en bij Lausanne) en {{ hp_cf.size }} Carrefour-supermarkten in België. Elke automaat volgt de openingsuren van de locatie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Waar openen de volgende BoosterStop-automaten?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Binnenkort komen er 13 nieuwe automaten bij: 5 in Franstalig Zwitserland (Genève, Lausanne, Montreux…) bij King Jouet, La Poste en andere partners, 5 extra in Carrefour-winkels in België, en 3 in Lille, ook bij Carrefour. Île-de-France, Auvergne-Rhône-Alpes en Occitanie volgen kort daarna. In de Verenigde Arabische Emiraten openen 25 automaten tussen Dubai en Abu Dhabi: 5 begin december en nog 20 in januari. Alle geplande steden staan op de uitbreidingspagina."
       }
     },
     {
@@ -1106,7 +1118,8 @@ function setCity(zone) {
   });
   let first = true;
   document.querySelectorAll('#tab-geneva .map-location-item').forEach(function(it) {
-    const show = (it.getAttribute('data-zone') || 'ge') === zone;
+    const iz = it.getAttribute('data-zone') || 'ge';
+    const show = iz === zone || iz === 'all';
     it.hidden = !show;
     it.classList.toggle('first-vis', show && first);
     if (show) first = false;
@@ -1207,9 +1220,14 @@ window.initMap = function() {
   // Cadrage sur la ville choisie (Genève par défaut, Lausanne via le sélecteur)
   setCity(bsZone);
 
-  new google.maps.Map(document.getElementById('map-france'), {
+  const frMap = new google.maps.Map(document.getElementById('map-france'), {
     zoom: 5, center: { lat: 46.6, lng: 2.4 },
     disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
+  });
+  // Lille : 3 machines Carrefour très bientôt (point à l'échelle de la ville, pas d'adresse)
+  new google.maps.Marker({
+    position: { lat: 50.6292, lng: 3.0573 }, map: frMap, title: "Lille · Binnenkort: 3 automaten",
+    icon: { path: google.maps.SymbolPath.CIRCLE, scale: 9, fillColor: '#120F2A', fillOpacity: 1, strokeColor: '#FFD000', strokeWeight: 2.5 }
   });
 
   const beMap = new google.maps.Map(document.getElementById('map-belgium'), {
@@ -1224,9 +1242,16 @@ window.initMap = function() {
     mk.addListener('click', function() { window.location.href = loc.url; });
   });
 
-  new google.maps.Map(document.getElementById('map-uae'), {
+  const aeMap = new google.maps.Map(document.getElementById('map-uae'), {
     zoom: 7, center: { lat: 24.5, lng: 54.5 },
     disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
+  });
+  // Dubaï et Abu Dhabi : 25 machines (5 début décembre, 20 en janvier), points à l'échelle de la ville
+  [{ lat: 25.2048, lng: 55.2708, n: 'Dubai' }, { lat: 24.4539, lng: 54.3773, n: 'Abu Dhabi' }].forEach(function(c) {
+    new google.maps.Marker({
+      position: { lat: c.lat, lng: c.lng }, map: aeMap, title: c.n + ' · Binnenkort',
+      icon: { path: google.maps.SymbolPath.CIRCLE, scale: 9, fillColor: '#120F2A', fillOpacity: 1, strokeColor: '#FFD000', strokeWeight: 2.5 }
+    });
   });
 }
 

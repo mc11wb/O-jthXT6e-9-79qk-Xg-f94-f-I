@@ -561,10 +561,10 @@ page: index
             <a href="/stock.html?machine=king-jouet-ecublens" class="map-stock-link">📦 Check stock</a>
           </div>
         </div>
-        <div class="map-location-item incoming">
+        <div class="map-location-item incoming" data-zone="all">
           <div class="map-location-dot incoming-dot"></div>
           <div>
-            <div class="map-location-name">+ more locations coming soon in Geneva</div>
+            <div class="map-location-name">+5 machines coming soon in Suisse romande: Geneva, Lausanne, Montreux…</div>
             <a href="/expansion.html" class="map-stock-link">🌍 See every planned city : Suisse romande, France, Belgium, UAE</a>
           </div>
         </div>
@@ -604,9 +604,9 @@ page: index
       <div class="map-wrapper"><div id="map-france"></div></div>
       <div class="map-coming-soon-msg">
         <div class="coming-soon-icon">🇫🇷</div>
-        <div class="coming-soon-title">France: Launching Soon</div>
-        <div class="coming-soon-sub">Border towns first, then the major cities. Announcements coming soon.</div>
-        <a href="/expansion.html#france" class="map-stock-link">🌍 Annemasse, Lyon, Montpellier… see the plan</a>
+        <div class="coming-soon-title">France: Lille first</div>
+        <div class="coming-soon-sub">3 machines arriving very soon in Lille, in Carrefour stores. Then Île-de-France, Auvergne-Rhône-Alpes and Occitanie.</div>
+        <a href="/expansion.html#france" class="map-stock-link">🌍 Lille, Paris, Lyon, Toulouse… see the plan</a>
       </div>
     </div>
 
@@ -615,8 +615,8 @@ page: index
       <div class="map-wrapper"><div id="map-uae"></div></div>
       <div class="map-coming-soon-msg">
         <div class="coming-soon-icon">🇦🇪</div>
-        <div class="coming-soon-title">UAE: Launching Soon</div>
-        <div class="coming-soon-sub">Dubai and Abu Dhabi on the roadmap. Announcements coming soon.</div>
+        <div class="coming-soon-title">UAE: 25 machines</div>
+        <div class="coming-soon-sub">5 machines in early December, then 20 more in January, between Dubai and Abu Dhabi.</div>
         <a href="/expansion.html#uae" class="map-stock-link">🌍 Dubai, Abu Dhabi, Sharjah… see the plan</a>
       </div>
     </div>
@@ -636,7 +636,7 @@ page: index
   <ul class="hosts-logos">
     <li><a class="host-logo" href="{% include lien.html f="distributeurs-geneve.html" %}"><img class="host-logo-poste" src="/assets/partenaires/la-poste.svg" alt="Swiss Post: BoosterStop machines in {{ hp_poste.size }} branches in Geneva" data-name="Swiss Post" width="500" height="191" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'host-logo-txt', textContent: this.dataset.name }))"></a></li>
     <li><a class="host-logo" href="{% include lien.html f="distributeurs-geneve.html" %}"><img src="/assets/partenaires/king-jouet.png" alt="King Jouet: BoosterStop machines in {{ hp_kj.size }} toy stores, in Geneva and near Lausanne" data-name="King Jouet" width="702" height="168" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'host-logo-txt', textContent: this.dataset.name }))"></a></li>
-    <li><a class="host-logo" href="{% include lien.html f="distributeurs-belgique.html" %}"><img class="host-logo-tall" src="/assets/partenaires/carrefour.webp" alt="Carrefour: BoosterStop machines in {{ hp_cf.size }} supermarkets in Belgium" data-name="Carrefour" width="480" height="385" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'host-logo-txt', textContent: this.dataset.name }))"></a></li>
+    <li><a class="host-logo" href="{% include lien.html f="distributeurs-belgique.html" %}"><img class="host-logo-tall" src="/assets/partenaires/carrefour.webp" alt="Carrefour: BoosterStop machines in {{ hp_cf.size }} supermarkets in Belgium, soon in Lille" data-name="Carrefour" width="480" height="385" loading="lazy" decoding="async" onerror="this.replaceWith(Object.assign(document.createElement('span'), { className: 'host-logo-txt', textContent: this.dataset.name }))"></a></li>
   </ul>
   <script type="application/ld+json">
   {
@@ -648,7 +648,7 @@ page: index
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "item": { "@type": "Organization", "@id": "https://boosterstop.com/#partner-la-poste", "name": "Swiss Post", "logo": "https://boosterstop.com/assets/partenaires/la-poste.svg", "sameAs": ["https://en.wikipedia.org/wiki/Swiss_Post", "https://fr.wikipedia.org/wiki/La_Poste_(Suisse)"], "alternateName": "La Poste Suisse", "url": "https://www.post.ch/", "description": "Hosts {{ hp_poste.size }} BoosterStop vending machines in Swiss Post branches in the canton of Geneva." } },
       { "@type": "ListItem", "position": 2, "item": { "@type": "Organization", "@id": "https://boosterstop.com/#partner-king-jouet", "name": "King Jouet", "logo": "https://boosterstop.com/assets/partenaires/king-jouet.png", "sameAs": ["https://www.groupe-king-jouet.com/", "https://fr.wikipedia.org/wiki/King_Jouet"], "url": "https://www.king-jouet.ch/", "description": "Hosts {{ hp_kj.size }} BoosterStop vending machines in King Jouet toy stores in Geneva and near Lausanne." } },
-      { "@type": "ListItem", "position": 3, "item": { "@type": "Organization", "@id": "https://boosterstop.com/#partner-carrefour", "name": "Carrefour Belgium", "logo": "https://boosterstop.com/assets/partenaires/carrefour.webp", "sameAs": ["https://en.wikipedia.org/wiki/Carrefour", "https://fr.wikipedia.org/wiki/Carrefour_(entreprise)"], "alternateName": "Carrefour", "url": "https://www.carrefour.be/", "description": "Hosts {{ hp_cf.size }} BoosterStop vending machines in Carrefour supermarkets in Belgium." } }
+      { "@type": "ListItem", "position": 3, "item": { "@type": "Organization", "@id": "https://boosterstop.com/#partner-carrefour", "name": "Carrefour Belgium", "logo": "https://boosterstop.com/assets/partenaires/carrefour.webp", "sameAs": ["https://en.wikipedia.org/wiki/Carrefour", "https://fr.wikipedia.org/wiki/Carrefour_(entreprise)"], "alternateName": "Carrefour", "url": "https://www.carrefour.be/", "description": "Hosts {{ hp_cf.size }} BoosterStop vending machines in Carrefour supermarkets in Belgium, with more coming soon in Belgium and in Lille, France." } }
     ]
   }
   </script>
@@ -704,6 +704,10 @@ page: index
     <details class="faq-item">
       <summary>Where are BoosterStop machines installed?</summary>
       <div class="faq-a">Inside partner venues: {{ hp_poste.size }} Swiss Post branches in the canton of Geneva, {{ hp_kj.size }} King Jouet toy stores (in Geneva and near Lausanne) and {{ hp_cf.size }} Carrefour supermarkets in Belgium. Each machine follows its host’s opening hours.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Where are the next BoosterStop machines opening?</summary>
+      <div class="faq-a">13 new machines are arriving very soon: 5 in Suisse romande (Geneva, Lausanne, Montreux…) at King Jouet, La Poste and other venues, 5 more in Carrefour stores in Belgium, and 3 in Lille, also in Carrefour stores. Île-de-France, Auvergne-Rhône-Alpes and Occitanie follow shortly. In the United Arab Emirates, 25 machines are opening between Dubai and Abu Dhabi: 5 in early December and 20 more in January. Every planned city is on the <a href="{% include lien.html f="expansion.html" %}">expansion page</a>.</div>
     </details>
     <details class="faq-item">
       <summary>Which games can I find in the machines?</summary>
@@ -1030,7 +1034,8 @@ function setCity(zone) {
   });
   let first = true;
   document.querySelectorAll('#tab-geneva .map-location-item').forEach(function(it) {
-    const show = (it.getAttribute('data-zone') || 'ge') === zone;
+    const iz = it.getAttribute('data-zone') || 'ge';
+    const show = iz === zone || iz === 'all';
     it.hidden = !show;
     it.classList.toggle('first-vis', show && first);
     if (show) first = false;
@@ -1131,9 +1136,14 @@ window.initMap = function() {
   // Cadrage sur la ville choisie (Genève par défaut, Lausanne via le sélecteur)
   setCity(bsZone);
 
-  new google.maps.Map(document.getElementById('map-france'), {
+  const frMap = new google.maps.Map(document.getElementById('map-france'), {
     zoom: 5, center: { lat: 46.6, lng: 2.4 },
     disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
+  });
+  // Lille : 3 machines Carrefour très bientôt (point à l'échelle de la ville, pas d'adresse)
+  new google.maps.Marker({
+    position: { lat: 50.6292, lng: 3.0573 }, map: frMap, title: "Lille · Coming soon: 3 machines",
+    icon: { path: google.maps.SymbolPath.CIRCLE, scale: 9, fillColor: '#120F2A', fillOpacity: 1, strokeColor: '#FFD000', strokeWeight: 2.5 }
   });
 
   const beMap = new google.maps.Map(document.getElementById('map-belgium'), {
@@ -1148,9 +1158,16 @@ window.initMap = function() {
     mk.addListener('click', function() { window.location.href = loc.url; });
   });
 
-  new google.maps.Map(document.getElementById('map-uae'), {
+  const aeMap = new google.maps.Map(document.getElementById('map-uae'), {
     zoom: 7, center: { lat: 24.5, lng: 54.5 },
     disableDefaultUI: true, gestureHandling: 'none', styles: darkStyles
+  });
+  // Dubaï et Abu Dhabi : 25 machines (5 début décembre, 20 en janvier), points à l'échelle de la ville
+  [{ lat: 25.2048, lng: 55.2708, n: 'Dubai' }, { lat: 24.4539, lng: 54.3773, n: 'Abu Dhabi' }].forEach(function(c) {
+    new google.maps.Marker({
+      position: { lat: c.lat, lng: c.lng }, map: aeMap, title: c.n + ' · Coming soon',
+      icon: { path: google.maps.SymbolPath.CIRCLE, scale: 9, fillColor: '#120F2A', fillOpacity: 1, strokeColor: '#FFD000', strokeWeight: 2.5 }
+    });
   });
 }
 
@@ -1229,6 +1246,14 @@ document.addEventListener('DOMContentLoaded', function() {
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Inside partner venues: {{ hp_poste.size }} Swiss Post branches in the canton of Geneva, {{ hp_kj.size }} King Jouet toy stores (in Geneva and near Lausanne) and {{ hp_cf.size }} Carrefour supermarkets in Belgium. Each machine follows its host’s opening hours."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where are the next BoosterStop machines opening?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "13 new machines are arriving very soon: 5 in Suisse romande (Geneva, Lausanne, Montreux…) at King Jouet, La Poste and other venues, 5 more in Carrefour stores in Belgium, and 3 in Lille, also in Carrefour stores. Île-de-France, Auvergne-Rhône-Alpes and Occitanie follow shortly. In the United Arab Emirates, 25 machines are opening between Dubai and Abu Dhabi: 5 in early December and 20 more in January. Every planned city is on the expansion page."
           }
         },
         {

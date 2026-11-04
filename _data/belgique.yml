@@ -2,7 +2,7 @@
 # « distributeurs-belgique.html ». Les adresses viennent de _data/machines.yml.
 # %nom% %adresse% %ville% sont remplacés par les données de la machine.
 fr:
-  accueil_plus: "+ d'autres communes bientôt à Bruxelles et en Wallonie"
+  accueil_plus: "+5 machines bientôt dans d'autres magasins Carrefour"
   stock_bientot: "Stock live bientôt"
   stock_txt: "Nos 5 machines belges sont en service et approvisionnées. Leur inventaire en temps réel apparaîtra ici dès qu'elles seront connectées. En attendant, chaque machine a sa page avec l'adresse et l'itinéraire."
   liste_titre: "Distributeurs de cartes Pokémon en Belgique : 5 Carrefour | BoosterStop"
@@ -11,7 +11,7 @@ fr:
   liste_lead: "Cinq machines BoosterStop sont en service en Belgique, dans des magasins Carrefour : à Bruxelles, en Flandre et en Wallonie. Boosters, displays et coffrets scellés, issus des distributeurs officiels, en libre-service."
   voir_page: "Voir la machine"
   ensuite_h: "Et ensuite ?"
-  ensuite_txt: "D'autres communes sont prévues à Bruxelles et en Wallonie."
+  ensuite_txt: "Cinq nouvelles machines arrivent très bientôt en Belgique, toujours dans des magasins Carrefour."
   ensuite_lien: "Voir le plan d'expansion"
   commerce_txt: "Vous avez un commerce en Belgique ?"
   commerce_lien: "Accueillir une machine"
@@ -43,7 +43,7 @@ fr:
     - { q: "Les produits sont-ils officiels ?", a: "Oui. Tout est scellé d'origine et acheté aux distributeurs officiels de chaque licence." }
 
 nl:
-  accueil_plus: "+ binnenkort meer gemeenten in Brussel en Wallonië"
+  accueil_plus: "+5 automaten binnenkort in andere Carrefour-winkels"
   stock_bientot: "Live voorraad binnenkort"
   stock_txt: "Onze 5 Belgische automaten zijn in gebruik en gevuld. De realtime voorraad verschijnt hier zodra ze verbonden zijn. Intussen heeft elke automaat een eigen pagina met het adres en de routebeschrijving."
   liste_titre: "Pokémon-kaartautomaten in België: 5 Carrefour-winkels | BoosterStop"
@@ -52,7 +52,7 @@ nl:
   liste_lead: "Vijf BoosterStop-automaten zijn in gebruik in België, in Carrefour-winkels: in Brussel, Vlaanderen en Wallonië. Verzegelde boosters, displays en boxen van officiële distributeurs, in selfservice."
   voir_page: "Bekijk de automaat"
   ensuite_h: "En daarna?"
-  ensuite_txt: "Er staan nog andere gemeenten in Brussel en Wallonië op de planning."
+  ensuite_txt: "Binnenkort komen er vijf nieuwe automaten bij in België, opnieuw in Carrefour-winkels."
   ensuite_lien: "Bekijk het uitbreidingsplan"
   commerce_txt: "Heb je een zaak in België?"
   commerce_lien: "Een automaat plaatsen"
@@ -84,7 +84,7 @@ nl:
     - { q: "Zijn de producten officieel?", a: "Ja. Alles is fabrieksverzegeld en gekocht bij de officiële distributeurs van elke licentie." }
 
 en:
-  accueil_plus: "+ more communes coming to Brussels and Wallonia"
+  accueil_plus: "+5 machines coming soon in more Carrefour stores"
   stock_bientot: "Live stock soon"
   stock_txt: "Our 5 Belgian machines are live and stocked. Their real-time inventory will appear here as soon as they are connected. Meanwhile, each machine has its own page with the address and directions."
   liste_titre: "Pokémon card vending machines in Belgium: 5 Carrefour stores | BoosterStop"
@@ -93,7 +93,7 @@ en:
   liste_lead: "Five BoosterStop machines are running in Belgium, inside Carrefour stores: in Brussels, Flanders and Wallonia. Sealed boosters, displays and boxes from official distributors, self-service."
   voir_page: "See the machine"
   ensuite_h: "What's next?"
-  ensuite_txt: "More communes are planned in Brussels and Wallonia."
+  ensuite_txt: "Five more machines are arriving very soon in Belgium, again inside Carrefour stores."
   ensuite_lien: "See the expansion plan"
   commerce_txt: "Do you run a business in Belgium?"
   commerce_lien: "Host a machine"
@@ -126,7 +126,7 @@ en:
 
 # العربية
 ar:
-  accueil_plus: + بلديات أخرى قريباً في بروكسل ووالونيا
+  accueil_plus: "+5 أجهزة قريباً في متاجر كارفور أخرى"
   stock_bientot: المخزون المباشر قريباً
   stock_txt: أجهزتنا الخمسة في بلجيكا تعمل ومعبّأة. سيظهر مخزونها اللحظي هنا فور اتصالها. في الأثناء، لكل جهاز صفحته الخاصة مع العنوان والاتجاهات.
   liste_titre: 'أجهزة بيع بطاقات بوكيمون في بلجيكا: 5 متاجر كارفور | BoosterStop'
@@ -135,7 +135,7 @@ ar:
   liste_lead: 'خمسة أجهزة BoosterStop تعمل في بلجيكا داخل متاجر كارفور: في بروكسل وفلاندرز ووالونيا. عبوات بوستر وصناديق ديسبلاي وصناديق مختومة من الموزعين الرسميين، بالخدمة الذاتية.'
   voir_page: شاهد الجهاز
   ensuite_h: ما التالي؟
-  ensuite_txt: بلديات أخرى مخطط لها في بروكسل ووالونيا.
+  ensuite_txt: "خمسة أجهزة جديدة تصل قريباً جداً إلى بلجيكا، داخل متاجر كارفور أيضاً."
   ensuite_lien: اطلع على خطة التوسع
   commerce_txt: تدير نشاطاً تجارياً في بلجيكا؟
   commerce_lien: استضف جهازاً
