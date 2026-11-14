@@ -2,25 +2,33 @@
 lang: fr
 page: distributeur-thonex
 ---
+{%- include machine.html id="thonex" -%}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 {% include head.html %}
 <title>Distributeur de cartes Pokémon à Thônex | BoosterStop</title>
-<meta name="description" content="Boosters Pokémon en libre-service dans La Poste de Thônex, Rue de Genève 106, 1226 Thônex. Stock en direct, espèces, TWINT ou sans contact, produits scellés de distributeurs officiels.">
+{%- if mx_temp -%}
+{%- capture bsm_desc -%}Travaux à {{ mx_origine }} : la machine est provisoirement à {{ mx_nom }}, {{ mx_adresse }}. Stock en direct, espèces, TWINT ou sans contact.{%- endcapture -%}
+{%- capture bsm_faq1 -%}BoosterStop exploite sept distributeurs dans le canton de Genève. Pendant les travaux de {{ mx_origine }}, celui de {{ mx_origine_court }} est provisoirement installé à {{ mx_nom }}, {{ mx_adresse }}. Ils fonctionnent en libre-service pendant les heures d'ouverture de l'agence qui les héberge.{%- endcapture -%}
+{%- else -%}
+{%- capture bsm_desc -%}Boosters Pokémon en libre-service dans La Poste de Thônex, Rue de Genève 106, 1226 Thônex. Stock en direct, espèces, TWINT ou sans contact, produits scellés de distributeurs officiels.{%- endcapture -%}
+{%- capture bsm_faq1 -%}BoosterStop exploite sept distributeurs dans le canton de Genève, dont celui de Thônex, Rue de Genève 106. Ils fonctionnent en libre-service pendant les heures d'ouverture de l'agence qui les héberge.{%- endcapture -%}
+{%- endif %}
+<meta name="description" content="{{ bsm_desc }}">
 {% include hreflang.html %}
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
 <meta property="og:title" content="Distributeur de cartes Pokémon à Thônex">
-<meta property="og:description" content="Boosters Pokémon en libre-service dans La Poste de Thônex, Rue de Genève 106, 1226 Thônex. Stock en direct, espèces, TWINT ou sans contact, produits scellés de distributeurs officiels.">
+<meta property="og:description" content="{{ bsm_desc }}">
 <meta property="og:url" content="https://boosterstop.com/fr/distributeur-thonex.html">
 <meta property="og:locale" content="fr_CH">
 <meta property="og:image" content="https://boosterstop.com/front%20transparent.png">
 <meta name="geo.region" content="CH-GE">
-<meta name="geo.placename" content="Thônex">
-<meta name="geo.position" content="46.1927988;6.2020452">
-<meta name="ICBM" content="46.1927988, 6.2020452">
+<meta name="geo.placename" content="{{ mx_ville }}">
+<meta name="geo.position" content="{{ mx_lat }};{{ mx_lng }}">
+<meta name="ICBM" content="{{ mx_lat }}, {{ mx_lng }}">
 <style>
 /* Pages distributeur.
    site.css ne stylise pas body : chaque page le déclare, comme les autres
@@ -43,6 +51,11 @@ body{
 .bsm-now:empty{display:none}
 .bsm-head h1{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:1px;line-height:1.02;
   font-size:clamp(38px,6.5vw,68px);margin:0 0 14px}
+/* Déplacement temporaire de la machine (bloc « temporaire » de _data/machines.yml) */
+.bsm-temp{margin:0 0 20px;padding:14px 18px;max-width:62ch;border:1px solid var(--yellow);border-left-width:4px;
+  background:rgba(255,208,0,.08);color:var(--white);font-size:15.5px;line-height:1.55}
+.bsm-temp b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:17px;letter-spacing:1px;
+  color:var(--yellow);margin-bottom:2px}
 .bsm-where{color:var(--text-muted);font-size:17px;max-width:48ch;line-height:1.65;margin:0}
 .bsm-live{margin:40px 0;border:1px solid var(--gray-mid);border-left:3px solid var(--red);background:var(--gray)}
 .bsm-live-top{display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;
@@ -120,7 +133,10 @@ body{
   </div>
   <span class="bsm-now" id="bsmNow"></span>
   <h1>Distributeur de cartes Pokémon à Thônex</h1>
-  <p class="bsm-where">Dans La Poste de Thônex, Rue de Genève 106, 1226 Thônex. Libre-service, espèces, TWINT ou sans contact, sans attente au comptoir.</p>
+  {%- if mx_temp %}
+  <p class="bsm-temp" role="note"><b>Emplacement provisoire</b>{{ mx_note }}</p>
+  {%- endif %}
+  <p class="bsm-where">Dans {{ mx_nom }}, {{ mx_adresse }}. Libre-service, espèces, TWINT ou sans contact, sans attente au comptoir.</p>
   {% include reviews.html only="thonex" compact=true %}
 </header>
 
@@ -135,22 +151,22 @@ body{
   <div>
     <h2>Adresse</h2>
     <address>
-      Rue de Genève 106<br>
-      1226 Thônex, Suisse
+      {{ mx_rue }}<br>
+      {{ mx_cp }} {{ mx_ville }}, Suisse
     </address>
     <p class="bsm-tel"><a href="tel:+41228860158">+41 22 886 01 58</a></p>
-    <a class="bsm-go" href="https://www.google.com/maps/dir/?api=1&amp;destination=46.1927988,6.2020452" rel="noopener">Itinéraire</a>
+    <a class="bsm-go" href="https://www.google.com/maps/dir/?api=1&amp;destination={{ mx_lat }},{{ mx_lng }}" rel="noopener">Itinéraire</a>
   </div>
   <div>
     <h2>Accès</h2>
     <p class="bsm-note">Accessible pendant les heures d'ouverture de l'agence.</p>
     <table class="bsm-hours">
-      <tr><td>Lundi</td><td>08:30 – 18:30</td></tr>
-      <tr><td>Mardi</td><td>08:30 – 18:30</td></tr>
-      <tr><td>Mercredi</td><td>08:30 – 18:30</td></tr>
-      <tr><td>Jeudi</td><td>08:30 – 18:30</td></tr>
-      <tr><td>Vendredi</td><td>08:30 – 18:30</td></tr>
-      <tr><td>Samedi</td><td>09:00 – 15:00</td></tr>
+      <tr><td>Lundi</td><td>{{ mx_sem_o }} – {{ mx_sem_f }}</td></tr>
+      <tr><td>Mardi</td><td>{{ mx_sem_o }} – {{ mx_sem_f }}</td></tr>
+      <tr><td>Mercredi</td><td>{{ mx_sem_o }} – {{ mx_sem_f }}</td></tr>
+      <tr><td>Jeudi</td><td>{{ mx_sem_o }} – {{ mx_sem_f }}</td></tr>
+      <tr><td>Vendredi</td><td>{{ mx_sem_o }} – {{ mx_sem_f }}</td></tr>
+      <tr><td>Samedi</td><td>{{ mx_sam_o }} – {{ mx_sam_f }}</td></tr>
       <tr class="shut"><td>Dimanche</td><td>Fermé</td></tr>
     </table>
     <p class="bsm-holi">Fermé les 9 jours fériés du canton de Genève, dont le Jeûne genevois et le 31 décembre.</p>
@@ -160,7 +176,7 @@ body{
 <section class="bsm-sec">
   <h2>Ce qu'on y trouve</h2>
   <p>Des boosters à l'unité, des coffrets et des displays, tous issus de distributeurs officiels et scellés d'origine. Au-delà de Pokémon, cette machine tourne sur une partie des <a href="/fr/licences-geneve.html">licences que nous distribuons à Genève</a>, de Magic et One Piece à des séries plus rares.</p>
-  <p>À l'est du canton, ouverte jusqu'à 18h30, la fermeture la plus tardive en semaine après les Charmilles. Le réassort a lieu chaque semaine, et plus souvent encore à la sortie d'un set attendu.</p>
+  <p>{% if mx_temp %}Pendant les travaux de {{ mx_origine }}, la machine est installée avec tout son stock à {{ mx_nom }}, ouverte jusqu'à {{ mx_sem_f | replace: ":", "h" }} en semaine.{% else %}À l'est du canton, ouverte jusqu'à 18h30, la fermeture la plus tardive en semaine après les Charmilles.{% endif %} Le réassort a lieu chaque semaine, et plus souvent encore à la sortie d'un set attendu.</p>
 </section>
 
 <section class="bsm-sec">
@@ -176,7 +192,7 @@ body{
   <h2>Questions fréquentes</h2>
   <dl class="bsm-faq">
     <dt>Où acheter des cartes Pokémon à Thônex ?</dt>
-    <dd>BoosterStop exploite sept distributeurs dans le canton de Genève, dont celui de Thônex, Rue de Genève 106. Ils fonctionnent en libre-service pendant les heures d&#x27;ouverture de l&#x27;agence qui les héberge.</dd>
+    <dd>{{ bsm_faq1 | escape }}</dd>
     <dt>Comment payer ?</dt>
     <dd>En espèces, avec monnaie rendue en pièces et en billets, par TWINT, ou en sans contact par carte et smartphone. Le produit sort immédiatement.</dd>
     <dt>Les cartes sont-elles authentiques ?</dt>
@@ -199,24 +215,24 @@ body{
     {
       "@type": "Store",
       "@id": "https://boosterstop.com/fr/distributeur-thonex.html#store",
-      "name": "BoosterStop La Poste de Thônex",
-      "description": "Distributeur automatique de cartes à collectionner en libre-service, dans La Poste de Thônex à Thônex.",
+      "name": "BoosterStop {{ mx_nom }}",
+      "description": "Distributeur automatique de cartes à collectionner en libre-service, dans {{ mx_nom }} à {{ mx_ville }}.{% if mx_temp %} Emplacement provisoire pendant les travaux de {{ mx_origine }}.{% endif %}",
       "url": "https://boosterstop.com/fr/distributeur-thonex.html",
       "image": "https://boosterstop.com/front%20transparent.png",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Rue de Genève 106",
-        "postalCode": "1226",
-        "addressLocality": "Thônex",
+        "streetAddress": "{{ mx_rue }}",
+        "postalCode": "{{ mx_cp }}",
+        "addressLocality": "{{ mx_ville }}",
         "addressRegion": "GE",
         "addressCountry": "CH"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 46.1927988,
-        "longitude": 6.2020452
+        "latitude": {{ mx_lat }},
+        "longitude": {{ mx_lng }}
       },
-      "hasMap": "https://www.google.com/maps/dir/?api=1&destination=46.1927988,6.2020452",
+      "hasMap": "https://www.google.com/maps/dir/?api=1&destination={{ mx_lat }},{{ mx_lng }}",
       "telephone": "+41 22 886 01 58",
       "currenciesAccepted": "CHF",
       "paymentAccepted": "Cash, TWINT, credit card, contactless, mobile payment",
@@ -234,14 +250,14 @@ body{
             "Thursday",
             "Friday"
           ],
-          "opens": "08:30",
-          "closes": "18:30"
+          "opens": "{{ mx_sem_o }}",
+          "closes": "{{ mx_sem_f }}"
         },
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": "Saturday",
-          "opens": "09:00",
-          "closes": "15:00"
+          "opens": "{{ mx_sam_o }}",
+          "closes": "{{ mx_sam_f }}"
         },
         {
           "@type": "OpeningHoursSpecification",
@@ -443,7 +459,7 @@ body{
       ],
       "areaServed": {
         "@type": "City",
-        "name": "Thônex"
+        "name": "{{ mx_ville }}"
       }
     },
     {
@@ -476,7 +492,7 @@ body{
           "name": "Où acheter des cartes Pokémon à Thônex ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "BoosterStop exploite sept distributeurs dans le canton de Genève, dont celui de Thônex, Rue de Genève 106. Ils fonctionnent en libre-service pendant les heures d'ouverture de l'agence qui les héberge."
+            "text": {{ bsm_faq1 | jsonify }}
           }
         },
         {
@@ -524,12 +540,12 @@ body{
   var WORKER = 'https://boosterstop-stock.cold-water-7039.workers.dev';
   var HOURS = [
     null,
-    ['08:30', '18:30'],
-    ['08:30', '18:30'],
-    ['08:30', '18:30'],
-    ['08:30', '18:30'],
-    ['08:30', '18:30'],
-    ['09:00', '15:00']
+    ['{{ mx_sem_o }}', '{{ mx_sem_f }}'],
+    ['{{ mx_sem_o }}', '{{ mx_sem_f }}'],
+    ['{{ mx_sem_o }}', '{{ mx_sem_f }}'],
+    ['{{ mx_sem_o }}', '{{ mx_sem_f }}'],
+    ['{{ mx_sem_o }}', '{{ mx_sem_f }}'],
+    ['{{ mx_sam_o }}', '{{ mx_sam_f }}']
   ];
 
   function mins(s) { var p = s.split(':'); return +p[0] * 60 + +p[1]; }

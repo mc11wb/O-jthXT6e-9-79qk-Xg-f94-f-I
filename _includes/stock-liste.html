@@ -16,8 +16,9 @@
   {%- assign sl_s = site.data.stock.machines[m.id] -%}
   {%- if sl_s and sl_s.ok %}
   {%- assign sl_f = m.url_en | remove_first: "/" %}
+  {%- include machine.html id=m.id -%}
   <details class="rl-m">
-    <summary><span class="rl-nm">{{ m.nom }}</span><span class="rl-n">{{ sl_s.produits.size }} {{ sl_t.rl_count }}</span></summary>
+    <summary><span class="rl-nm">{{ mx_nom }}</span><span class="rl-n">{{ sl_s.produits.size }} {{ sl_t.rl_count }}</span></summary>
     {%- if sl_s.produits.size > 0 %}
     <ul>
       {%- for p in sl_s.produits %}

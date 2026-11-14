@@ -2,6 +2,7 @@
 lang: fr
 page: index
 ---
+{%- include machine.html id="thonex" -%}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -533,8 +534,8 @@ page: index
         <div class="map-location-item" style="cursor:pointer;" onclick="openPopupByIndex(4)">
           <div class="map-location-dot live" data-loc="4"></div>
           <div>
-            <div class="map-location-name"><a href="/fr/distributeur-thonex.html">La Poste de Thônex</a></div>
-            <div class="map-location-addr">Rue de Genève 106, 1226 Thônex</div>
+            <div class="map-location-name"><a href="/fr/distributeur-thonex.html">{{ mx_nom }}</a></div>
+            <div class="map-location-addr">{{ mx_adresse }}{% if mx_temp %}<br><span style="color:var(--yellow)">{{ mx_bref }}</span>{% endif %}</div>
             <a href="/fr/stock.html?machine=4" class="map-stock-link">📦 Voir le stock</a>
           </div>
         </div>
@@ -966,12 +967,14 @@ let gMarkersRef = [];
 /* ---------- OUVERT MAINTENANT (heure de Genève) ---------- */
 /* Fiches Google des machines (bouton « Noter sur Google » des popups) — source : _data/machines.yml */
 const BS_GOOGLE_REVIEW = { {%- for m in site.data.machines -%}{%- if m.google_place_id -%}{{ m.nom | jsonify }}: {{ site.data.avis.google_avis | append: m.google_place_id | jsonify }},{%- elsif m.google_lien -%}{{ m.nom | jsonify }}: {{ m.google_lien | jsonify }},{%- endif -%}{%- endfor -%} };
+{%- include machine.html id="thonex" %}
 const GENEVA_LOCATIONS = [
   { lat: 46.2008, lng: 6.1520, name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', hours: '<strong>Lun–Ven</strong> 09h00–18h00<br><strong>Sam</strong> 09h00–12h00<br><strong>Dim</strong> Fermé', open: { wd: [540, 1080], sat: [540, 720], sun: null } },
   { lat: 46.2112, lng: 6.1268, name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", hours: '<strong>Lun–Ven</strong> 09h00–19h00<br><strong>Sam</strong> 09h00–17h00<br><strong>Dim</strong> Fermé', open: { wd: [540, 1140], sat: [540, 1020], sun: null } },
   { lat: 46.1872, lng: 6.1214, name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 09h00–13h00<br><strong>Dim</strong> Fermé', open: { wd: [480, 1080], sat: [540, 780], sun: null } },
   { lat: 46.1938, lng: 6.1427, name: 'La Poste de Plainpalais', addr: "Rue Pictet-de-Bock 6, 1205 Genève", hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 09h00–16h00<br><strong>Dim</strong> Fermé', open: { wd: [480, 1080], sat: [540, 960], sun: null } },
-  { lat: 46.1928, lng: 6.202, name: 'La Poste de Thônex', addr: "Rue de Genève 106, 1226 Thônex", hours: '<strong>Lun–Ven</strong> 08h30–18h30<br><strong>Sam</strong> 09h00–15h00<br><strong>Dim</strong> Fermé', open: { wd: [510, 1110], sat: [540, 900], sun: null } },
+  // Thônex : lu dans _data/machines.yml (déplacement temporaire compris)
+  { lat: {{ mx_lat }}, lng: {{ mx_lng }}, name: {{ mx_nom | jsonify }}, addr: {% if mx_temp %}{{ mx_adresse | append: '<br>' | append: mx_bref | jsonify }}{% else %}{{ mx_adresse | jsonify }}{% endif %}, hours: '<strong>Lun–Ven</strong> {{ mx_sem_o | replace: ":", "h" }}–{{ mx_sem_f | replace: ":", "h" }}<br><strong>Sam</strong> {{ mx_sam_o | replace: ":", "h" }}–{{ mx_sam_f | replace: ":", "h" }}<br><strong>Dim</strong> Fermé', open: { wd: [{{ mx_wd_o }}, {{ mx_wd_f }}], sat: [{{ mx_sa_o }}, {{ mx_sa_f }}], sun: null } },
   { lat: 46.1835, lng: 6.1375, name: 'La Poste de Carouge', addr: "Boulevard des Promenades 16, 1227 Carouge", hours: '<strong>Lun–Ven</strong> 08h00–18h00<br><strong>Sam</strong> 08h30–12h00<br><strong>Dim</strong> Fermé', open: { wd: [480, 1080], sat: [510, 720], sun: null } },
   { lat: 46.1860, lng: 6.1431, name: 'King Jouet Carouge', addr: "Avenue Cardinal-Mermillod 36, 1227 Carouge", hours: '<strong>Lun–Ven</strong> 09h00–19h00<br><strong>Sam</strong> 09h00–18h00<br><strong>Dim</strong> Fermé', open: { wd: [540, 1140], sat: [540, 1080], sun: null } },
   { lat: 46.5338, lng: 6.5649, zone: 'vd', name: 'King Jouet Ecublens', addr: "Chemin du Croset 7, 1024 Ecublens", hours: '<strong>Lun–Jeu</strong> 09h00–19h30<br><strong>Ven</strong> 09h00–20h00<br><strong>Sam</strong> 08h00–18h00<br><strong>Dim</strong> Fermé', open: { wd: [540, 1170], fri: [540, 1200], sat: [480, 1080], sun: null } }

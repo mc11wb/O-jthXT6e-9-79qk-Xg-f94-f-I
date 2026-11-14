@@ -2,6 +2,8 @@
 lang: en
 page: cartes-pokemon-geneve
 ---
+{%- include machine.html id="thonex" -%}
+{%- assign qz_ev = false -%}{%- if mx_temp and mx_court == "Eaux-Vives" -%}{%- assign qz_ev = true -%}{%- endif -%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -170,10 +172,15 @@ body{margin:0;background:var(--black);color:var(--white);
     </article>
     <article class="qz-hood" id="quartier-chene-bourg">
       <h3>Chêne-Bourg</h3>
+      {%- if qz_ev %}
+      <p class="qz-hood-main"><a href="/distributeur-thonex.html">{{ mx_court }}</a> <span>2.8 km · 35 min on foot · 11 min by bike</span></p>
+      <p class="qz-hood-hint">{{ mx_note }}</p>
+      {%- else %}
       <p class="qz-hood-main"><a href="/distributeur-thonex.html">Thônex</a> <span>0.6 km · 8 min on foot · 2 min by bike</span></p>
       <p class="qz-hood-hint">Chêne-Bourg and Thônex adjoin one another: this is the shortest trip in the whole network from a neighbourhood without a machine.</p>
+      {%- endif %}
       <p class="qz-hood-alt">Also: <a href="/distributeur-geneve-rive.html">Rive</a> (3.6 km), <a href="/distributeur-geneve-plainpalais.html">Plainpalais</a> (4.2 km), <a href="/distributeur-geneve-charmilles.html">Charmilles</a> (5.8 km)</p>
-      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.1927988,6.2020452&amp;travelmode=walking" rel="noopener">Walking directions</a> <a href="/stock.html?machine=thonex">See its stock</a></p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination={{ mx_lat }},{{ mx_lng }}&amp;travelmode=walking" rel="noopener">Walking directions</a> <a href="/stock.html?machine=thonex">See its stock</a></p>
     </article>
     <article class="qz-hood" id="quartier-servette">
       <h3>Servette</h3>
@@ -207,15 +214,22 @@ body{margin:0;background:var(--black);color:var(--white);
       <h3>Champel</h3>
       <p class="qz-hood-main"><a href="/distributeur-geneve-plainpalais.html">Plainpalais</a> <span>1.2 km · 15 min on foot · 5 min by bike</span></p>
       <p class="qz-hood-hint">Champel sits above the Arve: the way down to Plainpalais is quick, the way back rather less so.</p>
-      <p class="qz-hood-alt">Also: <a href="/distributeur-geneve-rive.html">Rive</a> (1.5 km), <a href="/distributeur-geneve-charmilles.html">Charmilles</a> (3.3 km), <a href="/distributeur-thonex.html">Thônex</a> (3.4 km)</p>
+      <p class="qz-hood-alt">Also: {% if qz_ev %}<a href="/distributeur-thonex.html">{{ mx_court }}</a> (1.4 km), <a href="/distributeur-geneve-rive.html">Rive</a> (1.5 km), <a href="/distributeur-geneve-charmilles.html">Charmilles</a> (3.3 km){% else %}<a href="/distributeur-geneve-rive.html">Rive</a> (1.5 km), <a href="/distributeur-geneve-charmilles.html">Charmilles</a> (3.3 km), <a href="/distributeur-thonex.html">Thônex</a> (3.4 km){% endif %}</p>
       <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.1938474,6.1426527&amp;travelmode=walking" rel="noopener">Walking directions</a> <a href="/stock.html?machine=plainpalais">See its stock</a></p>
     </article>
     <article class="qz-hood" id="quartier-eaux-vives">
       <h3>Eaux-Vives</h3>
+      {%- if qz_ev %}
+      <p class="qz-hood-main"><a href="/distributeur-thonex.html">{{ mx_court }}</a> <span>0.4 km · 5 min on foot · 2 min by bike</span></p>
+      <p class="qz-hood-hint">{{ mx_note }}</p>
+      <p class="qz-hood-alt">Also: <a href="/distributeur-geneve-rive.html">Rive</a> (1.2 km), <a href="/distributeur-geneve-plainpalais.html">Plainpalais</a> (1.9 km), <a href="/distributeur-geneve-charmilles.html">Charmilles</a> (3.4 km)</p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination={{ mx_lat }},{{ mx_lng }}&amp;travelmode=walking" rel="noopener">Walking directions</a> <a href="/stock.html?machine=thonex">See its stock</a></p>
+      {%- else %}
       <p class="qz-hood-main"><a href="/distributeur-geneve-rive.html">Rive</a> <span>1.2 km · 15 min on foot · 5 min by bike</span></p>
       <p class="qz-hood-hint">Les Eaux-Vives sit right next to the Rive district: the machine is at the end of the Rues Basses.</p>
       <p class="qz-hood-alt">Also: <a href="/distributeur-geneve-plainpalais.html">Plainpalais</a> (1.9 km), <a href="/distributeur-thonex.html">Thônex</a> (2.9 km), <a href="/distributeur-geneve-charmilles.html">Charmilles</a> (3.4 km)</p>
       <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.201946,6.1504446&amp;travelmode=walking" rel="noopener">Walking directions</a> <a href="/stock.html?machine=rive">See its stock</a></p>
+      {%- endif %}
     </article>
     <article class="qz-hood" id="quartier-paquis">
       <h3>Pâquis</h3>
@@ -226,10 +240,15 @@ body{margin:0;background:var(--black);color:var(--white);
     </article>
     <article class="qz-hood" id="quartier-chene-bougeries">
       <h3>Chêne-Bougeries</h3>
+      {%- if qz_ev %}
+      <p class="qz-hood-main"><a href="/distributeur-thonex.html">{{ mx_court }}</a> <span>1.9 km · 24 min on foot · 8 min by bike</span></p>
+      <p class="qz-hood-hint">{{ mx_note }}</p>
+      {%- else %}
       <p class="qz-hood-main"><a href="/distributeur-thonex.html">Thônex</a> <span>1.4 km · 18 min on foot · 6 min by bike</span></p>
       <p class="qz-hood-hint">Chêne-Bougeries lies between Rive and Thônex, with a machine reachable on either side.</p>
+      {%- endif %}
       <p class="qz-hood-alt">Also: <a href="/distributeur-geneve-rive.html">Rive</a> (2.7 km), <a href="/distributeur-geneve-plainpalais.html">Plainpalais</a> (3.3 km), <a href="/distributeur-geneve-charmilles.html">Charmilles</a> (4.9 km)</p>
-      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=46.1927988,6.2020452&amp;travelmode=walking" rel="noopener">Walking directions</a> <a href="/stock.html?machine=thonex">See its stock</a></p>
+      <p class="qz-hood-act"><a href="https://www.google.com/maps/dir/?api=1&amp;destination={{ mx_lat }},{{ mx_lng }}&amp;travelmode=walking" rel="noopener">Walking directions</a> <a href="/stock.html?machine=thonex">See its stock</a></p>
     </article>
     <article class="qz-hood" id="quartier-vernier">
       <h3>Vernier</h3>
@@ -268,7 +287,8 @@ body{margin:0;background:var(--black);color:var(--white);
     <li><a href="/distributeur-geneve-charmilles.html">Les Charmilles</a><span>Promenade de l'Europe 11, 1203</span></li>
     <li><a href="/distributeur-petit-lancy.html">Petit-Lancy</a><span>Rue des Bossons 88b, 1213</span></li>
     <li><a href="/distributeur-geneve-plainpalais.html">Plainpalais</a><span>Rue Pictet-de-Bock 6, 1205</span></li>
-    <li><a href="/distributeur-thonex.html">Thônex</a><span>Rue de Genève 106, 1226</span></li>
+    {%- include machine.html id="thonex" %}
+    <li><a href="/distributeur-thonex.html">{{ mx_court }}</a><span>{{ mx_rue }}, {{ mx_cp }}</span></li>
     <li><a href="/distributeur-carouge.html">Carouge</a><span>Boulevard des Promenades 16, 1227</span></li>
     <li><a href="/#where">King Jouet Carouge</a><span>Avenue Cardinal-Mermillod 36, 1227</span></li>
     <li><a href="/distributeur-ecublens.html">King Jouet Ecublens</a><span>Chemin du Croset 7, 1024</span></li>

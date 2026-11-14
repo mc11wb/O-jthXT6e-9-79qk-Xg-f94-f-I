@@ -74,6 +74,17 @@ Les huit machines suisses sont branchées (sept à Genève, une à Ecublens). **
 
 Ajouter une machine = une ligne dans `MACHINES` + un `<button class="machine-tab">` dans le panneau `#panel-ch`, + un bloc `Store` dans le JSON-LD de `index.html` pour le SEO local.
 
+## Déplacement temporaire d'une machine (travaux, fermeture)
+
+Exemple en cours : en novembre 2026, la machine de La Poste de Thônex est installée à La Poste des Eaux-Vives pendant les travaux de Thônex.
+
+- Tout se règle dans `_data/machines.yml`, bloc `temporaire` de la machine : `actif: true`, puis le nom, l'adresse, les coordonnées et les horaires de l'emplacement provisoire, et `retour` (le texte affiché après « Retour à Thônex prévu »).
+- **Retour à la normale : passer `actif: false`** (ou supprimer le bloc). Rien d'autre à retoucher, toutes les pages reprennent l'adresse habituelle au déploiement suivant.
+- `_includes/machine.html` lit ce bloc et fournit les variables `mx_…` (nom, adresse, horaires, phrase d'information). Il est appelé avec `id="thonex"` par Stock Live, la carte de l'accueil, la page de la machine, la page Distributeurs, les listes des pages licences, la presse, le pied de page, l'encart du blog et `llms.txt`.
+- L'adresse de la page ne change pas (`distributeur-thonex.html`), ni son titre : seul un bandeau jaune « Emplacement provisoire » s'ajoute. Le Worker non plus : c'est la même machine (index 7).
+- Les distances par quartier (Chêne-Bourg, Chêne-Bougeries, Les Eaux-Vives, Champel) de `cartes-pokemon-geneve.html` et `distributeurs-geneve.html` sont écrites en dur pour l'emplacement « Eaux-Vives » : pour un autre emplacement provisoire, elles gardent les valeurs de Thônex et sont à recalculer.
+- Les phrases générales qui citent les six filiales La Poste (accueil, expansion, FAQ des pages licences) et la liste de la newsletter ne changent pas.
+
 ## Pièges à connaître
 
 - Jekyll interprète `{{ … }}` et `{% … %}` dans les pages. Si un jour du JavaScript en contient, entourer le `<script>` de `{% raw %}` … `{% endraw %}`.

@@ -2,6 +2,7 @@
 lang: en
 page: stock
 ---
+{%- include machine.html id="thonex" -%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,6 +112,8 @@ page: stock
   .smc-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--red); box-shadow: 0 0 8px rgba(232,24,60,0.7); }
   .smc-name { font-size: 14px; font-weight: 500; color: var(--white); }
   .smc-addr { font-size: 12px; color: var(--text-muted); }
+  .smc-note { font-size: 12.5px; line-height: 1.45; color: var(--yellow); margin-top: 4px; max-width: 60ch; }
+  .smc-note:empty { display: none; }
   .smc-hint { font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px; }
 
   /* GOOGLE MAPS POPUP */
@@ -293,7 +296,7 @@ page: stock
       </a>
       <a class="machine-tab" href="?machine=thonex" onclick="event.preventDefault(); selectMachine(4)">
         <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">Thônex</span><span class="mt-sub">La Poste · 1226</span></span>
+        <span class="mt-label"><span class="mt-name">{{ mx_court }}</span><span class="mt-sub">La Poste · {{ mx_cp }}</span></span>
       </a>
       <a class="machine-tab" href="?machine=carouge" onclick="event.preventDefault(); selectMachine(5)">
         <span class="mt-dot"></span>
@@ -315,6 +318,7 @@ page: stock
         <div>
           <div class="smc-name" id="smcName">La Poste de Rive</div>
           <div class="smc-addr" id="smcAddr">Rue du Vieux-Collège 3, 1204 Genève</div>
+          <div class="smc-note" id="smcNote"></div>
         </div>
       </div>
       <div class="smc-right">
@@ -451,12 +455,14 @@ const FORMSPREE = {
   notify_fr: 'https://formspree.io/f/xdarzbye',   // ancien endpoint Belgique, réutilisé pour la France
   notify_uae: 'https://formspree.io/f/mqevbnwb'
 };
+{%- include machine.html id="thonex" %}
 const MACHINES = [
   { slug: 'rive', name: 'La Poste de Rive', addr: 'Rue du Vieux-Collège 3, 1204 Genève', lat: 46.201946, lng: 6.1504446, worker: 0 },
   { slug: 'charmilles', name: 'La Poste des Charmilles', addr: "Promenade de l'Europe 11, 1203 Genève", lat: 46.2080238, lng: 6.1230909, worker: 1 },
   { slug: 'petit-lancy', name: 'La Poste du Petit-Lancy', addr: 'Rue des Bossons 88b, 1213 Petit-Lancy', lat: 46.1889447, lng: 6.1104449, worker: 2 },
   { slug: 'plainpalais', name: 'La Poste de Plainpalais', addr: 'Rue Pictet-de-Bock 6, 1205 Genève', lat: 46.1938474, lng: 6.1426527, worker: 5 },
-  { slug: 'thonex', name: 'La Poste de Thônex', addr: 'Rue de Genève 106, 1226 Thônex', lat: 46.1927988, lng: 6.2020452, worker: 7 },
+  // Thônex : nom, adresse et coordonnées lus dans _data/machines.yml (déplacement temporaire compris)
+  { slug: 'thonex', name: {{ mx_nom | jsonify }}, addr: {{ mx_adresse | jsonify }}, lat: {{ mx_lat }}, lng: {{ mx_lng }}, worker: 7{% if mx_temp %}, note: {{ mx_note | jsonify }}{% endif %} },
   { slug: 'carouge', name: 'La Poste de Carouge', addr: 'Boulevard des Promenades 16, 1227 Carouge', lat: 46.1834815, lng: 6.1374843, worker: 4 },
   { slug: 'king-jouet-carouge', name: 'King Jouet Carouge', addr: 'Avenue Cardinal-Mermillod 36, 1227 Carouge', lat: 46.1859644, lng: 6.1431141, worker: 3 },
   // ancienne machine de La Poste de Meyrin (Worker 6), déménagée chez King Jouet Le Croset
@@ -635,6 +641,7 @@ function selectMachine(i, scroll) {
   currentMachine = i;
   document.getElementById('smcName').textContent = MACHINES[i].name;
   document.getElementById('smcAddr').textContent = MACHINES[i].addr;
+  document.getElementById('smcNote').textContent = MACHINES[i].note || '';
   updateMachineTabs();
   updateMarkerStyles();
   if (stockMapRef && (MACHINES[i].zone || 'ge') !== stockMapZone) fitStockMap();
@@ -869,6 +876,7 @@ function copyMachineLink(btn) {
     currentMachine = wanted;
     document.getElementById('smcName').textContent = MACHINES[wanted].name;
     document.getElementById('smcAddr').textContent = MACHINES[wanted].addr;
+    document.getElementById('smcNote').textContent = MACHINES[wanted].note || '';
     updateMachineTabs();
   }
   updateCityUI();

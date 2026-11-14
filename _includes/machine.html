@@ -1,0 +1,58 @@
+{%- comment -%}
+  MACHINE, AVEC DÉPLACEMENT TEMPORAIRE.
+  Charge une machine de _data/machines.yml dans des variables « mx_… ». Si la
+  machine a un bloc « temporaire » avec « actif: true », ce sont l'adresse, les
+  coordonnées et les horaires de l'emplacement provisoire qui sortent ; sinon
+  ceux de la machine. Retour à la normale : « actif: false » dans machines.yml.
+
+  Usage : appeler l'include « machine.html » avec id="thonex" (id de
+  machines.yml), puis afficher les variables mx_court, mx_rue, mx_cp…
+
+  mx_temp            true pendant le déplacement
+  mx_nom / mx_court  « La Poste des Eaux-Vives » / « Eaux-Vives »
+  mx_adresse, mx_rue, mx_cp, mx_ville, mx_lat, mx_lng
+  mx_sem_o / mx_sem_f / mx_sam_o / mx_sam_f   horaires « 08:00 » (lun-ven, samedi)
+  mx_wd_o / mx_wd_f / mx_sa_o / mx_sa_f       les mêmes en minutes (carte de l'accueil)
+  mx_origine / mx_origine_court               l'emplacement habituel (« La Poste de Thônex » / « Thônex »)
+  mx_note   phrase d'information dans la langue de la page (vide hors déplacement)
+  mx_bref   mention courte pour les listes et la carte (« Provisoire, à la place de Thônex (travaux) »)
+{%- endcomment -%}
+{%- assign mx = site.data.machines | where: "id", include.id | first -%}
+{%- assign mx_temp = false -%}
+{%- assign mx_src = mx -%}
+{%- if mx.temporaire and mx.temporaire.actif -%}{%- assign mx_temp = true -%}{%- assign mx_src = mx.temporaire -%}{%- endif -%}
+{%- assign mx_nom = mx_src.nom | default: mx.nom -%}
+{%- assign mx_court = mx_src.court | default: mx.court -%}
+{%- assign mx_adresse = mx_src.adresse | default: mx.adresse -%}
+{%- assign mx_rue = mx_src.rue | default: mx.rue -%}
+{%- assign mx_cp = mx_src.cp | default: mx.cp -%}
+{%- assign mx_ville = mx_src.ville | default: mx.ville -%}
+{%- assign mx_lat = mx_src.lat | default: mx.lat -%}
+{%- assign mx_lng = mx_src.lng | default: mx.lng -%}
+{%- assign mx_h = mx_src.horaires | default: mx.horaires -%}
+{%- assign mx_sem_o = mx_h.semaine[0] -%}{%- assign mx_sem_f = mx_h.semaine[1] -%}
+{%- assign mx_sam_o = mx_h.samedi[0] -%}{%- assign mx_sam_f = mx_h.samedi[1] -%}
+{%- assign mx_p = mx_sem_o | split: ":" -%}{%- assign mx_wd_o = mx_p[0] | times: 60 | plus: mx_p[1] -%}
+{%- assign mx_p = mx_sem_f | split: ":" -%}{%- assign mx_wd_f = mx_p[0] | times: 60 | plus: mx_p[1] -%}
+{%- assign mx_p = mx_sam_o | split: ":" -%}{%- assign mx_sa_o = mx_p[0] | times: 60 | plus: mx_p[1] -%}
+{%- assign mx_p = mx_sam_f | split: ":" -%}{%- assign mx_sa_f = mx_p[0] | times: 60 | plus: mx_p[1] -%}
+{%- assign mx_origine = mx.nom -%}
+{%- assign mx_origine_court = mx.court -%}
+{%- assign mx_note = "" -%}{%- assign mx_bref = "" -%}
+{%- if mx_temp -%}
+  {%- assign mx_lg = page.lang | default: "en" -%}
+  {%- assign mx_retour = mx.temporaire.retour[mx_lg] | default: mx.temporaire.retour.en -%}
+  {%- if mx_lg == "fr" -%}
+    {%- capture mx_bref -%}Provisoire, à la place de {{ mx_origine_court }} (travaux){%- endcapture -%}
+    {%- capture mx_note -%}Travaux à {{ mx_origine }} : la machine est provisoirement installée à {{ mx_nom }}, {{ mx_adresse }}.{% if mx_retour %} Retour à {{ mx_origine_court }} prévu {{ mx_retour }}.{% endif %}{%- endcapture -%}
+  {%- elsif mx_lg == "nl" -%}
+    {%- capture mx_bref -%}Tijdelijk, in plaats van {{ mx_origine_court }} (werken){%- endcapture -%}
+    {%- capture mx_note -%}Werken in {{ mx_origine }}: de automaat staat tijdelijk in {{ mx_nom }}, {{ mx_adresse }}.{% if mx_retour %} Terug in {{ mx_origine_court }}: {{ mx_retour }}.{% endif %}{%- endcapture -%}
+  {%- elsif mx_lg == "ar" -%}
+    {%- capture mx_bref -%}مؤقت، بدلًا من {{ mx_origine_court }} (أعمال){%- endcapture -%}
+    {%- capture mx_note -%}أعمال في {{ mx_origine }}: الجهاز موجود مؤقتًا في {{ mx_nom }}، {{ mx_adresse }}.{% if mx_retour %} العودة إلى {{ mx_origine_court }} متوقعة {{ mx_retour }}.{% endif %}{%- endcapture -%}
+  {%- else -%}
+    {%- capture mx_bref -%}Temporary, replacing {{ mx_origine_court }} (works){%- endcapture -%}
+    {%- capture mx_note -%}Works at {{ mx_origine }}: the machine is temporarily at {{ mx_nom }}, {{ mx_adresse }}.{% if mx_retour %} Due back in {{ mx_origine_court }} {{ mx_retour }}.{% endif %}{%- endcapture -%}
+  {%- endif -%}
+{%- endif -%}

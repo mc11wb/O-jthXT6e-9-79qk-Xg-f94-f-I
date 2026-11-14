@@ -113,7 +113,8 @@ body{margin:0;background:var(--black);color:var(--white);
     <li><a href="/fr/distributeur-geneve-charmilles.html">Les Charmilles</a><span>, Promenade de l&#x27;Europe 11, 1203 Genève</span></li>
     <li><a href="/fr/distributeur-petit-lancy.html">Petit-Lancy</a><span>, Rue des Bossons 88b, 1213 Petit-Lancy</span></li>
     <li><a href="/fr/distributeur-geneve-plainpalais.html">Plainpalais</a><span>, Rue Pictet-de-Bock 6, 1205 Genève</span></li>
-    <li><a href="/fr/distributeur-thonex.html">Thônex</a><span>, Rue de Genève 106, 1226 Thônex</span></li>
+    {%- include machine.html id="thonex" %}
+    <li><a href="/fr/distributeur-thonex.html">{{ mx_court }}</a><span>, {{ mx_adresse }}{% if mx_temp %} · {{ mx_bref }}{% endif %}</span></li>
     <li><a href="/fr/distributeur-carouge.html">Carouge</a><span>, Boulevard des Promenades 16, 1227 Carouge</span></li>
     <li><a href="/fr/distributeur-ecublens.html">King Jouet Ecublens</a><span>, Chemin du Croset 7, 1024 Ecublens</span></li>
     </ul>

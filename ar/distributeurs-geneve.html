@@ -2,6 +2,8 @@
 lang: ar
 page: distributeurs-geneve
 ---
+{%- include machine.html id="thonex" -%}
+{%- assign qz_ev = false -%}{%- if mx_temp and mx_court == "Eaux-Vives" -%}{%- assign qz_ev = true -%}{%- endif -%}
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -101,6 +103,11 @@ body{
 .bsm-card{display:block;padding:20px;border:1px solid var(--gray-mid);border-radius:var(--radius);
   text-decoration:none;color:inherit;background:var(--gray)}
 .bsm-card:hover{border-color:var(--yellow)}
+/* Déplacement temporaire d'une machine (bloc « temporaire » de _data/machines.yml) */
+.bsm-temp{margin:22px 0 0;padding:14px 18px;max-width:62ch;border:1px solid var(--yellow);border-left-width:4px;
+  background:rgba(255,208,0,.08);color:var(--white);font-size:15.5px;line-height:1.55}
+.bsm-temp b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:17px;letter-spacing:1px;
+  color:var(--yellow);margin-bottom:2px}
 .bsm-card b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:24px;
   letter-spacing:.6px;color:var(--white);margin-bottom:6px}
 .bsm-card span{display:block;color:var(--text-muted);font-size:14px;line-height:1.55}
@@ -118,6 +125,9 @@ body{
   </div>
   <h1>أين تجد أجهزتنا في جنيف</h1>
   <p class="bsm-where">سبعة أجهزة بالخدمة الذاتية في أنحاء الكانتون، ستة منها داخل فروع البريد السويسري وواحد في King Jouet Carouge، إضافة إلى جهاز ثامن في King Jouet Ecublens قرب لوزان. وخمسة أجهزة أخرى تصل قريباً جداً إلى سويسرا الناطقة بالفرنسية. تعرض كل صفحة العنوان الدقيق وساعات الوصول، والمخزون المقروء مباشرة من الخانات للأجهزة المتصلة. أجهزتنا الخمسة في بلجيكا، داخل متاجر كارفور، مدرجة في الأسفل.</p>
+  {%- if mx_temp %}
+  <p class="bsm-temp" role="note"><b>موقع مؤقت</b>{{ mx_note }}</p>
+  {%- endif %}
 </header>
 
 <section class="bsm-sec" style="border-top:0;padding-top:28px">
@@ -126,7 +136,7 @@ body{
     <li><a class="bsm-card" href="/distributeur-geneve-charmilles.html"><b>Les Charmilles</b><span>Promenade de l&#x27;Europe 11<br>1203 Genève<br>09:00–19:00 · السبت 09:00–17:00</span><em>المخزون المباشر</em></a></li>
     <li><a class="bsm-card" href="/distributeur-petit-lancy.html"><b>Petit-Lancy</b><span>Rue des Bossons 88b<br>1213 Petit-Lancy<br>08:00–18:00 · السبت 09:00–13:00</span><em>المخزون المباشر</em></a></li>
     <li><a class="bsm-card" href="/distributeur-geneve-plainpalais.html"><b>Plainpalais</b><span>Rue Pictet-de-Bock 6<br>1205 Genève<br>08:00–18:00 · السبت 09:00–16:00</span><em>المخزون المباشر</em></a></li>
-    <li><a class="bsm-card" href="/distributeur-thonex.html"><b>Thônex</b><span>Rue de Genève 106<br>1226 Thônex<br>08:30–18:30 · السبت 09:00–15:00</span><em>المخزون المباشر</em></a></li>
+    <li><a class="bsm-card" href="/distributeur-thonex.html"><b>{{ mx_court }}</b><span>{{ mx_rue }}<br>{{ mx_cp }} {{ mx_ville }}<br>{{ mx_sem_o }}–{{ mx_sem_f }} · السبت {{ mx_sam_o }}–{{ mx_sam_f }}{% if mx_temp %}<br>{{ mx_bref }}{% endif %}</span><em>المخزون المباشر</em></a></li>
     <li><a class="bsm-card" href="/distributeur-carouge.html"><b>Carouge</b><span>Boulevard des Promenades 16<br>1227 Carouge<br>08:00–18:00 · السبت 08:30–12:00</span><em>المخزون المباشر</em></a></li>
     <li><a class="bsm-card" href="/ar/stock.html?machine=king-jouet-carouge"><b>King Jouet Carouge</b><span>Avenue Cardinal-Mermillod 36<br>1227 Carouge<br>09:00–19:00 · السبت 09:00–18:00</span><em>المخزون المباشر</em></a></li>
   </ul>
@@ -164,15 +174,15 @@ body{
   <ul class="bsm-near">
     <li><a href="/cartes-pokemon-geneve.html#quartier-grand-lancy">Grand-Lancy</a><span>: Petit-Lancy، 0.3 كم</span></li>
     <li><a href="/cartes-pokemon-geneve.html#quartier-acacias">Les Acacias</a><span>: Plainpalais، 0.5 كم</span></li>
-    <li><a href="/cartes-pokemon-geneve.html#quartier-chene-bourg">Chêne-Bourg</a><span>: Thônex، 0.6 كم</span></li>
+    <li><a href="/cartes-pokemon-geneve.html#quartier-chene-bourg">Chêne-Bourg</a><span>: {% if qz_ev %}{{ mx_court }}، 2.8 كم{% else %}Thônex، 0.6 كم{% endif %}</span></li>
     <li><a href="/cartes-pokemon-geneve.html#quartier-servette">Servette</a><span>: Charmilles، 0.8 كم</span></li>
     <li><a href="/cartes-pokemon-geneve.html#quartier-jonction">La Jonction</a><span>: Charmilles، 1.0 كم</span></li>
     <li><a href="/cartes-pokemon-geneve.html#quartier-onex">Onex</a><span>: Petit-Lancy، 1.0 كم</span></li>
     <li><a href="/cartes-pokemon-geneve.html#quartier-cornavin">محطة Cornavin</a><span>: Rive، 1.1 كم</span></li>
-    <li><a href="/cartes-pokemon-geneve.html#quartier-eaux-vives">Eaux-Vives</a><span>: Rive، 1.2 كم</span></li>
+    <li><a href="/cartes-pokemon-geneve.html#quartier-eaux-vives">Eaux-Vives</a><span>: {% if qz_ev %}{{ mx_nom }}، 0.4 كم{% else %}Rive، 1.2 كم{% endif %}</span></li>
     <li><a href="/cartes-pokemon-geneve.html#quartier-paquis">Pâquis</a><span>: Rive، 1.2 كم</span></li>
     <li><a href="/cartes-pokemon-geneve.html#quartier-champel">Champel</a><span>: Plainpalais، 1.2 كم</span></li>
-    <li><a href="/cartes-pokemon-geneve.html#quartier-chene-bougeries">Chêne-Bougeries</a><span>: Thônex، 1.4 كم</span></li>
+    <li><a href="/cartes-pokemon-geneve.html#quartier-chene-bougeries">Chêne-Bougeries</a><span>: {% if qz_ev %}{{ mx_court }}، 1.9 كم{% else %}Thônex، 1.4 كم{% endif %}</span></li>
     <li><a href="/cartes-pokemon-geneve.html#quartier-vernier">Vernier</a><span>: Charmilles، 1.5 كم</span></li>
     <li><a href="/cartes-pokemon-geneve.html#quartier-plan-les-ouates">Plan-les-Ouates</a><span>: Petit-Lancy، 2.5 كم</span></li>
   </ul>

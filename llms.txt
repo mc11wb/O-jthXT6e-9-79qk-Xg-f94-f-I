@@ -46,7 +46,8 @@ Les huit machines ont leur inventaire consultable en direct sur le site :
 - **La Poste des Charmilles**, Promenade de l'Europe 11, 1203 Genève · lun-ven 09:00-19:00, sam 09:00-17:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-charmilles.html)
 - **La Poste du Petit-Lancy**, Rue des Bossons 88b, 1213 Petit-Lancy · lun-ven 08:00-18:00, sam 09:00-13:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-petit-lancy.html)
 - **La Poste de Plainpalais**, Rue Pictet-de-Bock 6, 1205 Genève · lun-ven 08:00-18:00, sam 09:00-16:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-geneve-plainpalais.html)
-- **La Poste de Thônex**, Rue de Genève 106, 1226 Thônex · lun-ven 08:30-18:30, sam 09:00-15:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-thonex.html)
+{% include machine.html id="thonex" -%}
+- **{{ mx_nom }}**, {{ mx_adresse }} · lun-ven {{ mx_sem_o }}-{{ mx_sem_f }}, sam {{ mx_sam_o }}-{{ mx_sam_f }}, dimanche fermé{% if mx_temp %} · emplacement provisoire de la machine de {{ mx_origine }}, déplacée pendant les travaux de l'agence{% endif %} · [page](https://boosterstop.com/fr/distributeur-thonex.html)
 - **La Poste de Carouge**, Boulevard des Promenades 16, 1227 Carouge · lun-ven 08:00-18:00, sam 08:30-12:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-carouge.html)
 - **King Jouet Carouge**, Avenue Cardinal-Mermillod 36, 1227 Carouge · lun-ven 09:00-19:00, sam 09:00-18:00, dimanche fermé · [stock en direct](https://boosterstop.com/fr/stock.html?machine=king-jouet-carouge)
 - **King Jouet Ecublens (Le Croset)**, Chemin du Croset 7, 1024 Ecublens · lun-jeu 09:00-19:30, ven 09:00-20:00, sam 08:00-18:00, dimanche fermé · [page](https://boosterstop.com/fr/distributeur-ecublens.html)

@@ -71,14 +71,40 @@
   nom: La Poste de Thônex
   court: Thônex
   adresse: Rue de Genève 106, 1226 Thônex
+  rue: Rue de Genève 106
+  cp: "1226"
+  ville: Thônex
   lat: 46.1927988
   lng: 6.2020452
+  horaires: { semaine: ["08:30", "18:30"], samedi: ["09:00", "15:00"] }
   url: /fr/distributeur-thonex.html
   url_en: /distributeur-thonex.html
   live: true
   worker: 7
   page_id: distributeur-thonex
   google_place_id: ChIJCaojp_txjEcRHtob6iU-2fo
+  # ----------------------------------------------------------------
+  # DÉPLACEMENT TEMPORAIRE (novembre 2026) : travaux à La Poste de Thônex,
+  # la machine (même Worker 7) est installée à La Poste des Eaux-Vives.
+  # Tant que « actif: true », tout le site affiche l'adresse ci-dessous à la
+  # place de Thônex : Stock Live, carte de l'accueil, page de la machine,
+  # listes des pages licences, pied de page, encart du blog, llms.txt.
+  # RETOUR À THÔNEX : mettre « actif: false » (ou supprimer le bloc
+  # « temporaire »). Rien d'autre à retoucher. Voir _includes/machine.html.
+  # « retour » = ce qui s'affiche après « Retour à Thônex prévu ».
+  # ----------------------------------------------------------------
+  temporaire:
+    actif: true
+    nom: La Poste des Eaux-Vives
+    court: Eaux-Vives
+    adresse: Rue du 31-Décembre 47, 1207 Genève
+    rue: Rue du 31-Décembre 47
+    cp: "1207"
+    ville: Genève
+    lat: 46.2024922
+    lng: 6.1613582
+    horaires: { semaine: ["08:00", "18:00"], samedi: ["09:00", "12:00"] }
+    retour: { fr: "fin novembre", en: "late November", nl: "eind november", ar: "أواخر نوفمبر" }
 
 - id: carouge
   pays: ch

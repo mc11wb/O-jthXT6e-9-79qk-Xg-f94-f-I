@@ -46,9 +46,10 @@
     <p class="bm-msg" role="status" aria-live="polite"></p>
     <ul class="bm-list" data-near="{% if bm_fr %}Le plus proche{% else %}Nearest{% endif %}">
       {%- for m in c_machines %}
-      <li class="bm-row" data-lat="{{ m.lat }}" data-lng="{{ m.lng }}">
+      {%- include machine.html id=m.id -%}
+      <li class="bm-row" data-lat="{{ mx_lat }}" data-lng="{{ mx_lng }}">
         <a href="{% if bm_fr %}{{ m.url }}{% else %}{{ m.url_en }}{% endif %}">
-          <span class="bm-nm">{{ m.nom }}<small>{{ m.adresse }}</small></span>
+          <span class="bm-nm">{{ mx_nom }}<small>{{ mx_adresse }}{% if mx_temp %} · {{ mx_bref }}{% endif %}</small></span>
           <span class="bm-side"><span class="bm-dist"></span>{% if m.live %}<span class="bm-live">{% if bm_fr %}Stock en direct{% else %}Live stock{% endif %}</span>{% endif %}</span>
         </a>
       </li>

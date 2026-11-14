@@ -2,25 +2,33 @@
 lang: en
 page: distributeur-thonex
 ---
+{%- include machine.html id="thonex" -%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
 {% include head.html %}
 <title>Pokémon card vending machine in Thônex | BoosterStop</title>
-<meta name="description" content="Self-service Pokémon boosters inside La Poste de Thônex, Rue de Genève 106, 1226 Thônex. Live stock, cash, TWINT or contactless, sealed products from official distributors.">
+{%- if mx_temp -%}
+{%- capture bsm_desc -%}Works at {{ mx_origine }}: the machine is temporarily at {{ mx_nom }}, {{ mx_adresse }}. Live stock, cash, TWINT or contactless.{%- endcapture -%}
+{%- capture bsm_faq1 -%}BoosterStop runs seven vending machines across the canton of Geneva. During the works at {{ mx_origine }}, the {{ mx_origine_court }} machine is temporarily at {{ mx_nom }}, {{ mx_adresse }}. They are self-service during the opening hours of the branch hosting them.{%- endcapture -%}
+{%- else -%}
+{%- capture bsm_desc -%}Self-service Pokémon boosters inside La Poste de Thônex, Rue de Genève 106, 1226 Thônex. Live stock, cash, TWINT or contactless, sealed products from official distributors.{%- endcapture -%}
+{%- capture bsm_faq1 -%}BoosterStop runs seven vending machines across the canton of Geneva, including this one in Thônex, Rue de Genève 106. They are self-service during the opening hours of the branch hosting them.{%- endcapture -%}
+{%- endif %}
+<meta name="description" content="{{ bsm_desc }}">
 {% include hreflang.html %}
 <meta name="robots" content="index, follow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BoosterStop">
 <meta property="og:title" content="Pokémon card vending machine in Thônex">
-<meta property="og:description" content="Self-service Pokémon boosters inside La Poste de Thônex, Rue de Genève 106, 1226 Thônex. Live stock, cash, TWINT or contactless, sealed products from official distributors.">
+<meta property="og:description" content="{{ bsm_desc }}">
 <meta property="og:url" content="https://boosterstop.com/distributeur-thonex.html">
 <meta property="og:locale" content="en_CH">
 <meta property="og:image" content="https://boosterstop.com/front%20transparent.png">
 <meta name="geo.region" content="CH-GE">
-<meta name="geo.placename" content="Thônex">
-<meta name="geo.position" content="46.1927988;6.2020452">
-<meta name="ICBM" content="46.1927988, 6.2020452">
+<meta name="geo.placename" content="{{ mx_ville }}">
+<meta name="geo.position" content="{{ mx_lat }};{{ mx_lng }}">
+<meta name="ICBM" content="{{ mx_lat }}, {{ mx_lng }}">
 <style>
 /* Pages distributeur.
    site.css ne stylise pas body : chaque page le déclare, comme les autres
@@ -43,6 +51,11 @@ body{
 .bsm-now:empty{display:none}
 .bsm-head h1{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:1px;line-height:1.02;
   font-size:clamp(38px,6.5vw,68px);margin:0 0 14px}
+/* Déplacement temporaire de la machine (bloc « temporaire » de _data/machines.yml) */
+.bsm-temp{margin:0 0 20px;padding:14px 18px;max-width:62ch;border:1px solid var(--yellow);border-left-width:4px;
+  background:rgba(255,208,0,.08);color:var(--white);font-size:15.5px;line-height:1.55}
+.bsm-temp b{display:block;font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:17px;letter-spacing:1px;
+  color:var(--yellow);margin-bottom:2px}
 .bsm-where{color:var(--text-muted);font-size:17px;max-width:48ch;line-height:1.65;margin:0}
 .bsm-live{margin:40px 0;border:1px solid var(--gray-mid);border-left:3px solid var(--red);background:var(--gray)}
 .bsm-live-top{display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;
@@ -120,7 +133,10 @@ body{
   </div>
   <span class="bsm-now" id="bsmNow"></span>
   <h1>Pokémon card vending machine in Thônex</h1>
-  <p class="bsm-where">Inside La Poste de Thônex, Rue de Genève 106, 1226 Thônex. Self-service, cash, TWINT or contactless, no queue at the counter.</p>
+  {%- if mx_temp %}
+  <p class="bsm-temp" role="note"><b>Temporary location</b>{{ mx_note }}</p>
+  {%- endif %}
+  <p class="bsm-where">Inside {{ mx_nom }}, {{ mx_adresse }}. Self-service, cash, TWINT or contactless, no queue at the counter.</p>
   {% include reviews.html only="thonex" compact=true %}
 </header>
 
@@ -135,22 +151,22 @@ body{
   <div>
     <h2>Address</h2>
     <address>
-      Rue de Genève 106<br>
-      1226 Thônex, Switzerland
+      {{ mx_rue }}<br>
+      {{ mx_cp }} {{ mx_ville }}, Switzerland
     </address>
     <p class="bsm-tel"><a href="tel:+41228860158">+41 22 886 01 58</a></p>
-    <a class="bsm-go" href="https://www.google.com/maps/dir/?api=1&amp;destination=46.1927988,6.2020452" rel="noopener">Directions</a>
+    <a class="bsm-go" href="https://www.google.com/maps/dir/?api=1&amp;destination={{ mx_lat }},{{ mx_lng }}" rel="noopener">Directions</a>
   </div>
   <div>
     <h2>Access</h2>
     <p class="bsm-note">Accessible during the branch's opening hours.</p>
     <table class="bsm-hours">
-      <tr><td>Monday</td><td>08:30 – 18:30</td></tr>
-      <tr><td>Tuesday</td><td>08:30 – 18:30</td></tr>
-      <tr><td>Wednesday</td><td>08:30 – 18:30</td></tr>
-      <tr><td>Thursday</td><td>08:30 – 18:30</td></tr>
-      <tr><td>Friday</td><td>08:30 – 18:30</td></tr>
-      <tr><td>Saturday</td><td>09:00 – 15:00</td></tr>
+      <tr><td>Monday</td><td>{{ mx_sem_o }} – {{ mx_sem_f }}</td></tr>
+      <tr><td>Tuesday</td><td>{{ mx_sem_o }} – {{ mx_sem_f }}</td></tr>
+      <tr><td>Wednesday</td><td>{{ mx_sem_o }} – {{ mx_sem_f }}</td></tr>
+      <tr><td>Thursday</td><td>{{ mx_sem_o }} – {{ mx_sem_f }}</td></tr>
+      <tr><td>Friday</td><td>{{ mx_sem_o }} – {{ mx_sem_f }}</td></tr>
+      <tr><td>Saturday</td><td>{{ mx_sam_o }} – {{ mx_sam_f }}</td></tr>
       <tr class="shut"><td>Sunday</td><td>Closed</td></tr>
     </table>
     <p class="bsm-holi">Closed on the 9 public holidays of the canton of Geneva, including the Jeûne genevois and 31 December.</p>
@@ -160,7 +176,7 @@ body{
 <section class="bsm-sec">
   <h2>What you'll find</h2>
   <p>Single boosters, boxes and displays, all sourced from official distributors and sealed. Beyond Pokémon, this machine runs part of the <a href="/licences-geneve.html">licences we distribute in Geneva</a>, from Magic and One Piece to rarer series.</p>
-  <p>East of the canton, open until 6:30pm, the latest weekday closing after Les Charmilles. Restocking happens every week, and more often still when a much-awaited set drops.</p>
+  <p>{% if mx_temp %}During the works at {{ mx_origine }}, the machine and all its stock are at {{ mx_nom }}, open until {{ mx_sem_f }} on weekdays.{% else %}East of the canton, open until 6:30pm, the latest weekday closing after Les Charmilles.{% endif %} Restocking happens every week, and more often still when a much-awaited set drops.</p>
 </section>
 
 <section class="bsm-sec">
@@ -176,7 +192,7 @@ body{
   <h2>Frequently asked questions</h2>
   <dl class="bsm-faq">
     <dt>Where can I buy Pokémon cards in Thônex?</dt>
-    <dd>BoosterStop runs seven vending machines across the canton of Geneva, including this one in Thônex, Rue de Genève 106. They are self-service during the opening hours of the branch hosting them.</dd>
+    <dd>{{ bsm_faq1 | escape }}</dd>
     <dt>How do I pay?</dt>
     <dd>Cash, with change returned in both coins and notes, TWINT, or contactless card and smartphone payment. The product drops instantly.</dd>
     <dt>Are the cards genuine?</dt>
@@ -199,24 +215,24 @@ body{
     {
       "@type": "Store",
       "@id": "https://boosterstop.com/distributeur-thonex.html#store",
-      "name": "BoosterStop La Poste de Thônex",
-      "description": "Self-service trading card vending machine inside La Poste de Thônex in Thônex.",
+      "name": "BoosterStop {{ mx_nom }}",
+      "description": "Self-service trading card vending machine inside {{ mx_nom }} in {{ mx_ville }}.{% if mx_temp %} Temporary location during the works at {{ mx_origine }}.{% endif %}",
       "url": "https://boosterstop.com/distributeur-thonex.html",
       "image": "https://boosterstop.com/front%20transparent.png",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Rue de Genève 106",
-        "postalCode": "1226",
-        "addressLocality": "Thônex",
+        "streetAddress": "{{ mx_rue }}",
+        "postalCode": "{{ mx_cp }}",
+        "addressLocality": "{{ mx_ville }}",
         "addressRegion": "GE",
         "addressCountry": "CH"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 46.1927988,
-        "longitude": 6.2020452
+        "latitude": {{ mx_lat }},
+        "longitude": {{ mx_lng }}
       },
-      "hasMap": "https://www.google.com/maps/dir/?api=1&destination=46.1927988,6.2020452",
+      "hasMap": "https://www.google.com/maps/dir/?api=1&destination={{ mx_lat }},{{ mx_lng }}",
       "telephone": "+41 22 886 01 58",
       "currenciesAccepted": "CHF",
       "paymentAccepted": "Cash, TWINT, credit card, contactless, mobile payment",
@@ -234,14 +250,14 @@ body{
             "Thursday",
             "Friday"
           ],
-          "opens": "08:30",
-          "closes": "18:30"
+          "opens": "{{ mx_sem_o }}",
+          "closes": "{{ mx_sem_f }}"
         },
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": "Saturday",
-          "opens": "09:00",
-          "closes": "15:00"
+          "opens": "{{ mx_sam_o }}",
+          "closes": "{{ mx_sam_f }}"
         },
         {
           "@type": "OpeningHoursSpecification",
@@ -443,7 +459,7 @@ body{
       ],
       "areaServed": {
         "@type": "City",
-        "name": "Thônex"
+        "name": "{{ mx_ville }}"
       }
     },
     {
@@ -476,7 +492,7 @@ body{
           "name": "Where can I buy Pokémon cards in Thônex?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "BoosterStop runs seven vending machines across the canton of Geneva, including this one in Thônex, Rue de Genève 106. They are self-service during the opening hours of the branch hosting them."
+            "text": {{ bsm_faq1 | jsonify }}
           }
         },
         {
@@ -524,12 +540,12 @@ body{
   var WORKER = 'https://boosterstop-stock.cold-water-7039.workers.dev';
   var HOURS = [
     null,
-    ['08:30', '18:30'],
-    ['08:30', '18:30'],
-    ['08:30', '18:30'],
-    ['08:30', '18:30'],
-    ['08:30', '18:30'],
-    ['09:00', '15:00']
+    ['{{ mx_sem_o }}', '{{ mx_sem_f }}'],
+    ['{{ mx_sem_o }}', '{{ mx_sem_f }}'],
+    ['{{ mx_sem_o }}', '{{ mx_sem_f }}'],
+    ['{{ mx_sem_o }}', '{{ mx_sem_f }}'],
+    ['{{ mx_sem_o }}', '{{ mx_sem_f }}'],
+    ['{{ mx_sam_o }}', '{{ mx_sam_f }}']
   ];
 
   function mins(s) { var p = s.split(':'); return +p[0] * 60 + +p[1]; }
