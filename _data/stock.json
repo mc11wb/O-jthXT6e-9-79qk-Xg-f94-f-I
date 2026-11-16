@@ -1,7 +1,7 @@
 {
  "machines": {
   "carouge": {
-   "maj": "2026-11-15T12:54:57+01:00",
+   "maj": "2026-11-16T13:40:27+01:00",
    "ok": true,
    "produits": [
     {
@@ -97,7 +97,7 @@
    ]
   },
   "charmilles": {
-   "maj": "2026-11-15T12:54:57+01:00",
+   "maj": "2026-11-16T13:40:27+01:00",
    "ok": true,
    "produits": [
     {
@@ -118,7 +118,7 @@
     {
      "nom": "🇯🇵 Clay Burst Pokemon Booster",
      "prix": "5.90",
-     "qte": 42
+     "qte": 40
     },
     {
      "nom": "🇯🇵 Ninja Spinner Pokemon Booster",
@@ -161,18 +161,13 @@
      "qte": 17
     },
     {
-     "nom": "🇫🇷 B28 Booster Dragon Ball Super",
-     "prix": "6.90",
-     "qte": 12
-    },
-    {
      "nom": "🇯🇵Perfect Order Pokémon Booster",
      "prix": "4.90",
      "qte": 12
     },
     {
-     "nom": "🇯🇵 Inferno X Pokemon Booster",
-     "prix": "7.90",
+     "nom": "🇫🇷 B28 Booster Dragon Ball Super",
+     "prix": "6.90",
      "qte": 11
     },
     {
@@ -186,9 +181,14 @@
      "qte": 10
     },
     {
+     "nom": "🇯🇵 Inferno X Pokemon Booster",
+     "prix": "7.90",
+     "qte": 9
+    },
+    {
      "nom": "🇯🇵ST-01 Dragon Ball Fusion World",
      "prix": "10.90",
-     "qte": 10
+     "qte": 9
     },
     {
      "nom": "🇫🇷 Retro Pack 2 Booster Yu-Gi-Oh!",
@@ -218,13 +218,13 @@
    ]
   },
   "king-jouet-carouge": {
-   "maj": "2026-11-15T12:54:57+01:00",
+   "maj": "2026-11-16T13:40:27+01:00",
    "ok": true,
    "produits": [
     {
      "nom": "🇯🇵 OP17 Booster The World's Strongest Warriors",
      "prix": "7.90",
-     "qte": 84
+     "qte": 82
     },
     {
      "nom": "🇨🇳 Storm Emeralda Mega Evolution Pokémon",
@@ -292,14 +292,14 @@
      "qte": 16
     },
     {
-     "nom": "🇯🇵OP16 Booster One Piece",
-     "prix": "6.90",
-     "qte": 14
-    },
-    {
      "nom": "🇯🇵Perfect Order Pokémon Booster",
      "prix": "4.90",
      "qte": 14
+    },
+    {
+     "nom": "🇯🇵OP16 Booster One Piece",
+     "prix": "6.90",
+     "qte": 13
     },
     {
      "nom": "🇨🇳 Abyss Eye Booster Pokemon",
@@ -324,7 +324,7 @@
     {
      "nom": "🇯🇵 OP10 Booster One Piece",
      "prix": "6.90",
-     "qte": 9
+     "qte": 8
     },
     {
      "nom": "🇯🇵 Foudre Noire Booster Pokemon",
@@ -359,7 +359,7 @@
    ]
   },
   "king-jouet-ecublens": {
-   "maj": "2026-11-15T12:54:57+01:00",
+   "maj": "2026-11-16T13:40:27+01:00",
    "ok": true,
    "produits": [
     {
@@ -480,13 +480,13 @@
    ]
   },
   "petit-lancy": {
-   "maj": "2026-11-15T12:54:57+01:00",
+   "maj": "2026-11-16T13:40:27+01:00",
    "ok": true,
    "produits": [
     {
      "nom": "🇫🇷 Équilibre Parfait Booster Pokémon",
      "prix": "7.90",
-     "qte": 60
+     "qte": 58
     },
     {
      "nom": "🇫🇷 Chaos Ascendant Booster Pokémon",
@@ -574,11 +574,6 @@
      "qte": 12
     },
     {
-     "nom": "🇫🇷 B28 Booster Dragon Ball Super",
-     "prix": "6.90",
-     "qte": 10
-    },
-    {
      "nom": "🇯🇵OP14 Booster One Piece",
      "prix": "6.90",
      "qte": 10
@@ -589,18 +584,23 @@
      "qte": 8
     },
     {
-     "nom": "🇫🇷 Hyperia City booster Disney Lorcana",
-     "prix": "7.90",
-     "qte": 7
-    },
-    {
      "nom": "Portfolio 4 Pochettes A5 Ultra Pro",
      "prix": "12.90",
      "qte": 6
     },
     {
+     "nom": "🇫🇷 Hyperia City booster Disney Lorcana",
+     "prix": "7.90",
+     "qte": 6
+    },
+    {
      "nom": "🇨🇳 30ᵉ Anniversaire Booster Pokémon",
      "prix": "8.90",
+     "qte": 5
+    },
+    {
+     "nom": "🇫🇷 B28 Booster Dragon Ball Super",
+     "prix": "6.90",
      "qte": 5
     },
     {
@@ -621,7 +621,7 @@
    ]
   },
   "plainpalais": {
-   "maj": "2026-11-15T12:54:57+01:00",
+   "maj": "2026-11-16T13:40:27+01:00",
    "ok": true,
    "produits": [
     {
@@ -727,7 +727,7 @@
    ]
   },
   "rive": {
-   "maj": "2026-11-15T12:54:57+01:00",
+   "maj": "2026-11-16T13:40:27+01:00",
    "ok": true,
    "produits": [
     {
@@ -796,14 +796,14 @@
      "qte": 17
     },
     {
-     "nom": "🇬🇧 Formula 1 Topps Turbo Attax Booster",
-     "prix": "4.90",
-     "qte": 13
-    },
-    {
      "nom": "🇯🇵 OP17 Booster The World's Strongest Warriors",
      "prix": "7.90",
      "qte": 13
+    },
+    {
+     "nom": "🇬🇧 Formula 1 Topps Turbo Attax Booster",
+     "prix": "4.90",
+     "qte": 12
     },
     {
      "nom": "🇬🇧 The Flash Chapitre 4 Booster DC Comics",
@@ -833,7 +833,7 @@
     {
      "nom": "🇯🇵Pokemon Mystery Graded",
      "prix": "39.90",
-     "qte": 5
+     "qte": 4
     },
     {
      "nom": "🇫🇷Trésor des Illumineurs Disney Lorcana",
@@ -863,7 +863,7 @@
    ]
   },
   "thonex": {
-   "maj": "2026-11-15T12:54:57+01:00",
+   "maj": "2026-11-16T13:40:27+01:00",
    "ok": true,
    "produits": [
     {
@@ -964,5 +964,5 @@
    ]
   }
  },
- "maj": "2026-11-15T12:54:57+01:00"
+ "maj": "2026-11-16T13:40:27+01:00"
 }
