@@ -156,7 +156,7 @@ body{
   <ul class="bsm-grid">
     {%- assign bsm_be = site.data.machines | where: "pays", "be" -%}
     {%- for o in bsm_be %}
-    <li><a class="bsm-card" href="{{ o.url_en }}"><b>{{ o.court_en | default: o.court }}</b><span>{{ o.nom }}<br>{{ o.adresse_en | default: o.adresse }}<br>{{ o.region.ar | default: o.region.en }}</span><em>حسب ساعات عمل المتجر</em></a></li>
+    <li><a class="bsm-card" href="{{ o.url_en }}"><b>{{ o.court_en | default: o.court }}</b><span>{{ o.nom }}<br>{{ o.adresse_en | default: o.adresse }}<br>{{ o.region.ar | default: o.region.en }}</span><em>{% if o.worker %}المخزون المباشر{% else %}حسب ساعات عمل المتجر{% endif %}</em></a></li>
     {%- endfor %}
   </ul>
   <p style="margin-top:20px"><a href="/distributeurs-belgique.html">كل الأجهزة في بلجيكا ←</a></p>

@@ -23,7 +23,7 @@ Le site est bilingue : les pages en anglais sont à la racine, les pages en fran
 
 - **La Poste Suisse** : 6 filiales du canton de Genève (Rive, Les Charmilles, Petit-Lancy, Plainpalais, Thônex, Carouge).
 - **King Jouet** : 2 magasins de jouets, à Carouge (Genève) et à Ecublens, près de Lausanne (Le Croset).
-- **Carrefour Belgique** : 5 supermarchés (Woluwe-Saint-Lambert, Zandhoven, Zemst près de Malines, Korbeek-Lo, La Louvière), 5 autres très bientôt ; Carrefour accueillera aussi les 3 premières machines françaises, à Lille.
+- **Carrefour Belgique** : 5 supermarchés (Woluwe-Saint-Lambert, Gosselies près de Charleroi, Zemst près de Malines, Korbeek-Lo, La Louvière), 5 autres très bientôt ; Carrefour accueillera aussi les 3 premières machines françaises, à Lille.
 
 Chaque machine suit les horaires d'ouverture du lieu qui l'accueille.
 
@@ -152,7 +152,7 @@ Mêmes pages, sans le préfixe `/fr/` : [Accueil](https://boosterstop.com/), [Di
 ## Belgium
 - [Our machines in Belgium](https://boosterstop.com/distributeurs-belgique.html): five BoosterStop TCG vending machines inside Carrefour stores, in Brussels, Flanders and Wallonia. Also in French (https://boosterstop.com/fr/distributeurs-belgique.html) and Dutch (https://boosterstop.com/nl/distributeurs-belgique.html).
 - [Carrefour Tomberg (Woluwe-Saint-Lambert)](https://boosterstop.com/distributeur-bruxelles-woluwe.html): Rue Tomberg 96-114, 1200 Woluwe-Saint-Lambert, Belgium.
-- [Carrefour Zandhoven (Zandhoven)](https://boosterstop.com/distributeur-zandhoven.html): Langestraat 41, 2240 Zandhoven, Belgium.
+- [Carrefour Gosselies (Gosselies, Charleroi)](https://boosterstop.com/distributeur-gosselies.html): Rue de Tahon 16, 6041 Gosselies, Belgium.
 - [Carrefour Zemst (Mechelen)](https://boosterstop.com/distributeur-mechelen-zemst.html): Zemstbaan 242, 2800 Mechelen, Belgium.
 - [Carrefour Korbeek-Lo (Korbeek-Lo)](https://boosterstop.com/distributeur-korbeek-lo.html): Vlinderlaan 1C, 3360 Korbeek-Lo, Belgium.
 - [Carrefour La Louvière (La Louvière)](https://boosterstop.com/distributeur-la-louviere.html): Rue Albert Ier 21, 7100 La Louvière, Belgium.

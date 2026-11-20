@@ -1,0 +1,168 @@
+{%- comment -%}
+  STOCK LIVE, ONGLET BELGIQUE : script. À inclure APRÈS le script principal de
+  stock.html (il réutilise floorGroups et switchCountry). Les machines et leur
+  index Worker viennent de _data/machines.yml : rien à modifier ici pour
+  brancher une machine belge de plus.
+{%- endcomment -%}
+{%- assign hb_ms = site.data.machines | where: "pays", "be" -%}
+{%- assign hb_t = site.data.belgique[page.lang] | default: site.data.belgique.en -%}
+{%- if page.lang == "nl" -%}{%- assign hb_sx = "_nl" -%}{%- elsif page.lang == "en" -%}{%- assign hb_sx = "_en" -%}{%- else -%}{%- assign hb_sx = "" -%}{%- endif -%}
+{%- capture hb_ka -%}adresse{{ hb_sx }}{%- endcapture -%}
+<script>
+(function () {
+  'use strict';
+  var URL_WORKER = 'https://boosterstop-stock.cold-water-7039.workers.dev';
+  var BE = [
+    {%- for m in hb_ms %}
+    {%- capture hb_page -%}{% include lien.html f=m.fichier %}{%- endcapture %}
+    { id: {{ m.id | jsonify }}, name: {{ m.nom | jsonify }}, addr: {{ m[hb_ka] | default: m.adresse | jsonify }}, worker: {% if m.worker %}{{ m.worker }}{% else %}null{% endif %}, page: {{ hb_page | strip | jsonify }}, lat: {{ m.lat }}, lng: {{ m.lng }} }{% unless forloop.last %},{% endunless %}
+    {%- endfor %}
+  ];
+  var T = {
+    connexion: {{ hb_t.sl_connexion | jsonify }},
+    erreur: {{ hb_t.sl_erreur | jsonify }},
+    nonConfigure: {{ hb_t.sl_non_configure | jsonify }},
+    aucun: {{ hb_t.sl_aucun | jsonify }},
+    bientotTitre: {{ hb_t.stock_bientot | jsonify }},
+    bientot: {{ hb_t.bientot | jsonify }}
+  };
+  var LOCALE = {% if page.lang == "fr" %}'fr-BE'{% elsif page.lang == "nl" %}'nl-BE'{% elsif page.lang == "ar" %}'ar'{% else %}'en-GB'{% endif %};
+
+  var panel = document.getElementById('panel-be');
+  var box = document.getElementById('beFloors');
+  if (!panel || !box || !BE.length) return;
+
+  var data = BE.map(function () { return null; });
+  var cur = 0, charge = 0, enCours = false;
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function prix(p) {
+    var n = parseFloat(String(p).replace(',', '.'));
+    return '€ ' + (isNaN(n) ? esc(p) : n.toFixed(2));
+  }
+  function visible() { return panel.style.display !== 'none'; }
+  function msg(html) { box.innerHTML = '<div class="state-msg">' + html + '</div>'; }
+
+  function render() {
+    var m = BE[cur];
+    if (m.worker === null) {
+      box.innerHTML = '<div class="machine-soon-msg"><div class="msm-icon">📦</div><div class="msm-title">' + esc(T.bientotTitre) + '</div><p class="msm-sub">' + esc(T.bientot) + '</p></div>';
+      return;
+    }
+    var d = data[cur];
+    if (!d) {
+      if (enCours || !charge) msg('<span class="spin"></span><br><span>' + esc(T.connexion) + '</span>');
+      else msg('⚠️ ' + esc(T.erreur));
+      return;
+    }
+    var slots = d.slots || [];
+    if (!slots.length) { msg(esc(T.aucun)); return; }
+    var html = '';
+    floorGroups(slots).forEach(function (fl) {
+      html += '<div class="floor"><div class="floor-label">' + esc(fl.label) + '</div><div class="slots">';
+      fl.slots.forEach(function (s) {
+        var stock = s.stock || 0, vol = s.volume || 0;
+        var pct = vol > 0 ? Math.min(100, Math.round((stock / vol) * 100)) : 0;
+        var state = 'empty';
+        if (!s.configured) state = 'unconfigured';
+        else if (stock > 2) state = 'ok';
+        else if (stock > 0) state = 'low';
+        var hasImg = s.image && s.image !== 'https://eu.zhongdacloud.com/';
+        html += '<div class="slot">'
+          + '<div class="slot-top"><span class="slot-num">' + esc(String(s.slot_num).padStart(2, '0')) + '</span><span class="slot-dot ' + state + '"></span></div>'
+          + (hasImg
+              ? '<img class="slot-img" src="' + esc(s.image) + '" alt="" width="120" height="72" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">'
+              : '<div class="slot-img ph">🃏</div>')
+          + '<div class="slot-name ' + (s.configured ? '' : 'muted') + '">' + esc(s.configured ? (s.goods_name || '—') : T.nonConfigure) + '</div>'
+          + (s.configured
+              ? '<div class="slot-bar"><i class="' + state + '" style="width:' + pct + '%"></i></div>'
+                + '<div class="slot-foot"><span class="slot-count"><b>' + stock + '</b>/' + vol + '</span>' + (s.price ? '<span class="slot-price">' + prix(s.price) + '</span>' : '') + '</div>'
+              : '')
+          + '</div>';
+      });
+      html += '</div></div>';
+    });
+    if (html) box.innerHTML = html; else msg(esc(T.aucun));
+  }
+
+  function stats() {
+    var a = 0, b = 0, c = 0, ok = false;
+    data.forEach(function (d) {
+      if (!d) return;
+      ok = true; a += d.in_stock || 0; b += d.low_stock || 0; c += d.empty || 0;
+    });
+    document.getElementById('be-stat-instock').textContent = ok ? a : '—';
+    document.getElementById('be-stat-low').textContent = ok ? b : '—';
+    document.getElementById('be-stat-empty').textContent = ok ? c : '—';
+  }
+
+  function load() {
+    if (enCours) return;
+    enCours = true;
+    render();
+    var vus = {};
+    var jobs = BE.map(function (m, i) {
+      if (m.worker === null) return Promise.resolve();
+      return fetch(URL_WORKER + '/stock?machine=' + m.worker, { cache: 'no-store' })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          /* une machine suisse ou un doublon ne s'affiche jamais ici */
+          if (!d || !d.ok || (d.pays && d.pays !== 'be') || (d.machine_id && vus[d.machine_id])) { data[i] = null; return; }
+          if (d.machine_id) vus[d.machine_id] = true;
+          data[i] = d;
+        })
+        .catch(function () { data[i] = null; });
+    });
+    Promise.all(jobs).then(function () {
+      enCours = false;
+      charge = Date.now();
+      stats();
+      render();
+      var lu = document.getElementById('lastUpdate');
+      if (lu && visible()) lu.textContent = new Date().toLocaleTimeString(LOCALE, { hour: '2-digit', minute: '2-digit' });
+    });
+  }
+
+  function choisir(i, url) {
+    if (i < 0 || i >= BE.length) return;
+    cur = i;
+    var tabs = document.querySelectorAll('#beTabs .machine-tab');
+    tabs.forEach(function (t, k) { t.classList.toggle('active', k === i); });
+    var row = document.getElementById('beTabs'), tab = tabs[i];
+    if (row && tab) row.scrollLeft = tab.offsetLeft - (row.clientWidth - tab.offsetWidth) / 2;
+    var m = BE[i];
+    document.getElementById('beName').textContent = m.name;
+    document.getElementById('beAddr').textContent = m.addr;
+    document.getElementById('bePage').href = m.page;
+    document.getElementById('beDir').href = 'https://www.google.com/maps/dir/?api=1&destination=' + m.lat + ',' + m.lng;
+    render();
+    if (url !== false) { try { history.replaceState(null, '', '?pays=be&machine=' + m.id); } catch (e) {} }
+  }
+  window.selectBeMachine = function (i) { choisir(typeof i === 'number' ? i : 0); };
+
+  function montrer() { if (!charge || Date.now() - charge > 60000) load(); else render(); }
+
+  /* l'onglet pays et le bouton Actualiser de la page */
+  var sw = window.switchCountry;
+  if (typeof sw === 'function') {
+    window.switchCountry = function (code, btn) { sw(code, btn); if (code === 'be') montrer(); };
+  }
+  var la = window.loadAll;
+  if (typeof la === 'function') {
+    window.loadAll = function () { var r = la.apply(this, arguments); if (visible()) load(); return r; };
+  }
+  setInterval(function () { if (visible() && document.visibilityState !== 'hidden') load(); }, 5 * 60 * 1000);
+
+  /* lien direct : ?pays=be&machine=be-gosselies */
+  try {
+    var p = new URLSearchParams(window.location.search);
+    var want = BE.findIndex(function (m) { return m.id === p.get('machine'); });
+    if (want >= 0) choisir(want, false);
+  } catch (e) {}
+  if (visible()) montrer();
+})();
+</script>

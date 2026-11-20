@@ -156,6 +156,10 @@
 # worker vide = stock en direct pas encore connecté : il suffit d'y mettre
 # le numéro du Worker pour que le relevé quotidien et les pages l'affichent.
 # ------------------------------------------------------------------
+# Belgique : les machines sont sur un autre compte zhongdacloud. « worker » est
+# leur index dans le tableau MACHINES du Worker (8 Korbeek-Lo, 9 Mechelen/Zemst,
+# 10 Tomberg, 11 Gosselies, 12 La Louvière). Sans « worker », la page affiche
+# « Stock live bientôt ».
 - id: be-tomberg
   pays: be
   nom: Carrefour Tomberg
@@ -177,40 +181,40 @@
   url: /fr/distributeur-bruxelles-woluwe.html
   url_en: /distributeur-bruxelles-woluwe.html
   url_nl: /nl/distributeur-bruxelles-woluwe.html
-  live: false
-  worker:
+  live: true
+  worker: 10
   google_place_id:
   titre: { fr: "Distributeur Pokémon à Bruxelles (Woluwe) | BoosterStop", nl: "Pokémon-automaat in Brussel (Woluwe) | BoosterStop", en: "Pokémon vending machine in Brussels (Woluwe) | BoosterStop" }
   h1: { fr: "Distributeur de cartes Pokémon à Bruxelles, Woluwe-Saint-Lambert", nl: "Pokémon-kaartautomaat in Brussel, Sint-Lambrechts-Woluwe", en: "Pokémon card vending machine in Brussels, Woluwe-Saint-Lambert" }
   intro: { fr: "C'est la machine bruxelloise du réseau, à Woluwe-Saint-Lambert, dans l'est de la capitale.", nl: "Dit is de Brusselse automaat van het netwerk, in Sint-Lambrechts-Woluwe, in het oosten van de hoofdstad.", en: "This is the network's Brussels machine, in Woluwe-Saint-Lambert, in the east of the capital." }
 
-- id: be-zandhoven
+- id: be-gosselies
   pays: be
-  nom: Carrefour Zandhoven
-  court: Zandhoven
-  court_nl: Zandhoven
-  court_en: Zandhoven
-  adresse: Langestraat 41, 2240 Zandhoven
-  adresse_nl: Langestraat 41, 2240 Zandhoven
-  rue: Langestraat 41
-  rue_nl: Langestraat 41
-  cp: "2240"
-  ville: Zandhoven
-  ville_nl: Zandhoven
-  region: { fr: "Flandre, province d'Anvers", nl: "Vlaanderen, provincie Antwerpen", en: "Flanders, Antwerp province", ar: "الفلاندرز، مقاطعة أنتويرب" }
-  lat: 51.2218304
-  lng: 4.6711155
-  fichier: distributeur-zandhoven.html
-  page_id: distributeur-zandhoven
-  url: /fr/distributeur-zandhoven.html
-  url_en: /distributeur-zandhoven.html
-  url_nl: /nl/distributeur-zandhoven.html
-  live: false
-  worker:
+  nom: Carrefour Gosselies
+  court: Gosselies
+  court_nl: Gosselies
+  court_en: Gosselies
+  adresse: Rue de Tahon 16, 6041 Gosselies
+  adresse_nl: Rue de Tahon 16, 6041 Gosselies
+  rue: Rue de Tahon 16
+  rue_nl: Rue de Tahon 16
+  cp: "6041"
+  ville: Gosselies
+  ville_nl: Gosselies
+  region: { fr: "Wallonie, Hainaut", nl: "Wallonië, Henegouwen", en: "Wallonia, Hainaut", ar: "والونيا، هينو" }
+  lat: 50.4613614
+  lng: 4.437625
+  fichier: distributeur-gosselies.html
+  page_id: distributeur-gosselies
+  url: /fr/distributeur-gosselies.html
+  url_en: /distributeur-gosselies.html
+  url_nl: /nl/distributeur-gosselies.html
+  live: true
+  worker: 11
   google_place_id:
-  titre: { fr: "Distributeur Pokémon à Zandhoven (Carrefour) | BoosterStop", nl: "Pokémon-automaat in Zandhoven (Carrefour) | BoosterStop", en: "Pokémon vending machine in Zandhoven | BoosterStop" }
-  h1: { fr: "Distributeur de cartes Pokémon à Zandhoven", nl: "Pokémon-kaartautomaat in Zandhoven", en: "Pokémon card vending machine in Zandhoven" }
-  intro: { fr: "La machine se trouve en province d'Anvers, à l'est d'Anvers.", nl: "De automaat staat in de provincie Antwerpen, ten oosten van Antwerpen.", en: "The machine is in the province of Antwerp, east of the city." }
+  titre: { fr: "Distributeur Pokémon à Gosselies (Charleroi) | BoosterStop", nl: "Pokémon-automaat in Gosselies (Charleroi) | BoosterStop", en: "Pokémon vending machine in Gosselies (Charleroi) | BoosterStop" }
+  h1: { fr: "Distributeur de cartes Pokémon à Gosselies, près de Charleroi", nl: "Pokémon-kaartautomaat in Gosselies, bij Charleroi", en: "Pokémon card vending machine in Gosselies, near Charleroi" }
+  intro: { fr: "La machine est dans l'hypermarché Carrefour de Gosselies, au nord de Charleroi, dans le Hainaut.", nl: "De automaat staat in de Carrefour-hypermarkt van Gosselies, ten noorden van Charleroi, in Henegouwen.", en: "The machine is in the Carrefour hypermarket in Gosselies, north of Charleroi, in Hainaut." }
 
 - id: be-zemst
   pays: be
@@ -235,8 +239,8 @@
   url: /fr/distributeur-mechelen-zemst.html
   url_en: /distributeur-mechelen-zemst.html
   url_nl: /nl/distributeur-mechelen-zemst.html
-  live: false
-  worker:
+  live: true
+  worker: 9
   google_place_id:
   titre: { fr: "Distributeur Pokémon à Malines (Carrefour Zemst) | BoosterStop", nl: "Pokémon-automaat in Mechelen (Carrefour Zemst) | BoosterStop", en: "Pokémon vending machine in Mechelen | BoosterStop" }
   h1: { fr: "Distributeur de cartes Pokémon à Malines (Carrefour Zemst)", nl: "Pokémon-kaartautomaat in Mechelen (Carrefour Zemst)", en: "Pokémon card vending machine in Mechelen (Carrefour Zemst)" }
@@ -263,8 +267,8 @@
   url: /fr/distributeur-korbeek-lo.html
   url_en: /distributeur-korbeek-lo.html
   url_nl: /nl/distributeur-korbeek-lo.html
-  live: false
-  worker:
+  live: true
+  worker: 8
   google_place_id:
   titre: { fr: "Distributeur Pokémon à Korbeek-Lo, près de Louvain | BoosterStop", nl: "Pokémon-automaat in Korbeek-Lo bij Leuven | BoosterStop", en: "Pokémon vending machine near Leuven (Korbeek-Lo) | BoosterStop" }
   h1: { fr: "Distributeur de cartes Pokémon à Korbeek-Lo, près de Louvain", nl: "Pokémon-kaartautomaat in Korbeek-Lo, bij Leuven", en: "Pokémon card vending machine in Korbeek-Lo, near Leuven" }
@@ -291,9 +295,9 @@
   url: /fr/distributeur-la-louviere.html
   url_en: /distributeur-la-louviere.html
   url_nl: /nl/distributeur-la-louviere.html
-  live: false
-  worker:
+  live: true
+  worker: 12
   google_place_id:
   titre: { fr: "Distributeur Pokémon à La Louvière (Carrefour) | BoosterStop", nl: "Pokémon-automaat in La Louvière | BoosterStop", en: "Pokémon vending machine in La Louvière | BoosterStop" }
   h1: { fr: "Distributeur de cartes Pokémon à La Louvière", nl: "Pokémon-kaartautomaat in La Louvière", en: "Pokémon card vending machine in La Louvière" }
-  intro: { fr: "C'est la machine wallonne du réseau, dans le Hainaut, entre Mons et Charleroi.", nl: "Dit is de Waalse automaat van het netwerk, in Henegouwen, tussen Bergen en Charleroi.", en: "This is the network's Walloon machine, in Hainaut, between Mons and Charleroi." }
+  intro: { fr: "La machine est dans le Hainaut, entre Mons et Charleroi.", nl: "De automaat staat in Henegouwen, tussen Bergen en Charleroi.", en: "The machine is in Hainaut, between Mons and Charleroi." }

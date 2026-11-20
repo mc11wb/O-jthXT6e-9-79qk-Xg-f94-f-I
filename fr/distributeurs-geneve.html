@@ -156,7 +156,7 @@ body{
   <ul class="bsm-grid">
     {%- assign bsm_be = site.data.machines | where: "pays", "be" -%}
     {%- for o in bsm_be %}
-    <li><a class="bsm-card" href="{{ o.url }}"><b>{{ o.court }}</b><span>{{ o.nom }}<br>{{ o.adresse }}<br>{{ o.region.fr }}</span><em>Horaires du magasin</em></a></li>
+    <li><a class="bsm-card" href="{{ o.url }}"><b>{{ o.court }}</b><span>{{ o.nom }}<br>{{ o.adresse }}<br>{{ o.region.fr }}</span><em>{% if o.worker %}Stock en direct{% else %}Horaires du magasin{% endif %}</em></a></li>
     {%- endfor %}
   </ul>
   <p style="margin-top:20px"><a href="/fr/distributeurs-belgique.html">Tous les distributeurs belges →</a></p>

@@ -115,6 +115,9 @@ Exemple en cours : en novembre 2026, la machine de La Poste de Thônex est insta
 - Pages générées par `_layouts/belgique.html` (textes : `_data/belgique.yml`) en FR, NL et EN : une page par machine (`distributeur-….html`) et `distributeurs-belgique.html`.
 - L'accueil (onglet Belgique de la carte), Stock Live, Expansion, le pied de page et l'encart « où acheter » du blog lisent les mêmes données : ajouter une machine belge = une entrée dans `machines.yml` + ses 3 petits fichiers de page.
 - Le menu « Locaties » de la version NL mène à la page Belgique (`nav_emplacements_f` dans `_data/i18n.yml`).
+- **Stock en direct.** Les machines belges sont sur un autre compte zhongdacloud que la Suisse ; le même Worker lit les deux (secrets `ZHONGDA_USER_BE` et `ZHONGDA_PASS_BE`). Index du Worker : `8` Korbeek-Lo (4236), `9` Mechelen/Zemst (4237), `10` Tomberg (4255), `11` Gosselies (4256), `12` La Louvière (4257). Le champ `worker` de `machines.yml` suffit : la page de la machine (`_layouts/belgique.html`), l'onglet Belgique de Stock Live (`_includes/stock-be.html` et `stock-be-script.html`) et le relevé du matin le lisent. Sans `worker`, la machine affiche « Stock live bientôt ». Prix en euros.
+- Lien direct vers une machine belge sur Stock Live : `stock.html?pays=be&machine=be-gosselies` (id de `machines.yml`).
+- Novembre 2026 : la machine de Zandhoven est passée au Carrefour Gosselies. `distributeur-zandhoven.html` (EN, FR, NL) redirige vers `distributeur-gosselies.html`.
 
 ## Newsletter (une par pays)
 
@@ -131,4 +134,4 @@ Exemple en cours : en novembre 2026, la machine de La Poste de Thônex est insta
 - `.github/workflows/stock-releve.yml` lance chaque matin `.github/scripts/stock_releve.py`, qui interroge le Worker pour chaque machine ayant un `worker` dans `machines.yml` et écrit `_data/stock.json`.
 - Les pages machines (`{% include stock-releve.html %}`) et Stock Live (`{% include stock-liste.html %}`) affichent ce relevé en texte, lisible par Google. Le navigateur le remplace par le stock en direct ; si la machine ne répond pas, le relevé reste affiché.
 - Lancer un relevé à la main : onglet Actions > « Relevé du stock » > Run workflow.
-- Brancher une machine belge sur le stock en direct : lui donner son numéro `worker` dans `machines.yml`.
+- Brancher une machine belge sur le stock en direct : l'ajouter à la fin du tableau `MACHINES` du Worker (compte `be`), puis lui donner cet index dans le champ `worker` de `machines.yml`.

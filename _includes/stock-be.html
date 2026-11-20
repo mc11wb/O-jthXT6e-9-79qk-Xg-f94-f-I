@@ -1,0 +1,65 @@
+{%- comment -%}
+  STOCK LIVE, ONGLET BELGIQUE. Les machines belges (pays: be de
+  _data/machines.yml) avec leur stock en direct, lu par le script
+  _includes/stock-be-script.html. Une machine sans « worker » garde la mention
+  « Stock live bientôt ». Textes : _data/belgique.yml (clés sl_…).
+{%- endcomment -%}
+{%- assign hb_ms = site.data.machines | where: "pays", "be" -%}
+{%- assign hb_t = site.data.belgique[page.lang] | default: site.data.belgique.en -%}
+{%- if page.lang == "nl" -%}{%- assign hb_sx = "_nl" -%}{%- elsif page.lang == "en" -%}{%- assign hb_sx = "_en" -%}{%- else -%}{%- assign hb_sx = "" -%}{%- endif -%}
+{%- capture hb_kc -%}court{{ hb_sx }}{%- endcapture -%}{%- capture hb_ka -%}adresse{{ hb_sx }}{%- endcapture -%}
+{%- assign hb_1 = hb_ms | first -%}
+<style>
+#panel-be a.smc-link { text-decoration: none; display: inline-block; }
+#panel-be .smc-right { gap: 8px; }
+#beFloors .slot { cursor: default; }
+#panel-be .be-stock-txt { max-width: 520px; margin: 26px auto 0; text-align: center; }
+</style>
+<div id="panel-be" style="display:none;">
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-value">{{ hb_ms.size }}</div><div class="stat-label">{{ hb_t.sl_machines }}</div></div>
+    <div class="stat"><div class="stat-value green" id="be-stat-instock">—</div><div class="stat-label">{{ hb_t.sl_instock }}</div></div>
+    <div class="stat"><div class="stat-value orange" id="be-stat-low">—</div><div class="stat-label">{{ hb_t.sl_low }}</div></div>
+    <div class="stat"><div class="stat-value red" id="be-stat-empty">—</div><div class="stat-label">{{ hb_t.sl_empty }}</div></div>
+  </div>
+
+  <div class="machine-select-zone">
+    <div class="zone-label">{{ hb_t.sl_zone }}</div>
+    <div class="machine-tabs" id="beTabs">
+      {%- for m in hb_ms %}
+      <a class="machine-tab{% unless m.worker %} soon{% endunless %}{% if forloop.first %} active{% endif %}" href="?pays=be&amp;machine={{ m.id }}" onclick="event.preventDefault(); selectBeMachine({{ forloop.index0 }})">
+        <span class="mt-dot"></span>
+        <span class="mt-label"><span class="mt-name">{{ m[hb_kc] | default: m.court }}</span><span class="mt-sub">Carrefour · {{ m.cp }}</span>{% unless m.worker %}<span class="mt-soon">{{ hb_t.stock_bientot }}</span>{% endunless %}</span>
+      </a>
+      {%- endfor %}
+    </div>
+    <div class="selected-machine-card">
+      <div class="smc-left">
+        <span class="smc-dot"></span>
+        <div>
+          <div class="smc-name" id="beName">{{ hb_1.nom }}</div>
+          <div class="smc-addr" id="beAddr">{{ hb_1[hb_ka] | default: hb_1.adresse }}</div>
+        </div>
+      </div>
+      <div class="smc-right">
+        <a class="smc-link" id="bePage" href="{% include lien.html f=hb_1.fichier %}">{{ hb_t.voir_page }}</a>
+        <a class="smc-link" id="beDir" href="https://www.google.com/maps/dir/?api=1&amp;destination={{ hb_1.lat }},{{ hb_1.lng }}" rel="noopener">{{ hb_t.itineraire }}</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="machine-view" id="beView">
+    <div class="mv-head">
+      <div class="mv-title">{{ hb_t.sl_titre }}</div>
+    </div>
+    <div id="beFloors">
+      <div class="state-msg"><span class="spin"></span><br><span>{{ hb_t.sl_connexion }}</span></div>
+    </div>
+    <p class="msm-sub be-stock-txt">{{ hb_t.stock_txt }}</p>
+    <ul class="be-stock-links">
+      {%- for m in hb_ms %}
+      <li><a href="{% include lien.html f=m.fichier %}">{{ m.nom }}</a> <span>{{ m[hb_ka] | default: m.adresse }}</span></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</div>

@@ -181,7 +181,11 @@ body{
 <div class="bsm-live">
   <div class="bsm-live-top">
     <span class="bsm-live-title"><span class="bsm-dot" id="bsmDot"></span>{{ bt.live_titre }}</span>
+    {%- if bm.worker %}
+    {% include stock-releve.html chargement="" connexion=bt.live_charge %}
+    {%- else %}
     {% include stock-releve.html chargement="" connexion=bt.bientot %}
+    {%- endif %}
   <a class="bsm-all" href="{% include lien.html f="stock.html" %}?pays=be">{{ t.f_stock }}</a>
 </div>
 
@@ -276,5 +280,123 @@ body{
 </div><!-- /bsm-wrap -->
 
 {% include footer.html %}
+{%- if page.machine and bm.worker %}
+{%- assign bi = site.data.i18n[page.lang] | default: site.data.i18n.en %}
+<script>
+/* Stock en direct de la machine (index Worker lu dans _data/machines.yml).
+   Le relevé du matin reste affiché si la machine ne répond pas. */
+(function () {
+  'use strict';
+  var WORKER_INDEX = {{ bm.worker }};
+  var WORKER = 'https://boosterstop-stock.cold-water-7039.workers.dev';
+  var T = {
+    units: {{ bi.rl_units | jsonify }}, last: {{ bi.rl_last | jsonify }},
+    more1: {{ bi.rl_more1 | jsonify }}, more: {{ bi.rl_more | jsonify }}, less: {{ bt.live_moins | jsonify }},
+    maj: {{ bt.live_maj | jsonify }}, vide: {{ bt.live_vide | jsonify }}, videCourt: {{ bt.live_vide_court | jsonify }},
+    ko: {{ bt.live_ko | jsonify }}
+  };
+  var LOCALE = {% if page.lang == "fr" %}'fr-BE'{% elsif page.lang == "nl" %}'nl-BE'{% else %}'en-GB'{% endif %};
+  var VISIBLES = 6;
+
+  var elRows = document.getElementById('bsmRows');
+  var elMsg = document.getElementById('bsmMsg');
+  var elStamp = document.getElementById('bsmStamp');
+  var elDot = document.getElementById('bsmDot');
+  var elRows2 = document.getElementById('bsmRows2');
+  var elToggle = document.getElementById('bsmToggle');
+  if (!elRows || !elMsg || !elRows2 || !elToggle) return;
+
+  function labelPlus(k) { return k === 1 ? T.more1 : T.more.replace('%n', k); }
+  function prix(p) {
+    var n = parseFloat(String(p).replace(',', '.'));
+    return '€ ' + (isNaN(n) ? p : n.toFixed(2));
+  }
+
+  elToggle.addEventListener('click', function () {
+    var ouvert = elToggle.getAttribute('aria-expanded') === 'true';
+    elToggle.setAttribute('aria-expanded', ouvert ? 'false' : 'true');
+    elRows2.hidden = ouvert;
+    elToggle.textContent = ouvert ? labelPlus(elRows2.children.length) : T.less;
+  });
+
+  function idle(txt, stamp) {
+    elRows.hidden = true;
+    elRows2.hidden = true;
+    elToggle.hidden = true;
+    elMsg.hidden = false;
+    elMsg.textContent = txt;
+    if (elDot) elDot.classList.remove('on');
+    if (elStamp) elStamp.textContent = stamp || '';
+  }
+
+  function render(slots) {
+    var byName = {};
+    slots.forEach(function (s) {
+      if (!s.configured) return;
+      var qty = s.stock || 0;
+      if (qty <= 0) return;
+      var key = s.goods_name || '—';
+      if (!byName[key]) byName[key] = { name: key, qty: 0, price: s.price };
+      byName[key].qty += qty;
+    });
+    var items = Object.keys(byName).map(function (k) { return byName[k]; });
+    if (!items.length) { idle(T.vide, T.videCourt); return; }
+    items.sort(function (a, b) { return b.qty - a.qty; });
+    var etaitOuvert = elToggle.getAttribute('aria-expanded') === 'true';
+    elMsg.hidden = true;
+    elRows.hidden = false;
+    elRows.textContent = '';
+    elRows2.textContent = '';
+
+    function ligne(i) {
+      var li = document.createElement('li');
+      var left = document.createElement('span');
+      left.className = 'bsm-nm';
+      left.appendChild(document.createTextNode(i.name));
+      var sub = document.createElement('small');
+      sub.textContent = i.qty > 1 ? i.qty + ' ' + T.units : T.last;
+      left.appendChild(sub);
+      var right = document.createElement('span');
+      right.className = 'bsm-pr';
+      right.textContent = i.price ? prix(i.price) : '';
+      li.appendChild(left);
+      li.appendChild(right);
+      return li;
+    }
+
+    items.slice(0, VISIBLES).forEach(function (i) { elRows.appendChild(ligne(i)); });
+    var reste = items.slice(VISIBLES);
+    if (reste.length) {
+      reste.forEach(function (i) { elRows2.appendChild(ligne(i)); });
+      elRows2.hidden = !etaitOuvert;
+      elToggle.hidden = false;
+      elToggle.setAttribute('aria-expanded', etaitOuvert ? 'true' : 'false');
+      elToggle.textContent = etaitOuvert ? T.less : labelPlus(reste.length);
+    } else {
+      elRows2.hidden = true;
+      elToggle.hidden = true;
+    }
+    if (elDot) elDot.classList.add('on');
+    if (elStamp) elStamp.textContent = T.maj.replace('%h', new Date().toLocaleTimeString(LOCALE, { hour: '2-digit', minute: '2-digit' }));
+  }
+
+  function load() {
+    fetch(WORKER + '/stock?machine=' + WORKER_INDEX, { cache: 'no-store' })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (!data || !data.ok || (data.pays && data.pays !== 'be')) throw new Error('ko');
+        render(data.slots || []);
+      })
+      .catch(function () { if (elRows.children.length) return; idle(T.ko, ''); });
+  }
+
+  load();
+  setInterval(load, 120000);
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'visible') load();
+  });
+})();
+</script>
+{%- endif %}
 </body>
 </html>

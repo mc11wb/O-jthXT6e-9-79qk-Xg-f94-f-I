@@ -4,9 +4,27 @@
 fr:
   accueil_plus: "+5 machines bientôt dans d'autres magasins Carrefour"
   stock_bientot: "Stock live bientôt"
-  stock_txt: "Nos 5 machines belges sont en service et approvisionnées. Leur inventaire en temps réel apparaîtra ici dès qu'elles seront connectées. En attendant, chaque machine a sa page avec l'adresse et l'itinéraire."
+  stock_txt: "Le stock de nos 5 machines belges, lu en direct dans les rails. Chaque machine a aussi sa page, avec l'adresse et l'itinéraire."
+  # Stock Live, onglet Belgique (_includes/stock-be.html)
+  sl_machines: "Machines actives"
+  sl_instock: "Produits en stock"
+  sl_low: "Bientôt épuisés"
+  sl_empty: "Rails épuisés"
+  sl_zone: "Nos machines belges"
+  sl_titre: "Dans la machine : <span>en direct</span>"
+  sl_connexion: "Connexion à la machine…"
+  sl_erreur: "Impossible de charger le stock de cette machine pour le moment. Réessayez dans quelques minutes."
+  sl_non_configure: "Rail non configuré"
+  sl_aucun: "Aucun rail configuré sur cette machine."
+  # Stock en direct des pages machines (_layouts/belgique.html)
+  live_charge: "Connexion à la machine…"
+  live_maj: "Mis à jour à %h"
+  live_vide: "La machine est vide pour le moment. Le prochain réassort est prévu dans les jours qui viennent."
+  live_vide_court: "Épuisé"
+  live_ko: "Le stock en direct est injoignable pour le moment. Réessayez dans quelques minutes."
+  live_moins: "Voir moins"
   liste_titre: "Distributeurs de cartes Pokémon en Belgique : 5 Carrefour | BoosterStop"
-  liste_desc: "Les 5 distributeurs BoosterStop en Belgique : Woluwe-Saint-Lambert, Zandhoven, Malines, Korbeek-Lo et La Louvière. Boosters Pokémon, One Piece et Magic scellés, en libre-service chez Carrefour."
+  liste_desc: "Les 5 distributeurs BoosterStop en Belgique : Woluwe-Saint-Lambert, Gosselies, Malines, Korbeek-Lo et La Louvière. Boosters Pokémon, One Piece et Magic scellés, en libre-service chez Carrefour."
   liste_h1: "Nos distributeurs en Belgique"
   liste_lead: "Cinq machines BoosterStop sont en service en Belgique, dans des magasins Carrefour : à Bruxelles, en Flandre et en Wallonie. Boosters, displays et coffrets scellés, issus des distributeurs officiels, en libre-service."
   voir_page: "Voir la machine"
@@ -36,18 +54,36 @@ fr:
   faq:
     - { q: "Où acheter des cartes Pokémon à %ville% ?", a: "Dans le distributeur BoosterStop du %nom%, %adresse%. Il fonctionne en libre-service pendant les heures d'ouverture du magasin." }
     - { q: "Les cartes sont-elles authentiques ?", a: "Oui. Tous les produits proviennent de distributeurs officiels, dans leur emballage d'origine scellé." }
-    - { q: "Peut-on voir le stock avant de venir ?", a: "Bientôt : l'inventaire en direct des machines belges arrivera sur cette page et sur la page Stock Live." }
-    - { q: "Y a-t-il d'autres distributeurs en Belgique ?", a: "Oui, cinq au total, tous dans des magasins Carrefour : Woluwe-Saint-Lambert, Zandhoven, Malines, Korbeek-Lo et La Louvière." }
+    - { q: "Peut-on voir le stock avant de venir ?", a: "Oui. L'inventaire en direct de la machine est affiché sur cette page et sur la page Stock Live." }
+    - { q: "Y a-t-il d'autres distributeurs en Belgique ?", a: "Oui, cinq au total, tous dans des magasins Carrefour : Woluwe-Saint-Lambert, Gosselies, Malines, Korbeek-Lo et La Louvière." }
   liste_faq:
-    - { q: "Où trouver un distributeur de cartes Pokémon en Belgique ?", a: "Dans l'un des cinq distributeurs BoosterStop installés chez Carrefour : Woluwe-Saint-Lambert (Bruxelles), Zandhoven, Malines, Korbeek-Lo et La Louvière." }
+    - { q: "Où trouver un distributeur de cartes Pokémon en Belgique ?", a: "Dans l'un des cinq distributeurs BoosterStop installés chez Carrefour : Woluwe-Saint-Lambert (Bruxelles), Gosselies, Malines, Korbeek-Lo et La Louvière." }
     - { q: "Les produits sont-ils officiels ?", a: "Oui. Tout est scellé d'origine et acheté aux distributeurs officiels de chaque licence." }
 
 nl:
   accueil_plus: "+5 automaten binnenkort in andere Carrefour-winkels"
   stock_bientot: "Live voorraad binnenkort"
-  stock_txt: "Onze 5 Belgische automaten zijn in gebruik en gevuld. De realtime voorraad verschijnt hier zodra ze verbonden zijn. Intussen heeft elke automaat een eigen pagina met het adres en de routebeschrijving."
+  stock_txt: "De voorraad van onze 5 Belgische automaten, live uitgelezen uit de vakken. Elke automaat heeft ook een eigen pagina met het adres en de routebeschrijving."
+  # Stock Live, onglet Belgique (_includes/stock-be.html)
+  sl_machines: "Actieve automaten"
+  sl_instock: "Producten op voorraad"
+  sl_low: "Bijna uitverkocht"
+  sl_empty: "Uitverkochte vakken"
+  sl_zone: "Onze Belgische automaten"
+  sl_titre: "In de automaat: <span>live</span>"
+  sl_connexion: "Verbinden met de automaat…"
+  sl_erreur: "De voorraad van deze automaat kan nu niet worden geladen. Probeer het over enkele minuten opnieuw."
+  sl_non_configure: "Vak niet ingesteld"
+  sl_aucun: "Geen vakken ingesteld op deze automaat."
+  # Stock en direct des pages machines (_layouts/belgique.html)
+  live_charge: "Verbinden met de automaat…"
+  live_maj: "Bijgewerkt om %h"
+  live_vide: "De automaat is momenteel leeg. De volgende bijvulling volgt binnen enkele dagen."
+  live_vide_court: "Uitverkocht"
+  live_ko: "De live voorraad is nu niet bereikbaar. Probeer het over enkele minuten opnieuw."
+  live_moins: "Minder tonen"
   liste_titre: "Pokémon-kaartautomaten in België: 5 Carrefour-winkels | BoosterStop"
-  liste_desc: "De 5 BoosterStop-automaten in België: Sint-Lambrechts-Woluwe, Zandhoven, Mechelen, Korbeek-Lo en La Louvière. Verzegelde Pokémon-, One Piece- en Magic-boosters in selfservice bij Carrefour."
+  liste_desc: "De 5 BoosterStop-automaten in België: Sint-Lambrechts-Woluwe, Gosselies, Mechelen, Korbeek-Lo en La Louvière. Verzegelde Pokémon-, One Piece- en Magic-boosters in selfservice bij Carrefour."
   liste_h1: "Onze automaten in België"
   liste_lead: "Vijf BoosterStop-automaten zijn in gebruik in België, in Carrefour-winkels: in Brussel, Vlaanderen en Wallonië. Verzegelde boosters, displays en boxen van officiële distributeurs, in selfservice."
   voir_page: "Bekijk de automaat"
@@ -77,18 +113,36 @@ nl:
   faq:
     - { q: "Waar koop ik Pokémon-kaarten in %ville%?", a: "In de BoosterStop-automaat van de %nom%, %adresse%. Hij werkt in selfservice tijdens de openingsuren van de winkel." }
     - { q: "Zijn de kaarten echt?", a: "Ja. Alle producten komen van officiële distributeurs, in hun originele verzegelde verpakking." }
-    - { q: "Kan ik de voorraad bekijken voor ik kom?", a: "Binnenkort: de live voorraad van de Belgische automaten verschijnt op deze pagina en op de pagina Live voorraad." }
-    - { q: "Zijn er nog andere automaten in België?", a: "Ja, vijf in totaal, allemaal in Carrefour-winkels: Sint-Lambrechts-Woluwe, Zandhoven, Mechelen, Korbeek-Lo en La Louvière." }
+    - { q: "Kan ik de voorraad bekijken voor ik kom?", a: "Ja. De live voorraad van de automaat staat op deze pagina en op de pagina Live voorraad." }
+    - { q: "Zijn er nog andere automaten in België?", a: "Ja, vijf in totaal, allemaal in Carrefour-winkels: Sint-Lambrechts-Woluwe, Gosselies, Mechelen, Korbeek-Lo en La Louvière." }
   liste_faq:
-    - { q: "Waar vind ik een Pokémon-kaartautomaat in België?", a: "In een van de vijf BoosterStop-automaten bij Carrefour: Sint-Lambrechts-Woluwe (Brussel), Zandhoven, Mechelen, Korbeek-Lo en La Louvière." }
+    - { q: "Waar vind ik een Pokémon-kaartautomaat in België?", a: "In een van de vijf BoosterStop-automaten bij Carrefour: Sint-Lambrechts-Woluwe (Brussel), Gosselies, Mechelen, Korbeek-Lo en La Louvière." }
     - { q: "Zijn de producten officieel?", a: "Ja. Alles is fabrieksverzegeld en gekocht bij de officiële distributeurs van elke licentie." }
 
 en:
   accueil_plus: "+5 machines coming soon in more Carrefour stores"
   stock_bientot: "Live stock soon"
-  stock_txt: "Our 5 Belgian machines are live and stocked. Their real-time inventory will appear here as soon as they are connected. Meanwhile, each machine has its own page with the address and directions."
+  stock_txt: "The stock of our 5 Belgian machines, read live from the slots. Each machine also has its own page with the address and directions."
+  # Stock Live, onglet Belgique (_includes/stock-be.html)
+  sl_machines: "Machines live"
+  sl_instock: "Products in stock"
+  sl_low: "Running low"
+  sl_empty: "Sold out slots"
+  sl_zone: "Our Belgian machines"
+  sl_titre: "Inside the machine: <span>live</span>"
+  sl_connexion: "Connecting to the machine…"
+  sl_erreur: "Unable to load this machine's stock right now. Please try again in a few minutes."
+  sl_non_configure: "Slot not configured"
+  sl_aucun: "No slots configured on this machine."
+  # Stock en direct des pages machines (_layouts/belgique.html)
+  live_charge: "Connecting to the machine…"
+  live_maj: "Updated at %h"
+  live_vide: "The machine is empty right now. The next restock is due within a few days."
+  live_vide_court: "Sold out"
+  live_ko: "Live stock is unreachable right now. Please try again in a few minutes."
+  live_moins: "Show less"
   liste_titre: "Pokémon card vending machines in Belgium: 5 Carrefour stores | BoosterStop"
-  liste_desc: "The 5 BoosterStop machines in Belgium: Woluwe-Saint-Lambert, Zandhoven, Mechelen, Korbeek-Lo and La Louvière. Sealed Pokémon, One Piece and Magic boosters, self-service at Carrefour."
+  liste_desc: "The 5 BoosterStop machines in Belgium: Woluwe-Saint-Lambert, Gosselies, Mechelen, Korbeek-Lo and La Louvière. Sealed Pokémon, One Piece and Magic boosters, self-service at Carrefour."
   liste_h1: "Our machines in Belgium"
   liste_lead: "Five BoosterStop machines are running in Belgium, inside Carrefour stores: in Brussels, Flanders and Wallonia. Sealed boosters, displays and boxes from official distributors, self-service."
   voir_page: "See the machine"
@@ -118,19 +172,37 @@ en:
   faq:
     - { q: "Where can I buy Pokémon cards in %ville%?", a: "At the BoosterStop machine inside %nom%, %adresse%. It works in self-service during the store's opening hours." }
     - { q: "Are the cards authentic?", a: "Yes. Every product comes from official distributors, in its original sealed packaging." }
-    - { q: "Can I check the stock before I go?", a: "Soon: the live inventory of the Belgian machines will appear on this page and on the Live Stock page." }
-    - { q: "Are there other machines in Belgium?", a: "Yes, five in total, all inside Carrefour stores: Woluwe-Saint-Lambert, Zandhoven, Mechelen, Korbeek-Lo and La Louvière." }
+    - { q: "Can I check the stock before I go?", a: "Yes. The machine's live inventory is shown on this page and on the Live Stock page." }
+    - { q: "Are there other machines in Belgium?", a: "Yes, five in total, all inside Carrefour stores: Woluwe-Saint-Lambert, Gosselies, Mechelen, Korbeek-Lo and La Louvière." }
   liste_faq:
-    - { q: "Where can I find a Pokémon card vending machine in Belgium?", a: "At one of the five BoosterStop machines inside Carrefour stores: Woluwe-Saint-Lambert (Brussels), Zandhoven, Mechelen, Korbeek-Lo and La Louvière." }
+    - { q: "Where can I find a Pokémon card vending machine in Belgium?", a: "At one of the five BoosterStop machines inside Carrefour stores: Woluwe-Saint-Lambert (Brussels), Gosselies, Mechelen, Korbeek-Lo and La Louvière." }
     - { q: "Are the products official?", a: "Yes. Everything is factory-sealed and bought from each license's official distributors." }
 
 # العربية
 ar:
   accueil_plus: "+5 أجهزة قريباً في متاجر كارفور أخرى"
   stock_bientot: المخزون المباشر قريباً
-  stock_txt: أجهزتنا الخمسة في بلجيكا تعمل ومعبّأة. سيظهر مخزونها اللحظي هنا فور اتصالها. في الأثناء، لكل جهاز صفحته الخاصة مع العنوان والاتجاهات.
+  stock_txt: "مخزون أجهزتنا الخمسة في بلجيكا، يُقرأ مباشرة من الخانات. لكل جهاز أيضاً صفحته الخاصة مع العنوان والاتجاهات."
+  # Stock Live, onglet Belgique (_includes/stock-be.html)
+  sl_machines: "أجهزة تعمل"
+  sl_instock: "منتجات متوفرة"
+  sl_low: "على وشك النفاد"
+  sl_empty: "خانات نفدت"
+  sl_zone: "أجهزتنا في بلجيكا"
+  sl_titre: "داخل الجهاز: <span>مباشر</span>"
+  sl_connexion: "جارٍ الاتصال بالجهاز…"
+  sl_erreur: "تعذّر تحميل مخزون هذا الجهاز حالياً. حاول مجدداً بعد دقائق."
+  sl_non_configure: "خانة غير مُعدّة"
+  sl_aucun: "لا توجد خانات مُعدّة في هذا الجهاز."
+  # Stock en direct des pages machines (_layouts/belgique.html)
+  live_charge: "جارٍ الاتصال بالجهاز…"
+  live_maj: "آخر تحديث %h"
+  live_vide: "الجهاز فارغ حالياً. إعادة التعبئة القادمة خلال أيام قليلة."
+  live_vide_court: "نفد المخزون"
+  live_ko: "تعذّر الوصول إلى المخزون المباشر حالياً. حاول مجدداً بعد دقائق."
+  live_moins: "عرض أقل"
   liste_titre: 'أجهزة بيع بطاقات بوكيمون في بلجيكا: 5 متاجر كارفور | BoosterStop'
-  liste_desc: 'أجهزة BoosterStop الخمسة في بلجيكا: Woluwe-Saint-Lambert وZandhoven وMechelen وKorbeek-Lo وLa Louvière. عبوات بوستر مختومة من بوكيمون وون بيس وماجيك، بالخدمة الذاتية في كارفور.'
+  liste_desc: 'أجهزة BoosterStop الخمسة في بلجيكا: Woluwe-Saint-Lambert وGosselies وMechelen وKorbeek-Lo وLa Louvière. عبوات بوستر مختومة من بوكيمون وون بيس وماجيك، بالخدمة الذاتية في كارفور.'
   liste_h1: أجهزتنا في بلجيكا
   liste_lead: 'خمسة أجهزة BoosterStop تعمل في بلجيكا داخل متاجر كارفور: في بروكسل وفلاندرز ووالونيا. عبوات بوستر وصناديق ديسبلاي وصناديق مختومة من الموزعين الرسميين، بالخدمة الذاتية.'
   voir_page: شاهد الجهاز
@@ -163,11 +235,11 @@ ar:
   - q: هل البطاقات أصلية؟
     a: نعم. كل منتج يأتي من الموزعين الرسميين، في غلافه الأصلي المختوم.
   - q: هل يمكنني التحقق من المخزون قبل الذهاب؟
-    a: 'قريباً: سيظهر المخزون المباشر لأجهزة بلجيكا في هذه الصفحة وفي صفحة المخزون المباشر.'
+    a: 'نعم. المخزون المباشر للجهاز معروض في هذه الصفحة وفي صفحة المخزون المباشر.'
   - q: هل توجد أجهزة أخرى في بلجيكا؟
-    a: 'نعم، خمسة في المجموع، كلها داخل متاجر كارفور: Woluwe-Saint-Lambert وZandhoven وMechelen وKorbeek-Lo وLa Louvière.'
+    a: 'نعم، خمسة في المجموع، كلها داخل متاجر كارفور: Woluwe-Saint-Lambert وGosselies وMechelen وKorbeek-Lo وLa Louvière.'
   liste_faq:
   - q: أين أجد جهاز بيع بطاقات بوكيمون في بلجيكا؟
-    a: 'في أحد أجهزة BoosterStop الخمسة داخل متاجر كارفور: Woluwe-Saint-Lambert (بروكسل) وZandhoven وMechelen وKorbeek-Lo وLa Louvière.'
+    a: 'في أحد أجهزة BoosterStop الخمسة داخل متاجر كارفور: Woluwe-Saint-Lambert (بروكسل) وGosselies وMechelen وKorbeek-Lo وLa Louvière.'
   - q: هل المنتجات رسمية؟
     a: نعم. كل شيء مختوم من المصنع ومشترى من الموزعين الرسميين لكل ترخيص.

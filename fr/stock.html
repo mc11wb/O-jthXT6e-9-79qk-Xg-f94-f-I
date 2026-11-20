@@ -341,43 +341,7 @@ page: stock
 </div>
 
 <!-- BE PANEL -->
-<div id="panel-be" style="display:none;">
-  <div class="stats-bar">
-    <div class="stat"><div class="stat-value">5</div><div class="stat-label">Machines actives</div></div>
-    <div class="stat"><div class="stat-value green">—</div><div class="stat-label">Produits en stock</div></div>
-    <div class="stat"><div class="stat-value orange">—</div><div class="stat-label">Bientôt épuisés</div></div>
-    <div class="stat"><div class="stat-value red">—</div><div class="stat-label">Rails épuisés</div></div>
-  </div>
-
-  <div class="machine-select-zone">
-    <div class="zone-label">Nos machines belges</div>
-    <div class="machine-tabs">
-      {%- assign hb_ms = site.data.machines | where: "pays", "be" -%}
-{%- assign hb_t = site.data.belgique[page.lang] -%}
-{%- if page.lang == "nl" -%}{%- assign hb_sx = "_nl" -%}{%- elsif page.lang == "en" -%}{%- assign hb_sx = "_en" -%}{%- else -%}{%- assign hb_sx = "" -%}{%- endif -%}
-{%- capture hb_kc -%}court{{ hb_sx }}{%- endcapture -%}{%- capture hb_ka -%}adresse{{ hb_sx }}{%- endcapture -%}
-      {%- for m in hb_ms %}
-      <button class="machine-tab soon{% if forloop.first %} active{% endif %}" onclick="selectBeMachine(this)">
-        <span class="mt-dot"></span>
-        <span class="mt-label"><span class="mt-name">{{ m[hb_kc] | default: m.court }}</span><span class="mt-sub">Carrefour · {{ m.cp }}</span><span class="mt-soon">{{ hb_t.stock_bientot }}</span></span>
-      </button>
-      {%- endfor %}
-    </div>
-  </div>
-
-  <div class="machine-view">
-    <div class="machine-soon-msg">
-      <div class="msm-icon">🇧🇪</div>
-      <div class="msm-title">Stock live bientôt disponible</div>
-      <p class="msm-sub">{{ hb_t.stock_txt }}</p>
-      <ul class="be-stock-links">
-        {%- for m in hb_ms %}
-        <li><a href="{% include lien.html f=m.fichier %}">{{ m.nom }}</a> <span>{{ m[hb_ka] | default: m.adresse }}</span></li>
-        {%- endfor %}
-      </ul>
-    </div>
-  </div>
-</div>
+{% include stock-be.html %}
 
 <!-- FR PANEL -->
 <div class="coming-soon-country" id="panel-fr">
@@ -884,6 +848,7 @@ function copyMachineLink(btn) {
 loadAll();
 setInterval(loadAll, 5 * 60 * 1000);
 </script>
+{% include stock-be-script.html %}
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-uxCBr3OvNOAgHTklOsATNImLuPrmn0g&callback=initStockMap"></script>
 
 
