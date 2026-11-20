@@ -13,6 +13,7 @@
 #panel-be a.smc-link { text-decoration: none; display: inline-block; }
 #panel-be .smc-right { gap: 8px; }
 #beFloors .slot { cursor: default; }
+#beMap { width: 100%; height: 100%; }
 #panel-be .be-stock-txt { max-width: 520px; margin: 26px auto 0; text-align: center; }
 </style>
 <div id="panel-be" style="display:none;">
@@ -33,6 +34,7 @@
       </a>
       {%- endfor %}
     </div>
+    <div class="stock-map-wrap"><div id="beMap"></div></div>
     <div class="selected-machine-card">
       <div class="smc-left">
         <span class="smc-dot"></span>

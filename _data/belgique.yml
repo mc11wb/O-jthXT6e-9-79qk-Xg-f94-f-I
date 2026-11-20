@@ -45,6 +45,14 @@ fr:
   itineraire: "Itinéraire"
   acces_h: "Accès"
   acces_txt: "Accessible pendant les heures d'ouverture du magasin Carrefour."
+  # Horaires du magasin (tableau des pages machines, pastilles ouvert/fermé)
+  horaires_h: "Horaires"
+  jours: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"]
+  ferme: "Fermé"
+  horaires_note: "Horaires habituels du magasin. Ils peuvent changer les jours fériés."
+  ouvert_now: "Ouvert maintenant"
+  ferme_now: "Fermé maintenant"
+  ferie_now: "Jour férié : horaires à vérifier"
   horaires_lien: "Horaires du magasin sur Google Maps"
   dedans_h: "Ce qu'on y trouve"
   dedans_txt: "Des boosters à l'unité, des coffrets et des displays, tous scellés d'origine et achetés aux distributeurs officiels : Pokémon, One Piece, Magic et d'autres licences selon les arrivages."
@@ -104,6 +112,14 @@ nl:
   itineraire: "Routebeschrijving"
   acces_h: "Toegang"
   acces_txt: "Toegankelijk tijdens de openingsuren van de Carrefour-winkel."
+  # Horaires du magasin (tableau des pages machines, pastilles ouvert/fermé)
+  horaires_h: "Openingsuren"
+  jours: ["Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag", "Zondag"]
+  ferme: "Gesloten"
+  horaires_note: "Gebruikelijke openingsuren van de winkel. Op feestdagen kunnen ze afwijken."
+  ouvert_now: "Nu open"
+  ferme_now: "Nu gesloten"
+  ferie_now: "Feestdag: controleer de openingsuren"
   horaires_lien: "Openingsuren van de winkel op Google Maps"
   dedans_h: "Wat je er vindt"
   dedans_txt: "Losse boosters, boxen en displays, allemaal fabrieksverzegeld en gekocht bij officiële distributeurs: Pokémon, One Piece, Magic en andere licenties, afhankelijk van de leveringen."
@@ -163,6 +179,14 @@ en:
   itineraire: "Directions"
   acces_h: "Access"
   acces_txt: "Open during the Carrefour store's opening hours."
+  # Horaires du magasin (tableau des pages machines, pastilles ouvert/fermé)
+  horaires_h: "Opening hours"
+  jours: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  ferme: "Closed"
+  horaires_note: "The store's usual hours. They may differ on public holidays."
+  ouvert_now: "Open now"
+  ferme_now: "Closed now"
+  ferie_now: "Public holiday: check the store's hours"
   horaires_lien: "Store hours on Google Maps"
   dedans_h: "What's inside"
   dedans_txt: "Single boosters, boxes and displays, all factory-sealed and bought from official distributors: Pokémon, One Piece, Magic and other licenses depending on deliveries."
@@ -223,6 +247,14 @@ ar:
   itineraire: الاتجاهات
   acces_h: الوصول
   acces_txt: متاح خلال ساعات عمل متجر كارفور.
+  # Horaires du magasin (tableau des pages machines, pastilles ouvert/fermé)
+  horaires_h: "ساعات العمل"
+  jours: ["الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت", "الأحد"]
+  ferme: "مغلق"
+  horaires_note: "ساعات المتجر المعتادة. قد تختلف في العطل الرسمية."
+  ouvert_now: "مفتوح الآن"
+  ferme_now: "مغلق الآن"
+  ferie_now: "عطلة رسمية: تحقق من ساعات المتجر"
   horaires_lien: ساعات المتجر على خرائط Google
   dedans_h: ما بداخله
   dedans_txt: 'عبوات بوستر بالقطعة وصناديق وديسبلاي، كلها مختومة من المصنع ومشتراة من الموزعين الرسميين: بوكيمون وون بيس وماجيك وتراخيص أخرى حسب التوريدات.'

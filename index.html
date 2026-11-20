@@ -582,7 +582,7 @@ page: index
 {%- capture hb_kc -%}court{{ hb_sx }}{%- endcapture -%}{%- capture hb_ka -%}adresse{{ hb_sx }}{%- endcapture -%}
         {%- for m in hb_ms %}
         <div class="map-location-item">
-          <div class="map-location-dot live"></div>
+          <div class="map-location-dot live" data-be="{{ m.id }}"></div>
           <div>
             <div class="map-location-name"><a href="{% include lien.html f=m.fichier %}">{{ m.nom }}</a></div>
             <div class="map-location-addr">{{ m[hb_ka] | default: m.adresse }}</div>
@@ -782,6 +782,7 @@ page: index
 </div>
 
 {% include footer.html %}
+{% include be-ouverture.html %}
 
 <!-- GOOGLE MAPS -->
 <style>
@@ -1086,7 +1087,7 @@ function openPopupByIndex(i) {
 // Machines belges (carte de l'onglet Belgique), depuis _data/machines.yml
 const BE_LOCATIONS = [
 {%- for m in site.data.machines %}{% if m.pays == "be" %}
-  { name: {{ m.nom | jsonify }}, lat: {{ m.lat }}, lng: {{ m.lng }}, url: {{ m.url_en | jsonify }} },
+  { id: {{ m.id | jsonify }}, name: {{ m.nom | jsonify }}, lat: {{ m.lat }}, lng: {{ m.lng }}, url: {{ m.url_en | jsonify }} },
 {%- endif %}{% endfor %}
 ];
 const _origInitMap = window.initMap;
@@ -1156,8 +1157,10 @@ window.initMap = function() {
   BE_LOCATIONS.forEach(function(loc) {
     const mk = new google.maps.Marker({
       position: { lat: loc.lat, lng: loc.lng }, map: beMap, title: loc.name,
-      icon: { path: google.maps.SymbolPath.CIRCLE, scale: 8, fillColor: '#E8183C', fillOpacity: 1, strokeColor: '#ffffff', strokeWeight: 2 }
+      // vert = magasin ouvert, jaune = fermé (voir _includes/be-ouverture.html)
+      icon: window.bsBeIcon ? window.bsBeIcon(loc.id) : { path: google.maps.SymbolPath.CIRCLE, scale: 9, fillColor: '#FFD000', fillOpacity: 1, strokeColor: '#ffffff', strokeWeight: 1.5 }
     });
+    (window.bsBeMarkers = window.bsBeMarkers || []).push({ id: loc.id, mk: mk });
     mk.addListener('click', function() { window.location.href = loc.url; });
   });
 

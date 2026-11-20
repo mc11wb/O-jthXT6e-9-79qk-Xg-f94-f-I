@@ -145,6 +145,14 @@ body{
  {"@type":"Store","@id":"{{ site.url }}{{ page.url }}#store","name":{{ "BoosterStop " | append: bm.nom | jsonify }},"url":"{{ site.url }}{{ page.url }}","description":{{ p_desc | jsonify }},"brand":{"@type":"Brand","name":"BoosterStop"},
   "address":{"@type":"PostalAddress","streetAddress":{{ b_rue | jsonify }},"postalCode":"{{ bm.cp }}","addressLocality":{{ b_ville | jsonify }},"addressCountry":"BE"},
   "geo":{"@type":"GeoCoordinates","latitude":{{ bm.lat }},"longitude":{{ bm.lng }}},
+  {%- if bm.ouverture %}
+  {%- assign b_jk = "lun,mar,mer,jeu,ven,sam,dim" | split: "," %}
+  {%- assign b_je = "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday" | split: "," %}
+  {%- assign b_sep = "" %}
+  "openingHoursSpecification":[
+  {%- for k in b_jk %}{% assign b_h = bm.ouverture[k] %}{% if b_h %}{{ b_sep }}{"@type":"OpeningHoursSpecification","dayOfWeek":"{{ b_je[forloop.index0] }}","opens":"{{ b_h[0] }}","closes":"{{ b_h[1] }}"}{% assign b_sep = "," %}{% endif %}{% endfor -%}
+  ],
+  {%- endif %}
   "containedInPlace":{"@type":"GroceryStore","name":{{ bm.nom | jsonify }}}},
  {"@type":"BreadcrumbList","itemListElement":[
   {"@type":"ListItem","position":1,"name":"BoosterStop","item":"{{ site.url }}/{{ lang_info.dossier }}"},
@@ -174,6 +182,9 @@ body{
   <div class="bsm-crumbs" role="navigation" aria-label="{{ bt.fil }}">
     <a href="{{ base }}">BoosterStop</a> › <a href="{% include lien.html f="distributeurs-belgique.html" %}">{{ bt.fil_liste }}</a> › {{ b_court }}
   </div>
+  {%- if bm.ouverture %}
+  <span class="bsm-now" id="bsmNow" data-be-badge="{{ bm.id }}"></span>
+  {%- endif %}
   <h1>{{ bm.h1[page.lang] }}</h1>
   <p class="bsm-where">{{ bt.ou | replace: "%nom%", bm.nom | replace: "%adresse%", b_adr }} {{ bm.intro[page.lang] }} {{ bt.ou2 }}</p>
 </header>
@@ -199,8 +210,21 @@ body{
     <a class="bsm-go" href="https://www.google.com/maps/dir/?api=1&amp;destination={{ bm.lat }},{{ bm.lng }}" rel="noopener">{{ bt.itineraire }}</a>
   </div>
   <div>
+    {%- if bm.ouverture %}
+    <h2>{{ bt.horaires_h }}</h2>
+    <p class="bsm-note">{{ bt.acces_txt }}</p>
+    {%- assign b_jk = "lun,mar,mer,jeu,ven,sam,dim" | split: "," %}
+    <table class="bsm-hours">
+      {%- for k in b_jk %}
+      {%- assign b_h = bm.ouverture[k] %}
+      <tr{% unless b_h %} class="shut"{% endunless %}><td>{{ bt.jours[forloop.index0] }}</td><td>{% if b_h %}{{ b_h[0] }} – {{ b_h[1] }}{% else %}{{ bt.ferme }}{% endif %}</td></tr>
+      {%- endfor %}
+    </table>
+    <p class="bsm-note" style="margin-top:12px">{{ bt.horaires_note }}</p>
+    {%- else %}
     <h2>{{ bt.acces_h }}</h2>
     <p class="bsm-note">{{ bt.acces_txt }}</p>
+    {%- endif %}
     {%- capture b_q -%}{{ bm.nom }}, {{ bm.adresse_nl | default: bm.adresse }}{%- endcapture %}
     <p><a class="bsm-hl" href="https://www.google.com/maps/search/?api=1&amp;query={{ b_q | url_encode }}" rel="noopener">{{ bt.horaires_lien }}</a></p>
   </div>
@@ -280,6 +304,9 @@ body{
 </div><!-- /bsm-wrap -->
 
 {% include footer.html %}
+{%- if page.machine and bm.ouverture %}
+{% include be-ouverture.html %}
+{%- endif %}
 {%- if page.machine and bm.worker %}
 {%- assign bi = site.data.i18n[page.lang] | default: site.data.i18n.en %}
 <script>

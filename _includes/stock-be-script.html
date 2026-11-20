@@ -127,9 +127,50 @@
     });
   }
 
+  /* ----- carte : les machines belges, la machine choisie en rouge ----- */
+  var carte = null, marqueurs = [];
+  var STYLE_CARTE = [
+    { elementType: 'geometry', stylers: [{ color: '#111111' }] },
+    { elementType: 'labels', stylers: [{ visibility: 'off' }] },
+    { featureType: 'administrative.locality', elementType: 'labels.text', stylers: [{ visibility: 'on' }] },
+    { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#777777' }] },
+    { featureType: 'administrative.locality', elementType: 'labels.text.stroke', stylers: [{ color: '#111111' }] },
+    { featureType: 'road.arterial', elementType: 'geometry', stylers: [{ color: '#1e1e1e' }] },
+    { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#252525' }] },
+    { featureType: 'road.local', elementType: 'geometry', stylers: [{ color: '#181818' }] },
+    { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#0a0a0a' }] },
+    { featureType: 'poi', stylers: [{ visibility: 'off' }] },
+    { featureType: 'transit', stylers: [{ visibility: 'off' }] },
+    { featureType: 'landscape', elementType: 'geometry', stylers: [{ color: '#111111' }] },
+    { featureType: 'administrative', elementType: 'geometry.stroke', stylers: [{ color: '#2a2a2a' }] }
+  ];
+  function icone(actif) {
+    return { path: google.maps.SymbolPath.CIRCLE, scale: actif ? 12 : 9, fillColor: actif ? '#E8183C' : '#FFD000', fillOpacity: 1, strokeColor: '#ffffff', strokeWeight: actif ? 2 : 1.5 };
+  }
+  /* la carte n'est créée qu'une fois l'onglet affiché : dans un bloc caché elle n'aurait pas de taille */
+  function initCarte() {
+    var el = document.getElementById('beMap');
+    if (carte || !el || !visible() || typeof google === 'undefined' || !google.maps || !google.maps.Map) return;
+    carte = new google.maps.Map(el, { zoom: 8, center: { lat: 50.75, lng: 4.45 }, disableDefaultUI: true, gestureHandling: 'cooperative', styles: STYLE_CARTE });
+    var cadre = new google.maps.LatLngBounds();
+    BE.forEach(function (m, i) {
+      var mk = new google.maps.Marker({ position: { lat: m.lat, lng: m.lng }, map: carte, title: m.name, icon: icone(i === cur) });
+      mk.addListener('click', function () { choisir(i); });
+      marqueurs.push(mk);
+      cadre.extend({ lat: m.lat, lng: m.lng });
+    });
+    if (BE.length > 1) carte.fitBounds(cadre, 40);
+    else { carte.setCenter({ lat: BE[0].lat, lng: BE[0].lng }); carte.setZoom(13); }
+  }
+  var ism = window.initStockMap;
+  if (typeof ism === 'function') {
+    window.initStockMap = function () { ism.apply(this, arguments); initCarte(); };
+  }
+
   function choisir(i, url) {
     if (i < 0 || i >= BE.length) return;
     cur = i;
+    marqueurs.forEach(function (mk, k) { mk.setIcon(icone(k === i)); });
     var tabs = document.querySelectorAll('#beTabs .machine-tab');
     tabs.forEach(function (t, k) { t.classList.toggle('active', k === i); });
     var row = document.getElementById('beTabs'), tab = tabs[i];
@@ -144,7 +185,7 @@
   }
   window.selectBeMachine = function (i) { choisir(typeof i === 'number' ? i : 0); };
 
-  function montrer() { if (!charge || Date.now() - charge > 60000) load(); else render(); }
+  function montrer() { initCarte(); if (!charge || Date.now() - charge > 60000) load(); else render(); }
 
   /* l'onglet pays et le bouton Actualiser de la page */
   var sw = window.switchCountry;

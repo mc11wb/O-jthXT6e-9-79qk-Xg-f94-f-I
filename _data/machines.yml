@@ -160,6 +160,9 @@
 # leur index dans le tableau MACHINES du Worker (8 Korbeek-Lo, 9 Mechelen/Zemst,
 # 10 Tomberg, 11 Gosselies, 12 La Louvière). Sans « worker », la page affiche
 # « Stock live bientôt ».
+# « ouverture » : horaires habituels du magasin, du lundi au dimanche (un jour
+# absent = fermé). Ils colorent les pastilles ouvert/fermé de la carte de
+# l'accueil et remplissent le tableau des pages machines.
 - id: be-tomberg
   pays: be
   nom: Carrefour Tomberg
@@ -183,6 +186,7 @@
   url_nl: /nl/distributeur-bruxelles-woluwe.html
   live: true
   worker: 10
+  ouverture: { lun: ["08:00", "20:00"], mar: ["08:00", "20:00"], mer: ["08:00", "20:00"], jeu: ["08:00", "20:00"], ven: ["08:00", "20:00"], sam: ["08:00", "20:00"], dim: ["08:00", "12:00"] }
   google_place_id:
   titre: { fr: "Distributeur Pokémon à Bruxelles (Woluwe) | BoosterStop", nl: "Pokémon-automaat in Brussel (Woluwe) | BoosterStop", en: "Pokémon vending machine in Brussels (Woluwe) | BoosterStop" }
   h1: { fr: "Distributeur de cartes Pokémon à Bruxelles, Woluwe-Saint-Lambert", nl: "Pokémon-kaartautomaat in Brussel, Sint-Lambrechts-Woluwe", en: "Pokémon card vending machine in Brussels, Woluwe-Saint-Lambert" }
@@ -211,6 +215,7 @@
   url_nl: /nl/distributeur-gosselies.html
   live: true
   worker: 11
+  ouverture: { lun: ["08:00", "20:00"], mar: ["08:00", "20:00"], mer: ["08:00", "20:00"], jeu: ["08:00", "20:00"], ven: ["08:00", "21:00"], sam: ["08:00", "20:00"], dim: ["08:00", "12:00"] }
   google_place_id:
   titre: { fr: "Distributeur Pokémon à Gosselies (Charleroi) | BoosterStop", nl: "Pokémon-automaat in Gosselies (Charleroi) | BoosterStop", en: "Pokémon vending machine in Gosselies (Charleroi) | BoosterStop" }
   h1: { fr: "Distributeur de cartes Pokémon à Gosselies, près de Charleroi", nl: "Pokémon-kaartautomaat in Gosselies, bij Charleroi", en: "Pokémon card vending machine in Gosselies, near Charleroi" }
@@ -241,6 +246,7 @@
   url_nl: /nl/distributeur-mechelen-zemst.html
   live: true
   worker: 9
+  ouverture: { lun: ["08:00", "20:00"], mar: ["08:00", "20:00"], mer: ["08:00", "20:00"], jeu: ["08:00", "20:00"], ven: ["08:00", "21:00"], sam: ["08:00", "20:00"], dim: ["08:00", "12:00"] }
   google_place_id:
   titre: { fr: "Distributeur Pokémon à Malines (Carrefour Zemst) | BoosterStop", nl: "Pokémon-automaat in Mechelen (Carrefour Zemst) | BoosterStop", en: "Pokémon vending machine in Mechelen | BoosterStop" }
   h1: { fr: "Distributeur de cartes Pokémon à Malines (Carrefour Zemst)", nl: "Pokémon-kaartautomaat in Mechelen (Carrefour Zemst)", en: "Pokémon card vending machine in Mechelen (Carrefour Zemst)" }
@@ -269,6 +275,7 @@
   url_nl: /nl/distributeur-korbeek-lo.html
   live: true
   worker: 8
+  ouverture: { lun: ["08:00", "20:00"], mar: ["08:00", "20:00"], mer: ["08:00", "20:00"], jeu: ["08:00", "20:00"], ven: ["08:00", "21:00"], sam: ["08:00", "20:00"], dim: ["08:00", "12:00"] }
   google_place_id:
   titre: { fr: "Distributeur Pokémon à Korbeek-Lo, près de Louvain | BoosterStop", nl: "Pokémon-automaat in Korbeek-Lo bij Leuven | BoosterStop", en: "Pokémon vending machine near Leuven (Korbeek-Lo) | BoosterStop" }
   h1: { fr: "Distributeur de cartes Pokémon à Korbeek-Lo, près de Louvain", nl: "Pokémon-kaartautomaat in Korbeek-Lo, bij Leuven", en: "Pokémon card vending machine in Korbeek-Lo, near Leuven" }
@@ -297,6 +304,7 @@
   url_nl: /nl/distributeur-la-louviere.html
   live: true
   worker: 12
+  ouverture: { lun: ["07:30", "19:30"], mar: ["07:30", "19:30"], mer: ["07:30", "19:30"], jeu: ["07:30", "19:30"], ven: ["07:30", "19:30"], sam: ["07:30", "19:30"], dim: ["07:30", "19:30"] }
   google_place_id:
   titre: { fr: "Distributeur Pokémon à La Louvière (Carrefour) | BoosterStop", nl: "Pokémon-automaat in La Louvière | BoosterStop", en: "Pokémon vending machine in La Louvière | BoosterStop" }
   h1: { fr: "Distributeur de cartes Pokémon à La Louvière", nl: "Pokémon-kaartautomaat in La Louvière", en: "Pokémon card vending machine in La Louvière" }

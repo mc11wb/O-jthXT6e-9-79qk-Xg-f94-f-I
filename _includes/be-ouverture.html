@@ -1,0 +1,88 @@
+{%- comment -%}
+  MAGASINS BELGES : OUVERT OU FERMÉ. Lit « ouverture » de _data/machines.yml
+  (heure de Bruxelles) et met à jour, toutes les minutes :
+    - les pastilles  class="map-location-dot" data-be="id"   (vert = ouvert)
+    - les badges     data-be-badge="id"                       (pages machines)
+    - les marqueurs de la carte rangés dans window.bsBeMarkers ({ id, mk })
+  Les 10 jours fériés légaux belges ne sont jamais affichés « ouvert » :
+  les horaires des magasins changent ces jours-là.
+{%- endcomment -%}
+{%- assign bo_ms = site.data.machines | where: "pays", "be" -%}
+{%- assign bo_t = site.data.belgique[page.lang] | default: site.data.belgique.en -%}
+{%- assign bo_jk = "dim,lun,mar,mer,jeu,ven,sam" | split: "," -%}
+<script>
+(function () {
+  'use strict';
+  /* minutes d'ouverture et de fermeture, du dimanche (0) au samedi (6) ; null = fermé */
+  var H = {
+    {%- for m in bo_ms %}{% if m.ouverture %}
+    {{ m.id | jsonify }}: [{% for k in bo_jk %}{% assign bo_h = m.ouverture[k] %}{% if bo_h %}{% assign bo_a = bo_h[0] | split: ":" %}{% assign bo_b = bo_h[1] | split: ":" %}[{{ bo_a[0] | times: 60 | plus: bo_a[1] }}, {{ bo_b[0] | times: 60 | plus: bo_b[1] }}]{% else %}null{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}],
+    {%- endif %}{% endfor %}
+  };
+  var T = { open: {{ bo_t.ouvert_now | jsonify }}, shut: {{ bo_t.ferme_now | jsonify }}, ferie: {{ bo_t.ferie_now | jsonify }} };
+
+  /* jour, minutes et date à Bruxelles, quel que soit le fuseau du visiteur */
+  function maintenant() {
+    try {
+      var p = {};
+      new Intl.DateTimeFormat('en-GB', { timeZone: 'Europe/Brussels', hourCycle: 'h23', weekday: 'short', year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+        .formatToParts(new Date()).forEach(function (x) { p[x.type] = x.value; });
+      var h = parseInt(p.hour, 10); if (h === 24) h = 0;
+      return { day: { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 }[p.weekday], mins: h * 60 + parseInt(p.minute, 10), y: +p.year, m: +p.month, d: +p.day };
+    } catch (e) {
+      var t = new Date();
+      return { day: t.getDay(), mins: t.getHours() * 60 + t.getMinutes(), y: t.getFullYear(), m: t.getMonth() + 1, d: t.getDate() };
+    }
+  }
+  function paques(y) {
+    var a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4;
+    var f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30;
+    var i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451);
+    var n = h + l - 7 * m + 114;
+    return Date.UTC(y, Math.floor(n / 31) - 1, (n % 31) + 1);
+  }
+  var feries = {};
+  function ferie(n) {
+    if (!feries[n.y]) {
+      var e = paques(n.y), j = 86400000;
+      feries[n.y] = [Date.UTC(n.y, 0, 1), e + j, Date.UTC(n.y, 4, 1), e + 39 * j, e + 50 * j,
+        Date.UTC(n.y, 6, 21), Date.UTC(n.y, 7, 15), Date.UTC(n.y, 10, 1), Date.UTC(n.y, 10, 11), Date.UTC(n.y, 11, 25)];
+    }
+    return feries[n.y].indexOf(Date.UTC(n.y, n.m - 1, n.d)) !== -1;
+  }
+  /* 'open', 'shut', 'ferie', ou null si la machine n'a pas d'horaires */
+  function etat(id) {
+    var h = H[id];
+    if (!h) return null;
+    var n = maintenant();
+    if (ferie(n)) return 'ferie';
+    var r = h[n.day];
+    return r && n.mins >= r[0] && n.mins < r[1] ? 'open' : 'shut';
+  }
+  function icone(id) {
+    return { path: google.maps.SymbolPath.CIRCLE, scale: 9, fillColor: etat(id) === 'open' ? '#22C55E' : '#FFD000', fillOpacity: 1, strokeColor: '#ffffff', strokeWeight: 1.5 };
+  }
+  function rafraichir() {
+    document.querySelectorAll('.map-location-dot[data-be]').forEach(function (dot) {
+      var e = etat(dot.getAttribute('data-be'));
+      if (e === null) return;
+      dot.classList.toggle('open-now', e === 'open');
+      dot.setAttribute('title', T[e]);
+    });
+    document.querySelectorAll('[data-be-badge]').forEach(function (el) {
+      var e = etat(el.getAttribute('data-be-badge'));
+      if (e === null) { el.textContent = ''; return; }
+      el.textContent = T[e];
+      el.classList.toggle('shut', e !== 'open');
+    });
+    if (window.bsBeMarkers && typeof google !== 'undefined' && google.maps) {
+      window.bsBeMarkers.forEach(function (x) { x.mk.setIcon(icone(x.id)); });
+    }
+  }
+  window.bsBeEtat = etat;
+  window.bsBeIcon = icone;
+  window.bsBeRefresh = rafraichir;
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', rafraichir); else rafraichir();
+  setInterval(rafraichir, 60000);
+})();
+</script>
